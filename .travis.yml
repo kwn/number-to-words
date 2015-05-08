@@ -8,3 +8,4 @@ php:
 before_script:
   - composer selfupdate
   - composer install
+  - vendor/bin/test-reporter
