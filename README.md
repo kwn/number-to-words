@@ -1,6 +1,9 @@
 PHP Number to words converter
 =========================
 
+[![Travis](https://travis-ci.org/kwn/number-to-words.svg?branch=master)](https://travis-ci.org/kwn/number-to-words)
+[![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
+
 This library allows you to convert a number to words. 
 
 Installation
