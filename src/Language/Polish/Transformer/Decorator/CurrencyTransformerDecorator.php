@@ -18,27 +18,24 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     protected $currency;
 
     /**
-     * @var int
+     * @var integer
      */
-    protected $format;
+    protected $subunitsFormat;
 
     /**
      * @param AbstractTransformer $transformer
      * @param Currency            $currency
-     * @param int                 $format
+     * @param integer             $subunitsFormat
      */
-    public function __construct(
-        AbstractTransformer $transformer,
-        Currency $currency,
-        $format = self::FORMAT_SUBUNITS_IN_WORDS
-    ) {
+    public function __construct(AbstractTransformer $transformer, Currency $currency, $subunitsFormat)
+    {
         $this->guardAgainstUnexistingIdentifier($currency);
-        $this->guardAgainstUnexistingFormat($format);
+        $this->guardAgainstUnexistingSubunitsFormat($subunitsFormat);
 
         parent::__construct($transformer);
 
-        $this->currency = $currency;
-        $this->format   = $format;
+        $this->currency       = $currency;
+        $this->subunitsFormat = $subunitsFormat;
     }
 
     /**
@@ -58,7 +55,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
             CurrencyDictionary::getUnits()['PLN']
         );
 
-        if ($this->format === self::FORMAT_SUBUNITS_IN_WORDS) {
+        if ($this->subunitsFormat === self::FORMAT_SUBUNITS_IN_WORDS) {
             $subunit = $this->toWordsWithGrammarCasedDescription(
                 new Number($subunitAmount),
                 CurrencyDictionary::getSubunits()['PLN']
@@ -91,11 +88,11 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     }
 
     /**
-     * @param int $format
+     * @param integer $subunitsFormat
      */
-    protected function guardAgainstUnexistingFormat($format)
+    protected function guardAgainstUnexistingSubunitsFormat($subunitsFormat)
     {
-        if (!in_array($format, [ self::FORMAT_SUBUNITS_IN_WORDS, self::FORMAT_SUBUNITS_IN_NUMBERS ])) {
+        if (!in_array($subunitsFormat, [ self::FORMAT_SUBUNITS_IN_WORDS, self::FORMAT_SUBUNITS_IN_NUMBERS ])) {
             throw new \InvalidArgumentException('Unexisting subunits format specified');
         }
     }
