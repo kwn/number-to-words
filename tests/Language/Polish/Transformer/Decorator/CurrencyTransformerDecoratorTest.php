@@ -15,7 +15,8 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
     {
         new CurrencyTransformerDecorator(
             new NumberTransformer(),
-            new Currency('UNK')
+            new Currency('UNK'),
+            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
         );
     }
 
@@ -46,17 +47,6 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('pięćset czterdzieści dwa złote zero groszy', $transformer->toWords(new Number(542)));
         $this->assertEquals('pięćset czterdzieści cztery złote zero groszy', $transformer->toWords(new Number(544)));
         $this->assertEquals('pięćset czterdzieści pięć złotych zero groszy', $transformer->toWords(new Number(545)));
-    }
-
-    public function testDefaultSubunitFormatIsWords()
-    {
-        $transformer = new CurrencyTransformerDecorator(
-            new NumberTransformer(),
-            new Currency('PLN')
-        );
-
-        $this->assertEquals('pięćset czterdzieści trzy złote zero groszy', $transformer->toWords(new Number(543)));
-        $this->assertEquals('pięćset czterdzieści dziewięć złotych dwadzieścia groszy', $transformer->toWords(new Number(549.20)));
     }
 
     public function testTransformMoneySubunitsNumberFormat()
