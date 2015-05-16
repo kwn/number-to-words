@@ -9,7 +9,7 @@ use Kwn\NumberToWords\Model\Number;
 class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
      */
     public function testConstructorThrowsExceptionWithUnknownCurrency()
     {
@@ -21,9 +21,9 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
      */
-    public function testConstructorThrowsExceptionWithUnknownFormat()
+    public function testConstructorThrowsExceptionWithUnknownSubunitsFormat()
     {
         new CurrencyTransformerDecorator(
             new NumberTransformer(),

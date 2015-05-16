@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\Polish\Transformer\Decorator;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Language\Polish\Transformer\AbstractTransformer;
 use Kwn\NumberToWords\Model\Currency;
@@ -73,14 +74,14 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     protected function guardAgainstUnexistingIdentifier(Currency $currency)
     {
         if (!array_key_exists($currency->getIdentifier(), CurrencyDictionary::getUnits())) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'There is missing "%s" unit in a currency dictionary',
                 $currency->getIdentifier()
             ));
         }
 
         if (!array_key_exists($currency->getIdentifier(), CurrencyDictionary::getSubunits())) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'There is missing "%s" subunit in a currency dictionary',
                 $currency->getIdentifier()
             ));
@@ -93,7 +94,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     protected function guardAgainstUnexistingSubunitsFormat($subunitsFormat)
     {
         if (!in_array($subunitsFormat, [ self::FORMAT_SUBUNITS_IN_WORDS, self::FORMAT_SUBUNITS_IN_NUMBERS ])) {
-            throw new \InvalidArgumentException('Unexisting subunits format specified');
+            throw new InvalidArgumentException('Unexisting subunits format specified');
         }
     }
 }
