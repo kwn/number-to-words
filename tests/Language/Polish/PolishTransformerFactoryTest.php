@@ -16,6 +16,14 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
         $this->transformerFactory = new PolishTransformerFactory();
     }
 
+    public function testGetLanguageIdentifier()
+    {
+        $this->assertEquals(
+            PolishTransformerFactory::LANGUAGE_IDENTIFIER,
+            $this->transformerFactory->getLanguageIdentifier()
+        );
+    }
+
     public function testCreateNumberTransformerBuildsCorrectClass()
     {
         $numberTransformer = $this->transformerFactory->createNumberTransformer();

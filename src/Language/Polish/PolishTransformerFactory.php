@@ -9,6 +9,18 @@ use Kwn\NumberToWords\Model\Currency;
 
 class PolishTransformerFactory extends AbstractTransformerFactory
 {
+    const LANGUAGE_IDENTIFIER = 'pl';
+
+    /**
+     * Return language identifier (RFC 3066)
+     *
+     * @return string
+     */
+    public function getLanguageIdentifier()
+    {
+        return self::LANGUAGE_IDENTIFIER;
+    }
+
     /**
      * Create number transformer
      *

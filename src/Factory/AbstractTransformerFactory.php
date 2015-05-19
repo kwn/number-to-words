@@ -5,6 +5,13 @@ namespace Kwn\NumberToWords\Factory;
 abstract class AbstractTransformerFactory
 {
     /**
+     * Return language identifier (RFC 3066)
+     *
+     * @return string
+     */
+    abstract public function getLanguageIdentifier();
+
+    /**
      * Create number transformer
      *
      * @return mixed
