@@ -3,6 +3,7 @@
 namespace Kwn\NumberToWords\Factory;
 
 use Kwn\NumberToWords\Language\Polish\PolishTransformerFactory;
+use Kwn\NumberToWords\Model\Language;
 
 class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,9 +31,20 @@ class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
         $registry = new TransformerFactoriesRegistry([
             $factory
         ]);
-        
+
         $this->assertCount(1, $registry->getTransformerFactories());
         $registry->removeTransformerFactory($factory);
         $this->assertCount(0, $registry->getTransformerFactories());
+    }
+
+    public function testIsTransformerFactoryExists()
+    {
+        $factory  = new PolishTransformerFactory();
+        $registry = new TransformerFactoriesRegistry([
+            $factory
+        ]);
+
+        $this->assertEquals(true, $registry->isTransformerFactoryExists(new Language('pl')));
+        $this->assertEquals(false, $registry->isTransformerFactoryExists(new Language('sq')));
     }
 }

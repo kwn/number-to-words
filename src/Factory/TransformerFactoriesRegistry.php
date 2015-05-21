@@ -2,6 +2,8 @@
 
 namespace Kwn\NumberToWords\Factory;
 
+use Kwn\NumberToWords\Model\Language;
+
 class TransformerFactoriesRegistry
 {
     /**
@@ -54,5 +56,17 @@ class TransformerFactoriesRegistry
     public function removeTransformerFactory(AbstractTransformerFactory $factory)
     {
         $this->transformerFactories->offsetUnset($factory->getLanguageIdentifier());
+    }
+
+    /**
+     * Check if transformer factory of particular language exists
+     *
+     * @param Language $language
+     *
+     * @return bool
+     */
+    public function isTransformerFactoryExists(Language $language)
+    {
+        return $this->transformerFactories->offsetExists($language->getIdentifier());
     }
 }
