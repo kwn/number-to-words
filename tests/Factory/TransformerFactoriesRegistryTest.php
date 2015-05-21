@@ -47,4 +47,25 @@ class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $registry->isTransformerFactoryExists(new Language('pl')));
         $this->assertEquals(false, $registry->isTransformerFactoryExists(new Language('sq')));
     }
+
+    public function testGetRegisteredTransformerFactory()
+    {
+        $factory  = new PolishTransformerFactory();
+        $registry = new TransformerFactoriesRegistry([
+            $factory
+        ]);
+
+        $transformerFactory = $registry->getTransformerFactory(new Language('pl'));
+        $this->assertInstanceOf('Kwn\NumberToWords\Factory\AbstractTransformerFactory', $transformerFactory);
+    }
+
+    /**
+     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
+     */
+    public function testGetUnregisteredTransformerFactory()
+    {
+        $registry = new TransformerFactoriesRegistry();
+
+        $registry->getTransformerFactory(new Language('sq'));
+    }
 }
