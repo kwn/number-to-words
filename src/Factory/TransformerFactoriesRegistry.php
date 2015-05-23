@@ -2,9 +2,6 @@
 
 namespace Kwn\NumberToWords\Factory;
 
-use Kwn\NumberToWords\Exception\InvalidArgumentException;
-use Kwn\NumberToWords\Model\Language;
-
 class TransformerFactoriesRegistry
 {
     /**
@@ -36,24 +33,6 @@ class TransformerFactoriesRegistry
         return $this->transformerFactories;
     }
 
-    /**
-     * Get registered transformer factory
-     *
-     * @param Language $language
-     *
-     * @return AbstractTransformerFactory
-     */
-    public function getTransformerFactory(Language $language)
-    {
-        if (!$this->isTransformerFactoryExists($language)) {
-            throw new InvalidArgumentException(sprintf(
-                'Transformer with language identifier "%s" is not registered',
-                $language->getIdentifier()
-            ));
-        }
-
-        return $this->transformerFactories->offsetGet($language->getIdentifier());
-    }
 
     /**
      * Add transformer factory to registry
@@ -76,17 +55,5 @@ class TransformerFactoriesRegistry
     public function removeTransformerFactory(AbstractTransformerFactory $factory)
     {
         $this->transformerFactories->offsetUnset($factory->getLanguageIdentifier());
-    }
-
-    /**
-     * Check if transformer factory of particular language exists
-     *
-     * @param Language $language
-     *
-     * @return bool
-     */
-    public function isTransformerFactoryExists(Language $language)
-    {
-        return $this->transformerFactories->offsetExists($language->getIdentifier());
     }
 }

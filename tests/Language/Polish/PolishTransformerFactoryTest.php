@@ -2,7 +2,9 @@
 
 namespace Kwn\NumberToWords\Language\Polish;
 
+
 use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator;
+use Kwn\NumberToWords\Model\Currency;
 
 class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +38,7 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateCurrencyTransformerBuildsCorrectClass()
     {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer('PLN');
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(new Currency('PLN'));
 
         $this->assertInstanceOf(
             'Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator',
@@ -52,7 +54,7 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateCurrencyTransformerBuildClassWithCorrectSubunitsValue()
     {
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
-            'PLN',
+            new Currency('PLN'),
             CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
         );
 
@@ -62,7 +64,7 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
-            'EUR',
+            new Currency('EUR'),
             CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_NUMBERS
         );
 

@@ -2,6 +2,8 @@
 
 namespace Kwn\NumberToWords\Factory;
 
+use Kwn\NumberToWords\Model\Currency;
+
 abstract class AbstractTransformerFactory
 {
     /**
@@ -21,10 +23,10 @@ abstract class AbstractTransformerFactory
     /**
      * Create currency transformer
      *
-     * @param string  $currency       Currency identifier (ISO 4217)
-     * @param integer $subunitsFormat Subunits format
+     * @param Currency $currency       Currency model
+     * @param integer  $subunitsFormat Subunits format
      *
      * @return mixed
      */
-    abstract public function createCurrencyTransformer($currency, $subunitsFormat);
+    abstract public function createCurrencyTransformer(Currency $currency, $subunitsFormat);
 }

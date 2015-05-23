@@ -30,7 +30,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
      */
     public function __construct(AbstractTransformer $transformer, Currency $currency, $subunitsFormat)
     {
-        $this->guardAgainstUnexistingIdentifier($currency);
+        $this->guardAgainstUnexistingCurrency($currency);
         $this->guardAgainstUnexistingSubunitsFormat($subunitsFormat);
 
         parent::__construct($transformer);
@@ -69,9 +69,11 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     }
 
     /**
+     * Check if currency definitions exist in dictionary
+     *
      * @param Currency $currency
      */
-    protected function guardAgainstUnexistingIdentifier(Currency $currency)
+    protected function guardAgainstUnexistingCurrency(Currency $currency)
     {
         if (!array_key_exists($currency->getIdentifier(), CurrencyDictionary::getUnits())) {
             throw new InvalidArgumentException(sprintf(
@@ -89,6 +91,8 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     }
 
     /**
+     * Check if passed subunit format is correct
+     *
      * @param integer $subunitsFormat
      */
     protected function guardAgainstUnexistingSubunitsFormat($subunitsFormat)

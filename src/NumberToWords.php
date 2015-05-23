@@ -1,0 +1,92 @@
+<?php
+
+namespace Kwn\NumberToWords;
+
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
+use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
+use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
+use Kwn\NumberToWords\Language\Polish\Transformer\AbstractTransformer;
+use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\AbstractTransformerDecorator;
+use Kwn\NumberToWords\Model\Currency;
+use Kwn\NumberToWords\Model\Language;
+
+class NumberToWords
+{
+    /**
+     * @var TransformerFactoriesRegistry
+     */
+    private $transformerFactoriesRegistry;
+
+    /**
+     * Constructor
+     *
+     * @param TransformerFactoriesRegistry $transformerFactoriesRegistry
+     */
+    public function __construct(TransformerFactoriesRegistry $transformerFactoriesRegistry)
+    {
+        $this->transformerFactoriesRegistry = $transformerFactoriesRegistry;
+    }
+
+    /**
+     * Get number transformer from registered factories
+     *
+     * @param string $language
+     *
+     * @return mixed
+     */
+    public function getNumberTransformer($language)
+    {
+        return $this->getTransformerFactory(new Language($language))
+            ->createNumberTransformer();
+    }
+
+    /**
+     * Get currency transformer from registered factories
+     *
+     * @param string  $language       Language Identifier (RFC 3066)
+     * @param string  $currency       Currency identifier (ISO 4217)
+     * @param integer $subunitsFormat Subunit format constant
+     *
+     * @return mixed
+     */
+    public function getCurrencyTransformer($language, $currency, $subunitsFormat)
+    {
+        return $this->getTransformerFactory(new Language($language))
+            ->createCurrencyTransformer(new Currency($currency), $subunitsFormat);
+    }
+
+    /**
+     * Get registered transformer factory
+     *
+     * @param Language $language
+     *
+     * @return AbstractTransformerFactory
+     */
+    private function getTransformerFactory(Language $language)
+    {
+        if (!$this->isTransformerFactoryExists($language)) {
+            throw new InvalidArgumentException(sprintf(
+                'Transformer with language identifier "%s" is not registered',
+                $language->getIdentifier()
+            ));
+        }
+
+        return $this->transformerFactoriesRegistry
+            ->getTransformerFactories()
+            ->offsetGet($language->getIdentifier());
+    }
+
+    /**
+     * Check if transformer factory of particular language exists
+     *
+     * @param Language $language
+     *
+     * @return bool
+     */
+    private function isTransformerFactoryExists(Language $language)
+    {
+        return $this->transformerFactoriesRegistry
+            ->getTransformerFactories()
+            ->offsetExists($language->getIdentifier());
+    }
+}

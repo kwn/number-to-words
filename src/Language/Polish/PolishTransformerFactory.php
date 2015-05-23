@@ -34,18 +34,18 @@ class PolishTransformerFactory extends AbstractTransformerFactory
     /**
      * Create currency transformer
      *
-     * @param string  $currency       Currency identifier (ISO 4217)
-     * @param integer $subunitsFormat Subunits format
+     * @param Currency $currency       Currency model
+     * @param integer  $subunitsFormat Subunits format
      *
      * @return CurrencyTransformerDecorator
      */
     public function createCurrencyTransformer(
-        $currency,
+        Currency $currency,
         $subunitsFormat = CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
     ) {
         return new CurrencyTransformerDecorator(
             new NumberTransformer(),
-            new Currency($currency),
+            $currency,
             $subunitsFormat
         );
     }
