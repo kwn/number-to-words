@@ -23,59 +23,6 @@ class NumberTransformer
     private $_thresh_many=19;
 
     /**
-     * The words for some numbers.
-     * @var string
-     * @access private
-     */
-    private $_numbers = array(
-        'zero',        // 0
-        array(         // 1
-          array(           // masculine
-            'un',              // article
-            'unu',             // noun
-          ),
-          array(           // feminine
-            'o',               // article
-            'una',             // noun
-          ),
-          'un',            // neutral
-          'unu',           // abstract (stand-alone cardinal)
-        ),
-        array(         //  2
-          'doi',           // masculine and abstract
-          'două',          // feminine and neutral
-        ),
-        'trei',        //  3
-        'patru',       //  4
-        'cinci',       //  5
-        'șase',        //  6
-        'șapte',       //  7
-        'opt',         //  8
-        'nouă',        //  9
-        'zece',        // 10
-        'unsprezece',  // 11
-        array(         // 12
-          'doisprezece',   // masculine and abstract
-          'douăsprezece',  // feminine and abstract
-        ),
-        'treisprezece',   // 13
-        'paisprezece',    // 14
-        'cincisprezece',  // 15
-        'șaisprezece',    // 16
-        'șaptesprezece',  // 17
-        'optsprezece',    // 18
-        'nouăsprezece',   // 19
-        'douăzeci',       // 20
-        30=>'treizeci',   // 30
-        40=>'patruzeci',  // 40
-        50=>'cincizeci',  // 50
-        60=>'șaizeci',    // 60
-        70=>'șaptezeci',  // 70
-        80=>'optzeci',    // 80
-        90=>'nouăzeci',   // 90
-    );
-
-    /**
      * The word for infinity.
      * @var string
      * @access private
@@ -299,17 +246,17 @@ class NumberTransformer
             }
         }
         if ($uz) {
-            if (isset($this->_numbers[$uz])) {
-              $ret.=$this->_get_number_inflection_for_gender($this->_numbers[$uz], $noun, !$force_noun);
+            if (isset(Number::getNumbers()[$uz])) {
+              $ret.=$this->_get_number_inflection_for_gender(Number::getNumbers()[$uz], $noun, !$force_noun);
             } else {
                 if ($z) {
-                    $ret.=$this->_numbers[$z*10]; // no accord needed for tens
+                    $ret.=Number::getNumbers()[$z*10]; // no accord needed for tens
                     if ($u) {
                       $ret.=$this->_sep.$this->_and.$this->_sep;
                     }
                 }
                 if ($u) {
-                    $ret.=$this->_get_number_inflection_for_gender($this->_numbers[$u], $noun, !$force_noun);
+                    $ret.=$this->_get_number_inflection_for_gender(Number::getNumbers()[$u], $noun, !$force_noun);
                 }
             }
         }
@@ -361,7 +308,7 @@ class NumberTransformer
 
         // check if $num is a valid non-zero number
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
-            $ret = $this->_numbers[0];
+            $ret = Number::getNumbers()[0];
             if ($noun[2]!=Gender::ABSTRACTO) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('f',$noun);
             }
@@ -376,7 +323,7 @@ class NumberTransformer
 
         // One is a special case
         if (abs($num)==1) {
-            $ret = $this->_get_number_inflection_for_gender($this->_numbers[1], $noun);
+            $ret = $this->_get_number_inflection_for_gender(Number::getNumbers()[1], $noun);
             if ($noun[2]!=Gender::ABSTRACTO) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('o',$noun);
             }

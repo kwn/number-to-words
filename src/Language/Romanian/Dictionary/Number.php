@@ -7,7 +7,9 @@ use Kwn\NumberToWords\Grammar\Gender;
 class Number
 {
     /**
-     * The suffixes for exponents (singular).
+     * The suffixes for exponents (singular)
+     *
+     * @var array
      */
     private static $exponents = [
         0 => '',
@@ -116,6 +118,59 @@ class Number
     ];
 
     /**
+     * The words for some numbers
+     *
+     * @var array
+     */
+    private static $numbers = [
+        'zero',        // 0
+        [              // 1
+            [          // masculine
+                'un',  // article
+                'unu', // noun
+            ],
+            [          // feminine
+                'o',   // article
+                'una', // noun
+            ],
+            'un',      // neutral
+            'unu',     // abstract (stand-alone cardinal)
+        ],
+        [              //  2
+            'doi',     // masculine and abstract
+            'două',    // feminine and neutral
+        ],
+        'trei',        //  3
+        'patru',       //  4
+        'cinci',       //  5
+        'șase',        //  6
+        'șapte',       //  7
+        'opt',         //  8
+        'nouă',        //  9
+        'zece',        // 10
+        'unsprezece',  // 11
+        [              // 12
+            'doisprezece',  // masculine and abstract
+            'douăsprezece', // feminine and abstract
+        ],
+        'treisprezece',    // 13
+        'paisprezece',     // 14
+        'cincisprezece',   // 15
+        'șaisprezece',     // 16
+        'șaptesprezece',   // 17
+        'optsprezece',     // 18
+        'nouăsprezece',    // 19
+        'douăzeci',        // 20
+        30 => 'treizeci',  // 30
+        40 => 'patruzeci', // 40
+        50 => 'cincizeci', // 50
+        60 => 'șaizeci',   // 60
+        70 => 'șaptezeci', // 70
+        80 => 'optzeci',   // 80
+        90 => 'nouăzeci',  // 90
+    ];
+
+    /**
      * Get exponents
      *
      * @return array
@@ -123,5 +178,10 @@ class Number
     public static function getExponents()
     {
         return self::$exponents;
+    }
+
+    public static function getNumbers()
+    {
+        return self::$numbers;
     }
 }
