@@ -9,7 +9,20 @@ use Kwn\NumberToWords\Model\Currency;
 
 class PolishTransformerFactory extends AbstractTransformerFactory
 {
+    /**
+     * Language identifier (RFC 3066)
+     */
     const LANGUAGE_IDENTIFIER = 'pl';
+
+    /**
+     * Language name
+     */
+    const LANGUAGE_NAME = 'Polish';
+
+    /**
+     * Native language name
+     */
+    const LANGUAGE_NATIVE_NAME = 'Polski';
 
     /**
      * Return language identifier (RFC 3066)
