@@ -1,10 +1,10 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Polish;
+namespace Kwn\NumberToWords\Language\Romanian;
 
 use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
 use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator;
-use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
+use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
 
 class RomanianTransformerFactory extends AbstractTransformerFactory
