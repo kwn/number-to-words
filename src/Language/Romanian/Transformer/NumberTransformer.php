@@ -4,9 +4,10 @@ namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
 use Kwn\NumberToWords\Grammar\Gender;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
-use Kwn\NumberToWords\Language\Romanian\Dictionary\Number;
+use Kwn\NumberToWords\Language\Romanian\Dictionary\Number as NumberDictionary;
+use Kwn\NumberToWords\Model\Number;
 
-class NumberTransformer
+class NumberTransformer extends AbstractTransformer
 {
     /**
      * Anything higher than this is few or many
@@ -240,23 +241,23 @@ class NumberTransformer
         $s = ($num-$z*10-$u)%1000/100; // hundreds
 
         if ($s) {
-            $ret.=$this->_showDigitsGroup($s, Number::getExponents()[2]);
+            $ret.=$this->_showDigitsGroup($s, NumberDictionary::getExponents()[2]);
             if ($uz) {
                 $ret.=$this->_sep;
             }
         }
         if ($uz) {
-            if (isset(Number::getNumbers()[$uz])) {
-              $ret.=$this->_get_number_inflection_for_gender(Number::getNumbers()[$uz], $noun, !$force_noun);
+            if (isset(NumberDictionary::getNumbers()[$uz])) {
+              $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$uz], $noun, !$force_noun);
             } else {
                 if ($z) {
-                    $ret.=Number::getNumbers()[$z*10]; // no accord needed for tens
+                    $ret.=NumberDictionary::getNumbers()[$z*10]; // no accord needed for tens
                     if ($u) {
                       $ret.=$this->_sep.$this->_and.$this->_sep;
                     }
                 }
                 if ($u) {
-                    $ret.=$this->_get_number_inflection_for_gender(Number::getNumbers()[$u], $noun, !$force_noun);
+                    $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$u], $noun, !$force_noun);
                 }
             }
         }
@@ -291,15 +292,17 @@ class NumberTransformer
      *      - Gender::FEMININE for feminine nouns
      *      - Gender::NEUTER for neuter nouns
      *
-     * @param integer $num An integer (or its string representation) between 9.99*-10^302
+     * @param Number $number An integer (or its string representation) between 9.99*-10^302
      *                        and 9.99*10^302 (999 centillions) that need to be converted to words
      * @param array $noun  Optionally you can also provide a noun to be formatted accordingly
      * @return string  The corresponding word representation
      * @access protected
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    public function toWords($num = 0, $noun = array())
+    public function toWords(Number $number, $noun = array())
     {
+        $num = $number->getValue();
+
         if (empty($noun)) {
           $noun=array(NULL, NULL, Gender::ABSTRACTO);
         }
@@ -308,7 +311,7 @@ class NumberTransformer
 
         // check if $num is a valid non-zero number
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
-            $ret = Number::getNumbers()[0];
+            $ret = NumberDictionary::getNumbers()[0];
             if ($noun[2]!=Gender::ABSTRACTO) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('f',$noun);
             }
@@ -323,7 +326,7 @@ class NumberTransformer
 
         // One is a special case
         if (abs($num)==1) {
-            $ret = $this->_get_number_inflection_for_gender(Number::getNumbers()[1], $noun);
+            $ret = $this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[1], $noun);
             if ($noun[2]!=Gender::ABSTRACTO) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('o',$noun);
             }
@@ -359,7 +362,7 @@ class NumberTransformer
             }
 
             if ($pow-1) {
-               $ret.=$this->_showDigitsGroup($number, Number::getExponents()[($pow-1)*3]);
+               $ret.=$this->_showDigitsGroup($number, NumberDictionary::getExponents()[($pow-1)*3]);
             } else {
                $showed_noun = true;
                $ret.=$this->_showDigitsGroup($number, $noun, false, $num!=1);
@@ -370,106 +373,5 @@ class NumberTransformer
         }
 
         return rtrim($ret, $this->_sep);
-    }
-    // }}}
-
-    // {{{ toCurrencyWords()
-
-    /**
-     * Converts a currency value to its word representation
-     * (with monetary units) in Romanian
-     *
-     * @param integer $int_curr         An international currency symbol
-     *                                  as defined by the ISO 4217 standard (three characters)
-     * @param integer $decimal          A money total amount without fraction part (e.g. amount of dollars)
-     * @param integer $fraction         Fractional part of the money amount (e.g. amount of cents)
-     *                                  Optional. Defaults to false.
-     * @param integer $convert_fraction Convert fraction to words (left as numeric if set to false).
-     *                                  Optional. Defaults to true.
-     *
-     * @return string  The corresponding word representation for the currency
-     *
-     * @access public
-     * @author Bogdan Stăncescu <bogdan@moongate.ro>
-     */
-    private function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true)
-    {
-        $int_curr = strtoupper($int_curr);
-        if (!isset(Currency::getCurrencyNames()[$int_curr])) {
-            $int_curr = $this->def_currency;
-        }
-
-        $curr_nouns = Currency::getCurrencyNames()[$int_curr];
-        $ret = $this->toWords($decimal, $curr_nouns[0]);
-
-        if ($fraction !== false) {
-            $ret .= $this->_sep . $this->_and;
-            if ($convert_fraction) {
-                $ret .= $this->_sep . $this->_toWords($fraction, $curr_nouns[1]);
-            } else {
-                $ret .= $fraction . $this->_sep;
-                $plural_rule = $this->_get_plural_rule($fraction);
-                $this->_get_noun_declension_for_number($plural_rule, $curr_nouns[1]);
-            }
-        }
-
-        return $ret;
-    }
-
-    /**
-     * @param $num
-     * @param string $locale
-     * @param string $intCurr
-     * @param null|string $decimalPoint
-     * @return string
-     */
-    public function toCurrency($num, $locale = 'en_US', $intCurr = '', $decimalPoint = null)
-    {
-        if (is_null($decimalPoint)) {
-            $decimalPoint = $this->decimalPoint;
-        }
-
-        // round if a float is passed, use Math_BigInteger otherwise
-        if (is_float($num)) {
-            $num = round($num, 2);
-        }
-
-        $num = $this->normalizeNumber($num, $decimalPoint);
-
-        if (strpos($num, $decimalPoint) === false) {
-            return trim($this->toCurrencyWords($intCurr, $num));
-        }
-
-        $currency = explode($decimalPoint, $num, 2);
-
-        $len = strlen($currency[1]);
-
-        if ($len == 1) {
-            // add leading zero
-            $currency[1] .= '0';
-        } elseif ($len > 2) {
-
-            // cut everything after the 2nd digit
-            $currency[1] = substr($currency[1], 0, 2);
-        }
-
-        return trim($this->toCurrencyWords($intCurr, $currency[0], $currency[1]));
-    }
-
-    /**
-     * Removes redundant spaces, thousands separators, etc.
-     *
-     * @param string $num            Some number
-     * @param string $decimalPoint   The decimal mark, e.g. "." or ","
-     *
-     * @return string Number
-     */
-    private function normalizeNumber($num, $decimalPoint = null)
-    {
-        if (is_null($decimalPoint)) {
-            $decimalPoint = $this->decimalPoint;
-        }
-
-        return preg_replace('/[^-'.preg_quote($decimalPoint).'0-9]/', '', $num);
     }
 }
