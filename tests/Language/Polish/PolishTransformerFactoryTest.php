@@ -5,6 +5,7 @@ namespace Kwn\NumberToWords\Language\Polish;
 
 use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator;
 use Kwn\NumberToWords\Model\Currency;
+use Kwn\NumberToWords\Model\Subunit;
 
 class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -46,8 +47,8 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS,
-            $this->readAttribute($currencyTransformer, 'subunitsFormat')
+            new Subunit(Subunit::FORMAT_IN_WORDS),
+            $this->readAttribute($currencyTransformer, 'subunit')
         );
     }
 
@@ -55,22 +56,22 @@ class PolishTransformerFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
             new Currency('PLN'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
+            new Subunit(Subunit::FORMAT_IN_WORDS)
         );
 
         $this->assertEquals(
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS,
-            $this->readAttribute($currencyTransformer, 'subunitsFormat')
+            new Subunit(Subunit::FORMAT_IN_WORDS),
+            $this->readAttribute($currencyTransformer, 'subunit')
         );
 
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
             new Currency('EUR'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_NUMBERS
+            new Subunit(Subunit::FORMAT_IN_NUMBERS)
         );
 
         $this->assertEquals(
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_NUMBERS,
-            $this->readAttribute($currencyTransformer, 'subunitsFormat')
+            new Subunit(Subunit::FORMAT_IN_NUMBERS),
+            $this->readAttribute($currencyTransformer, 'subunit')
         );
     }
 }

@@ -5,6 +5,7 @@ namespace Kwn\NumberToWords\Language\Polish\Transformer\Decorator;
 use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Number;
+use Kwn\NumberToWords\Model\Subunit;
 
 class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +17,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('UNK'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
+            new Subunit(Subunit::FORMAT_IN_WORDS)
         );
     }
 
@@ -28,7 +29,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('PLN'),
-            10
+            new Subunit(10)
         );
     }
 
@@ -37,7 +38,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $transformer = new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('PLN'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
+            new Subunit(Subunit::FORMAT_IN_WORDS)
         );
 
         $this->assertEquals('jeden złoty zero groszy', $transformer->toWords(new Number(1)));
@@ -54,7 +55,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $transformer = new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('PLN'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_NUMBERS
+            new Subunit(Subunit::FORMAT_IN_NUMBERS)
         );
 
         $this->assertEquals('pięćset czterdzieści pięć złotych 52/100', $transformer->toWords(new Number(545.52)));
@@ -67,7 +68,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $transformer = new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('PLN'),
-            CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
+            new Subunit(Subunit::FORMAT_IN_WORDS)
         );
 
         $this->assertEquals('pięćset czterdzieści pięć złotych pięćdziesiąt dwa grosze', $transformer->toWords(new Number(545.52)));

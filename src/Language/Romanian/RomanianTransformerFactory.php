@@ -3,9 +3,10 @@
 namespace Kwn\NumberToWords\Language\Romanian;
 
 use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
-use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator;
+use Kwn\NumberToWords\Language\Romanian\Transformer\Decorator\CurrencyTransformerDecorator;
 use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
+use Kwn\NumberToWords\Model\Subunit;
 
 class RomanianTransformerFactory extends AbstractTransformerFactory
 {
@@ -47,19 +48,23 @@ class RomanianTransformerFactory extends AbstractTransformerFactory
     /**
      * Create currency transformer
      *
-     * @param Currency $currency       Currency model
-     * @param integer  $subunitsFormat Subunits format
+     * @param Currency $currency Currency model
+     * @param Subunit  $subunit  Subunits format
      *
      * @return CurrencyTransformerDecorator
      */
     public function createCurrencyTransformer(
         Currency $currency,
-        $subunitsFormat = CurrencyTransformerDecorator::FORMAT_SUBUNITS_IN_WORDS
+        Subunit $subunit = null
     ) {
+        if (null === $subunit) {
+            $subunit = new Subunit(Subunit::FORMAT_IN_WORDS);
+        }
+
         return new CurrencyTransformerDecorator(
             new NumberTransformer(),
             $currency,
-            $subunitsFormat
+            $subunit
         );
     }
 }

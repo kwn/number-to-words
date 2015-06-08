@@ -5,10 +5,9 @@ namespace Kwn\NumberToWords;
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
 use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
-use Kwn\NumberToWords\Language\Polish\Transformer\AbstractTransformer;
-use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\AbstractTransformerDecorator;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Language;
+use Kwn\NumberToWords\Model\Subunit;
 
 class NumberToWords
 {
@@ -32,6 +31,8 @@ class NumberToWords
      *
      * @param string $language
      *
+     * @throws InvalidArgumentException
+     *
      * @return mixed
      */
     public function getNumberTransformer($language)
@@ -47,18 +48,22 @@ class NumberToWords
      * @param string  $currency       Currency identifier (ISO 4217)
      * @param integer $subunitsFormat Subunit format constant
      *
+     * @throws InvalidArgumentException
+     *
      * @return mixed
      */
     public function getCurrencyTransformer($language, $currency, $subunitsFormat)
     {
         return $this->getTransformerFactory(new Language($language))
-            ->createCurrencyTransformer(new Currency($currency), $subunitsFormat);
+            ->createCurrencyTransformer(new Currency($currency), new Subunit($subunitsFormat));
     }
 
     /**
      * Get registered transformer factory
      *
      * @param Language $language
+     *
+     * @throws InvalidArgumentException
      *
      * @return AbstractTransformerFactory
      */
