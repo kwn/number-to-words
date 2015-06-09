@@ -3,6 +3,7 @@
 namespace Kwn\NumberToWords\Language\Romanian\Transformer\Decorator;
 
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
+use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
 use Kwn\NumberToWords\Model\Currency as CurrencyModel;
 use Kwn\NumberToWords\Language\Romanian\Transformer\AbstractTransformer;
 use Kwn\NumberToWords\Model\Number;
@@ -63,54 +64,44 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
         $ret = $this->transformer->toWords(new Number($decimal), $curr_nouns[0]);
 
         if ($fraction !== false) {
-            $ret .= $this->_sep . $this->_and;
+            $ret .= ' ' . Language::WORD_AND;
             if ($convert_fraction) {
-                $ret .= $this->_sep . $this->_toWords($fraction, $curr_nouns[1]);
+                $ret .= ' ' . $this->toWords(new Number($fraction), $curr_nouns[1]);
             } else {
-                $ret .= $fraction . $this->_sep;
+                $ret .= $fraction . ' ';
                 $plural_rule = $this->_get_plural_rule($fraction);
                 $this->_get_noun_declension_for_number($plural_rule, $curr_nouns[1]);
             }
         }
 
-        return $ret;
+        return trim($ret);
     }
 
     /**
-     * @param $num
-     * @param string $intCurr
-     * @param null|string $decimalPoint
+     * @param Number $number
+     *
      * @return string
      */
-    public function toWords(Number $num, $intCurr = '', $decimalPoint = null)
+    public function toWords(Number $number)
     {
-        if (is_null($decimalPoint)) {
-            $decimalPoint = '.';
+        $decimalPoint = '.';
+
+        $amount = round($number->getValue(), 2);
+
+        if (strpos($amount, $decimalPoint) === false) {
+            return trim($this->toCurrencyWords($this->currency->getIdentifier(), $amount));
         }
 
-        $num = $num->getValue();
-
-        if (is_float($num)) {
-            $num = round($num, 2);
-        }
-
-        if (strpos($num, $decimalPoint) === false) {
-            return trim($this->toCurrencyWords($this->currency->getIdentifier(), $num));
-        }
-
-        $currency = explode($decimalPoint, $num, 2);
+        $currency = explode($decimalPoint, $amount, 2);
 
         $len = strlen($currency[1]);
 
-        if ($len == 1) {
-            // add leading zero
+        if ($len === 1) {
             $currency[1] .= '0';
         } elseif ($len > 2) {
-
-            // cut everything after the 2nd digit
             $currency[1] = substr($currency[1], 0, 2);
         }
 
-        return trim($this->toCurrencyWords($intCurr, $currency[0], $currency[1]));
+        return $this->toCurrencyWords($this->currency->getIdentifier(), $currency[0], $currency[1]);
     }
 }

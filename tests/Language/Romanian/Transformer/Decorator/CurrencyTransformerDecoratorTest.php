@@ -25,5 +25,6 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('un leu', $transformer->toWords(new Number(1.00)));
         $this->assertEquals('doi lei', $transformer->toWords(new Number(2)));
         $this->assertEquals('două mii de lei', $transformer->toWords(new Number(2000)));
+        $this->assertEquals('un leu și patruzeci și cinci de lei', $transformer->toWords(new Number(1.45)));
     }
 }
