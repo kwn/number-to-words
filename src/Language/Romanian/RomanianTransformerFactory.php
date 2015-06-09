@@ -49,7 +49,7 @@ class RomanianTransformerFactory extends AbstractTransformerFactory
      * Create currency transformer
      *
      * @param Currency $currency Currency model
-     * @param Subunit  $subunit  Subunits format
+     * @param Subunit  $subunit  Subunits format model
      *
      * @return CurrencyTransformerDecorator
      */

@@ -2,8 +2,6 @@
 
 namespace Kwn\NumberToWords\Language\Polish;
 
-
-use Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Subunit;
 
