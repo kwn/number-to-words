@@ -3,7 +3,6 @@
 namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
 use Kwn\NumberToWords\Grammar\Gender;
-use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Number as NumberDictionary;
 use Kwn\NumberToWords\Model\Number;
 
