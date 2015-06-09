@@ -98,8 +98,6 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
 
         if ($len === 1) {
             $currency[1] .= '0';
-        } elseif ($len > 2) {
-            $currency[1] = substr($currency[1], 0, 2);
         }
 
         return $this->toCurrencyWords($this->currency->getIdentifier(), $currency[0], $currency[1]);
