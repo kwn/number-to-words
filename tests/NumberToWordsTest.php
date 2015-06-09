@@ -2,21 +2,31 @@
 
 namespace Kwn\NumberToWords;
 
-
 use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
 use Kwn\NumberToWords\Language\Polish\PolishTransformerFactory;
+use Kwn\NumberToWords\Language\Romanian\RomanianTransformerFactory;
 use Kwn\NumberToWords\Model\Subunit;
 
 class NumberToWordsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGetExistingNumberTransformer()
+    /**
+     * @var NumberToWords
+     */
+    private $numberToWords;
+
+    public function setUp()
     {
         $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory()
+            new PolishTransformerFactory(),
+            new RomanianTransformerFactory()
         ]);
 
-        $numberToWords = new NumberToWords($registry);
-        $transformer   = $numberToWords->getNumberTransformer('pl');
+        $this->numberToWords = new NumberToWords($registry);
+    }
+
+    public function testGetExistingNumberTransformer()
+    {
+        $transformer = $this->numberToWords->getNumberTransformer('pl');
 
         $this->assertInstanceOf('Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer', $transformer);
     }
@@ -26,23 +36,12 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUnexistingNumberTransformer()
     {
-        $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory()
-        ]);
-
-        $numberToWords = new NumberToWords($registry);
-
-        $numberToWords->getNumberTransformer('cd');
+        $this->numberToWords->getNumberTransformer('cd');
     }
 
     public function testGetExistingCurrencyTransformer()
     {
-        $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory()
-        ]);
-
-        $numberToWords = new NumberToWords($registry);
-        $transformer   = $numberToWords->getCurrencyTransformer(
+        $transformer = $this->numberToWords->getCurrencyTransformer(
             'pl',
             'EUR',
             Subunit::FORMAT_IN_WORDS
@@ -59,13 +58,7 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUnexistingCurrencyTransformer()
     {
-        $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory()
-        ]);
-
-        $numberToWords = new NumberToWords($registry);
-
-        $numberToWords->getCurrencyTransformer(
+        $this->numberToWords->getCurrencyTransformer(
             'cd',
             'EUR',
             Subunit::FORMAT_IN_WORDS
