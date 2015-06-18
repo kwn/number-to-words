@@ -5,9 +5,14 @@ namespace Kwn\NumberToWords\Model;
 class Amount
 {
     /**
-     * @var Number
+     * @var integer
      */
-    private $number;
+    private $units;
+
+    /**
+     * @var integer
+     */
+    private $subunits;
 
     /**
      * @var Currency
@@ -22,18 +27,29 @@ class Amount
      */
     public function __construct(Number $number, Currency $currency)
     {
-        $this->number   = $this->getNormalizedNumber($number);
+        $this->units    = $this->extractUnits($number);
+        $this->subunits = $this->extractSubunits($number);
         $this->currency = $currency;
     }
 
     /**
-     * Get number
+     * Get units
      *
-     * @return Number
+     * @return integer
      */
-    public function getNumber()
+    public function getUnits()
     {
-        return $this->number;
+        return $this->units;
+    }
+
+    /**
+     * Get subunits
+     *
+     * @return integer
+     */
+    public function getSubunits()
+    {
+        return $this->subunits;
     }
 
     /**
@@ -47,16 +63,26 @@ class Amount
     }
 
     /**
-     * Round number value and return normalized object
+     * Extract units from given number
      *
      * @param Number $number
      *
-     * @return Number
+     * @return integer
      */
-    private function getNormalizedNumber(Number $number)
+    private function extractUnits(Number $number)
     {
-        $roundedValue = round($number->getValue(), 2);
+        return (int) $number->getValue();
+    }
 
-        return new Number($roundedValue);
+    /**
+     * Extract subunits from given number.
+     *
+     * @param Number $number
+     *
+     * @return integer
+     */
+    private function extractSubunits(Number $number)
+    {
+        return (int) bcmod(bcmul($number->getValue(), 100, 20), 100);
     }
 }
