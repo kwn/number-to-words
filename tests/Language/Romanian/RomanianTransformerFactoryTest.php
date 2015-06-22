@@ -4,7 +4,7 @@
 namespace Kwn\NumberToWords\Language\Romanian;
 
 use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            new Subunit(Subunit::FORMAT_IN_WORDS),
+            new SubunitFormat(SubunitFormat::WORDS),
             $this->readAttribute($currencyTransformer, 'subunit')
         );
     }
@@ -52,21 +52,21 @@ class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
             new Currency('ROL'),
-            new Subunit(Subunit::FORMAT_IN_WORDS)
+            new SubunitFormat(SubunitFormat::WORDS)
         );
 
         $this->assertEquals(
-            new Subunit(Subunit::FORMAT_IN_WORDS),
+            new SubunitFormat(SubunitFormat::WORDS),
             $this->readAttribute($currencyTransformer, 'subunit')
         );
 
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
             new Currency('EUR'),
-            new Subunit(Subunit::FORMAT_IN_NUMBERS)
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertEquals(
-            new Subunit(Subunit::FORMAT_IN_NUMBERS),
+            new SubunitFormat(SubunitFormat::NUMBERS),
             $this->readAttribute($currencyTransformer, 'subunit')
         );
     }

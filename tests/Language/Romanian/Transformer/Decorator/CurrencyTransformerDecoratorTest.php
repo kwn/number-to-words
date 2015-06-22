@@ -5,7 +5,7 @@ namespace Kwn\NumberToWords\Language\Romanian\Transformer\Decorator;
 use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
         $transformer = new CurrencyTransformerDecorator(
             new NumberTransformer(),
             new Currency('ROL'),
-            new Subunit(Subunit::FORMAT_IN_WORDS)
+            new SubunitFormat(SubunitFormat::WORDS)
         );
 
         $this->assertEquals('un leu', $transformer->toWords(new Number(1)));

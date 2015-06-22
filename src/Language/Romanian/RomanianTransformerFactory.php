@@ -6,7 +6,7 @@ use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
 use Kwn\NumberToWords\Language\Romanian\Transformer\Decorator\CurrencyTransformerDecorator;
 use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class RomanianTransformerFactory extends AbstractTransformerFactory
 {
@@ -49,16 +49,16 @@ class RomanianTransformerFactory extends AbstractTransformerFactory
      * Create currency transformer
      *
      * @param Currency $currency Currency model
-     * @param Subunit  $subunit  Subunits format model
+     * @param SubunitFormat  $subunit  Subunits format model
      *
      * @return CurrencyTransformerDecorator
      */
     public function createCurrencyTransformer(
         Currency $currency,
-        Subunit $subunit = null
+        SubunitFormat $subunit = null
     ) {
         if (null === $subunit) {
-            $subunit = new Subunit(Subunit::FORMAT_IN_WORDS);
+            $subunit = new SubunitFormat(SubunitFormat::WORDS);
         }
 
         return new CurrencyTransformerDecorator(

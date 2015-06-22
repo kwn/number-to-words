@@ -20,16 +20,23 @@ class Amount
     private $currency;
 
     /**
+     * @var SubunitFormat
+     */
+    private $subunitFormat;
+
+    /**
      * Constructor
      *
      * @param Number $number
      * @param Currency $currency
+     * @param SubunitFormat $subunitFormat
      */
-    public function __construct(Number $number, Currency $currency)
+    public function __construct(Number $number, Currency $currency, SubunitFormat $subunitFormat)
     {
-        $this->units    = $this->extractUnits($number);
-        $this->subunits = $this->extractSubunits($number);
-        $this->currency = $currency;
+        $this->units         = $this->extractUnits($number);
+        $this->subunits      = $this->extractSubunits($number);
+        $this->currency      = $currency;
+        $this->subunitFormat = $subunitFormat;
     }
 
     /**
@@ -60,6 +67,16 @@ class Amount
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Get subunit format
+     *
+     * @return SubunitFormat
+     */
+    public function getSubunitFormat()
+    {
+        return $this->subunitFormat;
     }
 
     /**

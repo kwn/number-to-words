@@ -5,7 +5,7 @@ namespace Kwn\NumberToWords;
 use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
 use Kwn\NumberToWords\Language\Polish\PolishTransformerFactory;
 use Kwn\NumberToWords\Language\Romanian\RomanianTransformerFactory;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class NumberToWordsTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,7 +44,7 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
         $transformer = $this->numberToWords->getCurrencyTransformer(
             'pl',
             'EUR',
-            Subunit::FORMAT_IN_WORDS
+            SubunitFormat::WORDS
         );
 
         $this->assertInstanceOf(
@@ -61,7 +61,7 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
         $this->numberToWords->getCurrencyTransformer(
             'cd',
             'EUR',
-            Subunit::FORMAT_IN_WORDS
+            SubunitFormat::WORDS
         );
     }
 }

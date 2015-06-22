@@ -8,14 +8,16 @@ class AmountTest extends \PHPUnit_Framework_TestCase
     {
         $amount = new Amount(
             new Number(19.999),
-            new Currency('PLN')
+            new Currency('PLN'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertEquals(99, $amount->getSubunits());
 
         $amount = new Amount(
             new Number(55.122),
-            new Currency('GBP')
+            new Currency('GBP'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertEquals(12, $amount->getSubunits());
@@ -25,7 +27,8 @@ class AmountTest extends \PHPUnit_Framework_TestCase
     {
         $amount = new Amount(
             new Number(15.10),
-            new Currency('PLN')
+            new Currency('PLN'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertInternalType('integer', $amount->getUnits());
@@ -36,7 +39,8 @@ class AmountTest extends \PHPUnit_Framework_TestCase
     {
         $amount = new Amount(
             new Number(19.99),
-            new Currency('EUR')
+            new Currency('EUR'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertInternalType('integer', $amount->getSubunits());
@@ -47,9 +51,21 @@ class AmountTest extends \PHPUnit_Framework_TestCase
     {
         $amount = new Amount(
             new Number(12.10),
-            new Currency('USD')
+            new Currency('USD'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
         $this->assertInstanceOf('Kwn\NumberToWords\Model\Currency', $amount->getCurrency());
+    }
+
+    public function testGetSubunitFormat()
+    {
+        $amount = new Amount(
+            new Number(5.99),
+            new Currency('EUR'),
+            new SubunitFormat(SubunitFormat::NUMBERS)
+        );
+
+        $this->assertInstanceOf('Kwn\NumberToWords\Model\SubunitFormat', $amount->getSubunitFormat());
     }
 }

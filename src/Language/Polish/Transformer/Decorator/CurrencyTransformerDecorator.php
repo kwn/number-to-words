@@ -7,7 +7,7 @@ use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Language\Polish\Transformer\AbstractTransformer;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class CurrencyTransformerDecorator extends AbstractTransformerDecorator
 {
@@ -17,7 +17,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     protected $currency;
 
     /**
-     * @var Subunit
+     * @var SubunitFormat
      */
     protected $subunit;
 
@@ -26,11 +26,11 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
      *
      * @param AbstractTransformer $transformer
      * @param Currency            $currency
-     * @param Subunit             $subunit
+     * @param SubunitFormat             $subunit
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(AbstractTransformer $transformer, Currency $currency, Subunit $subunit)
+    public function __construct(AbstractTransformer $transformer, Currency $currency, SubunitFormat $subunit)
     {
         $this->guardAgainstUnexistingCurrency($currency);
 
@@ -83,7 +83,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
             CurrencyDictionary::getUnits()['PLN']
         );
 
-        if ($this->subunit->getFormat() === Subunit::FORMAT_IN_WORDS) {
+        if ($this->subunit->getFormat() === SubunitFormat::WORDS) {
             $subunit = $this->toWordsWithGrammarCasedDescription(
                 new Number($subunitAmount),
                 CurrencyDictionary::getSubunits()['PLN']

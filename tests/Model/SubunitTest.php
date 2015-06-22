@@ -8,16 +8,16 @@ class SubunitTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructWithFormatInWords()
     {
-        $subunit = new Subunit(Subunit::FORMAT_IN_WORDS);
+        $subunit = new SubunitFormat(SubunitFormat::WORDS);
 
-        $this->assertEquals(Subunit::FORMAT_IN_WORDS, $subunit->getFormat());
+        $this->assertEquals(SubunitFormat::WORDS, $subunit->getFormat());
     }
 
     public function testConstructWithFormatInNumbers()
     {
-        $subunit = new Subunit(Subunit::FORMAT_IN_NUMBERS);
+        $subunit = new SubunitFormat(SubunitFormat::NUMBERS);
 
-        $this->assertEquals(Subunit::FORMAT_IN_NUMBERS, $subunit->getFormat());
+        $this->assertEquals(SubunitFormat::NUMBERS, $subunit->getFormat());
     }
 
     /**
@@ -25,6 +25,6 @@ class SubunitTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructWithUnexistingFormat()
     {
-        new Subunit('format');
+        new SubunitFormat('format');
     }
 }

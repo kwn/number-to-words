@@ -7,7 +7,7 @@ use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
 use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Language;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class NumberToWords
 {
@@ -46,7 +46,7 @@ class NumberToWords
      *
      * @param string  $language       Language Identifier (RFC 3066)
      * @param string  $currency       Currency identifier (ISO 4217)
-     * @param integer $subunitsFormat Subunit format constant
+     * @param integer $subunitsFormat SubunitFormat format constant
      *
      * @throws InvalidArgumentException
      *
@@ -55,7 +55,7 @@ class NumberToWords
     public function getCurrencyTransformer($language, $currency, $subunitsFormat)
     {
         return $this->getTransformerFactory(new Language($language))
-            ->createCurrencyTransformer(new Currency($currency), new Subunit($subunitsFormat));
+            ->createCurrencyTransformer(new Currency($currency), new SubunitFormat($subunitsFormat));
     }
 
     /**

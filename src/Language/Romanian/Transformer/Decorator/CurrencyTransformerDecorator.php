@@ -7,7 +7,7 @@ use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
 use Kwn\NumberToWords\Model\Currency as CurrencyModel;
 use Kwn\NumberToWords\Language\Romanian\Transformer\AbstractTransformer;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Model\Subunit;
+use Kwn\NumberToWords\Model\SubunitFormat;
 
 class CurrencyTransformerDecorator extends AbstractTransformerDecorator
 {
@@ -17,7 +17,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     protected $currency;
 
     /**
-     * @var Subunit
+     * @var SubunitFormat
      */
     protected $subunit;
 
@@ -26,9 +26,9 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
      *
      * @param AbstractTransformer $transformer
      * @param CurrencyModel       $currency
-     * @param Subunit             $subunit
+     * @param SubunitFormat             $subunit
      */
-    public function __construct(AbstractTransformer $transformer, CurrencyModel $currency, Subunit $subunit)
+    public function __construct(AbstractTransformer $transformer, CurrencyModel $currency, SubunitFormat $subunit)
     {
         parent::__construct($transformer);
 

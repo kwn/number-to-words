@@ -4,10 +4,10 @@ namespace Kwn\NumberToWords\Model;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
 
-class Subunit
+class SubunitFormat
 {
-    const FORMAT_IN_WORDS   = 1;
-    const FORMAT_IN_NUMBERS = 2;
+    const WORDS   = 1;
+    const NUMBERS = 2;
 
     /**
      * @var integer
@@ -47,7 +47,7 @@ class Subunit
      */
     private function guardAgainstUnexistingSubunitsFormat($format)
     {
-        if (!in_array($format, [ self::FORMAT_IN_WORDS, self::FORMAT_IN_NUMBERS ], true)) {
+        if (!in_array($format, [ self::WORDS, self::NUMBERS ], true)) {
             throw new InvalidArgumentException('Unexisting subunits format specified');
         }
     }
