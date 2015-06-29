@@ -9,6 +9,12 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
         $language = new Language('pl');
 
         $this->assertInstanceOf('Kwn\NumberToWords\Model\Language', $language);
-        $this->assertSame('pl', $language->getIdentifier());
+    }
+
+    public function testGetIdentifier()
+    {
+        $language = new Language('en');
+
+        $this->assertSame('en', $language->getIdentifier());
     }
 }
