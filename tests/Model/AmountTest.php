@@ -4,47 +4,37 @@ namespace Kwn\NumberToWords\Model;
 
 class AmountTest extends \PHPUnit_Framework_TestCase
 {
-    public function testNumberIsNormalized()
+    public function testNumberIsNormalizedFromUp()
     {
         $amount = new Amount(
-            new Number(19.999),
+            new Number(19.99999),
             new Currency('PLN'),
             new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
-        $this->assertEquals(99, $amount->getSubunits());
+        $this->assertEquals(99, $amount->getNumber()->getSubunits());
+    }
 
+    public function testNumberIsNormalizedFromDown()
+    {
         $amount = new Amount(
-            new Number(55.122),
+            new Number(55.122112),
             new Currency('GBP'),
             new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
-        $this->assertEquals(12, $amount->getSubunits());
+        $this->assertEquals(12, $amount->getNumber()->getSubunits());
     }
 
-    public function testGetUnits()
+    public function testGetNumber()
     {
         $amount = new Amount(
-            new Number(15.10),
-            new Currency('PLN'),
-            new SubunitFormat(SubunitFormat::NUMBERS)
-        );
-
-        $this->assertInternalType('integer', $amount->getUnits());
-        $this->assertEquals(15, $amount->getUnits());
-    }
-
-    public function testGetSubunits()
-    {
-        $amount = new Amount(
-            new Number(19.99),
+            new Number(157.15),
             new Currency('EUR'),
             new SubunitFormat(SubunitFormat::NUMBERS)
         );
 
-        $this->assertInternalType('integer', $amount->getSubunits());
-        $this->assertEquals(99, $amount->getSubunits());
+        $this->assertInstanceOf('Kwn\NumberToWords\Model\Number', $amount->getNumber());
     }
 
     public function testGetCurrency()

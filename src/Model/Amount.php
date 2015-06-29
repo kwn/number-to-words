@@ -5,14 +5,9 @@ namespace Kwn\NumberToWords\Model;
 class Amount
 {
     /**
-     * @var integer
+     * @var Number
      */
-    private $units;
-
-    /**
-     * @var integer
-     */
-    private $subunits;
+    private $number;
 
     /**
      * @var Currency
@@ -27,36 +22,25 @@ class Amount
     /**
      * Constructor
      *
-     * @param Number $number
-     * @param Currency $currency
+     * @param Number        $number
+     * @param Currency      $currency
      * @param SubunitFormat $subunitFormat
      */
     public function __construct(Number $number, Currency $currency, SubunitFormat $subunitFormat)
     {
-        $this->units         = $this->extractUnits($number);
-        $this->subunits      = $this->extractSubunits($number);
+        $this->number        = $this->normalizeNumberForAmount($number);
         $this->currency      = $currency;
         $this->subunitFormat = $subunitFormat;
     }
 
     /**
-     * Get units
+     * Get number
      *
-     * @return integer
+     * @return Number
      */
-    public function getUnits()
+    public function getNumber()
     {
-        return $this->units;
-    }
-
-    /**
-     * Get subunits
-     *
-     * @return integer
-     */
-    public function getSubunits()
-    {
-        return $this->subunits;
+        return $this->number;
     }
 
     /**
@@ -80,26 +64,16 @@ class Amount
     }
 
     /**
-     * Extract units from given number
+     * Normalize number for amount
      *
      * @param Number $number
      *
-     * @return integer
+     * @return Number
      */
-    private function extractUnits(Number $number)
+    private function normalizeNumberForAmount(Number $number)
     {
-        return (int) $number->getValue();
-    }
+        $normalizedValue = $number->getUnits() + ($number->getSubunits() / 100);
 
-    /**
-     * Extract subunits from given number.
-     *
-     * @param Number $number
-     *
-     * @return integer
-     */
-    private function extractSubunits(Number $number)
-    {
-        return (int) bcmod(bcmul($number->getValue(), 100, 20), 100);
+        return new Number($normalizedValue);
     }
 }

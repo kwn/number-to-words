@@ -1,15 +1,16 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Polish\Transformer\Decorator;
+namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Language\Polish\Transformer\AbstractTransformer;
+use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\SubunitFormat;
 
-class CurrencyTransformerDecorator extends AbstractTransformerDecorator
+class CurrencyTransformer extends AbstractTransformerDecorator
 {
     /**
      * @var Currency
@@ -71,7 +72,7 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
      *
      * @return string
      */
-    public function toWords(Number $number)
+    public function toWords(Amount $number)
     {
         $value = $number->getValue();
 
