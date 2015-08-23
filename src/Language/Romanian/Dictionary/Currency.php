@@ -11,64 +11,64 @@ class Currency
      */
     private static $currencyNames = [
         'AUD' => [
-            ['dolar australian', 'dolari australieni', Gender::MASCULINE],
-            ['cent', 'cenți', Gender::MASCULINE]
+            ['dolar australian', 'dolari australieni', Gender::MALE],
+            ['cent', 'cenți', Gender::MALE]
         ],
         'CAD' => [
-            ['dolar canadian', 'dolari canadieni', Gender::MASCULINE],
-            ['cent', 'cenți', Gender::MASCULINE]
+            ['dolar canadian', 'dolari canadieni', Gender::MALE],
+            ['cent', 'cenți', Gender::MALE]
         ],
         'CHF' => [
-            ['franc elvețian', 'franci elvețieni', Gender::MASCULINE],
-            ['cent', 'cenți', Gender::MASCULINE]
+            ['franc elvețian', 'franci elvețieni', Gender::MALE],
+            ['cent', 'cenți', Gender::MALE]
         ],
         'CZK' => [
-            ['coroană cehă', 'coroane cehe', Gender::FEMININE],
-            ['haler', 'haleri', Gender::MASCULINE]
+            ['coroană cehă', 'coroane cehe', Gender::FEMALE],
+            ['haler', 'haleri', Gender::MALE]
         ],
         'EUR' => [
-            ['euro', 'euro', Gender::MASCULINE],
-            ['cent', 'cenți', Gender::MASCULINE]
+            ['euro', 'euro', Gender::MALE],
+            ['cent', 'cenți', Gender::MALE]
         ],
         'GBP' => [
-            ['liră sterlină', 'lire sterline', Gender::FEMININE],
-            ['penny', 'penny', Gender::MASCULINE]
+            ['liră sterlină', 'lire sterline', Gender::FEMALE],
+            ['penny', 'penny', Gender::MALE]
         ],
         'HUF' => [
-            ['forint', 'forinți', Gender::MASCULINE],
-            ['filer', 'fileri', Gender::MASCULINE]
+            ['forint', 'forinți', Gender::MALE],
+            ['filer', 'fileri', Gender::MALE]
         ],
         'JPY' => [
-            ['yen', 'yeni', Gender::MASCULINE],
-            ['sen', 'seni', Gender::MASCULINE]
+            ['yen', 'yeni', Gender::MALE],
+            ['sen', 'seni', Gender::MALE]
         ],
         'PLN' => [
-            ['zlot', 'zloți', Gender::MASCULINE],
-            ['gros', 'grosi', Gender::MASCULINE]
+            ['zlot', 'zloți', Gender::MALE],
+            ['gros', 'grosi', Gender::MALE]
         ],
         'ROL' => [
-            ['leu', 'lei', Gender::MASCULINE],
-            ['ban', 'bani', Gender::MASCULINE]
+            ['leu', 'lei', Gender::MALE],
+            ['ban', 'bani', Gender::MALE]
         ],
         'RON' => [
-            ['leu', 'lei', Gender::MASCULINE],
-            ['ban', 'bani', Gender::MASCULINE]
+            ['leu', 'lei', Gender::MALE],
+            ['ban', 'bani', Gender::MALE]
         ],
         'RUB' => [
-            ['rublă', 'ruble', Gender::FEMININE],
-            ['copeică', 'copeici', Gender::FEMININE]
+            ['rublă', 'ruble', Gender::FEMALE],
+            ['copeică', 'copeici', Gender::FEMALE]
         ],
         'SKK' => [
-            ['coroană slovacă', 'coroane slovace', Gender::FEMININE],
-            ['haler', 'haleri', Gender::MASCULINE]
+            ['coroană slovacă', 'coroane slovace', Gender::FEMALE],
+            ['haler', 'haleri', Gender::MALE]
         ],
         'TRL' => [
-            ['liră turcească', 'lire turcești', Gender::FEMININE],
-            ['kuruș', 'kuruși', Gender::MASCULINE]
+            ['liră turcească', 'lire turcești', Gender::FEMALE],
+            ['kuruș', 'kuruși', Gender::MALE]
         ],
         'USD' => [
-            ['dolar american', 'dolari americani', Gender::MASCULINE],
-            ['cent', 'cenți', Gender::MASCULINE]
+            ['dolar american', 'dolari americani', Gender::MALE],
+            ['cent', 'cenți', Gender::MALE]
         ]
     ];
 

@@ -3,8 +3,8 @@
 namespace Kwn\NumberToWords;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
-use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
-use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
+use Kwn\NumberToWords\Transformer\TransformerFactory;
+use Kwn\NumberToWords\Transformer\TransformerFactoriesRegistry;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Language;
 use Kwn\NumberToWords\Model\SubunitFormat;
@@ -65,7 +65,7 @@ class NumberToWords
      *
      * @throws InvalidArgumentException
      *
-     * @return AbstractTransformerFactory
+     * @return TransformerFactory
      */
     private function getTransformerFactory(Language $language)
     {

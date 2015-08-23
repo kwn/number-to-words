@@ -13,8 +13,8 @@ class Number
      */
     private static $exponents = [
         0 => '',
-        2 => ['sută', 'sute', Gender::FEMININE],
-        3 => ['mie', 'mii', Gender::FEMININE],
+        2 => ['sută', 'sute', Gender::FEMALE],
+        3 => ['mie', 'mii', Gender::FEMALE],
         6 => ['milion', 'milioane', Gender::NEUTER],
         9 => ['miliard', 'miliarde', Gender::NEUTER],
         12 => ['trilion', 'trilioane', Gender::NEUTER],

@@ -2,13 +2,13 @@
 
 namespace Kwn\NumberToWords\Language\Romanian;
 
-use Kwn\NumberToWords\Factory\AbstractTransformerFactory;
+use Kwn\NumberToWords\Transformer\TransformerFactory;
 use Kwn\NumberToWords\Language\Romanian\Transformer\Decorator\CurrencyTransformerDecorator;
 use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 
-class RomanianTransformerFactory extends AbstractTransformerFactory
+class RomanianTransformerFactory extends TransformerFactory
 {
     /**
      * Language identifier (RFC 3066)

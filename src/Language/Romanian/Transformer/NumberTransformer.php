@@ -155,7 +155,7 @@ class NumberTransformer extends AbstractTransformer
      */
     private function _get_noun_declension_for_number($plural_rule, $noun)
     {
-        if ($noun[2]==Gender::ABSTRACTO) {
+        if ($noun[2]==Gender::FEATURELESS) {
             // Nothing for abstract count
             return "";
         }
@@ -261,7 +261,7 @@ class NumberTransformer extends AbstractTransformer
             }
         }
 
-        if ($noun[2]==Gender::ABSTRACTO) {
+        if ($noun[2]==Gender::FEATURELESS) {
             return $ret;
         }
 
@@ -287,8 +287,8 @@ class NumberTransformer extends AbstractTransformer
      * 0 => the singular form
      * 1 => the plural form
      * 2 => the noun's gender, as one of the following constants:
-     *      - Gender::MASCULINE for masculine nouns
-     *      - Gender::FEMININE for feminine nouns
+     *      - Gender::MALE for masculine nouns
+     *      - Gender::FEMALE for feminine nouns
      *      - Gender::NEUTER for neuter nouns
      *
      * @param Number $number An integer (or its string representation) between 9.99*-10^302
@@ -303,7 +303,7 @@ class NumberTransformer extends AbstractTransformer
         $num = $number->getValue();
 
         if (empty($noun)) {
-          $noun=array(NULL, NULL, Gender::ABSTRACTO);
+          $noun=array(NULL, NULL, Gender::FEATURELESS);
         }
 
         $ret = '';
@@ -311,7 +311,7 @@ class NumberTransformer extends AbstractTransformer
         // check if $num is a valid non-zero number
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
             $ret = NumberDictionary::getNumbers()[0];
-            if ($noun[2]!=Gender::ABSTRACTO) {
+            if ($noun[2]!=Gender::FEATURELESS) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('f',$noun);
             }
             return $ret;
@@ -326,7 +326,7 @@ class NumberTransformer extends AbstractTransformer
         // One is a special case
         if (abs($num)==1) {
             $ret = $this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[1], $noun);
-            if ($noun[2]!=Gender::ABSTRACTO) {
+            if ($noun[2]!=Gender::FEATURELESS) {
                 $ret .= $this->_sep.$this->_get_noun_declension_for_number('o',$noun);
             }
             return $ret;
