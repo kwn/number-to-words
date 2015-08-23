@@ -1,20 +1,20 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Polish\Transformer\Decorator;
+namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
 use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\SubunitFormat;
 
-class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
+class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
      */
     public function testConstructorThrowsExceptionWithUnknownCurrency()
     {
-        new CurrencyTransformerDecorator(
+        new CurrencyTransformer(
             new NumberTransformer(),
             new Currency('UNK'),
             new SubunitFormat(SubunitFormat::WORDS)
@@ -26,7 +26,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorThrowsExceptionWithUnknownSubunitsFormat()
     {
-        new CurrencyTransformerDecorator(
+        new CurrencyTransformer(
             new NumberTransformer(),
             new Currency('PLN'),
             new SubunitFormat(10)
@@ -35,7 +35,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 
     public function testTransformMoneyUnits()
     {
-        $transformer = new CurrencyTransformerDecorator(
+        $transformer = new CurrencyTransformer(
             new NumberTransformer(),
             new Currency('PLN'),
             new SubunitFormat(SubunitFormat::WORDS)
@@ -52,7 +52,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 
     public function testTransformMoneySubunitsNumberFormat()
     {
-        $transformer = new CurrencyTransformerDecorator(
+        $transformer = new CurrencyTransformer(
             new NumberTransformer(),
             new Currency('PLN'),
             new SubunitFormat(SubunitFormat::NUMBERS)
@@ -65,7 +65,7 @@ class CurrencyTransformerDecoratorTest extends \PHPUnit_Framework_TestCase
 
     public function testTransformMoneySubunitsWordsFormat()
     {
-        $transformer = new CurrencyTransformerDecorator(
+        $transformer = new CurrencyTransformer(
             new NumberTransformer(),
             new Currency('PLN'),
             new SubunitFormat(SubunitFormat::WORDS)

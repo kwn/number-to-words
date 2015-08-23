@@ -1,6 +1,6 @@
 <?php
 
-namespace Kwn\NumberToWords\Factory;
+namespace Kwn\NumberToWords\Transformer;
 
 class TransformerFactoriesRegistry
 {

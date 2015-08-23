@@ -1,15 +1,15 @@
 <?php
 
-namespace Kwn\NumberToWords\Factory;
+namespace Kwn\NumberToWords\Transformer;
 
-use Kwn\NumberToWords\Language\Polish\PolishTransformerFactory;
+use Kwn\NumberToWords\Language\Polish\TransformerFactory;
 
 class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateNewRegistryWithInitialFactories()
     {
         $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory()
+            new TransformerFactory()
         ]);
 
         $this->assertCount(1, $registry->getTransformerFactories());
@@ -20,13 +20,13 @@ class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
         $registry = new TransformerFactoriesRegistry();
         $this->assertCount(0, $registry->getTransformerFactories());
 
-        $registry->addTransformerFactory(new PolishTransformerFactory());
+        $registry->addTransformerFactory(new TransformerFactory());
         $this->assertCount(1, $registry->getTransformerFactories());
     }
 
     public function testRemoveTransformerFactory()
     {
-        $factory  = new PolishTransformerFactory();
+        $factory  = new TransformerFactory();
         $registry = new TransformerFactoriesRegistry([
             $factory
         ]);

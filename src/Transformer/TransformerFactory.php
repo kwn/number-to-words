@@ -1,11 +1,10 @@
 <?php
 
-namespace Kwn\NumberToWords\Factory;
+namespace Kwn\NumberToWords\Transformer;
 
 use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\SubunitFormat;
 
-abstract class AbstractTransformerFactory
+abstract class TransformerFactory
 {
     /**
      * Return language identifier (RFC 3066)
@@ -24,10 +23,9 @@ abstract class AbstractTransformerFactory
     /**
      * Create currency transformer
      *
-     * @param Currency $currency       Currency model
-     * @param SubunitFormat  $subunitsFormat Subunits format model
+     * @param Currency $currency Currency model
      *
      * @return mixed
      */
-    abstract public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitsFormat);
+    abstract public function createCurrencyTransformer(Currency $currency);
 }

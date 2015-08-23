@@ -2,11 +2,26 @@
 
 namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
+use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Language\Polish\Dictionary\Number as NumberDictionary;
+use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 
-class NumberTransformer extends AbstractTransformer
+class NumberTransformer implements NumberTransformerInterface
 {
+    /**
+     * @var GrammarCaseSelector
+     */
+    private $grammarCaseSelector;
+
+    /**
+     * @param GrammarCaseSelector $grammarCaseSelector
+     */
+    public function __construct(GrammarCaseSelector $grammarCaseSelector)
+    {
+        $this->grammarCaseSelector = $grammarCaseSelector;
+    }
+
     /**
      * Return number converted to words
      *
@@ -36,7 +51,7 @@ class NumberTransformer extends AbstractTransformer
                 $threeDigitsWords = $this->threeDigitsToWords($triplet);
 
                 if ($i > 0) {
-                    $case = $this->grammarCase($triplet);
+                    $case = $this->grammarCaseSelector->getGrammarCase($triplet);
                     $mega = NumberDictionary::$mega[$i][$case];
 
                     $threeDigitsWords = $threeDigitsWords . ' ' . $mega;
@@ -46,7 +61,7 @@ class NumberTransformer extends AbstractTransformer
             }
         }
 
-        return join(' ', array_reverse($words));
+        return implode(' ', array_reverse($words));
     }
 
     /**
@@ -79,6 +94,6 @@ class NumberTransformer extends AbstractTransformer
             }
         }
 
-        return join(' ', $words);
+        return implode(' ', $words);
     }
 }
