@@ -2,8 +2,8 @@
 
 namespace Kwn\NumberToWords;
 
-use Kwn\NumberToWords\Factory\TransformerFactoriesRegistry;
-use Kwn\NumberToWords\Language\Polish\PolishTransformerFactory;
+use Kwn\NumberToWords\Transformer\TransformerFactoriesRegistry;
+use Kwn\NumberToWords\Language\Polish\TransformerFactory;
 use Kwn\NumberToWords\Language\Romanian\RomanianTransformerFactory;
 use Kwn\NumberToWords\Model\SubunitFormat;
 
@@ -17,7 +17,7 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $registry = new TransformerFactoriesRegistry([
-            new PolishTransformerFactory(),
+            new TransformerFactory(),
             new RomanianTransformerFactory()
         ]);
 
@@ -48,7 +48,7 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Polish\Transformer\Decorator\CurrencyTransformerDecorator',
+            'Kwn\NumberToWords\Language\Polish\Transformer\CurrencyTransformerDecorator',
             $transformer
         );
     }

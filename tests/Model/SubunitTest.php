@@ -25,6 +25,6 @@ class SubunitTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructWithUnexistingFormat()
     {
-        new SubunitFormat('format');
+        new SubunitFormat('unexisting format');
     }
 }

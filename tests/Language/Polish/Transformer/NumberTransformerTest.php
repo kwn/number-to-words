@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
+use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 use Kwn\NumberToWords\Model\Number;
 
 class NumberTransformerTest extends \PHPUnit_Framework_TestCase
@@ -13,69 +14,55 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->transformer = new NumberTransformer();
+        $this->transformer = new NumberTransformer(new GrammarCaseSelector());
     }
 
-    public function testTransformOneDigitNumber()
+    /**
+     * @dataProvider providerToWords
+     */
+    public function testToWords($expectedValue, Number $number)
     {
-        $this->assertEquals('zero', $this->transformer->toWords(new Number(0)));
-        $this->assertEquals('trzy', $this->transformer->toWords(new Number(3)));
-        $this->assertEquals('trzy', $this->transformer->toWords(new Number(3.00)));
-        $this->assertEquals('osiem', $this->transformer->toWords(new Number(8.0)));
+        $this->assertEquals($expectedValue, $this->transformer->toWords($number));
     }
 
-    public function testTransformTwoDigitsNumber()
+    public function providerToWords()
     {
-        $this->assertEquals('dziesięć', $this->transformer->toWords(new Number(10)));
-        $this->assertEquals('dwadzieścia', $this->transformer->toWords(new Number(20)));
-        $this->assertEquals('pięćdziesiąt', $this->transformer->toWords(new Number(50)));
-        $this->assertEquals('dziewięćdziesiąt', $this->transformer->toWords(new Number(90)));
-        $this->assertEquals('dwanaście', $this->transformer->toWords(new Number(12)));
-        $this->assertEquals('dwadzieścia pięć', $this->transformer->toWords(new Number(25)));
-        $this->assertEquals('pięćdziesiąt osiem', $this->transformer->toWords(new Number(58)));
-        $this->assertEquals('dziewięćdziesiąt dziewięć', $this->transformer->toWords(new Number(99)));
-    }
-
-    public function testTransformThreeDigitsNumber()
-    {
-        $this->assertEquals('sto', $this->transformer->toWords(new Number(100)));
-        $this->assertEquals('sto dwa', $this->transformer->toWords(new Number(102)));
-        $this->assertEquals('sto trzynaście', $this->transformer->toWords(new Number(113)));
-        $this->assertEquals('dwieście dwadzieścia dziewięć', $this->transformer->toWords(new Number(229.0)));
-        $this->assertEquals('pięćset', $this->transformer->toWords(new Number(500.00)));
-        $this->assertEquals('sześćset sześćdziesiąt sześć', $this->transformer->toWords(new Number(666)));
-        $this->assertEquals('sześćset sześćdziesiąt', $this->transformer->toWords(new Number(660)));
-    }
-
-    public function testTransformFourDigitsNumber()
-    {
-        $this->assertEquals('jeden tysiąc', $this->transformer->toWords(new Number(1000)));
-        $this->assertEquals('jeden tysiąc jeden', $this->transformer->toWords(new Number(1001)));
-        $this->assertEquals('jeden tysiąc dziesięć', $this->transformer->toWords(new Number(1010)));
-        $this->assertEquals('jeden tysiąc piętnaście', $this->transformer->toWords(new Number(1015)));
-        $this->assertEquals('jeden tysiąc sto', $this->transformer->toWords(new Number(1100)));
-        $this->assertEquals('jeden tysiąc sto jedenaście', $this->transformer->toWords(new Number(1111)));
-        $this->assertEquals('cztery tysiące pięćset trzydzieści osiem', $this->transformer->toWords(new Number(4538)));
-        $this->assertEquals('pięć tysięcy dwadzieścia', $this->transformer->toWords(new Number(5020)));
-    }
-
-    public function testTransformFiveDigitsNumber()
-    {
-        $this->assertEquals('jedenaście tysięcy jeden', $this->transformer->toWords(new Number(11001)));
-        $this->assertEquals('dwadzieścia jeden tysięcy pięćset dwanaście', $this->transformer->toWords(new Number(21512)));
-        $this->assertEquals('dziewięćdziesiąt tysięcy', $this->transformer->toWords(new Number(90000)));
-        $this->assertEquals('dziewięćdziesiąt dwa tysiące sto', $this->transformer->toWords(new Number(92100)));
-    }
-
-    public function testTransformSixDigitsNumber()
-    {
-        $this->assertEquals('dwieście dwanaście tysięcy sto dwanaście', $this->transformer->toWords(new Number(212112)));
-        $this->assertEquals('siedemset dwadzieścia tysięcy osiemnaście', $this->transformer->toWords(new Number(720018)));
-    }
-
-    public function testTransformSevenDigitsNumber()
-    {
-        $this->assertEquals('jeden milion jeden tysiąc jeden', $this->transformer->toWords(new Number(1001001)));
-        $this->assertEquals('trzy miliony dwieście czterdzieści osiem tysięcy pięćset osiemnaście', $this->transformer->toWords(new Number(3248518)));
+        return [
+            ['zero', new Number(0)],
+            ['trzy', new Number(3)],
+            ['trzy', new Number(3.00)],
+            ['osiem', new Number(8.0)],
+            ['dziesięć', new Number(10)],
+            ['dwadzieścia', new Number(20)],
+            ['pięćdziesiąt', new Number(50)],
+            ['dziewięćdziesiąt', new Number(90)],
+            ['dwanaście', new Number(12)],
+            ['dwadzieścia pięć', new Number(25)],
+            ['pięćdziesiąt osiem', new Number(58)],
+            ['dziewięćdziesiąt dziewięć', new Number(99)],
+            ['sto', new Number(100)],
+            ['sto dwa', new Number(102)],
+            ['sto trzynaście', new Number(113)],
+            ['dwieście dwadzieścia dziewięć', new Number(229.0)],
+            ['pięćset', new Number(500.00)],
+            ['sześćset sześćdziesiąt sześć', new Number(666)],
+            ['sześćset sześćdziesiąt', new Number(660)],
+            ['jeden tysiąc', new Number(1000)],
+            ['jeden tysiąc jeden', new Number(1001)],
+            ['jeden tysiąc dziesięć', new Number(1010)],
+            ['jeden tysiąc piętnaście', new Number(1015)],
+            ['jeden tysiąc sto', new Number(1100)],
+            ['jeden tysiąc sto jedenaście', new Number(1111)],
+            ['cztery tysiące pięćset trzydzieści osiem', new Number(4538)],
+            ['pięć tysięcy dwadzieścia', new Number(5020)],
+            ['jedenaście tysięcy jeden', new Number(11001)],
+            ['dwadzieścia jeden tysięcy pięćset dwanaście', new Number(21512)],
+            ['dziewięćdziesiąt tysięcy', new Number(90000)],
+            ['dziewięćdziesiąt dwa tysiące sto', new Number(92100)],
+            ['dwieście dwanaście tysięcy sto dwanaście', new Number(212112)],
+            ['siedemset dwadzieścia tysięcy osiemnaście', new Number(720018)],
+            ['jeden milion jeden tysiąc jeden', new Number(1001001)],
+            ['trzy miliony dwieście czterdzieści osiem tysięcy pięćset osiemnaście', new Number(3248518)],
+        ];
     }
 }

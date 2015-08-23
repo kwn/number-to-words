@@ -74,6 +74,7 @@ class NumberTest extends \PHPUnit_Framework_TestCase
             [1097, new Number(9419.01097)],
             [1, new Number(5.00001)],
             [505, new Number(0.005050)],
+            [0, new Number(7)]
         ];
     }
 
