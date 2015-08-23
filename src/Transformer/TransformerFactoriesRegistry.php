@@ -37,9 +37,9 @@ class TransformerFactoriesRegistry
     /**
      * Add transformer factory to registry
      *
-     * @param AbstractTransformerFactory $factory
+     * @param TransformerFactory $factory
      */
-    public function addTransformerFactory(AbstractTransformerFactory $factory)
+    public function addTransformerFactory(TransformerFactory $factory)
     {
         $this->transformerFactories->offsetSet(
             $factory->getLanguageIdentifier(),
@@ -50,9 +50,9 @@ class TransformerFactoriesRegistry
     /**
      * Remove transformer factory from registry
      *
-     * @param AbstractTransformerFactory $factory
+     * @param TransformerFactory $factory
      */
-    public function removeTransformerFactory(AbstractTransformerFactory $factory)
+    public function removeTransformerFactory(TransformerFactory $factory)
     {
         $this->transformerFactories->offsetUnset($factory->getLanguageIdentifier());
     }
