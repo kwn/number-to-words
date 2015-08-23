@@ -31,10 +31,10 @@ class Number
      */
     public function __construct($value)
     {
-        $this->value         = (double) $value;
-        $this->units         = $this->extractUnits($value);
-        $this->subunits      = $this->extractSubunits($value);
-        $this->decimalPlaces = $this->extractDecimalPlaces($value);
+        $this->value         = (float) $value;
+        $this->units         = $this->extractUnits($this->value);
+        $this->subunits      = $this->extractSubunits($this->value);
+        $this->decimalPlaces = $this->extractDecimalPlaces($this->value);
     }
 
     /**
@@ -106,12 +106,17 @@ class Number
     /**
      * @param $value
      *
-     * @return mixed
+     * @return string
      */
     private function extractSubunitsAsString($value)
     {
-        $valueParts = explode('.', (string) $value);
-        $subunits   = array_pop($valueParts);
+        if ((int) $value == $value) {
+            $subunits = '0';
+        } else {
+            $valueParts = explode('.', (string) $value);
+            $subunits   = array_pop($valueParts);
+        }
+
 
         return $subunits;
     }

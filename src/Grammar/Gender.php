@@ -7,12 +7,12 @@ class Gender
     /**
      * Masculine gender
      */
-    const MASCULINE = 0;
+    const MALE = 0;
 
     /**
      * Feminine gender
      */
-    const FEMININE = 1;
+    const FEMALE = 1;
 
     /**
      * Neuter gender
@@ -26,5 +26,5 @@ class Gender
      * and for just counting in an abstract manner
      * (e.g. Romanian: "unu, doi" for "one, two"
      */
-    const ABSTRACTO = 3;
+    const FEATURELESS = 3;
 }

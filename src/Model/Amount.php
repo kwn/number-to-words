@@ -20,22 +20,23 @@ class Amount
     private $subunitFormat;
 
     /**
-     * Constructor
-     *
      * @param Number        $number
      * @param Currency      $currency
      * @param SubunitFormat $subunitFormat
      */
-    public function __construct(Number $number, Currency $currency, SubunitFormat $subunitFormat)
+    public function __construct(Number $number, Currency $currency, SubunitFormat $subunitFormat = null)
     {
         $this->number        = $this->normalizeNumberForAmount($number);
         $this->currency      = $currency;
+
+        if (null === $subunitFormat) {
+            $subunitFormat = new SubunitFormat(SubunitFormat::NUMBERS);
+        }
+
         $this->subunitFormat = $subunitFormat;
     }
 
     /**
-     * Get number
-     *
      * @return Number
      */
     public function getNumber()
@@ -44,8 +45,6 @@ class Amount
     }
 
     /**
-     * Get currency
-     *
      * @return Currency
      */
     public function getCurrency()
@@ -54,8 +53,6 @@ class Amount
     }
 
     /**
-     * Get subunit format
-     *
      * @return SubunitFormat
      */
     public function getSubunitFormat()
@@ -64,8 +61,6 @@ class Amount
     }
 
     /**
-     * Normalize number for amount
-     *
      * @param Number $number
      *
      * @return Number
