@@ -20,20 +20,24 @@ class Number
     private $subunits;
 
     /**
+     * @var integer
+     */
+    private $decimalPlaces;
+
+    /**
      * Constructor
      *
      * @param float $value Number value
      */
     public function __construct($value)
     {
-        $this->value    = (float) $value;
-        $this->units    = $this->extractUnits($value);
-        $this->subunits = $this->extractSubunits($value);
+        $this->value         = (double) $value;
+        $this->units         = $this->extractUnits($value);
+        $this->subunits      = $this->extractSubunits($value);
+        $this->decimalPlaces = $this->extractDecimalPlaces($value);
     }
 
     /**
-     * Get value
-     *
      * @return float
      */
     public function getValue()
@@ -42,8 +46,6 @@ class Number
     }
 
     /**
-     * Get units
-     *
      * @return integer
      */
     public function getUnits()
@@ -52,8 +54,6 @@ class Number
     }
 
     /**
-     * Get subunits
-     *
      * @return integer
      */
     public function getSubunits()
@@ -62,8 +62,14 @@ class Number
     }
 
     /**
-     * Extract units from given number
-     *
+     * @return integer
+     */
+    public function getDecimalPlaces()
+    {
+        return $this->decimalPlaces;
+    }
+
+    /**
      * @param float $value
      *
      * @return integer
@@ -74,17 +80,39 @@ class Number
     }
 
     /**
-     * Extract subunits from given number.
-     *
      * @param float $value
      *
      * @return integer
      */
     private function extractSubunits($value)
     {
+        $subunits = $this->extractSubunitsAsString($value);
+
+        return (int) $subunits;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return int
+     */
+    private function extractDecimalPlaces($value)
+    {
+        $subunits = $this->extractSubunitsAsString($value);
+
+        return strlen($subunits);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return mixed
+     */
+    private function extractSubunitsAsString($value)
+    {
         $valueParts = explode('.', (string) $value);
         $subunits   = array_pop($valueParts);
 
-        return (int) $subunits;
+        return $subunits;
     }
 }
