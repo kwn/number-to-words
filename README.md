@@ -1,4 +1,4 @@
-PHP Number to words converter
+PHP Number to words converter (WIP)
 =========================
 
 [![Travis](https://travis-ci.org/kwn/number-to-words.svg?branch=master)](https://travis-ci.org/kwn/number-to-words)
