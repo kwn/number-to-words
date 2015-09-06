@@ -2,6 +2,9 @@
 
 namespace Kwn\NumberToWords\Transformer;
 
+use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
+use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
+
 interface TransformerFactory
 {
     /**
@@ -14,14 +17,14 @@ interface TransformerFactory
     /**
      * Create number transformer
      *
-     * @return mixed
+     * @return NumberTransformerInterface
      */
     public function createNumberTransformer();
 
     /**
      * Create currency transformer
      *
-     * @return mixed
+     * @return CurrencyTransformerInterface
      */
     public function createCurrencyTransformer();
 }

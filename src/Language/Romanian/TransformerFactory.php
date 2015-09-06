@@ -1,10 +1,8 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Polish;
+namespace Kwn\NumberToWords\Language\Romanian;
 
-use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
-use Kwn\NumberToWords\Language\Polish\Transformer\CurrencyTransformer;
-use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
+use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
 use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 use Kwn\NumberToWords\Transformer\TransformerFactory as TransformerFactoryInterface;
@@ -14,17 +12,17 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Language identifier (RFC 3066)
      */
-    const LANGUAGE_IDENTIFIER = 'pl';
+    const LANGUAGE_IDENTIFIER = 'ro';
 
     /**
      * Language name
      */
-    const LANGUAGE_NAME = 'Polish';
+    const LANGUAGE_NAME = 'Romanian';
 
     /**
      * Native language name
      */
-    const LANGUAGE_NATIVE_NAME = 'Polski';
+    const LANGUAGE_NATIVE_NAME = 'Română';
 
     /**
      * Return language identifier (RFC 3066)
@@ -43,7 +41,7 @@ class TransformerFactory implements TransformerFactoryInterface
      */
     public function createNumberTransformer()
     {
-        return new NumberTransformer(new GrammarCaseSelector());
+        return new NumberTransformer();
     }
 
     /**
@@ -53,6 +51,6 @@ class TransformerFactory implements TransformerFactoryInterface
      */
     public function createCurrencyTransformer()
     {
-        return new CurrencyTransformer(new NumberTransformer(new GrammarCaseSelector()), new GrammarCaseSelector());
+
     }
 }

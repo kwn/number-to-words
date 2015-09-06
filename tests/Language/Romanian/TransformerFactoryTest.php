@@ -6,16 +6,16 @@ namespace Kwn\NumberToWords\Language\Romanian;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 
-class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
+class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var RomanianTransformerFactory
+     * @var TransformerFactory
      */
     private $transformerFactory;
 
     public function setUp()
     {
-        $this->transformerFactory = new RomanianTransformerFactory();
+        $this->transformerFactory = new TransformerFactory();
     }
 
     public function testGetLanguageIdentifier()
@@ -35,7 +35,7 @@ class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateCurrencyTransformerBuildsCorrectClass()
     {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(new Currency('ROL'));
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
 
         $this->assertInstanceOf(
             'Kwn\NumberToWords\Language\Romanian\Transformer\Decorator\CurrencyTransformerDecorator',
@@ -50,20 +50,14 @@ class RomanianTransformerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateCurrencyTransformerBuildClassWithCorrectSubunitsValue()
     {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
-            new Currency('ROL'),
-            new SubunitFormat(SubunitFormat::WORDS)
-        );
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
 
         $this->assertEquals(
             new SubunitFormat(SubunitFormat::WORDS),
             $this->readAttribute($currencyTransformer, 'subunit')
         );
 
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
-            new Currency('EUR'),
-            new SubunitFormat(SubunitFormat::NUMBERS)
-        );
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
 
         $this->assertEquals(
             new SubunitFormat(SubunitFormat::NUMBERS),
