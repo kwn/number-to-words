@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\Romanian;
 
+use Kwn\NumberToWords\Language\Romanian\Transformer\CurrencyTransformer;
 use Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
 use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
@@ -51,6 +52,6 @@ class TransformerFactory implements TransformerFactoryInterface
      */
     public function createCurrencyTransformer()
     {
-
+        return new CurrencyTransformer(new NumberTransformer());
     }
 }

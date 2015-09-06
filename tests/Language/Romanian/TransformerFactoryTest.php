@@ -3,9 +3,6 @@
 
 namespace Kwn\NumberToWords\Language\Romanian;
 
-use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\SubunitFormat;
-
 class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -20,7 +17,10 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLanguageIdentifier()
     {
-        $this->assertEquals('ro', $this->transformerFactory->getLanguageIdentifier());
+        $this->assertEquals(
+            TransformerFactory::LANGUAGE_IDENTIFIER,
+            $this->transformerFactory->getLanguageIdentifier()
+        );
     }
 
     public function testCreateNumberTransformerBuildsCorrectClass()
@@ -38,30 +38,8 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Romanian\Transformer\Decorator\CurrencyTransformerDecorator',
+            'Kwn\NumberToWords\Language\Romanian\Transformer\CurrencyTransformer',
             $currencyTransformer
-        );
-
-        $this->assertEquals(
-            new SubunitFormat(SubunitFormat::WORDS),
-            $this->readAttribute($currencyTransformer, 'subunit')
-        );
-    }
-
-    public function testCreateCurrencyTransformerBuildClassWithCorrectSubunitsValue()
-    {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
-
-        $this->assertEquals(
-            new SubunitFormat(SubunitFormat::WORDS),
-            $this->readAttribute($currencyTransformer, 'subunit')
-        );
-
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer();
-
-        $this->assertEquals(
-            new SubunitFormat(SubunitFormat::NUMBERS),
-            $this->readAttribute($currencyTransformer, 'subunit')
         );
     }
 }

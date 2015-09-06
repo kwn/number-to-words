@@ -1,39 +1,26 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Romanian\Transformer\Decorator;
+namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
-use Kwn\NumberToWords\Model\Currency as CurrencyModel;
-use Kwn\NumberToWords\Language\Romanian\Transformer\AbstractTransformer;
+use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Model\SubunitFormat;
+use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
 
-class CurrencyTransformerDecorator extends AbstractTransformerDecorator
+class CurrencyTransformer implements CurrencyTransformerInterface
 {
     /**
-     * @var CurrencyModel
+     * @var NumberTransformer
      */
-    protected $currency;
+    private $transformer;
 
     /**
-     * @var SubunitFormat
+     * @param NumberTransformer $transformer
      */
-    protected $subunit;
-
-    /**
-     * Constructor
-     *
-     * @param AbstractTransformer $transformer
-     * @param CurrencyModel       $currency
-     * @param SubunitFormat             $subunit
-     */
-    public function __construct(AbstractTransformer $transformer, CurrencyModel $currency, SubunitFormat $subunit)
+    public function __construct(NumberTransformer $transformer)
     {
-        parent::__construct($transformer);
-
-        $this->currency = $currency;
-        $this->subunit  = $subunit;
+        $this->transformer = $transformer;
     }
 
     /**
@@ -61,12 +48,15 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
         }
 
         $curr_nouns = Currency::getCurrencyNames()[$int_curr];
-        $ret = $this->transformer->toWords(new Number($decimal), $curr_nouns[0]);
+        $ret        = $this->transformer->toWords(new Number($decimal), $curr_nouns[0]);
 
         if ($fraction !== false) {
             $ret .= ' ' . Language::WORD_AND;
             if ($convert_fraction) {
-                $ret .= ' ' . $this->toWords(new Number($fraction), $curr_nouns[1]);
+                $ret .= ' ' . $this->toWords(
+                        new Amount(new Number($fraction), new \Kwn\NumberToWords\Model\Currency($int_curr)),
+                        $curr_nouns[1]
+                    );
             } else {
                 $ret .= $fraction . ' ';
                 $plural_rule = $this->_get_plural_rule($fraction);
@@ -78,21 +68,21 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
     }
 
     /**
-     * @param Number $number
+     * @param Amount $amount
      *
      * @return string
      */
-    public function toWords(Number $number)
+    public function toWords(Amount $amount)
     {
         $decimalPoint = '.';
 
-        $amount = round($number->getValue(), 2);
+        $amountValue = round($amount->getNumber()->getValue(), 2);
 
-        if (strpos($amount, $decimalPoint) === false) {
-            return trim($this->toCurrencyWords($this->currency->getIdentifier(), $amount));
+        if (strpos($amountValue, $decimalPoint) === false) {
+            return trim($this->toCurrencyWords($amount->getCurrency()->getIdentifier(), $amountValue));
         }
 
-        $currency = explode($decimalPoint, $amount, 2);
+        $currency = explode($decimalPoint, $amountValue, 2);
 
         $len = strlen($currency[1]);
 
@@ -100,6 +90,6 @@ class CurrencyTransformerDecorator extends AbstractTransformerDecorator
             $currency[1] .= '0';
         }
 
-        return $this->toCurrencyWords($this->currency->getIdentifier(), $currency[0], $currency[1]);
+        return $this->toCurrencyWords($amount->getCurrency()->getIdentifier(), $currency[0], $currency[1]);
     }
 }

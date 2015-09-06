@@ -5,8 +5,9 @@ namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 use Kwn\NumberToWords\Grammar\Gender;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Number as NumberDictionary;
 use Kwn\NumberToWords\Model\Number;
+use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 
-class NumberTransformer extends AbstractTransformer
+class NumberTransformer implements NumberTransformerInterface
 {
     /**
      * Anything higher than this is few or many
@@ -66,10 +67,6 @@ class NumberTransformer extends AbstractTransformer
      * @var string
      */
     private $decimalPoint = '.';
-
-    // }}}
-
-    // {{{ _splitNumber()
 
     /**
      * Split a number to groups of three-digit numbers.
@@ -141,9 +138,7 @@ class NumberTransformer extends AbstractTransformer
 
         return $num_name[(int) $as_noun];
     }
-    // }}}
 
-    // {{{ _get_noun_declension_for_number
     /**
      * Returns the noun's declension according to the cardinal's number.
      *
@@ -173,9 +168,7 @@ class NumberTransformer extends AbstractTransformer
         // Many
         return $this->_many_part.$this->_sep.$noun[1];
     }
-    // }}}
 
-    // {{{ _get_plural_rule()
     /**
      * Returns the plural rule to use for a specific number.
      *
@@ -214,9 +207,7 @@ class NumberTransformer extends AbstractTransformer
         // Below the many threshold, so few
         return 'f';
     }
-    // }}}
 
-    // {{{ _showDigitsGroup()
     /**
      * Converts a three-digit number to its word representation in Romanian.
      *
@@ -272,9 +263,6 @@ class NumberTransformer extends AbstractTransformer
 
         return $ret.$this->_sep.$this->_get_noun_declension_for_number($plural_rule, $noun);
     }
-    // }}}
-
-    // {{{ _toWords()
 
     /**
      * Converts a number to its word representation in Romanian
