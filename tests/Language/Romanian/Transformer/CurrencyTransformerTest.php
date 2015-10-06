@@ -17,15 +17,6 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
         $transformer = new CurrencyTransformer(new NumberTransformer());
 
         $this->assertEquals($expectedValue, $transformer->toWords($amount));
-//
-//        $this->assertEquals('un leu', $transformer->toWords(new Number(1)));
-//        $this->assertEquals('un leu', $transformer->toWords(new Number(1.00)));
-//        $this->assertEquals('doi lei', $transformer->toWords(new Number(2)));
-//        $this->assertEquals('două mii de lei', $transformer->toWords(new Number(2000)));
-//        $this->assertEquals('un leu și patruzeci și cinci de lei', $transformer->toWords(new Number(1.45)));
-//        $this->assertEquals('un leu și patruzeci de lei', $transformer->toWords(new Number(1.40)));
-//        $this->assertEquals('un leu și patruzeci de lei', $transformer->toWords(new Number(1.4)));
-//        $this->assertEquals('un leu și patruzeci de lei', $transformer->toWords(new Number(1.4000)));
     }
 
     public function providerToWords()

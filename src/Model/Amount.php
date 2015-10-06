@@ -67,7 +67,8 @@ class Amount
      */
     private function normalizeNumberForAmount(Number $number)
     {
-        $normalizedValue = $number->getUnits() + ($number->getSubunits() / 100);
+        $fraction = (int) ($number->getSubunits() * pow(10, ($number->getDecimalPlaces() - 2) * -1));
+        $normalizedValue = $number->getUnits() + ($fraction / 100);
 
         return new Number($normalizedValue);
     }
