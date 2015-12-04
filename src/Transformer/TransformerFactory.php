@@ -2,6 +2,8 @@
 
 namespace Kwn\NumberToWords\Transformer;
 
+use Kwn\NumberToWords\Model\Currency;
+use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
 
@@ -24,7 +26,10 @@ interface TransformerFactory
     /**
      * Create currency transformer
      *
+     * @param Currency $currency
+     * @param SubunitFormat $currency
+     *
      * @return CurrencyTransformerInterface
      */
-    public function createCurrencyTransformer();
+    public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat);
 }

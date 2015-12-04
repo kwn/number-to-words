@@ -2,11 +2,11 @@
 
 namespace Kwn\NumberToWords\Language\Polish;
 
+use Kwn\NumberToWords\Model\Currency;
+use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 use Kwn\NumberToWords\Language\Polish\Transformer\CurrencyTransformer;
 use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
-use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
-use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 use Kwn\NumberToWords\Transformer\TransformerFactory as TransformerFactoryInterface;
 
 class TransformerFactory implements TransformerFactoryInterface
@@ -49,9 +49,12 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create currency transformer
      *
+     * @param Currency $currency
+     * @param SubunitFormat $currency
+     *
      * @return CurrencyTransformerInterface
      */
-    public function createCurrencyTransformer()
+    public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
         return new CurrencyTransformer(new NumberTransformer(new GrammarCaseSelector()), new GrammarCaseSelector());
     }
