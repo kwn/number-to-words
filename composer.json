@@ -24,5 +24,10 @@
         "psr-4": {
             "Kwn\\NumberToWords\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kwn\\NumberToWords\\": "src-dev"
+        }
     }
 }

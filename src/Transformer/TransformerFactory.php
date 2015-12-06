@@ -26,8 +26,8 @@ interface TransformerFactory
     /**
      * Create currency transformer
      *
-     * @param Currency $currency
-     * @param SubunitFormat $currency
+     * @param Currency      $currency
+     * @param SubunitFormat $subunitFormat
      *
      * @return CurrencyTransformerInterface
      */

@@ -2,7 +2,7 @@
 
 namespace Kwn\NumberToWords\Transformer;
 
-use Kwn\NumberToWords\Language\Polish\TransformerFactory;
+use Kwn\NumberToWords\Language\Dummy\TransformerFactory;
 
 class TransformerFactoriesRegistryTest extends \PHPUnit_Framework_TestCase
 {
