@@ -117,7 +117,6 @@ class Number
             $subunits   = array_pop($valueParts);
         }
 
-
         return $subunits;
     }
 }

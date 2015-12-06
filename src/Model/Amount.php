@@ -26,8 +26,8 @@ class Amount
      */
     public function __construct(Number $number, Currency $currency, SubunitFormat $subunitFormat = null)
     {
-        $this->number        = $this->normalizeNumberForAmount($number);
-        $this->currency      = $currency;
+        $this->number   = $this->normalizeNumberForAmount($number);
+        $this->currency = $currency;
 
         if (null === $subunitFormat) {
             $subunitFormat = new SubunitFormat(SubunitFormat::NUMBERS);
