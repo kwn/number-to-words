@@ -39,7 +39,7 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create number transformer
      *
-     * @return NumberTransformerInterface
+     * @return NumberTransformer
      */
     public function createNumberTransformer()
     {
@@ -49,13 +49,15 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create currency transformer
      *
-     * @param Currency $currency
-     * @param SubunitFormat $currency
+     * @param Currency      $currency
+     * @param SubunitFormat $subunitFormat
      *
-     * @return CurrencyTransformerInterface
+     * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
-        return new CurrencyTransformer(new NumberTransformer(new GrammarCaseSelector()), new GrammarCaseSelector());
+        $grammarCaseSelector = new GrammarCaseSelector();
+
+        return new CurrencyTransformer(new NumberTransformer($grammarCaseSelector), $grammarCaseSelector);
     }
 }
