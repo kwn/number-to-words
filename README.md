@@ -5,7 +5,7 @@ PHP Number to words converter (WIP)
 [![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
 [![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
 
-This library allows you to convert a number to words. 
+This library allows you to convert a number to words.
 
 Installation
 ------------
@@ -31,6 +31,6 @@ Drivers
 
 Language | Number | Currency | Angle | Author
 ---------|--------|----------|-------|-------
-English  | -      | -        | -     | -
+English  | +      | +        | -     | **janhartigan**
 German   | -      | -        | -     | -
 Polish   | +      | +        | -     | **kwn** (ported from dowgird/pyliczba)

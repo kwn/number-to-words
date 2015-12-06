@@ -4,7 +4,6 @@ namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
 use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Transformer\NumberTransformer;
 
 abstract class GrammarCaseAwareTransformer
 {

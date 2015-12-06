@@ -1,12 +1,13 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Polish;
+namespace Kwn\NumberToWords\Language\English;
 
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
-use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
-use Kwn\NumberToWords\Language\Polish\Transformer\CurrencyTransformer;
-use Kwn\NumberToWords\Language\Polish\Transformer\NumberTransformer;
+use Kwn\NumberToWords\Language\English\Transformer\NumberTransformer;
+use Kwn\NumberToWords\Language\English\Transformer\CurrencyTransformer;
+use Kwn\NumberToWords\Language\English\Dictionary\Number as NumberDictionary;
+use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Transformer\TransformerFactory as TransformerFactoryInterface;
 
 class TransformerFactory implements TransformerFactoryInterface
@@ -14,17 +15,17 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Language identifier (RFC 3066)
      */
-    const LANGUAGE_IDENTIFIER = 'pl';
+    const LANGUAGE_IDENTIFIER = 'en';
 
     /**
      * Language name
      */
-    const LANGUAGE_NAME = 'Polish';
+    const LANGUAGE_NAME = 'English';
 
     /**
      * Native language name
      */
-    const LANGUAGE_NATIVE_NAME = 'Polski';
+    const LANGUAGE_NATIVE_NAME = 'English';
 
     /**
      * Return language identifier (RFC 3066)
@@ -43,7 +44,7 @@ class TransformerFactory implements TransformerFactoryInterface
      */
     public function createNumberTransformer()
     {
-        return new NumberTransformer(new GrammarCaseSelector());
+        return new NumberTransformer(new NumberDictionary);
     }
 
     /**
@@ -56,6 +57,6 @@ class TransformerFactory implements TransformerFactoryInterface
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
-        return new CurrencyTransformer(new NumberTransformer(new GrammarCaseSelector()), new GrammarCaseSelector());
+        return new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary);
     }
 }

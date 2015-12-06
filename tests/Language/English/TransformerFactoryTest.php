@@ -1,6 +1,6 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\Romanian;
+namespace Kwn\NumberToWords\Language\English;
 
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
@@ -30,17 +30,17 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
         $numberTransformer = $this->transformerFactory->createNumberTransformer();
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Romanian\Transformer\NumberTransformer',
+            'Kwn\NumberToWords\Language\English\Transformer\NumberTransformer',
             $numberTransformer
         );
     }
 
     public function testCreateCurrencyTransformerBuildsCorrectClass()
     {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS));
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(new Currency('USD'), new SubunitFormat(SubunitFormat::WORDS));
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Romanian\Transformer\CurrencyTransformer',
+            'Kwn\NumberToWords\Language\English\Transformer\CurrencyTransformer',
             $currencyTransformer
         );
     }
