@@ -72,7 +72,7 @@ $currencyTransformer = $numberToWords->getCurrencyTransformer('en', 'USD', Kwn\N
 Then it can be used passing in numeric values to the `toWords()` method:
 
 ```php
-$currencyTransformer->toWords(50.99); //outputs "fifty dollars and ninety nine cents"
+$currencyTransformer->toWords(50.99); //outputs "fifty dollars ninety nine cents"
 ```
 
 
