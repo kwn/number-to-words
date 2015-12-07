@@ -81,9 +81,10 @@ class CurrencyTransformer implements CurrencyTransformerInterface
     protected function getIntegerPart(Amount $amount)
     {
         $number = $amount->getNumber();
-        $unitName = $this->currencyDictionary->getUnitName($amount->getCurrency(), !$this->isSingular($number));
+        $value = $number->getValue();
+        $unitName = $this->currencyDictionary->getUnitName($amount->getCurrency(), !$this->isSingular($value));
 
-        return $this->numberTransformer->toWords($number) . ' ' . $unitName;
+        return $this->numberTransformer->toWords($value) . ' ' . $unitName;
     }
 
     /**
@@ -95,26 +96,26 @@ class CurrencyTransformer implements CurrencyTransformerInterface
      */
     protected function getFractionalPart(Amount $amount)
     {
-        $number = new Number($amount->getNumber()->getSubunits());
+        $subunitValue = $amount->getNumber()->getSubunits();
 
         //if the subunit format is numbers, we want to simply return a fraction
         if ($amount->getSubunitFormat()->getFormat() === SubunitFormat::NUMBERS)
-            return $number->getValue() . '/100';
+            return $subunitValue . '/100';
 
-        $unitName = $this->currencyDictionary->getSubunitName($amount->getCurrency(), !$this->isSingular($number));
+        $unitName = $this->currencyDictionary->getSubunitName($amount->getCurrency(), !$this->isSingular($subunitValue));
 
-        return $this->numberTransformer->toWords($number) . ' ' . $unitName;
+        return $this->numberTransformer->toWords($subunitValue) . ' ' . $unitName;
     }
 
     /**
      * Determines if the provided number is singular
      *
-     * @param Number $number
+     * @param mixed $number
      *
      * @return bool
      */
-    protected function isSingular(Number $number)
+    protected function isSingular($number)
     {
-        return $number->getValue() == 1;
+        return $number == 1;
     }
 }

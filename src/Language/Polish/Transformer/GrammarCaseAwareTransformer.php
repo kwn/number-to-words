@@ -3,7 +3,6 @@
 namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
 use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
-use Kwn\NumberToWords\Model\Number;
 
 abstract class GrammarCaseAwareTransformer
 {
@@ -30,15 +29,15 @@ abstract class GrammarCaseAwareTransformer
     /**
      * Convert number to words with grammar cased subject
      *
-     * @param Number $number
+     * @param mixed  $number
      * @param array  $subject
      *
      * @return string
      */
-    protected function toWordsWithGrammarCasedDescription(Number $number, array $subject)
+    protected function toWordsWithGrammarCasedDescription($number, array $subject)
     {
         $convertedNumber = $this->numberTransformer->toWords($number);
-        $grammarCase     = $this->grammarCaseSelector->getGrammarCase($number->getUnits());
+        $grammarCase     = $this->grammarCaseSelector->getGrammarCase($number);
 
         return $convertedNumber . ' ' . $subject[$grammarCase];
     }

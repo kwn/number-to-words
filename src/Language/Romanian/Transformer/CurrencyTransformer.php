@@ -48,7 +48,7 @@ class CurrencyTransformer implements CurrencyTransformerInterface
         }
 
         $curr_nouns = Currency::getCurrencyNames()[$int_curr];
-        $ret        = $this->transformer->toWords(new Number($decimal), $curr_nouns[0]);
+        $ret        = $this->transformer->toWords($decimal, $curr_nouns[0]);
 
         if ($fraction !== false) {
             $ret .= ' ' . Language::WORD_AND;

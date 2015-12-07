@@ -6,7 +6,6 @@ use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
 
@@ -48,13 +47,13 @@ class CurrencyTransformer extends GrammarCaseAwareTransformer implements Currenc
         $this->guardAgainstUnexistingCurrency($amount->getCurrency());
 
         $unit = $this->toWordsWithGrammarCasedDescription(
-            $amount->getNumber(),
+            $amount->getNumber()->getUnits(),
             CurrencyDictionary::getUnits()['PLN']
         );
 
         if ($amount->getSubunitFormat()->getFormat() === SubunitFormat::WORDS) {
             $subunit = $this->toWordsWithGrammarCasedDescription(
-                new Number($amount->getNumber()->getSubunits()),
+                $amount->getNumber()->getSubunits(),
                 CurrencyDictionary::getSubunits()['PLN']
             );
         } else {
