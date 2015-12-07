@@ -11,127 +11,84 @@ use Kwn\NumberToWords\Model\SubunitFormat;
 class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var CurrencyTransformer
-     */
-    private $transformer;
-
-    public function setUp()
-    {
-        $this->transformer = new CurrencyTransformer(
-            new NumberTransformer(new GrammarCaseSelector()),
-            new GrammarCaseSelector()
-        );
-    }
-
-    /**
-     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
-     */
-    public function testToWordsThrowsExceptionWithUnknownCurrency()
-    {
-        $amount = new Amount(new Number(50), new Currency('UNK'), new SubunitFormat(SubunitFormat::WORDS));
-
-        $this->transformer->toWords($amount);
-    }
-
-    /**
      * @dataProvider providerToWordsWithUnitsOnly
      */
-    public function testToWordsWithUnitsOnly($expectedValue, Amount $amount)
+    public function testToWordsWithUnitsOnly(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithUnitsOnly()
     {
+        $transformer = $this->createTransformer('PLN', SubunitFormat::WORDS);
+
         return [
-            [
-                'jeden złoty zero groszy',
-                new Amount(new Number(1), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'dwa złote zero groszy',
-                new Amount(new Number(2), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięć złotych zero groszy',
-                new Amount(new Number(5), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści złotych zero groszy',
-                new Amount(new Number(540), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści jeden złotych zero groszy',
-                new Amount(new Number(541), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści dwa złote zero groszy',
-                new Amount(new Number(542), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści cztery złote zero groszy',
-                new Amount(new Number(544), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych zero groszy',
-                new Amount(new Number(545), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ]
+            [$transformer, 'jeden złoty zero groszy', 1],
+            [$transformer, 'dwa złote zero groszy', 2],
+            [$transformer, 'pięć złotych zero groszy', 5],
+            [$transformer, 'pięćset czterdzieści złotych zero groszy', 540],
+            [$transformer, 'pięćset czterdzieści jeden złotych zero groszy', 541],
+            [$transformer, 'pięćset czterdzieści dwa złote zero groszy', 542],
+            [$transformer, 'pięćset czterdzieści cztery złote zero groszy', 544],
+            [$transformer, 'pięćset czterdzieści pięć złotych zero groszy', 545],
         ];
     }
 
     /**
      * @dataProvider providerToWordsWithNumbersFormatSubunits
      */
-    public function testToWordsWithNumbersFormatSubunits($expectedValue, Amount $amount)
+    public function testToWordsWithNumbersFormatSubunits(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithNumbersFormatSubunits()
     {
+        $transformer = $this->createTransformer('PLN', SubunitFormat::NUMBERS);
+
         return [
-            [
-                'pięćset czterdzieści pięć złotych 52/100',
-                new Amount(new Number(545.52), new Currency('PLN'), new SubunitFormat(SubunitFormat::NUMBERS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych 0/100',
-                new Amount(new Number(545), new Currency('PLN'), new SubunitFormat(SubunitFormat::NUMBERS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych 99/100',
-                new Amount(new Number(545.99), new Currency('PLN'), new SubunitFormat(SubunitFormat::NUMBERS))
-            ]
+            [$transformer, 'pięćset czterdzieści pięć złotych 52/100', 545.52],
+            [$transformer, 'pięćset czterdzieści pięć złotych 0/100', 545],
+            [$transformer, 'pięćset czterdzieści pięć złotych 99/100', 545.99],
         ];
     }
 
     /**
      * @dataProvider providerToWordsWithWordsFormatSubunits
      */
-    public function testToWordsWithWordsFormatSubunits($expectedValue, Amount $amount)
+    public function testToWordsWithWordsFormatSubunits(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithWordsFormatSubunits()
     {
+        $transformer = $this->createTransformer('PLN', SubunitFormat::WORDS);
+
         return [
-            [
-                'pięćset czterdzieści pięć złotych pięćdziesiąt dwa grosze',
-                new Amount(new Number(545.52), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych zero groszy',
-                new Amount(new Number(545), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych jeden grosz',
-                new Amount(new Number(545.01), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ],
-            [
-                'pięćset czterdzieści pięć złotych dziewięćdziesiąt dziewięć groszy',
-                new Amount(new Number(545.99), new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS))
-            ]
+            [$transformer, 'pięćset czterdzieści pięć złotych pięćdziesiąt dwa grosze', 545.52],
+            [$transformer, 'pięćset czterdzieści pięć złotych zero groszy', 545],
+            [$transformer, 'pięćset czterdzieści pięć złotych jeden grosz', 545.01],
+            [$transformer, 'pięćset czterdzieści pięć złotych dziewięćdziesiąt dziewięć groszy', 545.99],
         ];
+    }
+
+    /**
+     * Creates a new transformer
+     *
+     * @param string $currencyCode
+     * @param int $subunitFormat
+     *
+     * @return CurrencyTransformer
+     */
+    protected function createTransformer($currencyCode, $subunitFormat)
+    {
+        $grammarCaseSelector = new GrammarCaseSelector;
+        $transformer = new CurrencyTransformer(new NumberTransformer($grammarCaseSelector), $grammarCaseSelector);
+
+        $transformer->setCurrency(new Currency($currencyCode));
+        $transformer->setSubunitFormat(new SubunitFormat($subunitFormat));
+
+        return $transformer;
     }
 }

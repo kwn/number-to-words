@@ -53,10 +53,15 @@ class TransformerFactory implements TransformerFactoryInterface
      * @param Currency $currency
      * @param SubunitFormat $currency
      *
-     * @return CurrencyTransformerInterface
+     * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
-        return new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary);
+        $transformer = new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary);
+
+        $transformer->setCurrency($currency);
+        $transformer->setSubunitFormat($subunitFormat);
+
+        return $transformer;
     }
 }

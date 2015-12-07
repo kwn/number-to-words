@@ -2,64 +2,86 @@
 
 namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
-use Kwn\NumberToWords\Exception\InvalidArgumentException;
-use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
-use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
+use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
+use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;
+use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
 
-class CurrencyTransformer extends GrammarCaseAwareTransformer implements CurrencyTransformerInterface
+class CurrencyTransformer extends BaseCurrencyTransformer
 {
     /**
-     * Check if currency definitions exist in dictionary
-     *
-     * @param Currency $currency
-     *
-     * @throws InvalidArgumentException
+     * @var NumberTransformer
      */
-    private function guardAgainstUnexistingCurrency(Currency $currency)
-    {
-        if (!array_key_exists($currency->getIdentifier(), CurrencyDictionary::getUnits())) {
-            throw new InvalidArgumentException(sprintf(
-                'There is missing "%s" unit in a currency dictionary',
-                $currency->getIdentifier()
-            ));
-        }
+    protected $numberTransformer;
 
-        if (!array_key_exists($currency->getIdentifier(), CurrencyDictionary::getSubunits())) {
-            throw new InvalidArgumentException(sprintf(
-                'There is missing "%s" subunit in a currency dictionary',
-                $currency->getIdentifier()
-            ));
-        }
+    /**
+     * @var GrammarCaseSelector
+     */
+    protected $grammarCaseSelector;
+
+    /**
+     * @param NumberTransformer   $numberTransformer
+     * @param GrammarCaseSelector $grammarCaseSelector
+     */
+    public function __construct(NumberTransformer $numberTransformer, GrammarCaseSelector $grammarCaseSelector)
+    {
+        $this->numberTransformer   = $numberTransformer;
+        $this->grammarCaseSelector = $grammarCaseSelector;
     }
 
     /**
      * Convert given number to words
      *
-     * @param Amount $amount
+     * @param Amount $number
      *
      * @return string
      */
-    public function toWords(Amount $amount)
+    public function toWords($number)
     {
-        $this->guardAgainstUnexistingCurrency($amount->getCurrency());
+        $number = $this->createCurrencyNumber($number);
 
         $unit = $this->toWordsWithGrammarCasedDescription(
-            $amount->getNumber()->getUnits(),
+            $number->getUnits(),
             CurrencyDictionary::getUnits()['PLN']
         );
 
-        if ($amount->getSubunitFormat()->getFormat() === SubunitFormat::WORDS) {
+        if ($this->subunitFormat->getFormat() === SubunitFormat::WORDS) {
             $subunit = $this->toWordsWithGrammarCasedDescription(
-                $amount->getNumber()->getSubunits(),
+                $number->getSubunits(),
                 CurrencyDictionary::getSubunits()['PLN']
             );
         } else {
-            $subunit = sprintf('%d/100', $amount->getNumber()->getSubunits());
+            $subunit = sprintf('%d/100', $number->getSubunits());
         }
 
         return $unit . ' ' . $subunit;
+    }
+
+    /**
+     * Gets an array of valid currencies (ISO 4217)
+     *
+     * @return array
+     */
+    protected function getValidCurrencies()
+    {
+        return array_keys(CurrencyDictionary::getUnits());
+    }
+
+    /**
+     * Convert number to words with grammar cased subject
+     *
+     * @param mixed  $number
+     * @param array  $subject
+     *
+     * @return string
+     */
+    protected function toWordsWithGrammarCasedDescription($number, array $subject)
+    {
+        $convertedNumber = $this->numberTransformer->toWords($number);
+        $grammarCase     = $this->grammarCaseSelector->getGrammarCase($number);
+
+        return $convertedNumber . ' ' . $subject[$grammarCase];
     }
 }
