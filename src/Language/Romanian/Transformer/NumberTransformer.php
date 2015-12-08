@@ -335,15 +335,13 @@ class NumberTransformer implements NumberTransformerInterface
         $num = ltrim($num, '0');
 
         // split $num to groups of three-digit numbers
-        $num_groups = $this->splitNumber($num);
+        $numGroups = $this->splitNumber($num);
 
-        $sizeofNumgroups = count($num_groups);
-        $showed_noun = false;
-        foreach ($num_groups as $i => $number) {
+        $sizeofNumgroups = count($numGroups);
+        $showedNoun = false;
+        foreach ($numGroups as $i => $number) {
             // what is the corresponding exponent for the current group
             $pow = $sizeofNumgroups - $i;
-
-            $valid_groups = [];
 
             // skip processment for empty groups
             if ($number == '000') {
@@ -357,11 +355,11 @@ class NumberTransformer implements NumberTransformerInterface
             if ($pow - 1) {
                 $ret .= $this->showDigitsGroup($number, NumberDictionary::getExponents()[($pow - 1) * 3]);
             } else {
-                $showed_noun = true;
+                $showedNoun = true;
                 $ret .= $this->showDigitsGroup($number, $noun, false, $num != 1);
             }
         }
-        if (!$showed_noun) {
+        if (!$showedNoun) {
             $ret .= $this->sep . $this->getNounDeclensionForNumber('m', $noun); // ALWAYS many
         }
 
