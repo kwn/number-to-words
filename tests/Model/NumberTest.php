@@ -2,6 +2,8 @@
 
 namespace Kwn\NumberToWords\Model;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
+
 class NumberTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -20,7 +22,6 @@ class NumberTest extends \PHPUnit_Framework_TestCase
             [0.2222, new Number(0.2222)]
         ];
     }
-
 
     /**
      * @dataProvider providerValueIsCastedToFloatInConstructor
@@ -93,5 +94,13 @@ class NumberTest extends \PHPUnit_Framework_TestCase
             [6, new Number(5.000011)],
             [1, new Number(5)]
         ];
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testConstructorThrowsExceptionIfValueIsNotNumeric()
+    {
+        new Number('not numeric');
     }
 }

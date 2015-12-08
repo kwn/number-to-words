@@ -14,8 +14,8 @@ class GrammarCaseSelector
     public function getGrammarCase($value)
     {
         $units = $value % 10;
-        $tens  = ((int) ($value / 10)) % 10;
-        $type  = 2;
+        $tens = ((int) ($value / 10)) % 10;
+        $type = 2;
 
         if ($value === 1) {
             $type = 0;
