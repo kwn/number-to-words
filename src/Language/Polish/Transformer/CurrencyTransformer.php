@@ -2,8 +2,6 @@
 
 namespace Kwn\NumberToWords\Language\Polish\Transformer;
 
-use Kwn\NumberToWords\Model\Amount;
-use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 use Kwn\NumberToWords\Language\Polish\Dictionary\Currency as CurrencyDictionary;

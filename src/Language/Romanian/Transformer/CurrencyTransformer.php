@@ -2,8 +2,6 @@
 
 namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
-use Kwn\NumberToWords\Model\Amount;
-use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
 use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
