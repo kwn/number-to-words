@@ -48,13 +48,15 @@ class Number
 
     public function getHundred($value)
     {
-        if ($word = $this->getUnit($value))
+        if ($word = $this->getUnit($value)) {
             return $word . ' ' . $this->hundred;
+        }
     }
 
     public function getMega($scale)
     {
-        if ($word = $this->mega[$scale])
+        if ($word = $this->mega[$scale]) {
             return $word;
+        }
     }
 }

@@ -9,26 +9,28 @@ use Kwn\NumberToWords\Exception\InvalidArgumentException;
 
 abstract class CurrencyTransformer
 {
-	/**
-	 * @var Currency
-	 */
-	protected $currency;
+    /**
+     * @var Currency
+     */
+    protected $currency;
 
-	/**
-	 * @var SubunitFormat
-	 */
-	protected $subunitFormat;
+    /**
+     * @var SubunitFormat
+     */
+    protected $subunitFormat;
 
     /**
      * Set the currency to use for the transformation
      *
      * @param Currency $currency
+     *
+     * @throws InvalidArgumentException
      */
     public function setCurrency(Currency $currency)
     {
-    	$this->guardAgainstUnexistingCurrency($currency);
+        $this->guardAgainstUnexistingCurrency($currency);
 
-    	$this->currency = $currency;
+        $this->currency = $currency;
     }
 
     /**
@@ -38,7 +40,7 @@ abstract class CurrencyTransformer
      */
     public function setSubunitFormat(SubunitFormat $subunitFormat)
     {
-    	$this->subunitFormat = $subunitFormat;
+        $this->subunitFormat = $subunitFormat;
     }
 
     /**
@@ -66,8 +68,8 @@ abstract class CurrencyTransformer
      */
     protected function createCurrencyNumber($number)
     {
-    	$number = new Number($number);
-    	$fraction = (int) ($number->getSubunits() * pow(10, ($number->getDecimalPlaces() - 2) * -1));
+        $number = new Number($number);
+        $fraction = (int) ($number->getSubunits() * pow(10, ($number->getDecimalPlaces() - 2) * -1));
         $normalizedValue = $number->getUnits() + ($fraction / 100);
 
         return new Number($normalizedValue);

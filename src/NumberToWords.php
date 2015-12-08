@@ -3,6 +3,7 @@
 namespace Kwn\NumberToWords;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
+use Kwn\NumberToWords\Transformer\NumberTransformer;
 use Kwn\NumberToWords\Transformer\TransformerFactory;
 use Kwn\NumberToWords\Transformer\TransformerFactoriesRegistry;
 use Kwn\NumberToWords\Model\Currency;
@@ -32,13 +33,11 @@ class NumberToWords
      * @param string $language
      *
      * @throws InvalidArgumentException
-     *
-     * @return mixed
+     * @return NumberTransformer
      */
     public function getNumberTransformer($language)
     {
-        return $this->getTransformerFactory(new Language($language))
-            ->createNumberTransformer();
+        return $this->getTransformerFactory(new Language($language))->createNumberTransformer();
     }
 
     /**
@@ -49,7 +48,6 @@ class NumberToWords
      * @param integer $subunitsFormat SubunitFormat format constant
      *
      * @throws InvalidArgumentException
-     *
      * @return mixed
      */
     public function getCurrencyTransformer($language, $currency, $subunitsFormat)
@@ -64,7 +62,6 @@ class NumberToWords
      * @param Language $language
      *
      * @throws InvalidArgumentException
-     *
      * @return TransformerFactory
      */
     private function getTransformerFactory(Language $language)

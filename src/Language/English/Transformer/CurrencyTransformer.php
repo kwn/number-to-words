@@ -82,8 +82,9 @@ class CurrencyTransformer extends BaseCurrencyTransformer
         $subunitValue = $number->getSubunits();
 
         //if the subunit format is numbers, we want to simply return a fraction
-        if ($this->subunitFormat->getFormat() === SubunitFormat::NUMBERS)
+        if ($this->subunitFormat->getFormat() === SubunitFormat::NUMBERS) {
             return $subunitValue . '/100';
+        }
 
         $unitName = $this->currencyDictionary->getSubunitName($this->currency, !$this->isSingular($subunitValue));
 

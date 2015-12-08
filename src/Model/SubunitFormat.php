@@ -15,8 +15,6 @@ class SubunitFormat
     private $format;
 
     /**
-     * Constructor
-     *
      * @param $format
      *
      * @throws InvalidArgumentException
@@ -42,12 +40,11 @@ class SubunitFormat
      * Check if passed subunit format is correct
      *
      * @param integer $format
-     *
      * @throws InvalidArgumentException
      */
     private function guardAgainstUnexistingSubunitsFormat($format)
     {
-        if (!in_array($format, [ self::WORDS, self::NUMBERS ], true)) {
+        if (!in_array($format, [self::WORDS, self::NUMBERS], true)) {
             throw new InvalidArgumentException('Unexisting subunits format specified');
         }
     }

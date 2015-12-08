@@ -10,8 +10,6 @@ class TransformerFactoriesRegistry
     private $transformerFactories;
 
     /**
-     * Constructor
-     *
      * @param array $transformerFactories A list of transformer factories to registry
      */
     public function __construct(array $transformerFactories = [])
@@ -33,7 +31,6 @@ class TransformerFactoriesRegistry
         return $this->transformerFactories;
     }
 
-
     /**
      * Add transformer factory to registry
      *
@@ -41,10 +38,7 @@ class TransformerFactoriesRegistry
      */
     public function addTransformerFactory(TransformerFactory $factory)
     {
-        $this->transformerFactories->offsetSet(
-            $factory->getLanguageIdentifier(),
-            $factory
-        );
+        $this->transformerFactories->offsetSet($factory->getLanguageIdentifier(), $factory);
     }
 
     /**

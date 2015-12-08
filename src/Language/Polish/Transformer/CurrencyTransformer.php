@@ -34,7 +34,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     /**
      * Convert given number to words
      *
-     * @param Amount $number
+     * @param mixed $number
      *
      * @return string
      */

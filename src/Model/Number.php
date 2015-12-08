@@ -27,11 +27,11 @@ class Number
     private $decimalPlaces;
 
     /**
-     * @param float $value
+     * @param mixed $value
      */
     public function __construct($value)
     {
-        $this->validateNumberInput($value);
+        $this->assertValueIsNumeric($value);
 
         $this->value         = (float) $value;
         $this->units         = $this->extractUnits($this->value);
@@ -126,12 +126,13 @@ class Number
      * Validates that the provided value is numeric
      *
      * @param mixed $value
+     *
+     * @throws InvalidArgumentException
      */
-    protected function validateNumberInput($value)
+    private function assertValueIsNumeric($value)
     {
-        if (is_numeric($value))
-            return;
-
-        throw new InvalidArgumentException("The value provided to convert numbers to words must be numeric.");
+        if (!is_numeric($value)) {
+            throw new InvalidArgumentException('The value provided to convert numbers to words must be numeric.');
+        }
     }
 }

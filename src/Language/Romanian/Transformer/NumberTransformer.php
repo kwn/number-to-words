@@ -111,7 +111,7 @@ class NumberTransformer implements NumberTransformerInterface
      * @access private
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function _get_number_inflection_for_gender($number_atom, $noun, $as_noun=false)
+    private function _get_number_inflection_for_gender($number_atom, $noun, $as_noun = false)
     {
         if (!is_array($number_atom)) {
             $num_names=array(
@@ -196,7 +196,7 @@ class NumberTransformer implements NumberTransformerInterface
 
         if ($uz==0) {
            // Hundreds behave like many
-           return 'm';
+            return 'm';
         }
 
         if ($uz>$this->_thresh_many) {
@@ -220,7 +220,7 @@ class NumberTransformer implements NumberTransformerInterface
      * @access private
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function _showDigitsGroup($num, $noun, $force_noun=false, $force_plural=false)
+    private function _showDigitsGroup($num, $noun, $force_noun = false, $force_plural = false)
     {
         $ret = '';
 
@@ -238,12 +238,12 @@ class NumberTransformer implements NumberTransformerInterface
         }
         if ($uz) {
             if (isset(NumberDictionary::getNumbers()[$uz])) {
-              $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$uz], $noun, !$force_noun);
+                $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$uz], $noun, !$force_noun);
             } else {
                 if ($z) {
                     $ret.=NumberDictionary::getNumbers()[$z*10]; // no accord needed for tens
                     if ($u) {
-                      $ret.=$this->_sep.$this->_and.$this->_sep;
+                        $ret.=$this->_sep.$this->_and.$this->_sep;
                     }
                 }
                 if ($u) {
@@ -290,7 +290,7 @@ class NumberTransformer implements NumberTransformerInterface
         $num = $number->getValue();
 
         if (empty($noun)) {
-          $noun=array(NULL, NULL, Gender::FEATURELESS);
+            $noun=array(null, null, Gender::FEATURELESS);
         }
 
         $ret = '';
@@ -299,7 +299,7 @@ class NumberTransformer implements NumberTransformerInterface
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
             $ret = NumberDictionary::getNumbers()[0];
             if ($noun[2]!=Gender::FEATURELESS) {
-                $ret .= $this->_sep.$this->_get_noun_declension_for_number('f',$noun);
+                $ret .= $this->_sep.$this->_get_noun_declension_for_number('f', $noun);
             }
             return $ret;
         }
@@ -314,7 +314,7 @@ class NumberTransformer implements NumberTransformerInterface
         if (abs($num)==1) {
             $ret = $this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[1], $noun);
             if ($noun[2]!=Gender::FEATURELESS) {
-                $ret .= $this->_sep.$this->_get_noun_declension_for_number('o',$noun);
+                $ret .= $this->_sep.$this->_get_noun_declension_for_number('o', $noun);
             }
             return $ret;
         }
@@ -332,7 +332,7 @@ class NumberTransformer implements NumberTransformerInterface
 
         $sizeof_numgroups = count($num_groups);
         $showed_noun = false;
-        foreach ($num_groups as $i=>$number) {
+        foreach ($num_groups as $i => $number) {
             // what is the corresponding exponent for the current group
             $pow = $sizeof_numgroups-$i;
 
@@ -344,18 +344,18 @@ class NumberTransformer implements NumberTransformerInterface
             }
 
             if ($i) {
-              $ret.=$this->_sep;
+                $ret.=$this->_sep;
             }
 
             if ($pow-1) {
-               $ret.=$this->_showDigitsGroup($number, NumberDictionary::getExponents()[($pow-1)*3]);
+                $ret.=$this->_showDigitsGroup($number, NumberDictionary::getExponents()[($pow-1)*3]);
             } else {
-               $showed_noun = true;
-               $ret.=$this->_showDigitsGroup($number, $noun, false, $num!=1);
+                $showed_noun = true;
+                $ret.=$this->_showDigitsGroup($number, $noun, false, $num!=1);
             }
         }
         if (!$showed_noun) {
-            $ret.=$this->_sep.$this->_get_noun_declension_for_number('m',$noun); // ALWAYS many
+            $ret.=$this->_sep.$this->_get_noun_declension_for_number('m', $noun); // ALWAYS many
         }
 
         return rtrim($ret, $this->_sep);
