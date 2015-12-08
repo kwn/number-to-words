@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\English;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\English\Transformer\NumberTransformer;
@@ -40,24 +41,25 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create number transformer
      *
-     * @return NumberTransformerInterface
+     * @return NumberTransformer
      */
     public function createNumberTransformer()
     {
-        return new NumberTransformer(new NumberDictionary);
+        return new NumberTransformer(new NumberDictionary());
     }
 
     /**
      * Create currency transformer
      *
-     * @param Currency $currency
-     * @param SubunitFormat $currency
+     * @param Currency      $currency
+     * @param SubunitFormat $subunitFormat
      *
+     * @throws InvalidArgumentException
      * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
-        $transformer = new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary);
+        $transformer = new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary());
 
         $transformer->setCurrency($currency);
         $transformer->setSubunitFormat($subunitFormat);

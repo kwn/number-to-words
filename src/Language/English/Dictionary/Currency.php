@@ -36,7 +36,7 @@ class Currency
      * Gets a single unit name for the provided currency
      *
      * @param CurrencyModel $currency
-     * @param bool $singular
+     * @param bool          $plural
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class Currency
      * Gets a single subunit name for the provided currency
      *
      * @param CurrencyModel $currency
-     * @param bool $singular
+     * @param bool          $plural
      *
      * @return string
      */

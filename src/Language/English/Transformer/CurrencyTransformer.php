@@ -3,14 +3,12 @@
 namespace Kwn\NumberToWords\Language\English\Transformer;
 
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
 
 class CurrencyTransformer extends BaseCurrencyTransformer
 {
-
     /**
      * @var NumberTransformer
      */

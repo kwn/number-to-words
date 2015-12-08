@@ -18,16 +18,30 @@ class Number
 
     protected $mega = ['', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion'];
 
+    /**
+     * @return string
+     */
     public function getZero()
     {
         return $this->zero;
     }
 
+    /**
+     * @param int $value
+     *
+     * @return string
+     */
     public function getUnit($value)
     {
         return $this->units[$value];
     }
 
+    /**
+     * @param int $tens
+     * @param int $units
+     *
+     * @return string
+     */
     public function getSubHundred($tens, $units)
     {
         $words = [];
@@ -46,6 +60,11 @@ class Number
         return implode(' ', $words);
     }
 
+    /**
+     * @param int $value
+     *
+     * @return string
+     */
     public function getHundred($value)
     {
         if ($word = $this->getUnit($value)) {
@@ -53,6 +72,11 @@ class Number
         }
     }
 
+    /**
+     * @param int $scale
+     *
+     * @return string
+     */
     public function getMega($scale)
     {
         if ($word = $this->mega[$scale]) {

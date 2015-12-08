@@ -37,7 +37,10 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateCurrencyTransformerBuildsCorrectClass()
     {
-        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(new Currency('PLN'), new SubunitFormat(SubunitFormat::WORDS));
+        $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
+            new Currency('PLN'),
+            new SubunitFormat(SubunitFormat::WORDS)
+        );
 
         $this->assertInstanceOf(
             'Kwn\NumberToWords\Language\Polish\Transformer\CurrencyTransformer',
@@ -50,6 +53,9 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowsExceptionWithUnknownCurrency()
     {
-        $this->transformerFactory->createCurrencyTransformer(new Currency('UNK'), new SubunitFormat(SubunitFormat::WORDS));
+        $this->transformerFactory->createCurrencyTransformer(
+            new Currency('UNK'),
+            new SubunitFormat(SubunitFormat::WORDS)
+        );
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Kwn\NumberToWords\Language\English\Transformer;
 
-use Kwn\NumberToWords\Model\Amount;
-use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\English\Dictionary\Number as NumberDictionary;
@@ -11,7 +9,7 @@ use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary
 
 class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
 {
-    protected $unitNames = [
+    private $unitNames = [
         'PLN' => ['unit' => 'złoty', 'subunit' => ['singular' => 'grosz', 'plural' => 'groszy']],
         'EUR' => ['unit' => 'euro', 'subunit' => ['singular' => 'cent', 'plural' => 'cents']],
         'GBP' => ['unit' => 'pound', 'subunit' => ['singular' => 'pence', 'plural' => 'pence']],
@@ -31,8 +29,7 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     {
         $data = [];
 
-        foreach ($this->unitNames as $code => $currency)
-        {
+        foreach ($this->unitNames as $code => $currency) {
             $unitName = $currency['unit'];
             $pluralSubunitName = $currency['subunit']['plural'];
             $transformer = $this->createTransformer($code, SubunitFormat::WORDS);
@@ -64,8 +61,7 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     {
         $data = [];
 
-        foreach ($this->unitNames as $code => $currency)
-        {
+        foreach ($this->unitNames as $code => $currency) {
             $unitName = $currency['unit'];
             $transformer = $this->createTransformer($code, SubunitFormat::NUMBERS);
 
@@ -91,8 +87,7 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     {
         $data = [];
 
-        foreach ($this->unitNames as $code => $currency)
-        {
+        foreach ($this->unitNames as $code => $currency) {
             $unitName = $currency['unit'];
             $singularSubunitName = $currency['subunit']['singular'];
             $pluralSubunitName = $currency['subunit']['plural'];
@@ -113,13 +108,13 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
      * Creates a new transformer
      *
      * @param string $currencyCode
-     * @param int $subunitFormat
+     * @param int    $subunitFormat
      *
      * @return CurrencyTransformer
      */
-    protected function createTransformer($currencyCode, $subunitFormat)
+    private function createTransformer($currencyCode, $subunitFormat)
     {
-        $transformer = new CurrencyTransformer(new NumberTransformer(new NumberDictionary), new CurrencyDictionary);
+        $transformer = new CurrencyTransformer(new NumberTransformer(new NumberDictionary()), new CurrencyDictionary());
 
         $transformer->setCurrency(new Currency($currencyCode));
         $transformer->setSubunitFormat(new SubunitFormat($subunitFormat));
