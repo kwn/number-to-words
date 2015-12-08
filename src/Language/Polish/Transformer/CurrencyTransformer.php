@@ -12,12 +12,12 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     /**
      * @var NumberTransformer
      */
-    protected $numberTransformer;
+    private $numberTransformer;
 
     /**
      * @var GrammarCaseSelector
      */
-    protected $grammarCaseSelector;
+    private $grammarCaseSelector;
 
     /**
      * @param NumberTransformer   $numberTransformer
@@ -25,7 +25,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
      */
     public function __construct(NumberTransformer $numberTransformer, GrammarCaseSelector $grammarCaseSelector)
     {
-        $this->numberTransformer   = $numberTransformer;
+        $this->numberTransformer = $numberTransformer;
         $this->grammarCaseSelector = $grammarCaseSelector;
     }
 
@@ -70,15 +70,15 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     /**
      * Convert number to words with grammar cased subject
      *
-     * @param mixed  $number
-     * @param array  $subject
+     * @param mixed $number
+     * @param array $subject
      *
      * @return string
      */
     protected function toWordsWithGrammarCasedDescription($number, array $subject)
     {
         $convertedNumber = $this->numberTransformer->toWords($number);
-        $grammarCase     = $this->grammarCaseSelector->getGrammarCase($number);
+        $grammarCase = $this->grammarCaseSelector->getGrammarCase($number);
 
         return $convertedNumber . ' ' . $subject[$grammarCase];
     }

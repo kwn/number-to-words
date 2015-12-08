@@ -7,21 +7,13 @@ use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
 class NumberTransformerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var NumberTransformer
-     */
-    private $transformer;
-
-    public function setUp()
-    {
-        $this->transformer = new NumberTransformer(new GrammarCaseSelector());
-    }
-
-    /**
      * @dataProvider providerToWords
      */
     public function testToWords($expectedValue, $number)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($number));
+        $transformer = new NumberTransformer(new GrammarCaseSelector());
+
+        $this->assertEquals($expectedValue, $transformer->toWords($number));
     }
 
     public function providerToWords()

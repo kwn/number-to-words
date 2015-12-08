@@ -9,7 +9,13 @@ class Currency
         'EUR' => ['euro', 'euro', 'euro'],
         'GBP' => ['funt', 'funty', 'funtów'],
         'USD' => ['dolar', 'dolary', 'dolarów'],
-        'CHF' => ['frank', 'franki', 'franków']
+        'CHF' => ['frank', 'franki', 'franków'],
+        'RON' => ['lej', 'leje', 'lejów'],
+        'HUF' => ['forint', 'forinty', 'forintów'],
+        'CZK' => ['korona', 'korony', 'koron'],
+        'DKK' => ['korona', 'korony', 'koron'],
+        'SEK' => ['korona', 'korony', 'koron'],
+        'RUB' => ['rubel', 'ruble', 'rubli']
     ];
     
     private static $subunits = [
@@ -17,7 +23,13 @@ class Currency
         'EUR' => ['euro cent', 'euro centy', 'euro centów'],
         'GBP' => ['pens', 'pensy', 'pensów'],
         'USD' => ['cent', 'centy', 'centów'],
-        'CHF' => ['centym', 'centymy', 'centymów']
+        'CHF' => ['centym', 'centymy', 'centymów'],
+        'RON' => ['ban', 'bany', 'banów'],
+        'HUF' => ['filler', 'fillery', 'fillerów'],
+        'CZK' => ['halerz', 'halerze', 'halerzy'],
+        'DKK' => ['ore', 'ore', 'ore'],
+        'SEK' => ['ore', 'ore', 'ore'],
+        'RUB' => ['kopiejka', 'kopiejki', 'kopiejek']
     ];
 
     /**

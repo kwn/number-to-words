@@ -38,12 +38,7 @@ class NumberTransformer implements NumberTransformerInterface
             return NumberDictionary::$zero;
         }
 
-        $triplets = [];
-
-        while ($value > 0) {
-            $triplets[] = $value % 1000;
-            $value      = (int) ($value / 1000);
-        }
+        $triplets = $this->extractTriplets($value);
 
         $words = [];
 
@@ -66,6 +61,23 @@ class NumberTransformer implements NumberTransformerInterface
     }
 
     /**
+     * @param $value
+     *
+     * @return array
+     */
+    private function extractTriplets($value)
+    {
+        $triplets = [];
+
+        while ($value > 0) {
+            $triplets[] = $value % 1000;
+            $value = (int) ($value / 1000);
+        }
+
+        return $triplets;
+    }
+
+    /**
      * Return triplets in words
      *
      * @param $value
@@ -74,8 +86,8 @@ class NumberTransformer implements NumberTransformerInterface
      */
     private function threeDigitsToWords($value)
     {
-        $units    = $value % 10;
-        $tens     = (int) ($value / 10) % 10;
+        $units = $value % 10;
+        $tens = (int) ($value / 10) % 10;
         $hundreds = (int) ($value / 100) % 10;
 
         $words = [];

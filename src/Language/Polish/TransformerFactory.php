@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\Polish;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\Polish\Grammar\GrammarCaseSelector;
@@ -52,6 +53,7 @@ class TransformerFactory implements TransformerFactoryInterface
      * @param Currency      $currency
      * @param SubunitFormat $subunitFormat
      *
+     * @throws InvalidArgumentException
      * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
