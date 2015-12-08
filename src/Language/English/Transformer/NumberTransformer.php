@@ -22,14 +22,16 @@ class NumberTransformer implements NumberTransformerInterface
     }
 
     /**
-     * Return number converted to words
+     * Convert number to words
      *
-     * @param Number $number
+     * @param mixed $number
      *
      * @return string
      */
-    public function toWords(Number $number)
+    public function toWords($number)
     {
+        $number = new Number($number);
+
         //if we can't build any triplets, it means we're at (or below) zero
         if (!$triplets = $this->buildTriplets($number)) {
             return $this->numberDictionary->getZero();

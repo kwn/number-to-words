@@ -20,31 +20,11 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     ];
 
     /**
-     * @var CurrencyTransformer
-     */
-    private $transformer;
-
-    public function setUp()
-    {
-        $this->transformer = new CurrencyTransformer(new NumberTransformer(new NumberDictionary), new CurrencyDictionary);
-    }
-
-    /**
-     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
-     */
-    public function testToWordsThrowsExceptionWithUnknownCurrency()
-    {
-        $amount = new Amount(new Number(50), new Currency('UNK'), new SubunitFormat(SubunitFormat::WORDS));
-
-        $this->transformer->toWords($amount);
-    }
-
-    /**
      * @dataProvider providerToWordsWithUnitsOnly
      */
-    public function testToWordsWithUnitsOnly($expectedValue, Amount $amount)
+    public function testToWordsWithUnitsOnly(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithUnitsOnly()
@@ -55,40 +35,17 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
         {
             $unitName = $currency['unit'];
             $pluralSubunitName = $currency['subunit']['plural'];
+            $transformer = $this->createTransformer($code, SubunitFormat::WORDS);
 
             $data = array_merge($data, [
-                [
-                    "one {$unitName} zero {$pluralSubunitName}",
-                    new Amount(new Number(1), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "two {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(2), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(5), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(540), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty one {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(541), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty two {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(542), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty four {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(544), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(545), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ]
+                [$transformer, "one {$unitName} zero {$pluralSubunitName}", 1],
+                [$transformer, "two {$unitName}s zero {$pluralSubunitName}", 2],
+                [$transformer, "five {$unitName}s zero {$pluralSubunitName}", 5],
+                [$transformer, "five hundred forty {$unitName}s zero {$pluralSubunitName}", 540],
+                [$transformer, "five hundred forty one {$unitName}s zero {$pluralSubunitName}", 541],
+                [$transformer, "five hundred forty two {$unitName}s zero {$pluralSubunitName}", 542],
+                [$transformer, "five hundred forty four {$unitName}s zero {$pluralSubunitName}", 544],
+                [$transformer, "five hundred forty five {$unitName}s zero {$pluralSubunitName}", 545]
             ]);
         }
 
@@ -98,9 +55,9 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerToWordsWithNumbersFormatSubunits
      */
-    public function testToWordsWithNumbersFormatSubunits($expectedValue, Amount $amount)
+    public function testToWordsWithNumbersFormatSubunits(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithNumbersFormatSubunits()
@@ -110,20 +67,12 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
         foreach ($this->unitNames as $code => $currency)
         {
             $unitName = $currency['unit'];
+            $transformer = $this->createTransformer($code, SubunitFormat::NUMBERS);
 
             $data = array_merge($data, [
-                [
-                    "five hundred forty five {$unitName}s 52/100",
-                    new Amount(new Number(545.52), new Currency($code), new SubunitFormat(SubunitFormat::NUMBERS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s 0/100",
-                    new Amount(new Number(545), new Currency($code), new SubunitFormat(SubunitFormat::NUMBERS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s 99/100",
-                    new Amount(new Number(545.99), new Currency($code), new SubunitFormat(SubunitFormat::NUMBERS))
-                ]
+                [$transformer, "five hundred forty five {$unitName}s 52/100", 545.52],
+                [$transformer, "five hundred forty five {$unitName}s 0/100", 545],
+                [$transformer, "five hundred forty five {$unitName}s 99/100", 545.99],
             ]);
         }
 
@@ -133,9 +82,9 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerToWordsWithWordsFormatSubunits
      */
-    public function testToWordsWithWordsFormatSubunits($expectedValue, Amount $amount)
+    public function testToWordsWithWordsFormatSubunits(CurrencyTransformer $transformer, $expectedValue, $amount)
     {
-        $this->assertEquals($expectedValue, $this->transformer->toWords($amount));
+        $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
     public function providerToWordsWithWordsFormatSubunits()
@@ -147,27 +96,34 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
             $unitName = $currency['unit'];
             $singularSubunitName = $currency['subunit']['singular'];
             $pluralSubunitName = $currency['subunit']['plural'];
+            $transformer = $this->createTransformer($code, SubunitFormat::WORDS);
 
             $data = array_merge($data, [
-                [
-                    "five hundred forty five {$unitName}s fifty two {$pluralSubunitName}",
-                    new Amount(new Number(545.52), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s zero {$pluralSubunitName}",
-                    new Amount(new Number(545), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s one {$singularSubunitName}",
-                    new Amount(new Number(545.01), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ],
-                [
-                    "five hundred forty five {$unitName}s ninety nine {$pluralSubunitName}",
-                    new Amount(new Number(545.99), new Currency($code), new SubunitFormat(SubunitFormat::WORDS))
-                ]
+                [$transformer, "five hundred forty five {$unitName}s fifty two {$pluralSubunitName}", 545.52],
+                [$transformer, "five hundred forty five {$unitName}s zero {$pluralSubunitName}", 545],
+                [$transformer, "five hundred forty five {$unitName}s one {$singularSubunitName}", 545.01],
+                [$transformer, "five hundred forty five {$unitName}s ninety nine {$pluralSubunitName}", 545.99],
             ]);
         }
 
         return $data;
+    }
+
+    /**
+     * Creates a new transformer
+     *
+     * @param string $currencyCode
+     * @param int $subunitFormat
+     *
+     * @return CurrencyTransformer
+     */
+    protected function createTransformer($currencyCode, $subunitFormat)
+    {
+        $transformer = new CurrencyTransformer(new NumberTransformer(new NumberDictionary), new CurrencyDictionary);
+
+        $transformer->setCurrency(new Currency($currencyCode));
+        $transformer->setSubunitFormat(new SubunitFormat($subunitFormat));
+
+        return $transformer;
     }
 }

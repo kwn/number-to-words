@@ -2,16 +2,14 @@
 
 namespace Kwn\NumberToWords\Transformer;
 
-use Kwn\NumberToWords\Model\Number;
-
 interface NumberTransformer
 {
     /**
      * Convert number to words
      *
-     * @param Number $number
+     * @param mixed $number
      *
      * @return string
      */
-    public function toWords(Number $number);
+    public function toWords($number);
 }

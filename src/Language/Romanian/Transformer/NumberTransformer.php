@@ -36,7 +36,7 @@ class NumberTransformer implements NumberTransformerInterface
      * @access private
      */
     private $_and = 'și';
-    
+
     /**
      * The word separator.
      * @var string
@@ -223,7 +223,7 @@ class NumberTransformer implements NumberTransformerInterface
     private function _showDigitsGroup($num, $noun, $force_noun=false, $force_plural=false)
     {
         $ret = '';
-        
+
         // extract the value of each digit from the three-digit number
         $u = $num%10;                  // ones
         $uz = $num%100;                // ones+tens
@@ -279,15 +279,14 @@ class NumberTransformer implements NumberTransformerInterface
      *      - Gender::FEMALE for feminine nouns
      *      - Gender::NEUTER for neuter nouns
      *
-     * @param Number $number An integer (or its string representation) between 9.99*-10^302
-     *                        and 9.99*10^302 (999 centillions) that need to be converted to words
+     * @param mixed $number
      * @param array $noun  Optionally you can also provide a noun to be formatted accordingly
+     *
      * @return string  The corresponding word representation
-     * @access protected
-     * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    public function toWords(Number $number, $noun = array())
+    public function toWords($number, $noun = array())
     {
+        $number = new Number($number);
         $num = $number->getValue();
 
         if (empty($noun)) {

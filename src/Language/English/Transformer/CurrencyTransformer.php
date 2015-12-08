@@ -2,15 +2,13 @@
 
 namespace Kwn\NumberToWords\Language\English\Transformer;
 
-use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
-use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary;
-use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
+use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
 
-class CurrencyTransformer implements CurrencyTransformerInterface
+class CurrencyTransformer extends BaseCurrencyTransformer
 {
 
     /**
@@ -34,87 +32,73 @@ class CurrencyTransformer implements CurrencyTransformerInterface
     }
 
     /**
-     * Check if currency definitions exist in dictionary
-     *
-     * @param Currency $currency
-     *
-     * @throws InvalidArgumentException
-     */
-    private function guardAgainstUnexistingCurrency(Currency $currency)
-    {
-        if (!array_key_exists($currency->getIdentifier(), $this->currencyDictionary->getUnitNames())) {
-            throw new InvalidArgumentException(sprintf(
-                'There is missing "%s" unit in a currency dictionary',
-                $currency->getIdentifier()
-            ));
-        }
-
-        if (!array_key_exists($currency->getIdentifier(), $this->currencyDictionary->getSubunitNames())) {
-            throw new InvalidArgumentException(sprintf(
-                'There is missing "%s" subunit in a currency dictionary',
-                $currency->getIdentifier()
-            ));
-        }
-    }
-
-    /**
      * Convert given number to words
      *
-     * @param Amount $amount
+     * @param mixed $number
      *
      * @return string
      */
-    public function toWords(Amount $amount)
+    public function toWords($number)
     {
-        $this->guardAgainstUnexistingCurrency($amount->getCurrency());
+        $number = $this->createCurrencyNumber($number);
 
-        return $this->getIntegerPart($amount) . ' ' . $this->getFractionalPart($amount);
+        return $this->getIntegerPart($number) . ' ' . $this->getFractionalPart($number);
+    }
+
+    /**
+     * Gets an array of valid currencies (ISO 4217)
+     *
+     * @return array
+     */
+    protected function getValidCurrencies()
+    {
+        return array_keys($this->currencyDictionary->getUnitNames());
     }
 
     /**
      * Gets the integer part of the provided amount
      *
-     * @param Amount $amount
+     * @param Number $number
      *
      * @return string
      */
-    protected function getIntegerPart(Amount $amount)
+    protected function getIntegerPart(Number $number)
     {
-        $number = $amount->getNumber();
-        $unitName = $this->currencyDictionary->getUnitName($amount->getCurrency(), !$this->isSingular($number));
+        $value = $number->getValue();
+        $unitName = $this->currencyDictionary->getUnitName($this->currency, !$this->isSingular($value));
 
-        return $this->numberTransformer->toWords($number) . ' ' . $unitName;
+        return $this->numberTransformer->toWords($value) . ' ' . $unitName;
     }
 
     /**
      * Gets the fractional part of the provided amount
      *
-     * @param Amount $amount
+     * @param Number $number
      *
      * @return string
      */
-    protected function getFractionalPart(Amount $amount)
+    protected function getFractionalPart(Number $number)
     {
-        $number = new Number($amount->getNumber()->getSubunits());
+        $subunitValue = $number->getSubunits();
 
         //if the subunit format is numbers, we want to simply return a fraction
-        if ($amount->getSubunitFormat()->getFormat() === SubunitFormat::NUMBERS)
-            return $number->getValue() . '/100';
+        if ($this->subunitFormat->getFormat() === SubunitFormat::NUMBERS)
+            return $subunitValue . '/100';
 
-        $unitName = $this->currencyDictionary->getSubunitName($amount->getCurrency(), !$this->isSingular($number));
+        $unitName = $this->currencyDictionary->getSubunitName($this->currency, !$this->isSingular($subunitValue));
 
-        return $this->numberTransformer->toWords($number) . ' ' . $unitName;
+        return $this->numberTransformer->toWords($subunitValue) . ' ' . $unitName;
     }
 
     /**
      * Determines if the provided number is singular
      *
-     * @param Number $number
+     * @param mixed $number
      *
      * @return bool
      */
-    protected function isSingular(Number $number)
+    protected function isSingular($number)
     {
-        return $number->getValue() == 1;
+        return $number == 1;
     }
 }

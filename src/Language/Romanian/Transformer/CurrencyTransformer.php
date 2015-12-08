@@ -2,13 +2,13 @@
 
 namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
-use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
-use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
 use Kwn\NumberToWords\Model\Amount;
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Transformer\CurrencyTransformer as CurrencyTransformerInterface;
+use Kwn\NumberToWords\Language\Romanian\Dictionary\Currency;
+use Kwn\NumberToWords\Language\Romanian\Dictionary\Language;
+use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
 
-class CurrencyTransformer implements CurrencyTransformerInterface
+class CurrencyTransformer extends BaseCurrencyTransformer
 {
     /**
      * @var NumberTransformer
@@ -48,15 +48,12 @@ class CurrencyTransformer implements CurrencyTransformerInterface
         }
 
         $curr_nouns = Currency::getCurrencyNames()[$int_curr];
-        $ret        = $this->transformer->toWords(new Number($decimal), $curr_nouns[0]);
+        $ret        = $this->transformer->toWords($decimal, $curr_nouns[0]);
 
         if ($fraction !== false) {
             $ret .= ' ' . Language::WORD_AND;
             if ($convert_fraction) {
-                $ret .= ' ' . $this->toWords(
-                        new Amount(new Number($fraction), new \Kwn\NumberToWords\Model\Currency($int_curr)),
-                        $curr_nouns[1]
-                    );
+                $ret .= ' ' . $this->toWords($fraction, $curr_nouns[1]);
             } else {
                 $ret .= $fraction . ' ';
                 $plural_rule = $this->_get_plural_rule($fraction);
@@ -68,18 +65,19 @@ class CurrencyTransformer implements CurrencyTransformerInterface
     }
 
     /**
-     * @param Amount $amount
+     * @param mixed $number
      *
      * @return string
      */
-    public function toWords(Amount $amount)
+    public function toWords($number)
     {
+        $number = $this->createCurrencyNumber($number);
         $decimalPoint = '.';
 
-        $amountValue = round($amount->getNumber()->getValue(), 2);
+        $amountValue = round($number->getValue(), 2);
 
         if (strpos($amountValue, $decimalPoint) === false) {
-            return trim($this->toCurrencyWords($amount->getCurrency()->getIdentifier(), $amountValue));
+            return trim($this->toCurrencyWords($this->currency->getIdentifier(), $amountValue));
         }
 
         $currency = explode($decimalPoint, $amountValue, 2);
@@ -90,6 +88,16 @@ class CurrencyTransformer implements CurrencyTransformerInterface
             $currency[1] .= '0';
         }
 
-        return $this->toCurrencyWords($amount->getCurrency()->getIdentifier(), $currency[0], $currency[1]);
+        return $this->toCurrencyWords($this->currency->getIdentifier(), $currency[0], $currency[1]);
+    }
+
+    /**
+     * Gets an array of valid currencies (ISO 4217)
+     *
+     * @return array
+     */
+    protected function getValidCurrencies()
+    {
+        return array_keys(Currency::getCurrencyNames());
     }
 }

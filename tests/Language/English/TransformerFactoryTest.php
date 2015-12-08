@@ -44,4 +44,12 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
             $currencyTransformer
         );
     }
+
+    /**
+     * @expectedException \Kwn\NumberToWords\Exception\InvalidArgumentException
+     */
+    public function testThrowsExceptionWithUnknownCurrency()
+    {
+        $this->transformerFactory->createCurrencyTransformer(new Currency('UNK'), new SubunitFormat(SubunitFormat::WORDS));
+    }
 }

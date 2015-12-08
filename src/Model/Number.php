@@ -2,6 +2,8 @@
 
 namespace Kwn\NumberToWords\Model;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
+
 class Number
 {
     /**
@@ -25,12 +27,12 @@ class Number
     private $decimalPlaces;
 
     /**
-     * Constructor
-     *
-     * @param float $value Number value
+     * @param float $value
      */
     public function __construct($value)
     {
+        $this->validateNumberInput($value);
+
         $this->value         = (float) $value;
         $this->units         = $this->extractUnits($this->value);
         $this->subunits      = $this->extractSubunits($this->value);
@@ -118,5 +120,18 @@ class Number
         }
 
         return $subunits;
+    }
+
+    /**
+     * Validates that the provided value is numeric
+     *
+     * @param mixed $value
+     */
+    protected function validateNumberInput($value)
+    {
+        if (is_numeric($value))
+            return;
+
+        throw new InvalidArgumentException("The value provided to convert numbers to words must be numeric.");
     }
 }

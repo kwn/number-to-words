@@ -2,8 +2,6 @@
 
 namespace Kwn\NumberToWords\Language\Romanian\Transformer;
 
-use Kwn\NumberToWords\Model\Number;
-
 class NumberTransformerTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -35,7 +33,7 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
         ];
 
         for ($i = 0; $i < 10; $i++) {
-            $number = $this->transformer->toWords(new Number($i));
+            $number = $this->transformer->toWords($i);
             $this->assertEquals($digits[$i], $number);
         }
     }
@@ -66,7 +64,7 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
         ];
 
         foreach ($tens as $number => $word) {
-            $this->assertEquals($word, $this->transformer->toWords(new Number($number)));
+            $this->assertEquals($word, $this->transformer->toWords($number));
         }
     }
 
@@ -93,7 +91,7 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
         ];
 
         foreach ($hundreds as $number => $word) {
-            $this->assertEquals($word, $this->transformer->toWords(new Number($number)));
+            $this->assertEquals($word, $this->transformer->toWords($number));
         }
     }
 
@@ -129,7 +127,7 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
         ];
 
         foreach ($thousands as $number => $word) {
-            $this->assertEquals($word, $this->transformer->toWords(new Number($number)));
+            $this->assertEquals($word, $this->transformer->toWords($number));
         }
     }
 
@@ -141,13 +139,13 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMore()
     {
-        $this->assertEquals('un milion', $this->transformer->toWords(new Number(1000000)));
+        $this->assertEquals('un milion', $this->transformer->toWords(1000000));
 
-        $this->assertEquals('două miliarde', $this->transformer->toWords(new Number(2000000000)));
+        $this->assertEquals('două miliarde', $this->transformer->toWords(2000000000));
 
         // 32 bit systems vs PHP_INT_SIZE - 3 trillion is a little high, so use a string version.
         $number = '3000000000000' > PHP_INT_SIZE ? '3000000000000' : 3000000000000;
 
-        $this->assertEquals('trei trilioane', $this->transformer->toWords(new Number($number)));
+        $this->assertEquals('trei trilioane', $this->transformer->toWords($number));
     }
 }
