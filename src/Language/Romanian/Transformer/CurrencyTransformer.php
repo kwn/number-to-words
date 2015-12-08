@@ -22,40 +22,39 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     }
 
     /**
-     * Converts a currency value to its word representation
-     * (with monetary units) in Romanian
+     * Converts a currency value to its word representation (with monetary units) in Romanian
      *
-     * @param string $int_curr         An international currency symbol
+     * @param string  $intCurr          An international currency symbol
      *                                  as defined by the ISO 4217 standard (three characters)
      * @param integer $decimal          A money total amount without fraction part (e.g. amount of dollars)
      * @param integer $fraction         Fractional part of the money amount (e.g. amount of cents)
      *                                  Optional. Defaults to false.
-     * @param integer $convert_fraction Convert fraction to words (left as numeric if set to false).
+     * @param integer $convertFraction  Convert fraction to words (left as numeric if set to false).
      *                                  Optional. Defaults to true.
      *
      * @return string  The corresponding word representation for the currency
      *
-     * @access public
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true)
+    private function toCurrencyWords($intCurr, $decimal, $fraction = false, $convertFraction = true)
     {
-        $int_curr = strtoupper($int_curr);
-        if (!isset(Currency::getCurrencyNames()[$int_curr])) {
-            $int_curr = 'EUR';
+        $intCurr = strtoupper($intCurr);
+        if (!isset(Currency::getCurrencyNames()[$intCurr])) {
+            $intCurr = 'EUR';
         }
 
-        $curr_nouns = Currency::getCurrencyNames()[$int_curr];
-        $ret        = $this->transformer->toWords($decimal, $curr_nouns[0]);
+        $currNouns = Currency::getCurrencyNames()[$intCurr];
+        $ret = $this->transformer->toWords($decimal, $currNouns[0]);
 
         if ($fraction !== false) {
             $ret .= ' ' . Language::WORD_AND;
-            if ($convert_fraction) {
-                $ret .= ' ' . $this->toWords($fraction, $curr_nouns[1]);
+
+            if ($convertFraction) {
+                $ret .= ' ' . $this->toWords($fraction, $currNouns[1]);
             } else {
                 $ret .= $fraction . ' ';
-                $plural_rule = $this->_get_plural_rule($fraction);
-                $this->_get_noun_declension_for_number($plural_rule, $curr_nouns[1]);
+                $plural_rule = $this->getPluralRule($fraction);
+                $this->getNounDeclensionForNumber($plural_rule, $currNouns[1]);
             }
         }
 

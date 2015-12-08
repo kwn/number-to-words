@@ -2,6 +2,7 @@
 
 namespace Kwn\NumberToWords\Language\Romanian;
 
+use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
 use Kwn\NumberToWords\Language\Romanian\Transformer\CurrencyTransformer;
@@ -38,7 +39,7 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create number transformer
      *
-     * @return NumberTransformerInterface
+     * @return NumberTransformer
      */
     public function createNumberTransformer()
     {
@@ -48,10 +49,11 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create currency transformer
      *
-     * @param Currency $currency
-     * @param SubunitFormat $currency
+     * @param Currency      $currency
+     * @param SubunitFormat $subunitFormat
      *
-     * @return CurrencyTransformerInterface
+     * @throws InvalidArgumentException
+     * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {

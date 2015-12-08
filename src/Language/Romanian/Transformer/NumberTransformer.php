@@ -11,57 +11,57 @@ class NumberTransformer implements NumberTransformerInterface
 {
     /**
      * Anything higher than this is few or many
+     *
      * @var integer
-     * @access private
      */
-    private $_thresh_few=1;
+    private $threshFew = 1;
 
     /**
      * Anything higher than this is many
+     *
      * @var integer
-     * @access private
      */
-    private $_thresh_many=19;
+    private $threshMany = 19;
 
     /**
      * The word for infinity.
+     *
      * @var string
-     * @access private
      */
-    private $_infinity = 'infinit';
+    private $infinity = 'infinit';
 
     /**
      * The word for the "and" language construct.
+     *
      * @var string
-     * @access private
      */
-    private $_and = 'și';
+    private $and = 'și';
 
     /**
      * The word separator.
+     *
      * @var string
-     * @access private
      */
-    private $_sep = ' ';
+    private $sep = ' ';
 
     /**
      * The default currency name
+     *
      * @var string
-     * @access public
      */
-    public $def_currency = 'RON'; // Romanian leu
+    public $defCurrency = 'RON';
 
     /**
      * The particle added for many items (>=20)
      */
-    private $_many_part='de';
+    private $manyPart = 'de';
 
     /**
      * The word for the minus sign.
+     *
      * @var string
-     * @access private
      */
-    private $_minus = 'minus'; // minus sign
+    private $minus = 'minus';
 
     /**
      * @var string
@@ -75,18 +75,15 @@ class NumberTransformer implements NumberTransformerInterface
      *                   that need to be split
      *
      * @return array  Groups of three-digit numbers.
-     * @access private
      * @author Kouber Saparev <kouber@php.net>
-     * @since  PHP 4.2.3
      */
-    private function _splitNumber($num)
+    private function splitNumber($num)
     {
         if (is_string($num)) {
-            $ret    = array();
             $strlen = strlen($num);
-            $first  = substr($num, 0, $strlen%3);
+            $first = substr($num, 0, $strlen % 3);
 
-            preg_match_all('/\d{3}/', substr($num, $strlen%3, $strlen), $m);
+            preg_match_all('/\d{3}/', substr($num, $strlen % 3, $strlen), $m);
             $ret =& $m[0];
 
             if ($first) {
@@ -95,78 +92,77 @@ class NumberTransformer implements NumberTransformerInterface
 
             return $ret;
         }
+
         return explode(' ', number_format($num, 0, '', ' ')); // a faster version for integers
     }
-    // }}}
 
-    // {{{ _get_number_inflection_for_gender()
     /**
      * Returns the inflected form of the cardinal according to the noun's gender.
      *
-     * @param mixed $number_atom A number atom, per {@link $_numbers}
-     * @param array $noun        A noun, per {@link _toWords()}
-     * @param boolean $as_noun   A flag indicating whether the inflected form should
-     *                           behave as a noun (true, "unu") or as an article (false, "un")
+     * @param mixed   $numberAtom  A number atom, per {@link $_numbers}
+     * @param array   $noun        A noun, per {@link _toWords()}
+     * @param boolean $asNoun      A flag indicating whether the inflected form should
+     *                             behave as a noun (true, "unu") or as an article (false, "un")
+     *
      * @return string            The inflected form of the number
-     * @access private
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function _get_number_inflection_for_gender($number_atom, $noun, $as_noun = false)
+    private function getNumberInflectionForGender($numberAtom, $noun, $asNoun = false)
     {
-        if (!is_array($number_atom)) {
-            $num_names=array(
-                $number_atom,
-                $number_atom,
-                $number_atom,
-                $number_atom,
-            );
-        } elseif (count($number_atom)==2) {
-            $num_names=array(
-                $number_atom[0],
-                $number_atom[1],
-                $number_atom[1],
-                $number_atom[0],
-            );
+        if (!is_array($numberAtom)) {
+            $numNames = [
+                $numberAtom,
+                $numberAtom,
+                $numberAtom,
+                $numberAtom,
+            ];
+        } elseif (count($numberAtom) == 2) {
+            $numNames = [
+                $numberAtom[0],
+                $numberAtom[1],
+                $numberAtom[1],
+                $numberAtom[0],
+            ];
         } else {
-            $num_names=$number_atom;
+            $numNames = $numberAtom;
         }
 
-        $num_name=$num_names[$noun[2]];
-        if (!is_array($num_name)) {
-            return $num_name;
+        $numName = $numNames[$noun[2]];
+        if (!is_array($numName)) {
+            return $numName;
         }
 
-        return $num_name[(int) $as_noun];
+        return $numName[(int) $asNoun];
     }
 
     /**
      * Returns the noun's declension according to the cardinal's number.
      *
-     * @param string $plural_rule The plural rule to use, per {@link _get_plural_rule()}
-     * @param array $noun        A noun, per {@link _toWords()}
+     * @param string $pluralRule The plural rule to use, per {@link _get_plural_rule()}
+     * @param array  $noun       A noun, per {@link _toWords()}
+     *
      * @return string            The inflected form of the noun
-     * @access private
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function _get_noun_declension_for_number($plural_rule, $noun)
+    private function getNounDeclensionForNumber($pluralRule, $noun)
     {
-        if ($noun[2]==Gender::FEATURELESS) {
+        if ($noun[2] == Gender::FEATURELESS) {
             // Nothing for abstract count
-            return "";
+            return '';
         }
 
-        if ($plural_rule=='o') {
+        if ($pluralRule == 'o') {
             // One
             return $noun[0];
         }
 
-        if ($plural_rule=='f') {
+        if ($pluralRule == 'f') {
             // Few
             return $noun[1];
         }
 
         // Many
-        return $this->_many_part.$this->_sep.$noun[1];
+        return $this->manyPart . $this->sep . $noun[1];
     }
 
     /**
@@ -178,28 +174,27 @@ class NumberTransformer implements NumberTransformerInterface
      * 'o' for one, 'f' for few, and 'm' for many. These three rules are applied depending
      * on the number of items; see
      * http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#ro
-     *
      */
-    private function _get_plural_rule($number)
+    private function getPluralRule($number)
     {
-        if ($number==$this->_thresh_few) {
+        if ($number == $this->threshFew) {
             // One
             return 'o';
         }
 
-        if ($number==0) {
+        if ($number == 0) {
             // Zero, which behaves like few
             return 'f';
         }
 
-        $uz=$number%100;
+        $uz = $number % 100;
 
-        if ($uz==0) {
-           // Hundreds behave like many
+        if ($uz == 0) {
+            // Hundreds behave like many
             return 'm';
         }
 
-        if ($uz>$this->_thresh_many) {
+        if ($uz > $this->threshMany) {
             // Many
             return 'm';
         }
@@ -211,57 +206,67 @@ class NumberTransformer implements NumberTransformerInterface
     /**
      * Converts a three-digit number to its word representation in Romanian.
      *
-     * @param integer $num  An integer between 1 and 999 inclusive.
-     * @param array $noun The noun representing the items being counted, per {@link _toWords()}
-     * @param boolean $force_noun A flag indicating whether the numeral's inflection should force it behave like a noun
-     * @param boolean $force_plural A flag indicating whether we want to override the plural form (we can't tell if we're processing 1 dollar or 1001 dollars from within this method)
+     * @param integer $num          An integer between 1 and 999 inclusive.
+     * @param array   $noun         The noun representing the items being counted, per {@link _toWords()}
+     * @param boolean $forceNoun    A flag indicating whether the numeral's inflection should force it behave like a
+     *                              noun
+     * @param boolean $forcePlural  A flag indicating whether we want to override the plural form (we can't tell if
+     *                              we're processing 1 dollar or 1001 dollars from within this method)
      *
      * @return string   The words for the given number and the given noun.
-     * @access private
      * @author Bogdan Stăncescu <bogdan@moongate.ro>
      */
-    private function _showDigitsGroup($num, $noun, $force_noun = false, $force_plural = false)
+    private function showDigitsGroup($num, $noun, $forceNoun = false, $forcePlural = false)
     {
         $ret = '';
 
         // extract the value of each digit from the three-digit number
-        $u = $num%10;                  // ones
-        $uz = $num%100;                // ones+tens
-        $z = ($num-$u)%100/10;         // tens
-        $s = ($num-$z*10-$u)%1000/100; // hundreds
+        $u = $num % 10;                  // ones
+        $uz = $num % 100;                // ones+tens
+        $z = ($num - $u) % 100 / 10;         // tens
+        $s = ($num - $z * 10 - $u) % 1000 / 100; // hundreds
 
         if ($s) {
-            $ret.=$this->_showDigitsGroup($s, NumberDictionary::getExponents()[2]);
+            $ret .= $this->showDigitsGroup($s, NumberDictionary::getExponents()[2]);
             if ($uz) {
-                $ret.=$this->_sep;
+                $ret .= $this->sep;
             }
         }
+
         if ($uz) {
             if (isset(NumberDictionary::getNumbers()[$uz])) {
-                $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$uz], $noun, !$force_noun);
+                $ret .= $this->getNumberInflectionForGender(
+                    NumberDictionary::getNumbers()[$uz],
+                    $noun,
+                    !$forceNoun
+                );
             } else {
                 if ($z) {
-                    $ret.=NumberDictionary::getNumbers()[$z*10]; // no accord needed for tens
+                    $ret .= NumberDictionary::getNumbers()[$z * 10]; // no accord needed for tens
                     if ($u) {
-                        $ret.=$this->_sep.$this->_and.$this->_sep;
+                        $ret .= $this->sep . $this->and . $this->sep;
                     }
                 }
                 if ($u) {
-                    $ret.=$this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[$u], $noun, !$force_noun);
+                    $ret .= $this->getNumberInflectionForGender(
+                        NumberDictionary::getNumbers()[$u],
+                        $noun,
+                        !$forceNoun
+                    );
                 }
             }
         }
 
-        if ($noun[2]==Gender::FEATURELESS) {
+        if ($noun[2] == Gender::FEATURELESS) {
             return $ret;
         }
 
-        $plural_rule=$this->_get_plural_rule($num);
-        if ($plural_rule=='o' && $force_plural) {
-            $plural_rule='f';
+        $pluralRule = $this->getPluralRule($num);
+        if ($pluralRule == 'o' && $forcePlural) {
+            $pluralRule = 'f';
         }
 
-        return $ret.$this->_sep.$this->_get_noun_declension_for_number($plural_rule, $noun);
+        return $ret . $this->sep . $this->getNounDeclensionForNumber($pluralRule, $noun);
     }
 
     /**
@@ -280,17 +285,17 @@ class NumberTransformer implements NumberTransformerInterface
      *      - Gender::NEUTER for neuter nouns
      *
      * @param mixed $number
-     * @param array $noun  Optionally you can also provide a noun to be formatted accordingly
+     * @param array $noun Optionally you can also provide a noun to be formatted accordingly
      *
      * @return string  The corresponding word representation
      */
-    public function toWords($number, $noun = array())
+    public function toWords($number, $noun = [])
     {
         $number = new Number($number);
         $num = $number->getValue();
 
         if (empty($noun)) {
-            $noun=array(null, null, Gender::FEATURELESS);
+            $noun = [null, null, Gender::FEATURELESS];
         }
 
         $ret = '';
@@ -298,66 +303,68 @@ class NumberTransformer implements NumberTransformerInterface
         // check if $num is a valid non-zero number
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
             $ret = NumberDictionary::getNumbers()[0];
-            if ($noun[2]!=Gender::FEATURELESS) {
-                $ret .= $this->_sep.$this->_get_noun_declension_for_number('f', $noun);
+            if ($noun[2] != Gender::FEATURELESS) {
+                $ret .= $this->sep . $this->getNounDeclensionForNumber('f', $noun);
             }
+
             return $ret;
         }
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
-            $ret = $this->_minus . $this->_sep;
+            $ret = $this->minus . $this->sep;
             $num = substr($num, 1);
         }
 
         // One is a special case
-        if (abs($num)==1) {
-            $ret = $this->_get_number_inflection_for_gender(NumberDictionary::getNumbers()[1], $noun);
-            if ($noun[2]!=Gender::FEATURELESS) {
-                $ret .= $this->_sep.$this->_get_noun_declension_for_number('o', $noun);
+        if (abs($num) == 1) {
+            $ret = $this->getNumberInflectionForGender(NumberDictionary::getNumbers()[1], $noun);
+            if ($noun[2] != Gender::FEATURELESS) {
+                $ret .= $this->sep . $this->getNounDeclensionForNumber('o', $noun);
             }
+
             return $ret;
         }
 
         // if the absolute value is greater than 9.99*10^302, return infinity
-        if (strlen($num)>306) {
-            return $ret . $this->_infinity;
+        if (strlen($num) > 306) {
+            return $ret . $this->infinity;
         }
 
         // strip excessive zero signs
         $num = ltrim($num, '0');
 
         // split $num to groups of three-digit numbers
-        $num_groups = $this->_splitNumber($num);
+        $num_groups = $this->splitNumber($num);
 
-        $sizeof_numgroups = count($num_groups);
+        $sizeofNumgroups = count($num_groups);
         $showed_noun = false;
         foreach ($num_groups as $i => $number) {
             // what is the corresponding exponent for the current group
-            $pow = $sizeof_numgroups-$i;
+            $pow = $sizeofNumgroups - $i;
 
-            $valid_groups=array();
+            $valid_groups = [];
 
             // skip processment for empty groups
-            if ($number=='000') {
+            if ($number == '000') {
                 continue;
             }
 
             if ($i) {
-                $ret.=$this->_sep;
+                $ret .= $this->sep;
             }
 
-            if ($pow-1) {
-                $ret.=$this->_showDigitsGroup($number, NumberDictionary::getExponents()[($pow-1)*3]);
+            if ($pow - 1) {
+                $ret .= $this->showDigitsGroup($number, NumberDictionary::getExponents()[($pow - 1) * 3]);
             } else {
                 $showed_noun = true;
-                $ret.=$this->_showDigitsGroup($number, $noun, false, $num!=1);
+                $ret .= $this->showDigitsGroup($number, $noun, false, $num != 1);
             }
         }
         if (!$showed_noun) {
-            $ret.=$this->_sep.$this->_get_noun_declension_for_number('m', $noun); // ALWAYS many
+            $ret .= $this->sep . $this->getNounDeclensionForNumber('m', $noun); // ALWAYS many
         }
 
-        return rtrim($ret, $this->_sep);
+        return rtrim($ret, $this->sep);
     }
 }
