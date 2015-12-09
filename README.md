@@ -13,7 +13,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "dev-master"
+        "kwn/number-to-words": "0.0.1"
     }
 }
 ```
@@ -34,22 +34,22 @@ This library currently has two types of number-to-words transformations: number 
 Before using a transformer, it must be created:
 
 ```php
-//build the registry of transformer factories we want to work with
+// build the registry of transformer factories we want to work with
 $registry = new TransformerFactoriesRegistry([
     new EnglishTransformerFactory
 ]);
 
-//create the number to words "manager" class
+// create the number to words "manager" class
 $numberToWords = new NumberToWords($registry);
 
-//build a new number transformer using the RFC 3066 language identifier
+// build a new number transformer using the RFC 3066 language identifier
 $numberTransformer = $numberToWords->getNumberTransformer('en');
 ```
 
 Then it can be used passing in numeric values to the `toWords()` method:
 
 ```php
-$numberTransformer->toWords(5120); //outputs "five thousand one hundred twenty"
+$numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
 
 ### Currency Transformer
@@ -57,29 +57,32 @@ $numberTransformer->toWords(5120); //outputs "five thousand one hundred twenty"
 Creating a currency transformer works just like a number transformer, but you have to provide a currency code and a subunit format (words or numbers).
 
 ```php
-//build the registry of transformer factories we want to work with
+// build the registry of transformer factories we want to work with
 $registry = new TransformerFactoriesRegistry([
     new EnglishTransformerFactory
 ]);
 
-//create the number to words "manager" class
+// create the number to words "manager" class
 $numberToWords = new NumberToWords($registry);
 
-//build a new currency transformer using the RFC 3066 language identifier and ISO 4217 currency identifier
+// build a new currency transformer using the RFC 3066 language identifier and ISO 4217 currency identifier
 $currencyTransformer = $numberToWords->getCurrencyTransformer('en', 'USD', Kwn\NumberToWords\Model\SubunitFormat::WORDS);
 ```
 
 Then it can be used passing in numeric values to the `toWords()` method:
 
 ```php
-$currencyTransformer->toWords(50.99); //outputs "fifty dollars ninety nine cents"
+$currencyTransformer->toWords(50.99); // outputs "fifty dollars ninety nine cents"
 ```
 
 
 ##Drivers
 
-Language | Number | Currency | Angle | Author
----------|--------|----------|-------|-------
-English  | +      | +        | -     | **janhartigan**
-German   | -      | -        | -     | -
-Polish   | +      | +        | -     | **kwn** (ported from dowgird/pyliczba)
+Language | Number | Currency | Angle | Temperature | Author
+---------|--------|----------|-------|-------------|-------
+English  | +      | +        | -     | -           | ![janhartigan](https://github.com/janhartigan)
+German   | -      | -        | -     | -           | -
+French   | -      | -        | -     | -           | -
+Spanish  | -      | -        | -     | -           | -
+Polish   | +      | +        | -     | -           | ![kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
+Romanian | +      | +        | -     | -           | ![kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
