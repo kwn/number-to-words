@@ -80,9 +80,9 @@ $currencyTransformer->toWords(50.99); // outputs "fifty dollars ninety nine cent
 
 Language | Number | Currency | Angle | Temperature | Author
 ---------|--------|----------|-------|-------------|-------
-English  | +      | +        | -     | -           | ![janhartigan](https://github.com/janhartigan)
+English  | +      | +        | -     | -           | [janhartigan](https://github.com/janhartigan)
 German   | -      | -        | -     | -           | -
 French   | -      | -        | -     | -           | -
 Spanish  | -      | -        | -     | -           | -
-Polish   | +      | +        | -     | -           | ![kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
-Romanian | +      | +        | -     | -           | ![kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
+Polish   | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
+Romanian | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
