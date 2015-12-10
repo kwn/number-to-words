@@ -84,5 +84,6 @@ English  | +      | +        | -     | -           | [janhartigan](https://githu
 German   | -      | -        | -     | -           | -
 French   | -      | -        | -     | -           | -
 Spanish  | -      | -        | -     | -           | -
+Italian  | -      | -        | -     | -           | -
 Polish   | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
 Romanian | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
