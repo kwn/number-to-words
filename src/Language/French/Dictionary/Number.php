@@ -1,6 +1,6 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\English\Dictionary;
+namespace Kwn\NumberToWords\Language\French\Dictionary;
 
 class Number
 {

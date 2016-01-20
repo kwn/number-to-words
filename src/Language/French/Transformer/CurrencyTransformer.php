@@ -1,10 +1,10 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\English\Transformer;
+namespace Kwn\NumberToWords\Language\French\Transformer;
 
 use Kwn\NumberToWords\Model\Number;
 use Kwn\NumberToWords\Model\SubunitFormat;
-use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary;
+use Kwn\NumberToWords\Language\French\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Transformer\CurrencyTransformer as BaseCurrencyTransformer;
 
 class CurrencyTransformer extends BaseCurrencyTransformer

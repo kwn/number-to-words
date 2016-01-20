@@ -1,9 +1,9 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\English\Transformer;
+namespace Kwn\NumberToWords\Language\French\Transformer;
 
 use Kwn\NumberToWords\Model\Number;
-use Kwn\NumberToWords\Language\English\Dictionary\Number as NumberDictionary;
+use Kwn\NumberToWords\Language\French\Dictionary\Number as NumberDictionary;
 use Kwn\NumberToWords\Transformer\NumberTransformer as NumberTransformerInterface;
 
 class NumberTransformer implements NumberTransformerInterface

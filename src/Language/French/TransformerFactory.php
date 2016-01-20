@@ -1,14 +1,14 @@
 <?php
 
-namespace Kwn\NumberToWords\Language\English;
+namespace Kwn\NumberToWords\Language\French;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
 use Kwn\NumberToWords\Model\Currency;
 use Kwn\NumberToWords\Model\SubunitFormat;
-use Kwn\NumberToWords\Language\English\Transformer\NumberTransformer;
-use Kwn\NumberToWords\Language\English\Transformer\CurrencyTransformer;
-use Kwn\NumberToWords\Language\English\Dictionary\Number as NumberDictionary;
-use Kwn\NumberToWords\Language\English\Dictionary\Currency as CurrencyDictionary;
+use Kwn\NumberToWords\Language\French\Transformer\NumberTransformer;
+use Kwn\NumberToWords\Language\French\Transformer\CurrencyTransformer;
+use Kwn\NumberToWords\Language\French\Dictionary\Number as NumberDictionary;
+use Kwn\NumberToWords\Language\French\Dictionary\Currency as CurrencyDictionary;
 use Kwn\NumberToWords\Transformer\TransformerFactory as TransformerFactoryInterface;
 
 class TransformerFactory implements TransformerFactoryInterface
