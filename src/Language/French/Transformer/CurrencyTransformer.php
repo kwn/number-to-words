@@ -20,7 +20,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     protected $currencyDictionary;
 
     /**
-     * @param NumberTransformer $numberTransformer
+     * @param NumberTransformer  $numberTransformer
      * @param CurrencyDictionary $currencyDictionary
      */
     public function __construct(NumberTransformer $numberTransformer, CurrencyDictionary $currencyDictionary)
@@ -40,7 +40,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     {
         $number = $this->createCurrencyNumber($number);
 
-        return $this->getIntegerPart($number) . ' ' . $this->getFractionalPart($number);
+        return $this->getIntegerPart($number) . ' et ' . $this->getFractionalPart($number);
     }
 
     /**
@@ -65,7 +65,11 @@ class CurrencyTransformer extends BaseCurrencyTransformer
         $value = $number->getValue();
         $unitName = $this->currencyDictionary->getUnitName($this->currency, !$this->isSingular($value));
 
-        return $this->numberTransformer->toWords($value) . ' ' . $unitName;
+        if ($value % 1000 === 0) {
+            return $this->numberTransformer->toWords($value) . ' d\'' . $unitName;
+        } else {
+            return $this->numberTransformer->toWords($value) . ' ' . $unitName;
+        }
     }
 
     /**

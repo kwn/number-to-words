@@ -15,11 +15,26 @@ class Currency
     ];
 
     protected $subunitNames = [
-        'PLN' => ['singular' => 'grosz', 'plural' => 'groszy'],
-        'EUR' => ['singular' => 'centime', 'plural' => 'centimes'],
-        'GBP' => ['singular' => 'penny', 'plural' => 'pence'],
-        'USD' => ['singular' => 'cent', 'plural' => 'cents'],
-        'CHF' => ['singular' => 'centime', 'plural' => 'centimes'],
+        'PLN' => [
+            'singular' => 'grosz',
+            'plural'   => 'groszy'
+        ],
+        'EUR' => [
+            'singular' => 'centime',
+            'plural'   => 'centimes'
+        ],
+        'GBP' => [
+            'singular' => 'penny',
+            'plural'   => 'pence'
+        ],
+        'USD' => [
+            'singular' => 'cent',
+            'plural'   => 'cents'
+        ],
+        'CHF' => [
+            'singular' => 'centime',
+            'plural'   => 'centimes'
+        ],
     ];
 
     /**
@@ -64,7 +79,6 @@ class Currency
     public function getSubunitName(CurrencyModel $currency, $plural)
     {
         $subunit = $this->subunitNames[$currency->getIdentifier()];
-
         return $subunit[$plural ? 'plural' : 'singular'];
     }
 }

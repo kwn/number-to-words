@@ -31,7 +31,6 @@ class NumberTransformer implements NumberTransformerInterface
     public function toWords($number)
     {
         $number = new Number($number);
-
         //if we can't build any triplets, it means we're at (or below) zero
         if (!$triplets = $this->buildTriplets($number)) {
             return $this->numberDictionary->getZero();
@@ -55,7 +54,7 @@ class NumberTransformer implements NumberTransformerInterface
 
         while ($value > 0) {
             $triplets[] = $value % 1000;
-            $value = (int) ($value / 1000);
+            $value = (int)($value / 1000);
         }
 
         return $triplets;
@@ -91,8 +90,8 @@ class NumberTransformer implements NumberTransformerInterface
     protected function threeDigitsToWords($value)
     {
         $units = $value % 10;
-        $tens = (int) ($value / 10) % 10;
-        $hundreds = (int) ($value / 100) % 10;
+        $tens = (int)($value / 10) % 10;
+        $hundreds = (int)($value / 100) % 10;
 
         $words = [];
 
