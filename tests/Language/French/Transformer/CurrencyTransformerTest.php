@@ -97,7 +97,11 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
                 [$transformer, "cinq cent quarante-cinq {$unitName}s et cinquante-deux {$pluralSubunitName}", 545.52],
                 [$transformer, "cinq cent quarante-cinq {$unitName}s et zéro {$pluralSubunitName}", 545],
                 [$transformer, "cinq cent quarante-cinq {$unitName}s et un {$singularSubunitName}", 545.01],
-                [$transformer, "cinq cent quarante-cinq {$unitName}s et quatre-vingt-dix-neuf {$pluralSubunitName}", 545.99]
+                [
+                    $transformer, 
+                    "cinq cent quarante-cinq {$unitName}s et trente et un {$pluralSubunitName}",
+                    545.31
+                ]
             ]);
         }
 
