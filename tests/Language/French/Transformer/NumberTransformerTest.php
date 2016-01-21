@@ -30,14 +30,8 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
             ['cinquante', 50],
             ['cinquante-huit', 58],
             ['quatre-vingt-dix', 90],
-            ['quatre-vingt-dix et un', 91], // Should be quatre-vingt-onze
-            ['quatre-vingt-dix-deux', 92], // Should be quatre-vingt-douze
-            ['quatre-vingt-dix-trois', 93], // Should be quatre-vingt-treize
-            ['quatre-vingt-dix-quatre', 94], // Should be quatre-vingt-quatorze
-            ['quatre-vingt-dix-cinq', 95], // Should be quatre-vingt-quinze
-            ['quatre-vingt-dix-six', 96], // Should be quatre-vingt-seize
-            ['quatre-vingt-dix-sept', 97],
-            ['quatre-vingt-dix-huit', 98],
+            ['quatre-vingt-onze', 91],
+            ['quatre-vingt-douze', 92],
             ['quatre-vingt-dix-neuf', 99],
             ['cent', 100],
             ['cent deux', 102],
@@ -46,22 +40,22 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
             ['cinq cent', 500.00],
             ['six cent soixante-six', 666],
             ['six cent soixante', 660],
-            ['un millier', 1000], // Should be mille
-            ['un millier un', 1001], // Should be mille un
-            ['un millier dix', 1010], // Should be mille dix
-            ['un millier quinze', 1015], // Should be mille quinze
-            ['un millier cent', 1100], // Should be mille cent
-            ['un millier cent onze', 1111], // Should be mille cent onze
-            ['quatre millier cinq cent trente-huit', 4538], // Should be quatre mille cinq cent trente-huit
-            ['cinq millier vingt', 5020], // Should be cinq mille vingt
-            ['onze millier un', 11001], // Should be onze mille un
-            ['vingt et un millier cinq cent douze', 21512], // Should be vingt et un mille cinq cent douze
-            ['quatre-vingt-dix millier', 90000], // Should be quatre-vingt-dix mille
-            ['quatre-vingt-dix-deux millier cent', 92100], // Should be quatre-vingt-douze mille cent
-            ['deux cent douze millier cent douze', 212112], // Should be deux cent douze mille cent douze
-            ['sept cent vingt millier dix-huit', 720018], // Should be sept cent vingt mille dix-huit
-            ['un million un millier un', 1001001], // Should be un million mille un
-            ['trois million deux cent quarante-huit millier cinq cent dix-huit', 3248518], // Should be trois million deux cent quarante-huit mille cinq cent dix-huit
+            ['mille', 1000],
+            ['mille un', 1001],
+            ['mille dix', 1010],
+            ['mille quinze', 1015],
+            ['mille cent', 1100],
+            ['mille cent onze', 1111],
+            ['quatre mille cinq cent trente-huit', 4538],
+            ['cinq mille vingt', 5020],
+            ['onze mille un', 11001],
+            ['vingt et un mille cinq cent douze', 21512],
+            ['quatre-vingt-dix mille', 90000],
+            ['quatre-vingt-douze mille cent', 92100],
+            ['deux cent douze mille cent douze', 212112],
+            ['sept cent vingt mille dix-huit', 720018],
+            ['un million mille un', 1001001],
+            ['trois million deux cent quarante-huit mille cinq cent dix-huit', 3248518],
             ['un milliard huit cent million six', 1800000006],
         ];
     }

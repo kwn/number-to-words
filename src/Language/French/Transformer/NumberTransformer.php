@@ -35,8 +35,13 @@ class NumberTransformer implements NumberTransformerInterface
         if (!$triplets = $this->buildTriplets($number)) {
             return $this->numberDictionary->getZero();
         }
+        $final = $this->buildWordsFromTriplets($triplets);
 
-        return $this->buildWordsFromTriplets($triplets);
+        // if some one can optimize this...
+        $final = str_replace('un mille', 'mille', $final);
+        $final = str_replace('_', '', $final);
+
+        return $final;
     }
 
     /**

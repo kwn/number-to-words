@@ -42,14 +42,14 @@ class Number
         'soixante',
         'soixante-dix',
         'quatre-vingts',
-        'quatre-vingt-dix'
+        'quatre-vingt-'
     ];
 
     protected $hundred = 'cent';
 
     protected $mega = [
         '',
-        'millier',
+        'mille',
         'million',
         'milliard',
         'billion',
@@ -84,14 +84,17 @@ class Number
      */
     public function getSubHundred($tens, $units)
     {
+
         $words = "";
         if ($tens === 1) {
             $words .= " " . $this->teens[$units];
+        } elseif ($tens === 9) {
+            $words .= " " . $this->tens[$tens] . $this->teens[$units];
         } else {
             if ($tens > 0) {
                 $words .= " " . $this->tens[$tens];
                 if ($units === 1) {
-                    $words .= " et " . $this->units[$units];
+                    $words .= " et _" . $this->units[$units] . "_";
                 } elseif ($units > 1) {
                     $words .= "-" . $this->units[$units];
                 }
