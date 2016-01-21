@@ -83,7 +83,7 @@ Language | Number | Currency | Angle | Temperature | Author
 ---------|--------|----------|-------|-------------|-------
 English  | +      | +        | -     | -           | [janhartigan](https://github.com/janhartigan)
 German   | -      | -        | -     | -           | -
-French   | -      | -        | -     | -           | -
+French   | +      | +        | -     | -           | -
 Spanish  | -      | -        | -     | -           | -
 Italian  | -      | -        | -     | -           | -
 Polish   | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
