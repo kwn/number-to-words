@@ -88,7 +88,7 @@ class Number
         $words = "";
         if ($tens === 1) {
             $words .= " " . $this->teens[$units];
-        } elseif ($tens === 9) {
+        } elseif ($tens === 7 || $tens === 9) {
             $words .= " " . $this->tens[$tens] . $this->teens[$units];
         } else {
             if ($tens > 0) {
