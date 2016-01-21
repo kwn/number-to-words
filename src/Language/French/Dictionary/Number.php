@@ -40,7 +40,7 @@ class Number
         'quarante',
         'cinquante',
         'soixante',
-        'soixante-dix',
+        'soixante-',
         'quatre-vingts',
         'quatre-vingt-'
     ];
