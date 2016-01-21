@@ -40,9 +40,9 @@ class Number
         'quarante',
         'cinquante',
         'soixante',
-        'soixante-',
-        'quatre-vingts',
-        'quatre-vingt-'
+        'soixante',
+        'quatre-vingt',
+        'quatre-vingt'
     ];
 
     protected $hundred = 'cent';
@@ -87,9 +87,18 @@ class Number
 
         $words = "";
         if ($tens === 1) {
+            // For 1X
             $words .= " " . $this->teens[$units];
+        } elseif ($tens === 7 && $units === 1) {
+            // For 71
+            $words .= " " . $this->tens[$tens] . " et " . $this->teens[$units];
         } elseif ($tens === 7 || $tens === 9) {
-            $words .= " " . $this->tens[$tens] . $this->teens[$units];
+            // For 7X and 9X except 71
+            $words .= " " . $this->tens[$tens] . "-" . $this->teens[$units];
+        } elseif ($tens === 8) {
+            // For 8X
+            $words .= " " . $this->tens[$tens];
+            $words .= $this->units[$units] ? "-" . $this->units[$units] : "s";
         } else {
             if ($tens > 0) {
                 $words .= " " . $this->tens[$tens];
