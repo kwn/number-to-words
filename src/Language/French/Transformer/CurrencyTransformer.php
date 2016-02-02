@@ -83,7 +83,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     {
         $subunitValue = $number->getSubunits();
 
-        if($subunitValue < 10){
+        if($subunitValue < 10 && $number->getDecimalPlaces() === 1){
             $subunitValue *= 10;
         }
 
