@@ -83,6 +83,10 @@ class CurrencyTransformer extends BaseCurrencyTransformer
     {
         $subunitValue = $number->getSubunits();
 
+        if($subunitValue < 10){
+            $subunitValue *= 10;
+        }
+
         //if the subunit format is numbers, we want to simply return a fraction
         if ($this->subunitFormat->getFormat() === SubunitFormat::NUMBERS) {
             return $subunitValue . '/100';
