@@ -110,8 +110,8 @@ class Number
             } else {
                 $words .= $this->units[$units];
             }
-
         }
+
         return trim($words);
     }
 
@@ -128,7 +128,6 @@ class Number
             } else {
                 return $word . ' ' . $this->hundred;
             }
-
         }
     }
 
