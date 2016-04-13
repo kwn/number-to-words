@@ -14,7 +14,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "0.0.1"
+        "kwn/number-to-words": "0.0.2"
     }
 }
 ```
@@ -83,8 +83,10 @@ Language | Number | Currency | Angle | Temperature | Author
 ---------|--------|----------|-------|-------------|-------
 English  | +      | +        | -     | -           | [janhartigan](https://github.com/janhartigan)
 German   | -      | -        | -     | -           | -
-French   | +      | +        | -     | -           | -
+French   | +      | +        | -     | -           | [Zehir](https://github.com/Zehir)
 Spanish  | -      | -        | -     | -           | -
 Italian  | -      | -        | -     | -           | -
 Polish   | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
 Romanian | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
+
+A huge _thank you_ to all contributors!
