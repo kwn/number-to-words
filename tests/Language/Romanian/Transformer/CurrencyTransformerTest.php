@@ -26,10 +26,10 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
             [$transformer, 'un leu', 1.00],
             [$transformer, 'doi lei', 2],
             [$transformer, 'două mii de lei', 2000],
-            [$transformer, 'un leu și patruzeci și cinci de lei', 1.45],
-            [$transformer, 'un leu și patruzeci de lei', 1.40],
-            [$transformer, 'un leu și patruzeci de lei', 1.4],
-            [$transformer, 'un leu și patruzeci de lei', 1.4000]
+            [$transformer, 'un leu și patruzeci și cinci de bani', 1.45],
+            [$transformer, 'un leu și patruzeci de bani', 1.40],
+            [$transformer, 'un leu și patruzeci de bani', 1.4],
+            [$transformer, 'un leu și patruzeci de bani', 1.4000]
         ];
     }
 
