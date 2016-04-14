@@ -50,7 +50,7 @@ class CurrencyTransformer extends BaseCurrencyTransformer
             $ret .= ' ' . Language::WORD_AND;
 
             if ($convertFraction) {
-                $ret .= ' ' . $this->toWords($fraction, $currNouns[1]);
+                $ret .= ' ' . $this->transformer->toWords($fraction, $currNouns[1]);
             } else {
                 $ret .= $fraction . ' ';
                 $plural_rule = $this->getPluralRule($fraction);
