@@ -1,5 +1,5 @@
 <?php
-namespace Kwn\NumberToWords\Language\Ukrainian\Transformer;
+namespace Kwn\NumberToWords\Language\Russian\Transformer;
 
 use Kwn\NumberToWords\Grammar\Slavonic\Transformer\CurrencyTransformer as SlavonicCurrencyTransformer;
 

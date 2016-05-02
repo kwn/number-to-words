@@ -1,9 +1,9 @@
 <?php
 namespace Kwn\NumberToWords\Language\Ukrainian\Dictionary;
 
-use Kwn\NumberToWords\Model\Currency as CurrencyModel;
+use Kwn\NumberToWords\Grammar\Slavonic\Dictionary\Currency as SlavonicCurrency;
 
-class Currency
+class Currency extends SlavonicCurrency
 {
 
     protected $units = [
@@ -14,9 +14,9 @@ class Currency
         'CHF' => ['франк', 'франки', 'франків'],
         'RON' => ['лей', 'леї', 'леїв'],
         'HUF' => ['форинт', 'форинти', 'форинтів'],
-        'CZK' => ['корона', 'корони', 'корон'],
-        'DKK' => ['корона', 'корони', 'корон'],
-        'SEK' => ['корона', 'корони', 'корон'],
+        'CZK' => ['крона', 'крони', 'крон'],
+        'DKK' => ['крона', 'крони', 'крон'],
+        'SEK' => ['крона', 'крони', 'крон'],
         'UAH' => ['гривня', 'гривні', 'гривень'],
         'KZT' => ['тенге', 'тенге', 'тенге'],
         'RUB' => ['рубль', 'рублі', 'рублів']
@@ -37,31 +37,5 @@ class Currency
         'KZT' => ['тіин', 'тіин', 'тіин'],
         'RUB' => ['копійка', 'копійки', 'копійок']
     ];
-
-    public function getUnitName(CurrencyModel $currency)
-    {
-        return $this->units[$currency->getIdentifier()];
-    }
-
-    public function getSubunitName(CurrencyModel $currency)
-    {
-        return $this->subunits[$currency->getIdentifier()];
-    }
-
-    /**
-     * @return array
-     */
-    public function getUnitNames()
-    {
-        return $this->units;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSubunitNames()
-    {
-        return $this->subunits;
-    }
 
 }

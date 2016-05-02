@@ -1,18 +1,19 @@
 <?php
 namespace Kwn\NumberToWords\Language\Ukrainian\Dictionary;
 
+use Kwn\NumberToWords\Grammar\Slavonic\Dictionary\Number as SlavonicNumber;
 use Kwn\NumberToWords\Grammar\Gender;
 
-class Number
+class Number extends SlavonicNumber
 {
-    static public $zero = 'нуль';
+    protected $zero = 'нуль';
 
-    static public $ten = [
+    protected $ten = [
         ['', 'один', 'два', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'],
         ['', 'одна', 'дві', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'],
     ];
 
-    static public $teens = [
+    protected $teens = [
         'десять',
         'одинадцять',
         'дванадцять',
@@ -25,7 +26,7 @@ class Number
         'дев\'ятнадцять',
     ];
 
-    static public $tens = [
+    protected $tens = [
         2 => 'двадцять',
         'тридцять',
         'сорок',
@@ -36,7 +37,7 @@ class Number
         'дев\'яносто',
     ];
 
-    static public $hundred = [
+    protected $hundred = [
         '',
         'сто',
         'двісті',
@@ -49,7 +50,7 @@ class Number
         'дев\'ятсот',
     ];
 
-    static public $mega = [
+    protected $mega = [
         [3 => Gender::FEMALE],
         [3 => Gender::MALE],
 
@@ -61,8 +62,4 @@ class Number
         ['секстильйон', 'секстильйони', 'секстильйонів', Gender::MALE],
     ];
 
-
-    public function reverseTen() {
-        self::$ten = array_reverse(self::$ten);
-    }
 }
