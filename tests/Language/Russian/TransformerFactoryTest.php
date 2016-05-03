@@ -29,7 +29,7 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
         $numberTransformer = $this->transformerFactory->createNumberTransformer();
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Ukrainian\Transformer\NumberTransformer',
+            'Kwn\NumberToWords\Language\Russian\Transformer\NumberTransformer',
             $numberTransformer
         );
     }
@@ -37,12 +37,12 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateCurrencyTransformerBuildsCorrectClass()
     {
         $currencyTransformer = $this->transformerFactory->createCurrencyTransformer(
-            new Currency('UAH'),
+            new Currency('RUB'),
             new SubunitFormat(SubunitFormat::WORDS)
         );
 
         $this->assertInstanceOf(
-            'Kwn\NumberToWords\Language\Ukrainian\Transformer\CurrencyTransformer',
+            'Kwn\NumberToWords\Language\Russian\Transformer\CurrencyTransformer',
             $currencyTransformer
         );
     }
