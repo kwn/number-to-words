@@ -11,7 +11,6 @@ class NumberTransformerTest extends \PHPUnit_Framework_TestCase
     public function testToWords($expectedValue, $number)
     {
         $transformer = new NumberTransformer(new NumberDictionary());
-
         $this->assertEquals($expectedValue, $transformer->toWords($number));
     }
 

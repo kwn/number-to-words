@@ -1,5 +1,4 @@
 <?php
-
 namespace Kwn\NumberToWords\Language\Ukrainian\Transformer;
 
 use Kwn\NumberToWords\Model\Currency;
@@ -15,7 +14,6 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     public function testToWordsWithUnitsOnly($expectedValue, $amount)
     {
         $transformer = $this->createTransformer('UAH', SubunitFormat::WORDS);
-
         $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
@@ -39,7 +37,6 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     public function testToWordsWithNumbersFormatSubunits($expectedValue, $amount)
     {
         $transformer = $this->createTransformer('UAH', SubunitFormat::NUMBERS);
-
         $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
@@ -58,7 +55,6 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
     public function testToWordsWithWordsFormatSubunits($expectedValue, $amount)
     {
         $transformer = $this->createTransformer('UAH', SubunitFormat::WORDS);
-
         $this->assertEquals($expectedValue, $transformer->toWords($amount));
     }
 
@@ -74,14 +70,12 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string $currencyCode
-     * @param int    $subunitFormat
-     *
+     * @param int $subunitFormat
      * @return CurrencyTransformer
      */
     private function createTransformer($currencyCode, $subunitFormat)
     {
         $transformer = new CurrencyTransformer(new NumberTransformer(new NumberDictionary()), new CurrencyDictionary());
-
         $transformer->setCurrency(new Currency($currencyCode));
         $transformer->setSubunitFormat(new SubunitFormat($subunitFormat));
 

@@ -27,7 +27,6 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateNumberTransformerBuildsCorrectClass()
     {
         $numberTransformer = $this->transformerFactory->createNumberTransformer();
-
         $this->assertInstanceOf(
             'Kwn\NumberToWords\Language\Ukrainian\Transformer\NumberTransformer',
             $numberTransformer
@@ -40,7 +39,6 @@ class TransformerFactoryTest extends \PHPUnit_Framework_TestCase
             new Currency('UAH'),
             new SubunitFormat(SubunitFormat::WORDS)
         );
-
         $this->assertInstanceOf(
             'Kwn\NumberToWords\Language\Ukrainian\Transformer\CurrencyTransformer',
             $currencyTransformer
