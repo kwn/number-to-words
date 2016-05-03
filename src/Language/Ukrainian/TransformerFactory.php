@@ -1,5 +1,4 @@
 <?php
-
 namespace Kwn\NumberToWords\Language\Ukrainian;
 
 use Kwn\NumberToWords\Exception\InvalidArgumentException;
@@ -51,16 +50,14 @@ class TransformerFactory implements TransformerFactoryInterface
     /**
      * Create currency transformer
      *
-     * @param Currency      $currency
+     * @param Currency $currency
      * @param SubunitFormat $subunitFormat
-     *
      * @throws InvalidArgumentException
      * @return CurrencyTransformer
      */
     public function createCurrencyTransformer(Currency $currency, SubunitFormat $subunitFormat)
     {
         $transformer = new CurrencyTransformer($this->createNumberTransformer(), new CurrencyDictionary());
-
         $transformer->setCurrency($currency);
         $transformer->setSubunitFormat($subunitFormat);
 

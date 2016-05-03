@@ -5,7 +5,6 @@ use Kwn\NumberToWords\Grammar\Slavonic\Dictionary\Currency as SlavonicCurrency;
 
 class Currency extends SlavonicCurrency
 {
-
     protected $units = [
         'PLN' => ['злотий', 'злотих', 'злотих'],
         'EUR' => ['євро', 'євро', 'євро'],
@@ -19,7 +18,7 @@ class Currency extends SlavonicCurrency
         'SEK' => ['крона', 'крони', 'крон'],
         'UAH' => ['гривня', 'гривні', 'гривень'],
         'KZT' => ['тенге', 'тенге', 'тенге'],
-        'RUB' => ['рубль', 'рублі', 'рублів']
+        'RUB' => ['рубль', 'рублі', 'рублів'],
     ];
 
     protected $subunits = [
@@ -35,7 +34,6 @@ class Currency extends SlavonicCurrency
         'SEK' => ['оре', 'оре', 'оре'],
         'UAH' => ['копійка', 'копійки', 'копійок'],
         'KZT' => ['тіин', 'тіин', 'тіин'],
-        'RUB' => ['копійка', 'копійки', 'копійок']
+        'RUB' => ['копійка', 'копійки', 'копійок'],
     ];
-
 }

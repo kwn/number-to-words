@@ -20,7 +20,8 @@ class NumberTransformer implements NumberTransformerInterface
         $this->numberDictionary = $numberDictionary;
     }
 
-    public function getNumberDictionary() {
+    public function getNumberDictionary()
+    {
         return $this->numberDictionary;
     }
 
@@ -47,7 +48,8 @@ class NumberTransformer implements NumberTransformerInterface
         $megaSize = sizeof($mega);
 
         $signs = $megaSize * 3;
-        // 24 equal quantity of zeros of the biggest number in NumberDictionary::$unit + 3 additional sign (point and two zero)
+        // $signs equal quantity of zeros of the biggest number in NumberDictionary::$mega
+        // + 3 additional sign (point and two zero)
         list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", floatval($value)));
 
         $out = [];
@@ -97,17 +99,14 @@ class NumberTransformer implements NumberTransformerInterface
         if ($n > 10 && $n < 20) {
             return $f5;
         }
-
         $n = $n % 10;
         if ($n > 1 && $n < 5) {
             return $f2;
         }
-
         if ($n == 1) {
             return $f1;
         }
 
         return $f5;
     }
-
 }

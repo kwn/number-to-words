@@ -1,5 +1,4 @@
 <?php
-
 namespace Kwn\NumberToWords\Grammar\Slavonic\Transformer;
 
 use Kwn\NumberToWords\Model;
@@ -49,16 +48,13 @@ class CurrencyTransformer extends BaseCurrencyTransformer
      * Convert given number to words
      *
      * @param number $number
-     *
      * @return string
      */
     public function toWords($number)
     {
         $numberTransformer = $this->getNumberTransformer();
-
         /** @var Model\Number $number */
         $number = $this->createCurrencyNumber($number);
-
         $numberTransformer->getNumberDictionary()->reverseTen();
         $words = $this->getIntegerPart($number) . ' ' . $this->getFractionalPart($number);
         $numberTransformer->getNumberDictionary()->reverseTen();
@@ -80,18 +76,15 @@ class CurrencyTransformer extends BaseCurrencyTransformer
      * Gets the integer part of the provided amount
      *
      * @param Model\Number $number
-     *
      * @return string
      */
     protected function getIntegerPart(Model\Number $number)
     {
-        $numberTransformer = $this->getNumberTransformer();
+        $transformer = $this->getNumberTransformer();
         $currencyDictionary = $this->getCurrencyDictionary();
-
         $value = $number->getValue();
         $unit = $currencyDictionary->getUnitName($this->currency);
-
-        $words = $numberTransformer->toWords($value) . ' ' . $numberTransformer->morph($value, $unit[0], $unit[1], $unit[2]);
+        $words = $transformer->toWords($value) . ' ' . $transformer->morph($value, $unit[0], $unit[1], $unit[2]);
 
         return $words;
     }
@@ -100,24 +93,20 @@ class CurrencyTransformer extends BaseCurrencyTransformer
      * Gets the fractional part of the provided amount
      *
      * @param Model\Number $number
-     *
      * @return string
      */
     protected function getFractionalPart(Model\Number $number)
     {
-        $numberTransformer = $this->getNumberTransformer();
+        $transformer = $this->getNumberTransformer();
         $currencyDictionary = $this->getCurrencyDictionary();
-
         $value = $number->getSubunits();
         // if the subunit format is numbers, we want to simply return a fraction
         if ($this->subunitFormat->getFormat() === SubunitFormat::NUMBERS) {
             return sprintf('%d/100', $value);
         }
-
         $unit = $currencyDictionary->getSubunitName($this->currency);
-        $words = $numberTransformer->toWords($value) . ' ' . $numberTransformer->morph($value, $unit[0], $unit[1], $unit[2]);
+        $words = $transformer->toWords($value) . ' ' . $transformer->morph($value, $unit[0], $unit[1], $unit[2]);
 
         return $words;
     }
-
 }

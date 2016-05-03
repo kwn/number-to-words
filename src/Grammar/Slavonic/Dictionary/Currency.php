@@ -5,7 +5,6 @@ use Kwn\NumberToWords\Model\Currency as CurrencyModel;
 
 abstract class Currency
 {
-
     protected $units = [];
 
     protected $subunits = [];
@@ -35,5 +34,4 @@ abstract class Currency
     {
         return $this->subunits;
     }
-
 }

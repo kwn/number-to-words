@@ -53,7 +53,6 @@ class Number extends SlavonicNumber
     protected $mega = [
         [3 => Gender::FEMALE],
         [3 => Gender::MALE],
-
         ['тисяча', 'тисячі', 'тисяч', Gender::FEMALE],
         ['мільйон', 'мільйони', 'мільйонів', Gender::MALE],
         ['мільярд', 'мільярди', 'мільярдів', Gender::MALE],
@@ -61,5 +60,4 @@ class Number extends SlavonicNumber
         ['квадрильйон', 'квадрильйони', 'квадрильйонів', Gender::MALE],
         ['секстильйон', 'секстильйони', 'секстильйонів', Gender::MALE],
     ];
-
 }
