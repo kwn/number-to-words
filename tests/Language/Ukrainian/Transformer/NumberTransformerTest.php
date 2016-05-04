@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Language\Ukrainian\Transformer;
 
 use Kwn\NumberToWords\Language\Ukrainian\Dictionary\Number as NumberDictionary;

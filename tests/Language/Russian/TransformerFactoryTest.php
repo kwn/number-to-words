@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Language\Russian;
 
 use Kwn\NumberToWords\Model\Currency;

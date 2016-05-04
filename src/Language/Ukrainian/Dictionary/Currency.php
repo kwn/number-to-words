@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Language\Ukrainian\Dictionary;
 
 use Kwn\NumberToWords\Grammar\Slavonic\Dictionary\Currency as SlavonicCurrency;

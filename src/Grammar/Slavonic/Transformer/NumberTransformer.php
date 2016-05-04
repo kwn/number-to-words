@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Grammar\Slavonic\Transformer;
 
 use Kwn\NumberToWords\Model\Number;
@@ -95,7 +96,7 @@ class NumberTransformer implements NumberTransformerInterface
      */
     public function morph($n, $f1, $f2, $f5)
     {
-        $n = abs(intval($n)) % 100;
+        $n = abs((int) $n) % 100;
         if ($n > 10 && $n < 20) {
             return $f5;
         }

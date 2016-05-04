@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Grammar\Slavonic\Dictionary;
 
 use Kwn\NumberToWords\Model\Currency as CurrencyModel;
@@ -9,11 +10,21 @@ abstract class Currency
 
     protected $subunits = [];
 
+    /**
+     * @param CurrencyModel $currency
+     *
+     * @return string
+     */
     public function getUnitName(CurrencyModel $currency)
     {
         return $this->units[$currency->getIdentifier()];
     }
 
+    /**
+     * @param CurrencyModel $currency
+     *
+     * @return string
+     */
     public function getSubunitName(CurrencyModel $currency)
     {
         return $this->subunits[$currency->getIdentifier()];

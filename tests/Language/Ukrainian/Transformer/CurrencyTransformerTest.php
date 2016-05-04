@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Language\Ukrainian\Transformer;
 
 use Kwn\NumberToWords\Model\Currency;
@@ -70,7 +71,8 @@ class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string $currencyCode
-     * @param int $subunitFormat
+     * @param int    $subunitFormat
+     *
      * @return CurrencyTransformer
      */
     private function createTransformer($currencyCode, $subunitFormat)

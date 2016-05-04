@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Grammar\Slavonic\Dictionary;
 
 abstract class Number
@@ -63,6 +64,9 @@ abstract class Number
         return $this->mega;
     }
 
+    /**
+     * @return void
+     */
     public function reverseTen()
     {
         $this->ten = array_reverse($this->ten);

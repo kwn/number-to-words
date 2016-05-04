@@ -1,4 +1,5 @@
 <?php
+
 namespace Kwn\NumberToWords\Grammar\Slavonic\Transformer;
 
 use Kwn\NumberToWords\Model;
