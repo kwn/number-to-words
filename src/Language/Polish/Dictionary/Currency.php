@@ -1,5 +1,4 @@
 <?php
-
 namespace Kwn\NumberToWords\Language\Polish\Dictionary;
 
 class Currency
