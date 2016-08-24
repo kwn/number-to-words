@@ -20,8 +20,6 @@ abstract class CurrencyTransformer
     protected $subunitFormat;
 
     /**
-     * Set the currency to use for the transformation
-     *
      * @param Currency $currency
      *
      * @throws InvalidArgumentException
@@ -34,8 +32,6 @@ abstract class CurrencyTransformer
     }
 
     /**
-     * Set the subunit format to use for the transformation
-     *
      * @param SubunitFormat $subunitFormat
      */
     public function setSubunitFormat(SubunitFormat $subunitFormat)
@@ -44,8 +40,6 @@ abstract class CurrencyTransformer
     }
 
     /**
-     * Convert amount to words
-     *
      * @param mixed $number
      *
      * @return string
@@ -53,15 +47,11 @@ abstract class CurrencyTransformer
     abstract public function toWords($number);
 
     /**
-     * Gets an array of valid currencies (ISO 4217)
-     *
      * @return array
      */
     abstract protected function getValidCurrencies();
 
     /**
-     * Reduce the provided number to just two significant digits
-     *
      * @param mixed $number
      *
      * @return Number
@@ -76,8 +66,6 @@ abstract class CurrencyTransformer
     }
 
     /**
-     * Check if currency definitions exist in dictionary
-     *
      * @param Currency $currency
      *
      * @throws InvalidArgumentException

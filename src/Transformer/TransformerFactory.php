@@ -8,22 +8,16 @@ use Kwn\NumberToWords\Model\SubunitFormat;
 interface TransformerFactory
 {
     /**
-     * Return language identifier (RFC 3066)
-     *
      * @return string
      */
     public function getLanguageIdentifier();
 
     /**
-     * Create number transformer
-     *
      * @return NumberTransformer
      */
     public function createNumberTransformer();
 
     /**
-     * Create currency transformer
-     *
      * @param Currency      $currency
      * @param SubunitFormat $subunitFormat
      *

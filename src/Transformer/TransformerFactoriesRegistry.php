@@ -10,7 +10,7 @@ class TransformerFactoriesRegistry
     private $transformerFactories;
 
     /**
-     * @param array $transformerFactories A list of transformer factories to registry
+     * @param array $transformerFactories
      */
     public function __construct(array $transformerFactories = [])
     {
@@ -22,8 +22,6 @@ class TransformerFactoriesRegistry
     }
 
     /**
-     * Get registered transformer factories
-     *
      * @return \ArrayObject
      */
     public function getTransformerFactories()
@@ -32,8 +30,6 @@ class TransformerFactoriesRegistry
     }
 
     /**
-     * Add transformer factory to registry
-     *
      * @param TransformerFactory $factory
      */
     public function addTransformerFactory(TransformerFactory $factory)
@@ -42,8 +38,6 @@ class TransformerFactoriesRegistry
     }
 
     /**
-     * Remove transformer factory from registry
-     *
      * @param TransformerFactory $factory
      */
     public function removeTransformerFactory(TransformerFactory $factory)
