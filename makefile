@@ -1,12 +1,12 @@
-test: phpunit-dev phpcs
+test: phpunit phpcs
 
 build: phpunit-report phpcs
 
-phpunit-dev:
-	vendor/bin/phpunit
+phpunit:
+	vendor/bin/phpunit --no-coverage
 
-phpunit-report:
-	vendor/bin/phpunit -c phpunit.xml.report
+phpunit-coverage:
+	vendor/bin/phpunit
 
 phpcbf:
 	vendor/bin/phpcbf -p --standard=PSR2 src tests
