@@ -3,6 +3,9 @@
         <testsuite name="Number to string tests">
             <directory>tests/</directory>
         </testsuite>
+        <testsuite name="Legacy number to string tests">
+            <directory>legacy-tests/</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>

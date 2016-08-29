@@ -5,6 +5,9 @@ build: phpunit-report phpcs
 phpunit:
 	vendor/bin/phpunit --no-coverage
 
+phpunit-legacy:
+	vendor/bin/phpunit --no-coverage --testsuite="Legacy number to string tests"
+
 phpunit-coverage:
 	vendor/bin/phpunit
 
