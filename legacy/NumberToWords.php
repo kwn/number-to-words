@@ -2,13 +2,19 @@
 
 namespace NumberToWords;
 
+use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
+use NumberToWords\NumberTransformer\EnglishNumberTransformer;
+use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 
 class NumberToWords
 {
     private $languageMappings = [
-        'pl' => PolishNumberTransformer::class
+        'bg' => BulgarianNumberTransformer::class,
+        'en' => EnglishNumberTransformer::class,
+        'fr' => FrenchNumberTransformer::class,
+        'pl' => PolishNumberTransformer::class,
     ];
 
     /**

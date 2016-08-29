@@ -2,7 +2,7 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class PolishNumberTransformer implements NumberTransformer
+class EnglishNumberTransformer implements NumberTransformer
 {
     /**
      * @inheritdoc
@@ -11,6 +11,6 @@ class PolishNumberTransformer implements NumberTransformer
     {
         $converter = new \Numbers_Words();
 
-        return $converter->toWords($number, 'pl');
+        return $converter->toWords($number, 'en_US');
     }
 }

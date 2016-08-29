@@ -2,26 +2,11 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class PolishNumberTransformerTest extends \PHPUnit_Framework_TestCase
+class PolishNumberTransformerTest extends NumberTransformerTest
 {
-
-    /** @var PolishNumberTransformer */
-    private $numberTransformer;
-
     public function setUp()
     {
         $this->numberTransformer = new PolishNumberTransformer();
-    }
-
-    /**
-     * @dataProvider providerItConvertsNumbersToWords
-     *
-     * @param int    $number
-     * @param string $expectedString
-     */
-    public function testItConvertsNumbersToWords($number, $expectedString)
-    {
-        self::assertEquals($expectedString, $this->numberTransformer->toWords($number));
     }
 
     public function providerItConvertsNumbersToWords()
@@ -81,6 +66,37 @@ class PolishNumberTransformerTest extends \PHPUnit_Framework_TestCase
             [7232, 'siedem tysięcy dwieście trzydzieści dwa'],
             [8569, 'osiem tysięcy pięćset sześćdziesiąt dziewięć'],
             [9539, 'dziewięć tysięcy pięćset trzydzieści dziewięć'],
+            [10, 'dziesięć'],
+            [20, 'dwadzieścia'],
+            [50, 'pięćdziesiąt'],
+            [90, 'dziewięćdziesiąt'],
+            [12, 'dwanaście'],
+            [25, 'dwadzieścia pięć'],
+            [58, 'pięćdziesiąt osiem'],
+            [99, 'dziewięćdziesiąt dziewięć'],
+            [100, 'sto'],
+            [102, 'sto dwa'],
+            [113, 'sto trzynaście'],
+            [229, 'dwieście dwadzieścia dziewięć'],
+            [500, 'pięćset'],
+            [666, 'sześćset sześćdziesiąt sześć'],
+            [660, 'sześćset sześćdziesiąt'],
+            [1000, 'jeden tysiąc'],
+            [1001, 'jeden tysiąc jeden'],
+            [1010, 'jeden tysiąc dziesięć'],
+            [1015, 'jeden tysiąc piętnaście'],
+            [1100, 'jeden tysiąc sto'],
+            [1111, 'jeden tysiąc sto jedenaście'],
+            [4538, 'cztery tysiące pięćset trzydzieści osiem'],
+            [5020, 'pięć tysięcy dwadzieścia'],
+            [11001, 'jedenaście tysięcy jeden'],
+            [21512, 'dwadzieścia jeden tysięcy pięćset dwanaście'],
+            [90000, 'dziewięćdziesiąt tysięcy'],
+            [92100, 'dziewięćdziesiąt dwa tysiące sto'],
+            [212112, 'dwieście dwanaście tysięcy sto dwanaście'],
+            [720018, 'siedemset dwadzieścia tysięcy osiemnaście'],
+            [1001001, 'jeden milion jeden tysiąc jeden'],
+            [3248518, 'trzy miliony dwieście czterdzieści osiem tysięcy pięćset osiemnaście'],
         ];
     }
 }
