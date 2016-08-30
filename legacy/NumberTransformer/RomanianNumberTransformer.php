@@ -2,6 +2,8 @@
 
 namespace NumberToWords\NumberTransformer;
 
+use NumberToWords\Legacy\Numbers\Words;
+
 class RomanianNumberTransformer implements NumberTransformer
 {
     /**
@@ -9,7 +11,7 @@ class RomanianNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new \Numbers_Words();
+        $converter = new Words();
 
         return $converter->toWords($number, 'ro_RO');
     }

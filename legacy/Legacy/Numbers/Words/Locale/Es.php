@@ -1,51 +1,10 @@
 <?php
-/**
- * Words
- *
- * PHP version 5
- *
- * Copyright (c) 1997-2006 The PHP Group
- *
- * This source file is subject to version 3.01 of the PHP license,
- * that is bundled with this package in the file LICENSE, and is
- * available at through the world-wide-web at
- * http://www.php.net/license/3_01.txt
- * If you did not receive a copy of the PHP license and are unable to
- * obtain it through the world-wide-web, please send a note to
- * license@php.net so we can mail you a copy immediately.
- *
- * @category Numbers
- * @package  Words
- * @author   Xavier Noguer
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @version  SVN: $Id$
- * @link     http://pear.php.net/package/Numbers_Words
- */
 
-/**
- * Class for translating numbers into Spanish (Castellano).
- *
- * @author Xavier Noguer
- * @package Words
- */
+namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+use NumberToWords\Legacy\Numbers\Words;
 
-/**
- * Class for translating numbers into Spanish (Castellano).
- * It supports up to decallones (10^6).
- * It doesn't support spanish tonic accents (acentos).
- *
- * @category Numbers
- * @package  Words
- * @author   Xavier Noguer
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @link     http://pear.php.net/package/Numbers_Words
- */
-class Numbers_Words_Locale_es extends Numbers_Words
+class Es extends Words
 {
     // {{{ properties
 
@@ -68,7 +27,7 @@ class Numbers_Words_Locale_es extends Numbers_Words
      * @var string
      * @access public
      */
-    var $lang_native = 'Espa�ol';
+    var $lang_native = 'Español';
 
     /**
      * The word for the minus sign
@@ -85,16 +44,16 @@ class Numbers_Words_Locale_es extends Numbers_Words
     var $_exponent = array(
         0 => array('',''),
         3 => array('mil','mil'),
-        6 => array('mill�n','millones'),
-       12 => array('bill�n','billones'),
-       18 => array('tril�n','trillones'),
-       24 => array('cuatrill�n','cuatrillones'),
-       30 => array('quintill�n','quintillones'),
-       36 => array('sextill�n','sextillones'),
-       42 => array('septill�n','septillones'),
-       48 => array('octall�n','octallones'),
-       54 => array('nonall�n','nonallones'),
-       60 => array('decall�n','decallones'),
+        6 => array('millón','millones'),
+       12 => array('billón','billones'),
+       18 => array('trilón','trillones'),
+       24 => array('cuatrillón','cuatrillones'),
+       30 => array('quintillón','quintillones'),
+       36 => array('sextillón','sextillones'),
+       42 => array('septillón','septillones'),
+       48 => array('octallón','octallones'),
+       54 => array('nonallón','nonallones'),
+       60 => array('decallón','decallones'),
         );
     /**
      * The array containing the digits (indexed by the digits themselves).
@@ -242,7 +201,7 @@ class Numbers_Words_Locale_es extends Numbers_Words
                 $ret .= $this->_sep . 'veinte';
             } else {
                 if (($power > 0) and ($d == 1)) {
-                    $ret .= $this->_sep . 'veinti�n';
+                    $ret .= $this->_sep . 'veintiún';
                 } else {
                     $ret .= $this->_sep . 'veinti' . $this->_digits[$d];
                 }

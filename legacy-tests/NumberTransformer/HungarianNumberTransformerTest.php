@@ -12,10 +12,6 @@ class HungarianNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords()
     {
         return [
-            [0, 'nulla']
-        ];
-
-        return [
             [0, 'nulla'],
             [1, 'egy'],
             [2, 'kettõ'],
