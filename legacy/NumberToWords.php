@@ -13,6 +13,8 @@ use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
+use NumberToWords\NumberTransformer\RomanianNumberTransformer;
+use NumberToWords\NumberTransformer\SpanishNumberTransformer;
 
 class NumberToWords
 {
@@ -20,6 +22,7 @@ class NumberToWords
         'bg' => BulgarianNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
+        'es' => SpanishNumberTransformer::class,
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
@@ -27,6 +30,7 @@ class NumberToWords
         'lt' => LithuanianNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
+        'ro' => RomanianNumberTransformer::class,
     ];
 
     /**
