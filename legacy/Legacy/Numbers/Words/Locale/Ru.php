@@ -1,51 +1,10 @@
 <?php
-/**
- * Words
- *
- * PHP version 5
- *
- * Copyright (c) 1997-2006 The PHP Group
- *
- * This source file is subject to version 3.01 of the PHP license,
- * that is bundled with this package in the file LICENSE, and is
- * available at through the world-wide-web at
- * http://www.php.net/license/3_01.txt
- * If you did not receive a copy of the PHP license and are unable to
- * obtain it through the world-wide-web, please send a note to
- * license@php.net so we can mail you a copy immediately.
- *
- * @category Numbers
- * @package  Words
- * @author   Piotr Klaban <makler@man.torun.pl>
- * @author   Andrey Demenev <demenev@gmail.com>
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @version  SVN: $Id$
- * @link     http://pear.php.net/package/Numbers_Words
- */
 
-/**
- * Class for translating numbers into Russian.
- *
- * @author Andrey Demenev
- * @package Words
- */
+namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+use NumberToWords\Legacy\Numbers\Words;
 
-/**
- * Class for translating numbers into Russian.
- *
- * @category Numbers
- * @package  Words
- * @author   Piotr Klaban <makler@man.torun.pl>
- * @author   Andrey Demenev <demenev@gmail.com>
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @link     http://pear.php.net/package/Numbers_Words
- */
-class Numbers_Words_Locale_ru extends Numbers_Words
+class Ru extends Words
 {
 
     // {{{ properties
@@ -529,7 +488,7 @@ class Numbers_Words_Locale_ru extends Numbers_Words
             }
         }
 
-        return $sign . $ret;
+        return $sign . preg_replace('/\s+/', ' ', $ret);
     }
 
     // }}}
