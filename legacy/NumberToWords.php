@@ -4,11 +4,15 @@ namespace NumberToWords;
 
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
+use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
+use NumberToWords\NumberTransformer\ItalianNumberTransformer;
+use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
+use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
 
 class NumberToWords
 {
@@ -17,8 +21,12 @@ class NumberToWords
         'de' => GermanNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
         'fr' => FrenchNumberTransformer::class,
+        'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
+        'it' => ItalianNumberTransformer::class,
+        'lt' => LithuanianNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
+        'pt_BR' => PortugueseBrazilianNumberTransformer::class,
     ];
 
     /**
@@ -30,7 +38,7 @@ class NumberToWords
     public function getNumberTransformer($language)
     {
         if (!array_key_exists($language, $this->languageMappings)) {
-            throw new \InvalidArgumentException(sprintf('Language %s does not exist.', $language));
+            throw new \InvalidArgumentException(sprintf('Language %s is not implemented.', $language));
         }
 
         return new $this->languageMappings[$language];
