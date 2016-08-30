@@ -1,6 +1,6 @@
 <?php
 
-namespace NumberToWords\Legacy\Numbers\Words\Locale\Ro;
+namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Legacy\Numbers\Words;
 

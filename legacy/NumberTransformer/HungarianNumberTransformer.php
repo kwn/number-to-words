@@ -13,6 +13,6 @@ class HungarianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'hu_HU');
+        return $converter->toWords($number, 'hu');
     }
 }
