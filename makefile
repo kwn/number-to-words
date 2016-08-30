@@ -6,7 +6,7 @@ phpunit:
 	vendor/bin/phpunit --no-coverage
 
 phpunit-legacy:
-	vendor/bin/phpunit --no-coverage --testsuite="Legacy number to string tests"
+	vendor/bin/phpunit --no-coverage --testsuite="Legacy number to string tests" --stop-on-error
 
 phpunit-coverage:
 	vendor/bin/phpunit

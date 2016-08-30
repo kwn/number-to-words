@@ -2,6 +2,8 @@
 
 namespace NumberToWords\NumberTransformer;
 
+use NumberToWords\Legacy\Numbers\Words;
+
 class PolishNumberTransformer implements NumberTransformer
 {
     /**
@@ -9,7 +11,7 @@ class PolishNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new \Numbers_Words();
+        $converter = new Words();
 
         return $converter->toWords($number, 'pl');
     }
