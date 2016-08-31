@@ -14,7 +14,7 @@ class Hu extends Words
      * @var string
      * @access public
      */
-    var $locale = 'hu_HU';
+    var $defaultLocale = 'hu_HU';
 
     /**
      * Language name in English

@@ -14,7 +14,7 @@ class De extends Words
      * @var string
      * @access public
      */
-    var $locale = 'de';
+    var $defaultLocale = 'de';
 
     /**
      * Language name in English

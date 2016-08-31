@@ -14,7 +14,7 @@ class Fr extends Words
      * @var string
      * @access public
      */
-    var $locale = 'fr';
+    var $defaultLocale = 'fr';
 
     /**
      * Language name in English.

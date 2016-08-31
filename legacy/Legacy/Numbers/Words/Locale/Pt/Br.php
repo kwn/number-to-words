@@ -12,7 +12,7 @@ class Br extends Words
      * @var string
      * @access public
      */
-    var $locale = 'pt_BR';
+    var $defaultLocale = 'pt_BR';
 
     /**
      * Language name in English

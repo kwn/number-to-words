@@ -14,6 +14,7 @@ use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
 use NumberToWords\NumberTransformer\RomanianNumberTransformer;
+use NumberToWords\NumberTransformer\RussianNumberTransformer;
 use NumberToWords\NumberTransformer\SpanishNumberTransformer;
 
 class NumberToWords
@@ -31,6 +32,7 @@ class NumberToWords
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
         'ro' => RomanianNumberTransformer::class,
+        'ru' => RussianNumberTransformer::class
     ];
 
     /**

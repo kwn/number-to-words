@@ -14,7 +14,7 @@ class Lt extends Words
      * @var string
      * @access public
      */
-    var $locale = 'lt';
+    var $defaultLocale = 'lt';
 
     /**
      * Language name in English

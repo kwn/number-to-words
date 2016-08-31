@@ -13,7 +13,7 @@ class It extends Words
      * @var string
      * @access public
      */
-    var $locale = 'it_IT';
+    var $defaultLocale = 'it_IT';
 
     /**
      * Language name in English

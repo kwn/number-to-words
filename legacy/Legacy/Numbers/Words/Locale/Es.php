@@ -13,7 +13,7 @@ class Es extends Words
      * @var string
      * @access public
      */
-    var $locale = 'es';
+    var $defaultLocale = 'es';
 
     /**
      * Language name in English

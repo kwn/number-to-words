@@ -11,7 +11,7 @@ class Pl extends Words
      * @var string
      * @access public
      */
-    var $locale = 'pl';
+    var $defaultLocale = 'pl';
 
     /**
      * Language name in English

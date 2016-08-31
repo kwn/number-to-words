@@ -14,7 +14,7 @@ class Us extends Words
      * @var string
      * @access public
      */
-    var $locale = 'en_US';
+    var $defaultLocale = 'en_US';
 
     /**
      * Language name in English

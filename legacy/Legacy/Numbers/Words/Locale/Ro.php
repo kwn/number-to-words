@@ -14,7 +14,7 @@ class Ro extends Words
      * @var string
      * @access public
      */
-    var $locale = 'ro_RO';
+    var $defaultLocale = 'ro_RO';
 
     /**
      * Language name in English.

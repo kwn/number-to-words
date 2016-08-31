@@ -14,7 +14,7 @@ class Bg extends Words
      * @var string
      * @access public
      */
-    var $locale = 'bg';
+    var $defaultLocale = 'bg';
 
     /**
      * Language name in English.

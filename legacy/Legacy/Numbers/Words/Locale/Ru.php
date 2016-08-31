@@ -14,7 +14,7 @@ class Ru extends Words
      * @var string
      * @access public
      */
-    var $locale = 'ru';
+    var $defaultLocale = 'ru';
 
     /**
      * Language name in English
