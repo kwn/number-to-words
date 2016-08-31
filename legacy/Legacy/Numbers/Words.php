@@ -3,7 +3,7 @@
 namespace NumberToWords\Legacy\Numbers;
 
 use NumberToWords\Legacy\Math\BigInteger;
-use NumberToWords\Legacy\Numbers\Words\NumberToWordsException;
+use NumberToWords\Exception\NumberToWordsException;
 
 class Words
 {

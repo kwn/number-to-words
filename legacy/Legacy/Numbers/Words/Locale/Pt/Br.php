@@ -3,7 +3,7 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale\Pt;
 
 use NumberToWords\Legacy\Numbers\Words;
-use NumberToWords\Legacy\Numbers\Words\NumberToWordsException;
+use NumberToWords\Exception\NumberToWordsException;
 
 class Br extends Words
 {

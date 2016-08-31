@@ -1,6 +1,6 @@
 <?php
 
-namespace NumberToWords\Legacy\Numbers\Words;
+namespace NumberToWords\Exception;
 
 class NumberToWordsException extends \Exception
 {
