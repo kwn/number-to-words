@@ -97,6 +97,8 @@ class PolishNumberTransformerTest extends NumberTransformerTest
             [720018, 'siedemset dwadzieścia tysięcy osiemnaście'],
             [1001001, 'jeden milion jeden tysiąc jeden'],
             [3248518, 'trzy miliony dwieście czterdzieści osiem tysięcy pięćset osiemnaście'],
+            [-5, 'minus pięć'],
+            [-128, 'minus sto dwadzieścia osiem'],
         ];
     }
 }

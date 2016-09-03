@@ -7,39 +7,12 @@ use NumberToWords\Exception\NumberToWordsException;
 
 class Words
 {
-    /**
-     * Masculine gender, for languages that need it
-     */
     const GENDER_MASCULINE = 0;
-
-    /**
-      * Feminine gender, for languages that need it
-      */
     const GENDER_FEMININE = 1;
-
-    /**
-      * Neuter gender, for languages that need it
-      */
     const GENDER_NEUTER = 2;
-
-    /**
-      * This is not an actual gender; some languages
-      * have different ways of numbering actual things
-      * (e.g. Romanian: "un nor, doi nori" for "one cloud, two clouds")
-      * and for just counting in an abstract manner
-      * (e.g. Romanian: "unu, doi" for "one, two"
-      */
     const GENDER_ABSTRACT = 3;
-
     const DEFAULT_LOCALE = 'en_US';
-
-    /** @var string */
-    private $defaultLocale = 'en_US';
-
     const DEFAULT_DECIMAL_POINT = '.';
-
-    /** @var string */
-    private $defaultDecimalPoint = '.';
 
     /**
      * @param integer $number
@@ -54,8 +27,8 @@ class Words
             $locale = self::DEFAULT_LOCALE;
         }
 
-        $className = $this->loadLocale($locale);
-        $transformer = new $className();
+        $localeClassName = $this->resolveLocaleClassName($locale);
+        $transformer = new $localeClassName();
 
         if (!is_int($number)) {
             $normalizedNumber = $this->normalizeNumber($number);
@@ -87,7 +60,7 @@ class Words
      */
     public function toCurrency($num, $locale = 'en_US', $intCurr = '', $decimalPoint = null)
     {
-        $classname = $this->loadLocale($locale);
+        $classname = $this->resolveLocaleClassName($locale);
 
         $obj = new $classname;
 
@@ -100,7 +73,7 @@ class Words
             $num = round($num, 2);
         }
 
-        $num = $obj->normalizeNumber($num, $decimalPoint);
+        $num = $this->normalizeNumber($num, $decimalPoint);
 
         if (strpos($num, $decimalPoint) === false) {
             return trim($obj->toCurrencyWords($intCurr, $num));
@@ -147,7 +120,7 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    private function loadLocale($locale)
+    private function resolveLocaleClassName($locale)
     {
         if (false === strpos($locale, '_')) {
             $locale = ucfirst(strtolower($locale));
@@ -172,7 +145,7 @@ class Words
      *
      * @return string
      */
-    public function normalizeNumber($number, $decimalPoint = null)
+    private function normalizeNumber($number, $decimalPoint = null)
     {
         if (null === $decimalPoint) {
             $decimalPoint = self::DEFAULT_DECIMAL_POINT;
