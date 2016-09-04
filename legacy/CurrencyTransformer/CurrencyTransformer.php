@@ -5,7 +5,7 @@ namespace NumberToWords\CurrencyTransformer;
 interface CurrencyTransformer
 {
     /**
-     * @param float $amount
+     * @param int    $amount
      * @param string $currency
      *
      * @return string

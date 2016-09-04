@@ -3,7 +3,10 @@
 namespace NumberToWords;
 
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
@@ -38,7 +41,10 @@ class NumberToWords
     ];
 
     private $currencyTransformers = [
-        'pl' => PolishCurrencyTransformer::class
+        'en' => EnglishCurrencyTransformer::class,
+        'pl' => PolishCurrencyTransformer::class,
+        'ro' => RomanianCurrencyTransformer::class,
+        'ru' => RussianCurrencyTransformer::class
     ];
 
     /**

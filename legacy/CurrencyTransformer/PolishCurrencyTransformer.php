@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class PolishCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param float  $amount
+     * @param int    $amount
      * @param string $currency
      *
      * @return string
@@ -16,6 +16,6 @@ class PolishCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount / 100, 'pl', $currency);
+        return $converter->toCurrency($amount, 'pl', $currency);
     }
 }

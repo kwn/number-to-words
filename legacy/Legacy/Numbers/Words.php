@@ -60,12 +60,12 @@ class Words
      */
     public function toCurrency($num, $locale = 'en_US', $intCurr = '', $decimalPoint = null)
     {
-        $classname = $this->resolveLocaleClassName($locale);
+        $className = $this->resolveLocaleClassName($locale);
 
-        $obj = new $classname;
+        $obj = new $className();
 
         if (null === $decimalPoint) {
-            $decimalPoint = '.';
+            $decimalPoint = self::DEFAULT_DECIMAL_POINT;
         }
 
         // round if a float is passed, use BigInteger otherwise
