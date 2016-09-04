@@ -65,13 +65,9 @@ class Words
      */
     private function resolveLocaleClassName($locale)
     {
-        if (false === strpos($locale, '_')) {
-            $locale = ucfirst(strtolower($locale));
-        } else {
-            $locale = implode('\\', array_map(function ($element) {
-                return ucfirst(strtolower($element));
-            }, explode('_', $locale)));
-        }
+        $locale = implode('\\', array_map(function ($element) {
+            return ucfirst(strtolower($element));
+        }, explode('_', $locale)));
 
         $class = 'NumberToWords\\Legacy\\Numbers\\Words\\Locale\\' . $locale;
 
