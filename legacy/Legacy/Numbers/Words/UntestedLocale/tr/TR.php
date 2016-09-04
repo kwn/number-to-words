@@ -229,7 +229,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
             $ret .= $this->_sep . 'bin' . $this->_sep;
         }
         elseif ($thousands > 1) {
-            $ret .= $this->_toWords($thousands, 3) . $this->_sep;//. 'mil' . $this->_sep;
+            $ret .= $this->_toWords($thousands, 3) . $this->_sep;//. 'mil' . $this->wordSeparator;
         }
 
         // values for digits, tens and hundreds
@@ -245,7 +245,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
           // for now it is switched off, maybe some language purists
           // can force me to enable it, or to remove it completely
           // if (($t + $d) > 0)
-          //   $ret .= $this->_sep . 'and';
+          //   $ret .= $this->wordSeparator . 'and';
         }
 
         // decine: venti trenta, etc...

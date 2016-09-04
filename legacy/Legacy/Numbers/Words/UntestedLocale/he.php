@@ -386,7 +386,7 @@ class Numbers_Words_Locale_he extends Numbers_Words
             // for now it is switched off, maybe some language purists
             // can force me to enable it, or to remove it completely
             // if (($t + $d) > 0)
-            //   $ret .= $this->_sep . 'and';
+            //   $ret .= $this->wordSeparator . 'and';
         }
 
         // ten, twenty etc.

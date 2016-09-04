@@ -241,7 +241,7 @@ class Numbers_Words_Locale_dk extends Numbers_Words
             }
 
             //if (($t + $d) > 0)
-            //  $ret .= $this->_sep . 'og';
+            //  $ret .= $this->wordSeparator . 'og';
         } elseif ((isset($maxp)) && ($maxp > 3)) {
             // add 'og' in the case where there are preceding thousands but not hundreds or tens,
             // so fx. 80001 becomes 'firs tusinde og en' instead of 'firs tusinde en'
