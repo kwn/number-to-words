@@ -179,13 +179,12 @@ class Us extends Words
     ];
 
     /**
-     * @param        $num
-     * @param int    $power
-     * @param string $powsuffix
+     * @param int $num
+     * @param int $power
      *
-     * @return null|string
+     * @return string
      */
-    protected function _toWords($num, $power = 0, $powsuffix = '')
+    protected function _toWords($num, $power = 0)
     {
         $ret = '';
 
@@ -202,8 +201,8 @@ class Us extends Words
         if (strlen($num) > 3) {
             $maxp = strlen($num) - 1;
             $curp = $maxp;
-            for ($p = $maxp; $p > 0; --$p) { // power
 
+            for ($p = $maxp; $p > 0; --$p) { // power
                 // check for highest power
                 if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p
@@ -211,16 +210,14 @@ class Us extends Words
                     $snum = preg_replace('/^0+/', '', $snum);
                     if ($snum !== '') {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
-                        if ($powsuffix != '') {
-                            $cursuffix .= $this->wordSeparator . $powsuffix;
-                        }
 
-                        $ret .= $this->_toWords($snum, $p, $cursuffix);
+                        $ret .= $this->_toWords($snum, $p);
                     }
                     $curp = $p - 1;
                     continue;
                 }
             }
+
             $num = substr($num, $maxp - $curp, $curp - $p + 1);
             if ($num == 0) {
                 return $ret;
@@ -341,10 +338,6 @@ class Us extends Words
             }
 
             $ret .= $this->wordSeparator . $lev[0];
-        }
-
-        if ($powsuffix != '') {
-            $ret .= $this->wordSeparator . $powsuffix;
         }
 
         return $ret;

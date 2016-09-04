@@ -24,6 +24,7 @@ class PolishNumberTransformerTest extends NumberTransformerTest
             [9, 'dziewięć'],
             [11, 'jedenaście'],
             [12, 'dwanaście'],
+            [14, 'czternaście'],
             [16, 'szesnaście'],
             [19, 'dziewiętnaście'],
             [20, 'dwadzieścia'],

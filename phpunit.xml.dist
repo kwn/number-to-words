@@ -10,6 +10,7 @@
     <filter>
         <whitelist>
             <directory suffix=".php">src/</directory>
+            <directory suffix=".php">legacy/</directory>
         </whitelist>
     </filter>
     <listeners>

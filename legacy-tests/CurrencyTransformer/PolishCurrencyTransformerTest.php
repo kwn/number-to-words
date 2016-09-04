@@ -23,6 +23,7 @@ class PolishCurrencyTransformerTest extends CurrencyTransformerTest
             [54552, 'PLN', 'pięćset czterdzieści pięć złotych pięćdziesiąt dwa grosze'],
             [54501, 'PLN', 'pięćset czterdzieści pięć złotych jeden grosz'],
             [54599, 'PLN', 'pięćset czterdzieści pięć złotych dziewięćdziesiąt dziewięć groszy'],
+            [61500, 'NOK', 'sześćset piętnaście koron norweskich'],
             [154552, 'USD', 'jeden tysiąc pięćset czterdzieści pięć dolarów pięćdziesiąt dwa centy'],
             [304501, 'EUR', 'trzy tysiące czterdzieści pięć euro jeden eurocent'],
             [52481, 'CZK', 'pięćset dwadzieścia cztery korony czeskie osiemdziesiąt jeden halerzy'],

@@ -144,7 +144,7 @@ class Pl extends Words
                     if ($snum !== '') {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
 
-                        $ret .= $this->_toWords($snum, $p, $cursuffix);
+                        $ret .= $this->_toWords($snum, $p);
                     }
                     $curp = $p - 1;
                     continue;

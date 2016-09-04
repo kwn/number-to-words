@@ -11,6 +11,9 @@ phpunit-legacy:
 phpunit-coverage:
 	vendor/bin/phpunit
 
+phpunit-legacy-coverage:
+	vendor/bin/phpunit --testsuite="Legacy number to string tests" --stop-on-error
+
 phpcbf:
 	vendor/bin/phpcbf -p --standard=PSR2 src tests
 
