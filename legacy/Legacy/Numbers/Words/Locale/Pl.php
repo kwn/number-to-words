@@ -77,44 +77,44 @@ class Pl extends Words
      * @link http://pieniadz.hoga.pl/waluty_objasnienia.asp Currency service
      * @access private
      */
-    private $_currency_names = array(
-        'ALL' => array(array('lek','leki','leków'), array('quindarka','quindarki','quindarek')),
-        'AUD' => array(array('dolar australijski', 'dolary australijskie', 'dolarów australijskich'), array('cent', 'centy', 'centów')),
-        'BAM' => array(array('marka','marki','marek'), array('fenig','fenigi','fenigów')),
-        'BGN' => array(array('lew','lewy','lew'), array('stotinka','stotinki','stotinek')),
-        'BRL' => array(array('real','reale','realów'), array('centavos','centavos','centavos')),
-        'BYR' => array(array('rubel','ruble','rubli'), array('kopiejka','kopiejki','kopiejek')),
-        'CAD' => array(array('dolar kanadyjski', 'dolary kanadyjskie', 'dolarów kanadyjskich'), array('cent', 'centy', 'centów')),
-        'CHF' => array(array('frank szwajcarski','franki szwajcarskie','franków szwajcarskich'), array('rapp','rappy','rappów')),
-        'CYP' => array(array('funt cypryjski','funty cypryjskie','funtów cypryjskich'), array('cent', 'centy', 'centów')),
-        'CZK' => array(array('korona czeska','korony czeskie','koron czeskich'), array('halerz','halerze','halerzy')),
-        'DKK' => array(array('korona duńska','korony duńskie','koron duńskich'), array('ore','ore','ore')),
-        'EEK' => array(array('korona estońska','korony estońskie','koron estońskich'), array('senti','senti','senti')),
-        'EUR' => array(array('euro', 'euro', 'euro'), array('eurocent', 'eurocenty', 'eurocentów')),
-        'GBP' => array(array('funt szterling','funty szterlingi','funtów szterlingów'), array('pens','pensy','pensów')),
-        'HKD' => array(array('dolar Hongkongu','dolary Hongkongu','dolarów Hongkongu'), array('cent', 'centy', 'centów')),
-        'HRK' => array(array('kuna','kuny','kun'), array('lipa','lipy','lip')),
-        'HUF' => array(array('forint','forinty','forintów'), array('filler','fillery','fillerów')),
-        'ILS' => array(array('nowy szekel','nowe szekele','nowych szekeli'), array('agora','agory','agorot')),
-        'ISK' => array(array('korona islandzka','korony islandzkie','koron islandzkich'), array('aurar','aurar','aurar')),
-        'JPY' => array(array('jen','jeny','jenów'), array('sen','seny','senów')),
-        'LTL' => array(array('lit','lity','litów'), array('cent', 'centy', 'centów')),
-        'LVL' => array(array('łat','łaty','łatów'), array('sentim','sentimy','sentimów')),
-        'MKD' => array(array('denar','denary','denarów'), array('deni','deni','deni')),
-        'MTL' => array(array('lira maltańska','liry maltańskie','lir maltańskich'), array('centym','centymy','centymów')),
-        'NOK' => array(array('korona norweska','korony norweskie','koron norweskich'), array('oere','oere','oere')),
-        'PLN' => array(array('złoty', 'złote', 'złotych'), array('grosz', 'grosze', 'groszy')),
-        'ROL' => array(array('lej','leje','lei'), array('bani','bani','bani')),
-        'RUB' => array(array('rubel','ruble','rubli'), array('kopiejka','kopiejki','kopiejek')),
-        'SEK' => array(array('korona szwedzka','korony szwedzkie','koron szweckich'), array('oere','oere','oere')),
-        'SIT' => array(array('tolar','tolary','tolarów'), array('stotinia','stotinie','stotini')),
-        'SKK' => array(array('korona słowacka','korony słowackie','koron słowackich'), array('halerz','halerze','halerzy')),
-        'TRL' => array(array('lira turecka','liry tureckie','lir tureckich'), array('kurusza','kurysze','kuruszy')),
-        'UAH' => array(array('hrywna','hrywna','hrywna'), array('cent', 'centy', 'centów')),
-        'USD' => array(array('dolar','dolary','dolarów'), array('cent', 'centy', 'centów')),
-        'YUM' => array(array('dinar','dinary','dinarów'), array('para','para','para')),
-        'ZAR' => array(array('rand','randy','randów'), array('cent', 'centy', 'centów'))
-    );
+    private $_currency_names = [
+        'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
+        'AUD' => [['dolar australijski', 'dolary australijskie', 'dolarów australijskich'], ['cent', 'centy', 'centów']],
+        'BAM' => [['marka', 'marki', 'marek'], ['fenig', 'fenigi', 'fenigów']],
+        'BGN' => [['lew', 'lewy', 'lew'], ['stotinka', 'stotinki', 'stotinek']],
+        'BRL' => [['real', 'reale', 'realów'], ['centavos', 'centavos', 'centavos']],
+        'BYR' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
+        'CAD' => [['dolar kanadyjski', 'dolary kanadyjskie', 'dolarów kanadyjskich'], ['cent', 'centy', 'centów']],
+        'CHF' => [['frank szwajcarski', 'franki szwajcarskie', 'franków szwajcarskich'], ['rapp', 'rappy', 'rappów']],
+        'CYP' => [['funt cypryjski', 'funty cypryjskie', 'funtów cypryjskich'], ['cent', 'centy', 'centów']],
+        'CZK' => [['korona czeska', 'korony czeskie', 'koron czeskich'], ['halerz', 'halerze', 'halerzy']],
+        'DKK' => [['korona duńska', 'korony duńskie', 'koron duńskich'], ['ore', 'ore', 'ore']],
+        'EEK' => [['korona estońska', 'korony estońskie', 'koron estońskich'], ['senti', 'senti', 'senti']],
+        'EUR' => [['euro', 'euro', 'euro'], ['eurocent', 'eurocenty', 'eurocentów']],
+        'GBP' => [['funt szterling', 'funty szterlingi', 'funtów szterlingów'], ['pens', 'pensy', 'pensów']],
+        'HKD' => [['dolar Hongkongu', 'dolary Hongkongu', 'dolarów Hongkongu'], ['cent', 'centy', 'centów']],
+        'HRK' => [['kuna', 'kuny', 'kun'], ['lipa', 'lipy', 'lip']],
+        'HUF' => [['forint', 'forinty', 'forintów'], ['filler', 'fillery', 'fillerów']],
+        'ILS' => [['nowy szekel', 'nowe szekele', 'nowych szekeli'], ['agora', 'agory', 'agorot']],
+        'ISK' => [['korona islandzka', 'korony islandzkie', 'koron islandzkich'], ['aurar', 'aurar', 'aurar']],
+        'JPY' => [['jen', 'jeny', 'jenów'], ['sen', 'seny', 'senów']],
+        'LTL' => [['lit', 'lity', 'litów'], ['cent', 'centy', 'centów']],
+        'LVL' => [['łat', 'łaty', 'łatów'], ['sentim', 'sentimy', 'sentimów']],
+        'MKD' => [['denar', 'denary', 'denarów'], ['deni', 'deni', 'deni']],
+        'MTL' => [['lira maltańska', 'liry maltańskie', 'lir maltańskich'], ['centym', 'centymy', 'centymów']],
+        'NOK' => [['korona norweska', 'korony norweskie', 'koron norweskich'], ['oere', 'oere', 'oere']],
+        'PLN' => [['złoty', 'złote', 'złotych'], ['grosz', 'grosze', 'groszy']],
+        'ROL' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
+        'RUB' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
+        'SEK' => [['korona szwedzka', 'korony szwedzkie', 'koron szweckich'], ['oere', 'oere', 'oere']],
+        'SIT' => [['tolar', 'tolary', 'tolarów'], ['stotinia', 'stotinie', 'stotini']],
+        'SKK' => [['korona słowacka', 'korony słowackie', 'koron słowackich'], ['halerz', 'halerze', 'halerzy']],
+        'TRL' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
+        'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
+        'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
+        'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
+        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
+    ];
 
     /**
      * The default currency name
@@ -127,10 +127,10 @@ class Pl extends Words
      * Converts a number to its word representation
      * in Polish language
      *
-     * @param integer $num       An integer between -infinity and infinity inclusive :)
-     *                           that need to be converted to words
-     * @param integer $power     The power of ten for the rest of the number to the right.
-     *                           Optional, defaults to 0.
+     * @param integer $num        An integer between -infinity and infinity inclusive :)
+     *                            that need to be converted to words
+     * @param integer $power      The power of ten for the rest of the number to the right.
+     *                            Optional, defaults to 0.
      * @param integer $powsuffix The power name to be added to the end of the return string.
      *                            Used internally. Optional, defaults to ''.
      *

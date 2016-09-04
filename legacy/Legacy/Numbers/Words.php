@@ -64,8 +64,8 @@ class Words
 
         $obj = new $classname;
 
-        if (is_null($decimalPoint)) {
-            $decimalPoint = $obj->decimalPoint;
+        if (null === $decimalPoint) {
+            $decimalPoint = '.';
         }
 
         // round if a float is passed, use BigInteger otherwise

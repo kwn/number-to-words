@@ -2,6 +2,8 @@
 
 namespace NumberToWords;
 
+use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
@@ -19,7 +21,7 @@ use NumberToWords\NumberTransformer\SpanishNumberTransformer;
 
 class NumberToWords
 {
-    private $languageMappings = [
+    private $numberTransformers = [
         'bg' => BulgarianNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
@@ -35,6 +37,10 @@ class NumberToWords
         'ru' => RussianNumberTransformer::class
     ];
 
+    private $currencyTransformers = [
+        'pl' => PolishCurrencyTransformer::class
+    ];
+
     /**
      * @param string $language
      *
@@ -43,10 +49,31 @@ class NumberToWords
      */
     public function getNumberTransformer($language)
     {
-        if (!array_key_exists($language, $this->languageMappings)) {
-            throw new \InvalidArgumentException(sprintf('Language %s is not implemented.', $language));
+        if (!array_key_exists($language, $this->numberTransformers)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Number transformer for "%s" language is not implemented.',
+                $language
+            ));
         }
 
-        return new $this->languageMappings[$language];
+        return new $this->numberTransformers[$language];
+    }
+
+    /**
+     * @param string $language
+     *
+     * @throws \InvalidArgumentException
+     * @return CurrencyTransformer
+     */
+    public function getCurrencyTransformer($language)
+    {
+        if (!array_key_exists($language, $this->currencyTransformers)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Currency transformer for "%s" language is not implemented.',
+                $language
+            ));
+        }
+
+        return new $this->currencyTransformers[$language];
     }
 }
