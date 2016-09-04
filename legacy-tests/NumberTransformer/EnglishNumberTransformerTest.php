@@ -56,6 +56,8 @@ class EnglishNumberTransformerTest extends NumberTransformerTest
             [7232, 'seven thousand two hundred thirty-two'],
             [8569, 'eight thousand five hundred sixty-nine'],
             [9539, 'nine thousand five hundred thirty-nine'],
+            [-9539, 'minus nine thousand five hundred thirty-nine'],
+            [-3, 'minus three'],
             [0, 'zero'],
             [3, 'three'],
             [8, 'eight'],
