@@ -11,7 +11,6 @@ class Words
     const GENDER_NEUTER = 2;
     const GENDER_ABSTRACT = 3;
     const DEFAULT_LOCALE = 'en_US';
-    const DEFAULT_DECIMAL_POINT = '.';
 
     /**
      * @param int    $number
@@ -20,9 +19,9 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($number, $locale = '')
+    public function toWords($number, $locale = null)
     {
-        if ('' === $locale) {
+        if (null === $locale) {
             $locale = self::DEFAULT_LOCALE;
         }
 
@@ -33,38 +32,29 @@ class Words
     }
 
     /**
-     * Converts a currency value to word representation (1.02 => one dollar two cents)
-     * If the number has not any fraction part, the "cents" number is omitted.
+     * @param int    $amount
+     * @param null   $locale
+     * @param string $currency
      *
-     * @param float  $num          A float/integer/string number representing currency value
-     *
-     * @param string $locale       Language name abbreviation. Optional. Defaults to en_US.
-     *
-     * @param string $intCurr      International currency symbol
-     *                             as defined by the ISO 4217 standard (three characters).
-     *                             E.g. 'EUR', 'USD', 'PLN'. Optional.
-     *                             Defaults to $def_currency defined in the language class.
-     *
-     * @param string $decimalPoint Decimal mark symbol
-     *                             E.g. '.', ','. Optional.
-     *                             Defaults to $decimalPoint defined in the language class.
-     *
-     * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrency($num, $locale = 'en_US', $intCurr = '', $decimalPoint = null)
+    public function toCurrency($amount, $locale = null, $currency = '')
     {
+        if (null === $locale) {
+            $locale = self::DEFAULT_LOCALE;
+        }
+
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName();
 
-        $decimalPart = (int) ($num / 100);
-        $fractionalPart = $num % 100;
+        $decimalPart = (int) ($amount / 100);
+        $fractionalPart = $amount % 100;
 
         if (0 === $fractionalPart) {
-            return trim($transformer->toCurrencyWords($intCurr, $decimalPart));
+            return trim($transformer->toCurrencyWords($currency, $decimalPart));
         }
 
-        return trim($transformer->toCurrencyWords($intCurr, $decimalPart, $fractionalPart));
+        return trim($transformer->toCurrencyWords($currency, $decimalPart, $fractionalPart));
     }
 
     /**
