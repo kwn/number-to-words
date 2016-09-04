@@ -33,9 +33,10 @@ class Words
 
     /**
      * @param int    $amount
-     * @param null   $locale
+     * @param string $locale
      * @param string $currency
      *
+     * @throws NumberToWordsException
      * @return string
      */
     public function toCurrency($amount, $locale = null, $currency = '')
