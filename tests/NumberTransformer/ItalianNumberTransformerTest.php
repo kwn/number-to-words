@@ -66,6 +66,7 @@ class ItalianNumberTransformerTest extends NumberTransformerTest
             [7232, 'settemiladuecentotrentadue'],
             [8569, 'ottomilacinquecentosessantanove'],
             [9539, 'novemilacinquecentotrentanove'],
+            [-140, 'meno centoquaranta'],
         ];
     }
 }
