@@ -6,238 +6,187 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Lt extends Words
 {
+    const LOCALE = 'lt';
+    const LANGUAGE_NAME = 'Lithuanian';
+    const LANGUAGE_NAME_NATIVE = 'lietuviškai';
+    const MINUS = 'minus';
 
-    // {{{ properties
+    private $minus = 'minus';
 
-    /**
-     * Locale name
-     * @var string
-     * @access public
-     */
-    var $defaultLocale = 'lt';
+    private static $exponent = [
+        0  => [''],
+        3  => ['tūkstantis', 'tūkstančiai', 'tūkstančių'],
+        6  => ['milijonas', 'milijonai', 'milijonų'],
+        9  => ['bilijonas', 'bilijonai', 'bilijonų'],
+        12 => ['trilijonas', 'trilijonai', 'trilijonų'],
+        15 => ['kvadrilijonas', 'kvadrilijonai', 'kvadrilijonų'],
+        18 => ['kvintilijonas', 'kvintilijonai', 'kvintilijonų']
+    ];
 
-    /**
-     * Language name in English
-     * @var string
-     * @access public
-     */
-    var $lang = 'Lithuanian';
+    private static $digits = [
+        'nulis',
+        'vienas',
+        'du',
+        'trys',
+        'keturi',
+        'penki',
+        'šeši',
+        'septyni',
+        'aštuoni',
+        'devyni'
+    ];
 
-    /**
-     * Native language name
-     * @var string
-     * @access public
-     */
-    var $lang_native = 'lietuviškai';
-
-    /**
-     * The word for the minus sign
-     * @var string
-     * @access private
-     */
-    var $_minus = 'minus'; // minus sign
-
-    /**
-     * The sufixes for exponents (singular and plural)
-     * @var array
-     * @access private
-     */
-    var $_exponent = array(
-        0 => array(''),
-        3 => array('tūkstantis','tūkstančiai','tūkstančių'),
-        6 => array('milijonas','milijonai','milijonų'),
-        9 => array('bilijonas','bilijonai','bilijonų'),
-       12 => array('trilijonas','trilijonai','trilijonų'),
-       15 => array('kvadrilijonas','kvadrilijonai','kvadrilijonų'),
-       18 => array('kvintilijonas','kvintilijonai','kvintilijonų')
-        );
+    private $wordSeparator = ' ';
 
     /**
-     * The array containing the digits (indexed by the digits themselves).
-     * @var array
-     * @access private
-     */
-    var $_digits = array(
-        0 => 'nulis', 'vienas', 'du', 'trys', 'keturi',
-        'penki', 'šeši', 'septyni', 'aštuoni', 'devyni'
-    );
-
-    /**
-     * The word separator
-     * @var string
-     * @access private
-     */
-    var $_sep = ' ';
-
-    /**
-     * The default currency name
-     * @var string
-     * @access public
-     */
-    var $def_currency = 'LTL';
-
-    // }}}
-    // {{{ _toWords()
-
-    /**
-     * Converts a number to its word representation
-     * in Lithuanian language
+     * @param int    $number
+     * @param int    $power
+     * @param string $powsuffix
      *
-     * @param integer $num       An integer between -infinity and infinity inclusive :)
-     *                           that need to be converted to words
-     * @param integer $power     The power of ten for the rest of the number to the right.
-     *                           Optional, defaults to 0.
-     * @param integer $powsuffix The power name to be added to the end of the return string.
-     *                            Used internally. Optional, defaults to ''.
-     *
-     * @return string  The corresponding word representation
-     *
-     * @access protected
-     * @author Laurynas Butkus <lauris@night.lt>
-     * @since  Words 0.16.3
+     * @return string
      */
-    function _toWords($num, $power = 0, $powsuffix = '')
+    protected function _toWords($number, $power = 0, $powsuffix = '')
     {
-        $ret = '';
+        $return = '';
 
         // add a minus sign
-        if (substr($num, 0, 1) == '-') {
-            $ret = $this->_sep . $this->_minus;
-            $num = substr($num, 1);
+        if (substr($number, 0, 1) == '-') {
+            $return = $this->wordSeparator . $this->minus;
+            $number = substr($number, 1);
         }
 
         // strip excessive zero signs and spaces
-        $num = trim($num);
-        $num = preg_replace('/^0+/', '', $num);
+        $number = trim($number);
+        $number = preg_replace('/^0+/', '', $number);
 
-        if (strlen($num) > 3) {
-            $maxp = strlen($num)-1;
+        if (strlen($number) > 3) {
+            $maxp = strlen($number) - 1;
             $curp = $maxp;
-            for ($p = $maxp; $p > 0; --$p) { // power
+            for ($p = $maxp; $p > 0; --$p) {
 
                 // check for highest power
-                if (isset($this->_exponent[$p])) {
+                if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p
-                    $snum = substr($num, $maxp - $curp, $curp - $p + 1);
+                    $snum = substr($number, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
                     if ($snum !== '') {
-                        $cursuffix = $this->_exponent[$power][count($this->_exponent[$power])-1];
+                        $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
                         if ($powsuffix != '') {
-                            $cursuffix .= $this->_sep . $powsuffix;
+                            $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
-                        $ret .= $this->_toWords($snum, $p, $cursuffix);
+                        $return .= $this->_toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
                     continue;
                 }
             }
-            $num = substr($num, $maxp - $curp, $curp - $p + 1);
-            if ($num == 0) {
-                return $ret;
+            $number = substr($number, $maxp - $curp, $curp - $p + 1);
+            if ($number == 0) {
+                return $return;
             }
-        } elseif ($num == 0 || $num == '') {
-            return $this->_sep . $this->_digits[0];
+        } elseif ($number == 0 || $number == '') {
+            return $this->wordSeparator . self::$digits[0];
         }
 
         $h = $t = $d = 0;
 
-        switch (strlen($num)) {
+        switch (strlen($number)) {
             case 3:
-                $h = (int)substr($num, -3, 1);
+                $h = (int) substr($number, -3, 1);
 
             case 2:
-                $t = (int)substr($num, -2, 1);
+                $t = (int) substr($number, -2, 1);
 
             case 1:
-                $d = (int)substr($num, -1, 1);
+                $d = (int) substr($number, -1, 1);
                 break;
 
             case 0:
                 return;
-            break;
+                break;
         }
 
         if ($h > 1) {
-            $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'šimtai';
+            $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'šimtai';
         } elseif ($h) {
-            $ret .= $this->_sep . 'šimtas';
+            $return .= $this->wordSeparator . 'šimtas';
         }
 
         // ten, twenty etc.
         switch ($t) {
             case 9:
-                $ret .= $this->_sep . 'devyniasdešimt';
+                $return .= $this->wordSeparator . 'devyniasdešimt';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'aštuoniasdešimt';
+                $return .= $this->wordSeparator . 'aštuoniasdešimt';
                 break;
 
             case 7:
-                $ret .= $this->_sep . 'septyniasdešimt';
+                $return .= $this->wordSeparator . 'septyniasdešimt';
                 break;
 
             case 6:
-                $ret .= $this->_sep . 'šešiasdešimt';
+                $return .= $this->wordSeparator . 'šešiasdešimt';
                 break;
 
             case 5:
-                $ret .= $this->_sep . 'penkiasdešimt';
+                $return .= $this->wordSeparator . 'penkiasdešimt';
                 break;
 
             case 4:
-                $ret .= $this->_sep . 'keturiasdešimt';
+                $return .= $this->wordSeparator . 'keturiasdešimt';
                 break;
 
             case 3:
-                $ret .= $this->_sep . 'trisdešimt';
+                $return .= $this->wordSeparator . 'trisdešimt';
                 break;
 
             case 2:
-                $ret .= $this->_sep . 'dvidešimt';
+                $return .= $this->wordSeparator . 'dvidešimt';
                 break;
 
             case 1:
                 switch ($d) {
                     case 0:
-                        $ret .= $this->_sep . 'dešimt';
+                        $return .= $this->wordSeparator . 'dešimt';
                         break;
 
                     case 1:
-                        $ret .= $this->_sep . 'vienuolika';
+                        $return .= $this->wordSeparator . 'vienuolika';
                         break;
 
                     case 2:
-                        $ret .= $this->_sep . 'dvylika';
+                        $return .= $this->wordSeparator . 'dvylika';
                         break;
 
                     case 3:
-                        $ret .= $this->_sep . 'trylika';
+                        $return .= $this->wordSeparator . 'trylika';
                         break;
 
                     case 4:
-                        $ret .= $this->_sep . 'keturiolika';
+                        $return .= $this->wordSeparator . 'keturiolika';
                         break;
 
                     case 5:
-                        $ret .= $this->_sep . 'penkiolika';
+                        $return .= $this->wordSeparator . 'penkiolika';
                         break;
 
                     case 6:
-                        $ret .= $this->_sep . 'šešiolika';
+                        $return .= $this->wordSeparator . 'šešiolika';
                         break;
 
                     case 7:
-                        $ret .= $this->_sep . 'septyniolika';
+                        $return .= $this->wordSeparator . 'septyniolika';
                         break;
 
                     case 8:
-                        $ret .= $this->_sep . 'aštuoniolika';
+                        $return .= $this->wordSeparator . 'aštuoniolika';
                         break;
 
                     case 9:
-                        $ret .= $this->_sep . 'devyniolika';
+                        $return .= $this->wordSeparator . 'devyniolika';
                         break;
                 }
                 break;
@@ -246,13 +195,13 @@ class Lt extends Words
         // add digits only in <0>,<1,9> and <21,inf>
         if ($t != 1 && $d > 0) {
             if ($d > 1 || !$power || $t) {
-                $ret .= $this->_sep . $this->_digits[$d];
+                $return .= $this->wordSeparator . self::$digits[$d];
             }
         }
 
         if ($power > 0) {
-            if (isset($this->_exponent[$power])) {
-                $lev = $this->_exponent[$power];
+            if (isset(self::$exponent[$power])) {
+                $lev = self::$exponent[$power];
             }
 
             if (!isset($lev) || !is_array($lev)) {
@@ -261,20 +210,19 @@ class Lt extends Words
 
             //echo " $t $d  <br>";
 
-            if ($t == 1 || ($t > 0 && $d == 0 )) {
-                $ret .= $this->_sep . $lev[2];
+            if ($t == 1 || ($t > 0 && $d == 0)) {
+                $return .= $this->wordSeparator . $lev[2];
             } elseif ($d > 1) {
-                $ret .= $this->_sep . $lev[1];
+                $return .= $this->wordSeparator . $lev[1];
             } else {
-                $ret .= $this->_sep . $lev[0];
+                $return .= $this->wordSeparator . $lev[0];
             }
         }
 
         if ($powsuffix != '') {
-            $ret .= $this->_sep . $powsuffix;
+            $return .= $this->wordSeparator . $powsuffix;
         }
 
-        return $ret;
+        return $return;
     }
-    // }}}
 }

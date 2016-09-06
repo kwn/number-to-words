@@ -60,7 +60,7 @@ class Bg extends Words
     );
 
     /**
-     * A flag, that determines if the _digits array is filled for masculine and feminine genders.
+     * A flag, that determines if the digits array is filled for masculine and feminine genders.
      * @var string
      * @access private
      */
@@ -246,7 +246,7 @@ class Bg extends Words
     // {{{ _initDigits()
 
     /**
-     * Fills the _digits array for masculine and feminine genders with
+     * Fills the digits array for masculine and feminine genders with
      * corresponding references to neuter words (when they're the same).
      *
      * @return void
