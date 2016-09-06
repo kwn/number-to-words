@@ -1,6 +1,6 @@
-test: phpunit
+test: phpunit phpcs
 
-build: phpunit-coverage phpcs
+build: phpunit-coverage
 
 phpunit:
 	vendor/bin/phpunit --no-coverage
