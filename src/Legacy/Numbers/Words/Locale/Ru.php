@@ -304,62 +304,31 @@ class Ru extends Words
     ];
 
     /**
-     * The default currency name
-     * @var string
-     * @access public
+     * @param int   $number
+     * @param array $options
+     *
+     * @return string
      */
-    var $def_currency = 'RUB'; // Russian rouble
-
-    // }}}
-    // {{{ _toWords()
-
-    /**
-     * Converts a number to its word representation
-     * in Russian language
-     *
-     * @param integer $num    An integer between -infinity and infinity inclusive :)
-     *                        that need to be converted to words
-     * @param integer $gender Gender of string, 0=neutral, 1=male, 2=female.
-     *                        Optional, defaults to 1.
-     *
-     * @return string  The corresponding word representation
-     *
-     * @access protected
-     * @author Andrey Demenev <demenev@on-line.jar.ru>
-     * @since  Words 0.16.3
-     */
-    function _toWords($num, $options = array())
+    protected function _toWords($number, $options = [])
     {
-        $dummy  = null;
+        $dummy = null;
         $gender = 1;
 
-        /**
-         * Loads user options
-         */
         extract($options, EXTR_IF_EXISTS);
 
-        return $this->_toWordsWithCase($num, $dummy, $gender);
+        return $this->toWordsWithCase($number, $dummy, $gender);
     }
 
     /**
-     * Converts a number to its word representation
-     * in Russian language and determines the case of string.
+     * @param int $num
+     * @param int $case
+     * @param int $gender
      *
-     * @param integer $num    An integer between -infinity and infinity inclusive :)
-     *                        that need to be converted to words
-     * @param integer &$case  A variable passed by reference which is set to case
-     *                        of the word associated with the number
-     * @param integer $gender Gender of string, 0=neutral, 1=male, 2=female.
-     *                        Optional, defaults to 1.
-     *
-     * @return string  The corresponding word representation
-     *
-     * @access private
-     * @author Andrey Demenev <demenev@on-line.jar.ru>
+     * @return string
      */
-    function _toWordsWithCase($num, &$case, $gender = 1)
+    private function toWordsWithCase($num, &$case, $gender = 1)
     {
-        $ret  = '';
+        $ret = '';
         $case = 3;
 
         $num = trim($num);
@@ -367,7 +336,7 @@ class Ru extends Words
         $sign = "";
         if (substr($num, 0, 1) == '-') {
             $sign = self::MINUS . $this->wordSeparator;
-            $num  = substr($num, 1);
+            $num = substr($num, 1);
         }
 
         while (strlen($num) % 3) {
@@ -388,7 +357,7 @@ class Ru extends Words
                     $groupgender = 1;
                 }
 
-                $group = $this->groupToWords(substr($num, -$power-3, 3), $groupgender, $_case);
+                $group = $this->groupToWords(substr($num, -$power - 3, 3), $groupgender, $_case);
                 if (!$power) {
                     $case = $_case;
                 }
@@ -401,7 +370,7 @@ class Ru extends Words
                     } else {
                         $group .= $this->wordSeparator . 'тысяч';
                     }
-                } elseif ($group && $power>3 && isset(self::$exponent[$power])) {
+                } elseif ($group && $power > 3 && isset(self::$exponent[$power])) {
                     $group .= $this->wordSeparator . self::$exponent[$power];
                     if ($_case == 2) {
                         $group .= 'а';
@@ -428,7 +397,7 @@ class Ru extends Words
      *
      * @return string
      */
-    public function groupToWords($number, $gender, &$case)
+    private function groupToWords($number, $gender, &$case)
     {
         $return = '';
         $case = 3;
@@ -510,12 +479,12 @@ class Ru extends Words
 
         $currencyNames = self::$currencyNames[$currency];
 
-        $return = trim($this->_toWordsWithCase($decimal, $case, $currencyNames[0][0]));
+        $return = trim($this->toWordsWithCase($decimal, $case, $currencyNames[0][0]));
         $return .= $this->wordSeparator . $currencyNames[0][$case];
 
         if (null !== $fraction) {
             if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->_toWordsWithCase($fraction, $case, $currencyNames[1][0]));
+                $return .= $this->wordSeparator . trim($this->toWordsWithCase($fraction, $case, $currencyNames[1][0]));
             } else {
                 $return .= $this->wordSeparator . $fraction;
             }
