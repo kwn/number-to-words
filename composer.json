@@ -22,17 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Kwn\\NumberToWords\\": "src",
-            "NumberToWords\\": "legacy"
+            "NumberToWords\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kwn\\NumberToWords\\": [
-                "tests",
-                "src-dev"
-            ],
-            "NumberToWords\\": "legacy-tests"
+            "NumberToWords\\": "tests"
         }
     }
 }
