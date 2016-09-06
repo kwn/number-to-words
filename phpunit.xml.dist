@@ -12,4 +12,9 @@
     <listeners>
         <listener class="\Mockery\Adapter\Phpunit\TestListener"/>
     </listeners>
+    <logging>
+        <log type="coverage-text" target="php://stdout" lowUpperBound="50" highLowerBound="80"/>
+        <log type="coverage-html" target="build/logs/coverage" highlight="true" lowUpperBound="50" highLowerBound="80"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
 </phpunit>

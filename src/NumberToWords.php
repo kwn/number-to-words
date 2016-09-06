@@ -1,94 +1,85 @@
 <?php
 
-namespace Kwn\NumberToWords;
+namespace NumberToWords;
 
-use Kwn\NumberToWords\Exception\InvalidArgumentException;
-use Kwn\NumberToWords\Transformer\NumberTransformer;
-use Kwn\NumberToWords\Transformer\TransformerFactory;
-use Kwn\NumberToWords\Transformer\TransformerFactoriesRegistry;
-use Kwn\NumberToWords\Model\Currency;
-use Kwn\NumberToWords\Model\Language;
-use Kwn\NumberToWords\Model\SubunitFormat;
+use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
+use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
+use NumberToWords\NumberTransformer\EnglishNumberTransformer;
+use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
+use NumberToWords\NumberTransformer\FrenchNumberTransformer;
+use NumberToWords\NumberTransformer\GermanNumberTransformer;
+use NumberToWords\NumberTransformer\HungarianNumberTransformer;
+use NumberToWords\NumberTransformer\ItalianNumberTransformer;
+use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
+use NumberToWords\NumberTransformer\PolishNumberTransformer;
+use NumberToWords\NumberTransformer\NumberTransformer;
+use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
+use NumberToWords\NumberTransformer\RomanianNumberTransformer;
+use NumberToWords\NumberTransformer\RussianNumberTransformer;
+use NumberToWords\NumberTransformer\SpanishNumberTransformer;
 
 class NumberToWords
 {
-    /**
-     * @var TransformerFactoriesRegistry
-     */
-    private $transformerFactoriesRegistry;
+    private $numberTransformers = [
+        'bg' => BulgarianNumberTransformer::class,
+        'de' => GermanNumberTransformer::class,
+        'en' => EnglishNumberTransformer::class,
+        'es' => SpanishNumberTransformer::class,
+        'fr' => FrenchNumberTransformer::class,
+        'fr_BE' => FrenchBelgianNumberTransformer::class,
+        'hu' => HungarianNumberTransformer::class,
+        'it' => ItalianNumberTransformer::class,
+        'lt' => LithuanianNumberTransformer::class,
+        'pl' => PolishNumberTransformer::class,
+        'pt_BR' => PortugueseBrazilianNumberTransformer::class,
+        'ro' => RomanianNumberTransformer::class,
+        'ru' => RussianNumberTransformer::class
+    ];
+
+    private $currencyTransformers = [
+        'en' => EnglishCurrencyTransformer::class,
+        'pl' => PolishCurrencyTransformer::class,
+        'ro' => RomanianCurrencyTransformer::class,
+        'ru' => RussianCurrencyTransformer::class
+    ];
 
     /**
-     * Constructor
-     *
-     * @param TransformerFactoriesRegistry $transformerFactoriesRegistry
-     */
-    public function __construct(TransformerFactoriesRegistry $transformerFactoriesRegistry)
-    {
-        $this->transformerFactoriesRegistry = $transformerFactoriesRegistry;
-    }
-
-    /**
-     * Get number transformer from registered factories
-     *
      * @param string $language
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @return NumberTransformer
      */
     public function getNumberTransformer($language)
     {
-        return $this->getTransformerFactory(new Language($language))->createNumberTransformer();
-    }
-
-    /**
-     * Get currency transformer from registered factories
-     *
-     * @param string  $language       Language Identifier (RFC 3066)
-     * @param string  $currency       Currency identifier (ISO 4217)
-     * @param integer $subunitsFormat SubunitFormat format constant
-     *
-     * @throws InvalidArgumentException
-     * @return mixed
-     */
-    public function getCurrencyTransformer($language, $currency, $subunitsFormat)
-    {
-        return $this->getTransformerFactory(new Language($language))
-            ->createCurrencyTransformer(new Currency($currency), new SubunitFormat($subunitsFormat));
-    }
-
-    /**
-     * Get registered transformer factory
-     *
-     * @param Language $language
-     *
-     * @throws InvalidArgumentException
-     * @return TransformerFactory
-     */
-    private function getTransformerFactory(Language $language)
-    {
-        if (!$this->isTransformerFactoryExists($language)) {
-            throw new InvalidArgumentException(sprintf(
-                'Transformer with language identifier "%s" is not registered',
-                $language->getIdentifier()
+        if (!array_key_exists($language, $this->numberTransformers)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Number transformer for "%s" language is not implemented.',
+                $language
             ));
         }
 
-        return $this->transformerFactoriesRegistry
-            ->getTransformerFactories()
-            ->offsetGet($language->getIdentifier());
+        return new $this->numberTransformers[$language];
     }
 
     /**
-     * Check if transformer factory of particular language exists
+     * @param string $language
      *
-     * @param Language $language
-     *
-     * @return bool
+     * @throws \InvalidArgumentException
+     * @return CurrencyTransformer
      */
-    private function isTransformerFactoryExists(Language $language)
+    public function getCurrencyTransformer($language)
     {
-        return $this->transformerFactoriesRegistry
-            ->getTransformerFactories()
-            ->offsetExists($language->getIdentifier());
+        if (!array_key_exists($language, $this->currencyTransformers)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Currency transformer for "%s" language is not implemented.',
+                $language
+            ));
+        }
+
+        return new $this->currencyTransformers[$language];
     }
 }
