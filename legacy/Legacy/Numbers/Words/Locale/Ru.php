@@ -6,16 +6,6 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Ru extends Words
 {
-
-    // {{{ properties
-
-    /**
-     * Locale name
-     * @var string
-     * @access public
-     */
-    var $defaultLocale = 'ru';
-
     /**
      * Language name in English
      * @var string
