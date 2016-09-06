@@ -141,112 +141,111 @@ class Es extends Words
 
         // cientos: doscientos, trescientos, etc...
         switch ($h) {
-        case 1:
-            if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
-                $ret .= $this->_sep . 'cien';
-            } else {
-                $ret .= $this->_sep . 'ciento';
-            }
-            break;
-        case 2:
-        case 3:
-        case 4:
-        case 6:
-        case 8:
-            $ret .= $this->_sep . $this->_digits[$h] . 'cientos';
-            break;
-        case 5:
-            $ret .= $this->_sep . 'quinientos';
-            break;
-        case 7:
-            $ret .= $this->_sep . 'setecientos';
-            break;
-        case 9:
-            $ret .= $this->_sep . 'novecientos';
-            break;
+            case 1:
+                if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
+                    $ret .= $this->_sep . 'cien';
+                } else {
+                    $ret .= $this->_sep . 'ciento';
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 6:
+            case 8:
+                $ret .= $this->_sep . $this->_digits[$h] . 'cientos';
+                break;
+            case 5:
+                $ret .= $this->_sep . 'quinientos';
+                break;
+            case 7:
+                $ret .= $this->_sep . 'setecientos';
+                break;
+            case 9:
+                $ret .= $this->_sep . 'novecientos';
+                break;
         }
 
         // decenas: veinte, treinta, etc...
         switch ($t) {
-        case 9:
-            $ret .= $this->_sep . 'noventa';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'ochenta';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'setenta';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'sesenta';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'cincuenta';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'cuarenta';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'treinta';
-            break;
-
-        case 2:
-            if ($d == 0) {
-                $ret .= $this->_sep . 'veinte';
-            } else {
-                if (($power > 0) and ($d == 1)) {
-                    $ret .= $this->_sep . 'veintiún';
-                } else {
-                    $ret .= $this->_sep . 'veinti' . $this->_digits[$d];
-                }
-            }
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'diez';
+            case 9:
+                $ret .= $this->_sep . 'noventa';
                 break;
 
-            case 1:
-                $ret .= $this->_sep . 'once';
+            case 8:
+                $ret .= $this->_sep . 'ochenta';
                 break;
 
-            case 2:
-                $ret .= $this->_sep . 'doce';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'trece';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'catorce';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'quince';
+            case 7:
+                $ret .= $this->_sep . 'setenta';
                 break;
 
             case 6:
-            case 7:
-            case 9:
-            case 8:
-                $ret .= $this->_sep . 'dieci' . $this->_digits[$d];
+                $ret .= $this->_sep . 'sesenta';
                 break;
-            }
-            break;
+
+            case 5:
+                $ret .= $this->_sep . 'cincuenta';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'cuarenta';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'treinta';
+                break;
+
+            case 2:
+                if ($d == 0) {
+                    $ret .= $this->_sep . 'veinte';
+                } else {
+                    if (($power > 0) and ($d == 1)) {
+                        $ret .= $this->_sep . 'veintiún';
+                    } else {
+                        $ret .= $this->_sep . 'veinti' . $this->_digits[$d];
+                    }
+                }
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'diez';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'once';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'doce';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'trece';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'catorce';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'quince';
+                        break;
+
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 8:
+                        $ret .= $this->_sep . 'dieci' . $this->_digits[$d];
+                        break;
+                }
+                break;
         }
 
         // add digits only if it is a multiple of 10 and not 1x or 2x
         if (($t != 1) and ($t != 2) and ($d > 0)) {
-
             // don't add 'y' for numbers below 10
             if ($t != 0) {
                 // use 'un' instead of 'uno' when there is a suffix ('mil', 'millones', etc...)

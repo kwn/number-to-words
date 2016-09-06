@@ -267,19 +267,19 @@ class Numbers_Words_Locale_et extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -288,37 +288,37 @@ class Numbers_Words_Locale_et extends Numbers_Words
         }
 
         switch ($t) {
-        case 9:
-        case 8:
-        case 7:
-        case 6:
-        case 5:
-        case 4:
-        case 3:
-        case 2:
-            $ret .= $this->_sep . $this->_digits[$t] . 'k�mmend';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'k�mme';
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+            case 5:
+            case 4:
+            case 3:
+            case 2:
+                $ret .= $this->_sep . $this->_digits[$t] . 'k�mmend';
                 break;
 
             case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                $ret .= $this->_sep . $this->_digits[$d] . 'teist';
-                break;
-            }
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'k�mme';
+                        break;
 
-            break;
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'teist';
+                        break;
+                }
+
+                break;
         }
 
         if ($t != 1 && $d > 0) {

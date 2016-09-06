@@ -234,19 +234,19 @@ class Numbers_Words_Locale_en_IN extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -263,66 +263,66 @@ class Numbers_Words_Locale_en_IN extends Numbers_Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-        case 7:
-        case 6:
-            $ret .= $this->_sep . $this->_digits[$t] . 'ty';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'eighty';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'fifty';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'forty';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'thirty';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'twenty';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'ten';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'eleven';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'twelve';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'thirteen';
-                break;
-
-            case 4:
-            case 6:
-            case 7:
             case 9:
-                $ret .= $this->_sep . $this->_digits[$d] . 'teen';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'fifteen';
+            case 7:
+            case 6:
+                $ret .= $this->_sep . $this->_digits[$t] . 'ty';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'eighteen';
+                $ret .= $this->_sep . 'eighty';
                 break;
-            }
-            break;
+
+            case 5:
+                $ret .= $this->_sep . 'fifty';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'forty';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'thirty';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'twenty';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'ten';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'eleven';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'twelve';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'thirteen';
+                        break;
+
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 9:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'teen';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'fifteen';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'eighteen';
+                        break;
+                }
+                break;
         }
 
         if ($t != 1 && $d > 0) { // add digits only in <0>,<1,9> and <21,inf>
@@ -413,5 +413,4 @@ class Numbers_Words_Locale_en_IN extends Numbers_Words
         return $ret;
     }
     // }}}
-
 }

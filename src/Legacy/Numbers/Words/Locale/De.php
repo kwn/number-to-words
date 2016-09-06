@@ -164,19 +164,19 @@ class De extends Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -203,63 +203,63 @@ class De extends Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-        case 8:
-        case 5:
-            $ret .= $this->_sep . $this->_digits[$t] . 'zig';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'siebzig';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'sechzig';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'vierzig';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'dreißig';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'zwanzig';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'zehn';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'elf';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'zwölf';
-                break;
-
-            case 3:
-            case 4:
-            case 5:
-            case 8:
             case 9:
-                $ret .= $this->_sep . $this->_digits[$d] . 'zehn';
-                break;
-
-            case 6:
-                $ret .= $this->_sep . 'sechzehn';
+            case 8:
+            case 5:
+                $ret .= $this->_sep . $this->_digits[$t] . 'zig';
                 break;
 
             case 7:
-                $ret .= $this->_sep . 'siebzehn';
+                $ret .= $this->_sep . 'siebzig';
                 break;
-            }
-            break;
+
+            case 6:
+                $ret .= $this->_sep . 'sechzig';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'vierzig';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'dreißig';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'zwanzig';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'zehn';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'elf';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'zwölf';
+                        break;
+
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 8:
+                    case 9:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'zehn';
+                        break;
+
+                    case 6:
+                        $ret .= $this->_sep . 'sechzehn';
+                        break;
+
+                    case 7:
+                        $ret .= $this->_sep . 'siebzehn';
+                        break;
+                }
+                break;
         }
 
         if ($power > 0) {

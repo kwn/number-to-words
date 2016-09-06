@@ -262,19 +262,19 @@ class Numbers_Words_Locale_nl extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -302,58 +302,57 @@ class Numbers_Words_Locale_nl extends Numbers_Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-        case 8:
-        case 7:
-        case 6:
-        case 5:
-            $ret .= $this->_sep . $this->_digits[$t] . 'tig';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'veertig';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'dertig';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'twintig';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'tien';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'elf';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'twaalf';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'dertien';
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+            case 5:
+                $ret .= $this->_sep . $this->_digits[$t] . 'tig';
                 break;
 
             case 4:
-                $ret .= $this->_sep . 'veertien';
+                $ret .= $this->_sep . 'veertig';
                 break;
 
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                $ret .= $this->_sep . $this->_digits[$d] . 'tien';
+            case 3:
+                $ret .= $this->_sep . 'dertig';
                 break;
 
-            }
-            break;
+            case 2:
+                $ret .= $this->_sep . 'twintig';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'tien';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'elf';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'twaalf';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'dertien';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'veertien';
+                        break;
+
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'tien';
+                        break;
+                }
+                break;
         }
 
         if ($power > 0) {

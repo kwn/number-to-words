@@ -186,26 +186,23 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
         $ret = '';
 
         // add a the word for the minus sign if necessary
-        if (substr($num, 0, 1) == '-')
-        {
+        if (substr($num, 0, 1) == '-') {
             $ret = $this->_sep . $this->_minus;
             $num = substr($num, 1);
         }
 
 
         // strip excessive zero signs
-        $num = preg_replace('/^0+/','',$num);
+        $num = preg_replace('/^0+/', '', $num);
 
-        if (strlen($num) > 6)
-        {
+        if (strlen($num) > 6) {
             $current_power = 6;
             // check for highest power
-            if (isset($this->_exponent[$power]))
-            {
-                // convert the number above the first 6 digits
+            if (isset($this->_exponent[$power])) {
+            // convert the number above the first 6 digits
                 // with it's corresponding $power.
                 $snum = substr($num, 0, -6);
-                $snum = preg_replace('/^0+/','',$snum);
+                $snum = preg_replace('/^0+/', '', $snum);
                 if ($snum !== '') {
                     $ret .= $this->_toWords($snum, $power + 6);
                 }
@@ -214,12 +211,10 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
             if ($num == 0) {
                 return $ret;
             }
-        }
-        elseif ($num == 0 || $num == '') {
+        } elseif ($num == 0 || $num == '') {
             return(' '.$this->_digits[0].' ');
             $current_power = strlen($num);
-        }
-        else {
+        } else {
             $current_power = strlen($num);
         }
 
@@ -227,8 +222,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
         $thousands = floor($num / 1000);
         if ($thousands == 1) {
             $ret .= $this->_sep . 'bin' . $this->_sep;
-        }
-        elseif ($thousands > 1) {
+        } elseif ($thousands > 1) {
             $ret .= $this->_toWords($thousands, 3) . $this->_sep;//. 'mil' . $this->wordSeparator;
         }
 
@@ -238,7 +232,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
         $d = floor($num % 10);
 
         if ($h) {
-          $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'yüz';
+            $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'yüz';
 
           // in English only - add ' and' for [1-9]01..[1-9]99
           // (also for 1001..1099, 10001..10099 but it is harder)
@@ -249,8 +243,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
         }
 
         // decine: venti trenta, etc...
-        switch ($t)
-        {
+        switch ($t) {
             case 9:
                 $ret .= $this->_sep . 'doksan';
                 break;
@@ -291,11 +284,10 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
         }
 
         if ($t > 1 && $d > 0) {
-           $ret .= $this->_sep . $this->_digits[$d];
+            $ret .= $this->_sep . $this->_digits[$d];
         }
 
-        if ($power > 0)
-        {
+        if ($power > 0) {
             if (isset($this->_exponent[$power])) {
                 $lev = $this->_exponent[$power];
             }
@@ -305,7 +297,7 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
             }
 
             $suffix = $lev[0];
-            if ($num != 0)  {
+            if ($num != 0) {
                 $ret .= $this->_sep . $suffix;
             }
         }
@@ -334,7 +326,8 @@ class Numbers_Words_Locale_tr_TR extends Numbers_Words
      * @author Piotr Klaban <makler@man.torun.pl>
      * @since  Words 0.4
      */
-    function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true) {
+    function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true)
+    {
         $int_curr = strtoupper($int_curr);
         if (!isset($this->_currency_names[$int_curr])) {
             $int_curr = $this->def_currency;

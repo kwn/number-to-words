@@ -1,4 +1,4 @@
-test: phpunit phpcs
+test: phpunit
 
 build: phpunit-coverage phpcs
 

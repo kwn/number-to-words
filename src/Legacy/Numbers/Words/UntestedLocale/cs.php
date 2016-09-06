@@ -212,32 +212,31 @@ class Numbers_Words_Locale_cs extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
         if ($h) {
-
             // inflection of the word "hundred"
             if ($h == 1) {
                 $ret .= $this->_sep . $this->_hundreds[0];
             } elseif ($h == 2) {
                 $ret .= $this->_sep . "dv�" . $this->_sep . $this->_hundreds[1];
-            } elseif ( ($h > 1) && ($h < 5) ) {
+            } elseif (($h > 1) && ($h < 5)) {
                 $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . $this->_hundreds[2];
-            } else {		//if ($h >= 5)
+            } else {        //if ($h >= 5)
                 $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . $this->_hundreds[3];
             }
             // in English only - add ' and' for [1-9]01..[1-9]99
@@ -250,63 +249,63 @@ class Numbers_Words_Locale_cs extends Numbers_Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 2:
-        case 3:
-        case 4:
-            $ret .= $this->_sep . $this->_digits[$t] . 'cet';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'pades�t';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . '�edes�t';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'sedmdes�t';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'osmdes�t';
-            break;
-
-        case 9:
-            $ret .= $this->_sep . 'devades�t';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'deset';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'jeden�ct';
-                break;
-
+            case 2:
+            case 3:
             case 4:
-                $ret .= $this->_sep . '�trn�ct';
+                $ret .= $this->_sep . $this->_digits[$t] . 'cet';
                 break;
 
             case 5:
-                $ret .= $this->_sep . 'patn�ct';
+                $ret .= $this->_sep . 'pades�t';
+                break;
+
+            case 6:
+                $ret .= $this->_sep . '�edes�t';
+                break;
+
+            case 7:
+                $ret .= $this->_sep . 'sedmdes�t';
+                break;
+
+            case 8:
+                $ret .= $this->_sep . 'osmdes�t';
                 break;
 
             case 9:
-                $ret .= $this->_sep . 'devaten�ct';
+                $ret .= $this->_sep . 'devades�t';
                 break;
 
-            case 2:
-            case 3:
-            case 6:
-            case 7:
-            case 8:
-                $ret .= $this->_sep . $this->_digits[$d] . 'n�ct';
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'deset';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'jeden�ct';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . '�trn�ct';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'patn�ct';
+                        break;
+
+                    case 9:
+                        $ret .= $this->_sep . 'devaten�ct';
+                        break;
+
+                    case 2:
+                    case 3:
+                    case 6:
+                    case 7:
+                    case 8:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'n�ct';
+                        break;
+                }
                 break;
-            }
-            break;
         }
 
         if (($t != 1) && ($d > 0) && (($power == 0) || ($num > 1))) {
@@ -325,7 +324,7 @@ class Numbers_Words_Locale_cs extends Numbers_Words
             // inflection of exponental words
             if ($num == 1) {
                 $idx = 0;
-            } elseif ( (($num > 1) && ($num < 5)) || ((intval("$t$d") > 1) && (intval("$t$d") < 5))) {
+            } elseif ((($num > 1) && ($num < 5)) || ((intval("$t$d") > 1) && (intval("$t$d") < 5))) {
                 $idx = 1;
             } else {
                 $idx = 2;

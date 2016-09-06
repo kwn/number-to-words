@@ -136,172 +136,172 @@ class It extends Words
 
         // centinaia: duecento, trecento, etc...
         switch ($h) {
-        case 1:
-            if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
-                $ret .= $this->_sep . 'cento';
-            } else {
-                $ret .= $this->_sep . 'cento';
-            }
-            break;
-        case 2:
-        case 3:
-        case 4:
-        case 6:
-        case 8:
-            $ret .= $this->_sep . $this->_digits[$h] . 'cento';
-            break;
-        case 5:
-            $ret .= $this->_sep . 'cinquecento';
-            break;
-        case 7:
-            $ret .= $this->_sep . 'settecento';
-            break;
-        case 9:
-            $ret .= $this->_sep . 'novecento';
-            break;
+            case 1:
+                if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
+                    $ret .= $this->_sep . 'cento';
+                } else {
+                    $ret .= $this->_sep . 'cento';
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 6:
+            case 8:
+                $ret .= $this->_sep . $this->_digits[$h] . 'cento';
+                break;
+            case 5:
+                $ret .= $this->_sep . 'cinquecento';
+                break;
+            case 7:
+                $ret .= $this->_sep . 'settecento';
+                break;
+            case 9:
+                $ret .= $this->_sep . 'novecento';
+                break;
         }
 
         // decine: venti trenta, etc...
         switch ($t) {
-        case 9:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'novant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'novanta' ;
-                break;
-            }
-
-            break;
-        case 8:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'ottant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'ottanta' ;
-                break;
-            }
-
-            break;
-        case 7:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'settant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'settanta' ;
-                break;
-            }
-            break;
-        case 6:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'sessant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'sessanta' ;
-                break;
-            }
-            break;
-        case 5:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'cinquant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'cinquanta' ;
-                break;
-            }
-            break;
-        case 4:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'quarant' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'quaranta' ;
-                break;
-            }
-            break;
-        case 3:
-            switch ($d){
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'trent' ;
-                break;
-            default:
-                $ret .= $this->_sep . 'trenta' ;
-                break;
-            }
-            break;
-        case 2:
-            switch ($d){
-            case 0:
-                $ret .= $this->_sep . 'venti';
-                break;
-            case 1:
-            case 8:
-                $ret .= $this->_sep . 'vent' . $this->_digits[$d];
-                break;
-            default:
-                $ret .= $this->_sep . 'venti'  . $this->_digits[$d];
-                break;
-            }
-
-
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'dieci';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'undici';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'dodici';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'tredici';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'quattordici';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'quindici';
-                break;
-
-            case 6:
-                 $ret .= $this->_sep . 'sedici';
-                break;
-
-            case 7:
-                 $ret .= $this->_sep . 'diciassette';
-                break;
-
-            case 8:
-                $ret .= $this->_sep . 'diciotto';
-                break;
-
             case 9:
-                $ret .= $this->_sep . 'diciannove';
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'novant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'novanta' ;
+                        break;
+                }
+
                 break;
-            }
-            break;
+            case 8:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'ottant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'ottanta' ;
+                        break;
+                }
+
+                break;
+            case 7:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'settant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'settanta' ;
+                        break;
+                }
+                break;
+            case 6:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'sessant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'sessanta' ;
+                        break;
+                }
+                break;
+            case 5:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'cinquant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'cinquanta' ;
+                        break;
+                }
+                break;
+            case 4:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'quarant' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'quaranta' ;
+                        break;
+                }
+                break;
+            case 3:
+                switch ($d) {
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'trent' ;
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'trenta' ;
+                        break;
+                }
+                break;
+            case 2:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'venti';
+                        break;
+                    case 1:
+                    case 8:
+                        $ret .= $this->_sep . 'vent' . $this->_digits[$d];
+                        break;
+                    default:
+                        $ret .= $this->_sep . 'venti'  . $this->_digits[$d];
+                        break;
+                }
+
+
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'dieci';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'undici';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'dodici';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'tredici';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'quattordici';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'quindici';
+                        break;
+
+                    case 6:
+                         $ret .= $this->_sep . 'sedici';
+                        break;
+
+                    case 7:
+                         $ret .= $this->_sep . 'diciassette';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'diciotto';
+                        break;
+
+                    case 9:
+                        $ret .= $this->_sep . 'diciannove';
+                        break;
+                }
+                break;
         }
 
         // add digits only if it is a multiple of 10 and not 1x or 2x

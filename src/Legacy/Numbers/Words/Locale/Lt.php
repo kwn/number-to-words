@@ -142,111 +142,110 @@ class Lt extends Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
-        if ( $h > 1 ) {
+        if ($h > 1) {
             $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'šimtai';
-        } elseif ( $h ) {
+        } elseif ($h) {
             $ret .= $this->_sep . 'šimtas';
         }
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-            $ret .= $this->_sep . 'devyniasdešimt';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'aštuoniasdešimt';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'septyniasdešimt';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'šešiasdešimt';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'penkiasdešimt';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'keturiasdešimt';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'trisdešimt';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'dvidešimt';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'dešimt';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'vienuolika';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'dvylika';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'trylika';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'keturiolika';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'penkiolika';
-                break;
-
-            case 6:
-                $ret .= $this->_sep . 'šešiolika';
-                break;
-
-            case 7:
-                $ret .= $this->_sep . 'septyniolika';
+            case 9:
+                $ret .= $this->_sep . 'devyniasdešimt';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'aštuoniolika';
+                $ret .= $this->_sep . 'aštuoniasdešimt';
                 break;
 
-            case 9:
-                $ret .= $this->_sep . 'devyniolika';
+            case 7:
+                $ret .= $this->_sep . 'septyniasdešimt';
                 break;
 
-            }
-            break;
+            case 6:
+                $ret .= $this->_sep . 'šešiasdešimt';
+                break;
+
+            case 5:
+                $ret .= $this->_sep . 'penkiasdešimt';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'keturiasdešimt';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'trisdešimt';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'dvidešimt';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'dešimt';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'vienuolika';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'dvylika';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'trylika';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'keturiolika';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'penkiolika';
+                        break;
+
+                    case 6:
+                        $ret .= $this->_sep . 'šešiolika';
+                        break;
+
+                    case 7:
+                        $ret .= $this->_sep . 'septyniolika';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'aštuoniolika';
+                        break;
+
+                    case 9:
+                        $ret .= $this->_sep . 'devyniolika';
+                        break;
+                }
+                break;
         }
 
         // add digits only in <0>,<1,9> and <21,inf>
         if ($t != 1 && $d > 0) {
-            if ( $d > 1 || !$power || $t ) {
+            if ($d > 1 || !$power || $t) {
                 $ret .= $this->_sep . $this->_digits[$d];
             }
         }
@@ -264,7 +263,7 @@ class Lt extends Words
 
             if ($t == 1 || ($t > 0 && $d == 0 )) {
                 $ret .= $this->_sep . $lev[2];
-            } elseif ( $d > 1 ) {
+            } elseif ($d > 1) {
                 $ret .= $this->_sep . $lev[1];
             } else {
                 $ret .= $this->_sep . $lev[0];
@@ -278,5 +277,4 @@ class Lt extends Words
         return $ret;
     }
     // }}}
-
 }

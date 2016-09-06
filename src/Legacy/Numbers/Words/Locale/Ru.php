@@ -515,7 +515,6 @@ class Ru extends Words
             } else {
                 $case = 3;
             }
-
         } else {
             $num = str_pad($num, 3, '0', STR_PAD_LEFT);
 
@@ -603,5 +602,4 @@ class Ru extends Words
         return $ret;
     }
     // }}}
-
 }

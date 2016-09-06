@@ -208,19 +208,19 @@ class Numbers_Words_Locale_sv extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -230,70 +230,70 @@ class Numbers_Words_Locale_sv extends Numbers_Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 5:
-        case 6:
-        case 7:
-            $ret .= $this->_sep . $this->_digits[$t] . 'tio';
-            break;
-
-        case 9:
-            $ret .= $this->_sep . 'nittio';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . '�ttio';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'fyrtio';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'trettio';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'tjugo';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'tio';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'elva';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'tolv';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'tretton';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'fjorton';
-                break;
-
             case 5:
             case 6:
-                $ret .= $this->_sep . $this->_digits[$d] . 'ton';
+            case 7:
+                $ret .= $this->_sep . $this->_digits[$t] . 'tio';
                 break;
 
-            case 7:
-                $ret .= $this->_sep . 'sjutton';
+            case 9:
+                $ret .= $this->_sep . 'nittio';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'arton';
+                $ret .= $this->_sep . '�ttio';
                 break;
-            case 9:
-                $ret .= $this->_sep . 'nitton';
-            }
-            break;
+
+            case 4:
+                $ret .= $this->_sep . 'fyrtio';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'trettio';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'tjugo';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'tio';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'elva';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'tolv';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'tretton';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'fjorton';
+                        break;
+
+                    case 5:
+                    case 6:
+                        $ret .= $this->_sep . $this->_digits[$d] . 'ton';
+                        break;
+
+                    case 7:
+                        $ret .= $this->_sep . 'sjutton';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'arton';
+                        break;
+                    case 9:
+                        $ret .= $this->_sep . 'nitton';
+                }
+                break;
         }
 
         if ($t != 1 && $d > 0) { // add digits only in <0>,<1,9> and <21,inf>

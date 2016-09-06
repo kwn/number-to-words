@@ -1,5 +1,7 @@
 # PHP Number to words converter (WIP)
 
+# This library is under rebuild. Please use the latest working release (0.0.4)
+
 [![Travis](https://travis-ci.org/kwn/number-to-words.svg?branch=master)](https://travis-ci.org/kwn/number-to-words)
 [![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
 [![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
@@ -14,7 +16,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "0.0.2"
+        "kwn/number-to-words": "0.0.4"
     }
 }
 ```

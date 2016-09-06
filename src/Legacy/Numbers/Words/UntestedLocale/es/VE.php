@@ -125,46 +125,46 @@ class Numbers_Words_Locale_es_VE extends Numbers_Words
      * @access private
      */
     var $_currency_names = array(
-		'ALL' => array(array('lek'), array('qindarka')),
-		'AUD' => array(array('dólar australiano', 'dólares australianos'), array('centavo')),
-		'ARS' => array(array('peso'), array ('centavo')),
-		'BAM' => array(array('convertible marka'), array('fenig')),
-		'BGN' => array(array('lev'), array('stotinka')),
-		'BRL' => array(array('real','reales'), array('centavo')),
-		'BYR' => array(array('rublo bielorruso', 'rublos bielorrusos'), array('kopek', 'kopeks')),
-		'CAD' => array(array('dólar canadiense', 'dólares canadienses'), array('centavo')),
-		'CHF' => array(array('Swiss franc'), array('rapp')),
-		'CYP' => array(array('Cypriot pound'), array('cent')),
-		'CZK' => array(array('Czech koruna'), array('halerz')),
-		'DKK' => array(array('Danish krone'), array('ore')),
-		'EEK' => array(array('kroon'), array('senti')),
-		'EUR' => array(array('euro'), array('centavo')),
-		'GBP' => array(array('libra'), array('peñique')),
-		'HKD' => array(array('dólar de hong kong', 'dólares de hong kong'), array('centavo')),
-		'HRK' => array(array('Croatian kuna'), array('lipa')),
-		'HUF' => array(array('forint'), array('filler')),
-		'ILS' => array(array('new sheqel','new sheqels'), array('agora','agorot')),
-		'ISK' => array(array('Icelandic króna'), array('aurar')),
-		'JPY' => array(array('yen', 'yenes'), array('sen')),
-		'LTL' => array(array('litas'), array('cent')),
-		'LVL' => array(array('lat'), array('sentim')),
-		'MKD' => array(array('denar macedonio', 'denares macedonios'), array('deni')),
-		'MTL' => array(array('lira maltesa'), array('céntimo')),
-		'MXN' => array(array('peso'), array ('centavo')),
-		'NOK' => array(array('Norwegian krone'), array('oere')),
-		'PLN' => array(array('zloty', 'zlotys'), array('grosz')),
-		'ROL' => array(array('Romanian leu'), array('bani')),
-		'RUB' => array(array('rublo ruso', 'rublos rusos'), array('kopek')),
-		'SEK' => array(array('Swedish krona'), array('oere')),
-		'SIT' => array(array('Tolar'), array('stotinia')),
-		'SKK' => array(array('Slovak koruna'), array()),
-		'TRL' => array(array('lira'), array('kuruþ')),
-		'UAH' => array(array('hryvna'), array('cent')),
-		'USD' => array(array('dólar', 'dólares'), array('centavo')),
-		'VEB' => array(array('bolívar', 'bolívares'), array('céntimo')),
-		'YUM' => array(array('dinar', 'dinares'), array('para')),
-		'ZAR' => array(array('rand'), array('cent'))
-		);
+        'ALL' => array(array('lek'), array('qindarka')),
+        'AUD' => array(array('dólar australiano', 'dólares australianos'), array('centavo')),
+        'ARS' => array(array('peso'), array ('centavo')),
+        'BAM' => array(array('convertible marka'), array('fenig')),
+        'BGN' => array(array('lev'), array('stotinka')),
+        'BRL' => array(array('real','reales'), array('centavo')),
+        'BYR' => array(array('rublo bielorruso', 'rublos bielorrusos'), array('kopek', 'kopeks')),
+        'CAD' => array(array('dólar canadiense', 'dólares canadienses'), array('centavo')),
+        'CHF' => array(array('Swiss franc'), array('rapp')),
+        'CYP' => array(array('Cypriot pound'), array('cent')),
+        'CZK' => array(array('Czech koruna'), array('halerz')),
+        'DKK' => array(array('Danish krone'), array('ore')),
+        'EEK' => array(array('kroon'), array('senti')),
+        'EUR' => array(array('euro'), array('centavo')),
+        'GBP' => array(array('libra'), array('peñique')),
+        'HKD' => array(array('dólar de hong kong', 'dólares de hong kong'), array('centavo')),
+        'HRK' => array(array('Croatian kuna'), array('lipa')),
+        'HUF' => array(array('forint'), array('filler')),
+        'ILS' => array(array('new sheqel','new sheqels'), array('agora','agorot')),
+        'ISK' => array(array('Icelandic króna'), array('aurar')),
+        'JPY' => array(array('yen', 'yenes'), array('sen')),
+        'LTL' => array(array('litas'), array('cent')),
+        'LVL' => array(array('lat'), array('sentim')),
+        'MKD' => array(array('denar macedonio', 'denares macedonios'), array('deni')),
+        'MTL' => array(array('lira maltesa'), array('céntimo')),
+        'MXN' => array(array('peso'), array ('centavo')),
+        'NOK' => array(array('Norwegian krone'), array('oere')),
+        'PLN' => array(array('zloty', 'zlotys'), array('grosz')),
+        'ROL' => array(array('Romanian leu'), array('bani')),
+        'RUB' => array(array('rublo ruso', 'rublos rusos'), array('kopek')),
+        'SEK' => array(array('Swedish krona'), array('oere')),
+        'SIT' => array(array('Tolar'), array('stotinia')),
+        'SKK' => array(array('Slovak koruna'), array()),
+        'TRL' => array(array('lira'), array('kuruþ')),
+        'UAH' => array(array('hryvna'), array('cent')),
+        'USD' => array(array('dólar', 'dólares'), array('centavo')),
+        'VEB' => array(array('bolívar', 'bolívares'), array('céntimo')),
+        'YUM' => array(array('dinar', 'dinares'), array('para')),
+        'ZAR' => array(array('rand'), array('cent'))
+        );
 
     /**
      * The default currency name
@@ -249,112 +249,111 @@ class Numbers_Words_Locale_es_VE extends Numbers_Words
 
         // cientos: doscientos, trescientos, etc...
         switch ($h) {
-        case 1:
-            if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
-                $ret .= $this->_sep . 'cien';
-            } else {
-                $ret .= $this->_sep . 'ciento';
-            }
-            break;
-        case 2:
-        case 3:
-        case 4:
-        case 6:
-        case 8:
-            $ret .= $this->_sep . $this->_digits[$h] . 'cientos';
-            break;
-        case 5:
-            $ret .= $this->_sep . 'quinientos';
-            break;
-        case 7:
-            $ret .= $this->_sep . 'setecientos';
-            break;
-        case 9:
-            $ret .= $this->_sep . 'novecientos';
-            break;
+            case 1:
+                if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
+                    $ret .= $this->_sep . 'cien';
+                } else {
+                    $ret .= $this->_sep . 'ciento';
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 6:
+            case 8:
+                $ret .= $this->_sep . $this->_digits[$h] . 'cientos';
+                break;
+            case 5:
+                $ret .= $this->_sep . 'quinientos';
+                break;
+            case 7:
+                $ret .= $this->_sep . 'setecientos';
+                break;
+            case 9:
+                $ret .= $this->_sep . 'novecientos';
+                break;
         }
 
         // decenas: veinte, treinta, etc...
         switch ($t) {
-        case 9:
-            $ret .= $this->_sep . 'noventa';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'ochenta';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'setenta';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'sesenta';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'cincuenta';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'cuarenta';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'treinta';
-            break;
-
-        case 2:
-            if ($d == 0) {
-                $ret .= $this->_sep . 'veinte';
-            } else {
-                if (($power > 0) and ($d == 1)) {
-                    $ret .= $this->_sep . 'veintiún';
-                } else {
-                    $ret .= $this->_sep . 'veinti' . $this->_digits[$d];
-                }
-            }
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'diez';
+            case 9:
+                $ret .= $this->_sep . 'noventa';
                 break;
 
-            case 1:
-                $ret .= $this->_sep . 'once';
+            case 8:
+                $ret .= $this->_sep . 'ochenta';
                 break;
 
-            case 2:
-                $ret .= $this->_sep . 'doce';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'trece';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'catorce';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'quince';
+            case 7:
+                $ret .= $this->_sep . 'setenta';
                 break;
 
             case 6:
-            case 7:
-            case 9:
-            case 8:
-                $ret .= $this->_sep . 'dieci' . $this->_digits[$d];
+                $ret .= $this->_sep . 'sesenta';
                 break;
-            }
-            break;
+
+            case 5:
+                $ret .= $this->_sep . 'cincuenta';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'cuarenta';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'treinta';
+                break;
+
+            case 2:
+                if ($d == 0) {
+                    $ret .= $this->_sep . 'veinte';
+                } else {
+                    if (($power > 0) and ($d == 1)) {
+                        $ret .= $this->_sep . 'veintiún';
+                    } else {
+                        $ret .= $this->_sep . 'veinti' . $this->_digits[$d];
+                    }
+                }
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'diez';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'once';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'doce';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'trece';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'catorce';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'quince';
+                        break;
+
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 8:
+                        $ret .= $this->_sep . 'dieci' . $this->_digits[$d];
+                        break;
+                }
+                break;
         }
 
         // add digits only if it is a multiple of 10 and not 1x or 2x
         if (($t != 1) and ($t != 2) and ($d > 0)) {
-
             // don't add 'y' for numbers below 10
             if ($t != 0) {
                 // use 'un' instead of 'uno' when there is a suffix ('mil', 'millones', etc...)
@@ -366,7 +365,6 @@ class Numbers_Words_Locale_es_VE extends Numbers_Words
             } else {
                 if (($power > 0) and ($d == 1)) {
                     $ret .= $this->_sep.'un';
-
                 } else {
                     $ret .= $this->_sep.$this->_digits[$d];
                 }
@@ -435,7 +433,6 @@ class Numbers_Words_Locale_es_VE extends Numbers_Words
             } else {
                 $ret = $curr_names[0][0] . 's';
             }
-
         } else {
             $ret = $curr_names[0][0];
         }
@@ -455,12 +452,10 @@ class Numbers_Words_Locale_es_VE extends Numbers_Words
                 } else {
                     $ret .= $this->_sep . $curr_names[1][0] . 's';
                 }
-
             } else {
                 $ret .= $this->_sep . $curr_names[1][0];
             }
         }
         return $ret;
-
     }
 }

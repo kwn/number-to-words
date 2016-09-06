@@ -181,111 +181,110 @@ class Numbers_Words_Locale_lv extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
-        if ( $h > 1 ) {
+        if ($h > 1) {
             $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'simti';
-        } elseif ( $h ) {
+        } elseif ($h) {
             $ret .= $this->_sep . 'simts';
         }
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-            $ret .= $this->_sep . 'deviņdesmit';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'astoņdesmit';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'septiņdesmit';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'sešdesmit';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'piecdesmit';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'četrdesmit';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'trīsdesmit';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'divdesmit';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'desmit';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'vienpadsmit';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'divpadsmit';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'trīspadsmit';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'četrpadsmit';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'piecpadsmit';
-                break;
-
-            case 6:
-                $ret .= $this->_sep . 'sešpadsmit';
-                break;
-
-            case 7:
-                $ret .= $this->_sep . 'septiņpadsmit';
+            case 9:
+                $ret .= $this->_sep . 'deviņdesmit';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'astoņpadsmit';
+                $ret .= $this->_sep . 'astoņdesmit';
                 break;
 
-            case 9:
-                $ret .= $this->_sep . 'deviņpadsmit';
+            case 7:
+                $ret .= $this->_sep . 'septiņdesmit';
                 break;
 
-            }
-            break;
+            case 6:
+                $ret .= $this->_sep . 'sešdesmit';
+                break;
+
+            case 5:
+                $ret .= $this->_sep . 'piecdesmit';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'četrdesmit';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'trīsdesmit';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'divdesmit';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'desmit';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'vienpadsmit';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'divpadsmit';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'trīspadsmit';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'četrpadsmit';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'piecpadsmit';
+                        break;
+
+                    case 6:
+                        $ret .= $this->_sep . 'sešpadsmit';
+                        break;
+
+                    case 7:
+                        $ret .= $this->_sep . 'septiņpadsmit';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'astoņpadsmit';
+                        break;
+
+                    case 9:
+                        $ret .= $this->_sep . 'deviņpadsmit';
+                        break;
+                }
+                break;
         }
 
         // add digits only in <0>,<1,9> and <21,inf>
         if ($t != 1 && $d > 0) {
-            if ( $d > 1 || !$power || $t ) {
+            if ($d > 1 || !$power || $t) {
                 $ret .= $this->_sep . $this->_digits[$d];
             }
         }
@@ -301,7 +300,7 @@ class Numbers_Words_Locale_lv extends Numbers_Words
 
             if ($t == 1 || ($t > 0 && $d == 0 )) {
                 $ret .= $this->_sep . $lev[2];
-            } elseif ( $d > 1 ) {
+            } elseif ($d > 1) {
                 $ret .= $this->_sep . $lev[1];
             } else {
                 $ret .= $this->_sep . $lev[0];
@@ -315,5 +314,4 @@ class Numbers_Words_Locale_lv extends Numbers_Words
         return $ret;
     }
     // }}}
-
 }

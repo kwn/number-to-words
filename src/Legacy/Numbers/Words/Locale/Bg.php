@@ -341,15 +341,15 @@ class Bg extends Words
         // process the "hundreds" digit.
         if ($s) {
             switch ($s) {
-            case 1:
-                $ret[1] = $this->_misc_strings['sto'];
-                break;
-            case 2:
-            case 3:
-                $ret[1] = $this->_digits[0][$s].$this->_misc_strings['sta'];
-                break;
-            default:
-                $ret[1] = $this->_digits[0][$s].$this->_misc_strings['stotin'];
+                case 1:
+                    $ret[1] = $this->_misc_strings['sto'];
+                    break;
+                case 2:
+                case 3:
+                    $ret[1] = $this->_digits[0][$s].$this->_misc_strings['sta'];
+                    break;
+                default:
+                    $ret[1] = $this->_digits[0][$s].$this->_misc_strings['stotin'];
             }
         }
 

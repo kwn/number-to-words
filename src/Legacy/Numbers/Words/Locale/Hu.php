@@ -182,7 +182,7 @@ class Hu extends Words
         /**
          * Return string
          */
-    	$ret = '';
+        $ret = '';
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
@@ -194,7 +194,9 @@ class Hu extends Words
         $num = trim($num);
         $num = preg_replace('/^0+/', '', $num);
 
-        if ($chk_gt2000) $gt2000 = $num > 2000;
+        if ($chk_gt2000) {
+            $gt2000 = $num > 2000;
+        }
 
         if (strlen($num) > 3) {
             $maxp = strlen($num)-1;
@@ -220,7 +222,9 @@ class Hu extends Words
                             $gt2000
                         );
 
-                    	if ($gt2000) $ret .= $this->_thousand_sep;
+                        if ($gt2000) {
+                            $ret .= $this->_thousand_sep;
+                        }
                     }
                     $curp = $p - 1;
                     continue;
@@ -236,19 +240,19 @@ class Hu extends Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -258,59 +262,59 @@ class Hu extends Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-        case 5:
-            $ret .= $this->_sep . $this->_digits[$t] . 'ven';
-            break;
-        case 8:
-        case 6:
-            $ret .= $this->_sep . $this->_digits[$t] . 'van';
-            break;
-        case 7:
-            $ret .= $this->_sep . 'hetven';
-            break;
-        case 3:
-            $ret .= $this->_sep . 'harminc';
-            break;
-        case 4:
-            $ret .= $this->_sep . 'negyven';
-            break;
-        case 2:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'húsz';
+            case 9:
+            case 5:
+                $ret .= $this->_sep . $this->_digits[$t] . 'ven';
+                break;
+            case 8:
+            case 6:
+                $ret .= $this->_sep . $this->_digits[$t] . 'van';
+                break;
+            case 7:
+                $ret .= $this->_sep . 'hetven';
+                break;
+            case 3:
+                $ret .= $this->_sep . 'harminc';
+                break;
+            case 4:
+                $ret .= $this->_sep . 'negyven';
+                break;
+            case 2:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'húsz';
+                        break;
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        $ret .= $this->_sep . 'huszon';
+                        break;
+                }
                 break;
             case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                $ret .= $this->_sep . 'huszon';
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'tíz';
+                        break;
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        $ret .= $this->_sep . 'tizen';
+                        break;
+                }
                 break;
-            }
-            break;
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'tíz';
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                $ret .= $this->_sep . 'tizen';
-                break;
-            }
-            break;
         }
 
         if ($d > 0) { // add digits only in <0> and <1,inf)
@@ -396,5 +400,4 @@ class Hu extends Words
         return $ret;
     }
     // }}}
-
 }

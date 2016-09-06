@@ -393,7 +393,7 @@ class Fr extends Words
 
         $sizeof_numgroups = count($num_groups);
 
-        foreach ($num_groups as $i=>$number) {
+        foreach ($num_groups as $i => $number) {
             // what is the corresponding exponent for the current group
             $pow = $sizeof_numgroups-$i;
 

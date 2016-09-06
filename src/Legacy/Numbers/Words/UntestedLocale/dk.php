@@ -217,19 +217,19 @@ class Numbers_Words_Locale_dk extends Numbers_Words
 
         $h = $t = $d = 0;
 
-        switch(strlen($num)) {
-        case 3:
-            $h = (int)substr($num, -3, 1);
+        switch (strlen($num)) {
+            case 3:
+                $h = (int)substr($num, -3, 1);
 
-        case 2:
-            $t = (int)substr($num, -2, 1);
+            case 2:
+                $t = (int)substr($num, -2, 1);
 
-        case 1:
-            $d = (int)substr($num, -1, 1);
-            break;
+            case 1:
+                $d = (int)substr($num, -1, 1);
+                break;
 
-        case 0:
-            return;
+            case 0:
+                return;
             break;
         }
 
@@ -255,82 +255,81 @@ class Numbers_Words_Locale_dk extends Numbers_Words
 
         // ten, twenty etc.
         switch ($t) {
-        case 9:
-            $ret .= $this->_sep . 'halvfems';
-            break;
-
-        case 8:
-            $ret .= $this->_sep . 'firs';
-            break;
-
-        case 7:
-            $ret .= $this->_sep . 'halvfjerds';
-            break;
-
-        case 6:
-            $ret .= $this->_sep . 'tres';
-            break;
-
-        case 5:
-            $ret .= $this->_sep . 'halvtreds';
-            break;
-
-        case 4:
-            $ret .= $this->_sep . 'fyrre';
-            break;
-
-        case 3:
-            $ret .= $this->_sep . 'tredive';
-            break;
-
-        case 2:
-            $ret .= $this->_sep . 'tyve';
-            break;
-
-        case 1:
-            switch ($d) {
-            case 0:
-                $ret .= $this->_sep . 'ti';
-                break;
-
-            case 1:
-                $ret .= $this->_sep . 'elleve';
-                break;
-
-            case 2:
-                $ret .= $this->_sep . 'tolv';
-                break;
-
-            case 3:
-                $ret .= $this->_sep . 'tretten';
-                break;
-
-            case 4:
-                $ret .= $this->_sep . 'fjorten';
-                break;
-
-            case 5:
-                $ret .= $this->_sep . 'femten';
-                break;
-
-            case 6:
-                $ret .= $this->_sep . 'seksten';
-                break;
-
-            case 7:
-                $ret .= $this->_sep . 'sytten';
+            case 9:
+                $ret .= $this->_sep . 'halvfems';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'atten';
+                $ret .= $this->_sep . 'firs';
                 break;
 
-            case 9:
-                $ret .= $this->_sep . 'nitten';
+            case 7:
+                $ret .= $this->_sep . 'halvfjerds';
                 break;
 
-            }
-            break;
+            case 6:
+                $ret .= $this->_sep . 'tres';
+                break;
+
+            case 5:
+                $ret .= $this->_sep . 'halvtreds';
+                break;
+
+            case 4:
+                $ret .= $this->_sep . 'fyrre';
+                break;
+
+            case 3:
+                $ret .= $this->_sep . 'tredive';
+                break;
+
+            case 2:
+                $ret .= $this->_sep . 'tyve';
+                break;
+
+            case 1:
+                switch ($d) {
+                    case 0:
+                        $ret .= $this->_sep . 'ti';
+                        break;
+
+                    case 1:
+                        $ret .= $this->_sep . 'elleve';
+                        break;
+
+                    case 2:
+                        $ret .= $this->_sep . 'tolv';
+                        break;
+
+                    case 3:
+                        $ret .= $this->_sep . 'tretten';
+                        break;
+
+                    case 4:
+                        $ret .= $this->_sep . 'fjorten';
+                        break;
+
+                    case 5:
+                        $ret .= $this->_sep . 'femten';
+                        break;
+
+                    case 6:
+                        $ret .= $this->_sep . 'seksten';
+                        break;
+
+                    case 7:
+                        $ret .= $this->_sep . 'sytten';
+                        break;
+
+                    case 8:
+                        $ret .= $this->_sep . 'atten';
+                        break;
+
+                    case 9:
+                        $ret .= $this->_sep . 'nitten';
+                        break;
+                }
+                break;
         }
 
         if ($power > 0) {
@@ -422,6 +421,4 @@ class Numbers_Words_Locale_dk extends Numbers_Words
         return $ret;
     }
     // }}}
-
-
 }
