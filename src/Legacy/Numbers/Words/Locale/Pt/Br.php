@@ -7,56 +7,17 @@ use NumberToWords\Exception\NumberToWordsException;
 
 class Br extends Words
 {
-    /**
-     * Locale name
-     * @var string
-     * @access public
-     */
-    var $defaultLocale = 'pt_BR';
+    const LOCALE               = 'pt_BR';
+    const LANGUAGE_NAME        = 'Brazilian Portuguese';
+    const LANGUAGE_NAME_NATIVE = 'Português Brasileiro';
 
-    /**
-     * Language name in English
-     * @var string
-     * @access public
-     */
-    var $lang = 'Brazilian Portuguese';
+    private $minus = 'negativo';
 
-    /**
-     * Native language name
-     * @var string
-     * @access public
-     */
-    var $lang_native = 'Português Brasileiro';
+    private $separator = ' e ';
 
-    /**
-     * The word for the minus sign
-     * @var string
-     * @access private
-     */
-    var $_minus = 'negativo';
+    private $currencySeparator = ' de ';
 
-    /**
-     * The word separator for numerals
-     * @var string
-     * @access private
-     */
-    var $_sep = ' e ';
-
-    /**
-     * The special separator for numbers and currency names
-     * @var string
-     * @access private
-     */
-    var $_curr_sep = ' de ';
-
-    /**
-     * The array containing numbers 11-19.
-     * In Brazilian Portuguese numbers in that range are contracted
-     * in a single word.
-     * @var array
-     * @access private
-     */
-    var $_contractions = array(
+    private static $contractions = [
         '',
         'onze',
         'doze',
@@ -67,15 +28,13 @@ class Br extends Words
         'dezessete',
         'dezoito',
         'dezenove'
-    );
+    ];
 
-    var $_words = array(
+    private static $words = [
         /**
          * The array containing the digits (indexed by the digits themselves).
-         * @var array
-         * @access private
          */
-        array(
+        [
             '',         // 0: not displayed
             'um',
             'dois',
@@ -86,14 +45,11 @@ class Br extends Words
             'sete',
             'oito',
             'nove'
-        ),
-
+        ],
         /**
          * The array containing numbers for 10,20,...,90.
-         * @var array
-         * @access private
          */
-        array(
+        [
             '',         // 0: not displayed
             'dez',
             'vinte',
@@ -104,14 +60,11 @@ class Br extends Words
             'setenta',
             'oitenta',
             'noventa'
-        ),
-
+        ],
         /**
          * The array containing numbers for hundreds.
-         * @var array
-         * @access private
          */
-        array(
+        [
             '',         // 0: not displayed
             'cento',    // 'cem' is a special case handled in _toWords()
             'duzentos',
@@ -122,16 +75,11 @@ class Br extends Words
             'setecentos',
             'oitocentos',
             'novecentos'
-        ),
-    );
+        ],
+    ];
 
-    /**
-     * The sufixes for exponents (singular)
-     * @var array
-     * @access private
-     */
-    var $_exponent = array(
-        '',         // 0: not displayed
+    private static $exponent = [
+        '', // 0: not displayed
         'mil',
         'milhão',
         'bilhão',
@@ -150,65 +98,42 @@ class Br extends Words
         'quindecilhão',
         'sedecilhão',
         'septendecilhão'
-    );
+    ];
+
+    private static $currencyNames = [
+        'BRL' => [['real', 'reais'], ['centavo', 'centavos']],
+        'USD' => [['dólar', 'dólares'], ['centavo', 'centavos']],
+        'EUR' => [['euro', 'euros'], ['centavo', 'centavos']],
+        'GBP' => [['libra esterlina', 'libras esterlinas'], ['centavo', 'centavos']],
+        'JPY' => [['iene', 'ienes'], ['centavo', 'centavos']],
+        'ARS' => [['peso argentino', 'pesos argentinos'], ['centavo', 'centavos']],
+        'MXN' => [['peso mexicano', 'pesos mexicanos'], ['centavo', 'centavos']],
+        'UYU' => [['peso uruguaio', 'pesos uruguaios'], ['centavo', 'centavos']],
+        'PYG' => [['guarani', 'guaranis'], ['centavo', 'centavos']],
+        'BOB' => [['boliviano', 'bolivianos'], ['centavo', 'centavos']],
+        'CLP' => [['peso chileno', 'pesos chilenos'], ['centavo', 'centavos']],
+        'COP' => [['peso colombiano', 'pesos colombianos'], ['centavo', 'centavos']],
+        'CUP' => [['peso cubano', 'pesos cubanos'], ['centavo', 'centavos']],
+    ];
 
     /**
-     * The currency names (based on Wikipedia) and plurals
+     * @param int $num
      *
-     * @var array
-     * @link http://pt.wikipedia.org/wiki/ISO_4217
-     * @access private
+     * @return string
+     * @throws NumberToWordsException
      */
-    var $_currency_names = array(
-        'BRL' => array(array('real', 'reais'), array('centavo', 'centavos')),
-        'USD' => array(array('dólar', 'dólares'), array('centavo', 'centavos')),
-        'EUR' => array(array('euro', 'euros'), array('centavo', 'centavos')),
-        'GBP' => array(array('libra esterlina', 'libras esterlinas'), array('centavo', 'centavos')),
-        'JPY' => array(array('iene', 'ienes'), array('centavo', 'centavos')),
-        'ARS' => array(array('peso argentino', 'pesos argentinos'), array('centavo', 'centavos')),
-        'MXN' => array(array('peso mexicano', 'pesos mexicanos'), array('centavo', 'centavos')),
-        'UYU' => array(array('peso uruguaio', 'pesos uruguaios'), array('centavo', 'centavos')),
-        'PYG' => array(array('guarani', 'guaranis'), array('centavo', 'centavos')),
-        'BOB' => array(array('boliviano', 'bolivianos'), array('centavo', 'centavos')),
-        'CLP' => array(array('peso chileno', 'pesos chilenos'), array('centavo', 'centavos')),
-        'COP' => array(array('peso colombiano', 'pesos colombianos'), array('centavo', 'centavos')),
-        'CUP' => array(array('peso cubano', 'pesos cubanos'), array('centavo', 'centavos')),
-    );
-
-    /**
-     * The default currency name
-     * @var string
-     * @access public
-     */
-    var $def_currency = 'BRL'; // Real
-
-    // {{{ _toWords()
-
-    /**
-     * Converts a number to its word representation
-     * in Brazilian Portuguese language
-     *
-     * @param integer $num An integer between -999E54 and 999E54
-     *
-     * @return string  The corresponding word representation
-     *
-     * @access protected
-     * @author Igor Feghali <ifeghali@php.net>
-     * @since  Words 0.16.3
-     */
-    function _toWords($num)
+    protected function _toWords($num)
     {
-        $neg   = 0;
-        $ret   = array();
-        $words = array();
+        $neg = 0;
+        $ret = [];
 
         /**
          * Negative ?
          */
         if ($num < 0) {
-            $ret[] = $this->_minus;
-            $num   = -$num;
-            $neg   = 1;
+            $ret[] = $this->minus;
+            $num = -$num;
+            $neg = 1;
         }
 
         /**
@@ -237,7 +162,7 @@ class Br extends Words
             /**
              * Testing Range
              */
-            if (!array_key_exists($index, $this->_exponent)) {
+            if (!array_key_exists($index, self::$exponent)) {
                 throw new NumberToWordsException('Number out of range.');
             }
 
@@ -252,9 +177,9 @@ class Br extends Words
              * Testing plural of exponent
              */
             if ($chunk > 1) {
-                $exponent = str_replace('ão', 'ões', $this->_exponent[$index]);
+                $exponent = str_replace('ão', 'ões', self::$exponent[$index]);
             } else {
-                $exponent = $this->_exponent[$index];
+                $exponent = self::$exponent[$index];
             }
 
             /**
@@ -265,84 +190,66 @@ class Br extends Words
             /**
              * Actual Number
              */
-            $word  = array_filter($this->_parseChunk($chunk));
-            $ret[] = implode($this->_sep, $word);
+            $word = array_filter($this->parseChunk($chunk));
+            $ret[] = implode($this->separator, $word);
         }
 
         /**
          * In Brazilian Portuguese the last chunck must be separated under
          * special conditions.
          */
-        if ((count($ret) > 2+$neg)
-             && $this->_mustSeparate($chunks)) {
-                $ret[1+$neg] = trim($this->_sep.$ret[1+$neg]);
+        if ((count($ret) > 2 + $neg)
+            && $this->mustSeparate($chunks)
+        ) {
+            $ret[1 + $neg] = trim($this->separator . $ret[1 + $neg]);
         }
 
         $ret = array_reverse(array_filter($ret));
+
         return implode(' ', $ret);
     }
 
-    // }}}
-    // {{{ _parseChunck()
-
     /**
-     * Recursive function that parses an indivial chunk
+     * @param string $chunk
      *
-     * @param string $chunk String representation of a 3-digit-max number
-     *
-     * @return array Words of parsed number
-     *
-     * @access private
-     * @author Igor Feghali <ifeghali@php.net>
-     * @since  Words 0.15.1
+     * @return array
      */
-    function _parseChunk($chunk)
+    private function parseChunk($chunk)
     {
         /**
          * Base Case
          */
         if (!$chunk) {
-            return array();
+            return [];
         }
 
         /**
          * 100 is a special case
          */
         if ($chunk == 100) {
-            return array('cem');
+            return ['cem'];
         }
 
         /**
          * Testing contractions (11~19)
          */
         if (($chunk < 20) && ($chunk > 10)) {
-            return array($this->_contractions[$chunk % 10]);
+            return [self::$contractions[$chunk % 10]];
         }
 
-        $i    = strlen($chunk)-1;
-        $n    = (int)$chunk[0];
-        $word = $this->_words[$i][$n];
+        $i = strlen($chunk) - 1;
+        $n = (int) $chunk[0];
+        $word = self::$words[$i][$n];
 
-        return array_merge(array($word), $this->_parseChunk(substr($chunk, 1)));
+        return array_merge([$word], $this->parseChunk(substr($chunk, 1)));
     }
 
-    // }}}
-    // {{{ _mustSeparate()
-
     /**
-     * In Brazilian Portuguese the last chunk must be separated from the others
-     * when it is a hundred (100, 200, 300 etc.) or less than 100.
+     * @param array $chunks
      *
-     * @param array $chunks Array of integers that contains all the chunks of
-     *                      the target number, in reverse order.
-     *
-     * @return boolean Returns true when last chunk must be separated
-     *
-     * @access private
-     * @author Igor Feghali <ifeghali@php.net>
-     * @since  Words 0.15.1
+     * @return bool
      */
-    function _mustSeparate($chunks)
+    private function mustSeparate($chunks)
     {
         $chunk = null;
 
@@ -352,40 +259,29 @@ class Br extends Words
          */
         reset($chunks);
         do {
-            list(,$chunk) = each($chunks);
+            list(, $chunk) = each($chunks);
         } while ($chunk === '000');
 
         if (($chunk < 100) || !($chunk % 100)) {
             return true;
         }
+
         return false;
     }
 
-    // }}}
-    // {{{ toCurrencyWords()
-
     /**
-     * Converts a currency value to its word representation
-     * (with monetary units) in Portuguese Brazilian
+     * @param string $currency
+     * @param int    $decimal
+     * @param int    $fraction
+     * @param bool   $convertFraction
      *
-     * @param integer $int_curr         An international currency symbol
-     *                                  as defined by the ISO 4217 standard (three characters)
-     * @param integer $decimal          A money total amount without fraction part (e.g. amount of dollars)
-     * @param integer $fraction         Fractional part of the money amount (e.g. amount of cents)
-     *                                  Optional. Defaults to false.
-     * @param integer $convert_fraction Convert fraction to words (left as numeric if set to false).
-     *                                  Optional. Defaults to true.
-     *
-     * @return string  The corresponding word representation for the currency
-     *
-     * @access public
-     * @author Igor Feghali <ifeghali@php.net>
-     * @since  Words 0.11.0
+     * @return string
+     * @throws NumberToWordsException
      */
-    function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
     {
-        $neg   = 0;
-        $ret   = array();
+        $neg = 0;
+        $ret = [];
         $nodec = false;
 
         /**
@@ -395,7 +291,7 @@ class Br extends Words
          */
         if (substr($decimal, 0, 1) == '-') {
             $decimal = -$decimal;
-            $neg     = 1;
+            $neg = 1;
         }
 
         /**
@@ -408,15 +304,17 @@ class Br extends Words
          * Checking if given currency exists in driver.
          * If not, use default currency
          */
-        $int_curr = strtoupper($int_curr);
-        if (!isset($this->_currency_name[$int_curr])) {
-            $int_curr = $this->def_currency;
+        $currency = strtoupper($currency);
+        if (!isset(self::$currencyNames[$currency])) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
         }
 
         /**
          * Currency names and plural
          */
-        $curr_names = $this->_currency_names[$int_curr];
+        $currencyNames = self::$currencyNames[$currency];
 
         if ($num > 0) {
             /**
@@ -428,23 +326,23 @@ class Br extends Words
              * Special case.
              */
             if (substr($num, -6) == '000000') {
-                $ret[] = trim($this->_curr_sep);
+                $ret[] = trim($this->currencySeparator);
             }
 
             /**
              * Testing plural. Adding currency name
              */
             if ($num > 1) {
-                $ret[] = $curr_names[0][1];
+                $ret[] = $currencyNames[0][1];
             } else {
-                $ret[] = $curr_names[0][0];
+                $ret[] = $currencyNames[0][0];
             }
         }
 
         /**
          * Test if fraction was given and != 0
          */
-        $fraction = (int)$fraction;
+        $fraction = (int) $fraction;
         if ($fraction) {
 
             /**
@@ -464,7 +362,7 @@ class Br extends Words
              * Have we got decimal?
              */
             if (count($ret)) {
-                $ret[] = trim($this->_sep);
+                $ret[] = trim($this->separator);
             } else {
                 $nodec = true;
             }
@@ -472,7 +370,7 @@ class Br extends Words
             /**
              * Word representation of fraction
              */
-            if ($convert_fraction) {
+            if ($convertFraction) {
                 $ret[] = $this->_toWords($num);
             } else {
                 $ret[] = $num;
@@ -482,9 +380,9 @@ class Br extends Words
              * Testing plural
              */
             if ($num > 1) {
-                $ret[] = $curr_names[1][1];
+                $ret[] = $currencyNames[1][1];
             } else {
-                $ret[] = $curr_names[1][0];
+                $ret[] = $currencyNames[1][0];
             }
 
             /**
@@ -492,8 +390,8 @@ class Br extends Words
              * If not, include currency name after cents.
              */
             if ($nodec) {
-                $ret[] = trim($this->_curr_sep);
-                $ret[] = $curr_names[0][0];
+                $ret[] = trim($this->currencySeparator);
+                $ret[] = $currencyNames[0][0];
             }
         }
 
@@ -501,10 +399,9 @@ class Br extends Words
          * Negative ?
          */
         if ($neg) {
-            $ret[] = $this->_minus;
+            $ret[] = $this->minus;
         }
 
         return implode(' ', $ret);
     }
-    // }}}
 }
