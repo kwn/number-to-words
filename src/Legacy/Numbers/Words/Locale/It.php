@@ -83,7 +83,7 @@ class It extends Words
         if ($thousands == 1) {
             $ret .= $this->wordSeparator . 'mille' . $this->wordSeparator;
         } elseif ($thousands > 1) {
-            $ret .= $this->_toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->_sep;
+            $ret .= $this->_toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
         }
 
         // values for digits, tens and hundreds
