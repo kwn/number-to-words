@@ -118,7 +118,7 @@ class Fr extends Words
         3 => 'mille',
         6 => 'million',
         9 => 'milliard',
-       12 => 'trillion',
+       12 => 'billion', // was 'trillion',
        15 => 'quadrillion',
        18 => 'quintillion',
        21 => 'sextillion',

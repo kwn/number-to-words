@@ -76,7 +76,7 @@ class Hu extends Words
      * @access private
      */
     var $_digits = array(
-        0 => 'nulla', 'egy', 'kettõ', 'három', 'négy',
+        0 => 'nulla', 'egy', 'kettő', 'három', 'négy',
         'öt', 'hat', 'hét', 'nyolc', 'kilenc'
     );
 

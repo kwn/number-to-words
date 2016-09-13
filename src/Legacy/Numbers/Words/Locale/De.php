@@ -57,7 +57,7 @@ class De extends Words
 
     private $wordSeparator = '';
 
-    private $exponentSeparator = ' ';
+    private static $exponentSeparator = ' ';
 
 
     /**
