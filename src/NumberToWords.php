@@ -9,6 +9,7 @@ use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
+use NumberToWords\NumberTransformer\EstonianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
@@ -29,6 +30,7 @@ class NumberToWords
         'de' => GermanNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
         'es' => SpanishNumberTransformer::class,
+        'et' => EstonianNumberTransformer::class,
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
