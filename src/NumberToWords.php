@@ -15,6 +15,7 @@ use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
 use NumberToWords\NumberTransformer\ItalianNumberTransformer;
+use NumberToWords\NumberTransformer\LatvianNumberTransformer;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
@@ -36,6 +37,7 @@ class NumberToWords
         'hu' => HungarianNumberTransformer::class,
         'it' => ItalianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
+        'lv' => LatvianNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
         'ro' => RomanianNumberTransformer::class,
