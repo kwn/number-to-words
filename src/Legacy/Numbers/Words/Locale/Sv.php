@@ -10,22 +10,9 @@ class Sv extends Words
     const LANGUAGE_NAME        = 'Swedish';
     const LANGUAGE_NAME_NATIVE = 'Svenska';
 
+    private $minus = 'Minus';
 
-    /**
-     * The word for the minus sign
-     *
-     * @var string
-     * @access private
-     */
-    var $_minus = 'Minus'; // minus sign
-
-    /**
-     * The sufixes for exponents (singular and plural)
-     *
-     * @var array
-     * @access private
-     */
-    var $_exponent = [
+    private static $exponent = [
         0   => [''],
         3   => ['tusen', 'tusen'],
         6   => ['miljon', 'miljoner'],
@@ -54,13 +41,7 @@ class Sv extends Words
         603 => ['centiljard', 'centiljarder']
     ];
 
-    /**
-     * The array containing the digits (indexed by the digits themselves).
-     *
-     * @var array
-     * @access private
-     */
-    var $_digits = [
+    private static $digits = [
         'noll',
         'en',
         'två',
@@ -73,50 +54,25 @@ class Sv extends Words
         'nio'
     ];
 
-    /**
-     * The word separator
-     *
-     * @var string
-     * @access private
-     */
-    var $_sep = ' ';
+    private $wordSeparator = ' ';
+
+    private $exponentWordSeparator = '-';
+
 
     /**
-     * The exponent word separator
+     * @param int    $num
+     * @param int    $power
+     * @param string $powsuffix
      *
-     * @var string
-     * @access private
+     * @return string
      */
-    var $_sep2 = '-';
-
-    // }}}
-    // {{{ _toWords()
-
-    /**
-     * Converts a number to its word representation
-     * in Swedish language.
-     *
-     * @param integer $num       An integer between -infinity and infinity inclusive :)
-     *                           that need to be converted to words
-     * @param integer $power     The power of ten for the rest of the number to the right.
-     *                           Optional, defaults to 0.
-     * @param integer $powsuffix The power name to be added to the end of the return string.
-     *                           Used internally. Optional, defaults to ''.
-     *
-     * @return string  The corresponding word representation
-     *
-     * @access protected
-     * @author Piotr Klaban <makler@man.torun.pl>
-     * @author Robin Ericsson <lobbin@localhost.nu>
-     * @since  Words 0.16.3
-     */
-    function _toWords($num, $power = 0, $powsuffix = '')
+    protected function _toWords($num, $power = 0, $powsuffix = '')
     {
         $ret = '';
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
-            $ret = $this->_sep . $this->_minus;
+            $ret = $this->wordSeparator . $this->minus;
             $num = substr($num, 1);
         }
 
@@ -131,15 +87,15 @@ class Sv extends Words
             for ($p = $maxp; $p > 0; --$p) { // power
 
                 // check for highest power
-                if (isset($this->_exponent[$p])) {
+                if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p
                     $snum = substr($num, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
 
                     if ($snum !== '') {
-                        $cursuffix = $this->_exponent[$power][count($this->_exponent[$power]) - 1];
+                        $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
                         if ($powsuffix != '') {
-                            $cursuffix .= $this->_sep . $powsuffix;
+                            $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
                         $ret .= $this->_toWords($snum, $p, $cursuffix);
@@ -155,7 +111,7 @@ class Sv extends Words
                 return $ret;
             }
         } elseif ($num == 0 || $num == '') {
-            return $this->_sep . $this->_digits[0];
+            return $this->wordSeparator . self::$digits[0];
         }
 
         $h = $t = $d = 0;
@@ -177,7 +133,7 @@ class Sv extends Words
         }
 
         if ($h) {
-            $ret .= $this->_sep . $this->_digits[$h] . $this->_sep . 'hundra';
+            $ret .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'hundra';
         }
 
         // ten, twenty etc.
@@ -185,88 +141,88 @@ class Sv extends Words
             case 5:
             case 6:
             case 7:
-                $ret .= $this->_sep . $this->_digits[$t] . 'tio';
+                $ret .= $this->wordSeparator . self::$digits[$t] . 'tio';
                 break;
 
             case 9:
-                $ret .= $this->_sep . 'nittio';
+                $ret .= $this->wordSeparator . 'nittio';
                 break;
 
             case 8:
-                $ret .= $this->_sep . 'åttio';
+                $ret .= $this->wordSeparator . 'åttio';
                 break;
 
             case 4:
-                $ret .= $this->_sep . 'fyrtio';
+                $ret .= $this->wordSeparator . 'fyrtio';
                 break;
 
             case 3:
-                $ret .= $this->_sep . 'trettio';
+                $ret .= $this->wordSeparator . 'trettio';
                 break;
 
             case 2:
-                $ret .= $this->_sep . 'tjugo';
+                $ret .= $this->wordSeparator . 'tjugo';
                 break;
 
             case 1:
                 switch ($d) {
                     case 0:
-                        $ret .= $this->_sep . 'tio';
+                        $ret .= $this->wordSeparator . 'tio';
                         break;
 
                     case 1:
-                        $ret .= $this->_sep . 'elva';
+                        $ret .= $this->wordSeparator . 'elva';
                         break;
 
                     case 2:
-                        $ret .= $this->_sep . 'tolv';
+                        $ret .= $this->wordSeparator . 'tolv';
                         break;
 
                     case 3:
-                        $ret .= $this->_sep . 'tretton';
+                        $ret .= $this->wordSeparator . 'tretton';
                         break;
 
                     case 4:
-                        $ret .= $this->_sep . 'fjorton';
+                        $ret .= $this->wordSeparator . 'fjorton';
                         break;
 
                     case 5:
                     case 6:
-                        $ret .= $this->_sep . $this->_digits[$d] . 'ton';
+                        $ret .= $this->wordSeparator . self::$digits[$d] . 'ton';
                         break;
 
                     case 7:
-                        $ret .= $this->_sep . 'sjutton';
+                        $ret .= $this->wordSeparator . 'sjutton';
                         break;
 
                     case 8:
-                        $ret .= $this->_sep . 'arton';
+                        $ret .= $this->wordSeparator . 'arton';
                         break;
                     case 9:
-                        $ret .= $this->_sep . 'nitton';
+                        $ret .= $this->wordSeparator . 'nitton';
                 }
                 break;
         }
 
         if ($t != 1 && $d > 0) { // add digits only in <0>,<1,9> and <21,inf>
             // add minus sign between [2-9] and digit
-            $ret .= $this->_sep . $this->_digits[$d];
+            $ret .= $this->wordSeparator . self::$digits[$d];
         }
 
         if ($power > 0) {
-            if (isset($this->_exponent[$power])) {
-                $lev = $this->_exponent[$power];
+            if (isset(self::$exponent[$power])) {
+                $lev = self::$exponent[$power];
             }
 
             if (!isset($lev) || !is_array($lev)) {
                 return null;
             }
 
-            $ret .= $this->_sep . $lev[0];
+            $ret .= $this->wordSeparator . $lev[0];
         }
 
         if ($powsuffix != '') {
-            $ret .= $this->_sep . $powsuffix;
+            $ret .= $this->wordSeparator . $powsuffix;
         }
 
         return $ret;
