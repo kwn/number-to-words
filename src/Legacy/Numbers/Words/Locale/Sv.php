@@ -1,79 +1,19 @@
 <?php
-/**
- * Words
- *
- * PHP version 5
- *
- * Copyright (c) 1997-2006 The PHP Group
- *
- * This source file is subject to version 3.01 of the PHP license,
- * that is bundled with this package in the file LICENSE, and is
- * available at through the world-wide-web at
- * http://www.php.net/license/3_01.txt
- * If you did not receive a copy of the PHP license and are unable to
- * obtain it through the world-wide-web, please send a note to
- * license@php.net so we can mail you a copy immediately.
- *
- * @category Numbers
- * @package  Words
- * @author   Piotr Klaban <makler@man.torun.pl>
- * @author   Robin Ericsson <robin.ericsson@profecta.se>
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @version  SVN: $Id$
- * @link     http://pear.php.net/package/Numbers_Words
- */
 
+namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-/**
- *
- * Class for translating numbers into Swedish.
- * @author Robin Ericsson
- * @package Words
- */
+use NumberToWords\Legacy\Numbers\Words;
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
-
-/**
- * Class for translating numbers into Swedish.
- *
- * @category Numbers
- * @package  Words
- * @author   Piotr Klaban <makler@man.torun.pl>
- * @author   Robin Ericsson <robin.ericsson@profecta.se>
- * @license  PHP 3.01 http://www.php.net/license/3_01.txt
- * @link     http://pear.php.net/package/Numbers_Words
- */
-class Numbers_Words_Locale_sv extends Numbers_Words
+class Sv extends Words
 {
+    const LOCALE               = 'sv';
+    const LANGUAGE_NAME        = 'Swedish';
+    const LANGUAGE_NAME_NATIVE = 'Svenska';
 
-    // {{{ properties
-
-    /**
-     * Locale name
-     * @var string
-     * @access public
-     */
-    var $locale = 'sv';
-
-    /**
-     * Language name in English
-     * @var string
-     * @access public
-     */
-    var $lang = 'Swedish';
-
-    /**
-     * Native language name
-     * @var string
-     * @access public
-     */
-    var $lang_native = 'Svenska';
 
     /**
      * The word for the minus sign
+     *
      * @var string
      * @access private
      */
@@ -81,61 +21,73 @@ class Numbers_Words_Locale_sv extends Numbers_Words
 
     /**
      * The sufixes for exponents (singular and plural)
+     *
      * @var array
      * @access private
      */
-    var $_exponent = array(
-        0 => array(''),
-        3 => array('tusen', 'tusen'),
-        6 => array('miljon','miljoner'),
-        9 => array('miljard','miljarder'),
-       12 => array('biljon','biljoner'),
-       15 => array('biljard','biljarder'),
-       18 => array('triljon','triljoner'),
-       21 => array('triljard','triljarder'),
-       24 => array('kvadriljon','kvadriljoner'),
-       27 => array('kvadriljard','kvadriljarder'),
-       30 => array('kvintiljon','kvintiljoner'),
-       33 => array('kvintiljard','kvintiljarder'),
-       36 => array('sextiljon','sextiljoner'),
-       39 => array('sextiljard','sextiljarder'),
-       42 => array('septiljon','septiljoner'),
-       45 => array('septiljard','septiljarder'),
-       48 => array('oktiljon','oktiljoner'),
-       51 => array('oktiljard','oktiljarder'),
-       54 => array('noniljon','noniljoner'),
-       57 => array('noniljard','noniljarder'),
-       60 => array('dekiljon','dekiljoner'),
-       63 => array('dekiljard','dekiljarder'),
-      120 => array('vigintiljon','vigintiljoner'),
-      123 => array('vigintiljard','vigintiljarder'),
-      600 => array('centiljon','centiljoner'),
-      603 => array('centiljard','centiljarder')
-        );
+    var $_exponent = [
+        0   => [''],
+        3   => ['tusen', 'tusen'],
+        6   => ['miljon', 'miljoner'],
+        9   => ['miljard', 'miljarder'],
+        12  => ['biljon', 'biljoner'],
+        15  => ['biljard', 'biljarder'],
+        18  => ['triljon', 'triljoner'],
+        21  => ['triljard', 'triljarder'],
+        24  => ['kvadriljon', 'kvadriljoner'],
+        27  => ['kvadriljard', 'kvadriljarder'],
+        30  => ['kvintiljon', 'kvintiljoner'],
+        33  => ['kvintiljard', 'kvintiljarder'],
+        36  => ['sextiljon', 'sextiljoner'],
+        39  => ['sextiljard', 'sextiljarder'],
+        42  => ['septiljon', 'septiljoner'],
+        45  => ['septiljard', 'septiljarder'],
+        48  => ['oktiljon', 'oktiljoner'],
+        51  => ['oktiljard', 'oktiljarder'],
+        54  => ['noniljon', 'noniljoner'],
+        57  => ['noniljard', 'noniljarder'],
+        60  => ['dekiljon', 'dekiljoner'],
+        63  => ['dekiljard', 'dekiljarder'],
+        120 => ['vigintiljon', 'vigintiljoner'],
+        123 => ['vigintiljard', 'vigintiljarder'],
+        600 => ['centiljon', 'centiljoner'],
+        603 => ['centiljard', 'centiljarder']
+    ];
 
     /**
      * The array containing the digits (indexed by the digits themselves).
+     *
      * @var array
      * @access private
      */
-    var $_digits = array(
-        0 => 'noll', 'ett', 'tv�', 'tre', 'fyra',
-        'fem', 'sex', 'sju', '�tta', 'nio'
-    );
+    var $_digits = [
+        'noll',
+        'en',
+        'två',
+        'tre',
+        'fyra',
+        'fem',
+        'sex',
+        'sju',
+        'åtta',
+        'nio'
+    ];
 
     /**
      * The word separator
+     *
      * @var string
      * @access private
      */
-    var $_sep = '';
+    var $_sep = ' ';
 
     /**
      * The exponent word separator
+     *
      * @var string
      * @access private
      */
-    var $_sep2 = ' ';
+    var $_sep2 = '-';
 
     // }}}
     // {{{ _toWords()
@@ -173,7 +125,7 @@ class Numbers_Words_Locale_sv extends Numbers_Words
         $num = preg_replace('/^0+/', '', $num);
 
         if (strlen($num) > 3) {
-            $maxp = strlen($num)-1;
+            $maxp = strlen($num) - 1;
             $curp = $maxp;
 
             for ($p = $maxp; $p > 0; --$p) { // power
@@ -185,7 +137,7 @@ class Numbers_Words_Locale_sv extends Numbers_Words
                     $snum = preg_replace('/^0+/', '', $snum);
 
                     if ($snum !== '') {
-                        $cursuffix = $this->_exponent[$power][count($this->_exponent[$power])-1];
+                        $cursuffix = $this->_exponent[$power][count($this->_exponent[$power]) - 1];
                         if ($powsuffix != '') {
                             $cursuffix .= $this->_sep . $powsuffix;
                         }
@@ -210,18 +162,18 @@ class Numbers_Words_Locale_sv extends Numbers_Words
 
         switch (strlen($num)) {
             case 3:
-                $h = (int)substr($num, -3, 1);
+                $h = (int) substr($num, -3, 1);
 
             case 2:
-                $t = (int)substr($num, -2, 1);
+                $t = (int) substr($num, -2, 1);
 
             case 1:
-                $d = (int)substr($num, -1, 1);
+                $d = (int) substr($num, -1, 1);
                 break;
 
             case 0:
                 return;
-            break;
+                break;
         }
 
         if ($h) {
@@ -241,7 +193,7 @@ class Numbers_Words_Locale_sv extends Numbers_Words
                 break;
 
             case 8:
-                $ret .= $this->_sep . '�ttio';
+                $ret .= $this->_sep . 'åttio';
                 break;
 
             case 4:
@@ -319,5 +271,4 @@ class Numbers_Words_Locale_sv extends Numbers_Words
 
         return $ret;
     }
-    // }}}
 }
