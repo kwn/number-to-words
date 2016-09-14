@@ -10,7 +10,7 @@ class Fr extends Words
     const LANGUAGE_NAME        = 'French';
     const LANGUAGE_NAME_NATIVE = 'Français';
 
-    private $miscNumbers = [
+    private static $miscNumbers = [
         10  => 'dix',      // 10
         11  => 'onze',     // 11
         12  => 'douze',    // 12
@@ -26,7 +26,7 @@ class Fr extends Words
         100 => 'cent'      // 100
     ];
 
-    private $digits = [
+    private static $digits = [
         1 => 'un',
         2 => 'deux',
         3 => 'trois',
@@ -50,7 +50,7 @@ class Fr extends Words
 
     private $pluralSuffix = 's';
 
-    private $exponent = [
+    private static $exponent = [
         0   => '',
         3   => 'mille',
         6   => 'million',
@@ -198,12 +198,12 @@ class Fr extends Words
         // process the "hundreds" digit.
         if ($s) {
             if ($s > 1) {
-                $ret .= $this->digits[$s] . $this->wordSeparator . $this->miscNumbers[100];
+                $ret .= self::$digits[$s] . $this->wordSeparator . self::$miscNumbers[100];
                 if ($last && !$e && !$d) {
                     $ret .= $this->pluralSuffix;
                 }
             } else {
-                $ret .= $this->miscNumbers[100];
+                $ret .= self::$miscNumbers[100];
             }
             $ret .= $this->wordSeparator;
         }
@@ -213,14 +213,14 @@ class Fr extends Words
             // in the case of 1, the "ones" digit also must be processed
             if ($d == 1) {
                 if ($e <= 6) {
-                    $ret .= $this->miscNumbers[10 + $e];
+                    $ret .= self::$miscNumbers[10 + $e];
                 } else {
-                    $ret .= $this->miscNumbers[10] . '-' . $this->digits[$e];
+                    $ret .= self::$miscNumbers[10] . '-' . self::$digits[$e];
                 }
                 $e = 0;
             } elseif ($d > 5) {
                 if ($d < 8) {
-                    $ret .= $this->miscNumbers[60];
+                    $ret .= self::$miscNumbers[60];
 
                     $resto = $d * 10 + $e - 60;
                     if ($e == 1) {
@@ -234,7 +234,7 @@ class Fr extends Words
                     }
                     $e = 0;
                 } else {
-                    $ret .= $this->digits[4] . $this->dash . $this->miscNumbers[20];
+                    $ret .= self::$digits[4] . $this->dash . self::$miscNumbers[20];
 
                     $resto = $d * 10 + $e - 80;
                     if ($resto) {
@@ -247,7 +247,7 @@ class Fr extends Words
                     }
                 }
             } else {
-                $ret .= $this->miscNumbers[$d * 10];
+                $ret .= self::$miscNumbers[$d * 10];
             }
         }
 
@@ -260,7 +260,7 @@ class Fr extends Words
                     $ret .= $this->dash;
                 }
             }
-            $ret .= $this->digits[$e];
+            $ret .= self::$digits[$e];
         }
 
         // strip excessive separators
@@ -309,7 +309,7 @@ class Fr extends Words
                         $i + 1 == $sizeof_numgroups || $pow > 2
                     ) . $this->wordSeparator;
                 }
-                $ret .= $this->exponent[($pow - 1) * 3];
+                $ret .= self::$exponent[($pow - 1) * 3];
                 if ($pow > 2 && $number > 1) {
                     $ret .= $this->pluralSuffix;
                 }
