@@ -8,6 +8,7 @@ use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
+use NumberToWords\NumberTransformer\DutchNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\EstonianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
@@ -38,6 +39,7 @@ class NumberToWords
         'it' => ItalianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
+        'nl' => DutchNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
         'ro' => RomanianNumberTransformer::class,
