@@ -327,33 +327,33 @@ class Bg extends Words
                 if ($num_groups[$i] > 1) {
                     if ($pow == 1) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                0,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
+                            $num_groups[$i],
+                            0,
+                            !$this->lastAnd && $i
+                        ) . $this->wordSeparator;
                         $ret[$j] .= self::$exponent[($pow - 1) * 3];
                     } elseif ($pow == 2) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                -1,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
+                            $num_groups[$i],
+                            -1,
+                            !$this->lastAnd && $i
+                        ) . $this->wordSeparator;
                         $ret[$j] .= self::$miscStrings['hiliadi'] . $this->wordSeparator;
                     } else {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                1,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
+                            $num_groups[$i],
+                            1,
+                            !$this->lastAnd && $i
+                        ) . $this->wordSeparator;
                         $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->pluralSuffix . $this->wordSeparator;
                     }
                 } else {
                     if ($pow == 1) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                0,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
+                            $num_groups[$i],
+                            0,
+                            !$this->lastAnd && $i
+                        ) . $this->wordSeparator;
                     } elseif ($pow == 2) {
                         $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
                     } else {

@@ -63,7 +63,6 @@ class Lt extends Words
             $maxp = strlen($number) - 1;
             $curp = $maxp;
             for ($p = $maxp; $p > 0; --$p) {
-
                 // check for highest power
                 if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p

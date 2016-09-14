@@ -284,9 +284,9 @@ class Be extends Words
             if ($number != '000') {
                 if ($number != 1 || $pow != 2) {
                     $ret .= $this->showDigitsGroup(
-                            $number,
-                            $i + 1 == $sizeof_numgroups || $pow > 2
-                        ) . $this->wordSeparator;
+                        $number,
+                        $i + 1 == $sizeof_numgroups || $pow > 2
+                    ) . $this->wordSeparator;
                 }
                 $ret .= self::$exponent[($pow - 1) * 3];
                 if ($pow > 2 && $number > 1) {
