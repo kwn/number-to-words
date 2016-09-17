@@ -5,6 +5,7 @@ namespace NumberToWords;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
@@ -54,7 +55,9 @@ class NumberToWords
 
     private $currencyTransformers = [
         'en' => EnglishCurrencyTransformer::class,
+        'hu' => HungarianNumberTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
+        'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
         'ru' => RussianCurrencyTransformer::class
     ];

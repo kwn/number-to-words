@@ -299,12 +299,12 @@ class Hu extends Words
         $lev = ($decimal == 1) ? 0 : 1;
         if ($lev > 0) {
             if (count($curr_names[0]) > 1) {
-                $ret .= $this->wordSeparator . $curr_names[0][$lev];
+                $ret .= ' ' . $curr_names[0][$lev];
             } else {
-                $ret .= $this->wordSeparator . $curr_names[0][0] . 's';
+                $ret .= ' ' . $curr_names[0][0] . 's';
             }
         } else {
-            $ret .= $this->wordSeparator . $curr_names[0][0];
+            $ret .= ' ' . $curr_names[0][0];
         }
 
         if ($fraction !== null) {
@@ -316,12 +316,12 @@ class Hu extends Words
             $lev = ($fraction == 1) ? 0 : 1;
             if ($lev > 0) {
                 if (count($curr_names[1]) > 1) {
-                    $ret .= $this->wordSeparator . $curr_names[1][$lev];
+                    $ret .= ' ' . $curr_names[1][$lev];
                 } else {
-                    $ret .= $this->wordSeparator . $curr_names[1][0] . 's';
+                    $ret .= ' ' . $curr_names[1][0] . 's';
                 }
             } else {
-                $ret .= $this->wordSeparator . $curr_names[1][0];
+                $ret .= ' ' . $curr_names[1][0];
             }
         }
 
