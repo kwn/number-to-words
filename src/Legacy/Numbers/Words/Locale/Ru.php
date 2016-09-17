@@ -12,7 +12,7 @@ class Ru extends Words
     const LANGUAGE_NAME_NATIVE = 'Русский';
     const MINUS = 'минус';
 
-    private static $exponent = [
+    protected static $exponent = [
         0   => '',
         6   => 'миллион',
         9   => 'миллиард',
@@ -116,7 +116,7 @@ class Ru extends Words
         303 => 'центиллион'
     ];
 
-    private static $teens = [
+    protected static $teens = [
         11 => 'одиннадцать',
         12 => 'двенадцать',
         13 => 'тринадцать',
@@ -128,7 +128,7 @@ class Ru extends Words
         19 => 'девятнадцать'
     ];
 
-    private static $tens = [
+    protected static $tens = [
         2 => 'двадцать',
         3 => 'тридцать',
         4 => 'сорок',
@@ -139,7 +139,7 @@ class Ru extends Words
         9 => 'девяносто'
     ];
 
-    private static $hundreds = [
+    protected static $hundreds = [
         1 => 'сто',
         2 => 'двести',
         3 => 'триста',
@@ -151,15 +151,15 @@ class Ru extends Words
         9 => 'девятьсот'
     ];
 
-    private static $digits = [
+    protected static $digits = [
         ['ноль', 'одно', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
         ['ноль', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
         ['ноль', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять']
     ];
 
-    private $wordSeparator = ' ';
+    protected $wordSeparator = ' ';
 
-    private static $currencyNames = [
+    protected static $currencyNames = [
         'ALL' => [
             [1, 'лек', 'лека', 'леков'],
             [2, 'киндарка', 'киндарки', 'киндарок']
@@ -326,7 +326,7 @@ class Ru extends Words
      *
      * @return string
      */
-    private function toWordsWithCase($num, &$case, $gender = 1)
+    protected function toWordsWithCase($num, &$case, $gender = 1)
     {
         $ret = '';
         $case = 3;
@@ -335,7 +335,7 @@ class Ru extends Words
 
         $sign = "";
         if (substr($num, 0, 1) == '-') {
-            $sign = self::MINUS . $this->wordSeparator;
+            $sign = static::MINUS . $this->wordSeparator;
             $num = substr($num, 1);
         }
 
@@ -344,7 +344,7 @@ class Ru extends Words
         }
 
         if ($num == 0 || $num == '') {
-            $ret .= self::$digits[$gender][0];
+            $ret .= static::$digits[$gender][0];
         } else {
             $power = 0;
 
@@ -370,8 +370,8 @@ class Ru extends Words
                     } else {
                         $group .= $this->wordSeparator . 'тысяч';
                     }
-                } elseif ($group && $power > 3 && isset(self::$exponent[$power])) {
-                    $group .= $this->wordSeparator . self::$exponent[$power];
+                } elseif ($group && $power > 3 && isset(static::$exponent[$power])) {
+                    $group .= $this->wordSeparator . static::$exponent[$power];
                     if ($_case == 2) {
                         $group .= 'а';
                     } elseif ($_case == 3) {
@@ -397,7 +397,7 @@ class Ru extends Words
      *
      * @return string
      */
-    private function groupToWords($number, $gender, &$case)
+    protected function groupToWords($number, $gender, &$case)
     {
         $return = '';
         $case = 3;
@@ -405,7 +405,7 @@ class Ru extends Words
         if ((int) $number == 0) {
             $return = '';
         } elseif ($number < 10) {
-            $return = self::$digits[$gender][(int) $number];
+            $return = static::$digits[$gender][(int) $number];
             if ($number == 1) {
                 $case = 1;
             } elseif ($number < 5) {
@@ -418,7 +418,7 @@ class Ru extends Words
 
             $hundreds = (int) $number{0};
             if ($hundreds) {
-                $return = self::$hundreds[$hundreds];
+                $return = static::$hundreds[$hundreds];
 
                 if (substr($number, 1) !== '00') {
                     $return .= $this->wordSeparator;
@@ -434,14 +434,14 @@ class Ru extends Words
                 if ($tens == 1 && $ones == 0) {
                     $return .= 'десять';
                 } elseif ($tens == 1) {
-                    $return .= self::$teens[$ones + 10];
+                    $return .= static::$teens[$ones + 10];
                 } else {
                     if ($tens > 0) {
-                        $return .= self::$tens[(int) $tens];
+                        $return .= static::$tens[(int) $tens];
                     }
 
                     if ($ones > 0) {
-                        $return .= $this->wordSeparator . self::$digits[$gender][$ones];
+                        $return .= $this->wordSeparator . static::$digits[$gender][$ones];
 
                         if ($ones == 1) {
                             $case = 1;
@@ -471,13 +471,13 @@ class Ru extends Words
     {
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, self::$currencyNames)) {
+        if (!array_key_exists($currency, static::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = self::$currencyNames[$currency];
+        $currencyNames = static::$currencyNames[$currency];
 
         $return = trim($this->toWordsWithCase($decimal, $case, $currencyNames[0][0]));
         $return .= $this->wordSeparator . $currencyNames[0][$case];
