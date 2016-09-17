@@ -12,62 +12,72 @@ class Pl extends Words
     const LANGUAGE_NAME_NATIVE = 'polski';
     const MINUS = 'minus';
 
-    private static $exponent = [
-        0   => ['', '', ''],
-        3   => ['tysiąc', 'tysiące', 'tysięcy'],
-        6   => ['milion', 'miliony', 'milionów'],
-        9   => ['miliard', 'miliardy', 'miliardów'],
-        12  => ['bilion', 'biliony', 'bilionów'],
-        15  => ['biliard', 'biliardy', 'biliardów'],
-        18  => ['trylion', 'tryliony', 'trylionów'],
-        21  => ['tryliard', 'tryliardy', 'tryliardów'],
-        24  => ['kwadrylion', 'kwadryliony', 'kwadrylionów'],
-        27  => ['kwadryliard', 'kwadryliardy', 'kwadryliardów'],
-        30  => ['kwintylion', 'kwintyliony', 'kwintylionów'],
-        33  => ['kwintyliiard', 'kwintyliardy', 'kwintyliardów'],
-        36  => ['sekstylion', 'sekstyliony', 'sekstylionów'],
-        39  => ['sekstyliard', 'sekstyliardy', 'sekstyliardów'],
-        42  => ['septylion', 'septyliony', 'septylionów'],
-        45  => ['septyliard', 'septyliardy', 'septyliardów'],
-        48  => ['oktylion', 'oktyliony', 'oktylionów'],
-        51  => ['oktyliard', 'oktyliardy', 'oktyliardów'],
-        54  => ['nonylion', 'nonyliony', 'nonylionów'],
-        57  => ['nonyliard', 'nonyliardy', 'nonyliardów'],
-        60  => ['decylion', 'decyliony', 'decylionów'],
-        63  => ['decyliard', 'decyliardy', 'decyliardów'],
-        100 => ['centylion', 'centyliony', 'centylionów'],
-        103 => ['centyliard', 'centyliardy', 'centyliardów'],
-        120 => ['wicylion', 'wicylion', 'wicylion'],
-        123 => ['wicyliard', 'wicyliardy', 'wicyliardów'],
-        180 => ['trycylion', 'trycylion', 'trycylion'],
-        183 => ['trycyliard', 'trycyliardy', 'trycyliardów'],
-        240 => ['kwadragilion', 'kwadragilion', 'kwadragilion'],
-        243 => ['kwadragiliard', 'kwadragiliardy', 'kwadragiliardów'],
-        300 => ['kwinkwagilion', 'kwinkwagilion', 'kwinkwagilion'],
-        303 => ['kwinkwagiliard', 'kwinkwagiliardy', 'kwinkwagiliardów'],
-        360 => ['seskwilion', 'seskwilion', 'seskwilion'],
-        363 => ['seskwiliard', 'seskwiliardy', 'seskwiliardów'],
-        420 => ['septagilion', 'septagilion', 'septagilion'],
-        423 => ['septagiliard', 'septagiliardy', 'septagiliardów'],
-        480 => ['oktogilion', 'oktogilion', 'oktogilion'],
-        483 => ['oktogiliard', 'oktogiliardy', 'oktogiliardów'],
-        540 => ['nonagilion', 'nonagilion', 'nonagilion'],
-        543 => ['nonagiliard', 'nonagiliardy', 'nonagiliardów'],
-        600 => ['centylion', 'centyliony', 'centylionów'],
-        603 => ['centyliard', 'centyliardy', 'centyliardów'],
+    public static $zero = 'zero';
+
+    public static $units = ['', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
+
+    public static $teens = [
+        'dziesięć',
+        'jedenaście',
+        'dwanaście',
+        'trzynaście',
+        'czternaście',
+        'piętnaście',
+        'szesnaście',
+        'siedemnaście',
+        'osiemnaście',
+        'dziewiętnaście'
     ];
 
-    private static $digits = [
-        'zero',
-        'jeden',
-        'dwa',
-        'trzy',
-        'cztery',
-        'pięć',
-        'sześć',
-        'siedem',
-        'osiem',
-        'dziewięć'
+    public static $tens = [
+        '',
+        'dziesięć',
+        'dwadzieścia',
+        'trzydzieści',
+        'czterdzieści',
+        'pięćdziesiąt',
+        'sześćdziesiąt',
+        'siedemdziesiąt',
+        'osiemdziesiąt',
+        'dziewięćdziesiąt'
+    ];
+
+    public static $hundreds = [
+        '',
+        'sto',
+        'dwieście',
+        'trzysta',
+        'czterysta',
+        'pięćset',
+        'sześćset',
+        'siedemset',
+        'osiemset',
+        'dziewięćset'
+    ];
+
+    public static $exponent = [
+        ['', '', ''],
+        ['tysiąc', 'tysiące', 'tysięcy'],
+        ['milion', 'miliony', 'milionów'],
+        ['miliard', 'miliardy', 'miliardów'],
+        ['bilion', 'biliony', 'bilionów'],
+        ['biliard', 'biliardy', 'biliardów'],
+        ['trylion', 'tryliony', 'trylionów'],
+        ['tryliard', 'tryliardy', 'tryliardów'],
+        ['kwadrylion', 'kwadryliony', 'kwadrylionów'],
+        ['kwadryliard', 'kwadryliardy', 'kwadryliardów'],
+        ['kwintylion', 'kwintyliony', 'kwintylionów'],
+        ['kwintyliiard', 'kwintyliardy', 'kwintyliardów'],
+        ['sekstylion', 'sekstyliony', 'sekstylionów'],
+        ['sekstyliard', 'sekstyliardy', 'sekstyliardów'],
+        ['septylion', 'septyliony', 'septylionów'],
+        ['septyliard', 'septyliardy', 'septyliardów'],
+        ['oktylion', 'oktyliony', 'oktylionów'],
+        ['oktyliard', 'oktyliardy', 'oktyliardów'],
+        ['nonylion', 'nonyliony', 'nonylionów'],
+        ['nonyliard', 'nonyliardy', 'nonyliardów'],
+        ['decylion', 'decyliony', 'decylionów'],
+        ['decyliard', 'decyliardy', 'decyliardów'],
     ];
 
     private $wordSeparator = ' ';
@@ -113,208 +123,104 @@ class Pl extends Words
 
     /**
      * @param int $number
-     * @param int $power
      *
      * @return string
      */
-    protected function _toWords($number, $power = 0)
+    protected function _toWords($number)
     {
-        $ret = '';
-
-        // add a minus sign
-        if (substr($number, 0, 1) == '-') {
-            $ret = $this->wordSeparator . self::MINUS;
-            $number = substr($number, 1);
+        if ($number === 0) {
+            return self::$zero;
         }
 
-        // strip excessive zero signs and spaces
-        $number = trim($number);
-        $number = preg_replace('/^0+/', '', $number);
+        $triplets = $this->extractTriplets(abs($number));
+        $words = [];
 
-        if (strlen($number) > 3) {
-            $maxp = strlen($number) - 1;
-            $curp = $maxp;
-            for ($p = $maxp; $p > 0; --$p) { // power
+        foreach ($triplets as $i => $triplet) {
+            if ($triplet > 0) {
+                $threeDigitsWords = $this->threeDigitsToWords($triplet);
 
-                // check for highest power
-                if (isset(self::$exponent[$p])) {
-                    // send substr from $curp to $p
-                    $snum = substr($number, $maxp - $curp, $curp - $p + 1);
-                    $snum = preg_replace('/^0+/', '', $snum);
-                    if ($snum !== '') {
-                        $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
-
-                        $ret .= $this->_toWords($snum, $p);
-                    }
-                    $curp = $p - 1;
-                    continue;
+                if ($i > 0) {
+                    $case = $this->getGrammarCase($triplet);
+                    $mega = self::$exponent[$i][$case];
+                    $threeDigitsWords = $threeDigitsWords . ' ' . $mega;
                 }
+
+                $words[] = $threeDigitsWords;
             }
-            $number = substr($number, $maxp - $curp, $curp - $p + 1);
-            if ($number == 0) {
-                return $ret;
+        }
+
+        $transformedNumber = implode(' ', array_reverse($words));
+
+        return $number < 0 ? self::MINUS . ' ' . $transformedNumber : $transformedNumber;
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return array
+     */
+    private function extractTriplets($number)
+    {
+        $triplets = [];
+
+        while ($number > 0) {
+            $triplets[] = $number % 1000;
+            $number = (int) ($number / 1000);
+        }
+
+        return $triplets;
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return string
+     */
+    private function threeDigitsToWords($number)
+    {
+        $units = $number % 10;
+        $tens = (int) ($number / 10) % 10;
+        $hundreds = (int) ($number / 100) % 10;
+        $words = [];
+
+        if ($hundreds > 0) {
+            $words[] = self::$hundreds[$hundreds];
+        }
+
+        if ($tens === 1) {
+            $words[] = self::$teens[$units];
+        } else {
+            if ($tens > 0) {
+                $words[] = self::$tens[$tens];
             }
-        } elseif ($number == 0 || $number == '') {
-            return $this->wordSeparator . self::$digits[0];
-        }
-
-        $h = $t = $d = 0;
-
-        switch (strlen($number)) {
-            case 3:
-                $h = (int) substr($number, -3, 1);
-
-            case 2:
-                $t = (int) substr($number, -2, 1);
-
-            case 1:
-                $d = (int) substr($number, -1, 1);
-                break;
-
-            case 0:
-                return;
-                break;
-        }
-
-        switch ($h) {
-            case 9:
-                $ret .= $this->wordSeparator . 'dziewięćset';
-                break;
-
-            case 8:
-                $ret .= $this->wordSeparator . 'osiemset';
-                break;
-
-            case 7:
-                $ret .= $this->wordSeparator . 'siedemset';
-                break;
-
-            case 6:
-                $ret .= $this->wordSeparator . 'sześćset';
-                break;
-
-            case 5:
-                $ret .= $this->wordSeparator . 'pięćset';
-                break;
-
-            case 4:
-                $ret .= $this->wordSeparator . 'czterysta';
-                break;
-
-            case 3:
-                $ret .= $this->wordSeparator . 'trzysta';
-                break;
-
-            case 2:
-                $ret .= $this->wordSeparator . 'dwieście';
-                break;
-
-            case 1:
-                $ret .= $this->wordSeparator . 'sto';
-                break;
-        }
-
-        switch ($t) {
-            case 9:
-            case 8:
-            case 7:
-            case 6:
-            case 5:
-                $ret .= $this->wordSeparator . self::$digits[$t] . 'dziesiąt';
-                break;
-
-            case 4:
-                $ret .= $this->wordSeparator . 'czterdzieści';
-                break;
-
-            case 3:
-                $ret .= $this->wordSeparator . 'trzydzieści';
-                break;
-
-            case 2:
-                $ret .= $this->wordSeparator . 'dwadzieścia';
-                break;
-
-            case 1:
-                switch ($d) {
-                    case 0:
-                        $ret .= $this->wordSeparator . 'dziesięć';
-                        break;
-
-                    case 1:
-                        $ret .= $this->wordSeparator . 'jedenaście';
-                        break;
-
-                    case 2:
-                    case 3:
-                    case 7:
-                    case 8:
-                        $ret .= $this->wordSeparator . self::$digits[$d] . 'naście';
-                        break;
-
-                    case 4:
-                        $ret .= $this->wordSeparator . 'czternaście';
-                        break;
-
-                    case 5:
-                        $ret .= $this->wordSeparator . 'piętnaście';
-                        break;
-
-                    case 6:
-                        $ret .= $this->wordSeparator . 'szesnaście';
-                        break;
-
-                    case 9:
-                        $ret .= $this->wordSeparator . 'dziewiętnaście';
-                        break;
-                }
-                break;
-        }
-
-        if ($t != 1 && $d > 0) {
-            $ret .= $this->wordSeparator . self::$digits[$d];
-        }
-
-        if ($t == 1) {
-            $d = 0;
-        }
-
-        if (($h + $t) > 0 && $d == 1) {
-            $d = 0;
-        }
-
-        if ($power > 0) {
-            if (isset(self::$exponent[$power])) {
-                $lev = self::$exponent[$power];
+            if ($units > 0) {
+                $words[] = self::$units[$units];
             }
-
-            if (!isset($lev) || !is_array($lev)) {
-                return null;
-            }
-
-            switch ($d) {
-                case 1:
-                    $suf = $lev[0];
-                    break;
-                case 2:
-                case 3:
-                case 4:
-                    $suf = $lev[1];
-                    break;
-                case 0:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    $suf = $lev[2];
-                    break;
-            }
-
-            $ret .= $this->wordSeparator . $suf;
         }
 
-        return $ret;
+        return implode(' ', $words);
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return int
+     */
+    private function getGrammarCase($number)
+    {
+        $units = $number % 10;
+        $tens = ((int) ($number / 10)) % 10;
+        $case = 2;
+
+        if ($number === 1) {
+            $case = 0;
+        } elseif ($tens === 1 && $units > 1) {
+            $case = 2;
+        } elseif ($units >= 2 && $units <= 4) {
+            $case = 1;
+        }
+
+        return $case;
     }
 
     /**
@@ -339,8 +245,8 @@ class Pl extends Words
         $currencyNames = self::$currencyNames[$currency];
 
         $return = trim($this->_toWords($decimal));
-        $level = $this->getGrammarCase($decimal);
-        $return .= $this->wordSeparator . $currencyNames[0][$level];
+        $grammarCase = $this->getGrammarCase($decimal);
+        $return .= $this->wordSeparator . $currencyNames[0][$grammarCase];
 
         if (null !== $fraction) {
             if (true === $convertFraction) {
@@ -349,32 +255,10 @@ class Pl extends Words
                 $return .= $this->wordSeparator . $fraction;
             }
 
-            $level = $this->getGrammarCase($fraction);
-            $return .= $this->wordSeparator . $currencyNames[1][$level];
+            $grammarCase = $this->getGrammarCase($fraction);
+            $return .= $this->wordSeparator . $currencyNames[1][$grammarCase];
         }
 
         return $return;
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return int
-     */
-    private function getGrammarCase($number)
-    {
-        $units = $number % 10;
-        $tens = ((int) ($number / 10)) % 10;
-        $type = 2;
-
-        if ($number === 1) {
-            $type = 0;
-        } elseif ($tens === 1 && $units > 1) {
-            $type = 2;
-        } elseif ($units >= 2 && $units <= 4) {
-            $type = 1;
-        }
-
-        return $type;
     }
 }
