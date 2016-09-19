@@ -13,6 +13,6 @@ class PortugueseBrazilianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'pt_BR', $currency);
+        return $converter->transformToCurrency($amount, 'pt_BR', $currency);
     }
 }

@@ -13,6 +13,6 @@ class BulgarianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'bg');
+        return $converter->transformToWords($number, 'bg');
     }
 }

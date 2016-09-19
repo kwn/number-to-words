@@ -19,7 +19,7 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($number, $locale = null)
+    public function transformToWords($number, $locale = null)
     {
         if (null === $locale) {
             $locale = self::DEFAULT_LOCALE;
@@ -28,7 +28,7 @@ class Words
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName();
 
-        return trim($transformer->_toWords($number));
+        return trim($transformer->toWords($number));
     }
 
     /**
@@ -39,7 +39,7 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrency($amount, $locale = null, $currency = '')
+    public function transformToCurrency($amount, $locale = null, $currency = '')
     {
         if (null === $locale) {
             $locale = self::DEFAULT_LOCALE;

@@ -48,7 +48,7 @@ class Es extends Words
      *
      * @return string
      */
-    protected function _toWords($num, $power = 0)
+    protected function toWords($num, $power = 0)
     {
         $ret = '';
 
@@ -70,7 +70,7 @@ class Es extends Words
                 $snum = substr($num, 0, -6);
                 $snum = preg_replace('/^0+/', '', $snum);
                 if ($snum !== '') {
-                    $ret .= $this->_toWords($snum, $power + 6);
+                    $ret .= $this->toWords($snum, $power + 6);
                 }
             }
             $num = substr($num, -6);
@@ -89,7 +89,7 @@ class Es extends Words
         if ($thousands == 1) {
             $ret .= $this->wordSeparator . 'mil';
         } elseif ($thousands > 1) {
-            $ret .= $this->_toWords($thousands, 3);
+            $ret .= $this->toWords($thousands, 3);
         }
 
         // values for digits, tens and hundreds

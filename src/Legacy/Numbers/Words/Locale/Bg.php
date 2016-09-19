@@ -287,7 +287,7 @@ class Bg extends Words
      *
      * @return string
      */
-    protected function _toWords($num = 0)
+    protected function toWords($num = 0)
     {
         $ret = [];
 

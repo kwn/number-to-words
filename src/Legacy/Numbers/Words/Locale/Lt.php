@@ -45,7 +45,7 @@ class Lt extends Words
      *
      * @return string
      */
-    protected function _toWords($number, $power = 0, $powsuffix = '')
+    protected function toWords($number, $power = 0, $powsuffix = '')
     {
         $return = '';
 
@@ -74,7 +74,7 @@ class Lt extends Words
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
-                        $return .= $this->_toWords($snum, $p, $cursuffix);
+                        $return .= $this->toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
                     continue;

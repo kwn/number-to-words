@@ -13,6 +13,6 @@ class TurkishNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'tr');
+        return $converter->transformToWords($number, 'tr');
     }
 }

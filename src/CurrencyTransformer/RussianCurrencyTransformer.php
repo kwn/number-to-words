@@ -16,6 +16,6 @@ class RussianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'ru', $currency);
+        return $converter->transformToCurrency($amount, 'ru', $currency);
     }
 }

@@ -13,6 +13,6 @@ class GermanNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'de');
+        return $converter->transformToWords($number, 'de');
     }
 }

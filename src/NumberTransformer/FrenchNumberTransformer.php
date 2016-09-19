@@ -13,6 +13,6 @@ class FrenchNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'fr');
+        return $converter->transformToWords($number, 'fr');
     }
 }

@@ -13,6 +13,6 @@ class LatvianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'lv');
+        return $converter->transformToWords($number, 'lv');
     }
 }

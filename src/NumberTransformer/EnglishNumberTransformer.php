@@ -13,6 +13,6 @@ class EnglishNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'en_US');
+        return $converter->transformToWords($number, 'en_US');
     }
 }

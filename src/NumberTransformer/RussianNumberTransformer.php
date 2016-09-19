@@ -13,6 +13,6 @@ class RussianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'ru');
+        return $converter->transformToWords($number, 'ru');
     }
 }

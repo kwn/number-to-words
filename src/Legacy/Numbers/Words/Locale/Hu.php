@@ -104,7 +104,7 @@ class Hu extends Words
      *
      * @return null|string
      */
-    protected function _toWords($num, $options = [], $power = 0, $powsuffix = '', $gt2000 = false)
+    protected function toWords($num, $options = [], $power = 0, $powsuffix = '', $gt2000 = false)
     {
         $chk_gt2000 = true;
 
@@ -148,7 +148,7 @@ class Hu extends Words
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
-                        $ret .= $this->_toWords(
+                        $ret .= $this->toWords(
                             $snum,
                             ['chk_gt2000' => false],
                             $p,
@@ -295,7 +295,7 @@ class Hu extends Words
 
         $curr_names = self::$currencyNames[$currency];
 
-        $ret = trim($this->_toWords($decimal));
+        $ret = trim($this->toWords($decimal));
         $lev = ($decimal == 1) ? 0 : 1;
         if ($lev > 0) {
             if (count($curr_names[0]) > 1) {
@@ -309,7 +309,7 @@ class Hu extends Words
 
         if ($fraction !== null) {
             if ($convertFraction) {
-                $ret .= $this->wordSeparator . trim($this->_toWords($fraction));
+                $ret .= $this->wordSeparator . trim($this->toWords($fraction));
             } else {
                 $ret .= $this->wordSeparator . $fraction;
             }

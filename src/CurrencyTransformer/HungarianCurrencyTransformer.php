@@ -16,6 +16,6 @@ class HungarianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'hu', $currency);
+        return $converter->transformToCurrency($amount, 'hu', $currency);
     }
 }

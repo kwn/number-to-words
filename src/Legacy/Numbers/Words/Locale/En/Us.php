@@ -115,7 +115,7 @@ class Us extends Words
      *
      * @return string
      */
-    protected function _toWords($number)
+    protected function toWords($number)
     {
         if ($number === 0) {
             return self::$zero;
@@ -246,7 +246,7 @@ class Us extends Words
 
         $currencyNames = self::$currencyNames[$currency];
 
-        $return = trim($this->_toWords($decimal));
+        $return = trim($this->toWords($decimal));
         $level = ($decimal === 1) ? 0 : 1;
 
         if ($level > 0) {
@@ -261,7 +261,7 @@ class Us extends Words
 
         if (null !== $fraction) {
             if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->_toWords($fraction));
+                $return .= $this->wordSeparator . trim($this->toWords($fraction));
             } else {
                 $return .= $this->wordSeparator . $fraction;
             }

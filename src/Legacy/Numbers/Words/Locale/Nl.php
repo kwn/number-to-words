@@ -110,7 +110,7 @@ class Nl extends Words
      *
      * @return string
      */
-    protected function _toWords($num, $power = 0, $powsuffix = '')
+    protected function toWords($num, $power = 0, $powsuffix = '')
     {
         $ret = '';
 
@@ -140,7 +140,7 @@ class Nl extends Words
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
-                        $ret .= $this->_toWords($snum, $p, $cursuffix);
+                        $ret .= $this->toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
                     continue;

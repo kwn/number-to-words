@@ -126,7 +126,7 @@ class Pl extends Words
      *
      * @return string
      */
-    protected function _toWords($number)
+    protected function toWords($number)
     {
         if ($number === 0) {
             return self::$zero;
@@ -244,13 +244,13 @@ class Pl extends Words
 
         $currencyNames = self::$currencyNames[$currency];
 
-        $return = trim($this->_toWords($decimal));
+        $return = trim($this->toWords($decimal));
         $grammarCase = $this->getGrammarCase($decimal);
         $return .= $this->wordSeparator . $currencyNames[0][$grammarCase];
 
         if (null !== $fraction) {
             if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->_toWords($fraction));
+                $return .= $this->wordSeparator . trim($this->toWords($fraction));
             } else {
                 $return .= $this->wordSeparator . $fraction;
             }

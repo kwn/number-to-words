@@ -421,7 +421,7 @@ class Ro extends Words
      *
      * @return string
      */
-    protected function _toWords($num = 0, $noun = [])
+    protected function toWords($num = 0, $noun = [])
     {
         if (empty($noun)) {
             $noun = [null, null, Words::GENDER_ABSTRACT];
@@ -518,13 +518,13 @@ class Ro extends Words
         }
 
         $currencyNouns = self::$currencyNames[$currency];
-        $return = $this->_toWords($decimal, $currencyNouns[0]);
+        $return = $this->toWords($decimal, $currencyNouns[0]);
 
         if ($fraction !== null) {
             $return .= $this->wordSeparator . $this->and;
 
             if ($convertFraction) {
-                $return .= $this->wordSeparator . $this->_toWords($fraction, $currencyNouns[1]);
+                $return .= $this->wordSeparator . $this->toWords($fraction, $currencyNouns[1]);
             } else {
                 $return .= $fraction . $this->wordSeparator;
                 $plural_rule = $this->getPluralRule($fraction);

@@ -13,6 +13,6 @@ class LithuanianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'lt');
+        return $converter->transformToWords($number, 'lt');
     }
 }

@@ -13,6 +13,6 @@ class RomanianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'ro');
+        return $converter->transformToWords($number, 'ro');
     }
 }

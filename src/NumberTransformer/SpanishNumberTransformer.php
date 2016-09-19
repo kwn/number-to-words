@@ -13,6 +13,6 @@ class SpanishNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'es');
+        return $converter->transformToWords($number, 'es');
     }
 }

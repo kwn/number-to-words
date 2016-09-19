@@ -66,7 +66,7 @@ class De extends Words
      *
      * @return string
      */
-    protected function _toWords($num, $power = 0)
+    protected function toWords($num, $power = 0)
     {
         $ret = '';
 
@@ -93,7 +93,7 @@ class De extends Words
                     if ($snum !== '') {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
 
-                        $ret .= $this->_toWords($snum, $p, $cursuffix);
+                        $ret .= $this->toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
                     continue;

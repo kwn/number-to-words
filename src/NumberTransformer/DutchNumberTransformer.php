@@ -13,6 +13,6 @@ class DutchNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'nl');
+        return $converter->transformToWords($number, 'nl');
     }
 }

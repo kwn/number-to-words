@@ -16,6 +16,6 @@ class PolishCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'pl', $currency);
+        return $converter->transformToCurrency($amount, 'pl', $currency);
     }
 }

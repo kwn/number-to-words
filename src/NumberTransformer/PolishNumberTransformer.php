@@ -13,6 +13,6 @@ class PolishNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'pl');
+        return $converter->transformToWords($number, 'pl');
     }
 }

@@ -13,6 +13,6 @@ class UkrainianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'ua');
+        return $converter->transformToWords($number, 'ua');
     }
 }

@@ -13,6 +13,6 @@ class EstonianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'et');
+        return $converter->transformToWords($number, 'et');
     }
 }

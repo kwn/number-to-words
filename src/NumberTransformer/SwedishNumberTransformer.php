@@ -13,6 +13,6 @@ class SwedishNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'sv');
+        return $converter->transformToWords($number, 'sv');
     }
 }

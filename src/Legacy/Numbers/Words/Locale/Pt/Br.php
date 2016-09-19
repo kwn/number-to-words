@@ -66,7 +66,7 @@ class Br extends Words
          */
         [
             '',         // 0: not displayed
-            'cento',    // 'cem' is a special case handled in _toWords()
+            'cento',    // 'cem' is a special case handled in toWords()
             'duzentos',
             'trezentos',
             'quatrocentos',
@@ -122,7 +122,7 @@ class Br extends Words
      * @return string
      * @throws NumberToWordsException
      */
-    protected function _toWords($num)
+    protected function toWords($num)
     {
         $neg = 0;
         $ret = [];
@@ -320,7 +320,7 @@ class Br extends Words
             /**
              * Word representation of decimal
              */
-            $ret[] = $this->_toWords($num);
+            $ret[] = $this->toWords($num);
 
             /**
              * Special case.
@@ -371,7 +371,7 @@ class Br extends Words
              * Word representation of fraction
              */
             if ($convertFraction) {
-                $ret[] = $this->_toWords($num);
+                $ret[] = $this->toWords($num);
             } else {
                 $ret[] = $num;
             }

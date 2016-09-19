@@ -13,6 +13,6 @@ class ItalianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'it');
+        return $converter->transformToWords($number, 'it');
     }
 }

@@ -13,6 +13,6 @@ class PortugueseBrazilianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
 
-        return $converter->toWords($number, 'pt_BR');
+        return $converter->transformToWords($number, 'pt_BR');
     }
 }

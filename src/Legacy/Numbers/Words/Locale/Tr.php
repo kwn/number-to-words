@@ -84,7 +84,7 @@ class Tr extends Words
      *
      * @return string
      */
-    protected function _toWords($num, $power = 0)
+    protected function toWords($num, $power = 0)
     {
         // The return string;
         $ret = '';
@@ -108,7 +108,7 @@ class Tr extends Words
                 $snum = substr($num, 0, -6);
                 $snum = preg_replace('/^0+/', '', $snum);
                 if ($snum !== '') {
-                    $ret .= $this->_toWords($snum, $power + 6);
+                    $ret .= $this->toWords($snum, $power + 6);
                 }
             }
             $num = substr($num, -6);
@@ -127,7 +127,7 @@ class Tr extends Words
         if ($thousands == 1) {
             $ret .= $this->wordSeparator . 'bin' . $this->wordSeparator;
         } elseif ($thousands > 1) {
-            $ret .= $this->_toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
+            $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
         }
 
         // values for digits, tens and hundreds
@@ -229,7 +229,7 @@ class Tr extends Words
         }
 
         $curr_names = self::$currencyNames[$currency];
-        $ret = trim($this->_toWords($decimal));
+        $ret = trim($this->toWords($decimal));
         $lev = ($decimal == 1) ? 0 : 1;
         if ($lev > 0) {
             if (count($curr_names[0]) > 1) {
@@ -243,7 +243,7 @@ class Tr extends Words
 
         if ($fraction !== null) {
             if ($convertFraction) {
-                $ret .= $this->wordSeparator . trim($this->_toWords($fraction));
+                $ret .= $this->wordSeparator . trim($this->toWords($fraction));
             } else {
                 $ret .= $this->wordSeparator . $fraction;
             }

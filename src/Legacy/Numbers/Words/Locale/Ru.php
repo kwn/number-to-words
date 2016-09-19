@@ -309,7 +309,7 @@ class Ru extends Words
      *
      * @return string
      */
-    protected function _toWords($number, $options = [])
+    protected function toWords($number, $options = [])
     {
         $dummy = null;
         $gender = 1;

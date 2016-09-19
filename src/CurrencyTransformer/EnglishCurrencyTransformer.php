@@ -16,6 +16,6 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'en_US', $currency);
+        return $converter->transformToCurrency($amount, 'en_US', $currency);
     }
 }

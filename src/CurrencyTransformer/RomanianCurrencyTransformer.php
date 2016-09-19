@@ -16,6 +16,6 @@ class RomanianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->toCurrency($amount, 'ro', $currency);
+        return $converter->transformToCurrency($amount, 'ro', $currency);
     }
 }
