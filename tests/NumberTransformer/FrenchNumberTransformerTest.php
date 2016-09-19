@@ -156,6 +156,7 @@ class FrenchNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'trente-cinq milliards cent soixante-quatorze millions trois cent quinze mille cent dix-neuf'],
             [935174315119, 'neuf cent trente-cinq milliards cent soixante-quatorze millions trois cent quinze mille cent dix-neuf'],
             [2935174315119, 'deux billions neuf cent trente-cinq milliards cent soixante-quatorze millions trois cent quinze mille cent dix-neuf'],
+            [-999, 'moins neuf cent quatre-vingt-dix-neuf'],
         ];
     }
 }
