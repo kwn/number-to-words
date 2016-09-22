@@ -11,7 +11,7 @@ class Hu extends Words
     const LANGUAGE_NAME        = 'Hungarian';
     const LANGUAGE_NAME_NATIVE = 'Magyar';
 
-    private $minus = 'Mínusz ';
+    private $minus = 'mínusz';
 
     private static $exponent = [
         0   => [''],
@@ -36,7 +36,6 @@ class Hu extends Words
         57  => ['nonilliárd'],
         60  => ['decillió'],
         63  => ['decilliárd'],
-        600 => ['centillió']
     ];
 
     private static $digits = [
@@ -96,7 +95,7 @@ class Hu extends Words
     ];
 
     /**
-     * @param int    $num
+     * @param int    $number
      * @param array  $options
      * @param int    $power
      * @param string $powsuffix
@@ -104,53 +103,44 @@ class Hu extends Words
      *
      * @return null|string
      */
-    protected function toWords($num, $options = [], $power = 0, $powsuffix = '', $gt2000 = false)
+    protected function toWords($number, $options = [], $power = 0, $powsuffix = '', $gt2000 = false)
     {
-        $chk_gt2000 = true;
+        $checkIfGreaterThan2000 = true;
 
-        /**
-         * Loads user options
-         */
         extract($options, EXTR_IF_EXISTS);
 
-        /**
-         * Return string
-         */
         $ret = '';
 
-        // add a minus sign
-        if (substr($num, 0, 1) == '-') {
-            $ret = $this->wordSeparator . $this->minus;
-            $num = substr($num, 1);
+        if ($number < 0) {
+            $ret = $this->minus . ' ';
+            $number = abs($number);
         }
 
-        // strip excessive zero signs and spaces
-        $num = trim($num);
-        $num = preg_replace('/^0+/', '', $num);
-
-        if ($chk_gt2000) {
-            $gt2000 = $num > 2000;
+        if ($checkIfGreaterThan2000) {
+            $gt2000 = $number > 2000;
         }
 
-        if (strlen($num) > 3) {
-            $maxp = strlen($num) - 1;
+        if (strlen($number) > 3) {
+            $maxp = strlen($number) - 1;
             $curp = $maxp;
             for ($p = $maxp; $p > 0; --$p) { // power
 
                 // check for highest power
                 if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p
-                    $snum = substr($num, $maxp - $curp, $curp - $p + 1);
+                    $snum = substr($number, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
+
                     if ($snum !== '') {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
+
                         if ($powsuffix != '') {
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
 
                         $ret .= $this->toWords(
                             $snum,
-                            ['chk_gt2000' => false],
+                            ['checkIfGreaterThan2000' => false],
                             $p,
                             $cursuffix,
                             $gt2000
@@ -164,27 +154,26 @@ class Hu extends Words
                     continue;
                 }
             }
-            $num = substr($num, $maxp - $curp, $curp - $p + 1);
-            if ($num == 0) {
+
+            $number = substr($number, $maxp - $curp, $curp - $p + 1);
+
+            if ($number == 0) {
                 return rtrim($ret, $this->thousandSeparator);
             }
-        } elseif ($num == 0 || $num == '') {
+        } elseif ($number == 0 || $number == '') {
             return $this->wordSeparator . self::$digits[0];
         }
 
         $h = $t = $d = 0;
 
-        switch (strlen($num)) {
+        switch (strlen($number)) {
             case 3:
-                $h = (int) substr($num, -3, 1);
-
+                $h = (int) substr($number, -3, 1);
             case 2:
-                $t = (int) substr($num, -2, 1);
-
+                $t = (int) substr($number, -2, 1);
             case 1:
-                $d = (int) substr($num, -1, 1);
+                $d = (int) substr($number, -1, 1);
                 break;
-
             case 0:
                 return;
                 break;
@@ -251,7 +240,7 @@ class Hu extends Words
                 break;
         }
 
-        if ($d > 0) { // add digits only in <0> and <1,inf)
+        if ($d > 0) {
             $ret .= $this->wordSeparator . self::$digits[$d];
         }
 
@@ -293,18 +282,18 @@ class Hu extends Words
             );
         }
 
-        $curr_names = self::$currencyNames[$currency];
+        $currencyNames = self::$currencyNames[$currency];
 
         $ret = trim($this->toWords($decimal));
         $lev = ($decimal == 1) ? 0 : 1;
         if ($lev > 0) {
-            if (count($curr_names[0]) > 1) {
-                $ret .= ' ' . $curr_names[0][$lev];
+            if (count($currencyNames[0]) > 1) {
+                $ret .= ' ' . $currencyNames[0][$lev];
             } else {
-                $ret .= ' ' . $curr_names[0][0] . 's';
+                $ret .= ' ' . $currencyNames[0][0] . 's';
             }
         } else {
-            $ret .= ' ' . $curr_names[0][0];
+            $ret .= ' ' . $currencyNames[0][0];
         }
 
         if ($fraction !== null) {
@@ -315,13 +304,13 @@ class Hu extends Words
             }
             $lev = ($fraction == 1) ? 0 : 1;
             if ($lev > 0) {
-                if (count($curr_names[1]) > 1) {
-                    $ret .= ' ' . $curr_names[1][$lev];
+                if (count($currencyNames[1]) > 1) {
+                    $ret .= ' ' . $currencyNames[1][$lev];
                 } else {
-                    $ret .= ' ' . $curr_names[1][0] . 's';
+                    $ret .= ' ' . $currencyNames[1][0] . 's';
                 }
             } else {
-                $ret .= ' ' . $curr_names[1][0];
+                $ret .= ' ' . $currencyNames[1][0];
             }
         }
 

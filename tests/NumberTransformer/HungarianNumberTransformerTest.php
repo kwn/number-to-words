@@ -117,6 +117,7 @@ class HungarianNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'harmincötmilliárd-egyszázhetvennégymillió-háromszáztizenötezer-egyszáztizenkilenc'],
             [935174315119, 'kilencszázharmincötmilliárd-egyszázhetvennégymillió-háromszáztizenötezer-egyszáztizenkilenc'],
             [2935174315119, 'kettőbillió-kilencszázharmincötmilliárd-egyszázhetvennégymillió-háromszáztizenötezer-egyszáztizenkilenc'],
+            [-2000, 'mínusz kettőezer'],
         ];
     }
 }
