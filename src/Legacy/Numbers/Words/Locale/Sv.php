@@ -35,10 +35,6 @@ class Sv extends Words
         57  => ['noniljard', 'noniljarder'],
         60  => ['dekiljon', 'dekiljoner'],
         63  => ['dekiljard', 'dekiljarder'],
-        120 => ['vigintiljon', 'vigintiljoner'],
-        123 => ['vigintiljard', 'vigintiljarder'],
-        600 => ['centiljon', 'centiljoner'],
-        603 => ['centiljard', 'centiljarder']
     ];
 
     private static $digits = [
