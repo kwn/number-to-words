@@ -98,12 +98,12 @@ class Hu extends Words
      * @param int    $number
      * @param array  $options
      * @param int    $power
-     * @param string $powsuffix
+     * @param string $powerSuffix
      * @param bool   $gt2000
      *
      * @return null|string
      */
-    protected function toWords($number, $options = [], $power = 0, $powsuffix = '', $gt2000 = false)
+    protected function toWords($number, $options = [], $power = 0, $powerSuffix = '', $gt2000 = false)
     {
         $checkIfGreaterThan2000 = true;
 
@@ -134,8 +134,8 @@ class Hu extends Words
                     if ($snum !== '') {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
 
-                        if ($powsuffix != '') {
-                            $cursuffix .= $this->wordSeparator . $powsuffix;
+                        if ($powerSuffix != '') {
+                            $cursuffix .= $this->wordSeparator . $powerSuffix;
                         }
 
                         $ret .= $this->toWords(
@@ -256,8 +256,8 @@ class Hu extends Words
             $ret .= $this->wordSeparator . $lev[0];
         }
 
-        if ($powsuffix != '') {
-            $ret .= $this->wordSeparator . $powsuffix;
+        if ($powerSuffix != '') {
+            $ret .= $this->wordSeparator . $powerSuffix;
         }
 
         return $ret;
@@ -267,12 +267,11 @@ class Hu extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @return string
      * @throws NumberToWordsException
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -284,36 +283,34 @@ class Hu extends Words
 
         $currencyNames = self::$currencyNames[$currency];
 
-        $ret = trim($this->toWords($decimal));
-        $lev = ($decimal == 1) ? 0 : 1;
-        if ($lev > 0) {
+        $return = trim($this->toWords($decimal));
+        $level = $decimal == 1 ? 0 : 1;
+
+        if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
-                $ret .= ' ' . $currencyNames[0][$lev];
+                $return .= ' ' . $currencyNames[0][$level];
             } else {
-                $ret .= ' ' . $currencyNames[0][0] . 's';
+                $return .= ' ' . $currencyNames[0][0] . 's';
             }
         } else {
-            $ret .= ' ' . $currencyNames[0][0];
+            $return .= ' ' . $currencyNames[0][0];
         }
 
         if ($fraction !== null) {
-            if ($convertFraction) {
-                $ret .= $this->wordSeparator . trim($this->toWords($fraction));
-            } else {
-                $ret .= $this->wordSeparator . $fraction;
-            }
-            $lev = ($fraction == 1) ? 0 : 1;
-            if ($lev > 0) {
+            $return .= $this->wordSeparator . trim($this->toWords($fraction));
+
+            $level = ($fraction == 1) ? 0 : 1;
+            if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $ret .= ' ' . $currencyNames[1][$lev];
+                    $return .= ' ' . $currencyNames[1][$level];
                 } else {
-                    $ret .= ' ' . $currencyNames[1][0] . 's';
+                    $return .= ' ' . $currencyNames[1][0] . 's';
                 }
             } else {
-                $ret .= ' ' . $currencyNames[1][0];
+                $return .= ' ' . $currencyNames[1][0];
             }
         }
 
-        return $ret;
+        return $return;
     }
 }

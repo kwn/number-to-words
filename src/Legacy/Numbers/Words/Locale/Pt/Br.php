@@ -273,16 +273,15 @@ class Br extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @return string
      * @throws NumberToWordsException
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
-        $neg = 0;
+        $negative = 0;
         $ret = [];
-        $nodec = false;
+        $noDecimals = false;
 
         /**
          * Negative ?
@@ -291,7 +290,7 @@ class Br extends Words
          */
         if (substr($decimal, 0, 1) == '-') {
             $decimal = -$decimal;
-            $neg = 1;
+            $negative = 1;
         }
 
         /**
@@ -351,54 +350,32 @@ class Br extends Words
              */
             $num = number_format($fraction, 0, '.', '.');
 
-            /**
-             * Testing Range
-             */
             if ($num < 0 || $num > 99) {
                 throw new NumberToWordsException('Fraction out of range.');
             }
 
-            /**
-             * Have we got decimal?
-             */
             if (count($ret)) {
                 $ret[] = trim($this->separator);
             } else {
-                $nodec = true;
+                $noDecimals = true;
             }
 
-            /**
-             * Word representation of fraction
-             */
-            if ($convertFraction) {
-                $ret[] = $this->toWords($num);
-            } else {
-                $ret[] = $num;
-            }
 
-            /**
-             * Testing plural
-             */
+            $ret[] = $this->toWords($num);
+
             if ($num > 1) {
                 $ret[] = $currencyNames[1][1];
             } else {
                 $ret[] = $currencyNames[1][0];
             }
 
-            /**
-             * Have we got decimal?
-             * If not, include currency name after cents.
-             */
-            if ($nodec) {
+            if ($noDecimals) {
                 $ret[] = trim($this->currencySeparator);
                 $ret[] = $currencyNames[0][0];
             }
         }
 
-        /**
-         * Negative ?
-         */
-        if ($neg) {
+        if ($negative) {
             $ret[] = $this->minus;
         }
 

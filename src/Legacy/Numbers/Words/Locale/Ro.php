@@ -244,31 +244,6 @@ class Ro extends Words
     ];
 
     /**
-     * @param string|int $number
-     *
-     * @return array
-     */
-    private function splitNumber($number)
-    {
-        if (is_string($number)) {
-            $ret = [];
-            $strlen = strlen($number);
-            $first = substr($number, 0, $strlen % 3);
-
-            preg_match_all('/\d{3}/', substr($number, $strlen % 3, $strlen), $m);
-            $ret =& $m[0];
-
-            if ($first) {
-                array_unshift($ret, $first);
-            }
-
-            return $ret;
-        }
-
-        return explode(' ', number_format($number, 0, '', ' '));
-    }
-
-    /**
      * @param mixed $numberAtom
      * @param array $noun
      * @param bool  $asNoun
@@ -277,30 +252,31 @@ class Ro extends Words
      */
     private function getNumberInflectionForGender($numberAtom, $noun, $asNoun = false)
     {
+        $numberNames = $numberAtom;
+
         if (!is_array($numberAtom)) {
-            $num_names = [
+            $numberNames = [
                 $numberAtom,
                 $numberAtom,
                 $numberAtom,
                 $numberAtom,
             ];
         } elseif (count($numberAtom) === 2) {
-            $num_names = [
+            $numberNames = [
                 $numberAtom[0],
                 $numberAtom[1],
                 $numberAtom[1],
                 $numberAtom[0],
             ];
-        } else {
-            $num_names = $numberAtom;
         }
 
-        $num_name = $num_names[$noun[2]];
-        if (!is_array($num_name)) {
-            return $num_name;
+        $numberName = $numberNames[$noun[2]];
+
+        if (!is_array($numberName)) {
+            return $numberName;
         }
 
-        return $num_name[(int) $asNoun];
+        return $numberName[(int) $asNoun];
     }
 
     /**
@@ -311,18 +287,18 @@ class Ro extends Words
      */
     private function getNounDeclensionForNumber($pluralRule, $noun)
     {
-        if ($noun[2] == Words::GENDER_ABSTRACT) {
-            // Nothing for abstract count
-            return "";
+        // Nothing for abstract count
+        if ($noun[2] === Words::GENDER_ABSTRACT) {
+            return '';
         }
 
-        if ($pluralRule == 'o') {
-            // One
+        // One
+        if ($pluralRule === 'o') {
             return $noun[0];
         }
 
-        if ($pluralRule == 'f') {
-            // Few
+        // Few
+        if ($pluralRule === 'f') {
             return $noun[1];
         }
 
@@ -337,25 +313,25 @@ class Ro extends Words
      */
     private function getPluralRule($number)
     {
-        if ($number == $this->thresholdFew) {
-            // One
+        // One
+        if ($number === $this->thresholdFew) {
             return 'o';
         }
 
-        if ($number == 0) {
-            // Zero, which behaves like few
+        // Zero, which behaves like few
+        if ($number === 0) {
             return 'f';
         }
 
         $uz = $number % 100;
 
-        if ($uz == 0) {
-            // Hundreds behave like many
+        // Hundreds behave like many
+        if ($uz === 0) {
             return 'm';
         }
 
+        // Many
         if ($uz > $this->thresholdMany) {
-            // Many
             return 'm';
         }
 
@@ -375,40 +351,40 @@ class Ro extends Words
     {
         $ret = '';
 
-        // extract the value of each digit from the three-digit number
-        $u = $number % 10;                  // ones
-        $uz = $number % 100;                // ones+tens
-        $z = ($number - $u) % 100 / 10;         // tens
-        $s = ($number - $z * 10 - $u) % 1000 / 100; // hundreds
+        $units = $number % 10;
+        $tensAndUnits = $number % 100;
+        $tens = (int) ($number / 10) % 10;
+        $hundreds = (int) ($number / 100) % 10;
 
-        if ($s) {
-            $ret .= $this->showDigitsGroup($s, self::$exponent[2]);
-            if ($uz) {
+        if ($hundreds) {
+            $ret .= $this->showDigitsGroup($hundreds, self::$exponent[2]);
+            if ($tensAndUnits) {
                 $ret .= $this->wordSeparator;
             }
         }
-        if ($uz) {
-            if (isset(self::$numbers[$uz])) {
-                $ret .= $this->getNumberInflectionForGender(self::$numbers[$uz], $noun, !$forceNoun);
+        if ($tensAndUnits) {
+            if (isset(self::$numbers[$tensAndUnits])) {
+                $ret .= $this->getNumberInflectionForGender(self::$numbers[$tensAndUnits], $noun, !$forceNoun);
             } else {
-                if ($z) {
-                    $ret .= self::$numbers[$z * 10]; // no accord needed for tens
-                    if ($u) {
+                if ($tens) {
+                    $ret .= self::$numbers[$tens * 10]; // no accord needed for tens
+                    if ($units) {
                         $ret .= $this->wordSeparator . $this->and . $this->wordSeparator;
                     }
                 }
-                if ($u) {
-                    $ret .= $this->getNumberInflectionForGender(self::$numbers[$u], $noun, !$forceNoun);
+                if ($units) {
+                    $ret .= $this->getNumberInflectionForGender(self::$numbers[$units], $noun, !$forceNoun);
                 }
             }
         }
 
-        if ($noun[2] == Words::GENDER_ABSTRACT) {
+        if ($noun[2] === Words::GENDER_ABSTRACT) {
             return $ret;
         }
 
         $pluralRule = $this->getPluralRule($number);
-        if ($pluralRule == 'o' && $forcePlural) {
+
+        if ($pluralRule === 'o' && $forcePlural) {
             $pluralRule = 'f';
         }
 
@@ -463,17 +439,14 @@ class Ro extends Words
         // strip excessive zero signs
         $num = ltrim($num, '0');
 
-        // split $num to groups of three-digit numbers
-        $num_groups = $this->splitNumber($num);
+        $numberGroups = array_reverse($this->numberToTriplets($num));
 
-        $sizeof_numgroups = count($num_groups);
+        $sizeof_numgroups = count($numberGroups);
         $showed_noun = false;
 
-        foreach ($num_groups as $i => $number) {
+        foreach ($numberGroups as $i => $number) {
             // what is the corresponding exponent for the current group
             $pow = $sizeof_numgroups - $i;
-
-            $valid_groups = [];
 
             // skip processment for empty groups
             if ($number == '000') {
@@ -502,12 +475,11 @@ class Ro extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -522,14 +494,7 @@ class Ro extends Words
 
         if ($fraction !== null) {
             $return .= $this->wordSeparator . $this->and;
-
-            if ($convertFraction) {
-                $return .= $this->wordSeparator . $this->toWords($fraction, $currencyNouns[1]);
-            } else {
-                $return .= $fraction . $this->wordSeparator;
-                $plural_rule = $this->getPluralRule($fraction);
-                $this->getNounDeclensionForNumber($currencyNouns[1]);
-            }
+            $return .= $this->wordSeparator . $this->toWords($fraction, $currencyNouns[1]);
         }
 
         return $return;
