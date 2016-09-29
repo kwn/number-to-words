@@ -16,7 +16,7 @@ class It extends Words
     private static $exponent = [
         0  => ['', ''],
         3  => ['mille', 'mila'],
-        6  => ['milione', 'miloni'],
+        6  => ['milione', 'milioni'],
         12 => ['miliardo', 'miliardi'],
         18 => ['trillone', 'trilloni'],
         24 => ['quadrilione', 'quadrilioni'],
@@ -47,13 +47,10 @@ class It extends Words
     {
         $ret = '';
 
-        // add a the word for the minus sign if necessary
-        if (substr($number, 0, 1) == '-') {
-            $ret = $this->wordSeparator . $this->minus;
-            $number = substr($number, 1);
+        if ($number < 0) {
+            $ret .= $this->minus;
+            $number *= -1;
         }
-
-        $number = preg_replace('/^0+/', '', $number);
 
         if (strlen($number) > 6) {
             $current_power = 6;
@@ -78,23 +75,22 @@ class It extends Words
             $current_power = strlen($number);
         }
 
-        // See if we need "thousands"
-        $thousands = floor($number / 1000);
+        $thousands = (int) ($number / 1000);
+
         if ($thousands == 1) {
             $ret .= $this->wordSeparator . 'mille' . $this->wordSeparator;
         } elseif ($thousands > 1) {
-            $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
+            $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;
         }
 
-        // values for digits, tens and hundreds
-        $h = floor(($number / 100) % 10);
-        $t = floor(($number / 10) % 10);
-        $d = floor($number % 10);
+        $hundreds = (int) ($number / 100 % 10);
+        $tens = (int) ($number / 10 % 10);
+        $units = (int) ($number % 10);
 
         // centinaia: duecento, trecento, etc...
-        switch ($h) {
+        switch ($hundreds) {
             case 1:
-                if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
+                if ($units === 0 && $tens === 0) { // is it's '100' use 'cien'
                     $ret .= $this->wordSeparator . 'cento';
                 } else {
                     $ret .= $this->wordSeparator . 'cento';
@@ -105,7 +101,7 @@ class It extends Words
             case 4:
             case 6:
             case 8:
-                $ret .= $this->wordSeparator . self::$digits[$h] . 'cento';
+                $ret .= $this->wordSeparator . self::$digits[$hundreds] . 'cento';
                 break;
             case 5:
                 $ret .= $this->wordSeparator . 'cinquecento';
@@ -119,9 +115,9 @@ class It extends Words
         }
 
         // decine: venti trenta, etc...
-        switch ($t) {
+        switch ($tens) {
             case 9:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'novant';
@@ -133,7 +129,7 @@ class It extends Words
 
                 break;
             case 8:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'ottant';
@@ -145,7 +141,7 @@ class It extends Words
 
                 break;
             case 7:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'settant';
@@ -156,7 +152,7 @@ class It extends Words
                 }
                 break;
             case 6:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'sessant';
@@ -167,7 +163,7 @@ class It extends Words
                 }
                 break;
             case 5:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'cinquant';
@@ -178,7 +174,7 @@ class It extends Words
                 }
                 break;
             case 4:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'quarant';
@@ -189,7 +185,7 @@ class It extends Words
                 }
                 break;
             case 3:
-                switch ($d) {
+                switch ($units) {
                     case 1:
                     case 8:
                         $ret .= $this->wordSeparator . 'trent';
@@ -200,22 +196,22 @@ class It extends Words
                 }
                 break;
             case 2:
-                switch ($d) {
+                switch ($units) {
                     case 0:
                         $ret .= $this->wordSeparator . 'venti';
                         break;
                     case 1:
                     case 8:
-                        $ret .= $this->wordSeparator . 'vent' . self::$digits[$d];
+                        $ret .= $this->wordSeparator . 'vent' . self::$digits[$units];
                         break;
                     default:
-                        $ret .= $this->wordSeparator . 'venti' . self::$digits[$d];
+                        $ret .= $this->wordSeparator . 'venti' . self::$digits[$units];
                         break;
                 }
                 break;
 
             case 1:
-                switch ($d) {
+                switch ($units) {
                     case 0:
                         $ret .= $this->wordSeparator . 'dieci';
                         break;
@@ -260,40 +256,42 @@ class It extends Words
         }
 
         // add digits only if it is a multiple of 10 and not 1x or 2x
-        if (($t != 1) and ($t != 2) and ($d > 0)) {
-            // don't add 'e' for numbers below 10
-            if ($t != 0) {
+        if (($tens != 1) and ($tens != 2) and ($units > 0)) {
+            // don'tens add 'e' for numbers below 10
+            if ($tens != 0) {
                 // use 'un' instead of 'uno' when there is a suffix ('mila', 'milloni', etc...)
-                if (($power > 0) and ($d == 1)) {
+                if (($power > 0) and ($units == 1)) {
                     $ret .= $this->wordSeparator . ' e un';
                 } else {
-                    $ret .= $this->wordSeparator . '' . self::$digits[$d];
+                    $ret .= $this->wordSeparator . '' . self::$digits[$units];
                 }
             } else {
-                if (($power > 0) and ($d == 1)) {
+                if (($power > 0) and ($units == 1)) {
                     $ret .= $this->wordSeparator . 'un ';
                 } else {
-                    $ret .= $this->wordSeparator . self::$digits[$d];
+                    $ret .= $this->wordSeparator . self::$digits[$units];
                 }
             }
         }
 
         if ($power > 0) {
-            if (isset(self::$exponent[$power])) {
-                $lev = self::$exponent[$power];
-            }
-
-            if (!isset($lev) || !is_array($lev)) {
+            if (!array_key_exists($power, self::$exponent)) {
                 return null;
             }
 
-            // if it's only one use the singular suffix
-            if (($d == 1) and ($t == 0) and ($h == 0)) {
+            $lev = self::$exponent[$power];
+
+            if ($units === 1 && $tens === 0 && $hundreds === 0) {
                 $suffix = $lev[0];
             } else {
                 $suffix = $lev[1];
             }
-            if ($number != 0) {
+
+            if ($power >= 6) {
+                $suffix = ' ' . $suffix . ' ';
+            }
+
+            if ($number !== 0) {
                 $ret .= $this->wordSeparator . $suffix;
             }
         }
