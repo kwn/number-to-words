@@ -36,7 +36,7 @@ Before using a transformer, it must be created:
 
 ```php
 // create the number to words "manager" class
-$numberToWords = new NumberToWords($registry);
+$numberToWords = new NumberToWords();
 
 // build a new number transformer using the RFC 3066 language identifier
 $numberTransformer = $numberToWords->getNumberTransformer('en');
@@ -54,7 +54,7 @@ Creating a currency transformer works just like a number transformer.
 
 ```php
 // create the number to words "manager" class
-$numberToWords = new NumberToWords($registry);
+$numberToWords = new NumberToWords();
 
 // build a new currency transformer using the RFC 3066 language identifier
 $currencyTransformer = $numberToWords->getCurrencyTransformer('en');
