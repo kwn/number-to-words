@@ -132,7 +132,7 @@ class Pl extends Words
             return self::$zero;
         }
 
-        $triplets = $this->extractTriplets(abs($number));
+        $triplets = $this->numberToTriplets(abs($number));
         $words = [];
 
         foreach ($triplets as $i => $triplet) {
@@ -151,24 +151,11 @@ class Pl extends Words
 
         $transformedNumber = implode(' ', array_reverse($words));
 
-        return $number < 0 ? self::MINUS . ' ' . $transformedNumber : $transformedNumber;
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return array
-     */
-    private function extractTriplets($number)
-    {
-        $triplets = [];
-
-        while ($number > 0) {
-            $triplets[] = $number % 1000;
-            $number = (int) ($number / 1000);
+        if ($number < 0) {
+            $transformedNumber = self::MINUS . ' ' . $transformedNumber;
         }
 
-        return $triplets;
+        return $transformedNumber;
     }
 
     /**
@@ -227,12 +214,11 @@ class Pl extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -249,11 +235,7 @@ class Pl extends Words
         $return .= $this->wordSeparator . $currencyNames[0][$grammarCase];
 
         if (null !== $fraction) {
-            if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->toWords($fraction));
-            } else {
-                $return .= $this->wordSeparator . $fraction;
-            }
+            $return .= $this->wordSeparator . trim($this->toWords($fraction));
 
             $grammarCase = $this->getGrammarCase($fraction);
             $return .= $this->wordSeparator . $currencyNames[1][$grammarCase];

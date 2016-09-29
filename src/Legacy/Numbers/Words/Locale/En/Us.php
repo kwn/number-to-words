@@ -121,27 +121,11 @@ class Us extends Words
             return self::$zero;
         }
 
-        $triplets = $this->buildTriplets(abs($number));
+        $triplets = $this->numberToTriplets(abs($number));
+
         $transformedNumber = $this->buildWordsFromTriplets($triplets);
 
         return $number < 0 ? self::MINUS . ' ' . $transformedNumber : $transformedNumber;
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return array
-     */
-    private function buildTriplets($number)
-    {
-        $triplets = [];
-
-        while ($number > 0) {
-            $triplets[] = $number % 1000;
-            $number = (int) ($number / 1000);
-        }
-
-        return $triplets;
     }
 
     /**
@@ -229,12 +213,11 @@ class Us extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -260,13 +243,9 @@ class Us extends Words
         }
 
         if (null !== $fraction) {
-            if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->toWords($fraction));
-            } else {
-                $return .= $this->wordSeparator . $fraction;
-            }
+            $return .= $this->wordSeparator . trim($this->toWords($fraction));
 
-            $level = ($fraction === 1) ? 0 : 1;
+            $level = $fraction === 1 ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
