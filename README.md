@@ -1,6 +1,4 @@
-# PHP Number to words converter (WIP)
-
-# This library is under rebuild. Please use the latest working release (0.0.4)
+# PHP Number to words converter
 
 [![Travis](https://travis-ci.org/kwn/number-to-words.svg?branch=master)](https://travis-ci.org/kwn/number-to-words)
 [![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
@@ -16,7 +14,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "0.0.4"
+        "kwn/number-to-words": "^1.0.0"
     }
 }
 ```
@@ -30,18 +28,13 @@ $ php composer.phar update kwn/number-to-words
 
 ## Usage
 
-This library currently has two types of number-to-words transformations: number and currency. Each transformer type requires a language driver to be specified. In addition to this, the currency transformer requires a currency code and information about whether to convert the decimal portion of a number into words or to represent it as a fraction (e.g. 20 cents *or* 20/100).
+This library currently has two types of number-to-words transformations: number and currency. In order to use a specific transformer for certain language you need to create an instance of `NumberToWords` class and then call a method which creates a new instance of a transformer;
 
 ### Number Transformer
 
 Before using a transformer, it must be created:
 
 ```php
-// build the registry of transformer factories we want to work with
-$registry = new TransformerFactoriesRegistry([
-    new EnglishTransformerFactory
-]);
-
 // create the number to words "manager" class
 $numberToWords = new NumberToWords($registry);
 
@@ -57,40 +50,61 @@ $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 
 ### Currency Transformer
 
-Creating a currency transformer works just like a number transformer, but you have to provide a currency code and a subunit format (words or numbers).
+Creating a currency transformer works just like a number transformer.
 
 ```php
-// build the registry of transformer factories we want to work with
-$registry = new TransformerFactoriesRegistry([
-    new EnglishTransformerFactory
-]);
-
 // create the number to words "manager" class
 $numberToWords = new NumberToWords($registry);
 
-// build a new currency transformer using the RFC 3066 language identifier and ISO 4217 currency identifier
-$currencyTransformer = $numberToWords->getCurrencyTransformer('en', 'USD', Kwn\NumberToWords\Model\SubunitFormat::WORDS);
+// build a new currency transformer using the RFC 3066 language identifier
+$currencyTransformer = $numberToWords->getCurrencyTransformer('en');
 ```
 
-Then it can be used passing in numeric values to the `toWords()` method:
+Then it can be used passing in numeric values for amount and ISO 4217 currency identifier to the `toWords()` method:
 
 ```php
-$currencyTransformer->toWords(50.99); // outputs "fifty dollars ninety nine cents"
+$currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
+Bare in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
-##Drivers
+## Available locale
 
-Language  | Number | Currency | Angle | Temperature | Author
-----------|--------|----------|-------|-------------|-------
-English   | +      | +        | -     | -           | [janhartigan](https://github.com/janhartigan)
-German    | -      | -        | -     | -           | -
-French    | +      | +        | -     | -           | [Zehir](https://github.com/Zehir)
-Spanish   | -      | -        | -     | -           | -
-Italian   | -      | -        | -     | -           | -
-Ukrainian | +      | +        | -     |             | [popovsergiy](https://github.com/popovsergiy)
-Russian   | +      | +        | -     |             | [popovsergiy](https://github.com/popovsergiy)
-Polish    | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from dowgird/pyliczba)
-Romanian  | +      | +        | -     | -           | [kwn](https://github.com/kwn) (ported from pear/Numbers_Words)
+Language             | Identifier | Number | Currency | Angle | Temperature 
+---------------------|------------|--------|----------|-------|-------------
+Belgian French       | fr_BE      | +      | -        | -     | -
+Brazilian Portuguese | pt_BR      | +      | +        | -     | -
+Bulgarian            | bg         | +      | -        | -     | -
+Dutch                | nl         | +      | -        | -     | -
+English              | en         | +      | +        | -     | -
+Estonian             | et         | +      | -        | -     | -
+German               | de         | +      | -        | -     | -
+French               | fr         | +      | -        | -     | -
+Hungarian            | hu         | +      | +        | -     | -
+Italian              | it         | +      | -        | -     | -
+Lithuanian           | lt         | +      | -        | -     | -
+Latvian              | lv         | +      | -        | -     | -
+Polish               | pl         | +      | +        | -     | -
+Romanian             | ro         | +      | +        | -     | -
+Spanish              | es         | +      | -        | -     | - 
+Russian              | ru         | +      | +        | -     | -
+Swedish              | sv         | +      | -        | -     | -
+Turkish              | tr         | +      | -        | -     | -
+Ukrainian            | uk         | +      | +        | -     | -
 
-A huge _thank you_ to all contributors!
+## Contributors
+
+Most of the transformers were ported from `pear/Numbers_Words` library. Some of them were slightly refactored. Some of them were created by other [contributors](https://github.com/kwn/number-to-words/graphs/contributors) who were helping me with the initial version of that library.
+
+This library is still under a heavy refactoring so the legacy code should ultimately disappear.
+
+## Questions and answers
+
+**Q: Why the code looks like a crap? Why it gets so low rank on code climate?**
+A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting somem mechanisms from other languages so sooner or later it will look quite good.
+
+**Q: I've spotted an error**
+A: Please report an issue, or even better - create a pull request. I don't speak most of those languages so your help is much appreciated. Thanks!
+
+**Q: Why there are some transformers which cannot be used (they live under `UntestedLocale` namespace)?**
+A: Simply, because there are no test cases for them. You're more than welcome to create some test cases for them, so we'll be able to include them in a list of available languages.
