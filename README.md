@@ -75,6 +75,7 @@ Language             | Identifier | Number | Currency | Angle | Temperature
 Belgian French       | fr_BE      | +      | -        | -     | -
 Brazilian Portuguese | pt_BR      | +      | +        | -     | -
 Bulgarian            | bg         | +      | -        | -     | -
+Czech                | cs         | +      | -        | -     | -
 Dutch                | nl         | +      | -        | -     | -
 English              | en         | +      | +        | -     | -
 Estonian             | et         | +      | -        | -     | -

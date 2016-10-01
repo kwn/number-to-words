@@ -9,6 +9,7 @@ use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
+use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DutchNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\EstonianNumberTransformer;
@@ -33,6 +34,7 @@ class NumberToWords
 {
     private $numberTransformers = [
         'bg' => BulgarianNumberTransformer::class,
+        'cs' => CzechNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
         'es' => SpanishNumberTransformer::class,
