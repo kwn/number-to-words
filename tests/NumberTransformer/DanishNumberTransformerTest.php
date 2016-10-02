@@ -23,6 +23,7 @@ class DanishNumberTransformerTest extends NumberTransformerTest
             [8, 'otte'],
             [9, 'ni'],
             [13, 'tretten'],
+            [-13, 'minus tretten'],
         ];
     }
 }
