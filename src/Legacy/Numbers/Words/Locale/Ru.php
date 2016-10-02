@@ -66,54 +66,6 @@ class Ru extends Words
         153 => 'квинквагинтиллион',
         156 => 'унквинкагинтиллион',
         159 => 'дуоквинкагинтиллион',
-        162 => 'треквинкагинтиллион',
-        165 => 'кваторквинкагинтиллион',
-        168 => 'квинквинкагинтиллион',
-        171 => 'сексквинкагинтиллион',
-        174 => 'септенквинкагинтиллион',
-        177 => 'октоквинкагинтиллион',
-        180 => 'новемквинкагинтиллион',
-        183 => 'сексагинтиллион',
-        186 => 'унсексагинтиллион',
-        189 => 'дуосексагинтиллион',
-        192 => 'тресексагинтиллион',
-        195 => 'кваторсексагинтиллион',
-        198 => 'квинсексагинтиллион',
-        201 => 'секссексагинтиллион',
-        204 => 'септенсексагинтиллион',
-        207 => 'октосексагинтиллион',
-        210 => 'новемсексагинтиллион',
-        213 => 'септагинтиллион',
-        216 => 'унсептагинтиллион',
-        219 => 'дуосептагинтиллион',
-        222 => 'тресептагинтиллион',
-        225 => 'кваторсептагинтиллион',
-        228 => 'квинсептагинтиллион',
-        231 => 'секссептагинтиллион',
-        234 => 'септенсептагинтиллион',
-        237 => 'октосептагинтиллион',
-        240 => 'новемсептагинтиллион',
-        243 => 'октогинтиллион',
-        246 => 'уноктогинтиллион',
-        249 => 'дуооктогинтиллион',
-        252 => 'треоктогинтиллион',
-        255 => 'кватороктогинтиллион',
-        258 => 'квиноктогинтиллион',
-        261 => 'сексоктогинтиллион',
-        264 => 'септоктогинтиллион',
-        267 => 'октооктогинтиллион',
-        270 => 'новемоктогинтиллион',
-        273 => 'нонагинтиллион',
-        276 => 'уннонагинтиллион',
-        279 => 'дуононагинтиллион',
-        282 => 'тренонагинтиллион',
-        285 => 'кваторнонагинтиллион',
-        288 => 'квиннонагинтиллион',
-        291 => 'секснонагинтиллион',
-        294 => 'септеннонагинтиллион',
-        297 => 'октононагинтиллион',
-        300 => 'новемнонагинтиллион',
-        303 => 'центиллион'
     ];
 
     protected static $teens = [
@@ -260,7 +212,6 @@ class Ru extends Words
             [1, 'румынский лей', 'румынских лей', 'румынских лей'],
             [1, 'бани', 'бани', 'бани']
         ],
-        // both RUR and RUR are used, I use RUB for shorter form
         'RUB' => [
             [1, 'рубль', 'рубля', 'рублей'],
             [2, 'копейка', 'копейки', 'копеек']
@@ -330,61 +281,59 @@ class Ru extends Words
     {
         $ret = '';
         $case = 3;
+        $sign = '';
 
-        $num = trim($num);
-
-        $sign = "";
-        if (substr($num, 0, 1) == '-') {
-            $sign = static::MINUS . $this->wordSeparator;
-            $num = substr($num, 1);
+        if ($num < 0) {
+            $sign .= self::MINUS . $this->wordSeparator;
+            $num *= -1;
         }
 
         while (strlen($num) % 3) {
             $num = '0' . $num;
         }
 
-        if ($num == 0 || $num == '') {
-            $ret .= static::$digits[$gender][0];
-        } else {
-            $power = 0;
+        if ($num == 0) {
+            return static::$digits[$gender][0];
+        }
 
-            while ($power < strlen($num)) {
-                if (!$power) {
-                    $groupgender = $gender;
-                } elseif ($power == 3) {
-                    $groupgender = 2;
-                } else {
-                    $groupgender = 1;
-                }
+        $power = 0;
 
-                $group = $this->groupToWords(substr($num, -$power - 3, 3), $groupgender, $_case);
-                if (!$power) {
-                    $case = $_case;
-                }
-
-                if ($power == 3) {
-                    if ($_case == 1) {
-                        $group .= $this->wordSeparator . 'тысяча';
-                    } elseif ($_case == 2) {
-                        $group .= $this->wordSeparator . 'тысячи';
-                    } else {
-                        $group .= $this->wordSeparator . 'тысяч';
-                    }
-                } elseif ($group && $power > 3 && isset(static::$exponent[$power])) {
-                    $group .= $this->wordSeparator . static::$exponent[$power];
-                    if ($_case == 2) {
-                        $group .= 'а';
-                    } elseif ($_case == 3) {
-                        $group .= 'ов';
-                    }
-                }
-
-                if ($group) {
-                    $ret = $group . $this->wordSeparator . $ret;
-                }
-
-                $power += 3;
+        while ($power < strlen($num)) {
+            if (!$power) {
+                $groupgender = $gender;
+            } elseif ($power == 3) {
+                $groupgender = 2;
+            } else {
+                $groupgender = 1;
             }
+
+            $group = $this->groupToWords(substr($num, -$power - 3, 3), $groupgender, $_case);
+            if (!$power) {
+                $case = $_case;
+            }
+
+            if ($power == 3) {
+                if ($_case == 1) {
+                    $group .= $this->wordSeparator . 'тысяча';
+                } elseif ($_case == 2) {
+                    $group .= $this->wordSeparator . 'тысячи';
+                } else {
+                    $group .= $this->wordSeparator . 'тысяч';
+                }
+            } elseif ($group && $power > 3 && isset(static::$exponent[$power])) {
+                $group .= $this->wordSeparator . static::$exponent[$power];
+                if ($_case == 2) {
+                    $group .= 'а';
+                } elseif ($_case == 3) {
+                    $group .= 'ов';
+                }
+            }
+
+            if ($group) {
+                $ret = $group . $this->wordSeparator . $ret;
+            }
+
+            $power += 3;
         }
 
         return $sign . preg_replace('/\s+/', ' ', $ret);
