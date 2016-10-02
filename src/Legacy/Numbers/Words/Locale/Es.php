@@ -42,6 +42,48 @@ class Es extends Words
 
     private $wordSeparator = ' ';
 
+    private static $currencyNames = [
+        'ALL' => [['lek'], ['qindarka']],
+        'AUD' => [['dólar australiano', 'dólares australianos'], ['centavo']],
+        'ARS' => [['peso'], ['centavo']],
+        'BAM' => [['convertible marka'], ['fenig']],
+        'BGN' => [['lev'], ['stotinka']],
+        'BRL' => [['real', 'reales'], ['centavo']],
+        'BYR' => [['rublo bielorruso', 'rublos bielorrusos'], ['kopek', 'kopeks']],
+        'CAD' => [['dólar canadiense', 'dólares canadienses'], ['centavo']],
+        'CHF' => [['swiss franc'], ['rapp']],
+        'CYP' => [['cypriot pound'], ['cent']],
+        'CZK' => [['czech koruna'], ['halerz']],
+        'DKK' => [['danish krone'], ['ore']],
+        'EEK' => [['kroon'], ['senti']],
+        'EUR' => [['euro'], ['centavo']],
+        'GBP' => [['libra'], ['peñique']],
+        'HKD' => [['dólar de hong kong', 'dólares de hong kong'], ['centavo']],
+        'HRK' => [['croatian kuna'], ['lipa']],
+        'HUF' => [['forint'], ['filler']],
+        'ILS' => [['new sheqel', 'new sheqels'], ['agora', 'agorot']],
+        'ISK' => [['icelandic króna'], ['aurar']],
+        'JPY' => [['yen', 'yenes'], ['sen']],
+        'LTL' => [['litas'], ['cent']],
+        'LVL' => [['lat'], ['sentim']],
+        'MKD' => [['denar macedonio', 'denares macedonios'], ['deni']],
+        'MTL' => [['lira maltesa'], ['céntimo']],
+        'MXN' => [['peso'], ['centavo']],
+        'NOK' => [['norwegian krone'], ['oere']],
+        'PLN' => [['zloty', 'zlotys'], ['grosz']],
+        'ROL' => [['romanian leu'], ['bani']],
+        'RUB' => [['rublo ruso', 'rublos rusos'], ['kopek']],
+        'SEK' => [['Swedish krona'], ['oere']],
+        'SIT' => [['tolar'], ['stotinia']],
+        'SKK' => [['slovak koruna'], []],
+        'TRL' => [['lira'], ['kuruþ']],
+        'UAH' => [['hryvna'], ['cent']],
+        'USD' => [['dólar', 'dólares'], ['centavo']],
+        'VEB' => [['bolívar', 'bolívares'], ['céntimo']],
+        'YUM' => [['dinar', 'dinares'], ['para']],
+        'ZAR' => [['rand'], ['cent']]
+    ];
+
     /**
      * @param int $num
      * @param int $power
@@ -238,6 +280,51 @@ class Es extends Words
             }
             if ($num != 0) {
                 $ret .= $this->wordSeparator . $suffix;
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * @param int  $currency
+     * @param int  $decimal
+     * @param null $fraction
+     *
+     * @return string
+     */
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currencyNames = self::$currencyNames[$currency];
+
+        $level = ($decimal == 1) ? 0 : 1;
+
+        if ($level > 0) {
+            $currencyNames = self::$currencyNames[$currency];
+            if (count($currencyNames[0]) > 1) {
+                $ret = $currencyNames[0][$level];
+            } else {
+                $ret = $currencyNames[0][0] . 's';
+            }
+        } else {
+            $ret = $currencyNames[0][0];
+        }
+
+        $ret = $this->wordSeparator . trim($this->toWords($decimal) . ' ' . $ret);
+
+        if (null !== $fraction) {
+            $ret .= $this->wordSeparator . 'con' . $this->wordSeparator . trim($this->toWords($fraction));
+
+            $level = ($fraction == 1) ? 0 : 1;
+
+            if ($level > 0) {
+                if (count($currencyNames[1]) > 1) {
+                    $ret .= $this->wordSeparator . $currencyNames[1][$level];
+                } else {
+                    $ret .= $this->wordSeparator . $currencyNames[1][0] . 's';
+                }
+            } else {
+                $ret .= $this->wordSeparator . $currencyNames[1][0];
             }
         }
 

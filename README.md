@@ -87,7 +87,7 @@ Lithuanian           | lt         | +      | -        | -     | -
 Latvian              | lv         | +      | -        | -     | -
 Polish               | pl         | +      | +        | -     | -
 Romanian             | ro         | +      | +        | -     | -
-Spanish              | es         | +      | -        | -     | - 
+Spanish              | es         | +      | +        | -     | - 
 Russian              | ru         | +      | +        | -     | -
 Swedish              | sv         | +      | -        | -     | -
 Turkish              | tr         | +      | -        | -     | -

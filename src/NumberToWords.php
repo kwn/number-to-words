@@ -8,6 +8,7 @@ use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\SpanishCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DutchNumberTransformer;
@@ -57,6 +58,7 @@ class NumberToWords
 
     private $currencyTransformers = [
         'en' => EnglishCurrencyTransformer::class,
+        'es' => SpanishCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
