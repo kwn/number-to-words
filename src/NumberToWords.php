@@ -3,6 +3,7 @@
 namespace NumberToWords;
 
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
@@ -11,6 +12,7 @@ use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\SpanishCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
+use NumberToWords\NumberTransformer\DanishNumberTransformer;
 use NumberToWords\NumberTransformer\DutchNumberTransformer;
 use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\EstonianNumberTransformer;
@@ -37,6 +39,7 @@ class NumberToWords
         'bg' => BulgarianNumberTransformer::class,
         'cs' => CzechNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
+        'dk' => DanishNumberTransformer::class,
         'en' => EnglishNumberTransformer::class,
         'es' => SpanishNumberTransformer::class,
         'et' => EstonianNumberTransformer::class,
@@ -57,6 +60,7 @@ class NumberToWords
     ];
 
     private $currencyTransformers = [
+        'dk' => DanishCurrencyTransformer::class,
         'en' => EnglishCurrencyTransformer::class,
         'es' => SpanishCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,

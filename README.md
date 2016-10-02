@@ -76,6 +76,7 @@ Belgian French       | fr_BE      | +      | -        | -     | -
 Brazilian Portuguese | pt_BR      | +      | +        | -     | -
 Bulgarian            | bg         | +      | -        | -     | -
 Czech                | cs         | +      | -        | -     | -
+Danish               | dk         | +      | +        | -     | -
 Dutch                | nl         | +      | -        | -     | -
 English              | en         | +      | +        | -     | -
 Estonian             | et         | +      | -        | -     | -
