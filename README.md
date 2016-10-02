@@ -82,6 +82,7 @@ Estonian             | et         | +      | -        | -     | -
 German               | de         | +      | -        | -     | -
 French               | fr         | +      | -        | -     | -
 Hungarian            | hu         | +      | +        | -     | -
+Indonesian           | id         | +      | -        | -     | -
 Italian              | it         | +      | -        | -     | -
 Lithuanian           | lt         | +      | -        | -     | -
 Latvian              | lv         | +      | -        | -     | -
