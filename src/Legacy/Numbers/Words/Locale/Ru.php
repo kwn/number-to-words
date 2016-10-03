@@ -7,109 +7,70 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Ru extends Words
 {
-    const LOCALE = 'ru';
-    const LANGUAGE_NAME = 'Russian';
+    const LOCALE               = 'ru';
+    const LANGUAGE_NAME        = 'Russian';
     const LANGUAGE_NAME_NATIVE = 'Русский';
-    const MINUS = 'минус';
+    const MINUS                = 'минус';
 
-    protected static $exponent = [
-        0   => '',
-        6   => 'миллион',
-        9   => 'миллиард',
-        12  => 'триллион',
-        15  => 'квадриллион',
-        18  => 'квинтиллион',
-        21  => 'секстиллион',
-        24  => 'септиллион',
-        27  => 'октиллион',
-        30  => 'нониллион',
-        33  => 'дециллион',
-        36  => 'ундециллион',
-        39  => 'дуодециллион',
-        42  => 'тредециллион',
-        45  => 'кватуордециллион',
-        48  => 'квиндециллион',
-        51  => 'сексдециллион',
-        54  => 'септендециллион',
-        57  => 'октодециллион',
-        60  => 'новемдециллион',
-        63  => 'вигинтиллион',
-        66  => 'унвигинтиллион',
-        69  => 'дуовигинтиллион',
-        72  => 'тревигинтиллион',
-        75  => 'кватуорвигинтиллион',
-        78  => 'квинвигинтиллион',
-        81  => 'сексвигинтиллион',
-        84  => 'септенвигинтиллион',
-        87  => 'октовигинтиллион',
-        90  => 'новемвигинтиллион',
-        93  => 'тригинтиллион',
-        96  => 'унтригинтиллион',
-        99  => 'дуотригинтиллион',
-        102 => 'третригинтиллион',
-        105 => 'кватортригинтиллион',
-        108 => 'квинтригинтиллион',
-        111 => 'секстригинтиллион',
-        114 => 'септентригинтиллион',
-        117 => 'октотригинтиллион',
-        120 => 'новемтригинтиллион',
-        123 => 'квадрагинтиллион',
-        126 => 'унквадрагинтиллион',
-        129 => 'дуоквадрагинтиллион',
-        132 => 'треквадрагинтиллион',
-        135 => 'кваторквадрагинтиллион',
-        138 => 'квинквадрагинтиллион',
-        141 => 'сексквадрагинтиллион',
-        144 => 'септенквадрагинтиллион',
-        147 => 'октоквадрагинтиллион',
-        150 => 'новемквадрагинтиллион',
-        153 => 'квинквагинтиллион',
-        156 => 'унквинкагинтиллион',
-        159 => 'дуоквинкагинтиллион',
+    const MALE   = 0;
+    const FEMALE = 1;
+    const NEUTER = 2;
+
+    protected $zero = 'ноль';
+
+    protected static $ten = [
+        ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
+        ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
     ];
 
     protected static $teens = [
-        11 => 'одиннадцать',
-        12 => 'двенадцать',
-        13 => 'тринадцать',
-        14 => 'четырнадцать',
-        15 => 'пятнадцать',
-        16 => 'шестнадцать',
-        17 => 'семнадцать',
-        18 => 'восемнадцать',
-        19 => 'девятнадцать'
+        'десять',
+        'одиннадцать',
+        'двенадцать',
+        'тринадцать',
+        'четырнадцать',
+        'пятнадцать',
+        'шестнадцать',
+        'семнадцать',
+        'восемнадцать',
+        'девятнадцать',
     ];
 
     protected static $tens = [
         2 => 'двадцать',
-        3 => 'тридцать',
-        4 => 'сорок',
-        5 => 'пятьдесят',
-        6 => 'шестьдесят',
-        7 => 'семьдесят',
-        8 => 'восемьдесят',
-        9 => 'девяносто'
+        'тридцать',
+        'сорок',
+        'пятьдесят',
+        'шестьдесят',
+        'семьдесят',
+        'восемьдесят',
+        'девяносто',
     ];
 
-    protected static $hundreds = [
-        1 => 'сто',
-        2 => 'двести',
-        3 => 'триста',
-        4 => 'четыреста',
-        5 => 'пятьсот',
-        6 => 'шестьсот',
-        7 => 'семьсот',
-        8 => 'восемьсот',
-        9 => 'девятьсот'
+    protected static $hundred = [
+        '',
+        'сто',
+        'двести',
+        'триста',
+        'четыреста',
+        'пятьсот',
+        'шестьсот',
+        'семьсот',
+        'восемьсот',
+        'девятьсот',
     ];
 
-    protected static $digits = [
-        ['ноль', 'одно', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
-        ['ноль', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
-        ['ноль', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять']
+    protected static $mega = [
+        [3 => self::FEMALE],
+        [3 => self::MALE],
+        ['тысяча', 'тысячи', 'тысяч', self::FEMALE],
+        ['миллион', 'миллиона', 'миллионов', self::MALE],
+        ['миллиард', 'милиарда', 'миллиардов', self::MALE],
+        ['триллион', 'триллионы', 'триллионов', self::MALE],
+        ['квадриллион', 'квадриллиона', 'квадриллионов', self::MALE],
+        ['секстиллион', 'секстильоны', 'секстиллионов', self::MALE],
     ];
 
-    protected $wordSeparator = ' ';
 
     protected static $currencyNames = [
         'ALL' => [
@@ -255,168 +216,88 @@ class Ru extends Words
     ];
 
     /**
-     * @param int   $number
-     * @param array $options
+     * @param int    $n
+     * @param string $f1
+     * @param string $f2
+     * @param string $f5
      *
      * @return string
      */
-    protected function toWords($number, $options = [])
+    public function morph($n, $f1, $f2, $f5)
     {
-        $dummy = null;
-        $gender = 1;
+        $n = abs((int) $n) % 100;
+        if ($n > 10 && $n < 20) {
+            return $f5;
+        }
+        $n = $n % 10;
+        if ($n > 1 && $n < 5) {
+            return $f2;
+        }
+        if ($n == 1) {
+            return $f1;
+        }
 
-        extract($options, EXTR_IF_EXISTS);
-
-        return $this->toWordsWithCase($number, $dummy, $gender);
+        return $f5;
     }
 
-    /**
-     * @param int $num
-     * @param int $case
-     * @param int $gender
-     *
-     * @return string
-     */
-    protected function toWordsWithCase($num, &$case, $gender = 1)
-    {
-        $ret = '';
-        $case = 3;
-        $sign = '';
-
-        if ($num < 0) {
-            $sign .= self::MINUS . $this->wordSeparator;
-            $num *= -1;
-        }
-
-        while (strlen($num) % 3) {
-            $num = '0' . $num;
-        }
-
-        if ($num == 0) {
-            return static::$digits[$gender][0];
-        }
-
-        $power = 0;
-
-        while ($power < strlen($num)) {
-            if (!$power) {
-                $groupgender = $gender;
-            } elseif ($power == 3) {
-                $groupgender = 2;
-            } else {
-                $groupgender = 1;
-            }
-
-            $group = $this->groupToWords(substr($num, -$power - 3, 3), $groupgender, $_case);
-            if (!$power) {
-                $case = $_case;
-            }
-
-            if ($power == 3) {
-                if ($_case == 1) {
-                    $group .= $this->wordSeparator . 'тысяча';
-                } elseif ($_case == 2) {
-                    $group .= $this->wordSeparator . 'тысячи';
-                } else {
-                    $group .= $this->wordSeparator . 'тысяч';
-                }
-            } elseif ($group && $power > 3 && isset(static::$exponent[$power])) {
-                $group .= $this->wordSeparator . static::$exponent[$power];
-                if ($_case == 2) {
-                    $group .= 'а';
-                } elseif ($_case == 3) {
-                    $group .= 'ов';
-                }
-            }
-
-            if ($group) {
-                $ret = $group . $this->wordSeparator . $ret;
-            }
-
-            $power += 3;
-        }
-
-        return $sign . preg_replace('/\s+/', ' ', $ret);
-    }
 
     /**
      * @param int $number
-     * @param int $gender
-     * @param int $case
      *
      * @return string
      */
-    protected function groupToWords($number, $gender, &$case)
+    protected function toWords($number)
     {
-        $return = '';
-        $case = 3;
+        $value = $number;
+        $megaSize = count(self::$mega);
+        $signs = $megaSize * 3;
 
-        if ((int) $number == 0) {
-            $return = '';
-        } elseif ($number < 10) {
-            $return = static::$digits[$gender][(int) $number];
-            if ($number == 1) {
-                $case = 1;
-            } elseif ($number < 5) {
-                $case = 2;
-            } else {
-                $case = 3;
-            }
-        } else {
-            $number = str_pad($number, 3, '0', STR_PAD_LEFT);
+        // $signs equal quantity of zeros of the biggest number in NumberDictionary::$mega
+        // + 3 additional sign (point and two zero)
+        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", floatval($value)));
+        $out = [];
 
-            $hundreds = (int) $number{0};
-            if ($hundreds) {
-                $return = static::$hundreds[$hundreds];
-
-                if (substr($number, 1) !== '00') {
-                    $return .= $this->wordSeparator;
-                }
-
-                $case = 3;
-            }
-
-            $tens = (int) $number{1};
-            $ones = (int) $number{2};
-
-            if ($tens || $ones) {
-                if ($tens == 1 && $ones == 0) {
-                    $return .= 'десять';
-                } elseif ($tens == 1) {
-                    $return .= static::$teens[$ones + 10];
-                } else {
-                    if ($tens > 0) {
-                        $return .= static::$tens[(int) $tens];
-                    }
-
-                    if ($ones > 0) {
-                        $return .= $this->wordSeparator . static::$digits[$gender][$ones];
-
-                        if ($ones == 1) {
-                            $case = 1;
-                        } elseif ($ones < 5) {
-                            $case = 2;
-                        } else {
-                            $case = 3;
-                        }
-                    }
-                }
-            }
+        if ($value < 0) {
+            $out[] = self::MINUS;
+            $value *= -1;
         }
 
-        return $return;
+        if ($value > 0) {
+            // by 3 symbols
+            foreach (str_split($unit, 3) as $mk => $v) {
+                if (!intval($v)) {
+                    continue;
+                }
+                $mk = $megaSize - $mk - 1; // mega key
+                $gender = self::$mega[$mk][3];
+                list ($i1, $i2, $i3) = array_map('intval', str_split($v, 1));
+                // mega-logic
+                $out[] = self::$hundred[$i1]; # 1xx-9xx
+                if ($i2 > 1) { # 20-99
+                    $out[] = self::$tens[$i2] . ' ' . self::$ten[$gender][$i3];
+                } else { # 10-19 | 1-9
+                    $out[] = ($i2 > 0) ? self::$teens[$i3] : self::$ten[$gender][$i3];
+                }
+                if ($mk > 1) {
+                    $out[] = $this->morph($v, self::$mega[$mk][0], self::$mega[$mk][1], self::$mega[$mk][2]);
+                }
+            }
+        } else {
+            $out[] = $this->zero;
+        }
+
+        return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
     }
 
     /**
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -428,17 +309,26 @@ class Ru extends Words
 
         $currencyNames = static::$currencyNames[$currency];
 
-        $return = trim($this->toWordsWithCase($decimal, $case, $currencyNames[0][0]));
-        $return .= $this->wordSeparator . $currencyNames[0][$case];
+        if ($currencyNames[0][0] === 2) {
+            self::$ten = array_reverse(self::$ten);
+        }
+
+        $return = $this->toWords($decimal) . ' ' . $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
+
+        if ($currencyNames[0][0] === 2) {
+            self::$ten = array_reverse(self::$ten);
+        }
 
         if (null !== $fraction) {
-            if (true === $convertFraction) {
-                $return .= $this->wordSeparator . trim($this->toWordsWithCase($fraction, $case, $currencyNames[1][0]));
-            } else {
-                $return .= $this->wordSeparator . $fraction;
+            if ($currencyNames[1][0] === 2) {
+                self::$ten = array_reverse(self::$ten);
             }
 
-            $return .= $this->wordSeparator . $currencyNames[1][$case];
+            $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+
+            if ($currencyNames[1][0] === 2) {
+                self::$ten = array_reverse(self::$ten);
+            }
         }
 
         return $return;
