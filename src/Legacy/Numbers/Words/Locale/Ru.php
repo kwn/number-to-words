@@ -249,7 +249,7 @@ class Ru extends Words
     protected function toWords($number)
     {
         $value = $number;
-        $megaSize = count(self::$mega);
+        $megaSize = count(static::$mega);
         $signs = $megaSize * 3;
 
         // $signs equal quantity of zeros of the biggest number in NumberDictionary::$mega
@@ -258,7 +258,7 @@ class Ru extends Words
         $out = [];
 
         if ($value < 0) {
-            $out[] = self::MINUS;
+            $out[] = static::MINUS;
             $value *= -1;
         }
 
@@ -269,17 +269,17 @@ class Ru extends Words
                     continue;
                 }
                 $mk = $megaSize - $mk - 1; // mega key
-                $gender = self::$mega[$mk][3];
+                $gender = static::$mega[$mk][3];
                 list ($i1, $i2, $i3) = array_map('intval', str_split($v, 1));
                 // mega-logic
-                $out[] = self::$hundred[$i1]; # 1xx-9xx
+                $out[] = static::$hundred[$i1]; # 1xx-9xx
                 if ($i2 > 1) { # 20-99
-                    $out[] = self::$tens[$i2] . ' ' . self::$ten[$gender][$i3];
+                    $out[] = static::$tens[$i2] . ' ' . static::$ten[$gender][$i3];
                 } else { # 10-19 | 1-9
-                    $out[] = ($i2 > 0) ? self::$teens[$i3] : self::$ten[$gender][$i3];
+                    $out[] = ($i2 > 0) ? static::$teens[$i3] : static::$ten[$gender][$i3];
                 }
                 if ($mk > 1) {
-                    $out[] = $this->morph($v, self::$mega[$mk][0], self::$mega[$mk][1], self::$mega[$mk][2]);
+                    $out[] = $this->morph($v, static::$mega[$mk][0], static::$mega[$mk][1], static::$mega[$mk][2]);
                 }
             }
         } else {
@@ -310,24 +310,24 @@ class Ru extends Words
         $currencyNames = static::$currencyNames[$currency];
 
         if ($currencyNames[0][0] === 2) {
-            self::$ten = array_reverse(self::$ten);
+            static::$ten = array_reverse(static::$ten);
         }
 
         $return = $this->toWords($decimal) . ' ' . $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
 
         if ($currencyNames[0][0] === 2) {
-            self::$ten = array_reverse(self::$ten);
+            static::$ten = array_reverse(static::$ten);
         }
 
         if (null !== $fraction) {
             if ($currencyNames[1][0] === 2) {
-                self::$ten = array_reverse(self::$ten);
+                static::$ten = array_reverse(static::$ten);
             }
 
             $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
 
             if ($currencyNames[1][0] === 2) {
-                self::$ten = array_reverse(self::$ten);
+                static::$ten = array_reverse(static::$ten);
             }
         }
 
