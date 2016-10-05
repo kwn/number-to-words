@@ -240,7 +240,6 @@ class Ru extends Words
         return $f5;
     }
 
-
     /**
      * @param int $number
      *
@@ -248,42 +247,44 @@ class Ru extends Words
      */
     protected function toWords($number)
     {
-        $value = $number;
+        if ($number === 0) {
+            return $this->zero;
+        }
+
+        $out = [];
+
+        if ($number < 0) {
+            $out[] = static::MINUS;
+            $number *= -1;
+        }
+
         $megaSize = count(static::$mega);
         $signs = $megaSize * 3;
 
-        // $signs equal quantity of zeros of the biggest number in NumberDictionary::$mega
+        // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", floatval($value)));
-        $out = [];
+        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
 
-        if ($value < 0) {
-            $out[] = static::MINUS;
-            $value *= -1;
-        }
-
-        if ($value > 0) {
-            // by 3 symbols
-            foreach (str_split($unit, 3) as $mk => $v) {
-                if (!intval($v)) {
-                    continue;
-                }
-                $mk = $megaSize - $mk - 1; // mega key
-                $gender = static::$mega[$mk][3];
-                list ($i1, $i2, $i3) = array_map('intval', str_split($v, 1));
-                // mega-logic
-                $out[] = static::$hundred[$i1]; # 1xx-9xx
-                if ($i2 > 1) { # 20-99
-                    $out[] = static::$tens[$i2] . ' ' . static::$ten[$gender][$i3];
-                } else { # 10-19 | 1-9
-                    $out[] = ($i2 > 0) ? static::$teens[$i3] : static::$ten[$gender][$i3];
-                }
-                if ($mk > 1) {
-                    $out[] = $this->morph($v, static::$mega[$mk][0], static::$mega[$mk][1], static::$mega[$mk][2]);
-                }
+        foreach (str_split($unit, 3) as $megaKey => $value) {
+            if (!(int) $value) {
+                continue;
             }
-        } else {
-            $out[] = $this->zero;
+
+            $megaKey = $megaSize - $megaKey - 1;
+            $gender = static::$mega[$megaKey][3];
+            list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
+            // mega-logic
+            $out[] = static::$hundred[$i1]; # 1xx-9xx
+
+            if ($i2 > 1) { # 20-99
+                $out[] = static::$tens[$i2] . ' ' . static::$ten[$gender][$i3];
+            } else { # 10-19 | 1-9
+                $out[] = ($i2 > 0) ? static::$teens[$i3] : static::$ten[$gender][$i3];
+            }
+
+            if ($megaKey > 1) {
+                $out[] = $this->morph($value, static::$mega[$megaKey][0], static::$mega[$megaKey][1], static::$mega[$megaKey][2]);
+            }
         }
 
         return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
