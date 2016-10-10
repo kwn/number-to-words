@@ -2,124 +2,22 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Language\Polish\Dictionary;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class Pl extends Words
 {
-    const LOCALE = 'pl';
-    const LANGUAGE_NAME = 'Polish';
-    const LANGUAGE_NAME_NATIVE = 'polski';
-    const MINUS = 'minus';
+    /**
+     * @var NumberToTripletsConverter
+     */
+    private $numberToTripletsConverter;
 
-    public static $zero = 'zero';
-
-    public static $units = ['', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
-
-    public static $teens = [
-        'dziesięć',
-        'jedenaście',
-        'dwanaście',
-        'trzynaście',
-        'czternaście',
-        'piętnaście',
-        'szesnaście',
-        'siedemnaście',
-        'osiemnaście',
-        'dziewiętnaście'
-    ];
-
-    public static $tens = [
-        '',
-        'dziesięć',
-        'dwadzieścia',
-        'trzydzieści',
-        'czterdzieści',
-        'pięćdziesiąt',
-        'sześćdziesiąt',
-        'siedemdziesiąt',
-        'osiemdziesiąt',
-        'dziewięćdziesiąt'
-    ];
-
-    public static $hundreds = [
-        '',
-        'sto',
-        'dwieście',
-        'trzysta',
-        'czterysta',
-        'pięćset',
-        'sześćset',
-        'siedemset',
-        'osiemset',
-        'dziewięćset'
-    ];
-
-    public static $exponent = [
-        ['', '', ''],
-        ['tysiąc', 'tysiące', 'tysięcy'],
-        ['milion', 'miliony', 'milionów'],
-        ['miliard', 'miliardy', 'miliardów'],
-        ['bilion', 'biliony', 'bilionów'],
-        ['biliard', 'biliardy', 'biliardów'],
-        ['trylion', 'tryliony', 'trylionów'],
-        ['tryliard', 'tryliardy', 'tryliardów'],
-        ['kwadrylion', 'kwadryliony', 'kwadrylionów'],
-        ['kwadryliard', 'kwadryliardy', 'kwadryliardów'],
-        ['kwintylion', 'kwintyliony', 'kwintylionów'],
-        ['kwintyliiard', 'kwintyliardy', 'kwintyliardów'],
-        ['sekstylion', 'sekstyliony', 'sekstylionów'],
-        ['sekstyliard', 'sekstyliardy', 'sekstyliardów'],
-        ['septylion', 'septyliony', 'septylionów'],
-        ['septyliard', 'septyliardy', 'septyliardów'],
-        ['oktylion', 'oktyliony', 'oktylionów'],
-        ['oktyliard', 'oktyliardy', 'oktyliardów'],
-        ['nonylion', 'nonyliony', 'nonylionów'],
-        ['nonyliard', 'nonyliardy', 'nonyliardów'],
-        ['decylion', 'decyliony', 'decylionów'],
-        ['decyliard', 'decyliardy', 'decyliardów'],
-    ];
-
-    private $wordSeparator = ' ';
-
-    private static $currencyNames = [
-        'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
-        'AUD' => [['dolar australijski', 'dolary australijskie', 'dolarów australijskich'], ['cent', 'centy', 'centów']],
-        'BAM' => [['marka', 'marki', 'marek'], ['fenig', 'fenigi', 'fenigów']],
-        'BGN' => [['lew', 'lewy', 'lew'], ['stotinka', 'stotinki', 'stotinek']],
-        'BRL' => [['real', 'reale', 'realów'], ['centavos', 'centavos', 'centavos']],
-        'BYR' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
-        'CAD' => [['dolar kanadyjski', 'dolary kanadyjskie', 'dolarów kanadyjskich'], ['cent', 'centy', 'centów']],
-        'CHF' => [['frank szwajcarski', 'franki szwajcarskie', 'franków szwajcarskich'], ['rapp', 'rappy', 'rappów']],
-        'CYP' => [['funt cypryjski', 'funty cypryjskie', 'funtów cypryjskich'], ['cent', 'centy', 'centów']],
-        'CZK' => [['korona czeska', 'korony czeskie', 'koron czeskich'], ['halerz', 'halerze', 'halerzy']],
-        'DKK' => [['korona duńska', 'korony duńskie', 'koron duńskich'], ['ore', 'ore', 'ore']],
-        'EEK' => [['korona estońska', 'korony estońskie', 'koron estońskich'], ['senti', 'senti', 'senti']],
-        'EUR' => [['euro', 'euro', 'euro'], ['eurocent', 'eurocenty', 'eurocentów']],
-        'GBP' => [['funt szterling', 'funty szterlingi', 'funtów szterlingów'], ['pens', 'pensy', 'pensów']],
-        'HKD' => [['dolar Hongkongu', 'dolary Hongkongu', 'dolarów Hongkongu'], ['cent', 'centy', 'centów']],
-        'HRK' => [['kuna', 'kuny', 'kun'], ['lipa', 'lipy', 'lip']],
-        'HUF' => [['forint', 'forinty', 'forintów'], ['filler', 'fillery', 'fillerów']],
-        'ILS' => [['nowy szekel', 'nowe szekele', 'nowych szekeli'], ['agora', 'agory', 'agorot']],
-        'ISK' => [['korona islandzka', 'korony islandzkie', 'koron islandzkich'], ['aurar', 'aurar', 'aurar']],
-        'JPY' => [['jen', 'jeny', 'jenów'], ['sen', 'seny', 'senów']],
-        'LTL' => [['lit', 'lity', 'litów'], ['cent', 'centy', 'centów']],
-        'LVL' => [['łat', 'łaty', 'łatów'], ['sentim', 'sentimy', 'sentimów']],
-        'MKD' => [['denar', 'denary', 'denarów'], ['deni', 'deni', 'deni']],
-        'MTL' => [['lira maltańska', 'liry maltańskie', 'lir maltańskich'], ['centym', 'centymy', 'centymów']],
-        'NOK' => [['korona norweska', 'korony norweskie', 'koron norweskich'], ['oere', 'oere', 'oere']],
-        'PLN' => [['złoty', 'złote', 'złotych'], ['grosz', 'grosze', 'groszy']],
-        'ROL' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
-        'RUB' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
-        'SEK' => [['korona szwedzka', 'korony szwedzkie', 'koron szweckich'], ['oere', 'oere', 'oere']],
-        'SIT' => [['tolar', 'tolary', 'tolarów'], ['stotinia', 'stotinie', 'stotini']],
-        'SKK' => [['korona słowacka', 'korony słowackie', 'koron słowackich'], ['halerz', 'halerze', 'halerzy']],
-        'TRL' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
-        'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
-        'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
-        'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
-        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
-    ];
+    public function __construct()
+    {
+        $this->numberToTripletsConverter = new NumberToTripletsConverter();
+    }
 
     /**
      * @param int $number
@@ -129,33 +27,30 @@ class Pl extends Words
     protected function toWords($number)
     {
         if ($number === 0) {
-            return self::$zero;
+            return Dictionary::$zero;
         }
 
-        $triplets = $this->numberToTriplets(abs($number));
         $words = [];
+
+        if ($number < 0) {
+            $words[] = Dictionary::$minus;
+            $number *= -1;
+        }
+
+        $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
                 $threeDigitsWords = $this->threeDigitsToWords($triplet);
 
-                if ($i > 0) {
-                    $case = $this->getGrammarCase($triplet);
-                    $mega = self::$exponent[$i][$case];
-                    $threeDigitsWords = $threeDigitsWords . ' ' . $mega;
-                }
+                $case = $this->getGrammarCase($triplet);
+                $mega = Dictionary::$exponent[count($triplets) - $i - 1][$case];
 
-                $words[] = $threeDigitsWords;
+                $words[] = $threeDigitsWords . ' ' . $mega;
             }
         }
 
-        $transformedNumber = implode(' ', array_reverse($words));
-
-        if ($number < 0) {
-            $transformedNumber = self::MINUS . ' ' . $transformedNumber;
-        }
-
-        return $transformedNumber;
+        return implode(' ', $words);
     }
 
     /**
@@ -171,17 +66,17 @@ class Pl extends Words
         $words = [];
 
         if ($hundreds > 0) {
-            $words[] = self::$hundreds[$hundreds];
+            $words[] = Dictionary::$hundreds[$hundreds];
         }
 
         if ($tens === 1) {
-            $words[] = self::$teens[$units];
+            $words[] = Dictionary::$teens[$units];
         } else {
             if ($tens > 0) {
-                $words[] = self::$tens[$tens];
+                $words[] = Dictionary::$tens[$tens];
             }
             if ($units > 0) {
-                $words[] = self::$units[$units];
+                $words[] = Dictionary::$units[$units];
             }
         }
 
@@ -222,23 +117,23 @@ class Pl extends Words
     {
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, self::$currencyNames)) {
+        if (!array_key_exists($currency, Dictionary::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = self::$currencyNames[$currency];
+        $currencyNames = Dictionary::$currencyNames[$currency];
 
         $return = trim($this->toWords($decimal));
         $grammarCase = $this->getGrammarCase($decimal);
-        $return .= $this->wordSeparator . $currencyNames[0][$grammarCase];
+        $return .= Dictionary::$wordSeparator . $currencyNames[0][$grammarCase];
 
         if (null !== $fraction) {
-            $return .= $this->wordSeparator . trim($this->toWords($fraction));
+            $return .= Dictionary::$wordSeparator . trim($this->toWords($fraction));
 
             $grammarCase = $this->getGrammarCase($fraction);
-            $return .= $this->wordSeparator . $currencyNames[1][$grammarCase];
+            $return .= Dictionary::$wordSeparator . $currencyNames[1][$grammarCase];
         }
 
         return $return;

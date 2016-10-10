@@ -10,7 +10,6 @@ class Words
     const GENDER_FEMININE = 1;
     const GENDER_NEUTER = 2;
     const GENDER_ABSTRACT = 3;
-    const DEFAULT_LOCALE = 'en_US';
 
     /**
      * @param int    $number
@@ -19,12 +18,8 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    public function transformToWords($number, $locale = null)
+    public function transformToWords($number, $locale)
     {
-        if (null === $locale) {
-            $locale = self::DEFAULT_LOCALE;
-        }
-
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName();
 
@@ -39,12 +34,8 @@ class Words
      * @throws NumberToWordsException
      * @return string
      */
-    public function transformToCurrency($amount, $locale = null, $currency = '')
+    public function transformToCurrency($amount, $locale, $currency)
     {
-        if (null === $locale) {
-            $locale = self::DEFAULT_LOCALE;
-        }
-
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName();
 
