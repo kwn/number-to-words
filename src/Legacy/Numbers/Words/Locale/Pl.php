@@ -5,6 +5,7 @@ namespace NumberToWords\Legacy\Numbers\Words\Locale;
 use NumberToWords\Language\Polish\Dictionary;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Service\Inflector\PolishInflector;
 use NumberToWords\Service\NumberToTripletsConverter;
 
 class Pl extends Words
@@ -14,9 +15,15 @@ class Pl extends Words
      */
     private $numberToTripletsConverter;
 
+    /**
+     * @var PolishInflector
+     */
+    private $inflector;
+
     public function __construct()
     {
         $this->numberToTripletsConverter = new NumberToTripletsConverter();
+        $this->inflector = new PolishInflector();
     }
 
     /**
@@ -41,12 +48,13 @@ class Pl extends Words
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
-                $threeDigitsWords = $this->threeDigitsToWords($triplet);
-
-                $case = $this->getGrammarCase($triplet);
-                $mega = Dictionary::$exponent[count($triplets) - $i - 1][$case];
-
-                $words[] = $threeDigitsWords . ' ' . $mega;
+                $words[] = $this->threeDigitsToWords($triplet);
+                $words[] = $this->inflector->inflectNounByNumber(
+                    $triplet,
+                    Dictionary::$exponent[count($triplets) - $i - 1][0],
+                    Dictionary::$exponent[count($triplets) - $i - 1][1],
+                    Dictionary::$exponent[count($triplets) - $i - 1][2]
+                );
             }
         }
 
@@ -71,38 +79,17 @@ class Pl extends Words
 
         if ($tens === 1) {
             $words[] = Dictionary::$teens[$units];
-        } else {
-            if ($tens > 0) {
-                $words[] = Dictionary::$tens[$tens];
-            }
-            if ($units > 0) {
-                $words[] = Dictionary::$units[$units];
-            }
+        }
+
+        if ($tens > 1) {
+            $words[] = Dictionary::$tens[$tens];
+        }
+
+        if ($units > 0 && $tens !== 1) {
+            $words[] = Dictionary::$units[$units];
         }
 
         return implode(' ', $words);
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return int
-     */
-    private function getGrammarCase($number)
-    {
-        $units = $number % 10;
-        $tens = ((int) ($number / 10)) % 10;
-        $case = 2;
-
-        if ($number === 1) {
-            $case = 0;
-        } elseif ($tens === 1 && $units > 1) {
-            $case = 2;
-        } elseif ($units >= 2 && $units <= 4) {
-            $case = 1;
-        }
-
-        return $case;
     }
 
     /**
@@ -125,17 +112,26 @@ class Pl extends Words
 
         $currencyNames = Dictionary::$currencyNames[$currency];
 
-        $return = trim($this->toWords($decimal));
-        $grammarCase = $this->getGrammarCase($decimal);
-        $return .= Dictionary::$wordSeparator . $currencyNames[0][$grammarCase];
+        $words = [];
+
+        $words[] = trim($this->toWords($decimal));
+        $words[] = $this->inflector->inflectNounByNumber(
+            $decimal,
+            $currencyNames[0][0],
+            $currencyNames[0][1],
+            $currencyNames[0][2]
+        );
 
         if (null !== $fraction) {
-            $return .= Dictionary::$wordSeparator . trim($this->toWords($fraction));
-
-            $grammarCase = $this->getGrammarCase($fraction);
-            $return .= Dictionary::$wordSeparator . $currencyNames[1][$grammarCase];
+            $words[] = trim($this->toWords($fraction));
+            $words[] = $this->inflector->inflectNounByNumber(
+                $fraction,
+                $currencyNames[1][0],
+                $currencyNames[1][1],
+                $currencyNames[1][2]
+            );
         }
 
-        return $return;
+        return implode(' ', $words);
     }
 }
