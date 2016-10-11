@@ -69,21 +69,4 @@ class Words
 
         return $class;
     }
-
-    /**
-     * @param int $number
-     *
-     * @return int[]
-     */
-    protected function numberToTriplets($number)
-    {
-        $triplets = [];
-
-        while ($number > 0) {
-            $triplets[] = $number % 1000;
-            $number = (int) ($number / 1000);
-        }
-
-        return $triplets;
-    }
 }
