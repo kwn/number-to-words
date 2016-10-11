@@ -3,6 +3,7 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Grammar\Gender;
 use NumberToWords\Language\Romanian\Dictionary;
 use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Service\NumberToTripletsConverter;
@@ -64,7 +65,7 @@ class Ro extends Words
     private function getNounDeclensionForNumber($pluralRule, $noun)
     {
         // Nothing for abstract count
-        if ($noun[2] === Words::GENDER_ABSTRACT) {
+        if ($noun[2] === Gender::GENDER_ABSTRACT) {
             return '';
         }
 
@@ -154,7 +155,7 @@ class Ro extends Words
             }
         }
 
-        if ($noun[2] === Words::GENDER_ABSTRACT) {
+        if ($noun[2] === Gender::GENDER_ABSTRACT) {
             return $ret;
         }
 
@@ -176,31 +177,24 @@ class Ro extends Words
     protected function toWords($num = 0, $noun = [])
     {
         if (empty($noun)) {
-            $noun = [null, null, Words::GENDER_ABSTRACT];
+            $noun = [null, null, Gender::GENDER_ABSTRACT];
         }
 
         $ret = '';
 
-        // check if $num is a valid non-zero number
-        if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
-            $ret = Dictionary::$numbers[0];
-            if ($noun[2] != Words::GENDER_ABSTRACT) {
-                $ret .= Dictionary::$wordSeparator . $this->getNounDeclensionForNumber('f', $noun);
-            }
-
-            return $ret;
+        if ($num === 0) {
+            return Dictionary::$numbers[0];
         }
 
-        // add a minus sign
-        if (substr($num, 0, 1) == '-') {
+        if ($num < 0) {
             $ret = Dictionary::$minus . Dictionary::$wordSeparator;
-            $num = substr($num, 1);
+            $num *= -1;
         }
 
         // One is a special case
-        if (abs($num) == 1) {
+        if ($num === 1) {
             $ret = $this->getNumberInflectionForGender(Dictionary::$numbers[1], $noun);
-            if ($noun[2] != Words::GENDER_ABSTRACT) {
+            if ($noun[2] !== Gender::GENDER_ABSTRACT) {
                 $ret .= Dictionary::$wordSeparator . $this->getNounDeclensionForNumber('o', $noun);
             }
 
@@ -209,15 +203,13 @@ class Ro extends Words
 
         $numberGroups = $this->numberToTripletsConverter->convertToTriplets($num);
 
-        $sizeof_numgroups = count($numberGroups);
-        $showed_noun = false;
+        $sizeOfNumberGroups = count($numberGroups);
+        $showedNoun = false;
 
         foreach ($numberGroups as $i => $number) {
-            // what is the corresponding exponent for the current group
-            $pow = $sizeof_numgroups - $i;
+            $power = $sizeOfNumberGroups - $i;
 
-            // skip processment for empty groups
-            if ($number == '000') {
+            if ($number === 0) {
                 continue;
             }
 
@@ -225,18 +217,19 @@ class Ro extends Words
                 $ret .= Dictionary::$wordSeparator;
             }
 
-            if ($pow - 1) {
-                $ret .= $this->showDigitsGroup($number, Dictionary::$exponent[($pow - 1) * 3]);
+            if ($power - 1) {
+                $ret .= $this->showDigitsGroup($number, Dictionary::$exponent[($power - 1) * 3]);
             } else {
-                $showed_noun = true;
-                $ret .= $this->showDigitsGroup($number, $noun, false, $num != 1);
+                $showedNoun = true;
+                $ret .= $this->showDigitsGroup($number, $noun, false, $num !== 1);
             }
         }
-        if (!$showed_noun) {
+
+        if (!$showedNoun) {
             $ret .= Dictionary::$wordSeparator . $this->getNounDeclensionForNumber('m', $noun); // ALWAYS many
         }
 
-        return rtrim($ret, Dictionary::$wordSeparator);
+        return trim($ret, Dictionary::$wordSeparator);
     }
 
     /**
@@ -257,14 +250,16 @@ class Ro extends Words
             );
         }
 
+        $words = [];
         $currencyNouns = Dictionary::$currencyNames[$currency];
-        $return = $this->toWords($decimal, $currencyNouns[0]);
+
+        $words[] = $this->toWords($decimal, $currencyNouns[0]);
 
         if ($fraction !== null) {
-            $return .= Dictionary::$wordSeparator . Dictionary::$and;
-            $return .= Dictionary::$wordSeparator . $this->toWords($fraction, $currencyNouns[1]);
+            $words[] = Dictionary::$and;
+            $words[] = $this->toWords($fraction, $currencyNouns[1]);
         }
 
-        return $return;
+        return implode(' ', $words);
     }
 }

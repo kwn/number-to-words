@@ -4,11 +4,10 @@ namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Language\Polish\Dictionary;
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Legacy\Numbers\Words;
-use NumberToWords\Service\Inflector\PolishInflector;
+use NumberToWords\Grammar\Inflector\PolishInflector;
 use NumberToWords\Service\NumberToTripletsConverter;
 
-class Pl extends Words
+class Pl
 {
     /**
      * @var NumberToTripletsConverter
@@ -16,7 +15,7 @@ class Pl extends Words
     private $numberToTripletsConverter;
 
     /**
-     * @var PolishInflector
+     * @var \NumberToWords\Grammar\Inflector\PolishInflector
      */
     private $inflector;
 
@@ -31,7 +30,7 @@ class Pl extends Words
      *
      * @return string
      */
-    protected function toWords($number)
+    public function toWords($number)
     {
         if ($number === 0) {
             return Dictionary::$zero;
@@ -58,7 +57,7 @@ class Pl extends Words
             }
         }
 
-        return implode(' ', $words);
+        return trim(implode(' ', $words));
     }
 
     /**
@@ -114,7 +113,7 @@ class Pl extends Words
 
         $words = [];
 
-        $words[] = trim($this->toWords($decimal));
+        $words[] = $this->toWords($decimal);
         $words[] = $this->inflector->inflectNounByNumber(
             $decimal,
             $currencyNames[0][0],
@@ -123,7 +122,7 @@ class Pl extends Words
         );
 
         if (null !== $fraction) {
-            $words[] = trim($this->toWords($fraction));
+            $words[] = $this->toWords($fraction);
             $words[] = $this->inflector->inflectNounByNumber(
                 $fraction,
                 $currencyNames[1][0],

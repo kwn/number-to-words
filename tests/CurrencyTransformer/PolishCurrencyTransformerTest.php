@@ -27,6 +27,7 @@ class PolishCurrencyTransformerTest extends CurrencyTransformerTest
             [154552, 'USD', 'jeden tysiąc pięćset czterdzieści pięć dolarów pięćdziesiąt dwa centy'],
             [304501, 'EUR', 'trzy tysiące czterdzieści pięć euro jeden eurocent'],
             [52481, 'CZK', 'pięćset dwadzieścia cztery korony czeskie osiemdziesiąt jeden halerzy'],
+            //[100, 'CZK', 'jedna korona czeska'],
         ];
     }
 }

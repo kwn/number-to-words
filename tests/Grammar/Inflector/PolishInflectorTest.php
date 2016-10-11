@@ -1,6 +1,8 @@
 <?php
 
-namespace NumberToWords\Service\Inflector;
+namespace NumberToWords\Grammar\Inflector;
+
+use NumberToWords\Grammar\Inflector\PolishInflector;
 
 class PolishInflectorTest extends \PHPUnit_Framework_TestCase
 {

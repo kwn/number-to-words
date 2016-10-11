@@ -2,7 +2,8 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Legacy\Numbers\Words\Locale\Pl;
 
 class PolishCurrencyTransformer implements CurrencyTransformer
 {
@@ -10,12 +11,20 @@ class PolishCurrencyTransformer implements CurrencyTransformer
      * @param int    $amount
      * @param string $currency
      *
+     * @throws NumberToWordsException
      * @return string
      */
     public function toWords($amount, $currency)
     {
-        $converter = new Words();
+        $converter = new Pl();
 
-        return $converter->transformToCurrency($amount, 'pl', $currency);
+        $decimalPart = (int) ($amount / 100);
+        $fractionalPart = $amount % 100;
+
+        if ($fractionalPart === 0) {
+            $fractionalPart = null;
+        }
+
+        return $converter->toCurrencyWords($currency, $decimalPart, $fractionalPart);
     }
 }

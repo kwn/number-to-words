@@ -1,6 +1,6 @@
 <?php
 
-namespace NumberToWords\Service\Inflector;
+namespace NumberToWords\Grammar\Inflector;
 
 class PolishInflector
 {

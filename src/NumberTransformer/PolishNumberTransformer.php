@@ -2,7 +2,7 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Legacy\Numbers\Words\Locale\Pl;
 
 class PolishNumberTransformer implements NumberTransformer
 {
@@ -11,8 +11,8 @@ class PolishNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new Words();
+        $converter = new Pl();
 
-        return $converter->transformToWords($number, 'pl');
+        return $converter->toWords($number);
     }
 }
