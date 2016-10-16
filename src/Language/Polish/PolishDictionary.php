@@ -2,15 +2,13 @@
 
 namespace NumberToWords\Language\Polish;
 
-class Dictionary
+use NumberToWords\Language\Dictionary;
+
+class PolishDictionary implements Dictionary
 {
     const LOCALE = 'pl';
     const LANGUAGE_NAME = 'Polish';
     const LANGUAGE_NAME_NATIVE = 'polski';
-
-    public static $minus = 'minus';
-
-    public static $zero = 'zero';
 
     public static $units = ['', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
 
@@ -118,4 +116,20 @@ class Dictionary
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
     ];
+
+    /**
+     * @return string
+     */
+    public function getMinus()
+    {
+        return 'minus';
+    }
+
+    /**
+     * @return string
+     */
+    public function getZero()
+    {
+        return 'zero';
+    }
 }

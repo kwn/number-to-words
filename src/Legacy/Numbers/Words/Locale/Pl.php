@@ -2,26 +2,22 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-use NumberToWords\Language\Polish\Dictionary;
+use NumberToWords\Language\Polish\PolishDictionary;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Grammar\Inflector\PolishInflector;
-use NumberToWords\Service\NumberToTripletsConverter;
+use NumberToWords\Grammar\NumberTransformerBuilder;
+use NumberToWords\Language\Polish\PolishExponentInflector;
+use NumberToWords\Language\Polish\PolishTripletTransformer;
 
 class Pl
 {
     /**
-     * @var NumberToTripletsConverter
-     */
-    private $numberToTripletsConverter;
-
-    /**
-     * @var \NumberToWords\Grammar\Inflector\PolishInflector
+     * @var PolishInflector
      */
     private $inflector;
 
     public function __construct()
     {
-        $this->numberToTripletsConverter = new NumberToTripletsConverter();
         $this->inflector = new PolishInflector();
     }
 
@@ -32,63 +28,13 @@ class Pl
      */
     public function toWords($number)
     {
-        if ($number === 0) {
-            return Dictionary::$zero;
-        }
+        $languageDescriptor = (new NumberTransformerBuilder())
+            ->withDictionary(new PolishDictionary())
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoTriplets(new PolishTripletTransformer())
+            ->inflectExponentByNumbers(new PolishExponentInflector($this->inflector));
 
-        $words = [];
-
-        if ($number < 0) {
-            $words[] = Dictionary::$minus;
-            $number *= -1;
-        }
-
-        $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
-
-        foreach ($triplets as $i => $triplet) {
-            if ($triplet > 0) {
-                $words[] = $this->threeDigitsToWords($triplet);
-                $words[] = $this->inflector->inflectNounByNumber(
-                    $triplet,
-                    Dictionary::$exponent[count($triplets) - $i - 1][0],
-                    Dictionary::$exponent[count($triplets) - $i - 1][1],
-                    Dictionary::$exponent[count($triplets) - $i - 1][2]
-                );
-            }
-        }
-
-        return trim(implode(' ', $words));
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return string
-     */
-    private function threeDigitsToWords($number)
-    {
-        $units = $number % 10;
-        $tens = (int) ($number / 10) % 10;
-        $hundreds = (int) ($number / 100) % 10;
-        $words = [];
-
-        if ($hundreds > 0) {
-            $words[] = Dictionary::$hundreds[$hundreds];
-        }
-
-        if ($tens === 1) {
-            $words[] = Dictionary::$teens[$units];
-        }
-
-        if ($tens > 1) {
-            $words[] = Dictionary::$tens[$tens];
-        }
-
-        if ($units > 0 && $tens !== 1) {
-            $words[] = Dictionary::$units[$units];
-        }
-
-        return implode(' ', $words);
+        return $languageDescriptor->toWords($number);
     }
 
     /**
@@ -103,13 +49,13 @@ class Pl
     {
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, Dictionary::$currencyNames)) {
+        if (!array_key_exists($currency, PolishDictionary::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = Dictionary::$currencyNames[$currency];
+        $currencyNames = PolishDictionary::$currencyNames[$currency];
 
         $words = [];
 

@@ -2,7 +2,11 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words\Locale\Pl;
+use NumberToWords\Language\Polish\PolishDictionary;
+use NumberToWords\Grammar\Inflector\PolishInflector;
+use NumberToWords\Grammar\NumberTransformerBuilder;
+use NumberToWords\Language\Polish\PolishExponentInflector;
+use NumberToWords\Language\Polish\PolishTripletTransformer;
 
 class PolishNumberTransformer implements NumberTransformer
 {
@@ -11,8 +15,12 @@ class PolishNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new Pl();
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary(new PolishDictionary())
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoTriplets(new PolishTripletTransformer())
+            ->inflectExponentByNumbers(new PolishExponentInflector(new PolishInflector()));
 
-        return $converter->toWords($number);
+        return $numberTransformer->toWords($number);
     }
 }
