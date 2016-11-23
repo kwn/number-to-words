@@ -14,7 +14,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "^1.0.0"
+        "kwn/number-to-words": "~1.1.0"
     }
 }
 ```
