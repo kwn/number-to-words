@@ -35,6 +35,8 @@ This library currently has two types of number-to-words transformations: number 
 Before using a transformer, it must be created:
 
 ```php
+use NumberToWords\NumberToWords;
+
 // create the number to words "manager" class
 $numberToWords = new NumberToWords();
 
@@ -53,6 +55,8 @@ $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 Creating a currency transformer works just like a number transformer.
 
 ```php
+use NumberToWords\NumberToWords;
+
 // create the number to words "manager" class
 $numberToWords = new NumberToWords();
 
