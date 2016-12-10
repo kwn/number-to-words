@@ -96,7 +96,7 @@ Romanian             | ro         | +      | +        | -     | -
 Spanish              | es         | +      | +        | -     | - 
 Russian              | ru         | +      | +        | -     | -
 Swedish              | sv         | +      | -        | -     | -
-Turkish              | tr         | +      | -        | -     | -
+Turkish              | tr         | +      | +        | -     | -
 Ukrainian            | uk         | +      | +        | -     | -
 
 ## Contributors
