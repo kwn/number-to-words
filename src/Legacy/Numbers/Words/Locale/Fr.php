@@ -44,6 +44,8 @@ class Fr extends Words
 
     private $wordSeparator = ' ';
 
+    private $subunitSeparator = 'et';
+
     private $dash = '-';
 
     private $minus = 'moins';
@@ -85,6 +87,17 @@ class Fr extends Words
         93  => 'trigintillion',
         96  => 'untrigintillion',
         99  => 'duotrigintillion',
+    ];
+
+    private static $currencyNames = [
+        'AUD' => [['dollar australien', 'dollars australiens'], ['cent']],
+        'CAD' => [['dollar canadien', 'dollars canadiens'], ['cent']],
+        'CHF' => [['franc suisse', 'francs suisses'], ['centime']],
+        'CNY' => [['yuan'], ['fen']],
+        'EUR' => [['euro'], ['centime']],
+        'JPY' => [['yen', ['sen']]],
+        'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
+        'USD' => [['dollar américain', 'dollars américains'], ['cent']],
     ];
 
     /**
@@ -223,5 +236,57 @@ class Fr extends Words
         }
 
         return rtrim($ret, $this->wordSeparator);
+    }
+
+    /**
+     * @param string $currency
+     * @param int    $decimal
+     * @param int    $fraction
+     *
+     * @throws NumberToWordsException
+     * @return string
+     */
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
+
+        $return = trim($this->toWords($decimal)) . $this->wordSeparator;
+        $level = ($decimal === 1) ? 0 : 1;
+
+        if ($level > 0) {
+            if (count($currencyNames[0]) > 1) {
+                $return .= $currencyNames[0][$level];
+            } else {
+                $return .= $currencyNames[0][0] . 's';
+            }
+        } else {
+            $return .= $currencyNames[0][0];
+        }
+
+        if (null !== $fraction) {
+            $return .= sprintf('%1$s%2$s%1$s%3$s%1$s', $this->wordSeparator, $this->subunitSeparator, trim($this->toWords($fraction)));
+
+            $level = $fraction === 1 ? 0 : 1;
+
+            if ($level > 0) {
+                if (count($currencyNames[1]) > 1) {
+                    $return .= $currencyNames[1][$level];
+                } else {
+                    $return .= $currencyNames[1][0] . 's';
+                }
+            } else {
+                $return .= $currencyNames[1][0];
+            }
+        }
+
+        return $return;
     }
 }
