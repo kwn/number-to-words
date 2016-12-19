@@ -14,7 +14,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "~1.1.0"
+        "kwn/number-to-words": "~1.2.0"
     }
 }
 ```
@@ -85,7 +85,7 @@ Dutch                | nl         | +      | -        | -     | -
 English              | en         | +      | +        | -     | -
 Estonian             | et         | +      | -        | -     | -
 German               | de         | +      | -        | -     | -
-French               | fr         | +      | -        | -     | -
+French               | fr         | +      | +        | -     | -
 Hungarian            | hu         | +      | +        | -     | -
 Indonesian           | id         | +      | -        | -     | -
 Italian              | it         | +      | -        | -     | -
