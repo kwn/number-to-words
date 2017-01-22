@@ -3,7 +3,9 @@
 namespace NumberToWords\NumberTransformer;
 
 use NumberToWords\Language\Dictionary;
+use NumberToWords\Language\ExponentInflector;
 use NumberToWords\Language\TripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class GenericNumberTransformer implements NumberTransformer
 {
@@ -16,6 +18,21 @@ class GenericNumberTransformer implements NumberTransformer
      * @var TripletTransformer
      */
     private $tripletTransformer;
+
+    /**
+     * @var string
+     */
+    private $wordsSeparator;
+
+    /**
+     * @var NumberToTripletsConverter
+     */
+    private $numberToTripletsConverter;
+
+    /**
+     * @var ExponentInflector
+     */
+    private $exponentInflector;
 
     /**
      * @param int $number
@@ -39,7 +56,7 @@ class GenericNumberTransformer implements NumberTransformer
             $words = array_merge($words, $this->getWordsBySplittingIntoTriplets($number));
         }
 
-        return trim(implode($this->separator, $words));
+        return trim(implode($this->wordsSeparator, $words));
     }
 
     /**
@@ -63,5 +80,45 @@ class GenericNumberTransformer implements NumberTransformer
         }
 
         return $words;
+    }
+
+    /**
+     * @param Dictionary $dictionary
+     */
+    public function setDictionary(Dictionary $dictionary)
+    {
+        $this->dictionary = $dictionary;
+    }
+
+    /**
+     * @param TripletTransformer $tripletTransformer
+     */
+    public function setTripletTransformer(TripletTransformer $tripletTransformer)
+    {
+        $this->tripletTransformer = $tripletTransformer;
+    }
+
+    /**
+     * @param string $wordsSeparator
+     */
+    public function setWordsSeparator($wordsSeparator)
+    {
+        $this->wordsSeparator = $wordsSeparator;
+    }
+
+    /**
+     * @param NumberToTripletsConverter $numberToTripletsConverter
+     */
+    public function setNumberToTripletsConverter(NumberToTripletsConverter $numberToTripletsConverter)
+    {
+        $this->numberToTripletsConverter = $numberToTripletsConverter;
+    }
+
+    /**
+     * @param ExponentInflector $exponentInflector
+     */
+    public function setExponentInflector(ExponentInflector $exponentInflector)
+    {
+        $this->exponentInflector = $exponentInflector;
     }
 }

@@ -4,21 +4,22 @@ namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Language\Polish\PolishDictionary;
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Grammar\Inflector\PolishInflector;
-use NumberToWords\Grammar\NumberTransformerBuilder;
+use NumberToWords\Language\Polish\PolishNounGenderInflector;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Language\Polish\PolishExponentInflector;
 use NumberToWords\Language\Polish\PolishTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class Pl
 {
     /**
-     * @var PolishInflector
+     * @var PolishNounGenderInflector
      */
     private $inflector;
 
     public function __construct()
     {
-        $this->inflector = new PolishInflector();
+        $this->inflector = new PolishNounGenderInflector();
     }
 
     /**
@@ -28,11 +29,17 @@ class Pl
      */
     public function toWords($number)
     {
+        $polishDictionary = new PolishDictionary();
+
         $languageDescriptor = (new NumberTransformerBuilder())
-            ->withDictionary(new PolishDictionary())
+            ->withDictionary($polishDictionary)
             ->withWordsSeparatedBy(' ')
-            ->transformNumbersBySplittingIntoTriplets(new PolishTripletTransformer())
-            ->inflectExponentByNumbers(new PolishExponentInflector($this->inflector));
+            ->transformNumbersBySplittingIntoTriplets(
+                new NumberToTripletsConverter(),
+                new PolishTripletTransformer($polishDictionary)
+            )
+            ->inflectExponentByNumbers(new PolishExponentInflector($this->inflector))
+            ->build();
 
         return $languageDescriptor->toWords($number);
     }

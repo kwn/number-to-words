@@ -7,6 +7,19 @@ use NumberToWords\Language\TripletTransformer;
 class PolishTripletTransformer implements TripletTransformer
 {
     /**
+     * @var PolishDictionary
+     */
+    private $polishDictionary;
+
+    /**
+     * @param PolishDictionary $polishDictionary
+     */
+    public function __construct(PolishDictionary $polishDictionary)
+    {
+        $this->polishDictionary = $polishDictionary;
+    }
+
+    /**
      * @param int $number
      *
      * @return string
@@ -19,19 +32,19 @@ class PolishTripletTransformer implements TripletTransformer
         $words = [];
 
         if ($hundreds > 0) {
-            $words[] = PolishDictionary::$hundreds[$hundreds];
+            $words[] = $this->polishDictionary->getCorrespondingHundred($hundreds);
         }
 
         if ($tens === 1) {
-            $words[] = PolishDictionary::$teens[$units];
+            $words[] = $this->polishDictionary->getCorrespondingTeen($units);
         }
 
         if ($tens > 1) {
-            $words[] = PolishDictionary::$tens[$tens];
+            $words[] = $this->polishDictionary->getCorrespondingTen($tens);
         }
 
         if ($units > 0 && $tens !== 1) {
-            $words[] = PolishDictionary::$units[$units];
+            $words[] = $this->polishDictionary->getCorrespondingUnit($units);
         }
 
         return implode(' ', $words);

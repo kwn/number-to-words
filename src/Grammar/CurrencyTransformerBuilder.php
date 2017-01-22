@@ -3,6 +3,7 @@
 namespace NumberToWords\Grammar;
 
 use NumberToWords\Language\Dictionary;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 
 class CurrencyTransformerBuilder
 {

@@ -20,9 +20,23 @@ interface Dictionary
     public function getUnits();
 
     /**
+     * @param int $unit
+     *
+     * @return string
+     */
+    public function getCorrespondingUnit($unit);
+
+    /**
      * @return array
      */
     public function getTens();
+
+    /**
+     * @param int $ten
+     *
+     * @return string
+     */
+    public function getCorrespondingTen($ten);
 
     /**
      * @return array
@@ -30,7 +44,21 @@ interface Dictionary
     public function getTeens();
 
     /**
+     * @param int $teen
+     *
+     * @return string
+     */
+    public function getCorrespondingTeen($teen);
+
+    /**
      * @return array
      */
     public function getHundreds();
+
+    /**
+     * @param int $hundred
+     *
+     * @return string
+     */
+    public function getCorrespondingHundred($hundred);
 }
