@@ -2,7 +2,6 @@
 
 namespace NumberToWords\Language\Polish;
 
-use NumberToWords\Language\Polish\PolishDictionary;
 use NumberToWords\Language\TripletTransformer;
 
 class PolishTripletTransformer implements TripletTransformer

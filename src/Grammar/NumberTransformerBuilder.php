@@ -86,47 +86,4 @@ class NumberTransformerBuilder
 
         return $this;
     }
-
-    public function toWords($number)
-    {
-        if ($number === 0) {
-            return $this->dictionary->getZero();
-        }
-
-        $words = [];
-
-        if ($number < 0) {
-            $words[] = $this->dictionary->getMinus();
-            $number *= -1;
-        }
-
-        if (null !== $this->tripletTransformer) {
-            $words = array_merge($words, $this->getWordsBySplittingIntoTriplets($number));
-        }
-
-        return trim(implode($this->separator, $words));
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return array
-     */
-    private function getWordsBySplittingIntoTriplets($number)
-    {
-        $words = [];
-        $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
-
-        foreach ($triplets as $i => $triplet) {
-            if ($triplet > 0) {
-                $words[] = $this->tripletTransformer->transformToWords($triplet);
-
-                if (null !== $this->exponentInflector) {
-                    $words[] = $this->exponentInflector->inflectExponent($triplet, count($triplets) - $i - 1);
-                }
-            }
-        }
-
-        return $words;
-    }
 }

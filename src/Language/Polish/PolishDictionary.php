@@ -132,4 +132,36 @@ class PolishDictionary implements Dictionary
     {
         return 'zero';
     }
+
+    /**
+     * @return array
+     */
+    public function getUnits()
+    {
+        // TODO: Implement getUnits() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getTens()
+    {
+        // TODO: Implement getTens() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getTeens()
+    {
+        // TODO: Implement getTeens() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getHundreds()
+    {
+        // TODO: Implement getHundreds() method.
+    }
 }
