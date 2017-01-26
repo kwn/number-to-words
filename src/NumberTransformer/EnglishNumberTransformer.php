@@ -19,7 +19,6 @@ class EnglishNumberTransformer implements NumberTransformer
         $tripletTransformer = new EnglishTripletTransformer($dictionary);
         $exponentInflector = new EnglishExponentGetter();
 
-
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
