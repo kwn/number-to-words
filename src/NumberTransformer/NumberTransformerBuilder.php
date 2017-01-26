@@ -3,6 +3,7 @@
 namespace NumberToWords\NumberTransformer;
 
 use NumberToWords\Language\Dictionary;
+use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
@@ -67,6 +68,18 @@ class NumberTransformerBuilder
     public function inflectExponentByNumbers(ExponentInflector $exponentInflector)
     {
         $this->numberTransformer->setExponentInflector($exponentInflector);
+
+        return $this;
+    }
+
+    /**
+     * @param ExponentGetter $exponentGetter
+     *
+     * @return $this
+     */
+    public function useRegularExponents(ExponentGetter $exponentGetter)
+    {
+        $this->numberTransformer->setExponentGetter($exponentGetter);
 
         return $this;
     }

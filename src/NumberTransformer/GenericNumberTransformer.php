@@ -3,6 +3,7 @@
 namespace NumberToWords\NumberTransformer;
 
 use NumberToWords\Language\Dictionary;
+use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
@@ -33,6 +34,11 @@ class GenericNumberTransformer implements NumberTransformer
      * @var ExponentInflector
      */
     private $exponentInflector;
+
+    /**
+     * @var ExponentGetter
+     */
+    private $exponentGetter;
 
     /**
      * @param int $number
@@ -75,6 +81,10 @@ class GenericNumberTransformer implements NumberTransformer
 
                 if (null !== $this->exponentInflector) {
                     $words[] = $this->exponentInflector->inflectExponent($triplet, count($triplets) - $i - 1);
+                }
+
+                if (null !== $this->exponentGetter) {
+                    $words[] = $this->exponentGetter->getExponent(count($triplets) - $i - 1);
                 }
             }
         }
@@ -120,5 +130,15 @@ class GenericNumberTransformer implements NumberTransformer
     public function setExponentInflector(ExponentInflector $exponentInflector)
     {
         $this->exponentInflector = $exponentInflector;
+        $this->exponentGetter = null;
+    }
+
+    /**
+     * @param ExponentGetter $exponentGetter
+     */
+    public function setExponentGetter(ExponentGetter $exponentGetter)
+    {
+        $this->exponentGetter = $exponentGetter;
+        $this->exponentInflector = null;
     }
 }

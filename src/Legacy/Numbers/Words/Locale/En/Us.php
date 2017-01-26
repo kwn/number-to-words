@@ -3,7 +3,7 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale\En;
 
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Language\English\Dictionary;
+use NumberToWords\Language\English\EnglishDictionary;
 use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Service\NumberToTripletsConverter;
 
@@ -27,14 +27,14 @@ class Us extends Words
     protected function toWords($number)
     {
         if ($number === 0) {
-            return Dictionary::$zero;
+            return EnglishDictionary::$zero;
         }
 
         $triplets = $this->numberToTripletsConverter->convertToTriplets(abs($number));
 
         $transformedNumber = $this->buildWordsFromTriplets($triplets);
 
-        return $number < 0 ? Dictionary::MINUS . ' ' . $transformedNumber : $transformedNumber;
+        return $number < 0 ? EnglishDictionary::MINUS . ' ' . $transformedNumber : $transformedNumber;
     }
 
     /**
@@ -48,7 +48,7 @@ class Us extends Words
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
-                $words[] = trim($this->threeDigitsToWords($triplet) . ' ' . Dictionary::$exponent[count($triplets) - $i - 1]);
+                $words[] = trim($this->threeDigitsToWords($triplet) . ' ' . EnglishDictionary::$exponent[count($triplets) - $i - 1]);
             }
         }
 
@@ -85,10 +85,10 @@ class Us extends Words
      */
     private function getHundred($number)
     {
-        $word = Dictionary::$units[$number];
+        $word = EnglishDictionary::$units[$number];
 
         if ($word) {
-            return $word . ' ' . Dictionary::$hundred;
+            return $word . ' ' . EnglishDictionary::$hundred;
         }
 
         return '';
@@ -105,13 +105,13 @@ class Us extends Words
         $words = [];
 
         if ($tens === 1) {
-            $words[] = Dictionary::$teens[$units];
+            $words[] = EnglishDictionary::$teens[$units];
         } else {
             if ($tens > 0) {
-                $words[] = Dictionary::$tens[$tens];
+                $words[] = EnglishDictionary::$tens[$tens];
             }
             if ($units > 0) {
-                $words[] = Dictionary::$units[$units];
+                $words[] = EnglishDictionary::$units[$units];
             }
         }
 
@@ -130,40 +130,40 @@ class Us extends Words
     {
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, Dictionary::$currencyNames)) {
+        if (!array_key_exists($currency, EnglishDictionary::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = Dictionary::$currencyNames[$currency];
+        $currencyNames = EnglishDictionary::$currencyNames[$currency];
 
         $return = trim($this->toWords($decimal));
         $level = ($decimal === 1) ? 0 : 1;
 
         if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
-                $return .= Dictionary::$wordSeparator . $currencyNames[0][$level];
+                $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][$level];
             } else {
-                $return .= Dictionary::$wordSeparator . $currencyNames[0][0] . 's';
+                $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][0] . 's';
             }
         } else {
-            $return .= Dictionary::$wordSeparator . $currencyNames[0][0];
+            $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][0];
         }
 
         if (null !== $fraction) {
-            $return .= Dictionary::$wordSeparator . trim($this->toWords($fraction));
+            $return .= EnglishDictionary::$wordSeparator . trim($this->toWords($fraction));
 
             $level = $fraction === 1 ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $return .= Dictionary::$wordSeparator . $currencyNames[1][$level];
+                    $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][$level];
                 } else {
-                    $return .= Dictionary::$wordSeparator . $currencyNames[1][0] . 's';
+                    $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][0] . 's';
                 }
             } else {
-                $return .= Dictionary::$wordSeparator . $currencyNames[1][0];
+                $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][0];
             }
         }
 

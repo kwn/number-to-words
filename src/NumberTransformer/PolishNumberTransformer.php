@@ -15,13 +15,13 @@ class PolishNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $polishDictionary = new PolishDictionary();
+        $dictionary = new PolishDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
-        $tripletTransformer = new PolishTripletTransformer($polishDictionary);
+        $tripletTransformer = new PolishTripletTransformer($dictionary);
         $exponentInflector = new PolishExponentInflector(new PolishNounGenderInflector());
 
         $numberTransformer = (new NumberTransformerBuilder())
-            ->withDictionary($polishDictionary)
+            ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)

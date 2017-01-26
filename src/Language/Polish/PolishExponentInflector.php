@@ -2,8 +2,6 @@
 
 namespace NumberToWords\Language\Polish;
 
-use NumberToWords\Language\Polish\PolishDictionary;
-use NumberToWords\Language\Polish\PolishNounGenderInflector;
 use NumberToWords\Language\ExponentInflector;
 
 class PolishExponentInflector implements ExponentInflector

@@ -2,7 +2,10 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\English\EnglishDictionary;
+use NumberToWords\Language\English\EnglishExponentGetter;
+use NumberToWords\Language\English\EnglishTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class EnglishNumberTransformer implements NumberTransformer
 {
@@ -11,8 +14,19 @@ class EnglishNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new Words();
+        $dictionary = new EnglishDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new EnglishTripletTransformer($dictionary);
+        $exponentInflector = new EnglishExponentGetter();
 
-        return $converter->transformToWords($number, 'en_US');
+
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->useRegularExponents($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
