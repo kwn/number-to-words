@@ -1,8 +1,8 @@
 <?php
 
-namespace NumberToWords\Grammar\Inflector;
+namespace NumberToWords\Language\Polish;
 
-class PolishInflector
+class PolishNounGenderInflector
 {
     /**
      * @param int    $number

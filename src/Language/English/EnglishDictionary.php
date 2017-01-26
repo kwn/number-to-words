@@ -2,7 +2,9 @@
 
 namespace NumberToWords\Language\English;
 
-class Dictionary
+use NumberToWords\Language\Dictionary;
+
+class EnglishDictionary implements Dictionary
 {
     const LOCALE = 'en_US';
     const LANGUAGE_NAME = 'American English';
@@ -106,4 +108,92 @@ class Dictionary
         'YUM' => [['dinars'], ['para']],
         'ZAR' => [['rand'], ['cent']]
     ];
+
+    /**
+     * @return string
+     */
+    public function getZero()
+    {
+        return self::$zero;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMinus()
+    {
+        return self::MINUS;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUnits()
+    {
+        // TODO: Implement getUnits() method.
+    }
+
+    /**
+     * @param int $unit
+     *
+     * @return string
+     */
+    public function getCorrespondingUnit($unit)
+    {
+        // TODO: Implement getCorrespondingUnit() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getTens()
+    {
+        // TODO: Implement getTens() method.
+    }
+
+    /**
+     * @param int $ten
+     *
+     * @return string
+     */
+    public function getCorrespondingTen($ten)
+    {
+        // TODO: Implement getCorrespondingTen() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getTeens()
+    {
+        // TODO: Implement getTeens() method.
+    }
+
+    /**
+     * @param int $teen
+     *
+     * @return string
+     */
+    public function getCorrespondingTeen($teen)
+    {
+        // TODO: Implement getCorrespondingTeen() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getHundreds()
+    {
+        // TODO: Implement getHundreds() method.
+    }
+
+    /**
+     * @param int $hundred
+     *
+     * @return string
+     */
+    public function getCorrespondingHundred($hundred)
+    {
+        // TODO: Implement getCorrespondingHundred() method.
+    }
 }

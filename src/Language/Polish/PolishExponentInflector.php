@@ -2,21 +2,19 @@
 
 namespace NumberToWords\Language\Polish;
 
-use NumberToWords\Language\Polish\PolishDictionary;
-use NumberToWords\Grammar\Inflector\PolishInflector;
 use NumberToWords\Language\ExponentInflector;
 
 class PolishExponentInflector implements ExponentInflector
 {
     /**
-     * @var PolishInflector
+     * @var PolishNounGenderInflector
      */
     private $inflector;
 
     /**
-     * @param PolishInflector $inflector
+     * @param PolishNounGenderInflector $inflector
      */
-    public function __construct(PolishInflector $inflector)
+    public function __construct(PolishNounGenderInflector $inflector)
     {
         $this->inflector = $inflector;
     }

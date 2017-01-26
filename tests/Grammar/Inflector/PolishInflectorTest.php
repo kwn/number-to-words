@@ -2,7 +2,7 @@
 
 namespace NumberToWords\Grammar\Inflector;
 
-use NumberToWords\Grammar\Inflector\PolishInflector;
+use NumberToWords\Language\Polish\PolishNounGenderInflector;
 
 class PolishInflectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class PolishInflectorTest extends \PHPUnit_Framework_TestCase
      */
     public function testItInflectsNounsByNumbers($number, $expectedNoun)
     {
-        $polishInflector = new PolishInflector();
+        $polishInflector = new PolishNounGenderInflector();
 
         $inflected = $polishInflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[2]);
 

@@ -10,45 +10,56 @@ class PolishDictionary implements Dictionary
     const LANGUAGE_NAME = 'Polish';
     const LANGUAGE_NAME_NATIVE = 'polski';
 
-    public static $units = ['', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
-
-    public static $teens = [
-        'dziesięć',
-        'jedenaście',
-        'dwanaście',
-        'trzynaście',
-        'czternaście',
-        'piętnaście',
-        'szesnaście',
-        'siedemnaście',
-        'osiemnaście',
-        'dziewiętnaście'
+    private static $units = [
+        0 => '',
+        1 => 'jeden',
+        2 => 'dwa',
+        3 => 'trzy',
+        4 => 'cztery',
+        5 => 'pięć',
+        6 => 'sześć',
+        7 => 'siedem',
+        8 => 'osiem',
+        9 => 'dziewięć'
     ];
 
-    public static $tens = [
-        '',
-        'dziesięć',
-        'dwadzieścia',
-        'trzydzieści',
-        'czterdzieści',
-        'pięćdziesiąt',
-        'sześćdziesiąt',
-        'siedemdziesiąt',
-        'osiemdziesiąt',
-        'dziewięćdziesiąt'
+    private static $teens = [
+        0 => 'dziesięć',
+        1 => 'jedenaście',
+        2 => 'dwanaście',
+        3 => 'trzynaście',
+        4 => 'czternaście',
+        5 => 'piętnaście',
+        6 => 'szesnaście',
+        7 => 'siedemnaście',
+        8 => 'osiemnaście',
+        9 => 'dziewiętnaście'
     ];
 
-    public static $hundreds = [
-        '',
-        'sto',
-        'dwieście',
-        'trzysta',
-        'czterysta',
-        'pięćset',
-        'sześćset',
-        'siedemset',
-        'osiemset',
-        'dziewięćset'
+    private static $tens = [
+        0 => '',
+        1 => 'dziesięć',
+        2 => 'dwadzieścia',
+        3 => 'trzydzieści',
+        4 => 'czterdzieści',
+        5 => 'pięćdziesiąt',
+        6 => 'sześćdziesiąt',
+        7 => 'siedemdziesiąt',
+        8 => 'osiemdziesiąt',
+        9 => 'dziewięćdziesiąt'
+    ];
+
+    private static $hundreds = [
+        0 => '',
+        1 => 'sto',
+        2 => 'dwieście',
+        3 => 'trzysta',
+        4 => 'czterysta',
+        5 => 'pięćset',
+        6 => 'sześćset',
+        7 => 'siedemset',
+        8 => 'osiemset',
+        9 => 'dziewięćset'
     ];
 
     public static $exponent = [
@@ -131,5 +142,77 @@ class PolishDictionary implements Dictionary
     public function getZero()
     {
         return 'zero';
+    }
+
+    /**
+     * @return array
+     */
+    public function getUnits()
+    {
+        return self::$units;
+    }
+
+    /**
+     * @param int $unit
+     *
+     * @return string
+     */
+    public function getCorrespondingUnit($unit)
+    {
+        return self::$units[$unit];
+    }
+
+    /**
+     * @return array
+     */
+    public function getTens()
+    {
+        return self::$tens;
+    }
+
+    /**
+     * @param int $ten
+     *
+     * @return string
+     */
+    public function getCorrespondingTen($ten)
+    {
+        return self::$tens[$ten];
+    }
+
+    /**
+     * @return array
+     */
+    public function getTeens()
+    {
+        return self::$teens;
+    }
+
+    /**
+     * @param int $teen
+     *
+     * @return string
+     */
+    public function getCorrespondingTeen($teen)
+    {
+        return self::$teens[$teen];
+    }
+
+    /**
+     * @return array
+     */
+    public function getHundreds()
+    {
+        return self::$hundreds;
+    }
+
+    /**
+     * @param int $hundred
+     *
+     * @return string
+     */
+    public function getCorrespondingHundred($hundred)
+    {
+        return self::$hundreds[$hundred];
     }
 }
