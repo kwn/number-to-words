@@ -87,8 +87,6 @@ class PolishDictionary implements Dictionary
         ['decyliard', 'decyliardy', 'decyliardów'],
     ];
 
-    public static $wordSeparator = ' ';
-
     public static $currencyNames = [
         'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
         'AUD' => [['dolar australijski', 'dolary australijskie', 'dolarów australijskich'], ['cent', 'centy', 'centów']],
@@ -145,14 +143,6 @@ class PolishDictionary implements Dictionary
     }
 
     /**
-     * @return array
-     */
-    public function getUnits()
-    {
-        return self::$units;
-    }
-
-    /**
      * @param int $unit
      *
      * @return string
@@ -160,14 +150,6 @@ class PolishDictionary implements Dictionary
     public function getCorrespondingUnit($unit)
     {
         return self::$units[$unit];
-    }
-
-    /**
-     * @return array
-     */
-    public function getTens()
-    {
-        return self::$tens;
     }
 
     /**
@@ -181,14 +163,6 @@ class PolishDictionary implements Dictionary
     }
 
     /**
-     * @return array
-     */
-    public function getTeens()
-    {
-        return self::$teens;
-    }
-
-    /**
      * @param int $teen
      *
      * @return string
@@ -196,14 +170,6 @@ class PolishDictionary implements Dictionary
     public function getCorrespondingTeen($teen)
     {
         return self::$teens[$teen];
-    }
-
-    /**
-     * @return array
-     */
-    public function getHundreds()
-    {
-        return self::$hundreds;
     }
 
     /**

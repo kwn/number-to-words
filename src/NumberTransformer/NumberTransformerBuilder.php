@@ -45,6 +45,18 @@ class NumberTransformerBuilder
     }
 
     /**
+     * @param string $separator
+     *
+     * @return $this
+     */
+    public function withExponentsSeparatedBy($separator)
+    {
+        $this->numberTransformer->setExponentsSeparator($separator);
+
+        return $this;
+    }
+
+    /**
      * @param NumberToTripletsConverter $numberToTripletsConverter
      * @param TripletTransformer        $tripletTransformer
      *

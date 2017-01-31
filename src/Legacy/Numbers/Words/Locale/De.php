@@ -36,10 +36,6 @@ class De extends Words
         57  => ['Nonilliarde', 'Nonilliarden'],
         60  => ['Dezillion', 'Dezillionen'],
         63  => ['Dezilliarde', 'Dezilliarden'],
-        120 => ['Vigintillion', 'Vigintillionen'],
-        123 => ['Vigintilliarde', 'Vigintilliarden'],
-        600 => ['Zentillion', 'Zentillionen'], // oder Centillion
-        603 => ['Zentilliarde', 'Zentilliarden']
     ];
 
     private static $digits = [

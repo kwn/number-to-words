@@ -41,6 +41,11 @@ class GenericNumberTransformer implements NumberTransformer
     private $exponentGetter;
 
     /**
+     * @var string
+     */
+    private $exponentSeparator;
+
+    /**
      * @param int $number
      *
      * @return string
@@ -140,5 +145,13 @@ class GenericNumberTransformer implements NumberTransformer
     {
         $this->exponentGetter = $exponentGetter;
         $this->exponentInflector = null;
+    }
+
+    /**
+     * @param string $exponentSeparator
+     */
+    public function setExponentsSeparator($exponentSeparator)
+    {
+        $this->exponentSeparator = $exponentSeparator;
     }
 }

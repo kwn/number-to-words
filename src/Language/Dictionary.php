@@ -15,21 +15,11 @@ interface Dictionary
     public function getMinus();
 
     /**
-     * @return array
-     */
-    public function getUnits();
-
-    /**
      * @param int $unit
      *
      * @return string
      */
     public function getCorrespondingUnit($unit);
-
-    /**
-     * @return array
-     */
-    public function getTens();
 
     /**
      * @param int $ten
@@ -39,21 +29,11 @@ interface Dictionary
     public function getCorrespondingTen($ten);
 
     /**
-     * @return array
-     */
-    public function getTeens();
-
-    /**
      * @param int $teen
      *
      * @return string
      */
     public function getCorrespondingTeen($teen);
-
-    /**
-     * @return array
-     */
-    public function getHundreds();
 
     /**
      * @param int $hundred

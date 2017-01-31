@@ -2,7 +2,10 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\German\GermanDictionary;
+use NumberToWords\Language\German\GermanExponentInflector;
+use NumberToWords\Language\German\GermanTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class GermanNumberTransformer implements NumberTransformer
 {
@@ -11,8 +14,19 @@ class GermanNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $converter = new Words();
+        $dictionary = new GermanDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new GermanTripletTransformer($dictionary);
+        $exponentInflector = new GermanExponentInflector();
 
-        return $converter->transformToWords($number, 'de');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy('')
+            ->withExponentsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
