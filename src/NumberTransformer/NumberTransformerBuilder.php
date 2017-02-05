@@ -5,6 +5,7 @@ namespace NumberToWords\NumberTransformer;
 use NumberToWords\Language\Dictionary;
 use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
+use NumberToWords\Language\PowerAwareTripletTransformer;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
@@ -68,6 +69,22 @@ class NumberTransformerBuilder
     ) {
         $this->numberTransformer->setNumberToTripletsConverter($numberToTripletsConverter);
         $this->numberTransformer->setTripletTransformer($tripletTransformer);
+
+        return $this;
+    }
+
+    /**
+     * @param NumberToTripletsConverter    $numberToTripletsConverter
+     * @param PowerAwareTripletTransformer $powerAwareTripletTransformer
+     *
+     * @return $this
+     */
+    public function transformNumbersBySplittingIntoPowerAwareTriplets(
+        NumberToTripletsConverter $numberToTripletsConverter,
+        PowerAwareTripletTransformer $powerAwareTripletTransformer
+    ) {
+        $this->numberTransformer->setNumberToTripletsConverter($numberToTripletsConverter);
+        $this->numberTransformer->setPowerAwareTripletTransformer($powerAwareTripletTransformer);
 
         return $this;
     }

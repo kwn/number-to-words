@@ -23,7 +23,7 @@ class GermanNumberTransformer implements NumberTransformer
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy('')
             ->withExponentsSeparatedBy(' ')
-            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();
 

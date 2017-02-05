@@ -3,9 +3,9 @@
 namespace NumberToWords\Language\German;
 
 use NumberToWords\Language\Dictionary;
-use NumberToWords\Language\TripletTransformer;
+use NumberToWords\Language\PowerAwareTripletTransformer;
 
-class GermanTripletTransformer implements TripletTransformer
+class GermanTripletTransformer implements PowerAwareTripletTransformer
 {
     /**
      * @var Dictionary
@@ -22,10 +22,11 @@ class GermanTripletTransformer implements TripletTransformer
 
     /**
      * @param int $number
+     * @param int $power
      *
      * @return string
      */
-    public function transformToWords($number)
+    public function transformToWords($number, $power)
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -45,6 +46,12 @@ class GermanTripletTransformer implements TripletTransformer
 
             if ($tens > 1) {
                 $words[] = 'und';
+            } elseif ($units === 1) {
+                if ($power === 0) {
+                    $words[] = 's';
+                } elseif ($power !== 1) {
+                    $words[] = 'e';
+                }
             }
         }
 

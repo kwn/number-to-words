@@ -5,6 +5,7 @@ namespace NumberToWords\NumberTransformer;
 use NumberToWords\Language\Dictionary;
 use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
+use NumberToWords\Language\PowerAwareTripletTransformer;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
@@ -19,6 +20,11 @@ class GenericNumberTransformer implements NumberTransformer
      * @var TripletTransformer
      */
     private $tripletTransformer;
+
+    /**
+     * @var PowerAwareTripletTransformer
+     */
+    private $powerAwareTripletTransformer;
 
     /**
      * @var string
@@ -63,7 +69,7 @@ class GenericNumberTransformer implements NumberTransformer
             $number *= -1;
         }
 
-        if (null !== $this->tripletTransformer) {
+        if (null !== $this->tripletTransformer || null !== $this->powerAwareTripletTransformer) {
             $words = array_merge($words, $this->getWordsBySplittingIntoTriplets($number));
         }
 
@@ -82,7 +88,16 @@ class GenericNumberTransformer implements NumberTransformer
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
-                $words[] = $this->tripletTransformer->transformToWords($triplet);
+                if (null !== $this->tripletTransformer) {
+                    $words[] = $this->tripletTransformer->transformToWords($triplet);
+                }
+
+                if (null !== $this->powerAwareTripletTransformer) {
+                    $words[] = $this->powerAwareTripletTransformer->transformToWords(
+                        $triplet,
+                        count($triplets) - $i - 1
+                    );
+                }
 
                 if (null !== $this->exponentInflector) {
                     $words[] = $this->exponentInflector->inflectExponent($triplet, count($triplets) - $i - 1);
@@ -111,6 +126,16 @@ class GenericNumberTransformer implements NumberTransformer
     public function setTripletTransformer(TripletTransformer $tripletTransformer)
     {
         $this->tripletTransformer = $tripletTransformer;
+        $this->powerAwareTripletTransformer = null;
+    }
+
+    /**
+     * @param PowerAwareTripletTransformer $powerAwareTripletTransformer
+     */
+    public function setPowerAwareTripletTransformer(PowerAwareTripletTransformer $powerAwareTripletTransformer)
+    {
+        $this->powerAwareTripletTransformer = $powerAwareTripletTransformer;
+        $this->tripletTransformer = null;
     }
 
     /**
