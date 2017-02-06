@@ -111,7 +111,7 @@ This library is still under a heavy refactoring so the legacy code should ultima
 
 A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting somem mechanisms from other languages so sooner or later it will look quite good.
 
-**Q: I've spotted an error**
+**Q: I've noticed an error**
 
 A: Please report an issue, or even better - create a pull request. I don't speak most of those languages so your help is much appreciated. Thanks!
 
