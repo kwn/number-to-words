@@ -63,7 +63,7 @@ class GermanDictionary implements Dictionary
     ];
 
     public static $exponent = [
-        [''],
+        ['', ''],
         ['tausend', 'tausend'],
         ['Million', 'Millionen'],
         ['Milliarde', 'Milliarden'],
