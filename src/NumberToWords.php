@@ -20,6 +20,7 @@ use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
+use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
 use NumberToWords\NumberTransformer\ItalianNumberTransformer;
 use NumberToWords\NumberTransformer\LatvianNumberTransformer;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
@@ -46,6 +47,7 @@ class NumberToWords
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
+        'id' => IndonesianNumberTransformer::class,
         'it' => ItalianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
