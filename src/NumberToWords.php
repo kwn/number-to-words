@@ -20,9 +20,11 @@ use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
+use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
 use NumberToWords\NumberTransformer\ItalianNumberTransformer;
 use NumberToWords\NumberTransformer\LatvianNumberTransformer;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
+use NumberToWords\NumberTransformer\MalayNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
@@ -46,9 +48,11 @@ class NumberToWords
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
+        'id' => IndonesianNumberTransformer::class,
         'it' => ItalianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
+        'ms' => MalayNumberTransformer::class,
         'nl' => DutchNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
