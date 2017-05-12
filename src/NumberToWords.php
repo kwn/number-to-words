@@ -24,6 +24,7 @@ use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
 use NumberToWords\NumberTransformer\ItalianNumberTransformer;
 use NumberToWords\NumberTransformer\LatvianNumberTransformer;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
+use NumberToWords\NumberTransformer\MalayNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
@@ -51,6 +52,7 @@ class NumberToWords
         'it' => ItalianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
+        'ms' => MalayNumberTransformer::class,
         'nl' => DutchNumberTransformer::class,
         'pl' => PolishNumberTransformer::class,
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
