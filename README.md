@@ -91,6 +91,7 @@ Indonesian           | id         | +      | -        | -     | -
 Italian              | it         | +      | -        | -     | -
 Lithuanian           | lt         | +      | -        | -     | -
 Latvian              | lv         | +      | -        | -     | -
+Malay                | ms         | +      | -        | -     | -
 Polish               | pl         | +      | +        | -     | -
 Romanian             | ro         | +      | +        | -     | -
 Spanish              | es         | +      | +        | -     | - 
