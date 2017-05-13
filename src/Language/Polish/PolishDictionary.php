@@ -64,7 +64,10 @@ class PolishDictionary implements Dictionary
 
     public static $currencyNames = [
         'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
-        'AUD' => [['dolar australijski', 'dolary australijskie', 'dolarów australijskich'], ['cent', 'centy', 'centów']],
+        'AUD' => [
+            ['dolar australijski', 'dolary australijskie', 'dolarów australijskich'],
+            ['cent', 'centy', 'centów']
+        ],
         'BAM' => [['marka', 'marki', 'marek'], ['fenig', 'fenigi', 'fenigów']],
         'BGN' => [['lew', 'lewy', 'lew'], ['stotinka', 'stotinki', 'stotinek']],
         'BRL' => [['real', 'reale', 'realów'], ['centavos', 'centavos', 'centavos']],

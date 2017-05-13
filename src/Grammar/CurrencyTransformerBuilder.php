@@ -43,6 +43,5 @@ class CurrencyTransformerBuilder
 
     public function toWords($currency, $decimal, $fraction)
     {
-
     }
 }
