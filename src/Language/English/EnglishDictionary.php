@@ -9,13 +9,10 @@ class EnglishDictionary implements Dictionary
     const LOCALE = 'en_US';
     const LANGUAGE_NAME = 'American English';
     const LANGUAGE_NAME_NATIVE = 'American English';
-    const MINUS = 'minus';
 
-    public static $wordSeparator = ' ';
+    private static $units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
-    public static $units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-
-    public static $teens = [
+    private static $teens = [
         'ten',
         'eleven',
         'twelve',
@@ -28,7 +25,7 @@ class EnglishDictionary implements Dictionary
         'nineteen'
     ];
 
-    public static $tens = [
+    private static $tens = [
         '',
         'ten',
         'twenty',
@@ -105,7 +102,7 @@ class EnglishDictionary implements Dictionary
      */
     public function getCorrespondingUnit($unit)
     {
-        // TODO: Implement getCorrespondingUnit() method.
+        return self::$units[$unit];
     }
 
     /**
@@ -115,7 +112,7 @@ class EnglishDictionary implements Dictionary
      */
     public function getCorrespondingTen($ten)
     {
-        // TODO: Implement getCorrespondingTen() method.
+        return self::$tens[$ten];
     }
 
     /**
@@ -125,7 +122,7 @@ class EnglishDictionary implements Dictionary
      */
     public function getCorrespondingTeen($teen)
     {
-        // TODO: Implement getCorrespondingTeen() method.
+        return self::$teens[$teen];
     }
 
     /**

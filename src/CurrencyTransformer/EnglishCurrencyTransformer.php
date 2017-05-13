@@ -54,27 +54,27 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
 
         if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
-                $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][$level];
+                $return .= ' ' . $currencyNames[0][$level];
             } else {
-                $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][0] . 's';
+                $return .= ' ' . $currencyNames[0][0] . 's';
             }
         } else {
-            $return .= EnglishDictionary::$wordSeparator . $currencyNames[0][0];
+            $return .= ' ' . $currencyNames[0][0];
         }
 
         if (null !== $fraction) {
-            $return .= EnglishDictionary::$wordSeparator . trim($numberTransformer->toWords($fraction));
+            $return .= ' ' . trim($numberTransformer->toWords($fraction));
 
             $level = $fraction === 1 ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][$level];
+                    $return .= ' ' . $currencyNames[1][$level];
                 } else {
-                    $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][0] . 's';
+                    $return .= ' ' . $currencyNames[1][0] . 's';
                 }
             } else {
-                $return .= EnglishDictionary::$wordSeparator . $currencyNames[1][0];
+                $return .= ' ' . $currencyNames[1][0];
             }
         }
 

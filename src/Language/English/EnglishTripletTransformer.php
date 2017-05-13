@@ -35,27 +35,11 @@ class EnglishTripletTransformer implements TripletTransformer
             $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
         }
 
-        if ($subHundredsWord = $this->getSubHundred($tens, $units)) {
-            $words[] = $subHundredsWord;
+        if ($tens !== 0 || $units !== 0 ) {
+            $words[] = $this->getSubHundred($tens, $units);
         }
 
         return implode(' ', $words);
-    }
-
-    /**
-     * @param int $number
-     *
-     * @return string
-     */
-    private function getHundred($number)
-    {
-        $word = EnglishDictionary::$units[$number];
-
-        if ($word) {
-            return $word . ' ' . EnglishDictionary::$hundred;
-        }
-
-        return '';
     }
 
     /**
@@ -69,13 +53,13 @@ class EnglishTripletTransformer implements TripletTransformer
         $words = [];
 
         if ($tens === 1) {
-            $words[] = EnglishDictionary::$teens[$units];
+            $words[] = $this->dictionary->getCorrespondingTeen($units);
         } else {
             if ($tens > 0) {
-                $words[] = EnglishDictionary::$tens[$tens];
+                $words[] = $this->dictionary->getCorrespondingTen($tens);
             }
             if ($units > 0) {
-                $words[] = EnglishDictionary::$units[$units];
+                $words[] = $this->dictionary->getCorrespondingUnit($units);
             }
         }
 
