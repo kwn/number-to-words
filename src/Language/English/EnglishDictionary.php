@@ -13,8 +13,6 @@ class EnglishDictionary implements Dictionary
 
     public static $wordSeparator = ' ';
 
-    public static $zero = 'zero';
-
     public static $units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
     public static $teens = [
@@ -43,32 +41,7 @@ class EnglishDictionary implements Dictionary
         'ninety'
     ];
 
-    public static $hundred = 'hundred';
-
-    public static $exponent = [
-        '',
-        'thousand',
-        'million',
-        'billion',
-        'trillion',
-        'quadrillion',
-        'quintillion',
-        'sextillion',
-        'septillion',
-        'octillion',
-        'nonillion',
-        'decillion',
-        'undecillion',
-        'duodecillion',
-        'tredecillion',
-        'quattuordecillion',
-        'quindecillion',
-        'sexdecillion',
-        'septendecillion',
-        'octodecillion',
-        'novemdecillion',
-        'vigintillion',
-    ];
+    private static $hundred = 'hundred';
 
     public static $currencyNames = [
         'ALL' => [['lek'], ['qindarka']],
@@ -114,7 +87,7 @@ class EnglishDictionary implements Dictionary
      */
     public function getZero()
     {
-        return self::$zero;
+        return 'zero';
     }
 
     /**
@@ -122,15 +95,7 @@ class EnglishDictionary implements Dictionary
      */
     public function getMinus()
     {
-        return self::MINUS;
-    }
-
-    /**
-     * @return array
-     */
-    public function getUnits()
-    {
-        // TODO: Implement getUnits() method.
+        return 'minus';
     }
 
     /**
@@ -144,14 +109,6 @@ class EnglishDictionary implements Dictionary
     }
 
     /**
-     * @return array
-     */
-    public function getTens()
-    {
-        // TODO: Implement getTens() method.
-    }
-
-    /**
      * @param int $ten
      *
      * @return string
@@ -159,14 +116,6 @@ class EnglishDictionary implements Dictionary
     public function getCorrespondingTen($ten)
     {
         // TODO: Implement getCorrespondingTen() method.
-    }
-
-    /**
-     * @return array
-     */
-    public function getTeens()
-    {
-        // TODO: Implement getTeens() method.
     }
 
     /**
@@ -180,20 +129,12 @@ class EnglishDictionary implements Dictionary
     }
 
     /**
-     * @return array
-     */
-    public function getHundreds()
-    {
-        // TODO: Implement getHundreds() method.
-    }
-
-    /**
      * @param int $hundred
      *
      * @return string
      */
     public function getCorrespondingHundred($hundred)
     {
-        // TODO: Implement getCorrespondingHundred() method.
+        return self::$units[$hundred] . ' ' . self::$hundred;
     }
 }

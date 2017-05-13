@@ -22,6 +22,7 @@ class EnglishNumberTransformer implements NumberTransformer
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
+            ->withExponentsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
             ->useRegularExponents($exponentInflector)
             ->build();

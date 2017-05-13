@@ -14,7 +14,7 @@ class EnglishTripletTransformer implements TripletTransformer
     /**
      * @param EnglishDictionary $dictionary
      */
-    public function __construct($dictionary)
+    public function __construct(EnglishDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
     }
@@ -31,8 +31,8 @@ class EnglishTripletTransformer implements TripletTransformer
         $hundreds = (int) ($number / 100) % 10;
         $words = [];
 
-        if ($hundredsWord = $this->getHundred($hundreds)) {
-            $words[] = $hundredsWord;
+        if ($hundreds > 0) {
+            $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
         }
 
         if ($subHundredsWord = $this->getSubHundred($tens, $units)) {
