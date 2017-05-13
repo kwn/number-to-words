@@ -62,31 +62,6 @@ class PolishDictionary implements Dictionary
         9 => 'dziewięćset'
     ];
 
-    public static $exponent = [
-        ['', '', ''],
-        ['tysiąc', 'tysiące', 'tysięcy'],
-        ['milion', 'miliony', 'milionów'],
-        ['miliard', 'miliardy', 'miliardów'],
-        ['bilion', 'biliony', 'bilionów'],
-        ['biliard', 'biliardy', 'biliardów'],
-        ['trylion', 'tryliony', 'trylionów'],
-        ['tryliard', 'tryliardy', 'tryliardów'],
-        ['kwadrylion', 'kwadryliony', 'kwadrylionów'],
-        ['kwadryliard', 'kwadryliardy', 'kwadryliardów'],
-        ['kwintylion', 'kwintyliony', 'kwintylionów'],
-        ['kwintyliiard', 'kwintyliardy', 'kwintyliardów'],
-        ['sekstylion', 'sekstyliony', 'sekstylionów'],
-        ['sekstyliard', 'sekstyliardy', 'sekstyliardów'],
-        ['septylion', 'septyliony', 'septylionów'],
-        ['septyliard', 'septyliardy', 'septyliardów'],
-        ['oktylion', 'oktyliony', 'oktylionów'],
-        ['oktyliard', 'oktyliardy', 'oktyliardów'],
-        ['nonylion', 'nonyliony', 'nonylionów'],
-        ['nonyliard', 'nonyliardy', 'nonyliardów'],
-        ['decylion', 'decyliony', 'decylionów'],
-        ['decyliard', 'decyliardy', 'decyliardów'],
-    ];
-
     public static $currencyNames = [
         'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
         'AUD' => [['dolar australijski', 'dolary australijskie', 'dolarów australijskich'], ['cent', 'centy', 'centów']],

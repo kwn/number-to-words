@@ -6,6 +6,31 @@ use NumberToWords\Language\ExponentInflector;
 
 class PolishExponentInflector implements ExponentInflector
 {
+    private static $exponent = [
+        ['', '', ''],
+        ['tysiąc', 'tysiące', 'tysięcy'],
+        ['milion', 'miliony', 'milionów'],
+        ['miliard', 'miliardy', 'miliardów'],
+        ['bilion', 'biliony', 'bilionów'],
+        ['biliard', 'biliardy', 'biliardów'],
+        ['trylion', 'tryliony', 'trylionów'],
+        ['tryliard', 'tryliardy', 'tryliardów'],
+        ['kwadrylion', 'kwadryliony', 'kwadrylionów'],
+        ['kwadryliard', 'kwadryliardy', 'kwadryliardów'],
+        ['kwintylion', 'kwintyliony', 'kwintylionów'],
+        ['kwintyliiard', 'kwintyliardy', 'kwintyliardów'],
+        ['sekstylion', 'sekstyliony', 'sekstylionów'],
+        ['sekstyliard', 'sekstyliardy', 'sekstyliardów'],
+        ['septylion', 'septyliony', 'septylionów'],
+        ['septyliard', 'septyliardy', 'septyliardów'],
+        ['oktylion', 'oktyliony', 'oktylionów'],
+        ['oktyliard', 'oktyliardy', 'oktyliardów'],
+        ['nonylion', 'nonyliony', 'nonylionów'],
+        ['nonyliard', 'nonyliardy', 'nonyliardów'],
+        ['decylion', 'decyliony', 'decylionów'],
+        ['decyliard', 'decyliardy', 'decyliardów'],
+    ];
+
     /**
      * @var PolishNounGenderInflector
      */
@@ -29,9 +54,9 @@ class PolishExponentInflector implements ExponentInflector
     {
         return $this->inflector->inflectNounByNumber(
             $number,
-            PolishDictionary::$exponent[$power][0],
-            PolishDictionary::$exponent[$power][1],
-            PolishDictionary::$exponent[$power][2]
+            self::$exponent[$power][0],
+            self::$exponent[$power][1],
+            self::$exponent[$power][2]
         );
     }
 }
