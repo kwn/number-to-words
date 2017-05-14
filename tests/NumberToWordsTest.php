@@ -2,6 +2,10 @@
 
 namespace NumberToWords;
 
+use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\NumberTransformer\NumberTransformer;
+use PHPUnit\Framework\Assert;
+
 class NumberToWordsTest extends \PHPUnit_Framework_TestCase
 {
     public function testItThrowsExceptionIfNumberTransformerDoesNotExist()
@@ -18,5 +22,21 @@ class NumberToWordsTest extends \PHPUnit_Framework_TestCase
 
         $numberToWords = new NumberToWords();
         $numberToWords->getCurrencyTransformer('xx');
+    }
+
+    public function testItReturnsNumberTransformer()
+    {
+        $numberToWords = new NumberToWords();
+        $numberToWordsTransformer = $numberToWords->getNumberTransformer('en');
+
+        Assert::assertInstanceOf(NumberTransformer::class, $numberToWordsTransformer);
+    }
+
+    public function testItReturnsCurrencyTransformer()
+    {
+        $numberToWords = new NumberToWords();
+        $numberToWordsTransformer = $numberToWords->getCurrencyTransformer('en');
+
+        Assert::assertInstanceOf(CurrencyTransformer::class, $numberToWordsTransformer);
     }
 }
