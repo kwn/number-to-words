@@ -37,10 +37,6 @@ class PolishCurrencyTransformer implements CurrencyTransformer
         $decimal = (int) ($amount / 100);
         $fraction = $amount % 100;
 
-        if ($fraction === 0) {
-            $fraction = null;
-        }
-
         $currency = strtoupper($currency);
 
         if (!array_key_exists($currency, PolishDictionary::$currencyNames)) {
@@ -61,7 +57,7 @@ class PolishCurrencyTransformer implements CurrencyTransformer
             $currencyNames[0][2]
         );
 
-        if (null !== $fraction) {
+        if (0 !== $fraction) {
             $words[] = $numberTransformer->toWords($fraction);
             $words[] = $nounGenderInflector->inflectNounByNumber(
                 $fraction,

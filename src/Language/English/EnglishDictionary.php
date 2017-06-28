@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Language\English;
 
+use NumberToWords\Grammar\Gender;
 use NumberToWords\Language\Dictionary;
 
 class EnglishDictionary implements Dictionary
@@ -97,10 +98,11 @@ class EnglishDictionary implements Dictionary
 
     /**
      * @param int $unit
+     * @param int $gender
      *
      * @return string
      */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit($unit, $gender = Gender::GENDER_MASCULINE)
     {
         return self::$units[$unit];
     }

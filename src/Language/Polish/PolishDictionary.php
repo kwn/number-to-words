@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Language\Polish;
 
+use NumberToWords\Grammar\Gender;
 use NumberToWords\Language\Dictionary;
 
 class PolishDictionary implements Dictionary
@@ -122,10 +123,11 @@ class PolishDictionary implements Dictionary
 
     /**
      * @param int $unit
+     * @param int $gender
      *
      * @return string
      */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit($unit, $gender = Gender::GENDER_MASCULINE)
     {
         return self::$units[$unit];
     }

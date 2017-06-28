@@ -7,57 +7,13 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Ru extends Words
 {
-    const LOCALE               = 'ru';
-    const LANGUAGE_NAME        = 'Russian';
-    const LANGUAGE_NAME_NATIVE = 'Русский';
-    const MINUS                = 'минус';
-
     const MALE   = 0;
     const FEMALE = 1;
     const NEUTER = 2;
 
-    protected $zero = 'ноль';
-
     protected static $ten = [
         ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
         ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
-    ];
-
-    protected static $teens = [
-        'десять',
-        'одиннадцать',
-        'двенадцать',
-        'тринадцать',
-        'четырнадцать',
-        'пятнадцать',
-        'шестнадцать',
-        'семнадцать',
-        'восемнадцать',
-        'девятнадцать',
-    ];
-
-    protected static $tens = [
-        2 => 'двадцать',
-        'тридцать',
-        'сорок',
-        'пятьдесят',
-        'шестьдесят',
-        'семьдесят',
-        'восемьдесят',
-        'девяносто',
-    ];
-
-    protected static $hundred = [
-        '',
-        'сто',
-        'двести',
-        'триста',
-        'четыреста',
-        'пятьсот',
-        'шестьсот',
-        'семьсот',
-        'восемьсот',
-        'девятьсот',
     ];
 
     protected static $mega = [

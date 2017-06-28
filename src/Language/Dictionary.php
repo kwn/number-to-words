@@ -2,6 +2,8 @@
 
 namespace NumberToWords\Language;
 
+use NumberToWords\Grammar\Gender;
+
 interface Dictionary
 {
     /**
@@ -16,10 +18,11 @@ interface Dictionary
 
     /**
      * @param int $unit
+     * @param int $gender
      *
      * @return string
      */
-    public function getCorrespondingUnit($unit);
+    public function getCorrespondingUnit($unit, $gender = Gender::GENDER_MASCULINE);
 
     /**
      * @param int $ten
