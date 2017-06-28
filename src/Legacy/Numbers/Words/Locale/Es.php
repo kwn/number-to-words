@@ -43,6 +43,7 @@ class Es extends Words
     private $wordSeparator = ' ';
 
     private static $currencyNames = [
+        'PEN' => [['sol', 'soles'], ['centavo']],
         'ALL' => [['lek'], ['qindarka']],
         'AUD' => [['dólar australiano', 'dólares australianos'], ['centavo']],
         'ARS' => [['peso'], ['centavo']],
