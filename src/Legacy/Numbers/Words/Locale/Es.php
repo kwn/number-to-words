@@ -55,6 +55,7 @@ class Es extends Words
         'CHF' => [['swiss franc'], ['rapp']],
         'CYP' => [['cypriot pound'], ['cent']],
         'CZK' => [['czech koruna'], ['halerz']],
+        'CRC' => [['colón', 'colones'], ['centavo']],
         'DKK' => [['danish krone'], ['ore']],
         'EEK' => [['kroon'], ['senti']],
         'EUR' => [['euro'], ['centavo']],
