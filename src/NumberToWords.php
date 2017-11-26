@@ -3,6 +3,7 @@
 namespace NumberToWords;
 
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
@@ -64,6 +65,7 @@ class NumberToWords
     ];
 
     private $currencyTransformers = [
+        'de' => GermanCurrencyTransformer::class,
         'dk' => DanishCurrencyTransformer::class,
         'en' => EnglishCurrencyTransformer::class,
         'es' => SpanishCurrencyTransformer::class,
