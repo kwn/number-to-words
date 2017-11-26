@@ -23,7 +23,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $dictionary = new GermanDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new GermanTripletTransformer($dictionary);
-        $exponentInflector = $dictionary->exponent();
+        $exponentInflector = $dictionary->exponent;
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
