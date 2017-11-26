@@ -23,13 +23,14 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $dictionary = new GermanDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new GermanTripletTransformer($dictionary);
-        $exponentInflector = $dictionary::$exponent;
+        $exponentInflector = new GermanExponentInflector();
+
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
-            ->useRegularExponents($exponentInflector)
+            ->inflectExponentByNumbers($exponentInflector)
             ->build();
 
         $decimal = (int) ($amount / 100);
