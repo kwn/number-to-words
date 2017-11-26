@@ -28,7 +28,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
-            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
             ->useRegularExponents($exponentInflector)
             ->build();
 
