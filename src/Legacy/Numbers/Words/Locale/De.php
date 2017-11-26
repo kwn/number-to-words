@@ -59,9 +59,7 @@ class De extends Words
 
     private $and = 'und';
     
-    private $subunitSeparator = 'et';
-
-    private $pluralSuffix = 's';
+//    private $pluralSuffix = 's';
     
     private static $currencyNames = [
         'AUD' => [['Australischer Dollar', 'Australische Dollar'], ['Cent']],
@@ -98,7 +96,7 @@ class De extends Words
             if ($hundreds > 1) {
                 $return .= self::$digits[$hundreds] . $this->wordSeparator . self::$miscNumbers[100];
                 if ($last && !$ones && !$tens) {
-                    $return .= $this->pluralSuffix;
+//                    $return .= $this->pluralSuffix;
                 }
             } else {
                 $return .= self::$miscNumbers[100];
@@ -134,7 +132,7 @@ class De extends Words
                         $return .= $this->showDigitsGroup($resto);
                         $ones = 0;
                     } else {
-                        $return .= $this->pluralSuffix;
+//                        $return .= $this->pluralSuffix;
                     }
                 }
             } else {
@@ -204,7 +202,7 @@ class De extends Words
             $return .= $currencyNames[0][0];
         }
         if (null !== $fraction) {
-            $return .= sprintf('%1$s%2$s%1$s%3$s%1$s', $this->wordSeparator, $this->subunitSeparator, trim($this->toWords($fraction)));
+            $return .= sprintf('%1$s%2$s%1$s%3$s%1$s', $this->wordSeparator, $this->and, trim($this->toWords($fraction)));
             $level = $fraction === 1 ? 0 : 1;
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
