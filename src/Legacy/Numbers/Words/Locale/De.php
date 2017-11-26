@@ -196,7 +196,8 @@ class De extends Words
             if (count($currencyNames[0]) > 1) {
                 $return .= $currencyNames[0][$level];
             } else {
-                $return .= $currencyNames[0][0] . 's';
+//                $return .= $currencyNames[0][0] . 's';
+                $return .= $currencyNames[0][0];
             }
         } else {
             $return .= $currencyNames[0][0];
@@ -208,7 +209,8 @@ class De extends Words
                 if (count($currencyNames[1]) > 1) {
                     $return .= $currencyNames[1][$level];
                 } else {
-                    $return .= $currencyNames[1][0] . 's';
+//                    $return .= $currencyNames[1][0] . 's';
+                    $return .= $currencyNames[1][0];
                 }
             } else {
                 $return .= $currencyNames[1][0];
