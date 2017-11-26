@@ -150,32 +150,18 @@ class De extends Words
      */
     protected function toWords($number)
     {
-        $ret = '';
-        if ($number === 0) {
-            return $this->zero;
-        }
-        if ($number < 0) {
-            $ret = $this->minus . $this->wordSeparator;
-        }
-        $numberGroups = $this->splitNumber(abs($number));
-        $sizeOfNumberGroups = count($numberGroups);
-        foreach ($numberGroups as $i => $numb) {
-            $power = $sizeOfNumberGroups - $i;
-            if ($numb !== 0) {
-                if ($numb !== 1 || $power !== 2) {
-                    $ret .= $this->showDigitsGroup(
-                        $numb,
-                        $i + 1 === $sizeOfNumberGroups || $power > 2
-                    ) . $this->wordSeparator;
-                }
-                $ret .= self::$exponent[($power - 1) * 3];
-                if ($power > 2 && $numb > 1) {
-                    $ret .= $this->pluralSuffix;
-                }
-                $ret .= $this->wordSeparator;
-            }
-        }
-        return rtrim($ret, $this->wordSeparator);
+        $dictionary = new GermanDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new GermanTripletTransformer($dictionary);
+        $exponentInflector = new GermanExponentInflector();
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy('')
+            ->withExponentsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+        return $numberTransformer->toWords($number);
     }
     
     /**
