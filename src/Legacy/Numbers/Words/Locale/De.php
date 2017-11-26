@@ -7,6 +7,7 @@ use NumberToWords\Language\German\GermanDictionary;
 use NumberToWords\Language\German\GermanExponentInflector;
 use NumberToWords\Language\German\GermanTripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 
 class De extends Words
 {
