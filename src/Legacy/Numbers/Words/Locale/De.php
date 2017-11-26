@@ -64,6 +64,88 @@ class De extends Words
     /**
      * @param int $number
      *
+     * @return array
+     */
+    private function splitNumber($number)
+    {
+        return array_map('intval', explode(' ', number_format($number, 0, '', ' ')));
+    }
+
+    /**
+     * @param int  $num
+     * @param bool $last
+     *
+     * @return string
+     */
+    private function showDigitsGroup($num, $last = false)
+    {
+        $return = '';
+        $ones = $num % 10;
+        $tens = (int) ($num % 100 / 10);
+        $hundreds = (int) ($num % 1000 / 100);
+        if ($hundreds) {
+            if ($hundreds > 1) {
+                $return .= self::$digits[$hundreds] . $this->wordSeparator . self::$miscNumbers[100];
+                if ($last && !$ones && !$tens) {
+                    $return .= $this->pluralSuffix;
+                }
+            } else {
+                $return .= self::$miscNumbers[100];
+            }
+            $return .= $this->wordSeparator;
+        }
+        if ($tens) {
+            if ($tens === 1) {
+                if ($ones <= 6) {
+                    $return .= self::$miscNumbers[10 + $ones];
+                } else {
+                    $return .= self::$miscNumbers[10] . '-' . self::$digits[$ones];
+                }
+                $ones = 0;
+            } elseif ($tens > 5) {
+                if ($tens < 8) {
+                    $return .= self::$miscNumbers[60];
+                    $resto = $tens * 10 + $ones - 60;
+                    if ($ones === 1) {
+                        $return .= $this->wordSeparator . $this->and . $this->wordSeparator;
+                    } elseif ($resto) {
+                        $return .= $this->dash;
+                    }
+                    if ($resto) {
+                        $return .= $this->showDigitsGroup($resto);
+                    }
+                    $ones = 0;
+                } else {
+                    $return .= self::$digits[4] . $this->dash . self::$miscNumbers[20];
+                    $resto = $tens * 10 + $ones - 80;
+                    if ($resto) {
+                        $return .= $this->dash;
+                        $return .= $this->showDigitsGroup($resto);
+                        $ones = 0;
+                    } else {
+                        $return .= $this->pluralSuffix;
+                    }
+                }
+            } else {
+                $return .= self::$miscNumbers[$tens * 10];
+            }
+        }
+        if ($ones) {
+            if ($tens) {
+                if ($ones === 1) {
+                    $return .= $this->wordSeparator . $this->and . $this->wordSeparator;
+                } else {
+                    $return .= $this->dash;
+                }
+            }
+            $return .= self::$digits[$ones];
+        }
+        return rtrim($return, $this->wordSeparator);
+    }
+
+    /**
+     * @param int $number
+     *
      * @return string
      */
     protected function toWords($number)
