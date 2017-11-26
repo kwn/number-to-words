@@ -12,7 +12,7 @@ class GermanCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords()
     {
         return [
-            [600, 'EUR', 'sechshundert Euro']
+            [600, 'EUR', 'sechs Euro']
         ];
     }
 }
