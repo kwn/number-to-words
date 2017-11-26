@@ -55,11 +55,11 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $level = ($decimal === 1) ? 0 : 1;
 
         if ($level > 0) {
-            if (count($currencyNames[0]) > 1) {
+//            if (count($currencyNames[0]) > 1) {
                 $return .= ' ' . $currencyNames[0][$level];
-            } else {
-                $return .= ' ' . $currencyNames[0][0] . 's';
-            }
+//            } else {
+//                $return .= ' ' . $currencyNames[0][0] . 's';
+//            }
         } else {
             $return .= ' ' . $currencyNames[0][0];
         }
@@ -70,11 +70,11 @@ class GermanCurrencyTransformer implements CurrencyTransformer
             $level = $fraction === 1 ? 0 : 1;
 
             if ($level > 0) {
-                if (count($currencyNames[1]) > 1) {
+//                if (count($currencyNames[1]) > 1) {
                     $return .= ' ' . $currencyNames[1][$level];
-                } else {
-                    $return .= ' ' . $currencyNames[1][0] . 's';
-                }
+//                } else {
+//                    $return .= ' ' . $currencyNames[1][0] . 's';
+//                }
             } else {
                 $return .= ' ' . $currencyNames[1][0];
             }
