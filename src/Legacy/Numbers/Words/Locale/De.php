@@ -57,6 +57,12 @@ class De extends Words
 
     private $wordSeparator = ' ';
 
+    private $and = 'und';
+    
+    private $subunitSeparator = 'et';
+
+    private $pluralSuffix = 's';
+    
     private static $currencyNames = [
         'AUD' => [['Australischer Dollar', 'Australische Dollar'], ['Cent']],
         'CHF' => [['Schweizer Franken', 'Schweizer Franken'], ['Rappen']],
