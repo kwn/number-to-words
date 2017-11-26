@@ -68,6 +68,8 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         if (null !== $fraction) {
             $return .= ' ' . trim($numberTransformer->toWords($fraction));
 
+            $return .= ' und ';
+
             $level = $fraction === 1 ? 0 : 1;
 
             if ($level > 0) {
