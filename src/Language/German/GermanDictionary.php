@@ -91,6 +91,8 @@ class GermanDictionary implements Dictionary
         'EUR' => [['Euro'], ['cent']]
     ];
 
+    publich static $and = 'und';
+
     /**
      * @return string
      */
