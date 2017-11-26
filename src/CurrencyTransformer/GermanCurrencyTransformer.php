@@ -8,6 +8,7 @@ use NumberToWords\Language\German\GermanExponentGetter;
 use NumberToWords\Language\German\GermanTripletTransformer;
 use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
+use NumberToWords\Language\German\GermanExponentInflector;
 
 class GermanCurrencyTransformer implements CurrencyTransformer
 {
