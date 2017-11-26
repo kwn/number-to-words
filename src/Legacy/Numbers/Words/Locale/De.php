@@ -3,6 +3,10 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\German\GermanDictionary;
+use NumberToWords\Language\German\GermanExponentInflector;
+use NumberToWords\Language\German\GermanTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class De extends Words
 {
