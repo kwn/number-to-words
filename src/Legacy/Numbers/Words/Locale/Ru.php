@@ -263,7 +263,7 @@ class Ru extends Words
 
         // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
+        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2F", (float) $number));
 
         foreach (str_split($unit, 3) as $megaKey => $value) {
             if (!(int) $value) {
