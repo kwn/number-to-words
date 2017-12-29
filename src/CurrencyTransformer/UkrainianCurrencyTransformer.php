@@ -4,7 +4,7 @@ namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Legacy\Numbers\Words;
 
-class RussianCurrencyTransformer implements CurrencyTransformer
+class UkrainianCurrencyTransformer implements CurrencyTransformer
 {
     /**
      * @param int    $amount
@@ -16,6 +16,6 @@ class RussianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words();
 
-        return $converter->transformToCurrency($amount, 'ru', $currency);
+        return $converter->transformToCurrency($amount, 'ua', $currency);
     }
 }
