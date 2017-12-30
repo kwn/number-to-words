@@ -10,6 +10,7 @@ use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\SpanishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -71,7 +72,8 @@ class NumberToWords
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
-        'ru' => RussianCurrencyTransformer::class
+        'ru' => RussianCurrencyTransformer::class,
+        'ua' => UkrainianCurrencyTransformer::class,
     ];
 
     /**
