@@ -87,6 +87,12 @@ class GermanDictionary implements Dictionary
         ['Dezilliarde', 'Dezilliarden'],
     ];
 
+    public static $currencyNames = [
+        'EUR' => [['Euro'], ['cent']]
+    ];
+
+    public static $and = 'und';
+
     /**
      * @return string
      */
