@@ -84,7 +84,7 @@ Danish               | dk         | +      | +        | -     | -
 Dutch                | nl         | +      | -        | -     | -
 English              | en         | +      | +        | -     | -
 Estonian             | et         | +      | -        | -     | -
-German               | de         | +      | -        | -     | -
+German               | de         | +      | +        | -     | -
 French               | fr         | +      | +        | -     | -
 Hungarian            | hu         | +      | +        | -     | -
 Indonesian           | id         | +      | -        | -     | -

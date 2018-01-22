@@ -4,7 +4,6 @@ namespace NumberToWords\CurrencyTransformer;
 
 class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
 {
-
     public function setUp()
     {
         $this->currencyTransformer = new FrenchCurrencyTransformer();
