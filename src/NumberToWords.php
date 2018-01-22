@@ -11,6 +11,7 @@ use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\SpanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -68,12 +69,13 @@ class NumberToWords
         'dk' => DanishCurrencyTransformer::class,
         'en' => EnglishCurrencyTransformer::class,
         'es' => SpanishCurrencyTransformer::class,
+        'fr' => FrenchCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
         'ru' => RussianCurrencyTransformer::class,
-        'ua' => UkrainianCurrencyTransformer::class,
+        'ua' => UkrainianCurrencyTransformer::class
     ];
 
     /**
