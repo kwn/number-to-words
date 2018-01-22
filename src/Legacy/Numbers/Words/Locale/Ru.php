@@ -145,6 +145,10 @@ class Ru extends Words
             [2, 'иена', 'иены', 'иен'],
             [2, 'сена', 'сены', 'сен']
         ],
+        'KZT' => [
+            [0, 'казахский тенге', 'казахских тенге', 'казахских тенге'],
+            [1, 'тиын', 'тиына', 'тиынов']
+        ],
         'LTL' => [
             [1, 'лит', 'лита', 'литов'],
             [1, 'цент', 'цента', 'центов']
@@ -263,7 +267,7 @@ class Ru extends Words
 
         // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
+        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2F", (float) $number));
 
         foreach (str_split($unit, 3) as $megaKey => $value) {
             if (!(int) $value) {
