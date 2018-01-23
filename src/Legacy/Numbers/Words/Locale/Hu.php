@@ -7,8 +7,8 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Hu extends Words
 {
-    const LOCALE               = 'hu';
-    const LANGUAGE_NAME        = 'Hungarian';
+    const LOCALE = 'hu';
+    const LANGUAGE_NAME = 'Hungarian';
     const LANGUAGE_NAME_NATIVE = 'Magyar';
 
     private $minus = 'mínusz';
@@ -95,59 +95,40 @@ class Hu extends Words
     ];
 
     /**
-     * @param int    $number
-     * @param array  $options
-     * @param int    $power
-     * @param string $powerSuffix
-     * @param bool   $gt2000
+     * @param int $number
+     * @param int $power
      *
      * @return null|string
      */
-    protected function toWords($number, $options = [], $power = 0, $powerSuffix = '', $gt2000 = false)
+    protected function toWords($number, $power = 0)
     {
-        $checkIfGreaterThan2000 = true;
-
-        extract($options, EXTR_IF_EXISTS);
-
-        $ret = '';
+        $return = '';
 
         if ($number < 0) {
-            $ret = $this->minus . ' ';
-            $number = abs($number);
+            $return = $this->minus . ' ';
+            $number = (int) abs($number);
         }
 
-        if ($checkIfGreaterThan2000) {
-            $gt2000 = $number > 2000;
+        if ($number == 0 || $number == '') {
+            return $this->wordSeparator . self::$digits[0];
         }
+
+        $gt2000 = $number > 2000;
 
         if (strlen($number) > 3) {
             $maxp = strlen($number) - 1;
             $curp = $maxp;
             for ($p = $maxp; $p > 0; --$p) { // power
-
-                // check for highest power
                 if (isset(self::$exponent[$p])) {
                     // send substr from $curp to $p
                     $snum = substr($number, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
 
                     if ($snum !== '') {
-                        $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
-
-                        if ($powerSuffix != '') {
-                            $cursuffix .= $this->wordSeparator . $powerSuffix;
-                        }
-
-                        $ret .= $this->toWords(
-                            $snum,
-                            ['checkIfGreaterThan2000' => false],
-                            $p,
-                            $cursuffix,
-                            $gt2000
-                        );
+                        $return .= $this->toWords($snum, $p);
 
                         if ($gt2000) {
-                            $ret .= $this->thousandSeparator;
+                            $return .= $this->thousandSeparator;
                         }
                     }
                     $curp = $p - 1;
@@ -158,54 +139,41 @@ class Hu extends Words
             $number = substr($number, $maxp - $curp, $curp - $p + 1);
 
             if ($number == 0) {
-                return rtrim($ret, $this->thousandSeparator);
+                return rtrim($return, $this->thousandSeparator);
             }
-        } elseif ($number == 0 || $number == '') {
-            return $this->wordSeparator . self::$digits[0];
         }
 
-        $h = $t = $d = 0;
-
-        switch (strlen($number)) {
-            case 3:
-                $h = (int) substr($number, -3, 1);
-            case 2:
-                $t = (int) substr($number, -2, 1);
-            case 1:
-                $d = (int) substr($number, -1, 1);
-                break;
-            case 0:
-                return;
-                break;
-        }
+        $d = $number % 10;
+        $t = (int) ($number / 10) % 10;
+        $h = (int) ($number / 100) % 10;
 
         if ($h) {
-            $ret .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'száz';
+            $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'száz';
         }
 
         // ten, twenty etc.
         switch ($t) {
             case 9:
             case 5:
-                $ret .= $this->wordSeparator . self::$digits[$t] . 'ven';
+                $return .= $this->wordSeparator . self::$digits[$t] . 'ven';
                 break;
             case 8:
             case 6:
-                $ret .= $this->wordSeparator . self::$digits[$t] . 'van';
+                $return .= $this->wordSeparator . self::$digits[$t] . 'van';
                 break;
             case 7:
-                $ret .= $this->wordSeparator . 'hetven';
+                $return .= $this->wordSeparator . 'hetven';
                 break;
             case 3:
-                $ret .= $this->wordSeparator . 'harminc';
+                $return .= $this->wordSeparator . 'harminc';
                 break;
             case 4:
-                $ret .= $this->wordSeparator . 'negyven';
+                $return .= $this->wordSeparator . 'negyven';
                 break;
             case 2:
                 switch ($d) {
                     case 0:
-                        $ret .= $this->wordSeparator . 'húsz';
+                        $return .= $this->wordSeparator . 'húsz';
                         break;
                     case 1:
                     case 2:
@@ -216,14 +184,14 @@ class Hu extends Words
                     case 7:
                     case 8:
                     case 9:
-                        $ret .= $this->wordSeparator . 'huszon';
+                        $return .= $this->wordSeparator . 'huszon';
                         break;
                 }
                 break;
             case 1:
                 switch ($d) {
                     case 0:
-                        $ret .= $this->wordSeparator . 'tíz';
+                        $return .= $this->wordSeparator . 'tíz';
                         break;
                     case 1:
                     case 2:
@@ -234,14 +202,14 @@ class Hu extends Words
                     case 7:
                     case 8:
                     case 9:
-                        $ret .= $this->wordSeparator . 'tizen';
+                        $return .= $this->wordSeparator . 'tizen';
                         break;
                 }
                 break;
         }
 
         if ($d > 0) {
-            $ret .= $this->wordSeparator . self::$digits[$d];
+            $return .= $this->wordSeparator . self::$digits[$d];
         }
 
         if ($power > 0) {
@@ -253,14 +221,10 @@ class Hu extends Words
                 return null;
             }
 
-            $ret .= $this->wordSeparator . $lev[0];
+            $return .= $this->wordSeparator . $lev[0];
         }
 
-        if ($powerSuffix != '') {
-            $ret .= $this->wordSeparator . $powerSuffix;
-        }
-
-        return $ret;
+        return $return;
     }
 
     /**
