@@ -12,8 +12,8 @@ class UkrainianCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords()
     {
         return [
-            [100, 'UAH', 'одна гривня'],
-            [200, 'UAH', 'двi гривнi'],
+            [100, 'UAH', 'одна гривна'],
+            [200, 'UAH', 'дві гривні'],
             [500, 'UAH', 'п\'ять гривень'],
             [34000, 'UAH', 'триста сорок гривень'],
             [34100, 'UAH', 'триста сорок одна гривна'],
