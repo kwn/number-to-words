@@ -129,10 +129,10 @@ class Tk extends Words
             $out[] = static::$ten[$i1] . ' ýüz'; # 1xx-9xx
             
             // tens
-            $out[] = static::$tens[$i2]
+            $out[] = static::$tens[$i2];
 
             // ones
-            $out[] = static::$ten[$i2]
+            $out[] = static::$ten[$i2];
         }
 
         return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
