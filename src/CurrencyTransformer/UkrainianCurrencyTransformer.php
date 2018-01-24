@@ -7,10 +7,10 @@ use NumberToWords\Legacy\Numbers\Words;
 class UkrainianCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
+     * @param int $amount
      * @param string $currency
-     *
      * @return string
+     * @throws \NumberToWords\Exception\NumberToWordsException
      */
     public function toWords($amount, $currency)
     {
