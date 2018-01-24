@@ -5,7 +5,7 @@ namespace NumberToWords\Legacy\Numbers\Words\Locale;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
-class Tr extends Words
+class Tk extends Words
 {
     const LOCALE               = 'tk';
     const LANGUAGE_NAME        = 'Turkmen';
