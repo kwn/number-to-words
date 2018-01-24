@@ -36,6 +36,7 @@ use NumberToWords\NumberTransformer\RussianNumberTransformer;
 use NumberToWords\NumberTransformer\SpanishNumberTransformer;
 use NumberToWords\NumberTransformer\SwedishNumberTransformer;
 use NumberToWords\NumberTransformer\TurkishNumberTransformer;
+use NumberToWords\NumberTransformer\TurkmenNumberTransformer;
 use NumberToWords\NumberTransformer\UkrainianNumberTransformer;
 
 class NumberToWords
@@ -62,8 +63,9 @@ class NumberToWords
         'ro' => RomanianNumberTransformer::class,
         'ru' => RussianNumberTransformer::class,
         'sv' => SwedishNumberTransformer::class,
+        'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
-        'ua' => UkrainianNumberTransformer::class
+        'ua' => UkrainianNumberTransformer::class,
     ];
 
     private $currencyTransformers = [
