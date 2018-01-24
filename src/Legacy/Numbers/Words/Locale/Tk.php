@@ -29,18 +29,9 @@ class Tk extends Words
         'togsan',
     ];
 
-    protected static $mega1 = [
-        [3 => self::FEMALE],
-        [3 => self::MALE],
-        ['тысяча', 'тысячи', 'тысяч', self::FEMALE],
-        ['миллион', 'миллиона', 'миллионов', self::MALE],
-        ['миллиард', 'милиарда', 'миллиардов', self::MALE],
-        ['триллион', 'триллионы', 'триллионов', self::MALE],
-        ['квадриллион', 'квадриллиона', 'квадриллионов', self::MALE],
-        ['секстиллион', 'секстильоны', 'секстиллионов', self::MALE],
-    ];
-
     protected static $mega = [
+        '',
+        '',
         'müň',
         'million',
         'milliard',
@@ -133,6 +124,10 @@ class Tk extends Words
 
             // ones
             $out[] = static::$ten[$i2];
+
+            if ($megaKey > 1) {
+                $out[] = static::$mega[$megaKey];
+            }
         }
 
         return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
