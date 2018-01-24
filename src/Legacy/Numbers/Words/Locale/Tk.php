@@ -13,26 +13,39 @@ class Tk extends Words
 
     private $minus = 'minus';
 
-    private static $exponent = [
-        0  => [''],
-        3  => ['müň'],
-        6  => ['million'],
-        12 => ['milliard'],
-        18 => ['trillion'],
-        24 => ['katrillion'],
+    protected $zero = 'nol';
+
+    protected static $ten = ['', 'bir', 'iki', 'üç', 'dört', 'bäş', 'alty', 'ýedi', 'sekiz', 'dokuz'];
+
+    protected static $tens = [
+        1 => 'on',
+        'ýigrimi',
+        'otuz',
+        'kyrk',
+        'elli',
+        'altmyş',
+        'ýetmiş',
+        'segsen',
+        'togsan',
     ];
 
-    protected static $digits = [
-        'nol',
-        'bir',
-        'iki',
-        'üç',
-        'dört',
-        'bäş',
-        'alty',
-        'ýedi',
-        'sekiz',
-        'dokuz'
+    protected static $mega1 = [
+        [3 => self::FEMALE],
+        [3 => self::MALE],
+        ['тысяча', 'тысячи', 'тысяч', self::FEMALE],
+        ['миллион', 'миллиона', 'миллионов', self::MALE],
+        ['миллиард', 'милиарда', 'миллиардов', self::MALE],
+        ['триллион', 'триллионы', 'триллионов', self::MALE],
+        ['квадриллион', 'квадриллиона', 'квадриллионов', self::MALE],
+        ['секстиллион', 'секстильоны', 'секстиллионов', self::MALE],
+    ];
+
+    protected static $mega = [
+        'müň',
+        'million',
+        'milliard',
+        'trillion',
+        'kwadrillion',
     ];
 
     private $wordSeparator = ' ';
@@ -84,129 +97,45 @@ class Tk extends Words
      *
      * @return string
      */
-    protected function toWords($num, $power = 0)
+    protected function toWords($number)
     {
-        // The return string;
-        $ret = '';
-
-        // add a the word for the minus sign if necessary
-        if (substr($num, 0, 1) == '-') {
-            $ret = $this->wordSeparator . $this->minus;
-            $num = substr($num, 1);
+        if ($number === 0) {
+            return $this->zero;
         }
 
+        $out = [];
 
-        // strip excessive zero signs
-        $num = preg_replace('/^0+/', '', $num);
-
-        if (strlen($num) > 6) {
-            $current_power = 6;
-            // check for highest power
-            if (isset(self::$exponent[$power])) {
-                // convert the number above the first 6 digits
-                // with it's corresponding $power.
-                $snum = substr($num, 0, -6);
-                $snum = preg_replace('/^0+/', '', $snum);
-                if ($snum !== '') {
-                    $ret .= $this->toWords($snum, $power + 6);
-                }
-            }
-            $num = substr($num, -6);
-            if ($num == 0) {
-                return $ret;
-            }
-        } elseif ($num == 0 || $num == '') {
-            return (' ' . self::$digits[0] . ' ');
-            $current_power = strlen($num);
-        } else {
-            $current_power = strlen($num);
+        if ($number < 0) {
+            $out[] = static::MINUS;
+            $number *= -1;
         }
 
-        // See if we need "thousands"
-        $thousands = floor($num / 1000);
-        if ($thousands == 1) {
-            $ret .= $this->wordSeparator . 'bin' . $this->wordSeparator;
-        } elseif ($thousands > 1) {
-            $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
-        }
+        $megaSize = count(static::$mega);
+        $signs = $megaSize * 3;
 
-        // values for digits, tens and hundreds
-        $h = floor(($num / 100) % 10);
-        $t = floor(($num / 10) % 10);
-        $d = floor($num % 10);
+        // $signs equal quantity of zeros of the biggest number in self::$mega
+        // + 3 additional sign (point and two zero)
+        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
 
-        if ($h) {
-            $ret .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'yüz';
-
-            // in English only - add ' and' for [1-9]01..[1-9]99
-            // (also for 1001..1099, 10001..10099 but it is harder)
-            // for now it is switched off, maybe some language purists
-            // can force me to enable it, or to remove it completely
-            // if (($t + $d) > 0)
-            //   $ret .= $this->wordSeparator . 'and';
-        }
-
-        // decine: venti trenta, etc...
-        switch ($t) {
-            case 9:
-                $ret .= $this->wordSeparator . 'togsan';
-                break;
-
-            case 8:
-                $ret .= $this->wordSeparator . 'segsen';
-                break;
-
-            case 7:
-                $ret .= $this->wordSeparator . 'ýetmiş';
-                break;
-
-            case 6:
-                $ret .= $this->wordSeparator . 'altmyş';
-                break;
-
-            case 5:
-                $ret .= $this->wordSeparator . 'elli';
-                break;
-
-            case 4:
-                $ret .= $this->wordSeparator . 'kyrk';
-                break;
-
-            case 3:
-                $ret .= $this->wordSeparator . 'otuz';
-                break;
-
-            case 2:
-                $ret .= $this->wordSeparator . 'ýigrimi';
-                break;
-
-            case 2:
-                $ret .= $this->wordSeparator . 'on';
-                break;
-
-                break;
-        }
-
-        if ($t > 1 && $d > 0) {
-            $ret .= $this->wordSeparator . self::$digits[$d];
-        }
-
-        if ($power > 0) {
-            if (isset(self::$exponent[$power])) {
-                $lev = self::$exponent[$power];
+        foreach (str_split($unit, 3) as $megaKey => $value) {
+            if (!(int) $value) {
+                continue;
             }
 
-            if (!isset($lev) || !is_array($lev)) {
-                return null;
-            }
+            // $megaKey = $megaSize - $megaKey - 1;
+            // $gender = static::$mega[$megaKey][3];
+            list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
+            // mega-logic
+            $out[] = static::$ten[$i1] . ' ýüz'; # 1xx-9xx
+            
+            // tens
+            $out[] = static::$tens[$i2]
 
-            $suffix = $lev[0];
-            if ($num != 0) {
-                $ret .= $this->wordSeparator . $suffix;
-            }
+            // ones
+            $out[] = static::$ten[$i2]
         }
 
-        return $ret;
+        return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
     }
 
     /**
