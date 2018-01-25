@@ -98,7 +98,7 @@ Spanish              | es         | +      | +        | -     | -
 Russian              | ru         | +      | +        | -     | -
 Swedish              | sv         | +      | -        | -     | -
 Turkish              | tr         | +      | -        | -     | -
-Turkmen              | tk         | +      | -        | -     | -
+Turkmen              | tk         | +      | +        | -     | -
 Ukrainian            | uk         | +      | +        | -     | -
 
 ## Contributors

@@ -39,13 +39,25 @@ class Tk extends Words
         'kwadrillion',
     ];
 
+    protected static $currencyNames = [
+        'USD' => [
+            'dollar',
+            'sent'
+        ],
+        'TMT' => [
+            'manat',
+            'teňňe'
+        ],
+    ];
+
     private $wordSeparator = ' ';
 
     /**
-     * @param int $num
-     * @param int $power
-     *
+     * @param $number
      * @return string
+     * @internal param int $num
+     * @internal param int $power
+     *
      */
     protected function toWords($number)
     {
@@ -98,5 +110,37 @@ class Tk extends Words
         }
 
         return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
+    }
+
+    /**
+     * @param $currency
+     * @param $decimal
+     * @param null $fraction
+     * @return string
+     * @throws NumberToWordsException
+     */
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
+
+        $return = $this->toWords($decimal) . ' ' . $currencyNames[0];
+
+        if ($currencyNames[0][0] === 2) {
+            static::$ten = array_reverse(static::$ten);
+        }
+
+        if (null !== $fraction) {
+            $return .= ' ' . $this->toWords($fraction) . ' ' . $currencyNames[1];
+        }
+
+        return $return;
     }
 }
