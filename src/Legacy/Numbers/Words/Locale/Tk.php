@@ -132,11 +132,7 @@ class Tk extends Words
         $currencyNames = static::$currencyNames[$currency];
 
         $return = $this->toWords($decimal) . ' ' . $currencyNames[0];
-
-        if ($currencyNames[0][0] === 2) {
-            static::$ten = array_reverse(static::$ten);
-        }
-
+        
         if (null !== $fraction) {
             $return .= ' ' . $this->toWords($fraction) . ' ' . $currencyNames[1];
         }
