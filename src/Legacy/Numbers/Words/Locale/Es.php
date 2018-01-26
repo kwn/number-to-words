@@ -87,59 +87,49 @@ class Es extends Words
     ];
 
     /**
-     * @param int $num
+     * @param int $number
      * @param int $power
      *
      * @return string
      */
-    protected function toWords($num, $power = 0)
+    protected function toWords($number, $power = 0)
     {
         $ret = '';
 
-        // add a the word for the minus sign if necessary
-        if (substr($num, 0, 1) == '-') {
-            $ret = $this->wordSeparator . $this->minus;
-            $num = substr($num, 1);
+        if ($number === 0) {
+            return self::$digits[0];
         }
 
-        // strip excessive zero signs
-        $num = preg_replace('/^0+/', '', $num);
+        if ($number < 0) {
+            $ret = $this->minus;
+            $number *= -1;
+        }
 
-        if (strlen($num) > 6) {
-            $current_power = 6;
+        if (strlen($number) > 6) {
             // check for highest power
             if (isset(self::$exponent[$power])) {
                 // convert the number above the first 6 digits
                 // with it's corresponding $power.
-                $snum = substr($num, 0, -6);
+                $snum = substr($number, 0, -6);
                 $snum = preg_replace('/^0+/', '', $snum);
                 if ($snum !== '') {
                     $ret .= $this->toWords($snum, $power + 6);
                 }
             }
-            $num = substr($num, -6);
-            if ($num == 0) {
-                return $ret;
-            }
-        } elseif ($num == 0 || $num == '') {
-            return (' ' . self::$digits[0]);
-            $current_power = strlen($num);
-        } else {
-            $current_power = strlen($num);
+            $number = substr($number, -6);
         }
 
         // See if we need "thousands"
-        $thousands = floor($num / 1000);
+        $thousands = floor($number / 1000);
         if ($thousands == 1) {
             $ret .= $this->wordSeparator . 'mil';
         } elseif ($thousands > 1) {
             $ret .= $this->toWords($thousands, 3);
         }
 
-        // values for digits, tens and hundreds
-        $h = floor(($num / 100) % 10);
-        $t = floor(($num / 10) % 10);
-        $d = floor($num % 10);
+        $d = $number % 10;
+        $t = (int) ($number / 10) % 10;
+        $h = (int) ($number / 100) % 10;
 
         // cientos: doscientos, trescientos, etc...
         switch ($h) {
@@ -275,12 +265,13 @@ class Es extends Words
             }
 
             // if it's only one use the singular suffix
-            if (($d == 1) and ($t == 0) and ($h == 0)) {
+            if ($d == 1 && $t == 0 && $h == 0) {
                 $suffix = $lev[0];
             } else {
                 $suffix = $lev[1];
             }
-            if ($num != 0) {
+
+            if ($number != 0) {
                 $ret .= $this->wordSeparator . $suffix;
             }
         }

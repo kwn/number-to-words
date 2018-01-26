@@ -12,6 +12,7 @@ class SpanishNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords()
     {
         return [
+            [-12, 'menos doce'],
             [0, 'cero'],
             [1, 'uno'],
             [2, 'dos'],
