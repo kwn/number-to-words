@@ -19,3 +19,4 @@ script:
 
 after_script:
   - vendor/bin/test-reporter
+  - vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no src/ --rules=@Symfony

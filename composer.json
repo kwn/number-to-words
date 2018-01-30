@@ -17,7 +17,8 @@
         "phpunit/phpunit": "~4.8.0",
         "phpmd/phpmd": "~2.6.0",
         "codeclimate/php-test-reporter": "~0.4.0",
-        "squizlabs/php_codesniffer": "~2.9.0"
+        "squizlabs/php_codesniffer": "~2.9.0",
+        "friendsofphp/php-cs-fixer": "^2.10"
     },
     "autoload": {
         "psr-4": {
