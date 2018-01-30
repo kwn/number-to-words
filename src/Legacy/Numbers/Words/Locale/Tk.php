@@ -2,18 +2,17 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Tk extends Words
 {
-    const LOCALE               = 'tk';
-    const LANGUAGE_NAME        = 'Turkmen';
+    const LOCALE = 'tk';
+    const LANGUAGE_NAME = 'Turkmen';
     const LANGUAGE_NAME_NATIVE = 'Türkmen';
 
     private $minus = 'minus';
 
-    protected  $zero = 'nol';
+    protected $zero = 'nol';
 
     protected static $ten = ['', 'bir', 'iki', 'üç', 'dört', 'bäş', 'alty', 'ýedi', 'sekiz', 'dokuz'];
 
@@ -49,7 +48,7 @@ class Tk extends Words
      */
     protected function toWords($number)
     {
-        if ($number === 0) {
+        if (0 === $number) {
             return $this->zero;
         }
 
@@ -65,7 +64,7 @@ class Tk extends Words
 
         // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
+        list($unit, $subunit) = explode('.', sprintf("%{$signs}.2f", (float) $number));
 
         // return sprintf("%{1}.2f", (float) $number);
 
@@ -76,12 +75,12 @@ class Tk extends Words
 
             $megaKey = $megaSize - $megaKey - 1;
             // $gender = static::$mega[$megaKey][3];
-            list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
+            list($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
             // mega-logic
             if ($i1 > 0) {
-                $out[] = static::$ten[$i1] . ' ýüz'; # 1xx-9xx
+                $out[] = static::$ten[$i1].' ýüz'; // 1xx-9xx
             }
-            
+
             // tens
             if ($i2 > 0) {
                 $out[] = static::$tens[$i2];

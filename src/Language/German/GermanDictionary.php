@@ -6,8 +6,8 @@ use NumberToWords\Language\Dictionary;
 
 class GermanDictionary implements Dictionary
 {
-    const LOCALE               = 'de';
-    const LANGUAGE_NAME        = 'German';
+    const LOCALE = 'de';
+    const LANGUAGE_NAME = 'German';
     const LANGUAGE_NAME_NATIVE = 'Deutsch';
 
     private static $units = [
@@ -20,7 +20,7 @@ class GermanDictionary implements Dictionary
         6 => 'sechs',
         7 => 'sieben',
         8 => 'acht',
-        9 => 'neun'
+        9 => 'neun',
     ];
 
     private static $teens = [
@@ -33,7 +33,7 @@ class GermanDictionary implements Dictionary
         6 => 'sechzehn',
         7 => 'siebzehn',
         8 => 'achtzehn',
-        9 => 'neunzehn'
+        9 => 'neunzehn',
     ];
 
     private static $tens = [
@@ -46,7 +46,7 @@ class GermanDictionary implements Dictionary
         6 => 'sechzig',
         7 => 'siebzig',
         8 => 'achtzig',
-        9 => 'neunzig'
+        9 => 'neunzig',
     ];
 
     private static $hundreds = [
@@ -59,7 +59,7 @@ class GermanDictionary implements Dictionary
         6 => 'sechshundert',
         7 => 'siebenhundert',
         8 => 'achthundert',
-        9 => 'neunhundert'
+        9 => 'neunhundert',
     ];
 
     public static $exponent = [
@@ -88,7 +88,7 @@ class GermanDictionary implements Dictionary
     ];
 
     public static $currencyNames = [
-        'EUR' => [['Euro'], ['cent']]
+        'EUR' => [['Euro'], ['cent']],
     ];
 
     public static $and = 'und';

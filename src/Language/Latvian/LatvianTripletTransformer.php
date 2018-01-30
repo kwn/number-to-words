@@ -35,7 +35,7 @@ class LatvianTripletTransformer implements TripletTransformer
             $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
         }
 
-        if ($tens === 1) {
+        if (1 === $tens) {
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         }
 
@@ -43,7 +43,7 @@ class LatvianTripletTransformer implements TripletTransformer
             $words[] = $this->dictionary->getCorrespondingTen($tens);
         }
 
-        if ($units > 0 && $tens !== 1) {
+        if ($units > 0 && 1 !== $tens) {
             $words[] = $this->dictionary->getCorrespondingUnit($units);
         }
 

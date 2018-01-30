@@ -6,24 +6,24 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Fr extends Words
 {
-    const LOCALE               = 'fr';
-    const LANGUAGE_NAME        = 'French';
+    const LOCALE = 'fr';
+    const LANGUAGE_NAME = 'French';
     const LANGUAGE_NAME_NATIVE = 'Français';
 
     private static $miscNumbers = [
-        10  => 'dix',
-        11  => 'onze',
-        12  => 'douze',
-        13  => 'treize',
-        14  => 'quatorze',
-        15  => 'quinze',
-        16  => 'seize',
-        20  => 'vingt',
-        30  => 'trente',
-        40  => 'quarante',
-        50  => 'cinquante',
-        60  => 'soixante',
-        100 => 'cent'
+        10 => 'dix',
+        11 => 'onze',
+        12 => 'douze',
+        13 => 'treize',
+        14 => 'quatorze',
+        15 => 'quinze',
+        16 => 'seize',
+        20 => 'vingt',
+        30 => 'trente',
+        40 => 'quarante',
+        50 => 'cinquante',
+        60 => 'soixante',
+        100 => 'cent',
     ];
 
     private static $digits = [
@@ -35,7 +35,7 @@ class Fr extends Words
         6 => 'six',
         7 => 'sept',
         8 => 'huit',
-        9 => 'neuf'
+        9 => 'neuf',
     ];
 
     private $zero = 'zéro';
@@ -53,40 +53,40 @@ class Fr extends Words
     private $pluralSuffix = 's';
 
     private static $exponent = [
-        0   => '',
-        3   => 'mille',
-        6   => 'million',
-        9   => 'milliard',
-        12  => 'billion', // was 'trillion',
-        15  => 'quadrillion',
-        18  => 'quintillion',
-        21  => 'sextillion',
-        24  => 'septillion',
-        27  => 'octillion',
-        30  => 'nonillion',
-        33  => 'decillion',
-        36  => 'undecillion',
-        39  => 'duodecillion',
-        42  => 'tredecillion',
-        45  => 'quattuordecillion',
-        48  => 'quindecillion',
-        51  => 'sexdecillion',
-        54  => 'septendecillion',
-        57  => 'octodecillion',
-        60  => 'novemdecillion',
-        63  => 'vigintillion',
-        66  => 'unvigintillion',
-        69  => 'duovigintillion',
-        72  => 'trevigintillion',
-        75  => 'quattuorvigintillion',
-        78  => 'quinvigintillion',
-        81  => 'sexvigintillion',
-        84  => 'septenvigintillion',
-        87  => 'octovigintillion',
-        90  => 'novemvigintillion',
-        93  => 'trigintillion',
-        96  => 'untrigintillion',
-        99  => 'duotrigintillion',
+        0 => '',
+        3 => 'mille',
+        6 => 'million',
+        9 => 'milliard',
+        12 => 'billion', // was 'trillion',
+        15 => 'quadrillion',
+        18 => 'quintillion',
+        21 => 'sextillion',
+        24 => 'septillion',
+        27 => 'octillion',
+        30 => 'nonillion',
+        33 => 'decillion',
+        36 => 'undecillion',
+        39 => 'duodecillion',
+        42 => 'tredecillion',
+        45 => 'quattuordecillion',
+        48 => 'quindecillion',
+        51 => 'sexdecillion',
+        54 => 'septendecillion',
+        57 => 'octodecillion',
+        60 => 'novemdecillion',
+        63 => 'vigintillion',
+        66 => 'unvigintillion',
+        69 => 'duovigintillion',
+        72 => 'trevigintillion',
+        75 => 'quattuorvigintillion',
+        78 => 'quinvigintillion',
+        81 => 'sexvigintillion',
+        84 => 'septenvigintillion',
+        87 => 'octovigintillion',
+        90 => 'novemvigintillion',
+        93 => 'trigintillion',
+        96 => 'untrigintillion',
+        99 => 'duotrigintillion',
     ];
 
     private static $currencyNames = [
@@ -126,7 +126,7 @@ class Fr extends Words
 
         if ($hundreds) {
             if ($hundreds > 1) {
-                $return .= self::$digits[$hundreds] . $this->wordSeparator . self::$miscNumbers[100];
+                $return .= self::$digits[$hundreds].$this->wordSeparator.self::$miscNumbers[100];
 
                 if ($last && !$ones && !$tens) {
                     $return .= $this->pluralSuffix;
@@ -139,11 +139,11 @@ class Fr extends Words
         }
 
         if ($tens) {
-            if ($tens === 1) {
+            if (1 === $tens) {
                 if ($ones <= 6) {
                     $return .= self::$miscNumbers[10 + $ones];
                 } else {
-                    $return .= self::$miscNumbers[10] . '-' . self::$digits[$ones];
+                    $return .= self::$miscNumbers[10].'-'.self::$digits[$ones];
                 }
                 $ones = 0;
             } elseif ($tens > 5) {
@@ -151,8 +151,8 @@ class Fr extends Words
                     $return .= self::$miscNumbers[60];
 
                     $resto = $tens * 10 + $ones - 60;
-                    if ($ones === 1) {
-                        $return .= $this->wordSeparator . $this->and . $this->wordSeparator;
+                    if (1 === $ones) {
+                        $return .= $this->wordSeparator.$this->and.$this->wordSeparator;
                     } elseif ($resto) {
                         $return .= $this->dash;
                     }
@@ -162,7 +162,7 @@ class Fr extends Words
                     }
                     $ones = 0;
                 } else {
-                    $return .= self::$digits[4] . $this->dash . self::$miscNumbers[20];
+                    $return .= self::$digits[4].$this->dash.self::$miscNumbers[20];
 
                     $resto = $tens * 10 + $ones - 80;
                     if ($resto) {
@@ -181,8 +181,8 @@ class Fr extends Words
 
         if ($ones) {
             if ($tens) {
-                if ($ones === 1) {
-                    $return .= $this->wordSeparator . $this->and . $this->wordSeparator;
+                if (1 === $ones) {
+                    $return .= $this->wordSeparator.$this->and.$this->wordSeparator;
                 } else {
                     $return .= $this->dash;
                 }
@@ -203,12 +203,12 @@ class Fr extends Words
     {
         $ret = '';
 
-        if ($number === 0) {
+        if (0 === $number) {
             return $this->zero;
         }
 
         if ($number < 0) {
-            $ret = $this->minus . $this->wordSeparator;
+            $ret = $this->minus.$this->wordSeparator;
         }
 
         $numberGroups = $this->splitNumber(abs($number));
@@ -217,12 +217,12 @@ class Fr extends Words
         foreach ($numberGroups as $i => $numb) {
             $power = $sizeOfNumberGroups - $i;
 
-            if ($numb !== 0) {
-                if ($numb !== 1 || $power !== 2) {
+            if (0 !== $numb) {
+                if (1 !== $numb || 2 !== $power) {
                     $ret .= $this->showDigitsGroup(
                         $numb,
                         $i + 1 === $sizeOfNumberGroups || $power > 2
-                    ) . $this->wordSeparator;
+                    ).$this->wordSeparator;
                 }
 
                 $ret .= self::$exponent[($power - 1) * 3];
@@ -244,6 +244,7 @@ class Fr extends Words
      * @param int    $fraction
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -258,14 +259,14 @@ class Fr extends Words
 
         $currencyNames = static::$currencyNames[$currency];
 
-        $return = trim($this->toWords($decimal)) . $this->wordSeparator;
-        $level = ($decimal === 1) ? 0 : 1;
+        $return = trim($this->toWords($decimal)).$this->wordSeparator;
+        $level = (1 === $decimal) ? 0 : 1;
 
         if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
                 $return .= $currencyNames[0][$level];
             } else {
-                $return .= $currencyNames[0][0] . 's';
+                $return .= $currencyNames[0][0].'s';
             }
         } else {
             $return .= $currencyNames[0][0];
@@ -274,13 +275,13 @@ class Fr extends Words
         if (null !== $fraction) {
             $return .= sprintf('%1$s%2$s%1$s%3$s%1$s', $this->wordSeparator, $this->subunitSeparator, trim($this->toWords($fraction)));
 
-            $level = $fraction === 1 ? 0 : 1;
+            $level = 1 === $fraction ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
                     $return .= $currencyNames[1][$level];
                 } else {
-                    $return .= $currencyNames[1][0] . 's';
+                    $return .= $currencyNames[1][0].'s';
                 }
             } else {
                 $return .= $currencyNames[1][0];

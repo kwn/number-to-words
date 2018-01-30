@@ -11,6 +11,7 @@ class Words
      * @param string $locale
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function transformToWords($number, $locale)
@@ -27,6 +28,7 @@ class Words
      * @param string $currency
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function transformToCurrency($amount, $locale, $currency)
@@ -48,6 +50,7 @@ class Words
      * @param string $locale
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     private function resolveLocaleClassName($locale)
@@ -56,7 +59,7 @@ class Words
             return ucfirst(strtolower($element));
         }, explode('_', $locale)));
 
-        $class = 'NumberToWords\\Legacy\\Numbers\\Words\\Locale\\' . $locale;
+        $class = 'NumberToWords\\Legacy\\Numbers\\Words\\Locale\\'.$locale;
 
         if (!class_exists($class)) {
             throw new NumberToWordsException(sprintf('Unable to load locale class %s', $class));

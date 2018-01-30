@@ -13,7 +13,7 @@ class LatvianExponentInflector implements ExponentInflector
         ['miljards', 'miljardi', 'miljardi'],
         ['triljons', 'triljoni', 'triljoni'],
         ['kvadriljons', 'kvadriljoni', 'kvadriljoni'],
-        ['kvintiljons', 'kvintiljoni', 'kvintiljoni']
+        ['kvintiljons', 'kvintiljoni', 'kvintiljoni'],
     ];
 
     /**
@@ -28,7 +28,7 @@ class LatvianExponentInflector implements ExponentInflector
         $units = $number % 10;
         $tens = ((int) ($number / 10)) % 10;
 
-        if ($tens === 1 || ($tens > 0 && $units === 0)) {
+        if (1 === $tens || ($tens > 0 && 0 === $units)) {
             return $level[2];
         } elseif ($units > 1) {
             return $level[1];

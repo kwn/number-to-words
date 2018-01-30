@@ -34,7 +34,7 @@ class Be extends Words
 
         if ($hundreds) {
             if ($hundreds > 1) {
-                $ret .= BelgianDictionary::$digits[$hundreds] . BelgianDictionary::$wordSeparator . BelgianDictionary::$miscNumbers[100];
+                $ret .= BelgianDictionary::$digits[$hundreds].BelgianDictionary::$wordSeparator.BelgianDictionary::$miscNumbers[100];
                 if ($last && !$units && !$tens) {
                     $ret .= BelgianDictionary::$pluralSuffix;
                 }
@@ -45,15 +45,15 @@ class Be extends Words
         }
 
         if ($tens) {
-            if ($tens === 1) {
+            if (1 === $tens) {
                 if ($units <= 6) {
                     $ret .= BelgianDictionary::$miscNumbers[10 + $units];
                 } else {
-                    $ret .= BelgianDictionary::$miscNumbers[10] . '-' . BelgianDictionary::$digits[$units];
+                    $ret .= BelgianDictionary::$miscNumbers[10].'-'.BelgianDictionary::$digits[$units];
                 }
                 $units = 0;
-            } elseif ($tens === 8) {
-                $ret .= BelgianDictionary::$digits[4] . BelgianDictionary::$dash . BelgianDictionary::$miscNumbers[20];
+            } elseif (8 === $tens) {
+                $ret .= BelgianDictionary::$digits[4].BelgianDictionary::$dash.BelgianDictionary::$miscNumbers[20];
                 $resto = $tens * 10 + $units - 80;
                 if ($resto) {
                     $ret .= BelgianDictionary::$dash;
@@ -69,8 +69,8 @@ class Be extends Words
 
         if ($units) {
             if ($tens) {
-                if ($units === 1) {
-                    $ret .= BelgianDictionary::$wordSeparator . BelgianDictionary::$and . BelgianDictionary::$wordSeparator;
+                if (1 === $units) {
+                    $ret .= BelgianDictionary::$wordSeparator.BelgianDictionary::$and.BelgianDictionary::$wordSeparator;
                 } else {
                     $ret .= BelgianDictionary::$dash;
                 }
@@ -90,12 +90,12 @@ class Be extends Words
     {
         $return = '';
 
-        if ($num === 0) {
+        if (0 === $num) {
             return BelgianDictionary::$zero;
         }
 
         if ($num < 0) {
-            $return = BelgianDictionary::$minus . BelgianDictionary::$wordSeparator;
+            $return = BelgianDictionary::$minus.BelgianDictionary::$wordSeparator;
             $num *= -1;
         }
 
@@ -107,12 +107,12 @@ class Be extends Words
             $pow = $sizeOfNumberGroups - $i;
 
             // skip processment for empty groups
-            if ($number != '000') {
-                if ($number != 1 || $pow != 2) {
+            if ('000' != $number) {
+                if (1 != $number || 2 != $pow) {
                     $return .= $this->showDigitsGroup(
                         $number,
                         $i + 1 == $sizeOfNumberGroups || $pow > 2
-                    ) . BelgianDictionary::$wordSeparator;
+                    ).BelgianDictionary::$wordSeparator;
                 }
                 $return .= BelgianDictionary::$exponent[($pow - 1) * 3];
                 if ($pow > 2 && $number > 1) {

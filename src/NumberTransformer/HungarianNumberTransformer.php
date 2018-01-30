@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class HungarianNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

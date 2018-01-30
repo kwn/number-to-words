@@ -35,7 +35,7 @@ class PolishTripletTransformer implements TripletTransformer
             $words[] = $this->polishDictionary->getCorrespondingHundred($hundreds);
         }
 
-        if ($tens === 1) {
+        if (1 === $tens) {
             $words[] = $this->polishDictionary->getCorrespondingTeen($units);
         }
 
@@ -43,7 +43,7 @@ class PolishTripletTransformer implements TripletTransformer
             $words[] = $this->polishDictionary->getCorrespondingTen($tens);
         }
 
-        if ($units > 0 && $tens !== 1) {
+        if ($units > 0 && 1 !== $tens) {
             $words[] = $this->polishDictionary->getCorrespondingUnit($units);
         }
 

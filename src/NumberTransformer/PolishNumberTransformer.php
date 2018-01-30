@@ -11,7 +11,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class PolishNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

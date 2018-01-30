@@ -7,16 +7,16 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Tr extends Words
 {
-    const LOCALE               = 'tr';
-    const LANGUAGE_NAME        = 'Turkish';
+    const LOCALE = 'tr';
+    const LANGUAGE_NAME = 'Turkish';
     const LANGUAGE_NAME_NATIVE = 'Türkçe';
 
     private $minus = 'eksi';
 
     private static $exponent = [
-        0  => [''],
-        3  => ['bin'],
-        6  => ['milyon'],
+        0 => [''],
+        3 => ['bin'],
+        6 => ['milyon'],
         12 => ['milyar'],
         18 => ['trilyon'],
         24 => ['katrilyon'],
@@ -32,7 +32,7 @@ class Tr extends Words
         'altı',
         'yedi',
         'sekiz',
-        'dokuz'
+        'dokuz',
     ];
 
     private $wordSeparator = ' ';
@@ -75,7 +75,7 @@ class Tr extends Words
         'UAH' => [['Ukrayna hryvnyası'], ['kopiyka']],
         'USD' => [['ABD Doları'], ['sent']],
         'YUM' => [['dinar'], ['para']],
-        'ZAR' => [['Güney Afrika randı'], ['sent']]
+        'ZAR' => [['Güney Afrika randı'], ['sent']],
     ];
 
     /**
@@ -90,11 +90,10 @@ class Tr extends Words
         $ret = '';
 
         // add a the word for the minus sign if necessary
-        if (substr($num, 0, 1) == '-') {
-            $ret = $this->wordSeparator . $this->minus;
+        if ('-' == substr($num, 0, 1)) {
+            $ret = $this->wordSeparator.$this->minus;
             $num = substr($num, 1);
         }
-
 
         // strip excessive zero signs
         $num = preg_replace('/^0+/', '', $num);
@@ -107,16 +106,16 @@ class Tr extends Words
                 // with it's corresponding $power.
                 $snum = substr($num, 0, -6);
                 $snum = preg_replace('/^0+/', '', $snum);
-                if ($snum !== '') {
+                if ('' !== $snum) {
                     $ret .= $this->toWords($snum, $power + 6);
                 }
             }
             $num = substr($num, -6);
-            if ($num == 0) {
+            if (0 == $num) {
                 return $ret;
             }
-        } elseif ($num == 0 || $num == '') {
-            return (' ' . self::$digits[0] . ' ');
+        } elseif (0 == $num || '' == $num) {
+            return ' '.self::$digits[0].' ';
             $current_power = strlen($num);
         } else {
             $current_power = strlen($num);
@@ -124,10 +123,10 @@ class Tr extends Words
 
         // See if we need "thousands"
         $thousands = floor($num / 1000);
-        if ($thousands == 1) {
-            $ret .= $this->wordSeparator . 'bin' . $this->wordSeparator;
+        if (1 == $thousands) {
+            $ret .= $this->wordSeparator.'bin'.$this->wordSeparator;
         } elseif ($thousands > 1) {
-            $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;//. 'mil' . $this->wordSeparator;
+            $ret .= $this->toWords($thousands, 3).$this->wordSeparator; //. 'mil' . $this->wordSeparator;
         }
 
         // values for digits, tens and hundreds
@@ -136,7 +135,7 @@ class Tr extends Words
         $d = floor($num % 10);
 
         if ($h) {
-            $ret .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'yüz';
+            $ret .= $this->wordSeparator.self::$digits[$h].$this->wordSeparator.'yüz';
 
             // in English only - add ' and' for [1-9]01..[1-9]99
             // (also for 1001..1099, 10001..10099 but it is harder)
@@ -149,46 +148,46 @@ class Tr extends Words
         // decine: venti trenta, etc...
         switch ($t) {
             case 9:
-                $ret .= $this->wordSeparator . 'doksan';
+                $ret .= $this->wordSeparator.'doksan';
                 break;
 
             case 8:
-                $ret .= $this->wordSeparator . 'seksen';
+                $ret .= $this->wordSeparator.'seksen';
                 break;
 
             case 7:
-                $ret .= $this->wordSeparator . 'yetmiş';
+                $ret .= $this->wordSeparator.'yetmiş';
                 break;
 
             case 6:
-                $ret .= $this->wordSeparator . 'altmış';
+                $ret .= $this->wordSeparator.'altmış';
                 break;
 
             case 5:
-                $ret .= $this->wordSeparator . 'elli';
+                $ret .= $this->wordSeparator.'elli';
                 break;
 
             case 4:
-                $ret .= $this->wordSeparator . 'kırk';
+                $ret .= $this->wordSeparator.'kırk';
                 break;
 
             case 3:
-                $ret .= $this->wordSeparator . 'otuz';
+                $ret .= $this->wordSeparator.'otuz';
                 break;
 
             case 2:
-                $ret .= $this->wordSeparator . 'yirmi';
+                $ret .= $this->wordSeparator.'yirmi';
                 break;
 
             case 2:
-                $ret .= $this->wordSeparator . 'on';
+                $ret .= $this->wordSeparator.'on';
                 break;
 
                 break;
         }
 
         if ($t > 1 && $d > 0) {
-            $ret .= $this->wordSeparator . self::$digits[$d];
+            $ret .= $this->wordSeparator.self::$digits[$d];
         }
 
         if ($power > 0) {
@@ -201,8 +200,8 @@ class Tr extends Words
             }
 
             $suffix = $lev[0];
-            if ($num != 0) {
-                $ret .= $this->wordSeparator . $suffix;
+            if (0 != $num) {
+                $ret .= $this->wordSeparator.$suffix;
             }
         }
 
@@ -216,6 +215,7 @@ class Tr extends Words
      * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
@@ -230,32 +230,32 @@ class Tr extends Words
 
         $curr_names = self::$currencyNames[$currency];
         $ret = trim($this->toWords($decimal));
-        $lev = ($decimal == 1) ? 0 : 1;
+        $lev = (1 == $decimal) ? 0 : 1;
         if ($lev > 0) {
             if (count($curr_names[0]) > 1) {
-                $ret .= $this->wordSeparator . $curr_names[0][$lev];
+                $ret .= $this->wordSeparator.$curr_names[0][$lev];
             } else {
-                $ret .= $this->wordSeparator . $curr_names[0][0];
+                $ret .= $this->wordSeparator.$curr_names[0][0];
             }
         } else {
-            $ret .= $this->wordSeparator . $curr_names[0][0];
+            $ret .= $this->wordSeparator.$curr_names[0][0];
         }
 
-        if ($fraction !== null) {
+        if (null !== $fraction) {
             if ($convertFraction) {
-                $ret .= $this->wordSeparator . trim($this->toWords($fraction));
+                $ret .= $this->wordSeparator.trim($this->toWords($fraction));
             } else {
-                $ret .= $this->wordSeparator . $fraction;
+                $ret .= $this->wordSeparator.$fraction;
             }
-            $lev = ($fraction == 1) ? 0 : 1;
+            $lev = (1 == $fraction) ? 0 : 1;
             if ($lev > 0) {
                 if (count($curr_names[1]) > 1) {
-                    $ret .= $this->wordSeparator . $curr_names[1][$lev];
+                    $ret .= $this->wordSeparator.$curr_names[1][$lev];
                 } else {
-                    $ret .= $this->wordSeparator . $curr_names[1][0] . 's';
+                    $ret .= $this->wordSeparator.$curr_names[1][0].'s';
                 }
             } else {
-                $ret .= $this->wordSeparator . $curr_names[1][0];
+                $ret .= $this->wordSeparator.$curr_names[1][0];
             }
         }
 

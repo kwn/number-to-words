@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class EstonianNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

@@ -20,7 +20,7 @@ class PolishDictionary implements Dictionary
         6 => 'sześć',
         7 => 'siedem',
         8 => 'osiem',
-        9 => 'dziewięć'
+        9 => 'dziewięć',
     ];
 
     private static $teens = [
@@ -33,7 +33,7 @@ class PolishDictionary implements Dictionary
         6 => 'szesnaście',
         7 => 'siedemnaście',
         8 => 'osiemnaście',
-        9 => 'dziewiętnaście'
+        9 => 'dziewiętnaście',
     ];
 
     private static $tens = [
@@ -46,7 +46,7 @@ class PolishDictionary implements Dictionary
         6 => 'sześćdziesiąt',
         7 => 'siedemdziesiąt',
         8 => 'osiemdziesiąt',
-        9 => 'dziewięćdziesiąt'
+        9 => 'dziewięćdziesiąt',
     ];
 
     private static $hundreds = [
@@ -59,14 +59,14 @@ class PolishDictionary implements Dictionary
         6 => 'sześćset',
         7 => 'siedemset',
         8 => 'osiemset',
-        9 => 'dziewięćset'
+        9 => 'dziewięćset',
     ];
 
     public static $currencyNames = [
         'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
         'AUD' => [
             ['dolar australijski', 'dolary australijskie', 'dolarów australijskich'],
-            ['cent', 'centy', 'centów']
+            ['cent', 'centy', 'centów'],
         ],
         'BAM' => [['marka', 'marki', 'marek'], ['fenig', 'fenigi', 'fenigów']],
         'BGN' => [['lew', 'lewy', 'lew'], ['stotinka', 'stotinki', 'stotinek']],
@@ -101,7 +101,7 @@ class PolishDictionary implements Dictionary
         'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
         'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
-        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
+        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']],
     ];
 
     /**

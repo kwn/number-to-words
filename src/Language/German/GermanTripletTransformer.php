@@ -37,19 +37,19 @@ class GermanTripletTransformer implements PowerAwareTripletTransformer
             $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
         }
 
-        if ($tens === 1) {
+        if (1 === $tens) {
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         }
 
-        if ($units > 0 && $tens !== 1) {
+        if ($units > 0 && 1 !== $tens) {
             $words[] = $this->dictionary->getCorrespondingUnit($units);
 
             if ($tens > 1) {
                 $words[] = 'und';
-            } elseif ($units === 1) {
-                if ($power === 0) {
+            } elseif (1 === $units) {
+                if (0 === $power) {
                     $words[] = 's';
-                } elseif ($power !== 1) {
+                } elseif (1 !== $power) {
                     $words[] = 'e';
                 }
             }

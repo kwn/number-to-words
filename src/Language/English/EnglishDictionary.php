@@ -22,7 +22,7 @@ class EnglishDictionary implements Dictionary
         'sixteen',
         'seventeen',
         'eighteen',
-        'nineteen'
+        'nineteen',
     ];
 
     private static $tens = [
@@ -35,7 +35,7 @@ class EnglishDictionary implements Dictionary
         'sixty',
         'seventy',
         'eighty',
-        'ninety'
+        'ninety',
     ];
 
     private static $hundred = 'hundred';
@@ -76,7 +76,7 @@ class EnglishDictionary implements Dictionary
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'YUM' => [['dinars'], ['para']],
-        'ZAR' => [['rand'], ['cent']]
+        'ZAR' => [['rand'], ['cent']],
     ];
 
     /**
@@ -132,6 +132,6 @@ class EnglishDictionary implements Dictionary
      */
     public function getCorrespondingHundred($hundred)
     {
-        return self::$units[$hundred] . ' ' . self::$hundred;
+        return self::$units[$hundred].' '.self::$hundred;
     }
 }

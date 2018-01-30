@@ -14,10 +14,10 @@ class GermanExponentInflector implements ExponentInflector
      */
     public function inflectExponent($number, $power)
     {
-        $singularPlural = $number % 10 === 1 ? 0 : 1;
+        $singularPlural = 1 === $number % 10 ? 0 : 1;
 
-        if ($power !== 1) {
-            return ' ' . GermanDictionary::$exponent[$power][$singularPlural] . ' ';
+        if (1 !== $power) {
+            return ' '.GermanDictionary::$exponent[$power][$singularPlural].' ';
         }
 
         return GermanDictionary::$exponent[$power][$singularPlural];

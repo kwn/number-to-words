@@ -13,19 +13,19 @@ class Id extends Words
     private $minus = 'minus';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['ribu'],
-        6   => ['juta'],
-        9   => ['milyar'],
-        12  => ['trilyun'],
-        24  => ['quadrillion'],
-        30  => ['quintillion'],
-        36  => ['sextillion'],
-        42  => ['septillion'],
-        48  => ['octillion'],
-        54  => ['nonillion'],
-        60  => ['decillion'],
-        66  => ['undecillion'],
+        0 => [''],
+        3 => ['ribu'],
+        6 => ['juta'],
+        9 => ['milyar'],
+        12 => ['trilyun'],
+        24 => ['quadrillion'],
+        30 => ['quintillion'],
+        36 => ['sextillion'],
+        42 => ['septillion'],
+        48 => ['octillion'],
+        54 => ['nonillion'],
+        60 => ['decillion'],
+        66 => ['undecillion'],
     ];
 
     private static $digits = [
@@ -38,7 +38,7 @@ class Id extends Words
         'enam',
         'tujuh',
         'delapan',
-        'sembilan'
+        'sembilan',
     ];
 
     private $wordSeparator = ' ';
@@ -68,7 +68,7 @@ class Id extends Words
                     // send substr from $curp to $p
                     $snum = substr($number, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
-                    if ($snum !== '') {
+                    if ('' !== $snum) {
                         $cursuffix = self::$exponent[$power][count(self::$exponent[$power]) - 1];
 
                         $return .= $this->toWords($snum, $p, $cursuffix);
@@ -78,11 +78,11 @@ class Id extends Words
                 }
             }
             $number = substr($number, $maxp - $curp, $curp - $p + 1);
-            if ($number == 0) {
+            if (0 == $number) {
                 return $return;
             }
-        } elseif ($number == 0 || $number == '') {
-            return $this->wordSeparator . self::$digits[0];
+        } elseif (0 == $number || '' == $number) {
+            return $this->wordSeparator.self::$digits[0];
         }
 
         $h = $t = $d = $th = 0;
@@ -91,12 +91,15 @@ class Id extends Words
             case 4:
                 $th = (int) substr($number, -4, 1);
 
+                // no break
             case 3:
                 $h = (int) substr($number, -3, 1);
 
+                // no break
             case 2:
                 $t = (int) substr($number, -2, 1);
 
+                // no break
             case 1:
                 $d = (int) substr($number, -1, 1);
                 break;
@@ -107,18 +110,18 @@ class Id extends Words
         }
 
         if ($th) {
-            if ($th == 1) {
-                $return .= $this->wordSeparator . 'seribu';
+            if (1 == $th) {
+                $return .= $this->wordSeparator.'seribu';
             } else {
-                $return .= $this->wordSeparator . self::$digits[$th] . $this->wordSeparator . 'ribu';
+                $return .= $this->wordSeparator.self::$digits[$th].$this->wordSeparator.'ribu';
             }
         }
 
         if ($h) {
-            if ($h == 1) {
-                $return .= $this->wordSeparator . 'seratus';
+            if (1 == $h) {
+                $return .= $this->wordSeparator.'seratus';
             } else {
-                $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'ratus';
+                $return .= $this->wordSeparator.self::$digits[$h].$this->wordSeparator.'ratus';
             }
         }
 
@@ -132,17 +135,17 @@ class Id extends Words
             case 4:
             case 3:
             case 2:
-                $return .= $this->wordSeparator . self::$digits[$t] . ' puluh';
+                $return .= $this->wordSeparator.self::$digits[$t].' puluh';
                 break;
 
             case 1:
                 switch ($d) {
                     case 0:
-                        $return .= $this->wordSeparator . 'sepuluh';
+                        $return .= $this->wordSeparator.'sepuluh';
                         break;
 
                     case 1:
-                        $return .= $this->wordSeparator . 'sebelas';
+                        $return .= $this->wordSeparator.'sebelas';
                         break;
 
                     case 2:
@@ -153,18 +156,18 @@ class Id extends Words
                     case 7:
                     case 8:
                     case 9:
-                        $return .= $this->wordSeparator . self::$digits[$d] . ' belas';
+                        $return .= $this->wordSeparator.self::$digits[$d].' belas';
                         break;
                 }
                 break;
         }
 
-        if ($t != 1 && $d > 0) { // add digits only in <0>,<1,9> and <21,inf>
+        if (1 != $t && $d > 0) { // add digits only in <0>,<1,9> and <21,inf>
             // add minus sign between [2-9] and digit
             if ($t > 1) {
-                $return .= ' ' . self::$digits[$d];
+                $return .= ' '.self::$digits[$d];
             } else {
-                $return .= $this->wordSeparator . self::$digits[$d];
+                $return .= $this->wordSeparator.self::$digits[$d];
             }
         }
 
@@ -177,7 +180,7 @@ class Id extends Words
                 return null;
             }
 
-            $return .= $this->wordSeparator . $lev[0];
+            $return .= $this->wordSeparator.$lev[0];
         }
 
         return $return;

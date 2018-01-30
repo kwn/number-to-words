@@ -14,28 +14,28 @@ class Hu extends Words
     private $minus = 'mínusz';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['ezer'],
-        6   => ['millió'],
-        9   => ['milliárd'],
-        12  => ['billió'],
-        15  => ['billiárd'],
-        18  => ['trillió'],
-        21  => ['trilliárd'],
-        24  => ['kvadrillió'],
-        27  => ['kvadrilliárd'],
-        30  => ['kvintillió'],
-        33  => ['kvintilliárd'],
-        36  => ['szextillió'],
-        39  => ['szextilliárd'],
-        42  => ['szeptillió'],
-        45  => ['szeptilliárd'],
-        48  => ['oktillió'],
-        51  => ['oktilliárd'],
-        54  => ['nonillió'],
-        57  => ['nonilliárd'],
-        60  => ['decillió'],
-        63  => ['decilliárd'],
+        0 => [''],
+        3 => ['ezer'],
+        6 => ['millió'],
+        9 => ['milliárd'],
+        12 => ['billió'],
+        15 => ['billiárd'],
+        18 => ['trillió'],
+        21 => ['trilliárd'],
+        24 => ['kvadrillió'],
+        27 => ['kvadrilliárd'],
+        30 => ['kvintillió'],
+        33 => ['kvintilliárd'],
+        36 => ['szextillió'],
+        39 => ['szextilliárd'],
+        42 => ['szeptillió'],
+        45 => ['szeptilliárd'],
+        48 => ['oktillió'],
+        51 => ['oktilliárd'],
+        54 => ['nonillió'],
+        57 => ['nonilliárd'],
+        60 => ['decillió'],
+        63 => ['decilliárd'],
     ];
 
     private static $digits = [
@@ -48,7 +48,7 @@ class Hu extends Words
         'hat',
         'hét',
         'nyolc',
-        'kilenc'
+        'kilenc',
     ];
 
     private $wordSeparator = '';
@@ -91,7 +91,7 @@ class Hu extends Words
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'YUM' => [['dinars'], ['para']],
-        'ZAR' => [['rand'], ['cent']]
+        'ZAR' => [['rand'], ['cent']],
     ];
 
     /**
@@ -105,12 +105,12 @@ class Hu extends Words
         $return = '';
 
         if ($number < 0) {
-            $return = $this->minus . ' ';
+            $return = $this->minus.' ';
             $number = (int) abs($number);
         }
 
-        if ($number == 0 || $number == '') {
-            return $this->wordSeparator . self::$digits[0];
+        if (0 == $number || '' == $number) {
+            return $this->wordSeparator.self::$digits[0];
         }
 
         $gt2000 = $number > 2000;
@@ -124,7 +124,7 @@ class Hu extends Words
                     $snum = substr($number, $maxp - $curp, $curp - $p + 1);
                     $snum = preg_replace('/^0+/', '', $snum);
 
-                    if ($snum !== '') {
+                    if ('' !== $snum) {
                         $return .= $this->toWords($snum, $p);
 
                         if ($gt2000) {
@@ -138,7 +138,7 @@ class Hu extends Words
 
             $number = substr($number, $maxp - $curp, $curp - $p + 1);
 
-            if ($number == 0) {
+            if (0 == $number) {
                 return rtrim($return, $this->thousandSeparator);
             }
         }
@@ -148,32 +148,32 @@ class Hu extends Words
         $h = (int) ($number / 100) % 10;
 
         if ($h) {
-            $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'száz';
+            $return .= $this->wordSeparator.self::$digits[$h].$this->wordSeparator.'száz';
         }
 
         // ten, twenty etc.
         switch ($t) {
             case 9:
             case 5:
-                $return .= $this->wordSeparator . self::$digits[$t] . 'ven';
+                $return .= $this->wordSeparator.self::$digits[$t].'ven';
                 break;
             case 8:
             case 6:
-                $return .= $this->wordSeparator . self::$digits[$t] . 'van';
+                $return .= $this->wordSeparator.self::$digits[$t].'van';
                 break;
             case 7:
-                $return .= $this->wordSeparator . 'hetven';
+                $return .= $this->wordSeparator.'hetven';
                 break;
             case 3:
-                $return .= $this->wordSeparator . 'harminc';
+                $return .= $this->wordSeparator.'harminc';
                 break;
             case 4:
-                $return .= $this->wordSeparator . 'negyven';
+                $return .= $this->wordSeparator.'negyven';
                 break;
             case 2:
                 switch ($d) {
                     case 0:
-                        $return .= $this->wordSeparator . 'húsz';
+                        $return .= $this->wordSeparator.'húsz';
                         break;
                     case 1:
                     case 2:
@@ -184,14 +184,14 @@ class Hu extends Words
                     case 7:
                     case 8:
                     case 9:
-                        $return .= $this->wordSeparator . 'huszon';
+                        $return .= $this->wordSeparator.'huszon';
                         break;
                 }
                 break;
             case 1:
                 switch ($d) {
                     case 0:
-                        $return .= $this->wordSeparator . 'tíz';
+                        $return .= $this->wordSeparator.'tíz';
                         break;
                     case 1:
                     case 2:
@@ -202,14 +202,14 @@ class Hu extends Words
                     case 7:
                     case 8:
                     case 9:
-                        $return .= $this->wordSeparator . 'tizen';
+                        $return .= $this->wordSeparator.'tizen';
                         break;
                 }
                 break;
         }
 
         if ($d > 0) {
-            $return .= $this->wordSeparator . self::$digits[$d];
+            $return .= $this->wordSeparator.self::$digits[$d];
         }
 
         if ($power > 0) {
@@ -221,7 +221,7 @@ class Hu extends Words
                 return null;
             }
 
-            $return .= $this->wordSeparator . $lev[0];
+            $return .= $this->wordSeparator.$lev[0];
         }
 
         return $return;
@@ -233,6 +233,7 @@ class Hu extends Words
      * @param int    $fraction
      *
      * @return string
+     *
      * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -248,30 +249,30 @@ class Hu extends Words
         $currencyNames = self::$currencyNames[$currency];
 
         $return = trim($this->toWords($decimal));
-        $level = $decimal == 1 ? 0 : 1;
+        $level = 1 == $decimal ? 0 : 1;
 
         if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
-                $return .= ' ' . $currencyNames[0][$level];
+                $return .= ' '.$currencyNames[0][$level];
             } else {
-                $return .= ' ' . $currencyNames[0][0] . 's';
+                $return .= ' '.$currencyNames[0][0].'s';
             }
         } else {
-            $return .= ' ' . $currencyNames[0][0];
+            $return .= ' '.$currencyNames[0][0];
         }
 
-        if ($fraction !== null) {
-            $return .= $this->wordSeparator . trim($this->toWords($fraction));
+        if (null !== $fraction) {
+            $return .= $this->wordSeparator.trim($this->toWords($fraction));
 
-            $level = ($fraction == 1) ? 0 : 1;
+            $level = (1 == $fraction) ? 0 : 1;
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $return .= ' ' . $currencyNames[1][$level];
+                    $return .= ' '.$currencyNames[1][$level];
                 } else {
-                    $return .= ' ' . $currencyNames[1][0] . 's';
+                    $return .= ' '.$currencyNames[1][0].'s';
                 }
             } else {
-                $return .= ' ' . $currencyNames[1][0];
+                $return .= ' '.$currencyNames[1][0];
             }
         }
 
