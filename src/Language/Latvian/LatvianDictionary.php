@@ -6,8 +6,8 @@ use NumberToWords\Language\Dictionary;
 
 class LatvianDictionary implements Dictionary
 {
-    const LOCALE               = 'lv';
-    const LANGUAGE_NAME        = 'Latvian';
+    const LOCALE = 'lv';
+    const LANGUAGE_NAME = 'Latvian';
     const LANGUAGE_NAME_NATIVE = 'latviešu';
 
     private static $units = [
@@ -20,7 +20,7 @@ class LatvianDictionary implements Dictionary
         6 => 'seši',
         7 => 'septiņi',
         8 => 'astoņi',
-        9 => 'deviņi'
+        9 => 'deviņi',
     ];
 
     private static $teens = [
@@ -33,7 +33,7 @@ class LatvianDictionary implements Dictionary
         6 => 'sešpadsmit',
         7 => 'septiņpadsmit',
         8 => 'astoņpadsmit',
-        9 => 'deviņpadsmit'
+        9 => 'deviņpadsmit',
     ];
 
     private static $tens = [
@@ -46,7 +46,7 @@ class LatvianDictionary implements Dictionary
         6 => 'sešdesmit',
         7 => 'septiņdesmit',
         8 => 'astoņdesmit',
-        9 => 'deviņdesmit'
+        9 => 'deviņdesmit',
     ];
 
     /**
@@ -102,10 +102,10 @@ class LatvianDictionary implements Dictionary
      */
     public function getCorrespondingHundred($hundred)
     {
-        if ($hundred === 1) {
+        if (1 === $hundred) {
             return 'simts';
         }
 
-        return self::$units[$hundred] . ' simti';
+        return self::$units[$hundred].' simti';
     }
 }

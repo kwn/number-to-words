@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class PortugueseBrazilianCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($amount, $currency)
     {

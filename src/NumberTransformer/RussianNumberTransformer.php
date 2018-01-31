@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class RussianNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

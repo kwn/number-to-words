@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class TurkmenNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

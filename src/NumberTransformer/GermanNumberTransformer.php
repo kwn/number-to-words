@@ -10,7 +10,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class GermanNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

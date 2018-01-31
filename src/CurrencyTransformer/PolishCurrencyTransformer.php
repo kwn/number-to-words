@@ -17,6 +17,7 @@ class PolishCurrencyTransformer implements CurrencyTransformer
      * @param string $currency
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function toWords($amount, $currency)
@@ -37,7 +38,7 @@ class PolishCurrencyTransformer implements CurrencyTransformer
         $decimal = (int) ($amount / 100);
         $fraction = $amount % 100;
 
-        if ($fraction === 0) {
+        if (0 === $fraction) {
             $fraction = null;
         }
 

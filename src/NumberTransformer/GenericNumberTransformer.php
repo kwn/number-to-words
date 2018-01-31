@@ -58,7 +58,7 @@ class GenericNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        if ($number === 0) {
+        if (0 === $number) {
             return $this->dictionary->getZero();
         }
 

@@ -11,15 +11,14 @@ class Bg extends Words
     const LANGUAGE_NAME_NATIVE = 'Български';
 
     private static $miscStrings = [
-        'deset'      => 'десет',           // "ten"
+        'deset' => 'десет',           // "ten"
         'edinadeset' => 'единадесет', // "eleven"
-        'na'         => 'на',                 // liaison particle for 12 to 19
-        'sto'        => 'сто',               // "hundred"
-        'sta'        => 'ста',               // suffix for 2 and 3 hundred
-        'stotin'     => 'стотин',         // suffix for 4 to 9 hundred
-        'hiliadi'    => 'хиляди'         // plural form of "thousand"
+        'na' => 'на',                 // liaison particle for 12 to 19
+        'sto' => 'сто',               // "hundred"
+        'sta' => 'ста',               // suffix for 2 and 3 hundred
+        'stotin' => 'стотин',         // suffix for 4 to 9 hundred
+        'hiliadi' => 'хиляди',         // plural form of "thousand"
     ];
-
 
     /**
      * The words for digits (except zero). Note that, there are three genders for them (neuter, masculine and feminine).
@@ -27,9 +26,9 @@ class Bg extends Words
      * in the _initDigits() method, which is invoked from the constructor.
      */
     private static $digits = [
-        0  => [1 => "едно", "две", "три", "четири", "пет", "шест", "седем", "осем", "девет"], // neuter
-        1  => [1 => 'един', 'два'],                                                           // masculine
-        -1 => [1 => 'една']                                                                   // feminine
+        0 => [1 => 'едно', 'две', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'], // neuter
+        1 => [1 => 'един', 'два'],                                                           // masculine
+        -1 => [1 => 'една'],                                                                   // feminine
     ];
 
     private static $digitsInitialized = false;
@@ -50,40 +49,40 @@ class Bg extends Words
     private $pluralSuffix = 'а';
 
     private static $exponent = [
-        0   => '',
-        3   => 'хиляда',
-        6   => 'милион',
-        9   => 'милиард',
-        12  => 'трилион',
-        15  => 'квадрилион',
-        18  => 'квинтилион',
-        21  => 'секстилион',
-        24  => 'септилион',
-        27  => 'октилион',
-        30  => 'ноналион',
-        33  => 'декалион',
-        36  => 'ундекалион',
-        39  => 'дуодекалион',
-        42  => 'тредекалион',
-        45  => 'кватордекалион',
-        48  => 'квинтдекалион',
-        51  => 'сексдекалион',
-        54  => 'септдекалион',
-        57  => 'октодекалион',
-        60  => 'новемдекалион',
-        63  => 'вигинтилион',
-        66  => 'унвигинтилион',
-        69  => 'дуовигинтилион',
-        72  => 'тревигинтилион',
-        75  => 'кваторвигинтилион',
-        78  => 'квинвигинтилион',
-        81  => 'сексвигинтилион',
-        84  => 'септенвигинтилион',
-        87  => 'октовигинтилион',
-        90  => 'новемвигинтилион',
-        93  => 'тригинтилион',
-        96  => 'унтригинтилион',
-        99  => 'дуотригинтилион',
+        0 => '',
+        3 => 'хиляда',
+        6 => 'милион',
+        9 => 'милиард',
+        12 => 'трилион',
+        15 => 'квадрилион',
+        18 => 'квинтилион',
+        21 => 'секстилион',
+        24 => 'септилион',
+        27 => 'октилион',
+        30 => 'ноналион',
+        33 => 'декалион',
+        36 => 'ундекалион',
+        39 => 'дуодекалион',
+        42 => 'тредекалион',
+        45 => 'кватордекалион',
+        48 => 'квинтдекалион',
+        51 => 'сексдекалион',
+        54 => 'септдекалион',
+        57 => 'октодекалион',
+        60 => 'новемдекалион',
+        63 => 'вигинтилион',
+        66 => 'унвигинтилион',
+        69 => 'дуовигинтилион',
+        72 => 'тревигинтилион',
+        75 => 'кваторвигинтилион',
+        78 => 'квинвигинтилион',
+        81 => 'сексвигинтилион',
+        84 => 'септенвигинтилион',
+        87 => 'октовигинтилион',
+        90 => 'новемвигинтилион',
+        93 => 'тригинтилион',
+        96 => 'унтригинтилион',
+        99 => 'дуотригинтилион',
         102 => 'третригинтилион',
         105 => 'кватортригинтилион',
         108 => 'квинтригинтилион',
@@ -151,7 +150,7 @@ class Bg extends Words
         294 => 'септеннонагинтилион',
         297 => 'октононагинтилион',
         300 => 'новемнонагинтилион',
-        303 => 'центилион'
+        303 => 'центилион',
     ];
 
     public function __construct()
@@ -162,11 +161,11 @@ class Bg extends Words
     private function initDigits()
     {
         if (!self::$digitsInitialized) {
-            for ($i = 3; $i <= 9; $i++) {
-                self::$digits[1][$i] =& self::$digits[0][$i];
+            for ($i = 3; $i <= 9; ++$i) {
+                self::$digits[1][$i] = &self::$digits[0][$i];
             }
-            for ($i = 2; $i <= 9; $i++) {
-                self::$digits[-1][$i] =& self::$digits[0][$i];
+            for ($i = 2; $i <= 9; ++$i) {
+                self::$digits[-1][$i] = &self::$digits[0][$i];
             }
             self::$digitsInitialized = true;
         }
@@ -183,14 +182,15 @@ class Bg extends Words
             $ret = array();
 
             $strlen = strlen($num);
-            $first  = substr($num, 0, $strlen%3);
+            $first = substr($num, 0, $strlen % 3);
 
-            preg_match_all('/\d{3}/', substr($num, $strlen%3, $strlen), $m);
+            preg_match_all('/\d{3}/', substr($num, $strlen % 3, $strlen), $m);
 
-            $ret =& $m[0];
+            $ret = &$m[0];
             if ($first) {
                 array_unshift($ret, $first);
             }
+
             return $ret;
         }
 
@@ -227,30 +227,30 @@ class Bg extends Words
                     break;
                 case 2:
                 case 3:
-                    $ret[1] = self::$digits[0][$s] . self::$miscStrings['sta'];
+                    $ret[1] = self::$digits[0][$s].self::$miscStrings['sta'];
                     break;
                 default:
-                    $ret[1] = self::$digits[0][$s] . self::$miscStrings['stotin'];
+                    $ret[1] = self::$digits[0][$s].self::$miscStrings['stotin'];
             }
         }
 
         // process the "tens" digit, and optionally the "ones" digit.
         if ($d) {
             // in the case of 1, the "ones" digit also must be processed
-            if ($d == 1) {
+            if (1 == $d) {
                 if (!$e) {
                     $ret[3] = self::$miscStrings['deset']; // ten
                 } else {
-                    if ($e == 1) {
+                    if (1 == $e) {
                         $ret[3] = self::$miscStrings['edinadeset']; // eleven
                     } else {
-                        $ret[3] = self::$digits[1][$e] . self::$miscStrings['na'] . self::$miscStrings['deset']; // twelve - nineteen
+                        $ret[3] = self::$digits[1][$e].self::$miscStrings['na'].self::$miscStrings['deset']; // twelve - nineteen
                     }
                     // the "ones" digit is alredy processed, so skip a second processment
                     $e = 0;
                 }
             } else {
-                $ret[3] = self::$digits[1][$d] . self::$miscStrings['deset']; // twenty - ninety
+                $ret[3] = self::$digits[1][$d].self::$miscStrings['deset']; // twenty - ninety
             }
         }
 
@@ -270,7 +270,7 @@ class Bg extends Words
 
         // put "and" optionally in the case this is the last non-empty group
         if ($last) {
-            if (!$s || count($ret) == 1) {
+            if (!$s || 1 == count($ret)) {
                 $ret[0] = $this->and;
             }
             $this->lastAnd = true;
@@ -299,8 +299,8 @@ class Bg extends Words
         }
 
         // add a minus sign
-        if (substr($num, 0, 1) == '-') {
-            $ret_minus = $this->minus . $this->wordSeparator;
+        if ('-' == substr($num, 0, 1)) {
+            $ret_minus = $this->minus.$this->wordSeparator;
 
             $num = substr($num, 1);
         }
@@ -323,46 +323,46 @@ class Bg extends Words
             $pow = $sizeof_numgroups - $i;
 
             // skip processment for empty groups
-            if ($num_groups[$i] != '000') {
+            if ('000' != $num_groups[$i]) {
                 if ($num_groups[$i] > 1) {
-                    if ($pow == 1) {
+                    if (1 == $pow) {
                         $ret[$j] .= $this->showDigitsGroup(
                             $num_groups[$i],
                             0,
                             !$this->lastAnd && $i
-                        ) . $this->wordSeparator;
+                        ).$this->wordSeparator;
                         $ret[$j] .= self::$exponent[($pow - 1) * 3];
-                    } elseif ($pow == 2) {
+                    } elseif (2 == $pow) {
                         $ret[$j] .= $this->showDigitsGroup(
                             $num_groups[$i],
                             -1,
                             !$this->lastAnd && $i
-                        ) . $this->wordSeparator;
-                        $ret[$j] .= self::$miscStrings['hiliadi'] . $this->wordSeparator;
+                        ).$this->wordSeparator;
+                        $ret[$j] .= self::$miscStrings['hiliadi'].$this->wordSeparator;
                     } else {
                         $ret[$j] .= $this->showDigitsGroup(
                             $num_groups[$i],
                             1,
                             !$this->lastAnd && $i
-                        ) . $this->wordSeparator;
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->pluralSuffix . $this->wordSeparator;
+                        ).$this->wordSeparator;
+                        $ret[$j] .= self::$exponent[($pow - 1) * 3].$this->pluralSuffix.$this->wordSeparator;
                     }
                 } else {
-                    if ($pow == 1) {
+                    if (1 == $pow) {
                         $ret[$j] .= $this->showDigitsGroup(
                             $num_groups[$i],
                             0,
                             !$this->lastAnd && $i
-                        ) . $this->wordSeparator;
-                    } elseif ($pow == 2) {
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
+                        ).$this->wordSeparator;
+                    } elseif (2 == $pow) {
+                        $ret[$j] .= self::$exponent[($pow - 1) * 3].$this->wordSeparator;
                     } else {
-                        $ret[$j] .= self::$digits[1][1] . $this->wordSeparator . self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
+                        $ret[$j] .= self::$digits[1][1].$this->wordSeparator.self::$exponent[($pow - 1) * 3].$this->wordSeparator;
                     }
                 }
             }
         }
 
-        return $ret_minus . rtrim(implode('', array_reverse($ret)), $this->wordSeparator);
+        return $ret_minus.rtrim(implode('', array_reverse($ret)), $this->wordSeparator);
     }
 }

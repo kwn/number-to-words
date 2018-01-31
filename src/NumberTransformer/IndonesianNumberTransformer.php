@@ -7,7 +7,7 @@ use NumberToWords\Legacy\Numbers\Words;
 class IndonesianNumberTransformer implements NumberTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toWords($number)
     {

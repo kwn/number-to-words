@@ -35,7 +35,7 @@ class EnglishTripletTransformer implements TripletTransformer
             $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
         }
 
-        if ($tens !== 0 || $units !== 0) {
+        if (0 !== $tens || 0 !== $units) {
             $words[] = $this->getSubHundred($tens, $units);
         }
 
@@ -52,7 +52,7 @@ class EnglishTripletTransformer implements TripletTransformer
     {
         $words = [];
 
-        if ($tens === 1) {
+        if (1 === $tens) {
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         } else {
             if ($tens > 0) {

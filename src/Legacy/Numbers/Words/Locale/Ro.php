@@ -38,7 +38,7 @@ class Ro extends Words
                 $numberAtom,
                 $numberAtom,
             ];
-        } elseif (count($numberAtom) === 2) {
+        } elseif (2 === count($numberAtom)) {
             $numberNames = [
                 $numberAtom[0],
                 $numberAtom[1],
@@ -65,22 +65,22 @@ class Ro extends Words
     private function getNounDeclensionForNumber($pluralRule, $noun)
     {
         // Nothing for abstract count
-        if ($noun[2] === Gender::GENDER_ABSTRACT) {
+        if (Gender::GENDER_ABSTRACT === $noun[2]) {
             return '';
         }
 
         // One
-        if ($pluralRule === 'o') {
+        if ('o' === $pluralRule) {
             return $noun[0];
         }
 
         // Few
-        if ($pluralRule === 'f') {
+        if ('f' === $pluralRule) {
             return $noun[1];
         }
 
         // Many
-        return Dictionary::$manyPart . Dictionary::$wordSeparator . $noun[1];
+        return Dictionary::$manyPart.Dictionary::$wordSeparator.$noun[1];
     }
 
     /**
@@ -96,14 +96,14 @@ class Ro extends Words
         }
 
         // Zero, which behaves like few
-        if ($number === 0) {
+        if (0 === $number) {
             return 'f';
         }
 
         $uz = $number % 100;
 
         // Hundreds behave like many
-        if ($uz === 0) {
+        if (0 === $uz) {
             return 'm';
         }
 
@@ -146,7 +146,7 @@ class Ro extends Words
                 if ($tens) {
                     $ret .= Dictionary::$numbers[$tens * 10]; // no accord needed for tens
                     if ($units) {
-                        $ret .= Dictionary::$wordSeparator . Dictionary::$and . Dictionary::$wordSeparator;
+                        $ret .= Dictionary::$wordSeparator.Dictionary::$and.Dictionary::$wordSeparator;
                     }
                 }
                 if ($units) {
@@ -155,17 +155,17 @@ class Ro extends Words
             }
         }
 
-        if ($noun[2] === Gender::GENDER_ABSTRACT) {
+        if (Gender::GENDER_ABSTRACT === $noun[2]) {
             return $ret;
         }
 
         $pluralRule = $this->getPluralRule($number);
 
-        if ($pluralRule === 'o' && $forcePlural) {
+        if ('o' === $pluralRule && $forcePlural) {
             $pluralRule = 'f';
         }
 
-        return $ret . Dictionary::$wordSeparator . $this->getNounDeclensionForNumber($pluralRule, $noun);
+        return $ret.Dictionary::$wordSeparator.$this->getNounDeclensionForNumber($pluralRule, $noun);
     }
 
     /**
@@ -182,20 +182,20 @@ class Ro extends Words
 
         $ret = '';
 
-        if ($num === 0) {
+        if (0 === $num) {
             return Dictionary::$numbers[0];
         }
 
         if ($num < 0) {
-            $ret = Dictionary::$minus . Dictionary::$wordSeparator;
+            $ret = Dictionary::$minus.Dictionary::$wordSeparator;
             $num *= -1;
         }
 
         // One is a special case
-        if ($num === 1) {
+        if (1 === $num) {
             $ret = $this->getNumberInflectionForGender(Dictionary::$numbers[1], $noun);
-            if ($noun[2] !== Gender::GENDER_ABSTRACT) {
-                $ret .= Dictionary::$wordSeparator . $this->getNounDeclensionForNumber('o', $noun);
+            if (Gender::GENDER_ABSTRACT !== $noun[2]) {
+                $ret .= Dictionary::$wordSeparator.$this->getNounDeclensionForNumber('o', $noun);
             }
 
             return $ret;
@@ -209,7 +209,7 @@ class Ro extends Words
         foreach ($numberGroups as $i => $number) {
             $power = $sizeOfNumberGroups - $i;
 
-            if ($number === 0) {
+            if (0 === $number) {
                 continue;
             }
 
@@ -221,12 +221,12 @@ class Ro extends Words
                 $ret .= $this->showDigitsGroup($number, Dictionary::$exponent[($power - 1) * 3]);
             } else {
                 $showedNoun = true;
-                $ret .= $this->showDigitsGroup($number, $noun, false, $num !== 1);
+                $ret .= $this->showDigitsGroup($number, $noun, false, 1 !== $num);
             }
         }
 
         if (!$showedNoun) {
-            $ret .= Dictionary::$wordSeparator . $this->getNounDeclensionForNumber('m', $noun); // ALWAYS many
+            $ret .= Dictionary::$wordSeparator.$this->getNounDeclensionForNumber('m', $noun); // ALWAYS many
         }
 
         return trim($ret, Dictionary::$wordSeparator);
@@ -238,6 +238,7 @@ class Ro extends Words
      * @param int    $fraction
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -255,7 +256,7 @@ class Ro extends Words
 
         $words[] = $this->toWords($decimal, $currencyNouns[0]);
 
-        if ($fraction !== null) {
+        if (null !== $fraction) {
             $words[] = Dictionary::$and;
             $words[] = $this->toWords($fraction, $currencyNouns[1]);
         }

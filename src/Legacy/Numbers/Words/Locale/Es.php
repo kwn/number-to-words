@@ -6,16 +6,16 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Es extends Words
 {
-    const LOCALE               = 'es';
-    const LANGUAGE_NAME        = 'Spanish';
+    const LOCALE = 'es';
+    const LANGUAGE_NAME = 'Spanish';
     const LANGUAGE_NAME_NATIVE = 'Español';
 
     private $minus = 'menos';
 
     private static $exponent = [
-        0  => ['', ''],
-        3  => ['mil', 'mil'],
-        6  => ['millón', 'millones'],
+        0 => ['', ''],
+        3 => ['mil', 'mil'],
+        6 => ['millón', 'millones'],
         12 => ['billón', 'billones'],
         18 => ['trilón', 'trillones'],
         24 => ['cuatrillón', 'cuatrillones'],
@@ -37,7 +37,7 @@ class Es extends Words
         'seis',
         'siete',
         'ocho',
-        'nueve'
+        'nueve',
     ];
 
     private $wordSeparator = ' ';
@@ -83,7 +83,7 @@ class Es extends Words
         'USD' => [['dólar', 'dólares'], ['centavo']],
         'VEB' => [['bolívar', 'bolívares'], ['céntimo']],
         'YUM' => [['dinar', 'dinares'], ['para']],
-        'ZAR' => [['rand'], ['cent']]
+        'ZAR' => [['rand'], ['cent']],
     ];
 
     /**
@@ -96,7 +96,7 @@ class Es extends Words
     {
         $ret = '';
 
-        if ($number === 0) {
+        if (0 === $number) {
             return self::$digits[0];
         }
 
@@ -112,7 +112,7 @@ class Es extends Words
                 // with it's corresponding $power.
                 $snum = substr($number, 0, -6);
                 $snum = preg_replace('/^0+/', '', $snum);
-                if ($snum !== '') {
+                if ('' !== $snum) {
                     $ret .= $this->toWords($snum, $power + 6);
                 }
             }
@@ -121,8 +121,8 @@ class Es extends Words
 
         // See if we need "thousands"
         $thousands = floor($number / 1000);
-        if ($thousands == 1) {
-            $ret .= $this->wordSeparator . 'mil';
+        if (1 == $thousands) {
+            $ret .= $this->wordSeparator.'mil';
         } elseif ($thousands > 1) {
             $ret .= $this->toWords($thousands, 3);
         }
@@ -134,10 +134,10 @@ class Es extends Words
         // cientos: doscientos, trescientos, etc...
         switch ($h) {
             case 1:
-                if (($d == 0) and ($t == 0)) { // is it's '100' use 'cien'
-                    $ret .= $this->wordSeparator . 'cien';
+                if ((0 == $d) and (0 == $t)) { // is it's '100' use 'cien'
+                    $ret .= $this->wordSeparator.'cien';
                 } else {
-                    $ret .= $this->wordSeparator . 'ciento';
+                    $ret .= $this->wordSeparator.'ciento';
                 }
                 break;
             case 2:
@@ -145,57 +145,57 @@ class Es extends Words
             case 4:
             case 6:
             case 8:
-                $ret .= $this->wordSeparator . self::$digits[$h] . 'cientos';
+                $ret .= $this->wordSeparator.self::$digits[$h].'cientos';
                 break;
             case 5:
-                $ret .= $this->wordSeparator . 'quinientos';
+                $ret .= $this->wordSeparator.'quinientos';
                 break;
             case 7:
-                $ret .= $this->wordSeparator . 'setecientos';
+                $ret .= $this->wordSeparator.'setecientos';
                 break;
             case 9:
-                $ret .= $this->wordSeparator . 'novecientos';
+                $ret .= $this->wordSeparator.'novecientos';
                 break;
         }
 
         // decenas: veinte, treinta, etc...
         switch ($t) {
             case 9:
-                $ret .= $this->wordSeparator . 'noventa';
+                $ret .= $this->wordSeparator.'noventa';
                 break;
 
             case 8:
-                $ret .= $this->wordSeparator . 'ochenta';
+                $ret .= $this->wordSeparator.'ochenta';
                 break;
 
             case 7:
-                $ret .= $this->wordSeparator . 'setenta';
+                $ret .= $this->wordSeparator.'setenta';
                 break;
 
             case 6:
-                $ret .= $this->wordSeparator . 'sesenta';
+                $ret .= $this->wordSeparator.'sesenta';
                 break;
 
             case 5:
-                $ret .= $this->wordSeparator . 'cincuenta';
+                $ret .= $this->wordSeparator.'cincuenta';
                 break;
 
             case 4:
-                $ret .= $this->wordSeparator . 'cuarenta';
+                $ret .= $this->wordSeparator.'cuarenta';
                 break;
 
             case 3:
-                $ret .= $this->wordSeparator . 'treinta';
+                $ret .= $this->wordSeparator.'treinta';
                 break;
 
             case 2:
-                if ($d == 0) {
-                    $ret .= $this->wordSeparator . 'veinte';
+                if (0 == $d) {
+                    $ret .= $this->wordSeparator.'veinte';
                 } else {
-                    if (($power > 0) and ($d == 1)) {
-                        $ret .= $this->wordSeparator . 'veintiún';
+                    if (($power > 0) and (1 == $d)) {
+                        $ret .= $this->wordSeparator.'veintiún';
                     } else {
-                        $ret .= $this->wordSeparator . 'veinti' . self::$digits[$d];
+                        $ret .= $this->wordSeparator.'veinti'.self::$digits[$d];
                     }
                 }
                 break;
@@ -203,54 +203,54 @@ class Es extends Words
             case 1:
                 switch ($d) {
                     case 0:
-                        $ret .= $this->wordSeparator . 'diez';
+                        $ret .= $this->wordSeparator.'diez';
                         break;
 
                     case 1:
-                        $ret .= $this->wordSeparator . 'once';
+                        $ret .= $this->wordSeparator.'once';
                         break;
 
                     case 2:
-                        $ret .= $this->wordSeparator . 'doce';
+                        $ret .= $this->wordSeparator.'doce';
                         break;
 
                     case 3:
-                        $ret .= $this->wordSeparator . 'trece';
+                        $ret .= $this->wordSeparator.'trece';
                         break;
 
                     case 4:
-                        $ret .= $this->wordSeparator . 'catorce';
+                        $ret .= $this->wordSeparator.'catorce';
                         break;
 
                     case 5:
-                        $ret .= $this->wordSeparator . 'quince';
+                        $ret .= $this->wordSeparator.'quince';
                         break;
 
                     case 6:
                     case 7:
                     case 9:
                     case 8:
-                        $ret .= $this->wordSeparator . 'dieci' . self::$digits[$d];
+                        $ret .= $this->wordSeparator.'dieci'.self::$digits[$d];
                         break;
                 }
                 break;
         }
 
         // add digits only if it is a multiple of 10 and not 1x or 2x
-        if (($t != 1) and ($t != 2) and ($d > 0)) {
+        if ((1 != $t) and (2 != $t) and ($d > 0)) {
             // don't add 'y' for numbers below 10
-            if ($t != 0) {
+            if (0 != $t) {
                 // use 'un' instead of 'uno' when there is a suffix ('mil', 'millones', etc...)
-                if (($power > 0) and ($d == 1)) {
-                    $ret .= $this->wordSeparator . ' y un';
+                if (($power > 0) and (1 == $d)) {
+                    $ret .= $this->wordSeparator.' y un';
                 } else {
-                    $ret .= $this->wordSeparator . 'y ' . self::$digits[$d];
+                    $ret .= $this->wordSeparator.'y '.self::$digits[$d];
                 }
             } else {
-                if (($power > 0) and ($d == 1)) {
-                    $ret .= $this->wordSeparator . 'un';
+                if (($power > 0) and (1 == $d)) {
+                    $ret .= $this->wordSeparator.'un';
                 } else {
-                    $ret .= $this->wordSeparator . self::$digits[$d];
+                    $ret .= $this->wordSeparator.self::$digits[$d];
                 }
             }
         }
@@ -265,14 +265,14 @@ class Es extends Words
             }
 
             // if it's only one use the singular suffix
-            if ($d == 1 && $t == 0 && $h == 0) {
+            if (1 == $d && 0 == $t && 0 == $h) {
                 $suffix = $lev[0];
             } else {
                 $suffix = $lev[1];
             }
 
-            if ($number != 0) {
-                $ret .= $this->wordSeparator . $suffix;
+            if (0 != $number) {
+                $ret .= $this->wordSeparator.$suffix;
             }
         }
 
@@ -290,34 +290,34 @@ class Es extends Words
     {
         $currencyNames = self::$currencyNames[$currency];
 
-        $level = ($decimal == 1) ? 0 : 1;
+        $level = (1 == $decimal) ? 0 : 1;
 
         if ($level > 0) {
             $currencyNames = self::$currencyNames[$currency];
             if (count($currencyNames[0]) > 1) {
                 $ret = $currencyNames[0][$level];
             } else {
-                $ret = $currencyNames[0][0] . 's';
+                $ret = $currencyNames[0][0].'s';
             }
         } else {
             $ret = $currencyNames[0][0];
         }
 
-        $ret = $this->wordSeparator . trim($this->toWords($decimal) . ' ' . $ret);
+        $ret = $this->wordSeparator.trim($this->toWords($decimal).' '.$ret);
 
         if (null !== $fraction) {
-            $ret .= $this->wordSeparator . 'con' . $this->wordSeparator . trim($this->toWords($fraction));
+            $ret .= $this->wordSeparator.'con'.$this->wordSeparator.trim($this->toWords($fraction));
 
-            $level = ($fraction == 1) ? 0 : 1;
+            $level = (1 == $fraction) ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $ret .= $this->wordSeparator . $currencyNames[1][$level];
+                    $ret .= $this->wordSeparator.$currencyNames[1][$level];
                 } else {
-                    $ret .= $this->wordSeparator . $currencyNames[1][0] . 's';
+                    $ret .= $this->wordSeparator.$currencyNames[1][0].'s';
                 }
             } else {
-                $ret .= $this->wordSeparator . $currencyNames[1][0];
+                $ret .= $this->wordSeparator.$currencyNames[1][0];
             }
         }
 

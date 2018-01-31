@@ -7,8 +7,8 @@ use NumberToWords\Exception\NumberToWordsException;
 
 class Br extends Words
 {
-    const LOCALE               = 'pt_BR';
-    const LANGUAGE_NAME        = 'Brazilian Portuguese';
+    const LOCALE = 'pt_BR';
+    const LANGUAGE_NAME = 'Brazilian Portuguese';
     const LANGUAGE_NAME_NATIVE = 'Português Brasileiro';
 
     private $minus = 'negativo';
@@ -27,11 +27,11 @@ class Br extends Words
         'dezesseis',
         'dezessete',
         'dezoito',
-        'dezenove'
+        'dezenove',
     ];
 
     private static $words = [
-        /**
+        /*
          * The array containing the digits (indexed by the digits themselves).
          */
         [
@@ -44,9 +44,9 @@ class Br extends Words
             'seis',
             'sete',
             'oito',
-            'nove'
+            'nove',
         ],
-        /**
+        /*
          * The array containing numbers for 10,20,...,90.
          */
         [
@@ -59,9 +59,9 @@ class Br extends Words
             'sessenta',
             'setenta',
             'oitenta',
-            'noventa'
+            'noventa',
         ],
-        /**
+        /*
          * The array containing numbers for hundreds.
          */
         [
@@ -74,7 +74,7 @@ class Br extends Words
             'seiscentos',
             'setecentos',
             'oitocentos',
-            'novecentos'
+            'novecentos',
         ],
     ];
 
@@ -97,7 +97,7 @@ class Br extends Words
         'quatuordecilhão',
         'quindecilhão',
         'sedecilhão',
-        'septendecilhão'
+        'septendecilhão',
     ];
 
     private static $currencyNames = [
@@ -120,6 +120,7 @@ class Br extends Words
      * @param int $num
      *
      * @return string
+     *
      * @throws NumberToWordsException
      */
     protected function toWords($num)
@@ -127,7 +128,7 @@ class Br extends Words
         $neg = 0;
         $ret = [];
 
-        /**
+        /*
          * Negative ?
          */
         if ($num < 0) {
@@ -142,10 +143,10 @@ class Br extends Words
          */
         $num = number_format($num, 0, '.', '.');
 
-        /**
+        /*
          * Testing Zero
          */
-        if ($num == 0) {
+        if (0 == $num) {
             return 'zero';
         }
 
@@ -153,27 +154,27 @@ class Br extends Words
          * Breaks into chunks of 3 digits.
          * Reversing array to process from right to left.
          */
-        $chunks = array_reverse(explode(".", $num));
+        $chunks = array_reverse(explode('.', $num));
 
-        /**
+        /*
          * Looping through the chunks
          */
         foreach ($chunks as $index => $chunk) {
-            /**
+            /*
              * Testing Range
              */
             if (!array_key_exists($index, self::$exponent)) {
                 throw new NumberToWordsException('Number out of range.');
             }
 
-            /**
+            /*
              * Testing Zero
              */
-            if ($chunk == 0) {
+            if (0 == $chunk) {
                 continue;
             }
 
-            /**
+            /*
              * Testing plural of exponent
              */
             if ($chunk > 1) {
@@ -182,26 +183,26 @@ class Br extends Words
                 $exponent = self::$exponent[$index];
             }
 
-            /**
+            /*
              * Adding exponent
              */
             $ret[] = $exponent;
 
             /**
-             * Actual Number
+             * Actual Number.
              */
             $word = array_filter($this->parseChunk($chunk));
             $ret[] = implode($this->separator, $word);
         }
 
-        /**
+        /*
          * In Brazilian Portuguese the last chunck must be separated under
          * special conditions.
          */
         if ((count($ret) > 2 + $neg)
             && $this->mustSeparate($chunks)
         ) {
-            $ret[1 + $neg] = trim($this->separator . $ret[1 + $neg]);
+            $ret[1 + $neg] = trim($this->separator.$ret[1 + $neg]);
         }
 
         $ret = array_reverse(array_filter($ret));
@@ -216,21 +217,21 @@ class Br extends Words
      */
     private function parseChunk($chunk)
     {
-        /**
+        /*
          * Base Case
          */
         if (!$chunk) {
             return [];
         }
 
-        /**
+        /*
          * 100 is a special case
          */
-        if ($chunk == 100) {
+        if (100 == $chunk) {
             return ['cem'];
         }
 
-        /**
+        /*
          * Testing contractions (11~19)
          */
         if (($chunk < 20) && ($chunk > 10)) {
@@ -253,14 +254,14 @@ class Br extends Words
     {
         $chunk = null;
 
-        /**
+        /*
          * Find first occurrence != 0.
          * (first chunk in array but last logical chunk)
          */
         reset($chunks);
         do {
             list(, $chunk) = each($chunks);
-        } while ($chunk === '000');
+        } while ('000' === $chunk);
 
         if (($chunk < 100) || !($chunk % 100)) {
             return true;
@@ -275,6 +276,7 @@ class Br extends Words
      * @param int    $fraction
      *
      * @return string
+     *
      * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -283,12 +285,12 @@ class Br extends Words
         $ret = [];
         $noDecimals = false;
 
-        /**
+        /*
          * Negative ?
          * We can lose the '-' sign if we do the
          * check after number_format() call (i.e. -0.01)
          */
-        if (substr($decimal, 0, 1) == '-') {
+        if ('-' == substr($decimal, 0, 1)) {
             $decimal = -$decimal;
             $negative = 1;
         }
@@ -301,7 +303,7 @@ class Br extends Words
 
         /**
          * Checking if given currency exists in driver.
-         * If not, use default currency
+         * If not, use default currency.
          */
         $currency = strtoupper($currency);
         if (!isset(self::$currencyNames[$currency])) {
@@ -311,24 +313,24 @@ class Br extends Words
         }
 
         /**
-         * Currency names and plural
+         * Currency names and plural.
          */
         $currencyNames = self::$currencyNames[$currency];
 
         if ($num > 0) {
-            /**
+            /*
              * Word representation of decimal
              */
             $ret[] = $this->toWords($num);
 
-            /**
+            /*
              * Special case.
              */
-            if (substr($num, -6) == '000000') {
+            if ('000000' == substr($num, -6)) {
                 $ret[] = trim($this->currencySeparator);
             }
 
-            /**
+            /*
              * Testing plural. Adding currency name
              */
             if ($num > 1) {
@@ -339,11 +341,10 @@ class Br extends Words
         }
 
         /**
-         * Test if fraction was given and != 0
+         * Test if fraction was given and != 0.
          */
         $fraction = (int) $fraction;
         if ($fraction) {
-
             /**
              * Removes leading zeros, spaces, decimals etc.
              * Adds thousands separator.
@@ -359,7 +360,6 @@ class Br extends Words
             } else {
                 $noDecimals = true;
             }
-
 
             $ret[] = $this->toWords($num);
 

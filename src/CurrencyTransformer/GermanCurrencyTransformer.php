@@ -4,7 +4,6 @@ namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Language\German\GermanDictionary;
-use NumberToWords\Language\German\GermanExponentGetter;
 use NumberToWords\Language\German\GermanTripletTransformer;
 use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
@@ -17,6 +16,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
      * @param string $currency
      *
      * @throws NumberToWordsException
+     *
      * @return string
      */
     public function toWords($amount, $currency)
@@ -25,7 +25,6 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new GermanTripletTransformer($dictionary);
         $exponentInflector = new GermanExponentInflector();
-
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
@@ -37,7 +36,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $decimal = (int) ($amount / 100);
         $fraction = $amount % 100;
 
-        if ($fraction === 0) {
+        if (0 === $fraction) {
             $fraction = null;
         }
 
@@ -52,35 +51,35 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $currencyNames = GermanDictionary::$currencyNames[$currency];
 
         $return = trim($numberTransformer->toWords($decimal));
-        $level = ($decimal === 1) ? 0 : 1;
+        $level = (1 === $decimal) ? 0 : 1;
 
         if ($level > 0) {
             if (count($currencyNames[0]) > 1) {
-                $return .= ' ' . $currencyNames[0][$level];
+                $return .= ' '.$currencyNames[0][$level];
             } else {
-                $return .= ' ' . $currencyNames[0][0];
+                $return .= ' '.$currencyNames[0][0];
 //                $return .= ' ' . $currencyNames[0][0] . 's';
             }
         } else {
-            $return .= ' ' . $currencyNames[0][0];
+            $return .= ' '.$currencyNames[0][0];
         }
 
         if (null !== $fraction) {
             $return .= ' '.$dictionary::$and.' ';
 
-            $return .= ' ' . trim($numberTransformer->toWords($fraction));
+            $return .= ' '.trim($numberTransformer->toWords($fraction));
 
-            $level = $fraction === 1 ? 0 : 1;
+            $level = 1 === $fraction ? 0 : 1;
 
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
-                    $return .= ' ' . $currencyNames[1][$level];
+                    $return .= ' '.$currencyNames[1][$level];
                 } else {
 //                    $return .= ' ' . $currencyNames[1][0] . 's';
-                    $return .= ' ' . $currencyNames[1][0];
+                    $return .= ' '.$currencyNames[1][0];
                 }
             } else {
-                $return .= ' ' . $currencyNames[1][0];
+                $return .= ' '.$currencyNames[1][0];
             }
         }
 

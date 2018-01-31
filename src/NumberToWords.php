@@ -79,13 +79,14 @@ class NumberToWords
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
         'ru' => RussianCurrencyTransformer::class,
-        'ua' => UkrainianCurrencyTransformer::class
+        'ua' => UkrainianCurrencyTransformer::class,
     ];
 
     /**
      * @param string $language
      *
      * @throws \InvalidArgumentException
+     *
      * @return NumberTransformer
      */
     public function getNumberTransformer($language)
@@ -97,13 +98,14 @@ class NumberToWords
             ));
         }
 
-        return new $this->numberTransformers[$language];
+        return new $this->numberTransformers[$language]();
     }
 
     /**
      * @param string $language
      *
      * @throws \InvalidArgumentException
+     *
      * @return CurrencyTransformer
      */
     public function getCurrencyTransformer($language)
@@ -115,6 +117,6 @@ class NumberToWords
             ));
         }
 
-        return new $this->currencyTransformers[$language];
+        return new $this->currencyTransformers[$language]();
     }
 }
