@@ -11,6 +11,7 @@ use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RussianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\SpanishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\TurkmenCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
@@ -79,6 +80,7 @@ class NumberToWords
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
         'ru' => RussianCurrencyTransformer::class,
+        'tk' => TurkmenCurrencyTransformer::class,
         'ua' => UkrainianCurrencyTransformer::class
     ];
 
