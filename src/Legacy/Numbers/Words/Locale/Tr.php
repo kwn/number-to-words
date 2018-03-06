@@ -119,6 +119,10 @@ class Tr extends Words
         $ret = '';
         $num = strval($num);
 
+        if ((int)$num === 0) {
+            return self::$digits[0];
+        }
+
         if (substr($num, 0, 1) == '-') {
             $ret = $this->minus . $this->wordSeparator;
             $num = substr($num, 1);
