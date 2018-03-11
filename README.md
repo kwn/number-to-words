@@ -14,7 +14,7 @@ Add package to your composer.json
 ```json
 {
     "require": {
-        "kwn/number-to-words": "~1.2.0"
+        "kwn/number-to-words": "^1.5.0"
     }
 }
 ```
@@ -99,7 +99,7 @@ Russian              | ru         | +      | +        | -     | -
 Swedish              | sv         | +      | -        | -     | -
 Turkish              | tr         | +      | -        | -     | -
 Turkmen              | tk         | +      | +        | -     | -
-Ukrainian            | uk         | +      | +        | -     | -
+Ukrainian            | ua         | +      | +        | -     | -
 
 ## Contributors
 
