@@ -88,7 +88,33 @@ class GermanDictionary implements Dictionary
     ];
 
     public static $currencyNames = [
-        'EUR' => [['Euro'], ['cent']]
+        'ALL' => [['Lek'], ['Quindarka']],
+        'AUD' => [['Australischer Dollar'], ['cent']],
+        'BAM' => [['Konvertible Mark'], ['Fening']],
+        'BGN' => [['Lew'], ['Stotinki']],
+        'BRL' => [['Real'], ['centavos']],
+        'BYR' => [['Weißrussischer Rubel'], ['Kopeke','Kopeken']],
+        'CAD' => [['Kanadischer Dollar'], ['cent']],
+        'CHF' => [['Schweizer Franken'], ['Rappen']],
+        'CZK' => [['Tschechische Krone','Tschechische Kronen'], ['Haleru']],
+        'DKK' => [['Dänische Krone','Dänische Kronen'], ['Øre']],
+        'EUR' => [['Euro'], ['cent']],
+        'GBP' => [['Pfund Sterling'], ['Pence']],
+        'HKD' => [['Hong Kong Dollar'], ['cent']],
+        'HRK' => [['Kuna'], ['lipa']],
+        'HUF' => [['Forint'], ['filler']],
+        'ILS' => [['Neuer Israel Schekel'], ['agora', 'agorot']],
+        'ISK' => [['isländische Krone','isländische Kronen'], ['aurar']],
+        'JPY' => [['Yen'], ['sen']],
+        'MKD' => [['Mazedonischer Denar'], ['deni']],
+        'NOK' => [['Norwegische Krone','Norwegische Kronen'], ['Øre']],
+        'PLN' => [['Złoty'], ['Groschen']],
+        'RUB' => [['Russischer Rubel'], ['Kopeke','Kopeken']],
+        'SEK' => [['Schwedische Krone','Schwedische Kronen'], ['Öre']],
+        'TMT' => [['Manat'], ['tenge']],
+        'UAH' => [['Hrywna'], ['Kopeke','Kopeken']],
+        'USD' => [['US Dollar'], ['cent']],
+        'ZAR' => [['Rand'], ['cent']]
     ];
 
     public static $and = 'und';
