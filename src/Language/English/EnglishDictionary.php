@@ -77,7 +77,8 @@ class EnglishDictionary implements Dictionary
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'YUM' => [['dinars'], ['para']],
-        'ZAR' => [['rand'], ['cent']]
+        'ZAR' => [['rand'], ['cent']],
+        'PHP' => [['peso'], ['centavo']]
     ];
 
     /**
