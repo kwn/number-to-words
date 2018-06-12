@@ -59,7 +59,6 @@ class GermanCurrencyTransformer implements CurrencyTransformer
                 $return .= ' ' . $currencyNames[0][$level];
             } else {
                 $return .= ' ' . $currencyNames[0][0];
-//                $return .= ' ' . $currencyNames[0][0] . 's';
             }
         } else {
             $return .= ' ' . $currencyNames[0][0];
@@ -68,7 +67,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         if (null !== $fraction) {
             $return .= ' '.$dictionary::$and.' ';
 
-            $return .= ' ' . trim($numberTransformer->toWords($fraction));
+            $return .= trim($numberTransformer->toWords($fraction));
 
             $level = $fraction === 1 ? 0 : 1;
 
@@ -76,7 +75,6 @@ class GermanCurrencyTransformer implements CurrencyTransformer
                 if (count($currencyNames[1]) > 1) {
                     $return .= ' ' . $currencyNames[1][$level];
                 } else {
-//                    $return .= ' ' . $currencyNames[1][0] . 's';
                     $return .= ' ' . $currencyNames[1][0];
                 }
             } else {
