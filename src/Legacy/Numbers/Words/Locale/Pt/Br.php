@@ -251,18 +251,15 @@ class Br extends Words
      */
     private function mustSeparate($chunks)
     {
-        $chunk = null;
+        $found = null;
 
-        /**
-         * Find first occurrence != 0.
-         * (first chunk in array but last logical chunk)
-         */
-        reset($chunks);
-        do {
-            list(, $chunk) = each($chunks);
-        } while ($chunk === '000');
+        foreach ($chunks as $chunk) {
+            if ($chunk !== '000') {
+                break;
+            }
+        }
 
-        if (($chunk < 100) || !($chunk % 100)) {
+        if ($chunk < 100 || !($chunk % 100)) {
             return true;
         }
 
