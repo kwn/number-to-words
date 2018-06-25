@@ -74,6 +74,7 @@ class EnglishDictionary implements Dictionary
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
         'TRL' => [['lira'], ['kuruş']],
+        'TZS' => [['shilling'], ['cent']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'YUM' => [['dinars'], ['para']],
