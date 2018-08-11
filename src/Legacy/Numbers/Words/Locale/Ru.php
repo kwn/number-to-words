@@ -275,7 +275,7 @@ class Ru extends Words
 
         // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2F", (float) $number));
+        list($unit, $subunit) = explode('.', sprintf("%{$signs}.2F", (float) $number));
 
         foreach (str_split($unit, 3) as $megaKey => $value) {
             if (!(int) $value) {
@@ -284,7 +284,7 @@ class Ru extends Words
 
             $megaKey = $megaSize - $megaKey - 1;
             $gender = static::$mega[$megaKey][3];
-            list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
+            list($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
             // mega-logic
             $out[] = static::$hundred[$i1]; # 1xx-9xx
 

@@ -7,6 +7,7 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - nightly
 
 install:
   - composer self-update
@@ -17,3 +18,5 @@ script:
 
 after_script:
   - vendor/bin/test-reporter
+  - vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no src/
+  - vendor/bin/phpstan analyze src/

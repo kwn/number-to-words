@@ -138,21 +138,25 @@ class Tr extends Words
         $groups = str_split($num, 3);
         $g_index = count($groups) - 1;
         foreach ($groups as $i => $g) {
-
-            if ((int)$g[0] > 1)
+            if ((int)$g[0] > 1) {
                 $ret .= self::$digits[$g[0]] . $this->wordSeparator;
+            }
 
-            if ((int)$g[0] > 0)
+            if ((int)$g[0] > 0) {
                 $ret .= "yüz" . $this->wordSeparator;
+            }
 
-            if ((int)$g[1] > 0)
+            if ((int)$g[1] > 0) {
                 $ret .= self::$digits_second[$g[1]] . $this->wordSeparator;
+            }
 
-            if ((int)$g[2] > 0 && (($num_length === 4 && $i === 0 && (int)$g[2] <= 1) === false))
+            if ((int)$g[2] > 0 && (($num_length === 4 && $i === 0 && (int)$g[2] <= 1) === false)) {
                 $ret .= self::$digits[$g[2]] . $this->wordSeparator;
+            }
 
-            if ((int)$g > 0)
+            if ((int)$g > 0) {
                 $ret .= self::$exponent[$g_index] . $this->wordSeparator;
+            }
 
             $g_index--;
         }

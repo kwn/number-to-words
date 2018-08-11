@@ -111,9 +111,11 @@ class Dk extends Words
             case 3:
                 $h = (int) substr($number, -3, 1);
 
+                // no break
             case 2:
                 $t = (int) substr($number, -2, 1);
 
+                // no break
             case 1:
                 $d = (int) substr($number, -1, 1);
                 break;

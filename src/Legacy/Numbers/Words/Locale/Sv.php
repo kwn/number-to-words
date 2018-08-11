@@ -116,9 +116,11 @@ class Sv extends Words
             case 3:
                 $h = (int) substr($num, -3, 1);
 
+                // no break
             case 2:
                 $t = (int) substr($num, -2, 1);
 
+                // no break
             case 1:
                 $d = (int) substr($num, -1, 1);
                 break;
