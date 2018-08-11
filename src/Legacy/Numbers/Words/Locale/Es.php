@@ -298,7 +298,6 @@ class Es extends Words
         }
 
         $currencyNames = static::$currencyNames[$currency];
-        // $currencyNames = self::$currencyNames[$currency];
 
         $level = ($decimal == 1) ? 0 : 1;
 
