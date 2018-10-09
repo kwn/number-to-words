@@ -2,7 +2,9 @@
 
 namespace NumberToWords\NumberTransformer;
 
-abstract class NumberTransformerTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+abstract class NumberTransformerTest extends TestCase
 {
     /** @var NumberTransformer */
     protected $numberTransformer;

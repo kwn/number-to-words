@@ -3,8 +3,9 @@
 namespace NumberToWords\Grammar\Inflector;
 
 use NumberToWords\Language\Polish\PolishNounGenderInflector;
+use PHPUnit\Framework\TestCase;
 
-class PolishInflectorTest extends \PHPUnit_Framework_TestCase
+class PolishInflectorTest extends TestCase
 {
     private static $nouns = ['kubek', 'kubki', 'kubków'];
 

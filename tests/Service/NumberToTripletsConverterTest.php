@@ -2,7 +2,9 @@
 
 namespace NumberToWords\Service;
 
-class NumberToTripletsConverterTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class NumberToTripletsConverterTest extends TestCase
 {
     /**
      * @dataProvider providerItConvertsNumberToTriplets

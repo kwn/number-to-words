@@ -5,8 +5,9 @@ namespace NumberToWords;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 
-class NumberToWordsTest extends \PHPUnit_Framework_TestCase
+class NumberToWordsTest extends TestCase
 {
     public function testItThrowsExceptionIfNumberTransformerDoesNotExist()
     {
