@@ -111,7 +111,7 @@ This library is still under a heavy refactoring so the legacy code should ultima
 
 **Q: Why the code looks like a crap? Why it gets so low rank on code climate?**
 
-A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting somem mechanisms from other languages so sooner or later it will look quite good.
+A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting some mechanisms from other languages so sooner or later it will look quite good.
 
 **Q: I've noticed an error**
 
