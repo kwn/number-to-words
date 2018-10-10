@@ -2,7 +2,9 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-abstract class CurrencyTransformerTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+abstract class CurrencyTransformerTest extends TestCase
 {
     /** @var CurrencyTransformer */
     protected $currencyTransformer;
