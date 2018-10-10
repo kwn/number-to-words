@@ -74,32 +74,32 @@ Bare in mind, the currency transformer accepts integers as the amount to transfo
 
 ## Available locale
 
-Language             | Identifier | Number | Currency | Angle | Temperature 
----------------------|------------|--------|----------|-------|-------------
-Belgian French       | fr_BE      | +      | -        | -     | -
-Brazilian Portuguese | pt_BR      | +      | +        | -     | -
-Bulgarian            | bg         | +      | -        | -     | -
-Czech                | cs         | +      | -        | -     | -
-Danish               | dk         | +      | +        | -     | -
-Dutch                | nl         | +      | -        | -     | -
-English              | en         | +      | +        | -     | -
-Estonian             | et         | +      | -        | -     | -
-German               | de         | +      | +        | -     | -
-French               | fr         | +      | +        | -     | -
-Hungarian            | hu         | +      | +        | -     | -
-Indonesian           | id         | +      | -        | -     | -
-Italian              | it         | +      | -        | -     | -
-Lithuanian           | lt         | +      | -        | -     | -
-Latvian              | lv         | +      | -        | -     | -
-Malay                | ms         | +      | -        | -     | -
-Polish               | pl         | +      | +        | -     | -
-Romanian             | ro         | +      | +        | -     | -
-Spanish              | es         | +      | +        | -     | - 
-Russian              | ru         | +      | +        | -     | -
-Swedish              | sv         | +      | -        | -     | -
-Turkish              | tr         | +      | -        | -     | -
-Turkmen              | tk         | +      | +        | -     | -
-Ukrainian            | ua         | +      | +        | -     | -
+Language             | Identifier | Number | Currency |
+---------------------|------------|--------|----------|
+Belgian French       | fr_BE      | +      | -        |
+Brazilian Portuguese | pt_BR      | +      | +        |
+Bulgarian            | bg         | +      | -        |
+Czech                | cs         | +      | -        |
+Danish               | dk         | +      | +        |
+Dutch                | nl         | +      | -        |
+English              | en         | +      | +        |
+Estonian             | et         | +      | -        |
+German               | de         | +      | +        |
+French               | fr         | +      | +        |
+Hungarian            | hu         | +      | +        |
+Indonesian           | id         | +      | -        |
+Italian              | it         | +      | -        |
+Lithuanian           | lt         | +      | -        |
+Latvian              | lv         | +      | -        |
+Malay                | ms         | +      | -        |
+Polish               | pl         | +      | +        |
+Romanian             | ro         | +      | +        |
+Spanish              | es         | +      | +        |
+Russian              | ru         | +      | +        |
+Swedish              | sv         | +      | -        |
+Turkish              | tr         | +      | -        |
+Turkmen              | tk         | +      | +        |
+Ukrainian            | ua         | +      | +        |
 
 ## Contributors
 
@@ -113,7 +113,7 @@ This library is still under a heavy refactoring so the legacy code should ultima
 
 A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting some mechanisms from other languages so sooner or later it will look quite good.
 
-**Q: I've noticed an error**
+**Q: There's an error!**
 
 A: Please report an issue, or even better - create a pull request. I don't speak most of those languages so your help is much appreciated. Thanks!
 
