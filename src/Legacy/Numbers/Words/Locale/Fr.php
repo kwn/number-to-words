@@ -94,10 +94,17 @@ class Fr extends Words
         'CAD' => [['dollar canadien', 'dollars canadiens'], ['cent']],
         'CHF' => [['franc suisse', 'francs suisses'], ['centime']],
         'CNY' => [['yuan'], ['fen']],
+        'DZD' => [['dinar'], ['centime']],
         'EUR' => [['euro'], ['centime']],
         'JPY' => [['yen', ['sen']]],
+        'LYD' => [['dinar'], ['centime']],
+        'MAD' => [['dirham'], ['centime']],
+        'MRO' => [['ouguiya'], ['khoums']],
         'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
+        'TND' => [['dinar'], ['centime']],
         'USD' => [['dollar américain', 'dollars américains'], ['cent']],
+        'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
+        'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
     ];
 
     /**
