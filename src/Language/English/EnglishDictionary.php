@@ -82,10 +82,10 @@ class EnglishDictionary implements Dictionary
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
-        'YUM' => [['dinar'], ['para']],
-        'ZAR' => [['rand'], ['cent']],
         'XAF' => [['CFA franc'], ['cent']],
         'XOF' => [['CFA franc'], ['cent']],
+        'YUM' => [['dinar'], ['para']],
+        'ZAR' => [['rand'], ['cent']],
     ];
 
     /**
