@@ -52,6 +52,7 @@ class EnglishDictionary implements Dictionary
         'CYP' => [['Cypriot pound'], ['cent']],
         'CZK' => [['Czech koruna'], ['halerz']],
         'DKK' => [['Danish krone'], ['ore']],
+        'DZD' => [['dinar'], ['cent']],
         'EEK' => [['kroon'], ['senti']],
         'EUR' => [['euro'], ['euro-cent']],
         'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
@@ -63,9 +64,13 @@ class EnglishDictionary implements Dictionary
         'JPY' => [['yen'], ['sen']],
         'LTL' => [['litas'], ['cent']],
         'LVL' => [['lat'], ['sentim']],
+        'LYD' => [['dinar'], ['cent']],
+        'MAD' => [['dirham'], ['cent']],
         'MKD' => [['Macedonian dinar'], ['deni']],
+        'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
         'NOK' => [['Norwegian krone'], ['oere']],
+        'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'ROL' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
@@ -73,12 +78,14 @@ class EnglishDictionary implements Dictionary
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
+        'TND' => [['dinar'], ['cent']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
-        'YUM' => [['dinars'], ['para']],
+        'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
-        'PHP' => [['peso'], ['centavo']]
+        'XAF' => [['CFA franc'], ['cent']],
+        'XOF' => [['CFA franc'], ['cent']],
     ];
 
     /**
