@@ -68,26 +68,26 @@ class Tr extends Words
     private $wordSeparator = ' ';
 
     private static $currencyNames = [
-        'ALL' => [['lek'], ['qindarka']],
+        'ALL' => [['Arnavut leki'], ['qindarka']],
         'AUD' => [['Avusturalya doları'], ['sent']],
-        'BAM' => [['convertible marka'], ['fenig']],
-        'BGN' => [['Bulgar levası'], ['stotinka', 'stotinki']],
-        'BRL' => [['real'], ['centavos']],
+        'BAM' => [['Bosna-Hersek değiştirilebilir markı'], ['fenig']],
+        'BGN' => [['Bulgar levası'], ['stotinka']],
+        'BRL' => [['Brezilya reali'], ['centavos']],
         'BWP' => [['Botswana pulası'], ['thebe']],
         'BYR' => [['Belarus rublesi'], ['kopiejka']],
         'CAD' => [['Kanada doları'], ['sent']],
         'CHF' => [['İsveç frankı'], ['rapp']],
         'CNY' => [['Çin yuanı'], ['fen']],
-        'CYP' => [['Kıbrıs pound\'u'], ['sent']],
+        'CYP' => [['Kıbrıs poundu'], ['sent']],
         'CZK' => [['Çek kronu'], ['halerz']],
-        'DKK' => [['Danmarka kronu'], ['ore']],
-        'EEK' => [['kroon'], ['senti']],
-        'EUR' => [['Avro'], ['Avro-sent']],
-        'GBP' => [['pound', 'pound'], ['pence', 'pence']],
+        'DKK' => [['Danimarka kronu'], ['ore']],
+        'EEK' => [['Estonya kronu'], ['senti']],
+        'EUR' => [['avro'], ['sent']],
+        'GBP' => [['pound'], ['pence']],
         'HKD' => [['Hong Kong doları'], ['sent']],
         'HRK' => [['Hırvatistan kunası'], ['lipa']],
         'HUF' => [['Macar forinti'], ['filler']],
-        'ILS' => [['yeni sheqel', 'yeni sheqels'], ['agora', 'agorot']],
+        'ILS' => [['İsrail şekeli'], ['agora']],
         'ISK' => [['Izlanda kronu'], ['aurar']],
         'JPY' => [['Japon yeni'], ['sen']],
         'LTL' => [['Litvanya litası'], ['sent']],
@@ -95,22 +95,21 @@ class Tr extends Words
         'MKD' => [['Makedonya dinarı'], ['deni']],
         'MTL' => [['Malta lirası'], ['centym']],
         'NOK' => [['Norveç kronu'], ['oere']],
-        'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanya leu'], ['bani']],
-        'RUB' => [['Ruble'], ['kopiejka']],
+        'PLN' => [['Polonya zlotisi'], ['grosz']],
+        'ROL' => [['Roman leyi'], ['bani']],
+        'RUB' => [['Rus rublesi'], ['kopiejka']],
         'SEK' => [['İsveç kronu'], ['oere']],
-        'SIT' => [['Tolar'], ['stotinia']],
-        'SKK' => [['Slovakya kronu'], []],
-        'TRY' => [['Türk Lirası'], ['kuruş']],
+        'SIT' => [['Slovenya toları'], ['stotinia']],
+        'SKK' => [['Slovakya kronu'], ['']],
+        'TRY' => [['Türk lirası'], ['kuruş']],
         'UAH' => [['Ukrayna hryvnyası'], ['kopiyka']],
-        'USD' => [['ABD Doları'], ['sent']],
-        'YUM' => [['dinar'], ['para']],
+        'USD' => [['ABD doları'], ['sent']],
+        'YUM' => [['Yugoslav dinarı'], ['para']],
         'ZAR' => [['Güney Afrika randı'], ['sent']]
     ];
 
     /**
      * @param int $num
-     * @param int $power
      *
      * @return string
      */
@@ -203,7 +202,7 @@ class Tr extends Words
                 if (count($curr_names[1]) > 1) {
                     $ret .= $this->wordSeparator . $curr_names[1][$lev];
                 } else {
-                    $ret .= $this->wordSeparator . $curr_names[1][0] . 's';
+                    $ret .= $this->wordSeparator . $curr_names[1][0];
                 }
             } else {
                 $ret .= $this->wordSeparator . $curr_names[1][0];
