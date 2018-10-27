@@ -164,12 +164,11 @@ class Tr extends Words
      * @param string $currency
      * @param int    $decimal
      * @param int    $fraction
-     * @param bool   $convertFraction
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toCurrencyWords($currency, $decimal, $fraction = null, $convertFraction = true)
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
         $currency = strtoupper($currency);
 
@@ -193,7 +192,7 @@ class Tr extends Words
         }
 
         if ($fraction !== null) {
-            if ($convertFraction) {
+            if ($this->options->isConvertFraction()) {
                 $ret .= $this->wordSeparator . trim($this->toWords($fraction));
             } else {
                 $ret .= $this->wordSeparator . $fraction;

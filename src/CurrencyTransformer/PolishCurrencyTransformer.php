@@ -13,13 +13,12 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class PolishCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
-     * @param string $currency
+     * {@inheritdoc}
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
         $dictionary = new PolishDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

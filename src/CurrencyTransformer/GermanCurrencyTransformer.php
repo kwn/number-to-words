@@ -13,13 +13,12 @@ use NumberToWords\Language\German\GermanExponentInflector;
 class GermanCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
-     * @param string $currency
+     * {@inheritdoc}
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
         $dictionary = new GermanDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

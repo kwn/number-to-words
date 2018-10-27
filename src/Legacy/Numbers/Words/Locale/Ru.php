@@ -211,7 +211,7 @@ class Ru extends Words
         ],
         'UAH' => [
             [2, 'гривна', 'гривны', 'гривен'],
-            [1, 'цент', 'цента', 'центов']
+            [2, 'копейка', 'копейки', 'копеек'],
         ],
         'USD' => [
             [1, 'доллар США', 'доллара США', 'долларов США'],
@@ -322,14 +322,17 @@ class Ru extends Words
 
         $currencyNames = static::$currencyNames[$currency];
 
-        if ($currencyNames[0][0] === 2) {
-            static::$ten = array_reverse(static::$ten);
-        }
+        $return = '';
+        if ($decimal > 0 || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
+            if ($currencyNames[0][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
 
-        $return = $this->toWords($decimal) . ' ' . $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
+            $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
 
-        if ($currencyNames[0][0] === 2) {
-            static::$ten = array_reverse(static::$ten);
+            if ($currencyNames[0][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
         }
 
         if (null !== $fraction) {
@@ -337,7 +340,27 @@ class Ru extends Words
                 static::$ten = array_reverse(static::$ten);
             }
 
-            $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+            if ($this->options->isConvertFraction()) {
+                $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+            } else {
+                $return .= ' ' . $fraction . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+            }
+
+            if ($currencyNames[1][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
+        }
+
+        if (null === $fraction && $this->options->isShowFractionIfZero()) {
+            if ($currencyNames[1][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
+
+            if ($this->options->isConvertFractionIfZero()) {
+                $return .= ' ' . $this->zero . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+            } else {
+                $return .= ' 00 ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+            }
 
             if ($currencyNames[1][0] === 2) {
                 static::$ten = array_reverse(static::$ten);
