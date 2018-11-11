@@ -2,10 +2,23 @@
 
 namespace NumberToWords\Legacy\Numbers;
 
+use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 use NumberToWords\Exception\NumberToWordsException;
 
 class Words
 {
+    /** @var CurrencyTransformerOptions */
+    protected $options;
+
+    public function __construct($options = null)
+    {
+        if (null === $options) {
+            $this->options = new CurrencyTransformerOptions();
+        } else {
+            $this->options = $options;
+        }
+    }
+
     /**
      * @param int    $number
      * @param string $locale
@@ -32,7 +45,7 @@ class Words
     public function transformToCurrency($amount, $locale, $currency)
     {
         $localeClassName = $this->resolveLocaleClassName($locale);
-        $transformer = new $localeClassName();
+        $transformer = new $localeClassName($this->options);
 
         $decimalPart = (int) ($amount / 100);
         $fractionalPart = $amount % 100;

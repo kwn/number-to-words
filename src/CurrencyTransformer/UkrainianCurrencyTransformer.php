@@ -7,14 +7,11 @@ use NumberToWords\Legacy\Numbers\Words;
 class UkrainianCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int $amount
-     * @param string $currency
-     * @return string
-     * @throws \NumberToWords\Exception\NumberToWordsException
+     * {@inheritdoc}
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
-        $converter = new Words();
+        $converter = new Words($options);
 
         return $converter->transformToCurrency($amount, 'ua', $currency);
     }

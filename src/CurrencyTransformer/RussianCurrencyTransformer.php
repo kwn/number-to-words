@@ -7,14 +7,11 @@ use NumberToWords\Legacy\Numbers\Words;
 class RussianCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
-     * @param string $currency
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
-        $converter = new Words();
+        $converter = new Words($options);
 
         return $converter->transformToCurrency($amount, 'ru', $currency);
     }

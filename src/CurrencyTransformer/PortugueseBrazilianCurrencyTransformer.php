@@ -7,11 +7,11 @@ use NumberToWords\Legacy\Numbers\Words;
 class PortugueseBrazilianCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
-        $converter = new Words();
+        $converter = new Words($options);
 
         return $converter->transformToCurrency($amount, 'pt_BR', $currency);
     }

@@ -12,13 +12,12 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class EnglishCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
-     * @param string $currency
+     * {@inheritdoc}
      *
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
         $dictionary = new EnglishDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
