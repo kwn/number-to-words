@@ -3,6 +3,7 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Exception\NumberToWordsException;
 
 class Es extends Words
 {
@@ -295,7 +296,15 @@ class Es extends Words
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
-        $currencyNames = self::$currencyNames[$currency];
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
 
         $level = ($decimal == 1) ? 0 : 1;
 
