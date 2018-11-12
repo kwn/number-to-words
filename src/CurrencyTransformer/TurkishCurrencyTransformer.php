@@ -7,12 +7,9 @@ use NumberToWords\Legacy\Numbers\Words;
 class TurkishCurrencyTransformer implements CurrencyTransformer
 {
     /**
-     * @param int    $amount
-     * @param string $currency
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function toWords($amount, $currency)
+    public function toWords($amount, $currency, $options = null)
     {
         $converter = new Words();
 
