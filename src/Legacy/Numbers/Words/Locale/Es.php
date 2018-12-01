@@ -87,6 +87,7 @@ class Es extends Words
         'TRL' => [['lira'], ['kuruþ']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dólar', 'dólares'], ['centavo']],
+        'UYU' => [['peso uruguayo', 'pesos uruguayos'], ['centavo']],
         'VEB' => [['bolívar', 'bolívares'], ['céntimo']],
         'XAF' => [['franco CFA', 'francos CFA'], ['céntimo']],
         'XOF' => [['franco CFA', 'francos CFA'], ['céntimo']],
