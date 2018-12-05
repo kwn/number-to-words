@@ -3,6 +3,7 @@
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Exception\NumberToWordsException;
 
 class Fr extends Words
 {
@@ -105,6 +106,7 @@ class Fr extends Words
         'USD' => [['dollar américain', 'dollars américains'], ['cent']],
         'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
         'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
+        'XPF' => [['franc CFP', 'francs CFP'], ['centime']],
     ];
 
     /**
