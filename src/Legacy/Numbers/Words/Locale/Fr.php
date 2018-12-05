@@ -105,6 +105,7 @@ class Fr extends Words
         'USD' => [['dollar américain', 'dollars américains'], ['cent']],
         'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
         'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
+        'XPF' => [['franc CFP', 'francs CFP'], ['centime']],
     ];
 
     /**

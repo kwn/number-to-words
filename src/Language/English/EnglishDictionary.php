@@ -84,6 +84,7 @@ class EnglishDictionary implements Dictionary
         'USD' => [['dollar'], ['cent']],
         'XAF' => [['CFA franc'], ['cent']],
         'XOF' => [['CFA franc'], ['cent']],
+        'XPF' => [['CFP franc'], ['centime']],
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
     ];
