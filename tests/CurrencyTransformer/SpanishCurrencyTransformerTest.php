@@ -11,14 +11,21 @@ class SpanishCurrencyTransformerTest extends CurrencyTransformerTest
 
     public function providerItConvertsMoneyAmountToWords()
     {
+        /*
+        $A=[];
+        for($x=100;$x<3500;$x+=100){
+            for($y=0;$y<35;$y++){
+                $A[]=[$x+$y,'MXN', ''];
+            }
+        }
+        return $A;
+        */
         return [
-            [100, 'PLN', 'uno zloty'],
-            [200, 'PLN', 'dos zlotys'],
-            [500, 'EUR', 'cinco euros'],
-            [61500, 'NOK', 'seiscientos quince norwegian krones'],
-            [154552, 'USD', 'mil quinientos cuarenta y cinco dólares con cincuenta y dos centavos'],
-            [304501, 'EUR', 'tres mil cuarenta y cinco euros con uno centavo'],
-            [52481, 'CZK', 'quinientos veinticuatro czech korunas con ochenta y uno halerzs'],
+            [100, 'MXN', 'un peso'],
+            [101, 'MXN', 'un peso con un centavo'],
+            [121, 'MXN', 'un peso con veintiun centavos'],
+            [2131,'MXN', 'veintiun pesos con treinta y un centavos'],
+            [3151,'MXN', 'treinta y un pesos con cincuenta y un centavos'],
         ];
     }
 }
