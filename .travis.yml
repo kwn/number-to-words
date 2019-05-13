@@ -15,12 +15,12 @@ install:
 before_script:
   - echo $GIT_COMMIT_SHA
   - echo $GIT_BRANCH
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > cc-test-reporter
-  - chmod a+x cc-test-reporter
-  - cc-test-reporter before-build
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ~/cc-test-reporter
+  - chmod a+x ~/cc-test-reporter
+  - ~/cc-test-reporter before-build
 
 script:
   - make build
 
 after_script:
-  - cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ~/cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
