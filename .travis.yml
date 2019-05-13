@@ -1,6 +1,6 @@
 language: php
 
-dist: trusty
+dist: xenial
 
 php:
   - 5.6
@@ -13,13 +13,13 @@ install:
   - composer install
 
 before_script:
-  - echo $GIT_COMMIT_SHA
-  - echo $GIT_BRANCH
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ~/cc-test-reporter
   - chmod a+x ~/cc-test-reporter
   - ~/cc-test-reporter before-build
 
 script:
+  - echo $GIT_COMMIT_SHA
+  - echo $GIT_BRANCH
   - make build
 
 after_script:
