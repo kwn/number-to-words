@@ -20,8 +20,6 @@ before_script:
   - ~/cc-test-reporter before-build
 
 script:
-  - echo $GIT_COMMIT_SHA
-  - echo $GIT_BRANCH
   - make build
 
 after_script:
