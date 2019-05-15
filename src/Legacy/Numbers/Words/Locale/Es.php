@@ -30,7 +30,7 @@ class Es extends Words
 
     private static $digits = [
         'cero',
-        'uno',
+        'un',
         'dos',
         'tres',
         'cuatro',

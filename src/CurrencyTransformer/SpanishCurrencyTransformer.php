@@ -13,6 +13,6 @@ class SpanishCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words($options);
 
-        return $converter->transformToCurrency($amount, 'es', $currency);
+        return $converter->transformToCurrency($amount, 'es', $currency);;
     }
 }
