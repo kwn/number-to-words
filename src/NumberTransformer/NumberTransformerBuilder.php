@@ -18,7 +18,7 @@ class NumberTransformerBuilder
 
     public function __construct()
     {
-        $this->numberTransformer = new GenericNumberTransformer();
+        $this->numberTransformer = new Generic();
     }
 
     /**

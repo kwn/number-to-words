@@ -15,59 +15,59 @@ use NumberToWords\CurrencyTransformer\TurkmenCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\TurkishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
-use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
-use NumberToWords\NumberTransformer\CzechNumberTransformer;
-use NumberToWords\NumberTransformer\DanishNumberTransformer;
-use NumberToWords\NumberTransformer\DutchNumberTransformer;
-use NumberToWords\NumberTransformer\EnglishNumberTransformer;
-use NumberToWords\NumberTransformer\EstonianNumberTransformer;
-use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
-use NumberToWords\NumberTransformer\FrenchNumberTransformer;
-use NumberToWords\NumberTransformer\GermanNumberTransformer;
-use NumberToWords\NumberTransformer\HungarianNumberTransformer;
-use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
-use NumberToWords\NumberTransformer\ItalianNumberTransformer;
-use NumberToWords\NumberTransformer\LatvianNumberTransformer;
-use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
-use NumberToWords\NumberTransformer\MalayNumberTransformer;
-use NumberToWords\NumberTransformer\PolishNumberTransformer;
+use NumberToWords\NumberTransformer\Bulgarian;
+use NumberToWords\NumberTransformer\Czech;
+use NumberToWords\NumberTransformer\Danish;
+use NumberToWords\NumberTransformer\Dutch;
+use NumberToWords\NumberTransformer\English;
+use NumberToWords\NumberTransformer\Estonian;
+use NumberToWords\NumberTransformer\FrenchBelgian;
+use NumberToWords\NumberTransformer\French;
+use NumberToWords\NumberTransformer\German;
+use NumberToWords\NumberTransformer\Hungarian;
+use NumberToWords\NumberTransformer\Indonesian;
+use NumberToWords\NumberTransformer\Italian;
+use NumberToWords\NumberTransformer\Latvian;
+use NumberToWords\NumberTransformer\Lithuanian;
+use NumberToWords\NumberTransformer\Malay;
+use NumberToWords\NumberTransformer\Polish;
 use NumberToWords\NumberTransformer\NumberTransformer;
-use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
-use NumberToWords\NumberTransformer\RomanianNumberTransformer;
-use NumberToWords\NumberTransformer\RussianNumberTransformer;
-use NumberToWords\NumberTransformer\SpanishNumberTransformer;
-use NumberToWords\NumberTransformer\SwedishNumberTransformer;
-use NumberToWords\NumberTransformer\TurkishNumberTransformer;
-use NumberToWords\NumberTransformer\TurkmenNumberTransformer;
-use NumberToWords\NumberTransformer\UkrainianNumberTransformer;
+use NumberToWords\NumberTransformer\PortugueseBrazilian;
+use NumberToWords\NumberTransformer\Romanian;
+use NumberToWords\NumberTransformer\Russian;
+use NumberToWords\NumberTransformer\Spanish;
+use NumberToWords\NumberTransformer\Swedish;
+use NumberToWords\NumberTransformer\Turkish;
+use NumberToWords\NumberTransformer\Turkmen;
+use NumberToWords\NumberTransformer\Ukrainian;
 
 class NumberToWords
 {
     private $numberTransformers = [
-        'bg' => BulgarianNumberTransformer::class,
-        'cs' => CzechNumberTransformer::class,
-        'de' => GermanNumberTransformer::class,
-        'dk' => DanishNumberTransformer::class,
-        'en' => EnglishNumberTransformer::class,
-        'es' => SpanishNumberTransformer::class,
-        'et' => EstonianNumberTransformer::class,
-        'fr' => FrenchNumberTransformer::class,
-        'fr_BE' => FrenchBelgianNumberTransformer::class,
-        'hu' => HungarianNumberTransformer::class,
-        'id' => IndonesianNumberTransformer::class,
-        'it' => ItalianNumberTransformer::class,
-        'lt' => LithuanianNumberTransformer::class,
-        'lv' => LatvianNumberTransformer::class,
-        'ms' => MalayNumberTransformer::class,
-        'nl' => DutchNumberTransformer::class,
-        'pl' => PolishNumberTransformer::class,
-        'pt_BR' => PortugueseBrazilianNumberTransformer::class,
-        'ro' => RomanianNumberTransformer::class,
-        'ru' => RussianNumberTransformer::class,
-        'sv' => SwedishNumberTransformer::class,
-        'tk' => TurkmenNumberTransformer::class,
-        'tr' => TurkishNumberTransformer::class,
-        'ua' => UkrainianNumberTransformer::class
+        'bg' => Bulgarian::class,
+        'cs' => Czech::class,
+        'de' => German::class,
+        'dk' => Danish::class,
+        'en' => English::class,
+        'es' => Spanish::class,
+        'et' => Estonian::class,
+        'fr' => French::class,
+        'fr_BE' => FrenchBelgian::class,
+        'hu' => Hungarian::class,
+        'id' => Indonesian::class,
+        'it' => Italian::class,
+        'lt' => Lithuanian::class,
+        'lv' => Latvian::class,
+        'ms' => Malay::class,
+        'nl' => Dutch::class,
+        'pl' => Polish::class,
+        'pt_BR' => PortugueseBrazilian::class,
+        'ro' => Romanian::class,
+        'ru' => Russian::class,
+        'sv' => Swedish::class,
+        'tk' => Turkmen::class,
+        'tr' => Turkish::class,
+        'ua' => Ukrainian::class
     ];
 
     private $currencyTransformers = [
@@ -76,7 +76,7 @@ class NumberToWords
         'en' => EnglishCurrencyTransformer::class,
         'es' => SpanishCurrencyTransformer::class,
         'fr' => FrenchCurrencyTransformer::class,
-        'hu' => HungarianNumberTransformer::class,
+        'hu' => Hungarian::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
@@ -92,7 +92,7 @@ class NumberToWords
      * @throws \InvalidArgumentException
      * @return NumberTransformer
      */
-    public function getNumberTransformer($language)
+    public function getNumberTransformer(string $language): NumberTransformer
     {
         if (!array_key_exists($language, $this->numberTransformers)) {
             throw new \InvalidArgumentException(sprintf(

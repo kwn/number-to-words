@@ -11,11 +11,8 @@ abstract class NumberTransformerTest extends TestCase
 
     /**
      * @dataProvider providerItConvertsNumbersToWords
-     *
-     * @param int    $number
-     * @param string $expectedString
      */
-    public function testItConvertsNumbersToWords($number, $expectedString)
+    public function testItConvertsNumbersToWords(int $number, string $expectedString): void
     {
         if (null === $this->numberTransformer) {
             self::markTestIncomplete('Please initialize $numberTransformer property.');
