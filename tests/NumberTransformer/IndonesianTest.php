@@ -4,7 +4,7 @@ namespace NumberToWords\NumberTransformer;
 
 class IndonesianTest extends NumberTransformerTest
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->numberTransformer = new Indonesian();
     }

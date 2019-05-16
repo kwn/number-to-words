@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class EnglishCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new EnglishCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [72900, 'USD', 'seven hundred twenty-nine dollars'],

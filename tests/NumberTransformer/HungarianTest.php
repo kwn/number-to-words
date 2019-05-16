@@ -4,7 +4,7 @@ namespace NumberToWords\NumberTransformer;
 
 class HungarianTest extends NumberTransformerTest
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->numberTransformer = new Hungarian();
     }

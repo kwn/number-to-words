@@ -11,12 +11,8 @@ abstract class CurrencyTransformerTest extends TestCase
 
     /**
      * @dataProvider providerItConvertsMoneyAmountToWords
-     *
-     * @param float  $amount
-     * @param string $currency
-     * @param string $expectedString
      */
-    public function testItConvertsMoneyAmountToWords($amount, $currency, $expectedString)
+    public function testItConvertsMoneyAmountToWords(float $amount, string $currency, string $expectedString): void
     {
         if (null === $this->currencyTransformer) {
             self::markTestIncomplete('Please initialize $currencyTransformer property.');
@@ -25,5 +21,5 @@ abstract class CurrencyTransformerTest extends TestCase
         self::assertEquals($expectedString, $this->currencyTransformer->toWords($amount, $currency));
     }
 
-    abstract public function providerItConvertsMoneyAmountToWords();
+    abstract public function providerItConvertsMoneyAmountToWords(): array;
 }

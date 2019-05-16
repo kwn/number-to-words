@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class HungarianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new HungarianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'HUF', 'egy forint'],

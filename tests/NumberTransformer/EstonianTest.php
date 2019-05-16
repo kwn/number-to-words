@@ -4,7 +4,7 @@ namespace NumberToWords\NumberTransformer;
 
 class EstonianTest extends NumberTransformerTest
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->numberTransformer = new Estonian();
     }

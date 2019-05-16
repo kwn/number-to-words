@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class TurkishCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new TurkishCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [72900, 'USD', 'yedi yüz yirmi dokuz ABD doları'],

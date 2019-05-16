@@ -21,5 +21,5 @@ abstract class NumberTransformerTest extends TestCase
         self::assertEquals($expectedString, $this->numberTransformer->toWords($number));
     }
 
-    abstract public function providerItConvertsNumbersToWords();
+    abstract public function providerItConvertsNumbersToWords(): array;
 }
