@@ -12,6 +12,7 @@ class FrenchBelgianNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords()
     {
         return [
+            [-1104, 'moins mille cent quatre'],
             [0, 'zéro'],
             [1, 'un'],
             [2, 'deux'],
@@ -70,7 +71,6 @@ class FrenchBelgianNumberTransformerTest extends NumberTransformerTest
             [7232, 'sept mille deux cent trente-deux'],
             [8569, 'huit mille cinq cent soixante-neuf'],
             [9539, 'neuf mille cinq cent trente-neuf'],
-            [-1104, 'moins mille cent quatre'],
         ];
     }
 }
