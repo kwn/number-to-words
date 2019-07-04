@@ -15,6 +15,7 @@ class CzechNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords()
     {
         return [
+            [-100, 'mínus sto'],
             [0, 'nula'],
             [1, 'jedna'],
             [2, 'dva'],
@@ -153,7 +154,6 @@ class CzechNumberTransformerTest extends NumberTransformerTest
             [6000000, 'šest miliónů'],
             [7000000, 'sedm miliónů'],
             [1000000000, 'miliarda'],
-            [-100, 'mínus sto'],
         ];
     }
 }

@@ -12,6 +12,7 @@ class IndonesianNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords()
     {
         return [
+            [-103, 'minus seratus tiga'],
             [0, 'nol'],
             [1, 'satu'],
             [2, 'dua'],
@@ -185,7 +186,6 @@ class IndonesianNumberTransformerTest extends NumberTransformerTest
             [9000000, 'sembilan juta'],
             [1000000000, 'satu milyar'],
             [1000000001, 'satu milyar satu'],
-            [-103, 'minus seratus tiga'],
         ];
     }
 }
