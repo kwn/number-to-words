@@ -48,7 +48,7 @@ class Words
         $transformer = new $localeClassName($this->options);
 
         $decimalPart = (int) ($amount / 100);
-        $fractionalPart = $amount % 100;
+        $fractionalPart = abs($amount % 100);
 
         if (0 === $fractionalPart) {
             return trim($transformer->toCurrencyWords($currency, $decimalPart));

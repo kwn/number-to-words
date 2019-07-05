@@ -26,6 +26,7 @@ class RussianCurrencyTransformerTest extends CurrencyTransformerTest
 
             // rubles (RUB)
             [-2100, 'RUB', 'минус двадцать один рубль'],
+            [-2125, 'RUB', 'минус двадцать один рубль двадцать пять копеек'],
             [0, 'RUB', 'ноль рублей'],
             [53, 'RUB', 'пятьдесят три копейки'],
             [100, 'RUB', 'один рубль'],
