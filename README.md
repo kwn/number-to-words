@@ -72,6 +72,33 @@ $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nin
 
 Bare in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
+## Transformer Options
+
+To use options such as, for example, the forced inference of the fractions, you need to initialize the options and pass them to the class constructor:
+
+```php
+use NumberToWords\NumberToWords;
+use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
+
+// create a new options transformer
+$options = new CurrencyTransformerOptions();
+
+// set options
+$options->setShowDecimalIfZero(true);
+$options->showFractionIfZero(true);
+
+// create the number to words "manager" class
+$numberToWords = new NumberToWords();
+
+// build a new number transformer using the RFC 3066 language identifier
+$numberTransformer = $numberToWords->getNumberTransformer('en');
+```
+
+Then it can be used passing in numeric values for amount and ISO 4217 currency identifier to the `toWords()` method:
+```php
+$currencyTransformer->toWords(5000, 'USD', $options); // outputs "fifty dollars ninety nine and zero cents"
+```
+
 ## Available locale
 
 Language             | Identifier | Number | Currency |
