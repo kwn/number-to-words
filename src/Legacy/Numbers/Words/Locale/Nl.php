@@ -49,7 +49,7 @@ class Nl extends Words
 
     private static $digits = [
         'nul',
-        'een',
+        'één',
         'twee',
         'drie',
         'vier',
@@ -123,7 +123,6 @@ class Nl extends Words
         // strip excessive zero signs and spaces
         $num = trim($num);
         $num = preg_replace('/^0+/', '', $num);
-
         if (strlen($num) > 3) {
             $maxp = strlen($num) - 1;
             $curp = $maxp;
@@ -139,7 +138,6 @@ class Nl extends Words
                         if ($powsuffix != '') {
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
-
                         $ret .= $this->toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
@@ -173,37 +171,35 @@ class Nl extends Words
         }
 
         if ($h) {
-            $ret .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'honderd';
+            $ret .= $this->wordSeparator .  ($h==1?'':self::$digits[$h]) . $this->wordSeparator . 'honderd';
         }
-
         // add digits only in <0>,<1,9> and <21,inf>
-        if ($t != 1 && $d > 0) {
-            if ($t > 0) {
+        if ( $d > 0) {
+            if ($t != 1 && $t > 0) {
                 $ret .= self::$digits[$d] . 'en';
             } else {
-                $ret .= self::$digits[$d];
-                if ($d == 1) {
-                    if ($power == 0) {
-                        $ret .= 's'; // fuer eins
-                    } else {
-                        if ($power != 3) {  // tausend ausnehmen
-                            $ret .= ''; // fuer eine
-                        }
-                    }
+                // 100 en 9 of 100 en 12 maar honderddertien 
+                if ( $h > 0 && ($t == 0 || ($t== 1 && ($d==1 || $d==2))))
+                {
+                    $ret .= ' en ';
+                } 
+                if($t != 1 && !($d ==1 && $power == 3 )){
+                    $ret .= self::$digits[$d];
                 }
             }
         }
 
         // ten, twenty etc.
         switch ($t) {
-            case 9:
             case 8:
+                $ret .= $this->wordSeparator . 't'.self::$digits[$t] . 'ig';
+                break;
+            case 9:
             case 7:
             case 6:
             case 5:
                 $ret .= $this->wordSeparator . self::$digits[$t] . 'tig';
                 break;
-
             case 4:
                 $ret .= $this->wordSeparator . 'veertig';
                 break;
@@ -257,9 +253,8 @@ class Nl extends Words
             if (!isset($lev) || !is_array($lev)) {
                 return null;
             }
-
             if ($power == 3) {
-                $ret .= $this->wordSeparator . $lev[0];
+                $ret .= $this->wordSeparator . $lev[0] . self::$exponentWordSeparator;
             } elseif ($d == 1 && ($t + $h) == 0) {
                 $ret .= self::$exponentWordSeparator . $lev[0] . self::$exponentWordSeparator;
             } else {
