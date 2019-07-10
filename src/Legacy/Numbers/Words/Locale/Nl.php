@@ -113,6 +113,7 @@ class Nl extends Words
     protected function toWords($num, $power = 0, $powsuffix = '')
     {
         $ret = '';
+        $hasPower =false;; 
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
@@ -138,6 +139,7 @@ class Nl extends Words
                         if ($powsuffix != '') {
                             $cursuffix .= $this->wordSeparator . $powsuffix;
                         }
+                        $hasPower = true;
                         $ret .= $this->toWords($snum, $p, $cursuffix);
                     }
                     $curp = $p - 1;
@@ -172,6 +174,11 @@ class Nl extends Words
 
         if ($h) {
             $ret .= $this->wordSeparator .  ($h==1?'':self::$digits[$h]) . $this->wordSeparator . 'honderd';
+        }
+        // an number under 12 with wants en if it is substituted 
+        if ($hasPower && $num <= 12 && $num > 0)
+        {
+            $ret .= 'en ';
         }
         // add digits only in <0>,<1,9> and <21,inf>
         if ( $d > 0) {
