@@ -38,7 +38,6 @@ class SlovakTripletTransformer implements TripletTransformer
             $words[] = $this->slovakDictionary->getCorrespondingTeen($units);
         }
         if ($tens === 2) {
-
             $words[] = $this->slovakDictionary->getCorrespondingTwenteen($units);
         }
 
