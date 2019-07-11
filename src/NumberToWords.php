@@ -66,7 +66,7 @@ class NumberToWords
         'pt_BR' => PortugueseBrazilianNumberTransformer::class,
         'ro' => RomanianNumberTransformer::class,
         'ru' => RussianNumberTransformer::class,
-        'slo' => SlovakNumberTransformer::class,
+        'sk' => SlovakNumberTransformer::class,
         'sv' => SwedishNumberTransformer::class,
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
@@ -84,7 +84,7 @@ class NumberToWords
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
         'ru' => RussianCurrencyTransformer::class,
-        'slo' => SlovakCurrencyTransformer::class,
+        'sk' => SlovakCurrencyTransformer::class,
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
         'ua' => UkrainianCurrencyTransformer::class

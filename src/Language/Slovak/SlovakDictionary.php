@@ -7,7 +7,7 @@ use NumberToWords\Language\Dictionary;
 
 class SlovakDictionary implements Dictionary
 {
-    const LOCALE = 'slo';
+    const LOCALE = 'sk';
     const LANGUAGE_NAME = 'Slovak';
     const LANGUAGE_NAME_NATIVE = 'slovák';
 
