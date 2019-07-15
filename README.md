@@ -9,20 +9,10 @@ This library allows you to convert a number to words.
 
 ## Installation
 
-Add package to your composer.json
-
-```json
-{
-    "require": {
-        "kwn/number-to-words": "^1.5.0"
-    }
-}
-```
-
-And update your vendors
+Add package to your composer.json by running:
 
 ```
-$ php composer.phar update kwn/number-to-words
+$ composer require kwn/number-to-words
 ```
 
 
@@ -94,6 +84,7 @@ Latvian              | lv         | +      | -        |
 Malay                | ms         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
+Slovak               | sk         | +      | -        |
 Spanish              | es         | +      | +        |
 Russian              | ru         | +      | +        |
 Swedish              | sv         | +      | -        |
