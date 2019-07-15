@@ -27,6 +27,10 @@ class EnglishCurrencyTransformerTest extends CurrencyTransformerTest
             [645900, 'USD', 'six thousand four hundred fifty-nine dollars'],
             [723200, 'USD', 'seven thousand two hundred thirty-two dollars'],
             [123456789, 'XPF', 'one million two hundred thirty-four thousand five hundred sixty-seven CFP francs eighty-nine centimes'],
+
+            [-72925, 'USD', 'minus seven hundred twenty-nine dollars twenty-five cents'],
+            [-89425, 'USD', 'minus eight hundred ninety-four dollars twenty-five cents'],
+            [-99925, 'USD', 'minus nine hundred ninety-nine dollars twenty-five cents'],
         ];
     }
 }

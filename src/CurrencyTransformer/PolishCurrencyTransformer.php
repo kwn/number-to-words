@@ -34,7 +34,7 @@ class PolishCurrencyTransformer implements CurrencyTransformer
             ->build();
 
         $decimal = (int) ($amount / 100);
-        $fraction = $amount % 100;
+        $fraction = abs($amount % 100);
 
         if ($fraction === 0) {
             $fraction = null;

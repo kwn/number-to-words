@@ -321,9 +321,23 @@ class Ru extends Words
         }
 
         $currencyNames = static::$currencyNames[$currency];
-
         $return = '';
-        if ($decimal > 0 || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
+
+        if ($decimal === 0 && !$fraction) {
+            if ($currencyNames[0][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
+
+            $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
+
+            if ($currencyNames[0][0] === 2) {
+                static::$ten = array_reverse(static::$ten);
+            }
+
+            return $return;
+        }
+
+        if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
             if ($currencyNames[0][0] === 2) {
                 static::$ten = array_reverse(static::$ten);
             }
