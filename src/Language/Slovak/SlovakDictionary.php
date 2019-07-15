@@ -2,7 +2,6 @@
 
 namespace NumberToWords\Language\Slovak;
 
-use NumberToWords\Grammar\Gender;
 use NumberToWords\Language\Dictionary;
 
 class SlovakDictionary implements Dictionary
