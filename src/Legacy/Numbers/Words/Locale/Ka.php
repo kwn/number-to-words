@@ -61,22 +61,20 @@ class Ka extends Words
 
     private static $currencyNames = [
         'GEL' => [['ლარი'], ['თეთრი']],
-        'AUD' => [['ავსტრალიური დოლარი'], ['ცენტი']],
-        'CAD' => [['კანადური დოლარი'], ['ცენტი']],
-        'CHF' => [['შვეიცარული ფრანკი'], ['სენტიმი']],
+        'CHF' => [['ფრანკი'], ['სენტიმი']],
         'CNY' => [['იუანი'], ['ფინი']],
         'DZD' => [['დინარი'], ['სენტიმი']],
         'EUR' => [['ევრო'], ['სენტიმი']],
         'JPY' => [['იენი', ['სენი']]],
         'LYD' => [['დინარი'], ['სენტიმი']],
         'MAD' => [['დირჰამი'], ['სენტიმი']],
-        'MRO' => [['ოუგუია'], ['ხოუმსი']],
         'MXN' => [['მექსიკური პესო'], ['სენტავო']],
         'TND' => [['დინარი'], ['სენტიმი']],
-        'USD' => [['ამერიკული დოლარი'], ['ცენტი']],
-        'XAF' => [['ცენტრალურ აფრიკული ფრანკი'], ['სენტიმი']], //I'm not sure
-        'XOF' => [['დასავლურ აფრიკული ფრანკი'], ['სენტიმი']], // I'm not sure
-        'XPF' => [['ფრანკი'], ['სენტიმი']], // I'm not sure
+        'USD' => [['დოლარი'], ['ცენტი']],
+        'TRY' => [['ლირა'], ['ყურუში']],
+        'AMD' => [['დრამი'], ['ლუმა']],
+        'PLN' => [['ზლოტი'], ['გროში']],
+        'GBP' => [['ფუნტი'], ['პენი']]
     ];
 
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -93,10 +91,17 @@ class Ka extends Words
         $majorName = $currencyNames[0][0];
         $minorName = $currencyNames[1][0];
 
-        $result = $this->toWords($decimal) . ' '. $majorName;
+        $result = '';
 
-        if($fraction)
-        {
+        if ($decimal != 0) {
+            $result = $this->toWords($decimal) . ' ' . $majorName;
+
+        }
+
+        if ($fraction) {
+            if($decimal != 0){
+                $result = $result . ' ' . self::CONJUNCTION;
+            }
             $result = $result. ' ' . $this->toWords($fraction) . ' ' . $minorName;
         }
 
