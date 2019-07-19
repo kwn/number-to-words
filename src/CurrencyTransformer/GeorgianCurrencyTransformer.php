@@ -9,6 +9,7 @@
 namespace NumberToWords\CurrencyTransformer;
 
 
+use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class GeorgianCurrencyTransformer implements CurrencyTransformer
@@ -23,6 +24,7 @@ class GeorgianCurrencyTransformer implements CurrencyTransformer
      */
     public function toWords($amount, $currency, $options = null)
     {
-        // TODO: Implement toWords() method.
+        $converter = new Words($options);
+        return $converter->transformToCurrency($amount, 'ka', $currency);
     }
 }

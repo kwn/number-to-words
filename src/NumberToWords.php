@@ -91,7 +91,7 @@ class NumberToWords
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
         'ua' => UkrainianCurrencyTransformer::class,
-        'ka'=>GeorgianCurrencyTransformer::class
+        'ka' => GeorgianCurrencyTransformer::class
     ];
 
     /**

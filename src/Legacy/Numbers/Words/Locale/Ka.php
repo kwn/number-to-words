@@ -8,6 +8,7 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Ka extends Words
@@ -57,37 +58,61 @@ class Ka extends Words
         1000000000000000 => 'კვადრილიონ',
         1000000000000000000 => 'კვინტილიონ',
     );
+
     private static $currencyNames = [
+        'GEL' => [['ლარი'], ['თეთრი']],
         'AUD' => [['ავსტრალიური დოლარი'], ['ცენტი']],
         'CAD' => [['კანადური დოლარი'], ['ცენტი']],
         'CHF' => [['შვეიცარული ფრანკი'], ['სენტიმი']],
-        'CNY' => [['yuan'], ['fen']],
-        'DZD' => [['dinar'], ['centime']],
-        'EUR' => [['euro'], ['centime']],
-        'JPY' => [['yen', ['sen']]],
-        'LYD' => [['dinar'], ['centime']],
-        'MAD' => [['dirham'], ['centime']],
-        'MRO' => [['ouguiya'], ['khoums']],
-        'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
-        'TND' => [['dinar'], ['centime']],
-        'USD' => [['dollar américain', 'dollars américains'], ['cent']],
-        'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
-        'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
-        'XPF' => [['franc CFP', 'francs CFP'], ['centime']],
+        'CNY' => [['იუანი'], ['ფინი']],
+        'DZD' => [['დინარი'], ['სენტიმი']],
+        'EUR' => [['ევრო'], ['სენტიმი']],
+        'JPY' => [['იენი', ['სენი']]],
+        'LYD' => [['დინარი'], ['სენტიმი']],
+        'MAD' => [['დირჰამი'], ['სენტიმი']],
+        'MRO' => [['ოუგუია'], ['ხოუმსი']],
+        'MXN' => [['მექსიკური პესო'], ['სენტავო']],
+        'TND' => [['დინარი'], ['სენტიმი']],
+        'USD' => [['ამერიკული დოლარი'], ['ცენტი']],
+        'XAF' => [['ცენტრალურ აფრიკული ფრანკი'], ['სენტიმი']], //I'm not sure
+        'XOF' => [['დასავლურ აფრიკული ფრანკი'], ['სენტიმი']], // I'm not sure
+        'XPF' => [['ფრანკი'], ['სენტიმი']], // I'm not sure
     ];
 
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
+        $majorName = $currencyNames[0][0];
+        $minorName = $currencyNames[1][0];
+
+        $result = $this->toWords($decimal) . ' '. $majorName;
+
+        if($fraction)
+        {
+            $result = $result. ' ' . $this->toWords($fraction) . ' ' . $minorName;
+        }
+
+        return $result;
+    }
 
     protected function toWords($number, $use_suffix = true, $use_spaces = true)
     {
-        $space =  $use_spaces ? ' ' : '';
+        $space = $use_spaces ? ' ' : '';
         if (!is_numeric($number)) {
             return false;
         }
         if ($number > PHP_INT_MAX or $number < -PHP_INT_MAX) {
             // overflow
-            trigger_error(
-                'number_to_words_ka only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX,
-                E_USER_WARNING
+            throw new NumberToWordsException(
+                sprintf('out of range')
             );
             return false;
         }
