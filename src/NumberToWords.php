@@ -24,6 +24,7 @@ use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\EstonianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
+use NumberToWords\NumberTransformer\GeorgianNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
 use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
@@ -70,7 +71,8 @@ class NumberToWords
         'sv' => SwedishNumberTransformer::class,
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
-        'ua' => UkrainianNumberTransformer::class
+        'ua' => UkrainianNumberTransformer::class,
+        'ge' => GeorgianNumberTransformer::class
     ];
 
     private $currencyTransformers = [
