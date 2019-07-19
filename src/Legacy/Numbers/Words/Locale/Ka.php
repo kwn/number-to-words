@@ -18,9 +18,9 @@ class Ka extends Words
 
     const MINUS = 'მინუს';
     const CONJUNCTION = 'და';
-    const DECIMAL = 'მთელი ';
+    const DECIMAL = ' მთელი ';
     const SUFFIX = 'ი';
-    const FRACTION_PREFIX = 'მე';
+    const FRACTION_PREFIX = ' მე';
     const FRACTION_SUFFIX = 'ედი';
 
 
