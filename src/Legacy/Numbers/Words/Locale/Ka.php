@@ -57,6 +57,24 @@ class Ka extends Words
         1000000000000000 => 'კვადრილიონ',
         1000000000000000000 => 'კვინტილიონ',
     );
+    private static $currencyNames = [
+        'AUD' => [['ავსტრალიური დოლარი'], ['ცენტი']],
+        'CAD' => [['კანადური დოლარი'], ['ცენტი']],
+        'CHF' => [['შვეიცარული ფრანკი'], ['სენტიმი']],
+        'CNY' => [['yuan'], ['fen']],
+        'DZD' => [['dinar'], ['centime']],
+        'EUR' => [['euro'], ['centime']],
+        'JPY' => [['yen', ['sen']]],
+        'LYD' => [['dinar'], ['centime']],
+        'MAD' => [['dirham'], ['centime']],
+        'MRO' => [['ouguiya'], ['khoums']],
+        'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
+        'TND' => [['dinar'], ['centime']],
+        'USD' => [['dollar américain', 'dollars américains'], ['cent']],
+        'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
+        'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
+        'XPF' => [['franc CFP', 'francs CFP'], ['centime']],
+    ];
 
 
     protected function toWords($number, $use_suffix = true, $use_spaces = true)
