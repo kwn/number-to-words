@@ -3,6 +3,7 @@
 namespace NumberToWords;
 
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
@@ -72,7 +73,7 @@ class NumberToWords
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
         'ua' => UkrainianNumberTransformer::class,
-        'ge' => GeorgianNumberTransformer::class
+        'ka' => GeorgianNumberTransformer::class
     ];
 
     private $currencyTransformers = [
@@ -89,7 +90,8 @@ class NumberToWords
         'sk' => SlovakCurrencyTransformer::class,
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
-        'ua' => UkrainianCurrencyTransformer::class
+        'ua' => UkrainianCurrencyTransformer::class,
+        'ka' => GeorgianCurrencyTransformer::class
     ];
 
     /**

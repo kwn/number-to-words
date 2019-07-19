@@ -8,6 +8,7 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Ka extends Words
@@ -58,18 +59,65 @@ class Ka extends Words
         1000000000000000000 => 'კვინტილიონ',
     );
 
+    private static $currencyNames = [
+        'GEL' => [['ლარი'], ['თეთრი']],
+        'CHF' => [['ფრანკი'], ['სენტიმი']],
+        'CNY' => [['იუანი'], ['ფინი']],
+        'DZD' => [['დინარი'], ['სენტიმი']],
+        'EUR' => [['ევრო'], ['სენტიმი']],
+        'JPY' => [['იენი', ['სენი']]],
+        'LYD' => [['დინარი'], ['სენტიმი']],
+        'MAD' => [['დირჰამი'], ['სენტიმი']],
+        'MXN' => [['მექსიკური პესო'], ['სენტავო']],
+        'TND' => [['დინარი'], ['სენტიმი']],
+        'USD' => [['დოლარი'], ['ცენტი']],
+        'TRY' => [['ლირა'], ['ყურუში']],
+        'AMD' => [['დრამი'], ['ლუმა']],
+        'PLN' => [['ზლოტი'], ['გროში']],
+        'GBP' => [['ფუნტი'], ['პენი']]
+    ];
+
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
+        $majorName = $currencyNames[0][0];
+        $minorName = $currencyNames[1][0];
+
+        $result = '';
+
+        if ($decimal != 0) {
+            $result = $this->toWords($decimal) . ' ' . $majorName;
+
+        }
+
+        if ($fraction) {
+            if($decimal != 0){
+                $result = $result . ' ' . self::CONJUNCTION;
+            }
+            $result = $result. ' ' . $this->toWords($fraction) . ' ' . $minorName;
+        }
+
+        return $result;
+    }
 
     protected function toWords($number, $use_suffix = true, $use_spaces = true)
     {
-        $space =  $use_spaces ? ' ' : '';
+        $space = $use_spaces ? ' ' : '';
         if (!is_numeric($number)) {
             return false;
         }
         if ($number > PHP_INT_MAX or $number < -PHP_INT_MAX) {
             // overflow
-            trigger_error(
-                'number_to_words_ka only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX,
-                E_USER_WARNING
+            throw new NumberToWordsException(
+                sprintf('out of range')
             );
             return false;
         }
