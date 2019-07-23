@@ -1,4 +1,5 @@
 <?php
+
 namespace NumberToWords\NumberTransformer;
 
 use NumberToWords\Legacy\Numbers\Words;
@@ -10,7 +11,5 @@ class GeorgianNumberTransformer implements NumberTransformer
     {
         $converter = new Words();
         return $converter->transformToWords($number, 'ka');
-
     }
-
 }

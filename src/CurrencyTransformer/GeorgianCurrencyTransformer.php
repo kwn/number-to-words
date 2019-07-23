@@ -12,6 +12,5 @@ class GeorgianCurrencyTransformer implements CurrencyTransformer
     {
         $converter = new Words($options);
         return $converter->transformToCurrency($amount, 'ka', $currency);
-
     }
 }
