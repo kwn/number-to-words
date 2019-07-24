@@ -1,7 +1,6 @@
 <?php
 
 namespace NumberToWords\CurrencyTransformer;
-
 class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     public function setUp()
