@@ -9,7 +9,6 @@ class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
         $this->currencyTransformer = new GeorgianCurrencyTransformer();
     }
 
-
     public function providerItConvertsMoneyAmountToWords()
     {
         return [
