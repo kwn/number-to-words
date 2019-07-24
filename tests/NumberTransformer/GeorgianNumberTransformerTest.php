@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: goderdzi.jobadze
- * Date: 7/19/2019
- * Time: 5:46 PM
- */
 
 namespace NumberToWords\NumberTransformer;
 
