@@ -6,7 +6,6 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class GeorgianNumberTransformer implements NumberTransformer
 {
-
     public function toWords($number)
     {
         $converter = new Words();
