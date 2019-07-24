@@ -8,7 +8,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-
 class GeorgianNumberTransformerTest extends NumberTransformerTest
 {
     public function setUp()
