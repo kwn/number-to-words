@@ -83,6 +83,7 @@ class NumberToWords
         'es' => SpanishCurrencyTransformer::class,
         'fr' => FrenchCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,
+        'ka' => GeorgianCurrencyTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
@@ -90,8 +91,7 @@ class NumberToWords
         'sk' => SlovakCurrencyTransformer::class,
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
-        'ua' => UkrainianCurrencyTransformer::class,
-        'ka' => GeorgianCurrencyTransformer::class
+        'ua' => UkrainianCurrencyTransformer::class
     ];
 
     /**

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: godot
- * Date: 7/20/19
- * Time: 12:11 AM
- */
 
 namespace NumberToWords\CurrencyTransformer;
-
 
 class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
 {

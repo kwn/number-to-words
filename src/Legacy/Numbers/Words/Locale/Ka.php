@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: goderdzi.jobadze
- * Date: 7/19/2019
- * Time: 4:26 PM
- */
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
