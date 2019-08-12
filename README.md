@@ -74,6 +74,7 @@ Danish               | dk         | +      | +        |
 Dutch                | nl         | +      | -        |
 English              | en         | +      | +        |
 Estonian             | et         | +      | -        |
+Georgian             | ka         | +      | +        |
 German               | de         | +      | +        |
 French               | fr         | +      | +        |
 Hungarian            | hu         | +      | +        |
