@@ -3,6 +3,7 @@
 namespace NumberToWords;
 
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
@@ -24,6 +25,7 @@ use NumberToWords\NumberTransformer\EnglishNumberTransformer;
 use NumberToWords\NumberTransformer\EstonianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchBelgianNumberTransformer;
 use NumberToWords\NumberTransformer\FrenchNumberTransformer;
+use NumberToWords\NumberTransformer\GeorgianNumberTransformer;
 use NumberToWords\NumberTransformer\GermanNumberTransformer;
 use NumberToWords\NumberTransformer\HungarianNumberTransformer;
 use NumberToWords\NumberTransformer\IndonesianNumberTransformer;
@@ -54,11 +56,13 @@ class NumberToWords
         'en' => EnglishNumberTransformer::class,
         'es' => SpanishNumberTransformer::class,
         'et' => EstonianNumberTransformer::class,
+        'fa' => PersianNumberTransformer::class,
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
         'id' => IndonesianNumberTransformer::class,
         'it' => ItalianNumberTransformer::class,
+        'ka' => GeorgianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
         'ms' => MalayNumberTransformer::class,
@@ -71,8 +75,7 @@ class NumberToWords
         'sv' => SwedishNumberTransformer::class,
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
-        'ua' => UkrainianNumberTransformer::class,
-        'fa' => PersianNumberTransformer::class
+        'ua' => UkrainianNumberTransformer::class
     ];
 
     private $currencyTransformers = [
@@ -82,6 +85,7 @@ class NumberToWords
         'es' => SpanishCurrencyTransformer::class,
         'fr' => FrenchCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,
+        'ka' => GeorgianCurrencyTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,

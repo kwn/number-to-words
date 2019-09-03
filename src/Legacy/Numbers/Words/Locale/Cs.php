@@ -165,7 +165,7 @@ class Cs extends Words
                 break;
 
             case 9:
-                $ret .= $this->wordSeparator . 'devádesát';
+                $ret .= $this->wordSeparator . 'devadesát';
                 break;
 
             case 1:
