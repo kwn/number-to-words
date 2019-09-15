@@ -253,11 +253,12 @@ class Ru extends Words
     }
 
     /**
-     * @param int $number
+     * @param  int  $number
+     * @param  int  $currencyGender
      *
      * @return string
      */
-    protected function toWords($number)
+    protected function toWords($number, $currencyGender = -1)
     {
         if ($number === 0) {
             return $this->zero;
@@ -283,7 +284,7 @@ class Ru extends Words
             }
 
             $megaKey = $megaSize - $megaKey - 1;
-            $gender = static::$mega[$megaKey][3];
+            $gender = $megaKey === 1 && $currencyGender !== -1 ? $currencyGender : static::$mega[$megaKey][3];
             list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
             // mega-logic
             $out[] = static::$hundred[$i1]; # 1xx-9xx
@@ -324,60 +325,28 @@ class Ru extends Words
         $return = '';
 
         if ($decimal === 0 && !$fraction) {
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
-
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
 
             return $return;
         }
 
         if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
-            $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
-
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
+            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
         }
 
         if (null !== $fraction) {
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             if ($this->options->isConvertFraction()) {
-                $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
             } else {
                 $return .= ' ' . $fraction . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
-            }
-
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
             }
         }
 
         if (null === $fraction && $this->options->isShowFractionIfZero()) {
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             if ($this->options->isConvertFractionIfZero()) {
                 $return .= ' ' . $this->zero . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
             } else {
                 $return .= ' 00 ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
-            }
-
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
             }
         }
 
