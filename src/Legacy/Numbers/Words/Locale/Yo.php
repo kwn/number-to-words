@@ -15,6 +15,13 @@ class Yo extends Words
 	protected $zero = 'odo';
 	protected static $conjunction = 'ati';
 	protected static $separator = 'pẹlu';
+
+    /**
+     * Sources
+     * https://en.wikipedia.org/wiki/Yoruba_numerals
+     * https://en.09nt.com/yoruba-numbers-from-1-to-100
+     * https://en.09nt.com/yoruba-numbers-from-1-to-100
+     */
 	protected static $unit = [
 		0 => 'odo',
 		1 => 'ọkan',
