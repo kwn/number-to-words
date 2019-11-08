@@ -138,7 +138,7 @@ class Yo extends Words
      */
 	protected function toWords($num)
 	{
-		$word = false; //2,3434,454
+		$word = false;
 		$num = preg_replace('/[\W]/', '', $num);
 		$formatted = number_format((int)$num, 2);
 
