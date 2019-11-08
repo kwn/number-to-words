@@ -23,7 +23,7 @@ class Yo extends Words
      * https://en.09nt.com/yoruba-numbers-from-1-to-100
      */
 	protected static $unit = [
-		0 => 'odo',
+		0 => '',
 		1 => 'ọkan',
 		2 => 'meji',
 		3 => 'mẹta',
