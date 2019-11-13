@@ -4,14 +4,14 @@ namespace NumberToWords\CurrencyTransformer;
 
 class YorubaCurrencyTransformerTest extends CurrencyTransformerTest
 {
-	public function setUp()
-	{
-		$this->currencyTransformer = new YorubaCurrencyTransformer();
-	}
+    public function setUp()
+    {
+        $this->currencyTransformer = new YorubaCurrencyTransformer();
+    }
 
-	public function providerItConvertsMoneyAmountToWords()
-	{
-		return [
+    public function providerItConvertsMoneyAmountToWords()
+    {
+        return [
             [51722624, 'NGN',  'ẹgbẹrun ẹdẹgbẹta ati mẹtala, igba ati ogun ati mẹfa Naira pẹlu kobo ogun ati mẹrin'],
             [40462253, 'NGN',  'ẹgbẹrun irinwó ati mẹrin, ẹgbẹta ati ogun ati meji Naira pẹlu kobo aadọta ati mẹta'],
             [8109642, 'NGN',  'ẹgbẹrun ọgọrin ati ọkan, aadọrun ati mẹfa Naira pẹlu kobo ogoji ati meji'],
@@ -29,5 +29,5 @@ class YorubaCurrencyTransformerTest extends CurrencyTransformerTest
             [63159623, 'NGN',  'ẹgbẹrun ẹgbẹta ati ọgbọn ati ọkan, ẹdẹgbẹta ati aadọrun ati mẹfa Naira pẹlu kobo ogun ati mẹta'],
 
         ];
-	}
+    }
 }
