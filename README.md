@@ -92,6 +92,7 @@ Swedish              | sv         | +      | -        |
 Turkish              | tr         | +      | +        |
 Turkmen              | tk         | +      | +        |
 Ukrainian            | ua         | +      | +        |
+Yoruba            | yo         | +      | +        |
 
 ## Contributors
 
