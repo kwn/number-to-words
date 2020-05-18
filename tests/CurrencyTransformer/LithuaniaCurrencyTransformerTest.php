@@ -8,7 +8,7 @@ class LithuaniaCurrencyTransformerTest extends CurrencyTransformerTest
     {
         $this->currencyTransformer = new LithuanianCurrencyTransformer();
     }
- 
+
     public function providerItConvertsMoneyAmountToWords()
     {
         return array_merge([

@@ -11,10 +11,6 @@ use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 
-function dd(...$item) {
-    var_dump($item); die();
-}
-
 class LithuanianCurrencyTransformer implements CurrencyTransformer
 {
     /**
@@ -50,7 +46,7 @@ class LithuanianCurrencyTransformer implements CurrencyTransformer
 
         $return .= ' ' . $currencyNames[0][$level];
 
-        if (null !== $fraction) {
+        if (!is_null($fraction)) {
             $return .= ' ' . $dictionary->getAnd() . ' ' . trim($numberTransformer->toWords($fraction));
 
             $level = $this->getLevel($fraction);
