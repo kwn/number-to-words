@@ -80,7 +80,7 @@ French               | fr         | +      | +        |
 Hungarian            | hu         | +      | +        |
 Indonesian           | id         | +      | -        |
 Italian              | it         | +      | -        |
-Lithuanian           | lt         | +      | -        |
+Lithuanian           | lt         | +      | +        |
 Latvian              | lv         | +      | -        |
 Malay                | ms         | +      | -        |
 Polish               | pl         | +      | +        |
