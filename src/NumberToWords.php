@@ -7,6 +7,7 @@ use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\LatvianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\LithuanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
@@ -89,6 +90,7 @@ class NumberToWords
         'hu' => HungarianNumberTransformer::class,
         'ka' => GeorgianCurrencyTransformer::class,
         'lt' => LithuanianCurrencyTransformer::class,
+        'lv' => LatvianCurrencyTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,

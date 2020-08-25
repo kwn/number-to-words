@@ -81,7 +81,7 @@ Hungarian            | hu         | +      | +        |
 Indonesian           | id         | +      | -        |
 Italian              | it         | +      | -        |
 Lithuanian           | lt         | +      | +        |
-Latvian              | lv         | +      | -        |
+Latvian              | lv         | +      | +        |
 Malay                | ms         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
