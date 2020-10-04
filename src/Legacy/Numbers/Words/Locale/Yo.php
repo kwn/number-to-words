@@ -151,9 +151,9 @@ class Yo extends Words
             $prefix = $this->_prefix(count($split) - 1); //million
             $combined = trim($prefix.' '.$suffix);
 
-            $word .= (count($split) == 1 && !empty($word)
+            $word .= ((count($split) == 1 && !empty($word)
                     ? " " . self::$conjunction . " "
-                    : !empty($word) ? ", " : "") . $combined;
+                    : !empty($word)) ? ", " : "") . $combined;
             unset($split[$key]);
         }
 
