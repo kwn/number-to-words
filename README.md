@@ -80,8 +80,8 @@ French               | fr         | +      | +        |
 Hungarian            | hu         | +      | +        |
 Indonesian           | id         | +      | -        |
 Italian              | it         | +      | -        |
-Lithuanian           | lt         | +      | -        |
-Latvian              | lv         | +      | -        |
+Lithuanian           | lt         | +      | +        |
+Latvian              | lv         | +      | +        |
 Malay                | ms         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
@@ -92,6 +92,7 @@ Swedish              | sv         | +      | -        |
 Turkish              | tr         | +      | +        |
 Turkmen              | tk         | +      | +        |
 Ukrainian            | ua         | +      | +        |
+Yoruba               | yo         | +      | +        |
 
 ## Contributors
 

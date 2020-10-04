@@ -105,6 +105,10 @@ class Ru extends Words
             [1, 'швейцарский франк', 'швейцарских франка', 'швейцарских франков'],
             [1, 'сантим', 'сантима', 'сантимов']
         ],
+        'CNY' => [
+            [1, 'китайский юань', 'китайских юаня', 'китайских юаней'],
+            [1, 'фынь', 'фыня', 'фыней']
+        ],
         'CYP' => [
             [1, 'кипрский фунт', 'кипрских фунта', 'кипрских фунтов'],
             [1, 'цент', 'цента', 'центов']
@@ -141,6 +145,10 @@ class Ru extends Words
             [1, 'венгерский форинт', 'венгерских форинта', 'венгерских форинтов'],
             [1, 'филлер', 'филлера', 'филлеров']
         ],
+        'IRR' => [
+            [1, 'иранский риал', 'иранских риала', 'иранских риалов'],
+            [1, 'динар', 'динара', 'динаров']
+        ],
         'ISK' => [
             [2, 'исландская крона', 'исландских кроны', 'исландских крон'],
             [1, 'эре', 'эре', 'эре']
@@ -149,9 +157,17 @@ class Ru extends Words
             [2, 'иена', 'иены', 'иен'],
             [2, 'сена', 'сены', 'сен']
         ],
+        'KGS' => [
+            [1, 'киргизский сом', 'киргизских сома', 'киргизских сомов'],
+            [1, 'тыйын', 'тыйына', 'тыйынов']
+        ],
         'KZT' => [
             [0, 'казахский тенге', 'казахских тенге', 'казахских тенге'],
             [1, 'тиын', 'тиына', 'тиынов']
+        ],
+        'KWD' => [
+            [1, 'кувейтский динар', 'кувейтских динара', 'кувейтских динаров'],
+            [1, 'филс', 'филса', 'филсов']
         ],
         'LTL' => [
             [1, 'лит', 'лита', 'литов'],
@@ -160,6 +176,10 @@ class Ru extends Words
         'LVL' => [
             [1, 'лат', 'лата', 'латов'],
             [1, 'сентим', 'сентима', 'сентимов']
+        ],
+        'MDL' => [
+            [1, 'молдавский лей', 'молдавских лея', 'молдавских леев'],
+            [1, 'бань', 'баня', 'баней']
         ],
         'MKD' => [
             [1, 'македонский динар', 'македонских динара', 'македонских динаров'],
@@ -172,6 +192,10 @@ class Ru extends Words
         'NOK' => [
             [2, 'норвежская крона', 'норвежских кроны', 'норвежских крон'],
             [0, 'эре', 'эре', 'эре']
+        ],
+        'NZD' => [
+            [1, 'новозеландский доллар', 'новозеландских доллара', 'новозеландских долларов'],
+            [1, 'цент', 'цента', 'центов']
         ],
         'PLN' => [
             [1, 'злотый', 'злотых', 'злотых'],
@@ -193,6 +217,10 @@ class Ru extends Words
             [2, 'шведская крона', 'шведских кроны', 'шведских крон'],
             [1, 'эре', 'эре', 'эре']
         ],
+        'SGD' => [
+            [1, 'сингапурский доллар', 'сингапурских доллара', 'сингапурских долларов'],
+            [1, 'цент', 'цента', 'центов']
+        ],
         'SIT' => [
             [1, 'словенский толар', 'словенских толара', 'словенских толаров'],
             [2, 'стотина', 'стотины', 'стотин']
@@ -205,6 +233,10 @@ class Ru extends Words
             [2, 'турецкая лира', 'турецких лиры', 'турецких лир'],
             [1, 'пиастр', 'пиастра', 'пиастров']
         ],
+        'TRY' => [
+            [2, 'турецкая лира', 'турецкие лиры', 'турецких лир'],
+            [1, 'куруш', 'куруша', 'курушей']
+        ],
         'TMT' => [
             [1, 'манат', 'маната', 'манатов'],
             [1, 'тенге', 'тенге', 'тенге']
@@ -216,6 +248,10 @@ class Ru extends Words
         'USD' => [
             [1, 'доллар США', 'доллара США', 'долларов США'],
             [1, 'цент', 'цента', 'центов']
+        ],
+        'UZS' => [
+            [1, 'сум', 'сума', 'сумов'],
+            [1, 'тийин', 'тийина', 'тийинов'],
         ],
         'YUM' => [
             [1, 'югославский динар', 'югославских динара', 'югославских динаров'],
@@ -253,11 +289,12 @@ class Ru extends Words
     }
 
     /**
-     * @param int $number
+     * @param  int  $number
+     * @param  int  $currencyGender
      *
      * @return string
      */
-    protected function toWords($number)
+    protected function toWords($number, $currencyGender = -1)
     {
         if ($number === 0) {
             return $this->zero;
@@ -283,7 +320,7 @@ class Ru extends Words
             }
 
             $megaKey = $megaSize - $megaKey - 1;
-            $gender = static::$mega[$megaKey][3];
+            $gender = $megaKey === 1 && $currencyGender !== -1 ? $currencyGender : static::$mega[$megaKey][3];
             list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
             // mega-logic
             $out[] = static::$hundred[$i1]; # 1xx-9xx
@@ -324,60 +361,28 @@ class Ru extends Words
         $return = '';
 
         if ($decimal === 0 && !$fraction) {
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
-
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
 
             return $return;
         }
 
         if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
-            $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
-
-            if ($currencyNames[0][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
+            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
         }
 
         if (null !== $fraction) {
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             if ($this->options->isConvertFraction()) {
-                $return .= ' ' . $this->toWords($fraction) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
             } else {
                 $return .= ' ' . $fraction . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
-            }
-
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
             }
         }
 
         if (null === $fraction && $this->options->isShowFractionIfZero()) {
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
-            }
-
             if ($this->options->isConvertFractionIfZero()) {
                 $return .= ' ' . $this->zero . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
             } else {
                 $return .= ' 00 ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
-            }
-
-            if ($currencyNames[1][0] === 2) {
-                static::$ten = array_reverse(static::$ten);
             }
         }
 
