@@ -83,6 +83,7 @@ Italian              | it         | +      | -        |
 Lithuanian           | lt         | +      | +        |
 Latvian              | lv         | +      | +        |
 Malay                | ms         | +      | -        |
+Persian              | fa         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
 Slovak               | sk         | +      | -        |
