@@ -49,6 +49,20 @@ class LatvianDictionary implements Dictionary
         9 => 'deviņdesmit'
     ];
 
+    /** @var array<array<string>>  */
+    public static $currencyNames = [
+        'EUR' => [['eiro', 'eiro', 'eiro'], ['eiro cents', 'eiro centi', 'eiro centi']],
+        'USD' => [['dolārs', 'dolāri', 'dolāri'], ['cents', 'centi', 'centi']],
+    ];
+
+    /**
+     * @return string
+     */
+    public function getAnd()
+    {
+        return 'un';
+    }
+
     /**
      * @return string
      */

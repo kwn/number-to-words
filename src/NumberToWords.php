@@ -7,6 +7,8 @@ use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\LatvianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\LithuanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PolishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer;
@@ -17,6 +19,7 @@ use NumberToWords\CurrencyTransformer\TurkmenCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\TurkishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\YorubaCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -44,6 +47,7 @@ use NumberToWords\NumberTransformer\SwedishNumberTransformer;
 use NumberToWords\NumberTransformer\TurkishNumberTransformer;
 use NumberToWords\NumberTransformer\TurkmenNumberTransformer;
 use NumberToWords\NumberTransformer\UkrainianNumberTransformer;
+use NumberToWords\NumberTransformer\YorubaNumberTransformer;
 
 class NumberToWords
 {
@@ -73,7 +77,8 @@ class NumberToWords
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
         'ua' => UkrainianNumberTransformer::class,
-        'ka' => GeorgianNumberTransformer::class
+        'ka' => GeorgianNumberTransformer::class,
+        'yo' => YorubaNumberTransformer::class,
     ];
 
     private $currencyTransformers = [
@@ -84,6 +89,8 @@ class NumberToWords
         'fr' => FrenchCurrencyTransformer::class,
         'hu' => HungarianNumberTransformer::class,
         'ka' => GeorgianCurrencyTransformer::class,
+        'lt' => LithuanianCurrencyTransformer::class,
+        'lv' => LatvianCurrencyTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
@@ -91,7 +98,8 @@ class NumberToWords
         'sk' => SlovakCurrencyTransformer::class,
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
-        'ua' => UkrainianCurrencyTransformer::class
+        'ua' => UkrainianCurrencyTransformer::class,
+        'yo' => YorubaCurrencyTransformer::class
     ];
 
     /**

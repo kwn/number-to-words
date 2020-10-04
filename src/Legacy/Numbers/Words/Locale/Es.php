@@ -59,6 +59,7 @@ class Es extends Words
         'CRC' => [['colón', 'colones'], ['centavo']],
         'DZD' => [['dinar', 'dinares'], ['céntimo']],
         'DKK' => [['danish krone'], ['ore']],
+        'DOP' => [['peso dominicano', 'pesos dominicanos'], ['centavo', 'centavos']],
         'EEK' => [['kroon'], ['senti']],
         'EUR' => [['euro'], ['centavo']],
         'GBP' => [['libra'], ['peñique']],
