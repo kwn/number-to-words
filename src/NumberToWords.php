@@ -36,6 +36,7 @@ use NumberToWords\NumberTransformer\ItalianNumberTransformer;
 use NumberToWords\NumberTransformer\LatvianNumberTransformer;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\NumberTransformer\MalayNumberTransformer;
+use NumberToWords\NumberTransformer\PersianNumberTransformer;
 use NumberToWords\NumberTransformer\PolishNumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer;
@@ -59,11 +60,13 @@ class NumberToWords
         'en' => EnglishNumberTransformer::class,
         'es' => SpanishNumberTransformer::class,
         'et' => EstonianNumberTransformer::class,
+        'fa' => PersianNumberTransformer::class,
         'fr' => FrenchNumberTransformer::class,
         'fr_BE' => FrenchBelgianNumberTransformer::class,
         'hu' => HungarianNumberTransformer::class,
         'id' => IndonesianNumberTransformer::class,
         'it' => ItalianNumberTransformer::class,
+        'ka' => GeorgianNumberTransformer::class,
         'lt' => LithuanianNumberTransformer::class,
         'lv' => LatvianNumberTransformer::class,
         'ms' => MalayNumberTransformer::class,
@@ -77,7 +80,6 @@ class NumberToWords
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
         'ua' => UkrainianNumberTransformer::class,
-        'ka' => GeorgianNumberTransformer::class,
         'yo' => YorubaNumberTransformer::class,
     ];
 
