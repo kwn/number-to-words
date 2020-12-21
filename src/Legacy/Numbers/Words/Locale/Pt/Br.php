@@ -55,7 +55,7 @@ class Br extends Words
             'vinte',
             'trinta',
             'quarenta',
-            'cinqüenta',
+            'cinquenta',
             'sessenta',
             'setenta',
             'oitenta',
