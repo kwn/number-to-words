@@ -5,6 +5,7 @@ namespace NumberToWords;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\HungarianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\DanishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\EnglishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\LatvianCurrencyTransformer;
@@ -89,7 +90,7 @@ class NumberToWords
         'en' => EnglishCurrencyTransformer::class,
         'es' => SpanishCurrencyTransformer::class,
         'fr' => FrenchCurrencyTransformer::class,
-        'hu' => HungarianNumberTransformer::class,
+        'hu' => HungarianCurrencyTransformer::class,
         'ka' => GeorgianCurrencyTransformer::class,
         'lt' => LithuanianCurrencyTransformer::class,
         'lv' => LatvianCurrencyTransformer::class,
