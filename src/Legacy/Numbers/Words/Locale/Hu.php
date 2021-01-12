@@ -56,41 +56,40 @@ class Hu extends Words
     private $thousandSeparator = '-';
 
     private static $currencyNames = [
-        'ALL' => [['lek'], ['qindarka']],
-        'AUD' => [['Australian dollar'], ['cent']],
-        'BAM' => [['convertible marka'], ['fenig']],
-        'BGN' => [['lev'], ['stotinka']],
-        'BRL' => [['real'], ['centavos']],
-        'BYR' => [['Belarussian rouble'], ['kopiejka']],
-        'CAD' => [['Canadian dollar'], ['cent']],
-        'CHF' => [['Swiss franc'], ['rapp']],
-        'CYP' => [['Cypriot pound'], ['cent']],
-        'CZK' => [['Czech koruna'], ['halerz']],
-        'DKK' => [['Danish krone'], ['ore']],
-        'EEK' => [['kroon'], ['senti']],
-        'EUR' => [['euro'], ['euro-cent']],
-        'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
-        'HKD' => [['Hong Kong dollar'], ['cent']],
-        'HRK' => [['Croatian kuna'], ['lipa']],
-        'HUF' => [['forint'], ['filler']],
-        'ILS' => [['new sheqel', 'new sheqels'], ['agora', 'agorot']],
-        'ISK' => [['Icelandic króna'], ['aurar']],
-        'JPY' => [['yen'], ['sen']],
+        'ALL' => [['lek'], ['qindarke']],
+        'AUD' => [['ausztrál dollár'], ['cent']],
+        'BAM' => [['konvertibilis márka'], ['pfening']],
+        'BGN' => [['leva'], ['sztotinka']],
+        'BRL' => [['real'], ['centavo']],
+        'BYR' => [['belarusz rubel'], ['kopejka']],
+        'BYN' => [['belarusz rubel'], ['kopejka']],
+        'CAD' => [['kanadai dollár'], ['cent']],
+        'CHF' => [['svájci frank'], ['rappen']],
+        'CYP' => [['ciprusi font'], ['cent']],
+        'CZK' => [['cseh korona'], ['halér']],
+        'DKK' => [['dán korona'], ['őre']],
+        'EEK' => [['észt korona'], ['sent']],
+        'EUR' => [['euró'], ['cent']],
+        'GBP' => [['font'], ['penny']],
+        'HKD' => [['hongkongi dollár'], ['cent']],
+        'HRK' => [['kuna'], ['lipa']],
+        'HUF' => [['forint'], ['fillér']],
+        'ILS' => [['sékel'], ['agora']],
+        'ISK' => [['izlandi korona'], ['aurar']],
+        'JPY' => [['jen'], ['szen']],
         'LTL' => [['litas'], ['cent']],
-        'LVL' => [['lat'], ['sentim']],
-        'MKD' => [['Macedonian dinar'], ['deni']],
-        'MTL' => [['Maltese lira'], ['centym']],
-        'NOK' => [['Norwegian krone'], ['oere']],
-        'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
-        'RUB' => [['Russian Federation rouble'], ['kopiejka']],
-        'SEK' => [['Swedish krona'], ['oere']],
-        'SIT' => [['Tolar'], ['stotinia']],
-        'SKK' => [['Slovak koruna'], []],
+        'LVL' => [['lat'], ['santim']],
+        'MKD' => [['macedón dénár'], ['deni']],
+        'MTL' => [['máltai líra'], ['cent']],
+        'NOK' => [['norvég korona'], ['őre']],
+        'PLN' => [['zloty'], ['grosz']],
+        'ROL' => [['lej'], ['bani']],
+        'RUB' => [['orosz rubel'], ['kopejka']],
+        'SEK' => [['svéd korona'], ['őre']],
+        'SIT' => [['tolár'], ['sztotin']],
         'TRL' => [['lira'], ['kuruþ']],
-        'UAH' => [['hryvna'], ['cent']],
-        'USD' => [['dollar'], ['cent']],
-        'YUM' => [['dinars'], ['para']],
+        'UAH' => [['hrivnya'], ['kopejka']],
+        'USD' => [['dollár'], ['cent']],
         'ZAR' => [['rand'], ['cent']]
     ];
 
@@ -254,21 +253,21 @@ class Hu extends Words
             if (count($currencyNames[0]) > 1) {
                 $return .= ' ' . $currencyNames[0][$level];
             } else {
-                $return .= ' ' . $currencyNames[0][0] . 's';
+                $return .= ' ' . $currencyNames[0][0];
             }
         } else {
             $return .= ' ' . $currencyNames[0][0];
         }
 
         if ($fraction !== null) {
-            $return .= $this->wordSeparator . trim($this->toWords($fraction));
+            $return .= ' ' . trim($this->toWords($fraction));
 
             $level = ($fraction == 1) ? 0 : 1;
             if ($level > 0) {
                 if (count($currencyNames[1]) > 1) {
                     $return .= ' ' . $currencyNames[1][$level];
                 } else {
-                    $return .= ' ' . $currencyNames[1][0] . 's';
+                    $return .= ' ' . $currencyNames[1][0];
                 }
             } else {
                 $return .= ' ' . $currencyNames[1][0];
