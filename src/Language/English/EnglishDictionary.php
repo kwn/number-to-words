@@ -88,6 +88,7 @@ class EnglishDictionary implements Dictionary
         'XPF' => [['CFP franc'], ['centime']],
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
+        'UGX' => [['ugandan shilling']],
     ];
 
     /**

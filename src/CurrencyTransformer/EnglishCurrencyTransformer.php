@@ -31,8 +31,8 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
             ->useRegularExponents($exponentInflector)
             ->build();
 
-        $decimal = (int) ($amount / 100);
-        $fraction = abs($amount % 100);
+        $decimal = $currency != 'UGX' ? (int) ($amount / 100) : (int) ($amount);
+        $fraction = $currency != 'UGX' ? abs($amount % 100) : abs($amount % 1);
 
         if ($fraction === 0) {
             $fraction = null;
