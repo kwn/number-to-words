@@ -306,6 +306,9 @@ class Es extends Words
             );
         }
 
+        //change digit "one" to the short version
+        self::$digits[1] = 'un';
+
         $currencyNames = static::$currencyNames[$currency];
 
         $level = ($decimal == 1) ? 0 : 1;
@@ -339,6 +342,8 @@ class Es extends Words
             }
         }
 
+        //Go back digit "one"
+        self::$digits[1] = 'uno';
         return $ret;
     }
 }
