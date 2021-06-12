@@ -14,13 +14,14 @@ class AlbanianNumberTransformer implements NumberTransformer
      */
     public function toWords($number)
     {
-        $dictionary = new \NumberToWords\Language\Albanian\AlbanianDictionary();
+        $dictionary = new AlbanianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new AlbanianTripletTransformer($dictionary);
         $exponentInflector = new AlbanianExponentGetter();
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
+            ->withExponentsSeparatedBy('e')
             ->withWordsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
             ->useRegularExponents($exponentInflector)
