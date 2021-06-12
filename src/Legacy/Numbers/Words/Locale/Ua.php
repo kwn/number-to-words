@@ -7,7 +7,7 @@ class Ua extends Ru
     const LOCALE = 'ua';
     const LANGUAGE_NAME = 'Ukrainian';
     const LANGUAGE_NAME_NATIVE = 'Українська';
-    const MINUS = 'минус';
+    const MINUS = 'мінус';
 
     protected $zero = 'нуль';
 
