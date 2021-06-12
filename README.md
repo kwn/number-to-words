@@ -66,6 +66,7 @@ Bare in mind, the currency transformer accepts integers as the amount to transfo
 
 Language             | Identifier | Number | Currency |
 ---------------------|------------|--------|----------|
+Albanian             | al         | +      | -        |
 Belgian French       | fr_BE      | +      | -        |
 Brazilian Portuguese | pt_BR      | +      | +        |
 Bulgarian            | bg         | +      | -        |
