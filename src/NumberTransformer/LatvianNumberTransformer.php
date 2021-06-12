@@ -22,7 +22,6 @@ class LatvianNumberTransformer implements NumberTransformer
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
-            ->withExponentsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();

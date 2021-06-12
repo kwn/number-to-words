@@ -108,7 +108,11 @@ class GenericNumberTransformer implements NumberTransformer
                 }
             }
         }
-
+        if (null !== $this->exponentSeparator && count($words) > 2){
+            for($i = 2; $i <= count($words) - 2; $i+=2){
+                array_splice($words, $i++, 0, $this->exponentSeparator);
+            }
+        }
         return $words;
     }
 
