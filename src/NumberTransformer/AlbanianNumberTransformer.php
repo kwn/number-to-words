@@ -2,28 +2,29 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Language\Latvian\LatvianDictionary;
-use NumberToWords\Language\Latvian\LatvianExponentInflector;
-use NumberToWords\Language\Latvian\LatvianTripletTransformer;
+use NumberToWords\Language\Albanian\AlbanianDictionary;
+use NumberToWords\Language\Albanian\AlbanianExponentGetter;
+use NumberToWords\Language\Albanian\AlbanianTripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
-class LatvianNumberTransformer implements NumberTransformer
+class AlbanianNumberTransformer implements NumberTransformer
 {
     /**
      * @inheritdoc
      */
     public function toWords($number)
     {
-        $dictionary = new LatvianDictionary();
+        $dictionary = new AlbanianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
-        $tripletTransformer = new LatvianTripletTransformer($dictionary);
-        $exponentInflector = new LatvianExponentInflector();
+        $tripletTransformer = new AlbanianTripletTransformer($dictionary);
+        $exponentInflector = new AlbanianExponentGetter();
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
+            ->withExponentsSeparatedBy('e')
             ->withWordsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
-            ->inflectExponentByNumbers($exponentInflector)
+            ->useRegularExponents($exponentInflector)
             ->build();
 
         return $numberTransformer->toWords($number);

@@ -21,6 +21,7 @@ use NumberToWords\CurrencyTransformer\TurkishCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\YorubaCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\AlbanianCurrencyTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -50,10 +51,12 @@ use NumberToWords\NumberTransformer\TurkishNumberTransformer;
 use NumberToWords\NumberTransformer\TurkmenNumberTransformer;
 use NumberToWords\NumberTransformer\UkrainianNumberTransformer;
 use NumberToWords\NumberTransformer\YorubaNumberTransformer;
+use NumberToWords\NumberTransformer\AlbanianNumberTransformer;
 
 class NumberToWords
 {
     private $numberTransformers = [
+        'al' => AlbanianNumberTransformer::class,
         'bg' => BulgarianNumberTransformer::class,
         'cs' => CzechNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
@@ -85,6 +88,7 @@ class NumberToWords
     ];
 
     private $currencyTransformers = [
+        'al' => AlbanianCurrencyTransformer::class,
         'de' => GermanCurrencyTransformer::class,
         'dk' => DanishCurrencyTransformer::class,
         'en' => EnglishCurrencyTransformer::class,
