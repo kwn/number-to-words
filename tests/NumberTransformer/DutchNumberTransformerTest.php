@@ -2,17 +2,19 @@
 
 namespace NumberToWords\NumberTransformer;
 
+/**
+ * @covers \NumberToWords\NumberTransformer\DutchNumberTransformer
+ */
 class DutchNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new DutchNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
-            
             [0, 'nul'],
             [1, 'één'],
             [9, 'negen'],

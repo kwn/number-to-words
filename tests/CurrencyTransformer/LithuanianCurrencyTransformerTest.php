@@ -2,16 +2,19 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class LithuaniaCurrencyTransformerTest extends CurrencyTransformerTest
+/**
+ * @covers \NumberToWords\CurrencyTransformer\LithuanianCurrencyTransformer
+ */
+class LithuanianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new LithuanianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
-        return array_merge([
+        return [
             [0, 'EUR', 'nulis eurų ir nulis euro centų'],
             [1, 'EUR', 'nulis eurų ir vienas euro centas'],
             [9, 'EUR', 'nulis eurų ir devyni euro centai'],
@@ -50,14 +53,12 @@ class LithuaniaCurrencyTransformerTest extends CurrencyTransformerTest
             [999999, 'EUR', 'devyni tūkstančiai devyni šimtai devyniasdešimt devyni eurai ir devyniasdešimt devyni euro centai'],
             [1000000, 'EUR', 'dešimt tūkstančių eurų ir nulis euro centų'],
             [2500001, 'EUR', 'dvidešimt penki tūkstančiai eurų ir vienas euro centas'],
-
             [1174315110, 'EUR', 'vienuolika milijonų septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir dešimt euro centų'], // or "vienas bilijonas"
             [1174315119, 'EUR', 'vienuolika milijonų septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir devyniolika euro centų'], // or "vienas bilijonas"
             [15174315110, 'EUR', 'šimtas penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir dešimt euro centų'],
             [35174315119, 'EUR', 'trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir devyniolika euro centų'],
             [935174315119, 'EUR', 'devyni bilijonai trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir devyniolika euro centų'],
             [222935174315119, 'EUR', 'du trilijonai du šimtai dvidešimt devyni bilijonai trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas euras ir devyniolika euro centų'],
-        ], [
             [0, 'LT', 'nulis litų ir nulis lito centų'],
             [1, 'LT', 'nulis litų ir vienas lito centas'],
             [9, 'LT', 'nulis litų ir devyni lito centai'],
@@ -96,13 +97,12 @@ class LithuaniaCurrencyTransformerTest extends CurrencyTransformerTest
             [999999, 'LT', 'devyni tūkstančiai devyni šimtai devyniasdešimt devyni litai ir devyniasdešimt devyni lito centai'],
             [1000000, 'LT', 'dešimt tūkstančių litų ir nulis lito centų'],
             [2500001, 'LT', 'dvidešimt penki tūkstančiai litų ir vienas lito centas'],
-
             [1174315110, 'LT', 'vienuolika milijonų septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir dešimt lito centų'], // or "vienas bilijonas"
             [1174315119, 'LT', 'vienuolika milijonų septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir devyniolika lito centų'], // or "vienas bilijonas"
             [15174315110, 'LT', 'šimtas penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir dešimt lito centų'],
             [35174315119, 'LT', 'trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir devyniolika lito centų'],
             [935174315119, 'LT', 'devyni bilijonai trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir devyniolika lito centų'],
             [222935174315119, 'LT', 'du trilijonai du šimtai dvidešimt devyni bilijonai trys šimtai penkiasdešimt vienas milijonas septyni šimtai keturiasdešimt trys tūkstančiai šimtas penkiasdešimt vienas litas ir devyniolika lito centų'],
-        ]);
+        ];
     }
 }

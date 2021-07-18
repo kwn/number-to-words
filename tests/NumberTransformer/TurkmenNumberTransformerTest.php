@@ -2,14 +2,17 @@
 
 namespace NumberToWords\NumberTransformer;
 
+/**
+ * @covers \NumberToWords\NumberTransformer\TurkmenNumberTransformer
+ */
 class TurkmenNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new TurkmenNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [-21, 'minus ýigrimi bir'],

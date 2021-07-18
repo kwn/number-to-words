@@ -2,14 +2,17 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class PortugeseBrazilianCurrencyTransformerTest extends CurrencyTransformerTest
+/**
+ * @covers \NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer
+ */
+class PortugueseBrazilianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new PortugueseBrazilianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'BRL', 'um real'],

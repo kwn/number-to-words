@@ -2,14 +2,17 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
+/**
+ * @covers \NumberToWords\CurrencyTransformer\TurkmenCurrencyTransformer
+ */
 class TurkmenCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new TurkmenCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'TMT', 'bir manat'],

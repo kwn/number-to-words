@@ -2,14 +2,17 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
+/**
+ * @covers \NumberToWords\CurrencyTransformer\DanishCurrencyTransformer
+ */
 class DanishCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new DanishCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'DKK', 'en krone'],
