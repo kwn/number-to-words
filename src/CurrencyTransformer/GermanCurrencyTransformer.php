@@ -4,27 +4,20 @@ namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Language\German\GermanDictionary;
-use NumberToWords\Language\German\GermanExponentGetter;
 use NumberToWords\Language\German\GermanTripletTransformer;
 use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
 use NumberToWords\Language\German\GermanExponentInflector;
+use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class GermanCurrencyTransformer implements CurrencyTransformer
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @throws NumberToWordsException
-     * @return string
-     */
-    public function toWords($amount, $currency, $options = null)
+    public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new GermanDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new GermanTripletTransformer($dictionary);
         $exponentInflector = new GermanExponentInflector();
-
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)

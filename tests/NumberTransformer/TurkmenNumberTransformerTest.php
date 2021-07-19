@@ -12,8 +12,8 @@ class TurkmenNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords(): array
     {
         return [
-            [-21, 'minus ýigrimi bir'],
             [-1174315110, 'minus bir milliard bir ýüz ýetmiş dört million üç ýüz on bäş müň bir ýüz on'],
+            [-21, 'minus ýigrimi bir'],
             [0, 'nol'],
             [1, 'bir'],
             [3, 'üç'],

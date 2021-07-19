@@ -9,10 +9,7 @@ use NumberToWords\Language\Persian\PersianTripletTransformer;
 
 class PersianNumberTransformer implements NumberTransformer
 {
-    /**
-     * @inheritdoc
-     */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $dictionary = new PersianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

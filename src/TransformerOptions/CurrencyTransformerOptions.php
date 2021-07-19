@@ -4,10 +4,10 @@ namespace NumberToWords\TransformerOptions;
 
 class CurrencyTransformerOptions
 {
-    private $convertFraction = true;
-    private $convertFractionIfZero = true;
-    private $showDecimalIfZero = false;
-    private $showFractionIfZero = false;
+    private bool $convertFraction = true;
+    private bool $convertFractionIfZero = true;
+    private bool $showDecimalIfZero = false;
+    private bool $showFractionIfZero = false;
 
     /**
      * @return bool
@@ -85,7 +85,7 @@ class CurrencyTransformerOptions
     public function setShowFractionIfZero($showFractionIfZero)
     {
         $this->showFractionIfZero = $showFractionIfZero;
-        
+
         return $this;
     }
 }

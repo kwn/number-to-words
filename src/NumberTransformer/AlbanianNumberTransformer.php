@@ -9,10 +9,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 
 class AlbanianNumberTransformer implements NumberTransformer
 {
-    /**
-     * @inheritdoc
-     */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $dictionary = new AlbanianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

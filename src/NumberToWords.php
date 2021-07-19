@@ -22,6 +22,7 @@ use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\YorubaCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\AlbanianCurrencyTransformer;
+use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -55,7 +56,7 @@ use NumberToWords\NumberTransformer\AlbanianNumberTransformer;
 
 class NumberToWords
 {
-    private $numberTransformers = [
+    private array $numberTransformers = [
         'al' => AlbanianNumberTransformer::class,
         'bg' => BulgarianNumberTransformer::class,
         'cs' => CzechNumberTransformer::class,
@@ -87,7 +88,7 @@ class NumberToWords
         'yo' => YorubaNumberTransformer::class,
     ];
 
-    private $currencyTransformers = [
+    private array $currencyTransformers = [
         'al' => AlbanianCurrencyTransformer::class,
         'de' => GermanCurrencyTransformer::class,
         'dk' => DanishCurrencyTransformer::class,
@@ -110,15 +111,12 @@ class NumberToWords
     ];
 
     /**
-     * @param string $language
-     *
-     * @throws \InvalidArgumentException
-     * @return NumberTransformer
+     * @throws InvalidArgumentException
      */
-    public function getNumberTransformer($language)
+    public function getNumberTransformer(string $language): NumberTransformer
     {
         if (!array_key_exists($language, $this->numberTransformers)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Number transformer for "%s" language is not implemented.',
                 $language
             ));
@@ -128,15 +126,12 @@ class NumberToWords
     }
 
     /**
-     * @param string $language
-     *
-     * @throws \InvalidArgumentException
-     * @return CurrencyTransformer
+     * @throws InvalidArgumentException
      */
-    public function getCurrencyTransformer($language)
+    public function getCurrencyTransformer(string $language): CurrencyTransformer
     {
         if (!array_key_exists($language, $this->currencyTransformers)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Currency transformer for "%s" language is not implemented.',
                 $language
             ));

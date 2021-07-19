@@ -34,8 +34,6 @@ class YorubaNumberTransformerTest extends NumberTransformerTest
             [60467936, 'miliọnu Ogota, ẹgbẹrun irinwó ati Ogota ati meje, ẹ̀ẹ́dẹ́gbẹ̀rún ati ọgbọn ati mẹfa'],
             [84040098, 'miliọnu ọgọrin ati mẹrin, ẹgbẹrun ogoji, aadọrun ati mẹjọ'],
             [95349193, 'miliọnu aadọrun ati marun, ẹgbẹrun ọ̀ọ́dúrún ati ogoji ati mẹsan, ọgọrun ati aadọrun ati mẹta'],
-
-
         ];
     }
 }
