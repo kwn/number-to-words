@@ -100,9 +100,15 @@ Yoruba               | yo         | +      | +        |
 
 Many transformers were ported from the `pear/Numbers_Words` library. Some of them were created from scratch by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
 
+## Version 2.x - BC and major changes
+
+- Dropped support for PHP <7.4.
+- Added typehints for `NumberTransformer` and `CurrencyTransformer` interfaces. Now both accept integer numbers only (Albanian language might be affected).
+- Added support for PSR12.
+
 ## Questions and answers
 
-**Q: I found a bug!**
+**Q: I found a bug. What should I do?**
 
 A: Please report an issue on GitHub. Also feel free to fix it and open a pull request. I don't know most of those languages that the library supports, so your help and contribution would be much appreciated. Thanks!
 
