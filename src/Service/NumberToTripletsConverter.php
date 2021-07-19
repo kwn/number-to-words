@@ -4,12 +4,7 @@ namespace NumberToWords\Service;
 
 class NumberToTripletsConverter
 {
-    /**
-     * @param int $number
-     *
-     * @return int[]
-     */
-    public function convertToTriplets($number)
+    public function convertToTriplets(int $number): array
     {
         $triplets = [];
 

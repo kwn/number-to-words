@@ -9,80 +9,48 @@ class CurrencyTransformerOptions
     private bool $showDecimalIfZero = false;
     private bool $showFractionIfZero = false;
 
-    /**
-     * @return bool
-     */
-    public function isConvertFraction()
+    public function isConvertFraction(): bool
     {
         return $this->convertFraction;
     }
 
-    /**
-     * @param bool $convertFraction
-     *
-     * @return self
-     */
-    public function setConvertFraction($convertFraction)
+    public function setConvertFraction(bool $convertFraction): self
     {
         $this->convertFraction = $convertFraction;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isConvertFractionIfZero()
+    public function isConvertFractionIfZero(): bool
     {
         return $this->convertFractionIfZero;
     }
 
-    /**
-     * @param bool $convertFractionIfZero
-     *
-     * @return self
-     */
-    public function setConvertFractionIfZero($convertFractionIfZero)
+    public function setConvertFractionIfZero(bool $convertFractionIfZero): self
     {
         $this->convertFractionIfZero = $convertFractionIfZero;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isShowDecimalIfZero()
+    public function isShowDecimalIfZero(): bool
     {
         return $this->showDecimalIfZero;
     }
 
-    /**
-     * @param bool $showDecimalIfZero
-     *
-     * @return self
-     */
-    public function setShowDecimalIfZero($showDecimalIfZero)
+    public function setShowDecimalIfZero(bool $showDecimalIfZero): self
     {
         $this->showDecimalIfZero = $showDecimalIfZero;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isShowFractionIfZero()
+    public function isShowFractionIfZero(): bool
     {
         return $this->showFractionIfZero;
     }
 
-    /**
-     * @param bool $showFractionIfZero
-     *
-     * @return self
-     */
-    public function setShowFractionIfZero($showFractionIfZero)
+    public function setShowFractionIfZero(bool $showFractionIfZero): self
     {
         $this->showFractionIfZero = $showFractionIfZero;
 
