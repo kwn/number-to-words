@@ -11,45 +11,14 @@ use NumberToWords\Service\NumberToTripletsConverter;
 
 class GenericNumberTransformer implements NumberTransformer
 {
-    /**
-     * @var Dictionary
-     */
-    private $dictionary;
-
-    /**
-     * @var TripletTransformer
-     */
-    private $tripletTransformer;
-
-    /**
-     * @var PowerAwareTripletTransformer
-     */
-    private $powerAwareTripletTransformer;
-
-    /**
-     * @var string
-     */
-    private $wordsSeparator;
-
-    /**
-     * @var NumberToTripletsConverter
-     */
-    private $numberToTripletsConverter;
-
-    /**
-     * @var ExponentInflector
-     */
-    private $exponentInflector;
-
-    /**
-     * @var ExponentGetter
-     */
-    private $exponentGetter;
-
-    /**
-     * @var string
-     */
-    private $exponentSeparator;
+    private Dictionary $dictionary;
+    private ?TripletTransformer $tripletTransformer;
+    private ?PowerAwareTripletTransformer $powerAwareTripletTransformer;
+    private NumberToTripletsConverter $numberToTripletsConverter;
+    private ?ExponentInflector $exponentInflector;
+    private ?ExponentGetter $exponentGetter;
+    private ?string $wordsSeparator = null;
+    private ?string $exponentSeparator = null;
 
     public function toWords(int $number): string
     {
@@ -71,12 +40,7 @@ class GenericNumberTransformer implements NumberTransformer
         return trim(implode($this->wordsSeparator, $words));
     }
 
-    /**
-     * @param int $number
-     *
-     * @return array
-     */
-    private function getWordsBySplittingIntoTriplets($number)
+    private function getWordsBySplittingIntoTriplets(int $number): array
     {
         $words = [];
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
@@ -111,70 +75,46 @@ class GenericNumberTransformer implements NumberTransformer
         return $words;
     }
 
-    /**
-     * @param Dictionary $dictionary
-     */
-    public function setDictionary(Dictionary $dictionary)
+    public function setDictionary(Dictionary $dictionary): void
     {
         $this->dictionary = $dictionary;
     }
 
-    /**
-     * @param TripletTransformer $tripletTransformer
-     */
-    public function setTripletTransformer(TripletTransformer $tripletTransformer)
+    public function setTripletTransformer(TripletTransformer $tripletTransformer): void
     {
         $this->tripletTransformer = $tripletTransformer;
         $this->powerAwareTripletTransformer = null;
     }
 
-    /**
-     * @param PowerAwareTripletTransformer $powerAwareTripletTransformer
-     */
-    public function setPowerAwareTripletTransformer(PowerAwareTripletTransformer $powerAwareTripletTransformer)
+    public function setPowerAwareTripletTransformer(PowerAwareTripletTransformer $powerAwareTripletTransformer): void
     {
         $this->powerAwareTripletTransformer = $powerAwareTripletTransformer;
         $this->tripletTransformer = null;
     }
 
-    /**
-     * @param string $wordsSeparator
-     */
-    public function setWordsSeparator($wordsSeparator)
+    public function setWordsSeparator(string $wordsSeparator): void
     {
         $this->wordsSeparator = $wordsSeparator;
     }
 
-    /**
-     * @param NumberToTripletsConverter $numberToTripletsConverter
-     */
-    public function setNumberToTripletsConverter(NumberToTripletsConverter $numberToTripletsConverter)
+    public function setNumberToTripletsConverter(NumberToTripletsConverter $numberToTripletsConverter): void
     {
         $this->numberToTripletsConverter = $numberToTripletsConverter;
     }
 
-    /**
-     * @param ExponentInflector $exponentInflector
-     */
-    public function setExponentInflector(ExponentInflector $exponentInflector)
+    public function setExponentInflector(ExponentInflector $exponentInflector): void
     {
         $this->exponentInflector = $exponentInflector;
         $this->exponentGetter = null;
     }
 
-    /**
-     * @param ExponentGetter $exponentGetter
-     */
-    public function setExponentGetter(ExponentGetter $exponentGetter)
+    public function setExponentGetter(ExponentGetter $exponentGetter): void
     {
         $this->exponentGetter = $exponentGetter;
         $this->exponentInflector = null;
     }
 
-    /**
-     * @param string $exponentSeparator
-     */
-    public function setExponentsSeparator($exponentSeparator)
+    public function setExponentsSeparator(string $exponentSeparator): void
     {
         $this->exponentSeparator = $exponentSeparator;
     }
