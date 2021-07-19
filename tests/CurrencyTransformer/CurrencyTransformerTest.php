@@ -20,5 +20,5 @@ abstract class CurrencyTransformerTest extends TestCase
         self::assertEquals($expectedString, $this->currencyTransformer->toWords($amount, $currency));
     }
 
-    abstract public function providerItConvertsMoneyAmountToWords();
+    abstract public function providerItConvertsMoneyAmountToWords(): array;
 }

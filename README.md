@@ -60,13 +60,13 @@ Then it can be used passing in numeric values for amount and ISO 4217 currency i
 $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
-Bare in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
+Please bear in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
 ## Available locale
 
 Language             | Identifier | Number | Currency |
 ---------------------|------------|--------|----------|
-Albanian             | al         | +      | -        |
+Albanian             | al         | +      | +        |
 Belgian French       | fr_BE      | +      | -        |
 Brazilian Portuguese | pt_BR      | +      | +        |
 Bulgarian            | bg         | +      | -        |
@@ -87,7 +87,7 @@ Malay                | ms         | +      | -        |
 Persian              | fa         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
-Slovak               | sk         | +      | -        |
+Slovak               | sk         | +      | +        |
 Spanish              | es         | +      | +        |
 Russian              | ru         | +      | +        |
 Swedish              | sv         | +      | -        |
@@ -98,20 +98,14 @@ Yoruba               | yo         | +      | +        |
 
 ## Contributors
 
-Most of the transformers were ported from `pear/Numbers_Words` library. Some of them were slightly refactored. Some of them were created by other [contributors](https://github.com/kwn/number-to-words/graphs/contributors) who were helping me with the initial version of that library.
-
-This library is still under a heavy refactoring so the legacy code should ultimately disappear.
+Many transformers were ported from the `pear/Numbers_Words` library. Some of them were created from scratch by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
 
 ## Questions and answers
 
-**Q: Why the code looks like a crap? Why it gets so low rank on code climate?**
+**Q: I found a bug!**
 
-A: Most of the code was just migrated from `pear/Numbers_Words`. That library still remembers the ages of PHP4. I constantly refactor it, so it's getting better. I'm also porting some mechanisms from other languages so sooner or later it will look quite good.
+A: Please report an issue on GitHub. Also feel free to fix it and open a pull request. I don't know most of those languages that the library supports, so your help and contribution would be much appreciated. Thanks!
 
-**Q: There's an error!**
+**Q: My language is missing. Could you add it, please?**
 
-A: Please report an issue, or even better - create a pull request. I don't speak most of those languages so your help is much appreciated. Thanks!
-
-**Q: Why there are some transformers which cannot be used (they live under `UntestedLocale` namespace)?**
-
-A: Simply, because there are no test cases for them. You're more than welcome to create some test cases for them, so we'll be able to include them in a list of available languages.
+A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do. 
