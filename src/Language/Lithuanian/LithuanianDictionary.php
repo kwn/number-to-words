@@ -1,6 +1,6 @@
 <?php
 
-namespace NumberToWords\Language\Lithuania;
+namespace NumberToWords\Language\Lithuanian;
 
 use NumberToWords\Language\Dictionary;
 
@@ -10,8 +10,7 @@ class LithuanianDictionary implements Dictionary
     public const LANGUAGE_NAME        = 'Lithuanian';
     public const LANGUAGE_NAME_NATIVE = 'Lietuvių';
 
-    /** @var array<string>  */
-    private static $units = [
+    private static array $units = [
         0 => 'nulis',
         1 => 'vienas',
         2 => 'du',
@@ -24,8 +23,7 @@ class LithuanianDictionary implements Dictionary
         9 => 'devyni'
     ];
 
-    /** @var array<string>  */
-    private static $tens = [
+    private static array $tens = [
         0 => 'dešimt',
         1 => 'vienuolika',
         2 => 'dvylika',
@@ -38,8 +36,7 @@ class LithuanianDictionary implements Dictionary
         9 => 'devyniolika'
     ];
 
-    /** @var array<string>  */
-    private static $teens = [
+    private static array $teens = [
         0 => '',
         1 => 'dešimt',
         2 => 'dvidešimt',
@@ -52,14 +49,12 @@ class LithuanianDictionary implements Dictionary
         9 => 'devyniasdešimt'
     ];
 
-    /** @var array<string>  */
-    private static $hundreds = [
+    private static array $hundreds = [
         0 => 'šimtas',
         2 => 'šimtai',
     ];
 
-    /** @var array<array<string>>  */
-    public static $exponent = [
+    public static array $exponent = [
         ['', ''],
         ['tūkstantis', 'tūkstančių', 'tūkstančiai'],
         ['milijonas', 'milijonų', 'milijonai'],
@@ -75,72 +70,42 @@ class LithuanianDictionary implements Dictionary
         ['gugolplexas', 'gugolplexų', 'gugolplexai']
     ];
 
-    /** @var array<array<string>>  */
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'EUR' => [['euras', 'eurų', 'eurai'], ['euro centas', 'euro centų', 'euro centai']],
         'LT' => [['litas', 'litų', 'litai'], ['lito centas', 'lito centų', 'lito centai']],
     ];
 
-    /**
-     * @return string
-     */
-    public function getAnd()
+    public function getAnd(): string
     {
         return 'ir';
     }
 
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'minus';
     }
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'nulis';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         if ($hundred === 1) {
             return static::$hundreds[0];

@@ -3,7 +3,7 @@
 namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Language\Lithuania\LithuanianDictionary;
+use NumberToWords\Language\Lithuanian\LithuanianDictionary;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 

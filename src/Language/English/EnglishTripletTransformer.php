@@ -6,25 +6,14 @@ use NumberToWords\Language\TripletTransformer;
 
 class EnglishTripletTransformer implements TripletTransformer
 {
-    /**
-     * @var EnglishDictionary
-     */
-    private $dictionary;
+    private EnglishDictionary $dictionary;
 
-    /**
-     * @param EnglishDictionary $dictionary
-     */
     public function __construct(EnglishDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
     }
 
-    /**
-     * @param int $number
-     *
-     * @return string
-     */
-    public function transformToWords($number)
+    public function transformToWords(int $number): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -42,13 +31,7 @@ class EnglishTripletTransformer implements TripletTransformer
         return implode(' ', $words);
     }
 
-    /**
-     * @param int $tens
-     * @param int $units
-     *
-     * @return string
-     */
-    private function getSubHundred($tens, $units)
+    private function getSubHundred($tens, $units): string
     {
         $words = [];
 

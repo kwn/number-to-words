@@ -10,7 +10,7 @@ class SlovakDictionary implements Dictionary
     public const LANGUAGE_NAME = 'Slovak';
     public const LANGUAGE_NAME_NATIVE = 'slovák';
 
-    private static $units = [
+    private static array $units = [
         0 => '',
         1 => 'jeden',
         2 => 'dva',
@@ -23,7 +23,7 @@ class SlovakDictionary implements Dictionary
         9 => 'deväť',
     ];
 
-    private static $teens = [
+    private static array $teens = [
         0 => 'desať',
         1 => 'jedenásť',
         2 => 'dvanásť',
@@ -36,7 +36,7 @@ class SlovakDictionary implements Dictionary
         9 => 'devätnásť'
     ];
 
-    private static $twenteens = [
+    private static array $twenties = [
         0 => 'dvadsať',
         1 => 'dvadsaťjeden',
         2 => 'dvadsaťdva',
@@ -49,7 +49,7 @@ class SlovakDictionary implements Dictionary
         9 => 'dvadsaťdeväť'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         0 => '',
         1 => 'desať',
         2 => 'dvadsať',
@@ -62,7 +62,7 @@ class SlovakDictionary implements Dictionary
         9 => 'deväťdesiat'
     ];
 
-    private static $hundreds = [
+    private static array $hundreds = [
         0 => '',
         1 => 'sto',
         2 => 'dvesto',
@@ -75,7 +75,7 @@ class SlovakDictionary implements Dictionary
         9 => 'deväťsto'
     ];
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'ALL' => [['lek', 'leki', 'lekov'], ['quindarka', 'quindarki', 'quindarek']],
         'AUD' => [
             ['dolar australijski', 'dolary australijskie', 'dolarov australijskich'],
@@ -117,69 +117,37 @@ class SlovakDictionary implements Dictionary
         'ZAR' => [['rand', 'randy', 'randov'], ['cent', 'centy', 'centov']]
     ];
 
-
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'mínus';
     }
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'nula';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $twenteen
-     *
-     * @return string
-     */
-    public function getCorrespondingTwenteen($twenteen)
+    public function getCorrespondingTwenty(int $twenty): string
     {
-        return self::$twenteens[$twenteen];
+        return self::$twenties[$twenty];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         return self::$hundreds[$hundred];
     }

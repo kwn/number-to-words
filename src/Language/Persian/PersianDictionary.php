@@ -10,9 +10,9 @@ class PersianDictionary implements Dictionary
     public const LANGUAGE_NAME = 'Perisan';
     public const LANGUAGE_NAME_NATIVE = 'Farsi';
 
-    private static $units = ['', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
+    private static array $units = ['', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
 
-    private static $teens = [
+    private static array $teens = [
         'ده',
         'یازده',
         'دوازده',
@@ -25,7 +25,7 @@ class PersianDictionary implements Dictionary
         'نوزده'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         '',
         'ده',
         'بیست',
@@ -38,64 +38,38 @@ class PersianDictionary implements Dictionary
         'نود'
     ];
 
-    private static $hundred = 'هزار';
+    private static string $hundred = 'هزار';
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'IRR' => [['ریال'], ['ریال']],
     ];
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'صفر';
     }
 
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'منفی';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         return self::$units[$hundred] . ' ' . self::$hundred;
     }

@@ -8,7 +8,7 @@ class BelgianDictionary
     public const LANGUAGE_NAME = 'French';
     public const LANGUAGE_NAME_NATIVE = 'Français';
 
-    public static $miscNumbers = [
+    public static array $miscNumbers = [
         10  => 'dix',
         11  => 'onze',
         12  => 'douze',
@@ -26,7 +26,7 @@ class BelgianDictionary
         100 => 'cent'
     ];
 
-    public static $digits = [
+    public static array $digits = [
         1 => 'un',
         2 => 'deux',
         3 => 'trois',
@@ -38,14 +38,14 @@ class BelgianDictionary
         9 => 'neuf'
     ];
 
-    public static $zero = 'zéro';
-    public static $and = 'et';
-    public static $wordSeparator = ' ';
-    public static $dash = '-';
-    public static $minus = 'moins';
-    public static $pluralSuffix = 's';
+    public static string $zero = 'zéro';
+    public static string $and = 'et';
+    public static string $wordSeparator = ' ';
+    public static string $dash = '-';
+    public static string $minus = 'moins';
+    public static string $pluralSuffix = 's';
 
-    public static $exponent = [
+    public static array $exponent = [
         0   => '',
         3   => 'mille',
         6   => 'million',

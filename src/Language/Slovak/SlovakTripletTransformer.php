@@ -6,25 +6,14 @@ use NumberToWords\Language\TripletTransformer;
 
 class SlovakTripletTransformer implements TripletTransformer
 {
-    /**
-     * @var SlovakDictionary
-     */
-    private $slovakDictionary;
+    private SlovakDictionary $slovakDictionary;
 
-    /**
-     * @param SlovakDictionary $slovakDictionary
-     */
     public function __construct(SlovakDictionary $slovakDictionary)
     {
         $this->slovakDictionary = $slovakDictionary;
     }
 
-    /**
-     * @param int $number
-     *
-     * @return string
-     */
-    public function transformToWords($number)
+    public function transformToWords(int $number): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -38,7 +27,7 @@ class SlovakTripletTransformer implements TripletTransformer
             $words[] = $this->slovakDictionary->getCorrespondingTeen($units);
         }
         if ($tens === 2) {
-            $words[] = $this->slovakDictionary->getCorrespondingTwenteen($units);
+            $words[] = $this->slovakDictionary->getCorrespondingTwenty($units);
         }
 
         if ($tens > 2) {

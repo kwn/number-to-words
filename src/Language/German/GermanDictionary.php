@@ -10,7 +10,7 @@ class GermanDictionary implements Dictionary
     public const LANGUAGE_NAME = 'German';
     public const LANGUAGE_NAME_NATIVE = 'Deutsch';
 
-    private static $units = [
+    private static array $units = [
         0 => 'null',
         1 => 'ein',
         2 => 'zwei',
@@ -23,7 +23,7 @@ class GermanDictionary implements Dictionary
         9 => 'neun'
     ];
 
-    private static $teens = [
+    private static array $teens = [
         0 => 'zehn',
         1 => 'elf',
         2 => 'zwölf',
@@ -36,7 +36,7 @@ class GermanDictionary implements Dictionary
         9 => 'neunzehn'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         0 => '',
         1 => 'zehn',
         2 => 'zwanzig',
@@ -49,7 +49,7 @@ class GermanDictionary implements Dictionary
         9 => 'neunzig'
     ];
 
-    private static $hundreds = [
+    private static array $hundreds = [
         0 => 'nullhundert',
         1 => 'einhundert',
         2 => 'zweihundert',
@@ -62,7 +62,7 @@ class GermanDictionary implements Dictionary
         9 => 'neunhundert'
     ];
 
-    public static $exponent = [
+    public static array $exponent = [
         ['', ''],
         ['tausend', 'tausend'],
         ['Million', 'Millionen'],
@@ -87,7 +87,7 @@ class GermanDictionary implements Dictionary
         ['Dezilliarde', 'Dezilliarden'],
     ];
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'ALL' => [['Lek'], ['Quindarka']],
         'AUD' => [['Australischer Dollar'], ['cent']],
         'BAM' => [['Konvertible Mark'], ['Fening']],
@@ -117,60 +117,34 @@ class GermanDictionary implements Dictionary
         'ZAR' => [['Rand'], ['cent']]
     ];
 
-    public static $and = 'und';
+    public static string $and = 'und';
 
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'Minus';
     }
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'null';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         return self::$hundreds[$hundred];
     }

@@ -6,7 +6,7 @@ use NumberToWords\Language\ExponentInflector;
 
 class PolishExponentInflector implements ExponentInflector
 {
-    private static $exponent = [
+    private static array $exponent = [
         ['', '', ''],
         ['tysiąc', 'tysiące', 'tysięcy'],
         ['milion', 'miliony', 'milionów'],
@@ -31,26 +31,14 @@ class PolishExponentInflector implements ExponentInflector
         ['decyliard', 'decyliardy', 'decyliardów'],
     ];
 
-    /**
-     * @var PolishNounGenderInflector
-     */
-    private $inflector;
+    private PolishNounGenderInflector $inflector;
 
-    /**
-     * @param PolishNounGenderInflector $inflector
-     */
     public function __construct(PolishNounGenderInflector $inflector)
     {
         $this->inflector = $inflector;
     }
 
-    /**
-     * @param int $number
-     * @param int $power
-     *
-     * @return string
-     */
-    public function inflectExponent($number, $power)
+    public function inflectExponent(int $number, int $power): string
     {
         return $this->inflector->inflectNounByNumber(
             $number,
