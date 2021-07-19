@@ -6,7 +6,7 @@ phpunit:
 	vendor/bin/phpunit --no-coverage
 
 phpunit-coverage:
-	XDEBUG_MODE=coverage vendor/bin/phpunit
+	vendor/bin/phpunit
 
 phpcbf:
 	vendor/bin/phpcbf -p --encoding=utf-8 --standard=PSR2 --ignore=src/Legacy/Numbers/Words/* src
