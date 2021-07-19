@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\RomanianCurrencyTransformer
- */
 class RomanianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

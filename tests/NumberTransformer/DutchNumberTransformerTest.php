@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\DutchNumberTransformer
- */
 class DutchNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

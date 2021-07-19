@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\EstonianNumberTransformer
- */
 class EstonianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

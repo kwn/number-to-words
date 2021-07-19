@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\PortugueseBrazilianCurrencyTransformer
- */
 class PortugueseBrazilianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

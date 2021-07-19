@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\RomanianNumberTransformer
- */
 class RomanianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

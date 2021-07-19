@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\ItalianNumberTransformer
- */
 class ItalianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

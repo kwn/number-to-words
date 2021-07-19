@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer
- */
 class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

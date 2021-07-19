@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\BulgarianNumberTransformer
- */
 class BulgarianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\YorubaCurrencyTransformer
- */
 class YorubaCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

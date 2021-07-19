@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\FrenchNumberTransformer
- */
 class FrenchNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

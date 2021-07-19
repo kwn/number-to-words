@@ -7,9 +7,6 @@ use NumberToWords\NumberTransformer\NumberTransformer;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \NumberToWords\NumberToWords
- */
 class NumberToWordsTest extends TestCase
 {
     public function testItThrowsExceptionIfNumberTransformerDoesNotExist(): void

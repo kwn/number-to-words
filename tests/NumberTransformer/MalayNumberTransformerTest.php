@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\MalayNumberTransformer
- */
 class MalayNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

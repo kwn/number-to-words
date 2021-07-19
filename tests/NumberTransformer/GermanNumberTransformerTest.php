@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\GermanNumberTransformer
- */
 class GermanNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

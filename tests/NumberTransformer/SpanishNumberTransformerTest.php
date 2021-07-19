@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\SpanishNumberTransformer
- */
 class SpanishNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

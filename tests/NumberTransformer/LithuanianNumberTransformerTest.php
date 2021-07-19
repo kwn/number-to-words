@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\LithuanianNumberTransformer
- */
 class LithuanianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

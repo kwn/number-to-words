@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\TurkishNumberTransformer
- */
 class TurkishNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

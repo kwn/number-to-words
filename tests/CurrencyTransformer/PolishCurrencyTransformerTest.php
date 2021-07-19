@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\PolishCurrencyTransformer
- */
 class PolishCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

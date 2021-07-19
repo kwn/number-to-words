@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\DanishNumberTransformer
- */
 class DanishNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\PortugueseBrazilianNumberTransformer
- */
 class PortugueseBrazilianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

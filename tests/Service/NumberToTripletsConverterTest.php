@@ -4,9 +4,6 @@ namespace NumberToWords\Service;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \NumberToWords\Service\NumberToTripletsConverter
- */
 class NumberToTripletsConverterTest extends TestCase
 {
     /**

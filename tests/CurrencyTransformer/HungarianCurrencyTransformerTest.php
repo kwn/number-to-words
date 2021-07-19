@@ -2,9 +2,6 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-/**
- * @covers \NumberToWords\CurrencyTransformer\HungarianCurrencyTransformer
- */
 class HungarianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void

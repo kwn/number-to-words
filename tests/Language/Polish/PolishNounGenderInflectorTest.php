@@ -4,9 +4,6 @@ namespace NumberToWords\Language\Polish;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \NumberToWords\Language\Polish\PolishNounGenderInflector
- */
 class PolishNounGenderInflectorTest extends TestCase
 {
     private static array $nouns = ['kubek', 'kubki', 'kubków'];

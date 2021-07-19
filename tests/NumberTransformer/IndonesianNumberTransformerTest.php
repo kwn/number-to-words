@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\IndonesianNumberTransformer
- */
 class IndonesianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

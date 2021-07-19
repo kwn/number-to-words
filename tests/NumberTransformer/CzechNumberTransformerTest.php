@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\CzechNumberTransformer
- */
 class CzechNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void

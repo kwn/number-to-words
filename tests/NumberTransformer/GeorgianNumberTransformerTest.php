@@ -2,9 +2,6 @@
 
 namespace NumberToWords\NumberTransformer;
 
-/**
- * @covers \NumberToWords\NumberTransformer\GeorgianNumberTransformer
- */
 class GeorgianNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void
