@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class LatvianDictionary implements Dictionary
 {
-    const LOCALE               = 'lv';
-    const LANGUAGE_NAME        = 'Latvian';
-    const LANGUAGE_NAME_NATIVE = 'latviešu';
+    public const LOCALE = 'lv';
+    public const LANGUAGE_NAME = 'Latvian';
+    public const LANGUAGE_NAME_NATIVE = 'latviešu';
 
     private static $units = [
         0 => '',

@@ -4,9 +4,9 @@ namespace NumberToWords\Language\French;
 
 class BelgianDictionary
 {
-    const LOCALE = 'fr_BE';
-    const LANGUAGE_NAME = 'French';
-    const LANGUAGE_NAME_NATIVE = 'Français';
+    public const LOCALE = 'fr_BE';
+    public const LANGUAGE_NAME = 'French';
+    public const LANGUAGE_NAME_NATIVE = 'Français';
 
     public static $miscNumbers = [
         10  => 'dix',

@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class EnglishDictionary implements Dictionary
 {
-    const LOCALE = 'en_US';
-    const LANGUAGE_NAME = 'American English';
-    const LANGUAGE_NAME_NATIVE = 'American English';
+    public const LOCALE = 'en_US';
+    public const LANGUAGE_NAME = 'American English';
+    public const LANGUAGE_NAME_NATIVE = 'American English';
 
     private static $units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 

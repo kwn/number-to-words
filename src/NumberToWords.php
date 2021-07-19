@@ -122,7 +122,7 @@ class NumberToWords
             ));
         }
 
-        return new $this->numberTransformers[$language];
+        return new $this->numberTransformers[$language]();
     }
 
     /**
@@ -137,6 +137,6 @@ class NumberToWords
             ));
         }
 
-        return new $this->currencyTransformers[$language];
+        return new $this->currencyTransformers[$language]();
     }
 }

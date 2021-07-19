@@ -3,7 +3,7 @@
 namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Language\Lithuania\LithuaniaDictionary;
+use NumberToWords\Language\Lithuania\LithuanianDictionary;
 use NumberToWords\NumberTransformer\LithuanianNumberTransformer;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
@@ -11,7 +11,7 @@ class LithuanianCurrencyTransformer implements CurrencyTransformer
 {
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
-        $dictionary = new LithuaniaDictionary();
+        $dictionary = new LithuanianDictionary();
         $numberTransformer = new LithuanianNumberTransformer();
 
         $decimal = (int) ($amount / 100);
@@ -23,13 +23,13 @@ class LithuanianCurrencyTransformer implements CurrencyTransformer
 
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, LithuaniaDictionary::$currencyNames)) {
+        if (!array_key_exists($currency, LithuanianDictionary::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = LithuaniaDictionary::$currencyNames[$currency];
+        $currencyNames = LithuanianDictionary::$currencyNames[$currency];
 
         $return = trim($numberTransformer->toWords($decimal));
         $level = $this->getLevel($decimal);
@@ -51,11 +51,7 @@ class LithuanianCurrencyTransformer implements CurrencyTransformer
         return $return;
     }
 
-    /**
-     * @param $number
-     * @return int
-     */
-    public function getLevel($number)
+    public function getLevel($number): int
     {
         $lastTwoDigits = $number % 100;
         $lastDigit = $number % 10;

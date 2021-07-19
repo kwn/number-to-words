@@ -4,11 +4,11 @@ namespace NumberToWords\Language\Lithuania;
 
 use NumberToWords\Language\Dictionary;
 
-class LithuaniaDictionary implements Dictionary
+class LithuanianDictionary implements Dictionary
 {
-    const LOCALE               = 'lt';
-    const LANGUAGE_NAME        = 'Lithuanian';
-    const LANGUAGE_NAME_NATIVE = 'Lietuvių';
+    public const LOCALE               = 'lt';
+    public const LANGUAGE_NAME        = 'Lithuanian';
+    public const LANGUAGE_NAME_NATIVE = 'Lietuvių';
 
     /** @var array<string>  */
     private static $units = [

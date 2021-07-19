@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class SlovakDictionary implements Dictionary
 {
-    const LOCALE = 'sk';
-    const LANGUAGE_NAME = 'Slovak';
-    const LANGUAGE_NAME_NATIVE = 'slovák';
+    public const LOCALE = 'sk';
+    public const LANGUAGE_NAME = 'Slovak';
+    public const LANGUAGE_NAME_NATIVE = 'slovák';
 
     private static $units = [
         0 => '',

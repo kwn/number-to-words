@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class GermanDictionary implements Dictionary
 {
-    const LOCALE               = 'de';
-    const LANGUAGE_NAME        = 'German';
-    const LANGUAGE_NAME_NATIVE = 'Deutsch';
+    public const LOCALE = 'de';
+    public const LANGUAGE_NAME = 'German';
+    public const LANGUAGE_NAME_NATIVE = 'Deutsch';
 
     private static $units = [
         0 => 'null',

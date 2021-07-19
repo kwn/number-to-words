@@ -6,10 +6,10 @@ use NumberToWords\Grammar\Gender;
 
 class Dictionary
 {
-    const LOCALE = 'ro';
-    const LANGUAGE_NAME = 'Romanian';
-    const LANGUAGE_NAME_NATIVE = 'Română';
-    const MINUS = 'minus';
+    public const LOCALE = 'ro';
+    public const LANGUAGE_NAME = 'Romanian';
+    public const LANGUAGE_NAME_NATIVE = 'Română';
+    public const MINUS = 'minus';
 
     public static $thresholdFew = 1;
     public static $thresholdMany = 19;

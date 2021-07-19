@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class PersianDictionary implements Dictionary
 {
-    const LOCALE = 'fa';
-    const LANGUAGE_NAME = 'Perisan';
-    const LANGUAGE_NAME_NATIVE = 'Farsi';
+    public const LOCALE = 'fa';
+    public const LANGUAGE_NAME = 'Perisan';
+    public const LANGUAGE_NAME_NATIVE = 'Farsi';
 
     private static $units = ['', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
 

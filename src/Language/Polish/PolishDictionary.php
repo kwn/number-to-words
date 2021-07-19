@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class PolishDictionary implements Dictionary
 {
-    const LOCALE = 'pl';
-    const LANGUAGE_NAME = 'Polish';
-    const LANGUAGE_NAME_NATIVE = 'polski';
+    public const LOCALE = 'pl';
+    public const LANGUAGE_NAME = 'Polish';
+    public const LANGUAGE_NAME_NATIVE = 'polski';
 
     private static $units = [
         0 => '',

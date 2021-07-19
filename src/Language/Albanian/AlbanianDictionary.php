@@ -6,9 +6,9 @@ use NumberToWords\Language\Dictionary;
 
 class AlbanianDictionary implements Dictionary
 {
-    const LOCALE = 'sq_AL';
-    const LANGUAGE_NAME = 'Albanian';
-    const LANGUAGE_NAME_NATIVE = 'Shqip';
+    public const LOCALE = 'sq_AL';
+    public const LANGUAGE_NAME = 'Albanian';
+    public const LANGUAGE_NAME_NATIVE = 'Shqip';
 
     private static $units = ['', 'një', 'dy', 'tre', 'katër', 'pesë', 'gjashtë', 'shtatë', 'tetë', 'nëntë'];
 

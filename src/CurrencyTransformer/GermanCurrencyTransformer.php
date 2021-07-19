@@ -57,7 +57,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         }
 
         if (null !== $fraction) {
-            $return .= ' '.$dictionary::$and.' ';
+            $return .= ' ' . $dictionary::$and . ' ';
 
             $return .= trim($numberTransformer->toWords($fraction));
 
