@@ -19,6 +19,8 @@ before_script:
   - ~/cc-test-reporter before-build
 
 script:
+  - php -v
+  - php -i | grep xdebug
   - make build
 
 after_script:
