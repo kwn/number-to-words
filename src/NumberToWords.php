@@ -85,6 +85,7 @@ class NumberToWords
         'tk' => TurkmenNumberTransformer::class,
         'tr' => TurkishNumberTransformer::class,
         'ua' => UkrainianNumberTransformer::class,
+        'uk' => UkrainianNumberTransformer::class,
         'yo' => YorubaNumberTransformer::class,
     ];
 
@@ -107,6 +108,7 @@ class NumberToWords
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
         'ua' => UkrainianCurrencyTransformer::class,
+        'uk' => UkrainianCurrencyTransformer::class,
         'yo' => YorubaCurrencyTransformer::class
     ];
 
