@@ -6,41 +6,41 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Nl extends Words
 {
-    const LOCALE               = 'nl';
-    const LANGUAGE_NAME        = 'Dutch';
+    const LOCALE = 'nl';
+    const LANGUAGE_NAME = 'Dutch';
     const LANGUAGE_NAME_NATIVE = 'Nederlands';
 
     private $minus = 'minus';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['duizend', 'duizend'],
-        6   => ['miljoen', 'miljoen'],
-        9   => ['miljard', 'miljard'],
-        12  => ['biljoen', 'biljoen'],
-        15  => ['biljard', 'biljard'],
-        18  => ['triljoen', 'triljoen'],
-        21  => ['triljard', 'triljard'],
-        24  => ['quadriljoen', 'quadriljoen'],
-        27  => ['quadriljard', 'quadriljard'],
-        30  => ['quintiljoen', 'quintiljoen'],
-        33  => ['quintiljard', 'quintiljard'],
-        36  => ['sextiljoen', 'sextiljoen'],
-        39  => ['sextiljard', 'sextiljard'],
-        42  => ['septiljoen', 'septiljoen'],
-        45  => ['septiljard', 'septiljard'],
-        48  => ['octiljoen', 'octiljoen'],
-        51  => ['octiljard', 'octiljard'],
-        54  => ['noniljoen', 'noniljoen'],
-        57  => ['noniljard', 'noniljard'],
-        60  => ['deciljoen', 'deciljoen'],
-        63  => ['deciljard', 'deciljard'],
-        66  => ['Undeciljoen', 'Undeciljoen'],
-        69  => ['Undeciljard', 'Undeciljard'],
-        72  => ['duodeciljoen', 'duodeciljoen'],
-        75  => ['duodeciljard', 'duodeciljard'],
-        78  => ['tredeciljoen', 'tredeciljoen'],
-        81  => ['tredeciljard', 'tredeciljard'],
+        0 => [''],
+        3 => ['duizend', 'duizend'],
+        6 => ['miljoen', 'miljoen'],
+        9 => ['miljard', 'miljard'],
+        12 => ['biljoen', 'biljoen'],
+        15 => ['biljard', 'biljard'],
+        18 => ['triljoen', 'triljoen'],
+        21 => ['triljard', 'triljard'],
+        24 => ['quadriljoen', 'quadriljoen'],
+        27 => ['quadriljard', 'quadriljard'],
+        30 => ['quintiljoen', 'quintiljoen'],
+        33 => ['quintiljard', 'quintiljard'],
+        36 => ['sextiljoen', 'sextiljoen'],
+        39 => ['sextiljard', 'sextiljard'],
+        42 => ['septiljoen', 'septiljoen'],
+        45 => ['septiljard', 'septiljard'],
+        48 => ['octiljoen', 'octiljoen'],
+        51 => ['octiljard', 'octiljard'],
+        54 => ['noniljoen', 'noniljoen'],
+        57 => ['noniljard', 'noniljard'],
+        60 => ['deciljoen', 'deciljoen'],
+        63 => ['deciljard', 'deciljard'],
+        66 => ['Undeciljoen', 'Undeciljoen'],
+        69 => ['Undeciljard', 'Undeciljard'],
+        72 => ['duodeciljoen', 'duodeciljoen'],
+        75 => ['duodeciljard', 'duodeciljard'],
+        78 => ['tredeciljoen', 'tredeciljoen'],
+        81 => ['tredeciljard', 'tredeciljard'],
         120 => ['vigintiljoen', 'vigintiljoen'],
         123 => ['vigintiljard', 'vigintiljard'],
         600 => ['zentiljoen', 'zentiljoen'], // oder Centillion
@@ -104,8 +104,8 @@ class Nl extends Words
     ];
 
     /**
-     * @param int    $num
-     * @param int    $power
+     * @param int $num
+     * @param int $power
      * @param string $powsuffix
      *
      * @return string
@@ -113,7 +113,7 @@ class Nl extends Words
     protected function toWords($num, $power = 0, $powsuffix = '')
     {
         $ret = '';
-        $hasPower =false;; 
+        $hasPower = false;;
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
@@ -173,24 +173,22 @@ class Nl extends Words
         }
 
         if ($h) {
-            $ret .= $this->wordSeparator .  ($h==1?'':self::$digits[$h]) . $this->wordSeparator . 'honderd';
+            $ret .= $this->wordSeparator . ($h == 1 ? '' : self::$digits[$h]) . $this->wordSeparator . 'honderd';
         }
-        // an number under 12 with wants en if it is substituted 
-        if ($hasPower && $num <= 12 && $num > 0)
-        {
+        // an number under 12 with wants en if it is substituted
+        if ($hasPower && $num <= 12 && $num > 0) {
             $ret .= 'en ';
         }
         // add digits only in <0>,<1,9> and <21,inf>
-        if ( $d > 0) {
+        if ($d > 0) {
             if ($t != 1 && $t > 0) {
                 $ret .= self::$digits[$d] . 'en';
             } else {
-                // 100 en 9 of 100 en 12 maar honderddertien 
-                if ( $h > 0 && ($t == 0 || ($t== 1 && ($d==1 || $d==2))))
-                {
+                // 100 en 9 of 100 en 12 maar honderddertien
+                if ($h > 0 && ($t == 0 || ($t == 1 && ($d == 1 || $d == 2)))) {
                     $ret .= ' en ';
-                } 
-                if($t != 1 && !($d ==1 && $power == 3 )){
+                }
+                if ($t != 1 && !($d == 1 && $power == 3)) {
                     $ret .= self::$digits[$d];
                 }
             }
@@ -199,7 +197,7 @@ class Nl extends Words
         // ten, twenty etc.
         switch ($t) {
             case 8:
-                $ret .= $this->wordSeparator . 't'.self::$digits[$t] . 'ig';
+                $ret .= $this->wordSeparator . 't' . self::$digits[$t] . 'ig';
                 break;
             case 9:
             case 7:

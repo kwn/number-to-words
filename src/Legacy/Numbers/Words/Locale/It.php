@@ -14,9 +14,9 @@ class It extends Words
     private $minus = 'meno ';
 
     private static $exponent = [
-        0  => ['', ''],
-        3  => ['mille', 'mila'],
-        6  => ['milione', 'milioni'],
+        0 => ['', ''],
+        3 => ['mille', 'mila'],
+        6 => ['milione', 'milioni'],
         12 => ['miliardo', 'miliardi'],
         18 => ['trillone', 'trilloni'],
         24 => ['quadrilione', 'quadrilioni'],

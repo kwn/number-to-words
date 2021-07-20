@@ -13,19 +13,19 @@ class Ms extends Words
     private $minus = 'negatif';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['ribu'],
-        6   => ['juta'],
-        9   => ['bilion'],
-        12  => ['trilion'],
-        24  => ['quadrillion'],
-        30  => ['quintillion'],
-        36  => ['sextillion'],
-        42  => ['septillion'],
-        48  => ['octillion'],
-        54  => ['nonillion'],
-        60  => ['decillion'],
-        66  => ['undecillion'],
+        0 => [''],
+        3 => ['ribu'],
+        6 => ['juta'],
+        9 => ['bilion'],
+        12 => ['trilion'],
+        24 => ['quadrillion'],
+        30 => ['quintillion'],
+        36 => ['sextillion'],
+        42 => ['septillion'],
+        48 => ['octillion'],
+        54 => ['nonillion'],
+        60 => ['decillion'],
+        66 => ['undecillion'],
     ];
 
     private static $digits = [

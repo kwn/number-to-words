@@ -2,21 +2,21 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Legacy\Numbers\Words;
 
 class Es extends Words
 {
-    const LOCALE               = 'es';
-    const LANGUAGE_NAME        = 'Spanish';
+    const LOCALE = 'es';
+    const LANGUAGE_NAME = 'Spanish';
     const LANGUAGE_NAME_NATIVE = 'Español';
 
     private $minus = 'menos';
 
     private static $exponent = [
-        0  => ['', ''],
-        3  => ['mil', 'mil'],
-        6  => ['millón', 'millones'],
+        0 => ['', ''],
+        3 => ['mil', 'mil'],
+        6 => ['millón', 'millones'],
         12 => ['billón', 'billones'],
         18 => ['trilón', 'trillones'],
         24 => ['cuatrillón', 'cuatrillones'],
@@ -290,8 +290,8 @@ class Es extends Words
     }
 
     /**
-     * @param int  $currency
-     * @param int  $decimal
+     * @param int $currency
+     * @param int $decimal
      * @param null $fraction
      *
      * @return string
@@ -344,6 +344,7 @@ class Es extends Words
 
         //Go back digit "one"
         self::$digits[1] = 'uno';
+
         return $ret;
     }
 }

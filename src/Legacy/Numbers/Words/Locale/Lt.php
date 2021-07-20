@@ -14,10 +14,10 @@ class Lt extends Words
     private $minus = 'minus';
 
     private static $exponent = [
-        0  => [''],
-        3  => ['tūkstantis', 'tūkstančiai', 'tūkstančių'],
-        6  => ['milijonas', 'milijonai', 'milijonų'],
-        9  => ['bilijonas', 'bilijonai', 'bilijonų'],
+        0 => [''],
+        3 => ['tūkstantis', 'tūkstančiai', 'tūkstančių'],
+        6 => ['milijonas', 'milijonai', 'milijonų'],
+        9 => ['bilijonas', 'bilijonai', 'bilijonų'],
         12 => ['trilijonas', 'trilijonai', 'trilijonų'],
         15 => ['kvadrilijonas', 'kvadrilijonai', 'kvadrilijonų'],
         18 => ['kvintilijonas', 'kvintilijonai', 'kvintilijonų']
@@ -39,8 +39,8 @@ class Lt extends Words
     private $wordSeparator = ' ';
 
     /**
-     * @param int    $number
-     * @param int    $power
+     * @param int $number
+     * @param int $power
      * @param string $powsuffix
      *
      * @return string
