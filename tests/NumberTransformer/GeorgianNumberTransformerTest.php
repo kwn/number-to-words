@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class GeorgianNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new GeorgianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [0,'ნული'],
@@ -123,13 +123,6 @@ class GeorgianNumberTransformerTest extends NumberTransformerTest
             [1432,'ათას ოთხას ოცდათორმეტი'],
             [10403,'ათი ათას ოთხას სამი'],
             [190455576,'ას ოთხმოცდაათი მილიონ ოთხას ორმოცდათხუთმეტი ათას ხუთას სამოცდათექვსმეტი'],
-            [1.5,'ერთი მთელი ხუთი მეათედი'],
-            [2.5,'ორი მთელი ხუთი მეათედი'],
-            [10.5,'ათი მთელი ხუთი მეათედი'],
-            [3.75,'სამი მთელი სამოცდათხუთმეტი მეასედი'],
-            [7.125,'შვიდი მთელი ას ოცდახუთი მეათასედი'],
-            [12.1875,'თორმეტი მთელი ათას რვაას სამოცდათხუთმეტი მეათიათასედი'],
-            [19.78125,'ცხრამეტი მთელი სამოცდათვრამეტი ათას ას ოცდახუთი მეასიათასედი'],
         ];
     }
 }

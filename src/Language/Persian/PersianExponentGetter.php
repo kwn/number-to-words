@@ -6,7 +6,7 @@ use NumberToWords\Language\ExponentGetter;
 
 class PersianExponentGetter implements ExponentGetter
 {
-    private static $exponent = [
+    private static array $exponent = [
         '',
         'هزار',
         'میلیون',
@@ -24,12 +24,7 @@ class PersianExponentGetter implements ExponentGetter
         'ترسیلیون',
     ];
 
-    /**
-     * @param int $power
-     *
-     * @return string
-     */
-    public function getExponent($power)
+    public function getExponent(int $power): string
     {
         return self::$exponent[$power];
     }

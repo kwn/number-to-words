@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class LatvianNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new LatvianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'nulle'],

@@ -1,18 +1,15 @@
 <?php
 
-namespace Kwn\NumberToWords\NumberTransformer;
-
-use NumberToWords\NumberTransformer\CzechNumberTransformer;
-use NumberToWords\NumberTransformer\NumberTransformerTest;
+namespace NumberToWords\NumberTransformer;
 
 class CzechNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new CzechNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [-100, 'mínus sto'],

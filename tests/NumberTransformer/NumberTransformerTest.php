@@ -6,16 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 abstract class NumberTransformerTest extends TestCase
 {
-    /** @var NumberTransformer */
-    protected $numberTransformer;
+    protected NumberTransformer $numberTransformer;
 
     /**
      * @dataProvider providerItConvertsNumbersToWords
-     *
-     * @param int    $number
-     * @param string $expectedString
      */
-    public function testItConvertsNumbersToWords($number, $expectedString)
+    public function testItConvertsNumbersToWords($number, string $expectedString): void
     {
         if (null === $this->numberTransformer) {
             self::markTestIncomplete('Please initialize $numberTransformer property.');

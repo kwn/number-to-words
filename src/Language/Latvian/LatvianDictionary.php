@@ -6,11 +6,11 @@ use NumberToWords\Language\Dictionary;
 
 class LatvianDictionary implements Dictionary
 {
-    const LOCALE               = 'lv';
-    const LANGUAGE_NAME        = 'Latvian';
-    const LANGUAGE_NAME_NATIVE = 'latviešu';
+    public const LOCALE = 'lv';
+    public const LANGUAGE_NAME = 'Latvian';
+    public const LANGUAGE_NAME_NATIVE = 'latviešu';
 
-    private static $units = [
+    private static array $units = [
         0 => '',
         1 => 'viens',
         2 => 'divi',
@@ -23,7 +23,7 @@ class LatvianDictionary implements Dictionary
         9 => 'deviņi'
     ];
 
-    private static $teens = [
+    private static array $teens = [
         0 => 'desmit',
         1 => 'vienpadsmit',
         2 => 'divpadsmit',
@@ -36,7 +36,7 @@ class LatvianDictionary implements Dictionary
         9 => 'deviņpadsmit'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         0 => '',
         1 => 'desmit',
         2 => 'divdesmit',
@@ -49,72 +49,42 @@ class LatvianDictionary implements Dictionary
         9 => 'deviņdesmit'
     ];
 
-    /** @var array<array<string>>  */
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'EUR' => [['eiro', 'eiro', 'eiro'], ['eiro cents', 'eiro centi', 'eiro centi']],
         'USD' => [['dolārs', 'dolāri', 'dolāri'], ['cents', 'centi', 'centi']],
     ];
 
-    /**
-     * @return string
-     */
-    public function getAnd()
+    public function getAnd(): string
     {
         return 'un';
     }
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'nulle';
     }
 
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'minus';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         if ($hundred === 1) {
             return 'simts';

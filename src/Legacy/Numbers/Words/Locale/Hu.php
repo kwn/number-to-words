@@ -14,28 +14,28 @@ class Hu extends Words
     private $minus = 'mínusz';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['ezer'],
-        6   => ['millió'],
-        9   => ['milliárd'],
-        12  => ['billió'],
-        15  => ['billiárd'],
-        18  => ['trillió'],
-        21  => ['trilliárd'],
-        24  => ['kvadrillió'],
-        27  => ['kvadrilliárd'],
-        30  => ['kvintillió'],
-        33  => ['kvintilliárd'],
-        36  => ['szextillió'],
-        39  => ['szextilliárd'],
-        42  => ['szeptillió'],
-        45  => ['szeptilliárd'],
-        48  => ['oktillió'],
-        51  => ['oktilliárd'],
-        54  => ['nonillió'],
-        57  => ['nonilliárd'],
-        60  => ['decillió'],
-        63  => ['decilliárd'],
+        0 => [''],
+        3 => ['ezer'],
+        6 => ['millió'],
+        9 => ['milliárd'],
+        12 => ['billió'],
+        15 => ['billiárd'],
+        18 => ['trillió'],
+        21 => ['trilliárd'],
+        24 => ['kvadrillió'],
+        27 => ['kvadrilliárd'],
+        30 => ['kvintillió'],
+        33 => ['kvintilliárd'],
+        36 => ['szextillió'],
+        39 => ['szextilliárd'],
+        42 => ['szeptillió'],
+        45 => ['szeptilliárd'],
+        48 => ['oktillió'],
+        51 => ['oktilliárd'],
+        54 => ['nonillió'],
+        57 => ['nonilliárd'],
+        60 => ['decillió'],
+        63 => ['decilliárd'],
     ];
 
     private static $digits = [
@@ -228,8 +228,8 @@ class Hu extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
      * @return string
      * @throws NumberToWordsException

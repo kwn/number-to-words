@@ -6,35 +6,35 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Sv extends Words
 {
-    const LOCALE               = 'sv';
-    const LANGUAGE_NAME        = 'Swedish';
+    const LOCALE = 'sv';
+    const LANGUAGE_NAME = 'Swedish';
     const LANGUAGE_NAME_NATIVE = 'Svenska';
 
     private $minus = 'Minus';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['tusen', 'tusen'],
-        6   => ['miljon', 'miljoner'],
-        9   => ['miljard', 'miljarder'],
-        12  => ['biljon', 'biljoner'],
-        15  => ['biljard', 'biljarder'],
-        18  => ['triljon', 'triljoner'],
-        21  => ['triljard', 'triljarder'],
-        24  => ['kvadriljon', 'kvadriljoner'],
-        27  => ['kvadriljard', 'kvadriljarder'],
-        30  => ['kvintiljon', 'kvintiljoner'],
-        33  => ['kvintiljard', 'kvintiljarder'],
-        36  => ['sextiljon', 'sextiljoner'],
-        39  => ['sextiljard', 'sextiljarder'],
-        42  => ['septiljon', 'septiljoner'],
-        45  => ['septiljard', 'septiljarder'],
-        48  => ['oktiljon', 'oktiljoner'],
-        51  => ['oktiljard', 'oktiljarder'],
-        54  => ['noniljon', 'noniljoner'],
-        57  => ['noniljard', 'noniljarder'],
-        60  => ['dekiljon', 'dekiljoner'],
-        63  => ['dekiljard', 'dekiljarder'],
+        0 => [''],
+        3 => ['tusen', 'tusen'],
+        6 => ['miljon', 'miljoner'],
+        9 => ['miljard', 'miljarder'],
+        12 => ['biljon', 'biljoner'],
+        15 => ['biljard', 'biljarder'],
+        18 => ['triljon', 'triljoner'],
+        21 => ['triljard', 'triljarder'],
+        24 => ['kvadriljon', 'kvadriljoner'],
+        27 => ['kvadriljard', 'kvadriljarder'],
+        30 => ['kvintiljon', 'kvintiljoner'],
+        33 => ['kvintiljard', 'kvintiljarder'],
+        36 => ['sextiljon', 'sextiljoner'],
+        39 => ['sextiljard', 'sextiljarder'],
+        42 => ['septiljon', 'septiljoner'],
+        45 => ['septiljard', 'septiljarder'],
+        48 => ['oktiljon', 'oktiljoner'],
+        51 => ['oktiljard', 'oktiljarder'],
+        54 => ['noniljon', 'noniljoner'],
+        57 => ['noniljard', 'noniljarder'],
+        60 => ['dekiljon', 'dekiljoner'],
+        63 => ['dekiljard', 'dekiljarder'],
     ];
 
     private static $digits = [
@@ -56,8 +56,8 @@ class Sv extends Words
 
 
     /**
-     * @param int    $num
-     * @param int    $power
+     * @param int $num
+     * @param int $power
      * @param string $powsuffix
      *
      * @return string

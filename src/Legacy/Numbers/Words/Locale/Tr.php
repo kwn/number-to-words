@@ -7,8 +7,8 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Tr extends Words
 {
-    const LOCALE               = 'tr';
-    const LANGUAGE_NAME        = 'Turkish';
+    const LOCALE = 'tr';
+    const LANGUAGE_NAME = 'Turkish';
     const LANGUAGE_NAME_NATIVE = 'Türkçe';
 
     private $minus = 'eksi';
@@ -118,7 +118,7 @@ class Tr extends Words
         $ret = '';
         $num = strval($num);
 
-        if ((int)$num === 0) {
+        if ((int) $num === 0) {
             return self::$digits[0];
         }
 
@@ -131,27 +131,32 @@ class Tr extends Words
         $num_length = strlen($num);
 
         if ($num_length % 3 !== 0) {
-            $num = str_pad($num, $num_length + (3-($num_length%3)), '0', STR_PAD_LEFT);
+            $num = str_pad($num, $num_length + (3 - ($num_length % 3)), '0', STR_PAD_LEFT);
         }
 
         $groups = str_split($num, 3);
         $g_index = count($groups) - 1;
         foreach ($groups as $i => $g) {
 
-            if ((int)$g[0] > 1)
+            if ((int) $g[0] > 1) {
                 $ret .= self::$digits[$g[0]] . $this->wordSeparator;
+            }
 
-            if ((int)$g[0] > 0)
+            if ((int) $g[0] > 0) {
                 $ret .= "yüz" . $this->wordSeparator;
+            }
 
-            if ((int)$g[1] > 0)
+            if ((int) $g[1] > 0) {
                 $ret .= self::$digits_second[$g[1]] . $this->wordSeparator;
+            }
 
-            if ((int)$g[2] > 0 && (($num_length === 4 && $i === 0 && (int)$g[2] <= 1) === false))
+            if ((int) $g[2] > 0 && (($num_length === 4 && $i === 0 && (int) $g[2] <= 1) === false)) {
                 $ret .= self::$digits[$g[2]] . $this->wordSeparator;
+            }
 
-            if ((int)$g > 0)
+            if ((int) $g > 0) {
                 $ret .= self::$exponent[$g_index] . $this->wordSeparator;
+            }
 
             $g_index--;
         }
@@ -161,11 +166,11 @@ class Tr extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
-     * @throws NumberToWordsException
      * @return string
+     * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
     {

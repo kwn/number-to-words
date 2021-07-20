@@ -4,15 +4,14 @@ namespace NumberToWords\CurrencyTransformer;
 
 class LatvianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new LatvianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
-        return array_merge([
-
+        return [
             [0, 'EUR', 'nulle eiro un nulle eiro centi'],
             [1, 'EUR', 'nulle eiro un viens eiro cents'],
             [9, 'EUR', 'nulle eiro un deviņi eiro centi'],
@@ -57,7 +56,6 @@ class LatvianCurrencyTransformerTest extends CurrencyTransformerTest
             [35174315119, 'EUR', 'trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens eiro un deviņpadsmit eiro centi'],
             [935174315119, 'EUR', 'deviņi miljardi trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens eiro un deviņpadsmit eiro centi'],
             [222935174315119, 'EUR', 'divi triljoni divi simti divdesmit deviņi miljardi trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens eiro un deviņpadsmit eiro centi'],
-        ], [
             [0, 'USD', 'nulle dolāri un nulle centi'],
             [1, 'USD', 'nulle dolāri un viens cents'],
             [9, 'USD', 'nulle dolāri un deviņi centi'],
@@ -102,6 +100,6 @@ class LatvianCurrencyTransformerTest extends CurrencyTransformerTest
             [35174315119, 'USD', 'trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens dolārs un deviņpadsmit centi'],
             [935174315119, 'USD', 'deviņi miljardi trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens dolārs un deviņpadsmit centi'],
             [222935174315119, 'USD', 'divi triljoni divi simti divdesmit deviņi miljardi trīs simti piecdesmit viens miljons septiņi simti četrdesmit trīs tūkstoši simts piecdesmit viens dolārs un deviņpadsmit centi'],
-        ]);
+        ];
     }
 }

@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class SlovakNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new SlovakNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [-5, 'mínus päť'],

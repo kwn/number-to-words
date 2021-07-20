@@ -2,42 +2,24 @@
 
 namespace NumberToWords;
 
-use NumberToWords\CurrencyTransformer\CurrencyTransformer;
-use NumberToWords\NumberTransformer\NumberTransformer;
-use PHPUnit\Framework\Assert;
+use NumberToWords\Exception\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class NumberToWordsTest extends TestCase
 {
-    public function testItThrowsExceptionIfNumberTransformerDoesNotExist()
+    public function testItThrowsExceptionIfNumberTransformerDoesNotExist(): void
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $numberToWords = new NumberToWords();
         $numberToWords->getNumberTransformer('xx');
     }
 
-    public function testItThrowsExceptionIfCurrencyTransformerDoesNotExist()
+    public function testItThrowsExceptionIfCurrencyTransformerDoesNotExist(): void
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $numberToWords = new NumberToWords();
         $numberToWords->getCurrencyTransformer('xx');
-    }
-
-    public function testItReturnsNumberTransformer()
-    {
-        $numberToWords = new NumberToWords();
-        $numberToWordsTransformer = $numberToWords->getNumberTransformer('en');
-
-        Assert::assertInstanceOf(NumberTransformer::class, $numberToWordsTransformer);
-    }
-
-    public function testItReturnsCurrencyTransformer()
-    {
-        $numberToWords = new NumberToWords();
-        $numberToWordsTransformer = $numberToWords->getCurrencyTransformer('en');
-
-        Assert::assertInstanceOf(CurrencyTransformer::class, $numberToWordsTransformer);
     }
 }

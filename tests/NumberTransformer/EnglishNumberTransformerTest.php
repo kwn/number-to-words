@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class EnglishNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new EnglishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'minus three'],

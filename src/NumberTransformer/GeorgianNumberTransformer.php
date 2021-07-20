@@ -6,9 +6,10 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class GeorgianNumberTransformer implements NumberTransformer
 {
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $converter = new Words();
+
         return $converter->transformToWords($number, 'ka');
     }
 }

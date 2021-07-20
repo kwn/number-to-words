@@ -7,12 +7,12 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Ru extends Words
 {
-    const LOCALE               = 'ru';
-    const LANGUAGE_NAME        = 'Russian';
+    const LOCALE = 'ru';
+    const LANGUAGE_NAME = 'Russian';
     const LANGUAGE_NAME_NATIVE = 'Русский';
-    const MINUS                = 'минус';
+    const MINUS = 'минус';
 
-    const MALE   = 0;
+    const MALE = 0;
     const FEMALE = 1;
     const NEUTER = 2;
 
@@ -264,7 +264,7 @@ class Ru extends Words
     ];
 
     /**
-     * @param int    $n
+     * @param int $n
      * @param string $f1
      * @param string $f2
      * @param string $f5
@@ -289,8 +289,8 @@ class Ru extends Words
     }
 
     /**
-     * @param  int  $number
-     * @param  int  $currencyGender
+     * @param int $number
+     * @param int $currencyGender
      *
      * @return string
      */
@@ -312,7 +312,7 @@ class Ru extends Words
 
         // $signs equal quantity of zeros of the biggest number in self::$mega
         // + 3 additional sign (point and two zero)
-        list ($unit, $subunit) = explode('.', sprintf("%{$signs}.2F", (float) $number));
+        [$unit, $subunit] = explode('.', sprintf("%{$signs}.2F", (float) $number));
 
         foreach (str_split($unit, 3) as $megaKey => $value) {
             if (!(int) $value) {
@@ -321,7 +321,7 @@ class Ru extends Words
 
             $megaKey = $megaSize - $megaKey - 1;
             $gender = $megaKey === 1 && $currencyGender !== -1 ? $currencyGender : static::$mega[$megaKey][3];
-            list ($i1, $i2, $i3) = array_map('intval', str_split($value, 1));
+            [$i1, $i2, $i3] = array_map('intval', str_split($value, 1));
             // mega-logic
             $out[] = static::$hundred[$i1]; # 1xx-9xx
 
@@ -332,7 +332,12 @@ class Ru extends Words
             }
 
             if ($megaKey > 1) {
-                $out[] = $this->morph($value, static::$mega[$megaKey][0], static::$mega[$megaKey][1], static::$mega[$megaKey][2]);
+                $out[] = $this->morph(
+                    $value,
+                    static::$mega[$megaKey][0],
+                    static::$mega[$megaKey][1],
+                    static::$mega[$megaKey][2]
+                );
             }
         }
 
@@ -341,11 +346,11 @@ class Ru extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
-     * @throws NumberToWordsException
      * @return string
+     * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
@@ -361,28 +366,58 @@ class Ru extends Words
         $return = '';
 
         if ($decimal === 0 && !$fraction) {
-            $return .= $this->toWords($decimal) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
+            $return .= $this->toWords($decimal) . ' ' . $this->morph(
+                    $decimal,
+                    $currencyNames[0][1],
+                    $currencyNames[0][2],
+                    $currencyNames[0][3]
+                );
 
             return $return;
         }
 
         if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
-            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) .' '. $this->morph($decimal, $currencyNames[0][1], $currencyNames[0][2], $currencyNames[0][3]);
+            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) . ' ' . $this->morph(
+                    $decimal,
+                    $currencyNames[0][1],
+                    $currencyNames[0][2],
+                    $currencyNames[0][3]
+                );
         }
 
         if (null !== $fraction) {
             if ($this->options->isConvertFraction()) {
-                $return .= ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
             } else {
-                $return .= ' ' . $fraction . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' ' . $fraction . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
             }
         }
 
         if (null === $fraction && $this->options->isShowFractionIfZero()) {
             if ($this->options->isConvertFractionIfZero()) {
-                $return .= ' ' . $this->zero . ' ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' ' . $this->zero . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
             } else {
-                $return .= ' 00 ' . $this->morph($fraction, $currencyNames[1][1], $currencyNames[1][2], $currencyNames[1][3]);
+                $return .= ' 00 ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
             }
         }
 

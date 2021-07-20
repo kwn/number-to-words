@@ -7,28 +7,28 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Dk extends Words
 {
-    const LOCALE               = 'dk';
-    const LANGUAGE_NAME        = 'Danish';
+    const LOCALE = 'dk';
+    const LANGUAGE_NAME = 'Danish';
     const LANGUAGE_NAME_NATIVE = 'Dansk';
 
     private $minus = 'minus';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['tusind', 'tusinde'],
-        6   => ['million', 'millioner'],
-        9   => ['milliard', 'milliarder'],
-        12  => ['billion', 'billioner'],
-        15  => ['billiard', 'billiarder'],
-        18  => ['trillion', 'trillioner'],
-        21  => ['trilliard', 'trilliarder'],
-        24  => ['quadrillion', 'quadrillioner'],
-        30  => ['quintillion', 'quintillioner'],
-        36  => ['sextillion', 'sextillioner'],
-        42  => ['septillion', 'septillioner'],
-        48  => ['octillion', 'octillioner'],
-        54  => ['nonillion', 'nonillioner'],
-        60  => ['decillion', 'decillioner'],
+        0 => [''],
+        3 => ['tusind', 'tusinde'],
+        6 => ['million', 'millioner'],
+        9 => ['milliard', 'milliarder'],
+        12 => ['billion', 'billioner'],
+        15 => ['billiard', 'billiarder'],
+        18 => ['trillion', 'trillioner'],
+        21 => ['trilliard', 'trilliarder'],
+        24 => ['quadrillion', 'quadrillioner'],
+        30 => ['quintillion', 'quintillioner'],
+        36 => ['sextillion', 'sextillioner'],
+        42 => ['septillion', 'septillioner'],
+        48 => ['octillion', 'octillioner'],
+        54 => ['nonillion', 'nonillioner'],
+        60 => ['decillion', 'decillioner'],
     ];
 
     private static $digits = [
@@ -244,11 +244,11 @@ class Dk extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
-     * @throws NumberToWordsException
      * @return string
+     * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
     {

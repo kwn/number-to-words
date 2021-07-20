@@ -6,25 +6,14 @@ use NumberToWords\Language\TripletTransformer;
 
 class AlbanianTripletTransformer implements TripletTransformer
 {
-    /**
-     * @var AlbanianDictionary
-     */
-    private $dictionary;
+    private AlbanianDictionary $dictionary;
 
-    /**
-     * @param AlbanianDictionary $dictionary
-     */
     public function __construct(AlbanianDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
     }
 
-    /**
-     * @param int $number
-     *
-     * @return string
-     */
-    public function transformToWords($number)
+    public function transformToWords(int $number): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -42,13 +31,7 @@ class AlbanianTripletTransformer implements TripletTransformer
         return implode(' e ', $words);
     }
 
-    /**
-     * @param int $tens
-     * @param int $units
-     *
-     * @return string
-     */
-    private function getSubHundred($tens, $units)
+    private function getSubHundred(int $tens, int $units): string
     {
         $words = [];
 

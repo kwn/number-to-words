@@ -1,18 +1,17 @@
 <?php
 
-namespace NumberToWords\Grammar\Inflector;
+namespace NumberToWords\Language\Polish;
 
-use NumberToWords\Language\Polish\PolishNounGenderInflector;
 use PHPUnit\Framework\TestCase;
 
-class PolishInflectorTest extends TestCase
+class PolishNounGenderInflectorTest extends TestCase
 {
-    private static $nouns = ['kubek', 'kubki', 'kubków'];
+    private static array $nouns = ['kubek', 'kubki', 'kubków'];
 
     /**
      * @dataProvider providerItInflectsNounsByNumbers
      */
-    public function testItInflectsNounsByNumbers($number, $expectedNoun)
+    public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
         $polishInflector = new PolishNounGenderInflector();
 
@@ -21,7 +20,7 @@ class PolishInflectorTest extends TestCase
         self::assertEquals($expectedNoun, $inflected);
     }
 
-    public function providerItInflectsNounsByNumbers()
+    public function providerItInflectsNounsByNumbers(): array
     {
         return [
             [1, 'kubek'],

@@ -3,13 +3,11 @@
 namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class RussianCurrencyTransformer implements CurrencyTransformer
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function toWords($amount, $currency, $options = null)
+    public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $converter = new Words($options);
 

@@ -7,12 +7,11 @@ use NumberToWords\Exception\NumberToWordsException;
 
 class Words
 {
-    /** @var CurrencyTransformerOptions */
-    protected $options;
+    protected CurrencyTransformerOptions $options;
 
     public function __construct($options = null)
     {
-        if (null === $options) {
+        if ($options === null) {
             $this->options = new CurrencyTransformerOptions();
         } else {
             $this->options = $options;
@@ -20,13 +19,9 @@ class Words
     }
 
     /**
-     * @param int    $number
-     * @param string $locale
-     *
      * @throws NumberToWordsException
-     * @return string
      */
-    public function transformToWords($number, $locale)
+    public function transformToWords(int $number, string $locale): string
     {
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName();
@@ -35,14 +30,9 @@ class Words
     }
 
     /**
-     * @param int    $amount
-     * @param string $locale
-     * @param string $currency
-     *
      * @throws NumberToWordsException
-     * @return string
      */
-    public function transformToCurrency($amount, $locale, $currency)
+    public function transformToCurrency(int $amount, string $locale, string $currency): string
     {
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName($this->options);
@@ -50,7 +40,7 @@ class Words
         $decimalPart = (int) ($amount / 100);
         $fractionalPart = abs($amount % 100);
 
-        if (0 === $fractionalPart) {
+        if ($fractionalPart === 0) {
             return trim($transformer->toCurrencyWords($currency, $decimalPart));
         }
 
@@ -58,16 +48,14 @@ class Words
     }
 
     /**
-     * @param string $locale
-     *
      * @throws NumberToWordsException
-     * @return string
      */
-    private function resolveLocaleClassName($locale)
+    private function resolveLocaleClassName(string $locale): string
     {
-        $locale = implode('\\', array_map(function ($element) {
-            return ucfirst(strtolower($element));
-        }, explode('_', $locale)));
+        $locale = implode('\\', array_map(
+            static fn ($element) => ucfirst(strtolower($element)),
+            explode('_', $locale)
+        ));
 
         $class = 'NumberToWords\\Legacy\\Numbers\\Words\\Locale\\' . $locale;
 
