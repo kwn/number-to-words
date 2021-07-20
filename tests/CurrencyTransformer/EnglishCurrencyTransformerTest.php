@@ -12,6 +12,10 @@ class EnglishCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
+            [6474, 'USD', 'sixty-four dollars seventy-four cents'],
+            [6574, 'USD', 'sixty-five dollars seventy-four cents'],
+            [8174, 'USD', 'eighty-one dollars seventy-four cents'],
+            [8255, 'USD', 'eighty-two dollars fifty-five cents'],
             [72900, 'USD', 'seven hundred twenty-nine dollars'],
             [89400, 'USD', 'eight hundred ninety-four dollars'],
             [99900, 'USD', 'nine hundred ninety-nine dollars'],
