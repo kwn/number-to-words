@@ -40,6 +40,12 @@ Then it can be used passing in numeric values to the `toWords()` method:
 $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
 
+You can also use the fluent version:
+
+```php
+NumberToWords::numberTransformer('en')->toWords(5120) // outputs "five thousand one hundred twenty"
+```
+
 ### Currency Transformer
 
 Creating a currency transformer works just like a number transformer.
@@ -57,7 +63,13 @@ $currencyTransformer = $numberToWords->getCurrencyTransformer('en');
 Then it can be used passing in numeric values for amount and ISO 4217 currency identifier to the `toWords()` method:
 
 ```php
-$currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
+$currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety-nine cents"
+```
+
+You can also use the fluent version:
+
+```php
+NumberToWords::currencyTransformer('en')->toWords(5120, 'USD') // outputs "fifty dollars ninety-nine cents"
 ```
 
 Please bear in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
