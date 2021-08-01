@@ -2,4 +2,5 @@
 /.idea/
 /build/
 /composer.lock
+/phpunit.xml
 *.cache
