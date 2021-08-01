@@ -28,11 +28,7 @@ class NumberToWords
 
     public static function numberTransformer(string $language): NumberTransformer
     {
-<<<<<<< HEAD
         return (new static())->getNumberTransformer($language);
-=======
-        return (new static)->getNumberTransformer($language);
->>>>>>> 01fa74606531ca5c8a0896c52b056b21d47803f4
     }
 
     /**
@@ -52,12 +48,6 @@ class NumberToWords
 
     public static function currencyTransformer(string $language): CurrencyTransformer
     {
-<<<<<<< HEAD
         return (new static())->getCurrencyTransformer($language);
     }
 }
-=======
-        return (new static)->getCurrencyTransformer($language);
-    }
-}
->>>>>>> 01fa74606531ca5c8a0896c52b056b21d47803f4
