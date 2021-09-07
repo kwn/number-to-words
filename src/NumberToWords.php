@@ -22,6 +22,8 @@ use NumberToWords\CurrencyTransformer\UkrainianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\FrenchCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\YorubaCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\AlbanianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\IndonesianCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\MalaysianCurrencyTransformer;
 use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
@@ -96,9 +98,11 @@ class NumberToWords
         'es' => SpanishCurrencyTransformer::class,
         'fr' => FrenchCurrencyTransformer::class,
         'hu' => HungarianCurrencyTransformer::class,
+        'id' => IndonesianCurrencyTransformer::class,
         'ka' => GeorgianCurrencyTransformer::class,
         'lt' => LithuanianCurrencyTransformer::class,
         'lv' => LatvianCurrencyTransformer::class,
+        'ms' => MalaysianCurrencyTransformer::class,
         'pl' => PolishCurrencyTransformer::class,
         'pt_BR' => PortugueseBrazilianCurrencyTransformer::class,
         'ro' => RomanianCurrencyTransformer::class,
