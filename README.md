@@ -79,11 +79,11 @@ Georgian             | ka         | +      | +        |
 German               | de         | +      | +        |
 French               | fr         | +      | +        |
 Hungarian            | hu         | +      | +        |
-Indonesian           | id         | +      | -        |
+Indonesian           | id         | +      | +        |
 Italian              | it         | +      | -        |
 Lithuanian           | lt         | +      | +        |
 Latvian              | lv         | +      | +        |
-Malay                | ms         | +      | -        |
+Malay                | ms         | +      | +        |
 Persian              | fa         | +      | -        |
 Polish               | pl         | +      | +        |
 Romanian             | ro         | +      | +        |
