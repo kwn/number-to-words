@@ -43,6 +43,57 @@ class Id extends Words
 
     private $wordSeparator = ' ';
 
+    public static $currencyNames = [
+        'ALL' => [['lek'], ['qindarka']],
+        'AUD' => [['dolar Australia'], ['sen']],
+        'BAM' => [['convertible marka'], ['fenig']],
+        'BGN' => [['lev'], ['stotinka']],
+        'BRL' => [['real'], ['senavos']],
+        'BYR' => [['Belarus rouble'], ['kopiejka']],
+        'CAD' => [['dolar Kanada'], ['sen']],
+        'CHF' => [['Swiss franc'], ['rapp']],
+        'CYP' => [['Cypriot pound'], ['sen']],
+        'CZK' => [['Czech koruna'], ['halerz']],
+        'DKK' => [['Danish krone'], ['ore']],
+        'DZD' => [['dinar'], ['sen']],
+        'EEK' => [['kroon'], ['senti']],
+        'EUR' => [['euro'], ['sen euro']],
+        'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
+        'HKD' => [['dolar Hong Kong'], ['sen']],
+        'HRK' => [['Croatian kuna'], ['lipa']],
+        'HUF' => [['forint'], ['filler']],
+        'IDR' => [['rupiah'], ['sen']],
+        'ILS' => [['new sheqel', 'new sheqels'], ['agora', 'agorot']],
+        'ISK' => [['Icelandic króna'], ['aurar']],
+        'JPY' => [['yen'], ['sen']],
+        'LTL' => [['litas'], ['sen']],
+        'LVL' => [['lat'], ['sentim']],
+        'LYD' => [['dinar'], ['sen']],
+        'MAD' => [['dirham'], ['sen']],
+        'MKD' => [['dinar Macedonia'], ['deni']],
+        'MRO' => [['ouguiya'], ['khoums']],
+        'MTL' => [['Maltese lira'], ['senym']],
+        'NGN' => [['Naira'], ['kobo']],
+        'NOK' => [['Norwegian krone'], ['oere']],
+        'PHP' => [['peso'], ['senavo']],
+        'PLN' => [['zloty'], ['grosz']],
+        'ROL' => [['Romanian leu'], ['bani']],
+        'RUB' => [['Russian Federation rouble'], ['kopiejka']],
+        'SEK' => [['Swedish krona'], ['oere']],
+        'SIT' => [['Tolar'], ['stotinia']],
+        'SKK' => [['Slovak koruna'], []],
+        'TMT' => [['manat'], ['tenge']],
+        'TND' => [['dinar'], ['sen']],
+        'TRL' => [['lira'], ['kuruş']],
+        'UAH' => [['hryvna'], ['sen']],
+        'USD' => [['dolar'], ['sen']],
+        'XAF' => [['franc CFA'], ['sen']],
+        'XOF' => [['franc CFA'], ['sen']],
+        'XPF' => [['franc CFP'], ['sen']],
+        'YUM' => [['dinar'], ['para']],
+        'ZAR' => [['rand'], ['sen']],
+    ];
+
     /**
      * @param int $number
      * @param int $power
@@ -181,5 +232,38 @@ class Id extends Words
         }
 
         return $return;
+    }
+
+    /**
+     * @param int $currency
+     * @param int $decimal
+     * @param null $fraction
+     *
+     * @return string
+     */
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf(
+                    'Currency "%s" is not available for "%s" language',
+                    $currency,
+                    get_class($this)
+                )
+            );
+        }
+
+        $actual = $this->toWords($decimal);
+
+        $word = $actual . " " . self::$currencyNames[$currency][0][0];
+
+        if ($fraction) {
+            $decimal = $this->toWords($fraction);
+            $word .= $decimal . " " . self::$currencyNames[$currency][1][0];
+        }
+
+        return $word;
     }
 }
