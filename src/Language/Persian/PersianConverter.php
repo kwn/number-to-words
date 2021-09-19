@@ -1,11 +1,10 @@
 <?php
 
-
 namespace NumberToWords\Language\Persian;
-
 
 class PersianConverter
 {
+
     private PersianDictionary $dictionary;
 
     public function __construct(PersianDictionary $dictionary)
