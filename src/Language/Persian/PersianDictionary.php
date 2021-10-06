@@ -2,75 +2,132 @@
 
 namespace NumberToWords\Language\Persian;
 
-use NumberToWords\Language\Dictionary;
-
-class PersianDictionary implements Dictionary
+class PersianDictionary
 {
-    public const LOCALE = 'fa';
-    public const LANGUAGE_NAME = 'Perisan';
-    public const LANGUAGE_NAME_NATIVE = 'Farsi';
 
-    private static array $units = ['', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
+    protected string $zero = 'صفر';
 
-    private static array $teens = [
-        'ده',
-        'یازده',
-        'دوازده',
-        'سیزده',
-        'چهارده',
-        'پانزده',
-        'شانزده',
-        'هفده',
-        'هجده',
-        'نوزده'
+    protected string $negative = 'منفی';
+
+    /** Token to separate words in triplets and chunks in final string */
+    protected string $separator = " و ";
+
+    protected array $units = [
+        1 => 'یک',
+        2 => 'دو',
+        3 => 'سه',
+        4 => 'چهار',
+        5 => 'پنج',
+        6 => 'شش',
+        7 => 'هفت',
+        8 => 'هشت',
+        9 => 'نه',
+        10 => 'ده',
+        11 => 'یازده',
+        12 => 'دوازده',
+        13 => 'سیزده',
+        14 => 'چهارده',
+        15 => 'پانزده',
+        16 => 'شانزده',
+        17 => 'هفده',
+        18 => 'هجده',
+        19 => 'نوزده',
+        20 => 'بیست',
+        30 => 'سی',
+        40 => 'چهل',
+        50 => 'پنجاه',
+        60 => 'شصت',
+        70 => 'هفتاد',
+        80 => 'هشتاد',
+        90 => 'نود',
+        100 => 'صد',
+        200 => 'دویست',
+        300 => 'سیصد',
+        400 => 'چهارصد',
+        500 => 'پانصد',
+        600 => 'ششصد',
+        700 => 'هفتصد',
+        800 => 'هشتصد',
+        900 => 'نهصد'
     ];
 
-    private static array $tens = [
-        '',
-        'ده',
-        'بیست',
-        'سی',
-        'چهل',
-        'پنجاه',
-        'شصت',
-        'هفتاد',
-        'هشتاد',
-        'نود'
+    protected array $suffixes = [
+        3 => 'هزار',
+        6 => 'میلیون',
+        9 => 'بیلیون',
+        12 => 'تریلیون',
+        15 => 'کوآدریلیون',
+        18 => 'کوینتیلیون',
+        21 => 'سکستیلیون',
+        24 => 'سپتیلیون',
+        27 => 'اوکتیلیون',
+        30 => 'نانیلیون',
+        33 => 'دسیلیون',
+        36 => 'آندسیلیون',
+        39 => 'دیودسیلیون',
+        42 => 'تریدسیلیون',
+        45 => 'کواتیوردسیلیون',
+        48 => 'کویندسیلیون',
+        51 => 'سکسدسیلیون',
+        54 => 'سپتدسیلیون',
+        57 => 'اُکتودسیلیون',
+        60 => 'نومدسیلیون',
+        63 => 'ویجینتیلیون',
     ];
 
-    private static string $hundred = 'هزار';
-
-    public static array $currencyNames = [
-        'IRR' => [['ریال'], ['ریال']],
-    ];
-
-    public function getZero(): string
+    public function setZero(string $zero): Dictionary
     {
-        return 'صفر';
+        $this->zero = $zero;
+        return $this;
     }
 
-    public function getMinus(): string
+    public function setNegative(string $negative): Dictionary
     {
-        return 'منفی';
+        $this->negative = $negative;
+        return $this;
     }
 
-    public function getCorrespondingUnit(int $unit): string
+    public function setSeparator(string $separator): Dictionary
     {
-        return self::$units[$unit];
+        $this->separator = $separator;
+        return $this;
     }
 
-    public function getCorrespondingTen(int $ten): string
+    public function setUnits(array $units): Dictionary
     {
-        return self::$tens[$ten];
+        $this->units = $units;
+        return $this;
     }
 
-    public function getCorrespondingTeen(int $teen): string
+    public function setSuffixes($suffixes): Dictionary
     {
-        return self::$teens[$teen];
+        $this->suffixes = $suffixes;
+        return $this;
     }
 
-    public function getCorrespondingHundred(int $hundred): string
+    public function zero(): string
     {
-        return self::$units[$hundred] . ' ' . self::$hundred;
+        return $this->zero;
+    }
+
+    public function addNegative(string $arg)
+    {
+        return $this->negative . ' ' . $arg;
+    }
+
+    public function separate(string ...$args)
+    {
+        $filteredArgs = array_filter($args, fn($input) => $input !== '');
+        return implode($this->separator, $filteredArgs);
+    }
+
+    public function unit(int $unit)
+    {
+        return $this->units[$unit];
+    }
+
+    public function addSuffix(string $string, int $level)
+    {
+        return $string . ' ' . $this->suffixes[$level];
     }
 }
