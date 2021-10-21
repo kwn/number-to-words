@@ -55,7 +55,7 @@ class ArabicTripletTransformer implements PowerAwareTripletTransformer
         if ($tens === 1) {
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         } else {
-            if($units > 2 || $tens || $power === 0){
+            if ($units > 2 || $tens || $power === 0) {
                 if ($units > 0) {
                     $words[] = $this->dictionary->getCorrespondingUnit($units);
                 }

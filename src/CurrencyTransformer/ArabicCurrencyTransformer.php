@@ -4,7 +4,6 @@ namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Language\Arabic\ArabicDictionary;
-use NumberToWords\Language\Arabic\ArabicExponentGetter;
 use NumberToWords\Language\Arabic\ArabicExponentInflector;
 use NumberToWords\Language\Arabic\ArabicNounGenderInflector;
 use NumberToWords\Language\Arabic\ArabicTripletTransformer;
