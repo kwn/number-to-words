@@ -55,10 +55,13 @@ use NumberToWords\NumberTransformer\TurkmenNumberTransformer;
 use NumberToWords\NumberTransformer\UkrainianNumberTransformer;
 use NumberToWords\NumberTransformer\YorubaNumberTransformer;
 use NumberToWords\NumberTransformer\AlbanianNumberTransformer;
+use NumberToWords\NumberTransformer\ArabicNumberTransformer;
+use NumberToWords\CurrencyTransformer\ArabicCurrencyTransformer;
 
 class NumberToWords
 {
     private array $numberTransformers = [
+        'ar' => ArabicNumberTransformer::class,
         'al' => AlbanianNumberTransformer::class,
         'bg' => BulgarianNumberTransformer::class,
         'cs' => CzechNumberTransformer::class,
@@ -91,6 +94,7 @@ class NumberToWords
     ];
 
     private array $currencyTransformers = [
+        'ar' => ArabicCurrencyTransformer::class,
         'al' => AlbanianCurrencyTransformer::class,
         'de' => GermanCurrencyTransformer::class,
         'dk' => DanishCurrencyTransformer::class,
