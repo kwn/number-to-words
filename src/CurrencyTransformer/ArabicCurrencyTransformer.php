@@ -19,7 +19,7 @@ class ArabicCurrencyTransformer implements CurrencyTransformer
      * @throws NumberToWordsException
      * @return string
      */
-    public function toWords($amount, $currency, $options = null)
+    public function toWords(int $amount, string $currency, $options = null): string
     {
         $dictionary = new ArabicDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

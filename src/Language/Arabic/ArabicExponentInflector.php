@@ -36,7 +36,7 @@ class ArabicExponentInflector implements ExponentInflector
      *
      * @return string
      */
-    public function inflectExponent($number, $power)
+    public function inflectExponent($number, $power): string
     {
         return $this->inflector->inflectNounByNumber(
             $number,

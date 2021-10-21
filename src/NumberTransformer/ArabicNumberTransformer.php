@@ -13,7 +13,7 @@ class ArabicNumberTransformer implements NumberTransformer
     /**
      * @inheritdoc
      */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $dictionary = new ArabicDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

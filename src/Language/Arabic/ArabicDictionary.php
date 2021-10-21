@@ -116,7 +116,7 @@ class ArabicDictionary implements Dictionary
     /**
      * @return string
      */
-    public function getZero()
+    public function getZero(): string
     {
         return 'صفر';
     }
@@ -124,7 +124,7 @@ class ArabicDictionary implements Dictionary
     /**
      * @return string
      */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'ناقص';
     }
@@ -134,7 +134,7 @@ class ArabicDictionary implements Dictionary
      *
      * @return string
      */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit($unit): string
     {
         return self::$units[$unit];
     }
@@ -144,7 +144,7 @@ class ArabicDictionary implements Dictionary
      *
      * @return string
      */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen($ten): string
     {
         return self::$tens[$ten];
     }
@@ -154,7 +154,7 @@ class ArabicDictionary implements Dictionary
      *
      * @return string
      */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen($teen): string
     {
         return self::$teens[$teen];
     }
@@ -164,7 +164,7 @@ class ArabicDictionary implements Dictionary
      *
      * @return string
      */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred($hundred): string
     {
         return self::$hundred[$hundred];
     }

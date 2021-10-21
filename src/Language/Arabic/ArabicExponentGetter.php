@@ -36,7 +36,7 @@ class ArabicExponentGetter implements ExponentGetter
      *
      * @return string
      */
-    public function getExponent($power)
+    public function getExponent($power): string
     {
         return self::$exponent[$power];
     }
