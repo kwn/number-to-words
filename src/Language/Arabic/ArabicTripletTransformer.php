@@ -25,11 +25,11 @@ class ArabicTripletTransformer implements PowerAwareTripletTransformer
      * @return string
      */
     public function transformToWords($number, $power): string
-    {        
+    {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
         $hundreds = (int) ($number / 100) % 10;
-        $words = [];        
+        $words = [];
 
         if ($hundreds > 0) {
             $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
@@ -56,7 +56,7 @@ class ArabicTripletTransformer implements PowerAwareTripletTransformer
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         } else {
             if($units > 2 || $tens || $power === 0){
-                if ($units > 0) {                
+                if ($units > 0) {
                     $words[] = $this->dictionary->getCorrespondingUnit($units);
                 }
                 if ($tens > 0) {

@@ -6,24 +6,24 @@ use NumberToWords\Language\Dictionary;
 
 class ArabicDictionary implements Dictionary
 {
-    const LOCALE = 'ar';
-    const LANGUAGE_NAME = 'Arabic';
-    const LANGUAGE_NAME_NATIVE = 'Arabic';
+    public const LOCALE = 'ar';
+    public const LANGUAGE_NAME = 'Arabic';
+    public const LANGUAGE_NAME_NATIVE = 'Arabic';
 
-    private static $units = [
-        '', 
-        'واحد', 
-        'اثنين', 
-        'ثلاثة', 
-        'اربعة', 
-        'خمسة', 
-        'ستة', 
-        'سبعة', 
-        'ثمانية', 
+    private static array $units = [
+        '',
+        'واحد',
+        'اثنين',
+        'ثلاثة',
+        'اربعة',
+        'خمسة',
+        'ستة',
+        'سبعة',
+        'ثمانية',
         'تسعة'
     ];
 
-    private static $teens = [
+    private static array $teens = [
         'عشرة',
         'احدى عشر',
         'اثنا عشر',
@@ -36,7 +36,7 @@ class ArabicDictionary implements Dictionary
         'تسعة عشر'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         '',
         'عشرة',
         'عشرين',
@@ -49,7 +49,7 @@ class ArabicDictionary implements Dictionary
         'تسعين'
     ];
 
-    private static $hundred = [
+    private static array $hundred = [
         '',
         'مئة',
         'مئتين',
@@ -62,7 +62,7 @@ class ArabicDictionary implements Dictionary
         'تسعمئة',
     ];
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'ALL' => [['ليك'], ['قندركة']],
         'AUD' => [['دولار استرالي'], ['سنت']],
         'BAM' => [['ماركا'], ['فينق']],
