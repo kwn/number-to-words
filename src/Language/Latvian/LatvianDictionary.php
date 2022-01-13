@@ -50,7 +50,7 @@ class LatvianDictionary implements Dictionary
     ];
 
     public static array $currencyNames = [
-        'EUR' => [['eiro', 'eiro', 'eiro'], ['eiro cents', 'eiro centi', 'eiro centi']],
+        'EUR' => [['eiro', 'eiro', 'eiro'], ['cents', 'centi', 'centi']],
         'USD' => [['dolārs', 'dolāri', 'dolāri'], ['cents', 'centi', 'centi']],
     ];
 
@@ -66,7 +66,7 @@ class LatvianDictionary implements Dictionary
 
     public function getMinus(): string
     {
-        return 'minus';
+        return 'mīnus';
     }
 
     public function getCorrespondingUnit(int $unit): string
