@@ -4,7 +4,6 @@ namespace NumberToWords\Language\Persian;
 
 class PersianDictionary
 {
-
     protected string $zero = 'صفر';
 
     protected string $negative = 'منفی';
