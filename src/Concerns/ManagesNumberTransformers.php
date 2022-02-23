@@ -2,39 +2,61 @@
 
 namespace NumberToWords\Concerns;
 
-use NumberToWords\NumberTransformer;
+use NumberToWords\NumberTransformer as Transformer;
+use NumberToWords\Exception\InvalidArgumentException;
+use NumberToWords\NumberTransformer\NumberTransformer;
 
 trait ManagesNumberTransformers
 {
     private array $numberTransformers = [
-        'al' => NumberTransformer\AlbanianNumberTransformer::class,
-        'bg' => NumberTransformer\BulgarianNumberTransformer::class,
-        'cs' => NumberTransformer\CzechNumberTransformer::class,
-        'de' => NumberTransformer\GermanNumberTransformer::class,
-        'dk' => NumberTransformer\DanishNumberTransformer::class,
-        'en' => NumberTransformer\EnglishNumberTransformer::class,
-        'es' => NumberTransformer\SpanishNumberTransformer::class,
-        'et' => NumberTransformer\EstonianNumberTransformer::class,
-        'fa' => NumberTransformer\PersianNumberTransformer::class,
-        'fr' => NumberTransformer\FrenchNumberTransformer::class,
-        'fr_BE' => NumberTransformer\FrenchBelgianNumberTransformer::class,
-        'hu' => NumberTransformer\HungarianNumberTransformer::class,
-        'id' => NumberTransformer\IndonesianNumberTransformer::class,
-        'it' => NumberTransformer\ItalianNumberTransformer::class,
-        'ka' => NumberTransformer\GeorgianNumberTransformer::class,
-        'lt' => NumberTransformer\LithuanianNumberTransformer::class,
-        'lv' => NumberTransformer\LatvianNumberTransformer::class,
-        'ms' => NumberTransformer\MalayNumberTransformer::class,
-        'nl' => NumberTransformer\DutchNumberTransformer::class,
-        'pl' => NumberTransformer\PolishNumberTransformer::class,
-        'pt_BR' => NumberTransformer\PortugueseBrazilianNumberTransformer::class,
-        'ro' => NumberTransformer\RomanianNumberTransformer::class,
-        'ru' => NumberTransformer\RussianNumberTransformer::class,
-        'sk' => NumberTransformer\SlovakNumberTransformer::class,
-        'sv' => NumberTransformer\SwedishNumberTransformer::class,
-        'tk' => NumberTransformer\TurkmenNumberTransformer::class,
-        'tr' => NumberTransformer\TurkishNumberTransformer::class,
-        'ua' => NumberTransformer\UkrainianNumberTransformer::class,
-        'yo' => NumberTransformer\YorubaNumberTransformer::class,
+        'al' => Transformer\AlbanianNumberTransformer::class,
+        'bg' => Transformer\BulgarianNumberTransformer::class,
+        'cs' => Transformer\CzechNumberTransformer::class,
+        'de' => Transformer\GermanNumberTransformer::class,
+        'dk' => Transformer\DanishNumberTransformer::class,
+        'en' => Transformer\EnglishNumberTransformer::class,
+        'es' => Transformer\SpanishNumberTransformer::class,
+        'et' => Transformer\EstonianNumberTransformer::class,
+        'fa' => Transformer\PersianNumberTransformer::class,
+        'fr' => Transformer\FrenchNumberTransformer::class,
+        'fr_BE' => Transformer\FrenchBelgianNumberTransformer::class,
+        'hu' => Transformer\HungarianNumberTransformer::class,
+        'id' => Transformer\IndonesianNumberTransformer::class,
+        'it' => Transformer\ItalianNumberTransformer::class,
+        'ka' => Transformer\GeorgianNumberTransformer::class,
+        'lt' => Transformer\LithuanianNumberTransformer::class,
+        'lv' => Transformer\LatvianNumberTransformer::class,
+        'ms' => Transformer\MalayNumberTransformer::class,
+        'nl' => Transformer\DutchNumberTransformer::class,
+        'pl' => Transformer\PolishNumberTransformer::class,
+        'pt_BR' => Transformer\PortugueseBrazilianNumberTransformer::class,
+        'ro' => Transformer\RomanianNumberTransformer::class,
+        'ru' => Transformer\RussianNumberTransformer::class,
+        'sk' => Transformer\SlovakNumberTransformer::class,
+        'sv' => Transformer\SwedishNumberTransformer::class,
+        'tk' => Transformer\TurkmenNumberTransformer::class,
+        'tr' => Transformer\TurkishNumberTransformer::class,
+        'ua' => Transformer\UkrainianNumberTransformer::class,
+        'yo' => Transformer\YorubaNumberTransformer::class,
     ];
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function getNumberTransformer(string $language): NumberTransformer
+    {
+        if (!array_key_exists($language, $this->numberTransformers)) {
+            throw new InvalidArgumentException(sprintf(
+                'Number transformer for "%s" language is not implemented.',
+                $language
+            ));
+        }
+
+        return new $this->numberTransformers[$language]();
+    }
+
+    public static function numberTransformer(string $language): NumberTransformer
+    {
+        return (new static())->getNumberTransformer($language);
+    }
 }

@@ -2,29 +2,51 @@
 
 namespace NumberToWords\Concerns;
 
-use NumberToWords\CurrencyTransformer;
+use NumberToWords\CurrencyTransformer as Transformer;
+use NumberToWords\Exception\InvalidArgumentException;
+use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 
 trait ManagesCurrencyTransformers
 {
     private array $currencyTransformers = [
-        'al' => CurrencyTransformer\AlbanianCurrencyTransformer::class,
-        'de' => CurrencyTransformer\GermanCurrencyTransformer::class,
-        'dk' => CurrencyTransformer\DanishCurrencyTransformer::class,
-        'en' => CurrencyTransformer\EnglishCurrencyTransformer::class,
-        'es' => CurrencyTransformer\SpanishCurrencyTransformer::class,
-        'fr' => CurrencyTransformer\FrenchCurrencyTransformer::class,
-        'hu' => CurrencyTransformer\HungarianCurrencyTransformer::class,
-        'ka' => CurrencyTransformer\GeorgianCurrencyTransformer::class,
-        'lt' => CurrencyTransformer\LithuanianCurrencyTransformer::class,
-        'lv' => CurrencyTransformer\LatvianCurrencyTransformer::class,
-        'pl' => CurrencyTransformer\PolishCurrencyTransformer::class,
-        'pt_BR' => CurrencyTransformer\PortugueseBrazilianCurrencyTransformer::class,
-        'ro' => CurrencyTransformer\RomanianCurrencyTransformer::class,
-        'ru' => CurrencyTransformer\RussianCurrencyTransformer::class,
-        'sk' => CurrencyTransformer\SlovakCurrencyTransformer::class,
-        'tk' => CurrencyTransformer\TurkmenCurrencyTransformer::class,
-        'tr' => CurrencyTransformer\TurkishCurrencyTransformer::class,
-        'ua' => CurrencyTransformer\UkrainianCurrencyTransformer::class,
-        'yo' => CurrencyTransformer\YorubaCurrencyTransformer::class
+        'al' => Transformer\AlbanianCurrencyTransformer::class,
+        'de' => Transformer\GermanCurrencyTransformer::class,
+        'dk' => Transformer\DanishCurrencyTransformer::class,
+        'en' => Transformer\EnglishCurrencyTransformer::class,
+        'es' => Transformer\SpanishCurrencyTransformer::class,
+        'fr' => Transformer\FrenchCurrencyTransformer::class,
+        'hu' => Transformer\HungarianCurrencyTransformer::class,
+        'ka' => Transformer\GeorgianCurrencyTransformer::class,
+        'lt' => Transformer\LithuanianCurrencyTransformer::class,
+        'lv' => Transformer\LatvianCurrencyTransformer::class,
+        'pl' => Transformer\PolishCurrencyTransformer::class,
+        'pt_BR' => Transformer\PortugueseBrazilianCurrencyTransformer::class,
+        'ro' => Transformer\RomanianCurrencyTransformer::class,
+        'ru' => Transformer\RussianCurrencyTransformer::class,
+        'sk' => Transformer\SlovakCurrencyTransformer::class,
+        'tk' => Transformer\TurkmenCurrencyTransformer::class,
+        'tr' => Transformer\TurkishCurrencyTransformer::class,
+        'ua' => Transformer\UkrainianCurrencyTransformer::class,
+        'yo' => Transformer\YorubaCurrencyTransformer::class
     ];
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function getCurrencyTransformer(string $language): CurrencyTransformer
+    {
+        if (!array_key_exists($language, $this->currencyTransformers)) {
+            throw new InvalidArgumentException(sprintf(
+                'Currency transformer for "%s" language is not implemented.',
+                $language
+            ));
+        }
+
+        return new $this->currencyTransformers[$language]();
+    }
+
+    public static function currencyTransformer(string $language): CurrencyTransformer
+    {
+        return (new static())->getCurrencyTransformer($language);
+    }
 }
