@@ -57,6 +57,8 @@ use NumberToWords\NumberTransformer\YorubaNumberTransformer;
 use NumberToWords\NumberTransformer\AlbanianNumberTransformer;
 use NumberToWords\NumberTransformer\ArabicNumberTransformer;
 use NumberToWords\CurrencyTransformer\ArabicCurrencyTransformer;
+use NumberToWords\CurrencyTransformer\NigerianCurrencyTransformer;
+use NumberToWords\NumberTransformer\NigerianNumberTransformer;
 
 class NumberToWords
 {
@@ -91,6 +93,7 @@ class NumberToWords
         'tr' => TurkishNumberTransformer::class,
         'ua' => UkrainianNumberTransformer::class,
         'yo' => YorubaNumberTransformer::class,
+        'ng' => NigerianNumberTransformer::class,
     ];
 
     private array $currencyTransformers = [
@@ -115,7 +118,8 @@ class NumberToWords
         'tk' => TurkmenCurrencyTransformer::class,
         'tr' => TurkishCurrencyTransformer::class,
         'ua' => UkrainianCurrencyTransformer::class,
-        'yo' => YorubaCurrencyTransformer::class
+        'yo' => YorubaCurrencyTransformer::class,
+        'ng' => NigerianCurrencyTransformer::class,
     ];
 
     /**
