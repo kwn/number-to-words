@@ -64,38 +64,39 @@ Please bear in mind, the currency transformer accepts integers as the amount to 
 
 ## Available locale
 
-Language             | Identifier | Number | Currency |
----------------------|------------|--------|----------|
-Albanian             | al         | +      | +        |
-Arabic               | ar         | +      | +        |
-Belgian French       | fr_BE      | +      | -        |
-Brazilian Portuguese | pt_BR      | +      | +        |
-Bulgarian            | bg         | +      | -        |
-Czech                | cs         | +      | -        |
-Danish               | dk         | +      | +        |
-Dutch                | nl         | +      | -        |
-English              | en         | +      | +        |
-Estonian             | et         | +      | -        |
-Georgian             | ka         | +      | +        |
-German               | de         | +      | +        |
-French               | fr         | +      | +        |
-Hungarian            | hu         | +      | +        |
-Indonesian           | id         | +      | +        |
-Italian              | it         | +      | -        |
-Lithuanian           | lt         | +      | +        |
-Latvian              | lv         | +      | +        |
-Malay                | ms         | +      | +        |
-Persian              | fa         | +      | -        |
-Polish               | pl         | +      | +        |
-Romanian             | ro         | +      | +        |
-Slovak               | sk         | +      | +        |
-Spanish              | es         | +      | +        |
-Russian              | ru         | +      | +        |
-Swedish              | sv         | +      | -        |
-Turkish              | tr         | +      | +        |
-Turkmen              | tk         | +      | +        |
-Ukrainian            | ua         | +      | +        |
-Yoruba               | yo         | +      | +        |
+| Language             | Identifier | Number | Currency |
+|----------------------|------------|--------|----------|
+| Albanian             | al         | +      | +        |
+| Arabic               | ar         | +      | +        |
+| Azerbaijani          | az         | +      | +        |
+| Belgian French       | fr_BE      | +      | -        |
+| Brazilian Portuguese | pt_BR      | +      | +        |
+| Bulgarian            | bg         | +      | -        |
+| Czech                | cs         | +      | -        |
+| Danish               | dk         | +      | +        |
+| Dutch                | nl         | +      | -        |
+| English              | en         | +      | +        |
+| Estonian             | et         | +      | -        |
+| Georgian             | ka         | +      | +        |
+| German               | de         | +      | +        |
+| French               | fr         | +      | +        |
+| Hungarian            | hu         | +      | +        |
+| Indonesian           | id         | +      | +        |
+| Italian              | it         | +      | -        |
+| Lithuanian           | lt         | +      | +        |
+| Latvian              | lv         | +      | +        |
+| Malay                | ms         | +      | +        |
+| Persian              | fa         | +      | -        |
+| Polish               | pl         | +      | +        |
+| Romanian             | ro         | +      | +        |
+| Slovak               | sk         | +      | +        |
+| Spanish              | es         | +      | +        |
+| Russian              | ru         | +      | +        |
+| Swedish              | sv         | +      | -        |
+| Turkish              | tr         | +      | +        |
+| Turkmen              | tk         | +      | +        |
+| Ukrainian            | ua         | +      | +        |
+| Yoruba               | yo         | +      | +        |
 
 ## Contributors
 
