@@ -2,6 +2,7 @@
 
 namespace NumberToWords;
 
+use NumberToWords\CurrencyTransformer\AzerbaijaniCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GeorgianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\GermanCurrencyTransformer;
@@ -25,6 +26,7 @@ use NumberToWords\CurrencyTransformer\AlbanianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\IndonesianCurrencyTransformer;
 use NumberToWords\CurrencyTransformer\MalaysianCurrencyTransformer;
 use NumberToWords\Exception\InvalidArgumentException;
+use NumberToWords\NumberTransformer\AzerbaijaniNumberTransformer;
 use NumberToWords\NumberTransformer\BulgarianNumberTransformer;
 use NumberToWords\NumberTransformer\CzechNumberTransformer;
 use NumberToWords\NumberTransformer\DanishNumberTransformer;
@@ -63,6 +65,7 @@ class NumberToWords
     private array $numberTransformers = [
         'ar' => ArabicNumberTransformer::class,
         'al' => AlbanianNumberTransformer::class,
+        'az' => AzerbaijaniNumberTransformer::class,
         'bg' => BulgarianNumberTransformer::class,
         'cs' => CzechNumberTransformer::class,
         'de' => GermanNumberTransformer::class,
@@ -96,6 +99,7 @@ class NumberToWords
     private array $currencyTransformers = [
         'ar' => ArabicCurrencyTransformer::class,
         'al' => AlbanianCurrencyTransformer::class,
+        'az' => AzerbaijaniCurrencyTransformer::class,
         'de' => GermanCurrencyTransformer::class,
         'dk' => DanishCurrencyTransformer::class,
         'en' => EnglishCurrencyTransformer::class,
