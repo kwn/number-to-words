@@ -23,10 +23,10 @@ class NumberToWordsTest extends TestCase
         $numberToWords->getCurrencyTransformer('xx');
     }
 
-    public function testFluentCallOfNumberTransformerAndCurrencyTransformer()
+    public function testItNumberTransformerAndCurrencyTransformerWithStaticMethods(): void
     {
-        $numberToWords = NumberToWords::numberTransformer('en')->toWords(5120);
-        $currencyToWords = NumberToWords::currencyTransformer('en')->toWords(5099, 'USD');
+        $numberToWords = NumberToWords::transformNumber('en', 5120);
+        $currencyToWords = NumberToWords::transformCurrency('en', 5099, 'USD');
 
         $this->assertEquals($numberToWords, 'five thousand one hundred twenty');
         $this->assertEquals($currencyToWords, 'fifty dollars ninety-nine cents');

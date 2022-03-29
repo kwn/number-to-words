@@ -55,8 +55,8 @@ trait ManagesNumberTransformers
         return new $this->numberTransformers[$language]();
     }
 
-    public static function numberTransformer(string $language): NumberTransformer
+    public static function transformNumber(string $language, int $number): string
     {
-        return (new static())->getNumberTransformer($language);
+        return (new static())->getNumberTransformer($language)->toWords($number);
     }
 }

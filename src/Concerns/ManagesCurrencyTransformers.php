@@ -45,8 +45,8 @@ trait ManagesCurrencyTransformers
         return new $this->currencyTransformers[$language]();
     }
 
-    public static function currencyTransformer(string $language): CurrencyTransformer
+    public static function transformCurrency(string $language, int $number, string $currency): string
     {
-        return (new static())->getCurrencyTransformer($language);
+        return (new static())->getCurrencyTransformer($language)->toWords($number, $currency);
     }
 }
