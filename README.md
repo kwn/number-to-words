@@ -39,7 +39,7 @@ Then it can be used passing in numeric values to the `toWords()` method:
 $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
 
-También puede utilizar la versión más corta
+You can also use the simpler version:
 
 ```php
 NumberToWords::transformNumber('en', 5120); // outputs "five thousand one hundred twenty"
@@ -65,7 +65,7 @@ Then it can be used passing in numeric values for amount and ISO 4217 currency i
 $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
-También puede utilizar la versión más corta
+You can also use the simpler version:
 
 ```php
 NumberToWords::transformCurrency('en', 5099, 'USD'); // outputs "fifty dollars ninety nine cents"
