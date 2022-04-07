@@ -9,7 +9,9 @@ use NumberToWords\CurrencyTransformer\CurrencyTransformer;
 trait ManagesCurrencyTransformers
 {
     private array $currencyTransformers = [
+        'ar' => Transformer\ArabicCurrencyTransformer::class,
         'al' => Transformer\AlbanianCurrencyTransformer::class,
+        'az' => Transformer\AzerbaijaniCurrencyTransformer::class,
         'de' => Transformer\GermanCurrencyTransformer::class,
         'dk' => Transformer\DanishCurrencyTransformer::class,
         'en' => Transformer\EnglishCurrencyTransformer::class,

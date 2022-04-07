@@ -15,7 +15,6 @@ Add package to your composer.json by running:
 $ composer require kwn/number-to-words
 ```
 
-
 ## Usage
 
 This library currently has two types of number-to-words transformations: number and currency. In order to use a specific transformer for certain language you need to create an instance of `NumberToWords` class and then call a method which creates a new instance of a transformer;
@@ -39,10 +38,11 @@ Then it can be used passing in numeric values to the `toWords()` method:
 ```php
 $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
-You can also use the fluent version:
+
+También puede utilizar la versión más corta
 
 ```php
-NumberToWords::numberTransformer('en')->toWords(5120) // outputs "five thousand one hundred twenty"
+NumberToWords::transformNumber('en', 5120); // outputs "five thousand one hundred twenty"
 ```
 
 ### Currency Transformer
@@ -64,48 +64,50 @@ Then it can be used passing in numeric values for amount and ISO 4217 currency i
 ```php
 $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
-You can also use the fluent version:
+
+También puede utilizar la versión más corta
 
 ```php
-NumberToWords::currencyTransformer('en')->toWords(5099, 'USD') // outputs "fifty dollars ninety nine cents"
+NumberToWords::transformCurrency('en', 5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
 Please bear in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
 ## Available locale
 
-Language             | Identifier | Number | Currency |
----------------------|------------|--------|----------|
-Albanian             | al         | +      | +        |
-Arabic               | ar         | +      | +        |
-Belgian French       | fr_BE      | +      | -        |
-Brazilian Portuguese | pt_BR      | +      | +        |
-Bulgarian            | bg         | +      | -        |
-Czech                | cs         | +      | -        |
-Danish               | dk         | +      | +        |
-Dutch                | nl         | +      | -        |
-English              | en         | +      | +        |
-Estonian             | et         | +      | -        |
-Georgian             | ka         | +      | +        |
-German               | de         | +      | +        |
-French               | fr         | +      | +        |
-Hungarian            | hu         | +      | +        |
-Indonesian           | id         | +      | +        |
-Italian              | it         | +      | -        |
-Lithuanian           | lt         | +      | +        |
-Latvian              | lv         | +      | +        |
-Malay                | ms         | +      | +        |
-Persian              | fa         | +      | -        |
-Polish               | pl         | +      | +        |
-Romanian             | ro         | +      | +        |
-Slovak               | sk         | +      | +        |
-Spanish              | es         | +      | +        |
-Russian              | ru         | +      | +        |
-Swedish              | sv         | +      | -        |
-Turkish              | tr         | +      | +        |
-Turkmen              | tk         | +      | +        |
-Ukrainian            | ua         | +      | +        |
-Yoruba               | yo         | +      | +        |
+| Language             | Identifier | Number | Currency |
+| -------------------- | ---------- | ------ | -------- |
+| Albanian             | al         | +      | +        |
+| Arabic               | ar         | +      | +        |
+| Azerbaijani          | az         | +      | +        |
+| Belgian French       | fr_BE      | +      | -        |
+| Brazilian Portuguese | pt_BR      | +      | +        |
+| Bulgarian            | bg         | +      | -        |
+| Czech                | cs         | +      | -        |
+| Danish               | dk         | +      | +        |
+| Dutch                | nl         | +      | -        |
+| English              | en         | +      | +        |
+| Estonian             | et         | +      | -        |
+| Georgian             | ka         | +      | +        |
+| German               | de         | +      | +        |
+| French               | fr         | +      | +        |
+| Hungarian            | hu         | +      | +        |
+| Indonesian           | id         | +      | +        |
+| Italian              | it         | +      | -        |
+| Lithuanian           | lt         | +      | +        |
+| Latvian              | lv         | +      | +        |
+| Malay                | ms         | +      | +        |
+| Persian              | fa         | +      | -        |
+| Polish               | pl         | +      | +        |
+| Romanian             | ro         | +      | +        |
+| Slovak               | sk         | +      | +        |
+| Spanish              | es         | +      | +        |
+| Russian              | ru         | +      | +        |
+| Swedish              | sv         | +      | -        |
+| Turkish              | tr         | +      | +        |
+| Turkmen              | tk         | +      | +        |
+| Ukrainian            | ua         | +      | +        |
+| Yoruba               | yo         | +      | +        |
 
 ## Contributors
 
@@ -125,4 +127,4 @@ A: Please report an issue on GitHub. Also feel free to fix it and open a pull re
 
 **Q: My language is missing. Could you add it, please?**
 
-A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do. 
+A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do.
