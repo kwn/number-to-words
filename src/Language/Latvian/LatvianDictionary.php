@@ -87,7 +87,7 @@ class LatvianDictionary implements Dictionary
     public function getCorrespondingHundred(int $hundred): string
     {
         if ($hundred === 1) {
-            return 'simts';
+            return 'viens simts';
         }
 
         return self::$units[$hundred] . ' simti';
