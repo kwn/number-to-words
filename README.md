@@ -15,7 +15,6 @@ Add package to your composer.json by running:
 $ composer require kwn/number-to-words
 ```
 
-
 ## Usage
 
 This library currently has two types of number-to-words transformations: number and currency. In order to use a specific transformer for certain language you need to create an instance of `NumberToWords` class and then call a method which creates a new instance of a transformer;
@@ -40,6 +39,12 @@ Then it can be used passing in numeric values to the `toWords()` method:
 $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
 
+You can also use the simpler version:
+
+```php
+NumberToWords::transformNumber('en', 5120); // outputs "five thousand one hundred twenty"
+```
+
 ### Currency Transformer
 
 Creating a currency transformer works just like a number transformer.
@@ -60,12 +65,18 @@ Then it can be used passing in numeric values for amount and ISO 4217 currency i
 $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
+You can also use the simpler version:
+
+```php
+NumberToWords::transformCurrency('en', 5099, 'USD'); // outputs "fifty dollars ninety nine cents"
+```
+
 Please bear in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
 ## Available locale
 
 | Language             | Identifier | Number | Currency |
-|----------------------|------------|--------|----------|
+| -------------------- | ---------- | ------ | -------- |
 | Albanian             | al         | +      | +        |
 | Arabic               | ar         | +      | +        |
 | Azerbaijani          | az         | +      | +        |
@@ -116,4 +127,4 @@ A: Please report an issue on GitHub. Also feel free to fix it and open a pull re
 
 **Q: My language is missing. Could you add it, please?**
 
-A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do. 
+A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do.

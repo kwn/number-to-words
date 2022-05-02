@@ -22,4 +22,13 @@ class NumberToWordsTest extends TestCase
         $numberToWords = new NumberToWords();
         $numberToWords->getCurrencyTransformer('xx');
     }
+
+    public function testItNumberTransformerAndCurrencyTransformerWithStaticMethods(): void
+    {
+        $numberToWords = NumberToWords::transformNumber('en', 5120);
+        $currencyToWords = NumberToWords::transformCurrency('en', 5099, 'USD');
+
+        $this->assertEquals($numberToWords, 'five thousand one hundred twenty');
+        $this->assertEquals($currencyToWords, 'fifty dollars ninety-nine cents');
+    }
 }
