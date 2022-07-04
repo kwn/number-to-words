@@ -32,7 +32,7 @@ class It extends Words
         'sei',
         'sette',
         'otto',
-        'nove'
+        'nove',
     ];
 
     private $wordSeparator = '';
@@ -83,8 +83,8 @@ class It extends Words
             $ret .= $this->toWords($thousands, 3) . $this->wordSeparator;
         }
 
-        $hundreds = (int) ($number / 100 % 10);
-        $tens = (int) ($number / 10 % 10);
+        $hundreds = (int) ($number % 1000 / 100);
+        $tens = (int) ($number % 100 / 10);
         $units = (int) ($number % 10);
 
         // centinaia: duecento, trecento, etc...
