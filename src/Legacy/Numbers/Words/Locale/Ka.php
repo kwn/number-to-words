@@ -18,7 +18,6 @@ class Ka extends Words
     const FRACTION_PREFIX = ' მე';
     const FRACTION_SUFFIX = 'ედი';
 
-
     private static $dictionary = [
         0 => 'ნულ',
         1 => 'ერთ',
@@ -68,7 +67,7 @@ class Ka extends Words
         'TRY' => [['ლირა'], ['ყურუში']],
         'AMD' => [['დრამი'], ['ლუმა']],
         'PLN' => [['ზლოტი'], ['გროში']],
-        'GBP' => [['ფუნტი'], ['პენი']]
+        'GBP' => [['ფუნტი'], ['პენი']],
     ];
 
     public function toCurrencyWords($currency, $decimal, $fraction = null)
@@ -139,7 +138,7 @@ class Ka extends Words
                 }
                 break;
             case $number < 1000:
-                $hundreds = $number / 100;
+                $hundreds = (int) ($number % 1000 / 100);
                 $remainder = $number % 100;
                 $hundredsStr = $hundreds < 2 ? '' : self::$dictionary[$hundreds];
                 $string = $hundredsStr . self::$dictionary[100];
@@ -176,6 +175,5 @@ class Ka extends Words
 
         return $string;
     }
-
 
 }
