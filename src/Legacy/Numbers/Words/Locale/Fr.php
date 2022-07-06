@@ -97,6 +97,7 @@ class Fr extends Words
         'CNY' => [['yuan'], ['fen']],
         'DZD' => [['dinar'], ['centime']],
         'EUR' => [['euro'], ['centime']],
+        'GBP' => [['livre sterling', 'livres sterling'], ['penny', 'pence']],
         'JPY' => [['yen', ['sen']]],
         'LYD' => [['dinar'], ['centime']],
         'MAD' => [['dirham'], ['centime']],
