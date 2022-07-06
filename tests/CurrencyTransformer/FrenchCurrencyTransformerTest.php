@@ -20,6 +20,10 @@ class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
             [754414599, 'AUD', 'sept millions cinq cent quarante-quatre mille cent quarante-cinq dollars australiens et quatre-vingt-dix-neuf cents'],
             [754414599, 'CAD', 'sept millions cinq cent quarante-quatre mille cent quarante-cinq dollars canadiens et quatre-vingt-dix-neuf cents'],
             [754414599, 'USD', 'sept millions cinq cent quarante-quatre mille cent quarante-cinq dollars américains et quatre-vingt-dix-neuf cents'],
+            [100, 'GBP', 'un livre sterling'],
+            [1000, 'GBP', 'dix livres sterling'],
+            [70001, 'GBP', 'sept cents livres sterling et un penny'],
+            [700010, 'GBP', 'sept mille livres sterling et dix pence'],
         ];
     }
 }
