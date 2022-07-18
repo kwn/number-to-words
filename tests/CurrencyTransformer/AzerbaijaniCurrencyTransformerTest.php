@@ -12,6 +12,10 @@ class AzerbaijaniCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
+            [0, 'AZN', 'sıfır manat'],
+            [50, 'AZN', 'sıfır manat əlli qəpik'],
+            [100, 'AZN', 'bir manat'],
+            [115, 'AZN', 'bir manat on beş qəpik'],
             [6474, 'AZN', 'altmış dörd manat yetmiş dörd qəpik'],
             [6574, 'AZN', 'altmış beş manat yetmiş dörd qəpik'],
             [8174, 'AZN', 'səksən bir manat yetmiş dörd qəpik'],
