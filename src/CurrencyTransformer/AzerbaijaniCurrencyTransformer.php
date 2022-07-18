@@ -37,7 +37,7 @@ class AzerbaijaniCurrencyTransformer implements CurrencyTransformer
 
         if (!array_key_exists($currency, AzerbaijaniDictionary::$currencyNames)) {
             throw new NumberToWordsException(
-                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+                sprintf('"%s" valyutası "%s" dilində mövcud deyil', $currency, get_class($this))
             );
         }
 
