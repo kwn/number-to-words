@@ -13,9 +13,9 @@ class AzerbaijaniNounGenderInflectorTest extends TestCase
      */
     public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
-        $polishInflector = new AzerbaijaniNounGenderInflector();
+        $azerbaijaniInflector = new AzerbaijaniNounGenderInflector();
 
-        $inflected = $polishInflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[2]);
+        $inflected = $azerbaijaniInflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[2]);
 
         self::assertEquals($expectedNoun, $inflected);
     }
