@@ -30,7 +30,7 @@ class Mk extends Words
      * in the _initDigits() method, which is invoked from the constructor.
      */
     private static $digits = [
-        0 => [1 => "еден", "двa", "три", "четири", "пет", "шест", "седум", "осум", "девет"], // neuter
+        0 => [1 => "еден", "два", "три", "четири", "пет", "шест", "седум", "осум", "девет"], // neuter
         1 => [1 => 'еден', 'два'],                                                           // masculine
         -1 => [1 => 'една', 'две']                                                           // feminine
     ];
@@ -168,21 +168,16 @@ class Mk extends Words
     {
         if (!self::$digitsInitialized) {
             for ($i = 3; $i <= 9; $i++) {
-                self::$digits[1][$i] =& self::$digits[0][$i];
+                self::$digits[1][$i] = self::$digits[0][$i];
             }
             for ($i = 3; $i <= 9; $i++) {
-                self::$digits[-1][$i] =& self::$digits[0][$i];
+                self::$digits[-1][$i] = self::$digits[0][$i];
             }
             self::$digitsInitialized = true;
         }
     }
 
-    /**
-     * @param int $num
-     *
-     * @return array
-     */
-    private function splitNumber($num)
+    private function splitNumber(int $num): array
     {
         if (is_string($num)) {
             $ret = [];
@@ -192,7 +187,7 @@ class Mk extends Words
 
             preg_match_all('/\d{3}/', substr($num, $strlen % 3, $strlen), $m);
 
-            $ret =& $m[0];
+            $ret = $m[0];
             if ($first) {
                 array_unshift($ret, $first);
             }
@@ -203,14 +198,7 @@ class Mk extends Words
         return explode(' ', number_format($num, 0, '', ' ')); // a faster version for integers
     }
 
-    /**
-     * @param int $num
-     * @param int $gender
-     * @param bool $last
-     *
-     * @return string
-     */
-    private function showDigitsGroup($num, $gender = 0, $last = false)
+    private function showDigitsGroup(int $num, int $gender = 0, bool $last = false): string
     {
         /* A storage array for the return string.
              Positions 1, 3, 5 are intended for digit words
@@ -313,16 +301,11 @@ class Mk extends Words
         return implode($this->wordSeparator, $ret);
     }
 
-    /**
-     * @param int $num
-     *
-     * @return string
-     */
-    protected function toWords($num = 0)
+    protected function toWords(int $num = 0): string
     {
         $ret = [];
 
-        $ret_minus = '';
+        $retMinus = '';
 
         // check if $num is a valid non-zero number
         if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
@@ -331,7 +314,7 @@ class Mk extends Words
 
         // add a minus sign
         if (substr($num, 0, 1) == '-') {
-            $ret_minus = $this->minus . $this->wordSeparator;
+            $retMinus = $this->minus . $this->wordSeparator;
 
             $num = substr($num, 1);
         }
@@ -340,60 +323,60 @@ class Mk extends Words
         $num = ltrim($num, '0');
 
         // split $num to groups of three-digit numbers
-        $num_groups = $this->splitNumber($num);
+        $numGroups = $this->splitNumber($num);
 
-        $sizeof_numgroups = count($num_groups);
+        $sizeofNumgroups = count($numGroups);
 
         // go through the groups in reverse order, so that the last group could be determined
-        for ($i = $sizeof_numgroups - 1, $j = 1; $i >= 0; $i--, $j++) {
+        for ($i = $sizeofNumgroups - 1, $j = 1; $i >= 0; $i--, $j++) {
             if (!isset($ret[$j])) {
                 $ret[$j] = '';
             }
 
             // what is the corresponding exponent for the current group
-            $pow = $sizeof_numgroups - $i;
+            $pow = $sizeofNumgroups - $i;
 
             // skip processment for empty groups
-            if ($num_groups[$i] != '000') {
-                if ($num_groups[$i] > 1) {
+            if ($numGroups[$i] != '000') {
+                if ($numGroups[$i] > 1) {
                     if ($pow == 1) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
+                                $numGroups[$i],
                                 0,
                                 !$this->lastAnd && $i
                             ) . $this->wordSeparator;
                         $ret[$j] .= self::$exponent[($pow - 1) * 3];
                     } elseif ($pow == 2) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
+                                $numGroups[$i],
                                 -1,
                                 !$this->lastAnd && $i
                             ) . $this->wordSeparator;
-                        $thousandsMiscString = (int)substr($num_groups[$i], -1) === 1 ? self::$miscStrings['iljada'] : self::$miscStrings['iljadi'];
+                        $thousandsMiscString = (int)substr($numGroups[$i], -1) === 1 ? self::$miscStrings['iljada'] : self::$miscStrings['iljadi'];
                         $ret[$j] .= $thousandsMiscString . $this->wordSeparator;
-                    } elseif ($pow == 3) {
+                    } elseif ($pow == 4) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
+                                $numGroups[$i],
+                                -1,
+                                !$this->lastAnd && $i
+                            ) . $this->wordSeparator;
+                        $ret[$j] .= self::$exponent[($pow - 1) * 3];
+                        $ret[$j] .= strlen($numGroups[$i]) > 1 && (int)substr($numGroups[$i], -1) !== 1 ? $this->pluralSuffix : $this->singularSuffix;
+                        $ret[$j] .= $this->wordSeparator;
+                    }  else {
+                        $ret[$j] .= $this->showDigitsGroup(
+                                $numGroups[$i],
                                 1,
                                 !$this->lastAnd && $i
                             ) . $this->wordSeparator;
                         $ret[$j] .= self::$exponent[($pow - 1) * 3];
-                        $ret[$j] .= strlen($num_groups[$i]) > 1 || (int)substr($num_groups[$i], -1) !== 1 ? $this->pluralSuffix : '';
-                        $ret[$j] .= $this->wordSeparator;
-                    } else {
-                        $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                -1,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3];
-                        $ret[$j] .= strlen($num_groups[$i]) > 1 || (int)substr($num_groups[$i], -1) !== 1 ? $this->pluralSuffix : $this->singularSuffix;
+                        $ret[$j] .= strlen($numGroups[$i]) > 1 && (int)substr($numGroups[$i], -1) !== 1 ? $this->pluralSuffix : '';
                         $ret[$j] .= $this->wordSeparator;
                     }
                 } else {
                     if ($pow == 1) {
                         $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
+                                $numGroups[$i],
                                 0,
                                 !$this->lastAnd && $i
                             ) . $this->wordSeparator;
@@ -402,13 +385,12 @@ class Mk extends Words
                     } elseif ($pow == 4) {
                         $ret[$j] .= self::$digits[-1][1] . $this->wordSeparator . self::$exponent[($pow - 1) * 3] . $this->singularSuffix . $this->wordSeparator;
                     } else {
-                        var_dump($num_groups[$i]);
                         $ret[$j] .= self::$digits[1][1] . $this->wordSeparator . self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
                     }
                 }
             }
         }
 
-        return $ret_minus . rtrim(implode('', array_reverse($ret)), $this->wordSeparator);
+        return $retMinus . rtrim(implode('', array_reverse($ret)), $this->wordSeparator);
     }
 }

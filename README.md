@@ -96,6 +96,7 @@ Please bear in mind, the currency transformer accepts integers as the amount to 
 | Italian              | it         | +      | -        |
 | Lithuanian           | lt         | +      | +        |
 | Latvian              | lv         | +      | +        |
+| Macedonian           | mk         | +      | -        |
 | Malay                | ms         | +      | +        |
 | Persian              | fa         | +      | -        |
 | Polish               | pl         | +      | +        |
