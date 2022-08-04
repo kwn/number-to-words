@@ -28,6 +28,7 @@ trait ManagesNumberTransformers
         'ka' => Transformer\GeorgianNumberTransformer::class,
         'lt' => Transformer\LithuanianNumberTransformer::class,
         'lv' => Transformer\LatvianNumberTransformer::class,
+        'mk' => Transformer\MacedonianNumberTransformer::class,
         'ms' => Transformer\MalayNumberTransformer::class,
         'nl' => Transformer\DutchNumberTransformer::class,
         'pl' => Transformer\PolishNumberTransformer::class,
