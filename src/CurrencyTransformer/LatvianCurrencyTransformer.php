@@ -11,6 +11,8 @@ class LatvianCurrencyTransformer implements CurrencyTransformer
 {
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
+        if (is_null($options)) $options = new CurrencyTransformerOptions();
+
         $dictionary = new LatvianDictionary();
         $numberTransformer = new LatvianNumberTransformer();
 
