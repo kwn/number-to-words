@@ -37,15 +37,29 @@ class LatvianCurrencyTransformer implements CurrencyTransformer
         $return .= ' ' . $currencyNames[0][$level];
 
         if (!is_null($fraction)) {
-            $return .= ' ' . $dictionary->getAnd() . ' ' . trim($numberTransformer->toWords($fraction));
+            $return .= ' ' . $dictionary->getAnd();
+
+            if ($options->isConvertFraction()) {
+                $return .= ' ' . trim($numberTransformer->toWords($fraction));
+            } else {
+                $return .= ' ' . trim($fraction);
+            }
 
             $level = $this->getLevel($fraction);
 
             $return .= ' ' . $currencyNames[1][$level];
         } else {
+            $return .= ' ' . $dictionary->getAnd();
+
+            if ($options->isConvertFraction() && $options->isConvertFractionIfZero()) {
+                $return .= ' ' . $dictionary->getZero();
+            } else {
+                $return .= ' 0';
+            }
+
             $level = 1;
 
-            $return .= ' ' . $dictionary->getAnd() . ' ' . $dictionary->getZero() . ' ' . $currencyNames[1][$level];
+            $return .= ' ' . $currencyNames[1][$level];
         }
 
         return $return;
