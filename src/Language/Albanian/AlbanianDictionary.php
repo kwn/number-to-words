@@ -79,7 +79,7 @@ class AlbanianDictionary implements Dictionary
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['cent']],
+        'TND' => [['dinar'], ['milimetra']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],

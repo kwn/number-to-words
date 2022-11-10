@@ -84,7 +84,7 @@ class Es extends Words
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['tolar'], ['stotinia']],
         'SKK' => [['slovak koruna'], []],
-        'TND' => [['dinar', 'dinares'], ['céntimo']],
+        'TND' => [['dinar', 'dinares'], ['milímetrs']],
         'TRL' => [['lira'], ['kuruþ']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dólar', 'dólares'], ['centavo']],

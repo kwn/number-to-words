@@ -103,7 +103,7 @@ class Fr extends Words
         'MAD' => [['dirham'], ['centime']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
-        'TND' => [['dinar'], ['centime']],
+        'TND' => [['dinar'], ['millime']],
         'USD' => [['dollar américain', 'dollars américains'], ['cent']],
         'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
         'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
