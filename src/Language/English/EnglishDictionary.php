@@ -80,7 +80,7 @@ class EnglishDictionary implements Dictionary
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['cent']],
+        'TND' => [['dinar'], ['millime']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
