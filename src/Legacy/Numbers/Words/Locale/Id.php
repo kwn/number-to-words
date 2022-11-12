@@ -83,7 +83,7 @@ class Id extends Words
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['sen']],
+        'TND' => [['dinar'], ['milim']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['sen']],
         'USD' => [['dolar'], ['sen']],
