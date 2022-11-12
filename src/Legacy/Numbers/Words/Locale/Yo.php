@@ -120,7 +120,7 @@ class Yo extends Words
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['cent']],
+        'TND' => [['dinar'], ['millim']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],

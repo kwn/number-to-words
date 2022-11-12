@@ -84,7 +84,7 @@ class Ms extends Words
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['sen']],
+        'TND' => [['dinar'], ['millim']],
         'TRL' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['sen']],
         'USD' => [['dolar'], ['sen']],
