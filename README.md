@@ -94,6 +94,7 @@ Please bear in mind, the currency transformer accepts integers as the amount to 
 | Hungarian            | hu         | +      | +        |
 | Indonesian           | id         | +      | +        |
 | Italian              | it         | +      | -        |
+| Kurdish              | ku         | +      | -        |
 | Lithuanian           | lt         | +      | +        |
 | Latvian              | lv         | +      | +        |
 | Macedonian           | mk         | +      | -        |
