@@ -101,6 +101,7 @@ class Tr extends Words
         'SEK' => [['İsveç kronu'], ['oere']],
         'SIT' => [['Slovenya toları'], ['stotinia']],
         'SKK' => [['Slovakya kronu'], ['']],
+        'TRL' => [['Türk lirası'], ['kuruş']],
         'TRY' => [['Türk lirası'], ['kuruş']],
         'UAH' => [['Ukrayna hryvnyası'], ['kopiyka']],
         'USD' => [['ABD doları'], ['sent']],

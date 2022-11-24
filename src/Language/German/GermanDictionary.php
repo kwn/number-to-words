@@ -112,6 +112,8 @@ class GermanDictionary implements Dictionary
         'RUB' => [['Russischer Rubel'], ['Kopeke','Kopeken']],
         'SEK' => [['Schwedische Krone','Schwedische Kronen'], ['Öre']],
         'TMT' => [['Manat'], ['tenge']],
+        'TRL' => [['türkische Lira'], ['Kuruş']],
+        'TRY' => [['türkische Lira'], ['Kuruş']],
         'UAH' => [['Hrywna'], ['Kopeke','Kopeken']],
         'USD' => [['US Dollar'], ['cent']],
         'ZAR' => [['Rand'], ['cent']]

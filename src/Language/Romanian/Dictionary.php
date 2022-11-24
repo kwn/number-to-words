@@ -125,6 +125,10 @@ class Dictionary
             ['liră turcească', 'lire turcești', Gender::GENDER_FEMININE],
             ['kuruș', 'kuruși', Gender::GENDER_MASCULINE],
         ],
+        'TRY' => [
+            ['liră turcească', 'lire turcești', Gender::GENDER_FEMININE],
+            ['kuruș', 'kuruși', Gender::GENDER_MASCULINE],
+        ],
         'USD' => [
             ['dolar american', 'dolari americani', Gender::GENDER_MASCULINE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],

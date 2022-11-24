@@ -111,6 +111,7 @@ class SlovakDictionary implements Dictionary
         'SIT' => [['tolar', 'tolary', 'tolarov'], ['stotinia', 'stotinie', 'stotini']],
         'SKK' => [['korona słowacka', 'korony słowackie', 'koron słowackich'], ['halerz', 'halerze', 'halerzy']],
         'TRL' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
+        'TRY' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
         'UAH' => [['hrivny', 'hrivny', 'hrivien'], ['cent', 'centy', 'centov']],
         'USD' => [['dolár', 'doláre', 'dolárov'], ['cent', 'centy', 'centov']],
         'YUM' => [['dinar', 'dinary', 'dinarov'], ['para', 'para', 'para']],

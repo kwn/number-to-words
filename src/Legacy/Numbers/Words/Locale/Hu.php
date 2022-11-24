@@ -88,6 +88,7 @@ class Hu extends Words
         'SEK' => [['svéd korona'], ['őre']],
         'SIT' => [['tolár'], ['sztotin']],
         'TRL' => [['lira'], ['kuruþ']],
+        'TRY' => [['lira'], ['kuruþ']],
         'UAH' => [['hrivnya'], ['kopejka']],
         'USD' => [['dollár'], ['cent']],
         'ZAR' => [['rand'], ['cent']]
