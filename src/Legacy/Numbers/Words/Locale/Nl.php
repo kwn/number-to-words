@@ -97,6 +97,7 @@ class Nl extends Words
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TRL' => [['lira'], ['kuru\FE']],
+        'TRY' => [['lira'], ['kuru\FE']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'YUM' => [['dinars'], ['para']],

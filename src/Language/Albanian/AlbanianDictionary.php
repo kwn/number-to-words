@@ -81,6 +81,7 @@ class AlbanianDictionary implements Dictionary
         'TMT' => [['manat'], ['tenge']],
         'TND' => [['dinar'], ['milimetra']],
         'TRL' => [['lira'], ['kuruş']],
+        'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'XAF' => [['CFA franc'], ['cent']],

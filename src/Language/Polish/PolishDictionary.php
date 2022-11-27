@@ -98,6 +98,7 @@ class PolishDictionary implements Dictionary
         'SIT' => [['tolar', 'tolary', 'tolarów'], ['stotinia', 'stotinie', 'stotini']],
         'SKK' => [['korona słowacka', 'korony słowackie', 'koron słowackich'], ['halerz', 'halerze', 'halerzy']],
         'TRL' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
+        'TRY' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
         'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
         'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],

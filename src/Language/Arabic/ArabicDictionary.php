@@ -104,6 +104,7 @@ class ArabicDictionary implements Dictionary
         'TMT' => [['manat'], ['tenge']],
         'TND' => [['دينار'], ['ملم']],
         'TRL' => [['lira'], ['kuruş']],
+        'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['هريفنا'], ['سنت']],
         'USD' => [['دولار'], ['سنت']],
         'XAF' => [['CFA فرنك'], ['سنت']],

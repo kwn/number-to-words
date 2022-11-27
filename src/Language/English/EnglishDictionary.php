@@ -82,6 +82,7 @@ class EnglishDictionary implements Dictionary
         'TMT' => [['manat'], ['tenge']],
         'TND' => [['dinar'], ['millime']],
         'TRL' => [['lira'], ['kuruş']],
+        'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'XAF' => [['CFA franc'], ['cent']],

@@ -122,6 +122,7 @@ class Yo extends Words
         'TMT' => [['manat'], ['tenge']],
         'TND' => [['dinar'], ['millim']],
         'TRL' => [['lira'], ['kuruş']],
+        'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
         'XAF' => [['CFA franc'], ['cent']],

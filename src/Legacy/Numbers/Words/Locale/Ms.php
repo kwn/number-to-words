@@ -86,6 +86,7 @@ class Ms extends Words
         'TMT' => [['manat'], ['tenge']],
         'TND' => [['dinar'], ['millim']],
         'TRL' => [['lira'], ['kuruş']],
+        'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['sen']],
         'USD' => [['dolar'], ['sen']],
         'XAF' => [['franc CFA'], ['sen']],

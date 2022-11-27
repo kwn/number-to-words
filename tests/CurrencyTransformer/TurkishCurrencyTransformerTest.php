@@ -22,6 +22,7 @@ class TurkishCurrencyTransformerTest extends CurrencyTransformerTest
             [124380, 'EUR', 'bin iki yüz kırk üç avro seksen sent'],
             [238500, 'USD', 'iki bin üç yüz seksen beş ABD doları'],
             [376600, 'USD', 'üç bin yedi yüz altmış altı ABD doları'],
+            [419645, 'TRL', 'dört bin yüz doksan altı Türk lirası kırk beş kuruş'],
             [419645, 'TRY', 'dört bin yüz doksan altı Türk lirası kırk beş kuruş'],
             [584600, 'USD', 'beş bin sekiz yüz kırk altı ABD doları'],
             [645900, 'USD', 'altı bin dört yüz elli dokuz ABD doları'],

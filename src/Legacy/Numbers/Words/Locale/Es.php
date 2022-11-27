@@ -86,6 +86,7 @@ class Es extends Words
         'SKK' => [['slovak koruna'], []],
         'TND' => [['dinar', 'dinares'], ['milímetrs']],
         'TRL' => [['lira'], ['kuruþ']],
+        'TRY' => [['lira'], ['kuruþ']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dólar', 'dólares'], ['centavo']],
         'UYU' => [['peso uruguayo', 'pesos uruguayos'], ['centavo']],
