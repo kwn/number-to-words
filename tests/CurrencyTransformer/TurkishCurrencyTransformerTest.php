@@ -28,6 +28,8 @@ class TurkishCurrencyTransformerTest extends CurrencyTransformerTest
             [645900, 'USD', 'altı bin dört yüz elli dokuz ABD doları'],
             [723200, 'USD', 'yedi bin iki yüz otuz iki ABD doları'],
             [93829100, 'RUB', 'dokuz yüz otuz sekiz bin iki yüz doksan bir Rus rublesi'],
+            [54123100, 'CHF', 'beş yüz kırk bir bin iki yüz otuz bir İsviçre frangı'],
+            [43889300, 'CHF', 'dört yüz otuz sekiz bin sekiz yüz doksan üç İsviçre frangı'],
         ];
     }
 }

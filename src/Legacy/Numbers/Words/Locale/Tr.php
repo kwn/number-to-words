@@ -76,7 +76,7 @@ class Tr extends Words
         'BWP' => [['Botswana pulası'], ['thebe']],
         'BYR' => [['Belarus rublesi'], ['kopiejka']],
         'CAD' => [['Kanada doları'], ['sent']],
-        'CHF' => [['İsveç frankı'], ['rapp']],
+        'CHF' => [['İsviçre frangı'], ['rapp']],
         'CNY' => [['Çin yuanı'], ['fen']],
         'CYP' => [['Kıbrıs poundu'], ['sent']],
         'CZK' => [['Çek kronu'], ['halerz']],
