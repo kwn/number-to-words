@@ -88,6 +88,7 @@ class ArabicDictionary implements Dictionary
         'LVL' => [['lat'], ['sentim']],
         'LYD' => [['دينار'], ['سنت']],
         'MAD' => [['dirham'], ['سنت']],
+        'AED' => [['درهم'], ['فلس']],
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
