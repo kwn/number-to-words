@@ -42,6 +42,7 @@ class EnglishDictionary implements Dictionary
 
     public static array $currencyNames = [
         'ALL' => [['lek'], ['qindarka']],
+        'AED' => [['Dirham'], ['Fils']],
         'AUD' => [['Australian dollar'], ['cent']],
         'BAM' => [['convertible marka'], ['fenig']],
         'BGN' => [['lev'], ['stotinka']],
@@ -66,7 +67,6 @@ class EnglishDictionary implements Dictionary
         'LVL' => [['lat'], ['sentim']],
         'LYD' => [['dinar'], ['cent']],
         'MAD' => [['dirham'], ['cent']],
-        'AED' => [['Dirham'], ['Fils']],
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
