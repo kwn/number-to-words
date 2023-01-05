@@ -64,6 +64,7 @@ class ArabicDictionary implements Dictionary
 
     public static array $currencyNames = [
         'ALL' => [['ليك'], ['قندركة']],
+        'AED' => [['درهم'], ['فلس']],
         'AUD' => [['دولار استرالي'], ['سنت']],
         'BAM' => [['ماركا'], ['فينق']],
         'BGN' => [['ليف'], ['ستوتينكا']],
@@ -88,7 +89,6 @@ class ArabicDictionary implements Dictionary
         'LVL' => [['lat'], ['sentim']],
         'LYD' => [['دينار'], ['سنت']],
         'MAD' => [['dirham'], ['سنت']],
-        'AED' => [['درهم'], ['فلس']],
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
