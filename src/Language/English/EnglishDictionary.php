@@ -55,6 +55,7 @@ class EnglishDictionary implements Dictionary
         'DKK' => [['Danish krone'], ['ore']],
         'DZD' => [['dinar'], ['cent']],
         'EEK' => [['kroon'], ['senti']],
+        'EGP' => [['Egyptian Pound'], ['piastre']],
         'EUR' => [['euro'], ['euro-cent']],
         'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
         'HKD' => [['Hong Kong dollar'], ['cent']],
