@@ -77,6 +77,7 @@ class ArabicDictionary implements Dictionary
         'DKK' => [['Danish krone'], ['ore']],
         'DZD' => [['دينار'], ['سنت']],
         'EEK' => [['kroon'], ['senti']],
+        'EGP' => [['جنيه مصري'], ['قرش']],
         'EUR' => [['euro'], ['euro-cent']],
         'GBP' => [['باوند', 'باوند'], ['بنس', 'بنس']],
         'HKD' => [['دولار كوري'], ['سنت']],
