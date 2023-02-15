@@ -1,44 +1,44 @@
 <?php
 
-namespace NumberToWords\Language\Albanian;
+namespace NumberToWords\Language\Uzbek;
 
 use NumberToWords\Language\Dictionary;
 
-class AlbanianDictionary implements Dictionary
+class UzbekDictionary implements Dictionary
 {
-    public const LOCALE = 'sq_AL';
-    public const LANGUAGE_NAME = 'Albanian';
-    public const LANGUAGE_NAME_NATIVE = 'Shqip';
+    public const LOCALE = 'uz';
+    public const LANGUAGE_NAME = 'Uzbek';
+    public const LANGUAGE_NAME_NATIVE = 'O\'zbek';
 
-    private static array $units = ['', 'një', 'dy', 'tre', 'katër', 'pesë', 'gjashtë', 'shtatë', 'tetë', 'nëntë'];
+    private static array $units = ['', 'bir', 'ikki', 'uch', 'to\'rt', 'besh', 'olti', 'yetti', 'sakkiz', 'to\'qqiz'];
 
     private static array $teens = [
-        'dhjetë',
-        'njëmbëdhjetë',
-        'dymbëdhjetë',
-        'trembëdhjetë',
-        'katërmbëdhjetë',
-        'pesëmbëdhjetë',
-        'gjashtëmbëdhjetë',
-        'shtatëmbëdhjetë',
-        'tetëmbëdhjetë',
-        'nëntëmbëdhjetë'
+        'o\'n',
+        'o\'n bir',
+        'o\'n ikki',
+        'o\'n uch',
+        'o\'n to\'rt',
+        'o\'n besh',
+        'o\'n olti',
+        'o\'n yetti',
+        'o\'n sakkiz',
+        'o\'n to\'qqiz'
     ];
 
     private static array $tens = [
         '',
-        'dhjetë',
-        'njëzet',
-        'tridhjetë',
-        'katërdhjetë',
-        'pesëdhjetë',
-        'gjashtëdhjetë',
-        'shtatëdhjetë',
-        'tetëdhjetë',
-        'nëntëdhjetë'
+        'o\'n',
+        'yigirma',
+        'o\'ttiz',
+        'qirq',
+        'ellik',
+        'oltmish',
+        'yetmish',
+        'sakson',
+        'to\'qson'
     ];
 
-    private static string $hundred = 'qind';
+    private static string $hundred = 'yuz';
 
     public static array $currencyNames = [
         'ALL' => [['lek'], ['qindarka']],
@@ -75,11 +75,12 @@ class AlbanianDictionary implements Dictionary
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'ROL' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
+        'SAR' => [['Riyal'], ['Halalah']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['dinar'], ['milimetra']],
+        'TND' => [['dinar'], ['millime']],
         'TRL' => [['lira'], ['kuruş']],
         'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
@@ -94,7 +95,7 @@ class AlbanianDictionary implements Dictionary
 
     public function getZero(): string
     {
-        return 'zero';
+        return 'nol';
     }
 
     public function getMinus(): string
@@ -119,6 +120,6 @@ class AlbanianDictionary implements Dictionary
 
     public function getCorrespondingHundred(int $hundred): string
     {
-        return self::$units[$hundred] . self::$hundred;
+        return self::$units[$hundred] . ' ' . self::$hundred;
     }
 }

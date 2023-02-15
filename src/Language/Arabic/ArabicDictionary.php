@@ -114,6 +114,7 @@ class ArabicDictionary implements Dictionary
         'XPF' => [['CFP فرنك'], ['سنتيم']],
         'YUM' => [['دينار'], ['الفقرة']],
         'ZAR' => [['راند'], ['سنت']],
+        'UZS' => [['sum'], ['so\'m']],
     ];
 
     /**
