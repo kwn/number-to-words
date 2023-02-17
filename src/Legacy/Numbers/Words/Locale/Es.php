@@ -94,7 +94,8 @@ class Es extends Words
         'XAF' => [['franco CFA', 'francos CFA'], ['céntimo']],
         'XOF' => [['franco CFA', 'francos CFA'], ['céntimo']],
         'YUM' => [['dinar', 'dinares'], ['para']],
-        'ZAR' => [['rand'], ['cent']]
+        'ZAR' => [['rand'], ['cent']],
+        'COP' => [['peso', 'pesos'], ['centavo', 'centavos']]
     ];
 
     /**
