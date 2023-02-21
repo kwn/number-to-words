@@ -82,7 +82,7 @@ Please bear in mind, the currency transformer accepts integers as the amount to 
 | Azerbaijani          | az         | +      | +        |
 | Belgian French       | fr_BE      | +      | -        |
 | Brazilian Portuguese | pt_BR      | +      | +        |
-| Bulgarian            | bg         | +      | -        |
+| Bulgarian            | bg         | +      | +        |
 | Czech                | cs         | +      | -        |
 | Danish               | dk         | +      | +        |
 | Dutch                | nl         | +      | -        |
