@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Bg extends Words
@@ -9,6 +10,10 @@ class Bg extends Words
     const LOCALE = 'bg';
     const LANGUAGE_NAME = 'Bulgarian';
     const LANGUAGE_NAME_NATIVE = 'Български';
+
+    const MALE = 0;
+    const FEMALE = 1;
+    const NEUTER = 2;
 
     private static $miscStrings = [
         'deset' => 'десет',           // "ten"
@@ -30,6 +35,60 @@ class Bg extends Words
         0 => [1 => "едно", "две", "три", "четири", "пет", "шест", "седем", "осем", "девет"], // neuter
         1 => [1 => 'един', 'два'],                                                           // masculine
         -1 => [1 => 'една']                                                                   // feminine
+    ];
+
+    protected static $hundred = [
+        '',
+        'сто',
+        'двести',
+        'триста',
+        'четыреста',
+        'пятьсот',
+        'шестьсот',
+        'семьсот',
+        'восемьсот',
+        'девятьсот',
+    ];
+
+    protected static $ten = [
+        ['', 'едно', 'два', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'],
+        ['', 'един', 'две', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'],
+        ['', 'една', 'две', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'],
+    ];
+
+    protected static $teens = [
+        'десет',
+        'единадесет',
+        'дванадесет',
+        'тринадесет',
+        'четиринадесет',
+        'петнадесет',
+        'шестнадесет',
+        'седемнадесет',
+        'осемнадесет',
+        'деветнадесет'
+    ];
+
+    protected static $tens = [
+        2 => 'двадесет',
+        'тридесет',
+        'четиридесет',
+        'петдесет',
+        'шестдесет',
+        'седемдесет',
+        'осемдесет',
+        'деветдесет'
+    ];
+
+    protected static $mega = [
+        [3 => self::FEMALE],
+        [3 => self::MALE],
+        ['хиляда', 'хиляди', 'хиляди', self::FEMALE],
+        ['милион', 'милионa', 'милионa', self::MALE],
+        ['милиард', 'милиардa', 'милиардa', self::MALE],
+        ['трилион', 'трилионa', 'трилионa', self::MALE],
+        ['квадрилион', 'квадрилионa', 'квадрилионa', self::MALE],
+        ['секстилион', 'секстилионa', 'секстилионa', self::MALE],
     ];
 
     private static $digitsInitialized = false;
@@ -154,23 +213,23 @@ class Bg extends Words
         303 => 'центилион'
     ];
 
-    public function __construct()
-    {
-        $this->initDigits();
-    }
-
-    private function initDigits()
-    {
-        if (!self::$digitsInitialized) {
-            for ($i = 3; $i <= 9; $i++) {
-                self::$digits[1][$i] =& self::$digits[0][$i];
-            }
-            for ($i = 2; $i <= 9; $i++) {
-                self::$digits[-1][$i] =& self::$digits[0][$i];
-            }
-            self::$digitsInitialized = true;
-        }
-    }
+//    public function __construct()
+//    {
+//        $this->initDigits();
+//    }
+//
+//    private function initDigits()
+//    {
+//        if (!self::$digitsInitialized) {
+//            for ($i = 3; $i <= 9; $i++) {
+//                self::$digits[1][$i] =& self::$digits[0][$i];
+//            }
+//            for ($i = 2; $i <= 9; $i++) {
+//                self::$digits[-1][$i] =& self::$digits[0][$i];
+//            }
+//            self::$digitsInitialized = true;
+//        }
+//    }
 
     /**
      * @param int $num
@@ -288,82 +347,330 @@ class Bg extends Words
      *
      * @return string
      */
-    protected function toWords($num = 0)
+    protected function toWords($number, $currencyGender = -1)
     {
-        $ret = [];
-
-        $ret_minus = '';
-
-        // check if $num is a valid non-zero number
-        if (!$num || preg_match('/^-?0+$/', $num) || !preg_match('/^-?\d+$/', $num)) {
+        if ($number === 0) {
             return $this->zero;
         }
 
-        // add a minus sign
-        if (substr($num, 0, 1) == '-') {
-            $ret_minus = $this->minus . $this->wordSeparator;
+        $out = [];
 
-            $num = substr($num, 1);
+        if ($number < 0) {
+            $out[] = static::MINUS;
+            $number *= -1;
         }
 
-        // strip excessive zero signs
-        $num = ltrim($num, '0');
+        $megaSize = count(static::$mega);
+        $signs = $megaSize * 3;
 
-        // split $num to groups of three-digit numbers
-        $num_groups = $this->splitNumber($num);
+        // $signs equal quantity of zeros of the biggest number in self::$mega
+        // + 3 additional sign (point and two zero)
+        [$unit, $subunit] = explode('.', sprintf("%{$signs}.2F", (float) $number));
 
-        $sizeof_numgroups = count($num_groups);
-
-        // go through the groups in reverse order, so that the last group could be determined
-        for ($i = $sizeof_numgroups - 1, $j = 1; $i >= 0; $i--, $j++) {
-            if (!isset($ret[$j])) {
-                $ret[$j] = '';
+        foreach (str_split($unit, 3) as $megaKey => $value) {
+            if (!(int) $value) {
+                continue;
             }
 
-            // what is the corresponding exponent for the current group
-            $pow = $sizeof_numgroups - $i;
+            $megaKey = $megaSize - $megaKey - 1;
+            $gender = $megaKey === 1 && $currencyGender !== -1 ? $currencyGender : static::$mega[$megaKey][3];
+            [$i1, $i2, $i3] = array_map('intval', str_split($value, 1));
+            // mega-logic
+            $out[] = static::$hundred[$i1]; # 1xx-9xx
 
-            // skip processment for empty groups
-            if ($num_groups[$i] != '000') {
-                if ($num_groups[$i] > 1) {
-                    if ($pow == 1) {
-                        $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                0,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3];
-                    } elseif ($pow == 2) {
-                        $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                -1,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
-                        $ret[$j] .= self::$miscStrings['hiliadi'] . $this->wordSeparator;
-                    } else {
-                        $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                1,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->pluralSuffix . $this->wordSeparator;
-                    }
-                } else {
-                    if ($pow == 1) {
-                        $ret[$j] .= $this->showDigitsGroup(
-                                $num_groups[$i],
-                                0,
-                                !$this->lastAnd && $i
-                            ) . $this->wordSeparator;
-                    } elseif ($pow == 2) {
-                        $ret[$j] .= self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
-                    } else {
-                        $ret[$j] .= self::$digits[1][1] . $this->wordSeparator . self::$exponent[($pow - 1) * 3] . $this->wordSeparator;
-                    }
-                }
+            if ($i2 > 1) { # 20-99
+                $out[] = static::$tens[$i2] . ' ' . static::$ten[$gender][$i3];
+            } else { # 10-19 | 1-9
+                $out[] = ($i2 > 0) ? static::$teens[$i3] : static::$ten[$gender][$i3];
+            }
+
+            if ($megaKey > 1) {
+                $out[] = $this->morph(
+                    $value,
+                    static::$mega[$megaKey][0],
+                    static::$mega[$megaKey][1],
+                    static::$mega[$megaKey][2]
+                );
             }
         }
 
-        return $ret_minus . rtrim(implode('', array_reverse($ret)), $this->wordSeparator);
+        return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
+    }
+
+
+    public function morph($n, $f1, $f2, $f5)
+    {
+        $n = abs((int) $n) % 100;
+        if ($n > 10 && $n < 20) {
+            return $f5;
+        }
+        $n = $n % 10;
+        if ($n > 1 && $n < 5) {
+            return $f2;
+        }
+        if ($n == 1) {
+            return $f1;
+        }
+
+        return $f5;
+    }
+
+    protected static $currencyNames = [
+        'ALL' => [
+            [1, 'лек', 'лека', 'лека'],
+            [2, 'киндарка', 'киндарки', 'киндарки']
+        ],
+        'AUD' => [
+            [1, 'aвстралийски долар', 'aвстралийски долари', 'aвстралийски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'BGN' => [
+            [1, 'лев', 'лева', 'лева'],
+            [2, 'стотинка', 'стотинки', 'стотинки']
+        ],
+        'BRL' => [
+            [1, 'бразилски реал', 'бразилски реали', 'бразилски реали'],
+            [1, 'сентаво', 'сентаво', 'сентаво']
+        ],
+        'BYN' => [
+            [1, 'беларуска рубла', 'беларуски рубли', 'беларуски рубли'],
+            [2, 'копейка', 'копейки', 'копейки']
+        ],
+        'BYR' => [
+            [1, 'беларуска рубла', 'беларуски рубли', 'беларуски рубли'],
+            [2, 'копейка', 'копейки', 'копейки']
+        ],
+        'CAD' => [
+            [1, 'канадски долар', 'канадски долари', 'канадски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'CHF' => [
+            [1, 'швейцарски франк', 'швейцарски франкове', 'швейцарски франкове'],
+            [1, 'сантим', 'сантима', 'сантима']
+        ],
+        'CNY' => [
+            [1, 'китайски юан', 'китайски юани', 'китайски юани'],
+            [1, 'фин', 'фини', 'фини']
+        ],
+        'CYP' => [
+            [1, 'евро', 'евро', 'евро'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'CZK' => [
+            [2, 'чешка крона', 'чешки крони', 'чешки крони'],
+            [1, 'халер', 'халери', 'халери']
+        ],
+        'DKK' => [
+            [2, 'датска крона', 'датски крони', 'датски крони'],
+            [1, 'йоре', 'йоре', 'йоре']
+        ],
+        'EEK' => [
+            [2, 'естонска крона', 'естонски крони', 'естонски крони'],
+            [1, 'сантим', 'сантим', 'сантим']
+        ],
+        'EUR' => [
+            [1, 'евро', 'евро', 'евро'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'GBP' => [
+            [1, 'паунд', 'паунда', 'паунда'],
+            [1, 'пенс', 'пенса', 'пенса']
+        ],
+        'HKD' => [
+            [1, 'хонконгски долар', 'Хонконгски долари', 'Хонконгски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'HRK' => [
+            [2, 'евро', 'евро', 'евро'],
+            [2, 'цент', 'цента', 'цента']
+        ],
+        'HUF' => [
+            [1, 'форинт', 'форинта', 'форинта'],
+            [1, 'филер', 'филера', 'филера']
+        ],
+        'IRR' => [
+            [1, 'ирански риал', 'ирански риали', 'ирански риали'],
+            [1, 'динар', 'динара', 'динара']
+        ],
+        'ISK' => [
+            [2, 'исландска крона', 'исландски крони', 'исландски крони'],
+            [1, 'эре', 'эре', 'эре']
+        ],
+        'JPY' => [
+            [2, 'японска йена', 'японски йени', 'японски йени'],
+            [2, 'сен', 'сена', 'сена']
+        ],
+        'KGS' => [
+            [1, 'киргизстански сом', 'киргизки сом', 'киргизки сом'],
+            [1, 'тийн', 'тийна', 'тийна']
+        ],
+        'KZT' => [
+            [0, 'тенге', 'тенге', 'тенге'],
+            [1, 'тийн', 'тийна', 'тийна']
+        ],
+        'KWD' => [
+            [1, 'кувейтски динар', 'кувейтски динари', 'кувейтски динари'],
+            [1, 'филс', 'филса', 'филса']
+        ],
+        'LTL' => [
+            [1, 'евро', 'евро', 'евро'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'LVL' => [
+            [1, 'евро', 'евро', 'евро'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'MDL' => [
+            [1, 'молдовска лея', 'молдовски леи', 'молдовски леи'],
+            [1, 'бан', 'бани', 'бани']
+        ],
+        'MKD' => [
+            [1, 'македонски денар', 'македонски денари', 'македонски денари'],
+            [1, 'ден', 'дени', 'дени']
+        ],
+        'MTL' => [
+            [2, 'евро', 'евро', 'евро'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'NOK' => [
+            [2, 'норвежка крона', 'норвежки крони', 'норвежки крони'],
+            [0, 'йоре', 'йори', 'йори']
+        ],
+        'NZD' => [
+            [1, 'новозеландски долар', 'новозеландски долари', 'новозеландски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'PLN' => [
+            [1, 'злота', 'злоти', 'злоти'],
+            [1, 'грош', 'гроша', 'гроша']
+        ],
+        'ROL' => [
+            [1, 'румънска лея', 'румънски леи', 'румънски леи'],
+            [1, 'бани', 'бани', 'бани']
+        ],
+        'RUB' => [
+            [1, 'рубла', 'рубли', 'рубли'],
+            [2, 'копейка', 'копейки', 'копейки']
+        ],
+        'RUR' => [
+            [1, 'рубла', 'рубли', 'рубли'],
+            [2, 'копейка', 'копейки' , 'копейки']
+        ],
+        'SEK' => [
+            [2, 'шведска крона', 'шведска крони', 'шведска крони'],
+            [1, 'йоре', 'йоре', 'йоре']
+        ],
+        'SGD' => [
+            [1, 'сингапурски долар', 'сингапурски долари', 'сингапурски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'SIT' => [
+            [1, 'евро', 'евро', 'евро'],
+            [2, 'цент', 'цента', 'цента']
+        ],
+        'SKK' => [
+            [2, 'евро', 'евро', 'евро'],
+            [0, 'цент', 'цента', 'цента']
+        ],
+        'TRL' => [
+            [2, 'турска лира', 'турски лири', 'турски лири'],
+            [1, 'куруш', 'куруши', 'куруши']
+        ],
+        'TRY' => [
+            [2, 'турска лира', 'турски лири', 'турски лири'],
+            [1, 'куруш', 'куруши', 'куруши']
+        ],
+        'TMT' => [
+            [1, 'манат', 'маната', 'маната'],
+            [1, 'тенге', 'тенге', 'тенге']
+        ],
+        'UAH' => [
+            [2, 'гривня', 'гривни', 'гривни'],
+            [2, 'копийка', 'копийки', 'копийки'],
+        ],
+        'USD' => [
+            [1, 'американски долар', 'американски долари', 'американски долари'],
+            [1, 'цент', 'цента', 'цента']
+        ],
+        'UZS' => [
+            [1, 'сом', 'сома', 'сома'],
+            [1, 'тийн', 'тийна', 'тийна'],
+        ],
+        'ZAR' => [
+            [1, 'ранд', 'ранда', 'ранда'],
+            [1, 'цент', 'цента', 'цента']
+        ]
+    ];
+
+    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    {
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, static::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = static::$currencyNames[$currency];
+        $return = '';
+
+        if ($decimal === 0 && !$fraction) {
+            $return .= $this->toWords($decimal) . ' ' . $this->morph(
+                    $decimal,
+                    $currencyNames[0][1],
+                    $currencyNames[0][2],
+                    $currencyNames[0][3]
+                );
+
+            return $return;
+        }
+
+        if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
+            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) . ' ' . $this->morph(
+                    $decimal,
+                    $currencyNames[0][1],
+                    $currencyNames[0][2],
+                    $currencyNames[0][3]
+                );
+        }
+
+        if (null !== $fraction) {
+            if ($this->options->isConvertFraction()) {
+                $return .= ' ' . $this->and . ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
+            } else {
+                $return .= ' ' . $this->and . ' ' . $fraction . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
+            }
+        }
+
+        if (null === $fraction && $this->options->isShowFractionIfZero()) {
+            if ($this->options->isConvertFractionIfZero()) {
+                $return .= ' ' . $this->and . ' ' . $this->zero . ' ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
+            } else {
+                $return .=  ' ' . $this->and . ' 00 ' . $this->morph(
+                        $fraction,
+                        $currencyNames[1][1],
+                        $currencyNames[1][2],
+                        $currencyNames[1][3]
+                    );
+            }
+        }
+
+        return $return;
     }
 }
