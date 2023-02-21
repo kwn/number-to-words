@@ -10,7 +10,7 @@ class BulgarianDictionary implements Dictionary
     public const LANGUAGE_NAME = 'Bulgarian';
     public const LANGUAGE_NAME_NATIVE = 'Български';
 
-    private static array $units = ['', 'едно', 'две', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
+    private static array $units = ['', 'един', 'два', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
 
     private static array $teens = [
         'десет',

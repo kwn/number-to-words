@@ -12,7 +12,7 @@ trait ManagesCurrencyTransformers
         'ar' => Transformer\ArabicCurrencyTransformer::class,
         'al' => Transformer\AlbanianCurrencyTransformer::class,
         'az' => Transformer\AzerbaijaniCurrencyTransformer::class,
-        'bg' => Transformer\BulgariannCurrencyTransformer::class,
+        'bg' => Transformer\BulgarianCurrencyTransformer::class,
         'de' => Transformer\GermanCurrencyTransformer::class,
         'dk' => Transformer\DanishCurrencyTransformer::class,
         'en' => Transformer\EnglishCurrencyTransformer::class,

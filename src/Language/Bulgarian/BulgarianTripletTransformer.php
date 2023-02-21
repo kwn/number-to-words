@@ -46,6 +46,6 @@ class BulgarianTripletTransformer implements TripletTransformer
             }
         }
 
-        return implode('-', $words);
+        return implode(' и ', $words);
     }
 }
