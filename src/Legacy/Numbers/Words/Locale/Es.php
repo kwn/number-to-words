@@ -54,6 +54,7 @@ class Es extends Words
         'BYR' => [['rublo bielorruso', 'rublos bielorrusos'], ['kopek', 'kopeks']],
         'CAD' => [['dólar canadiense', 'dólares canadienses'], ['centavo']],
         'CHF' => [['swiss franc'], ['rapp']],
+        'COP' => [['peso', 'pesos'], ['centavo', 'centavos']],
         'CYP' => [['cypriot pound'], ['cent']],
         'CZK' => [['czech koruna'], ['halerz']],
         'CRC' => [['colón', 'colones'], ['centavo']],
