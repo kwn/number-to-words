@@ -1,6 +1,7 @@
 # PHP Number to words converter
 
-[![Latest Stable Version](https://poser.pugx.org/ppalashturov/number-to-words/v/stable)](https://packagist.org/packages/ppalashturov/number-to-words)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg?style=flat-square)](https://php.net/)
+[![GitHub release](https://img.shields.io/github/v/release/ppalashturov/number-to-words)](https://github.com/ppalashturov/number-to-words)
 
 This library allows you to convert a number to words.
 
