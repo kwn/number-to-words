@@ -1,5 +1,5 @@
 {
-    "name": "kwn/number-to-words",
+    "name": "ppalashturov/number-to-words",
     "description": "Multi language standalone PHP number to words converter. Fully tested, open for extensions and new languages.",
     "type": "library",
     "license": "MIT",

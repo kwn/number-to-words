@@ -1,9 +1,6 @@
 # PHP Number to words converter
 
-[![Travis](https://travis-ci.com/kwn/number-to-words.svg?branch=master)](https://travis-ci.com/kwn/number-to-words)
-[![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
-[![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
-[![Latest Stable Version](https://poser.pugx.org/kwn/number-to-words/v/stable)](https://packagist.org/packages/kwn/number-to-words)
+[![Latest Stable Version](https://poser.pugx.org/ppalashturov/number-to-words/v/stable)](https://packagist.org/packages/ppalashturov/number-to-words)
 
 This library allows you to convert a number to words.
 
@@ -12,7 +9,7 @@ This library allows you to convert a number to words.
 Add package to your composer.json by running:
 
 ```
-$ composer require kwn/number-to-words
+$ composer require ppalashturov/number-to-words
 ```
 
 ## Usage
@@ -113,7 +110,7 @@ Please bear in mind, the currency transformer accepts integers as the amount to 
 
 ## Contributors
 
-Many transformers were ported from the `pear/Numbers_Words` library. Some of them were created from scratch by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
+Many transformers were ported from the `pear/Numbers_Words` library. Some of them were created from scratch by [contributors](https://github.com/ppalashturov/number-to-words/graphs/contributors). Thank you!
 
 ## Version 2.x - BC and major changes
 
