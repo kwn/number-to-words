@@ -3,11 +3,11 @@
     "description": "Multi language standalone PHP number to words converter. Fully tested, open for extensions and new languages.",
     "type": "library",
     "license": "MIT",
-    "keywords": ["number", "numbers", "to", "words", "string", "money", "currency"],
+    "keywords": ["bulgarian", "number", "numbers", "to", "words", "string", "money", "currency"],
     "authors": [
         {
-            "name": "Karol Wnuk",
-            "email": "k.wnuk@ascetic.pl"
+            "name": "Pavel Palashturov",
+            "email": "pa.palashturov@gmail.com"
         }
     ],
     "require": {
