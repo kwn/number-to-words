@@ -105,9 +105,9 @@ class Uz extends Words
         'TRY' => [['Türk lirası'], ['kuruş']],
         'UAH' => [['Ukrayna hryvnyası'], ['kopiyka']],
         'USD' => [['ABD doları'], ['sent']],
+        'UZS' => [['sum'], ['so\'m']],
         'YUM' => [['Yugoslav dinarı'], ['para']],
         'ZAR' => [['Güney Afrika randı'], ['sent']],
-        'UZS' => [['sum'], ['so\'m']],
     ];
 
     /**

@@ -85,12 +85,12 @@ class UzbekDictionary implements Dictionary
         'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dollar'], ['cent']],
+        'UZS' => [['sum'], ['so\'m']],
         'XAF' => [['CFA franc'], ['cent']],
         'XOF' => [['CFA franc'], ['cent']],
         'XPF' => [['CFP franc'], ['centime']],
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
-        'UZS' => [['sum'], ['so\'m']],
     ];
 
     public function getZero(): string
