@@ -18,13 +18,16 @@ commands:
           name: Send tests result to Code Climate
           command: ~/cc-test-reporter after-build --exit-code $?
   install-dependencies:
+    parameters:
+      xdebug_version:
+        type: string
     steps:
       - run:
           name: Install dependencies
           command: composer install
       - run:
           name: Install xdebug
-          command: sudo -E install-php-extensions xdebug
+          command: sudo -E install-php-extensions xdebug-<< parameters.xdebug_version >>
       - run:
           name: Enable xdebug
           command: sudo -E docker-php-ext-enable xdebug
@@ -43,12 +46,15 @@ jobs:
     parameters:
       php_version:
         type: string
+      xdebug_version:
+        type: string
     docker:
       - image: cimg/php:<< parameters.php_version >>
     resource_class: small
     steps:
       - checkout
-      - install-dependencies
+      - install-dependencies:
+          xdebug_version: << parameters.php_version >>
       - cc-reporter-pre
       - build
       - cc-reporter-post
@@ -60,4 +66,11 @@ workflows:
           name: build-php-<< matrix.php_version >>
           matrix:
             parameters:
-              php_version: ["7.4", "8.0", "8.1", "8.2"]
+              php_version: ["7.4"]
+              xdebug_version: ["3.1.5"]
+      - build:
+          name: build-php-<< matrix.php_version >>
+          matrix:
+            parameters:
+              php_version: ["8.0", "8.1", "8.2"]
+              xdebug_version: ["stable"]
