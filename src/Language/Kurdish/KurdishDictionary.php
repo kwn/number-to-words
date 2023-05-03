@@ -90,7 +90,6 @@ class KurdishDictionary implements Dictionary
         'XPF' => [['CFP فرانک'], ['centime']],
         'YUM' => [['دینار'], ['بڕگە']],
         'ZAR' => [['ڕاند'], ['سەنت']],
-        'UZS' => [['sum'], ['so\'m']],
     ];
 
     public function getZero(): string

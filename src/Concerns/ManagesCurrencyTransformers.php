@@ -29,8 +29,7 @@ trait ManagesCurrencyTransformers
         'tk' => Transformer\TurkmenCurrencyTransformer::class,
         'tr' => Transformer\TurkishCurrencyTransformer::class,
         'ua' => Transformer\UkrainianCurrencyTransformer::class,
-        'uz' => Transformer\UzbekCurrencyTransformer::class,
-        'yo' => Transformer\YorubaCurrencyTransformer::class,
+        'yo' => Transformer\YorubaCurrencyTransformer::class
     ];
 
     /**
