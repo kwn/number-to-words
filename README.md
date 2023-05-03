@@ -1,11 +1,11 @@
 # PHP Number to words converter
 
-[![Travis](https://travis-ci.com/kwn/number-to-words.svg?branch=master)](https://travis-ci.com/kwn/number-to-words)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kwn/number-to-words/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kwn/number-to-words/tree/master)
 [![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
 [![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
 [![Latest Stable Version](https://poser.pugx.org/kwn/number-to-words/v/stable)](https://packagist.org/packages/kwn/number-to-words)
 
-This library allows you to convert a number to words.
+This library converts numbers to their word representation (123 -> one hundred twenty three).
 
 ## Installation
 
@@ -17,11 +17,11 @@ $ composer require kwn/number-to-words
 
 ## Usage
 
-This library currently has two types of number-to-words transformations: number and currency. In order to use a specific transformer for certain language you need to create an instance of `NumberToWords` class and then call a method which creates a new instance of a transformer;
+There are two types of number-to-words transformation: number and currency. In order to use a relevant transformer for specific language create an instance of `NumberToWords` class and call a method that creates a new instance of the desired transformer;
 
 ### Number Transformer
 
-Before using a transformer, it must be created:
+Create a transformer for specific language using the `getNumberTransformer('lang')` method:
 
 ```php
 use NumberToWords\NumberToWords;
@@ -33,13 +33,13 @@ $numberToWords = new NumberToWords();
 $numberTransformer = $numberToWords->getNumberTransformer('en');
 ```
 
-Then it can be used passing in numeric values to the `toWords()` method:
+Transformer can be used by passing in numeric values to the `toWords()` method:
 
 ```php
 $numberTransformer->toWords(5120); // outputs "five thousand one hundred twenty"
 ```
 
-You can also use a static method:
+It can be also used with a static method:
 
 ```php
 NumberToWords::transformNumber('en', 5120); // outputs "five thousand one hundred twenty"
@@ -65,13 +65,13 @@ Then it can be used passing in numeric values for amount and ISO 4217 currency i
 $currencyTransformer->toWords(5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
-You can also use a static method:
+It can be also used with a static method:
 
 ```php
 NumberToWords::transformCurrency('en', 5099, 'USD'); // outputs "fifty dollars ninety nine cents"
 ```
 
-Please bear in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
+Please keep in mind, the currency transformer accepts integers as the amount to transform. It means that if you store amounts as floats (e.g. 4.99) you need to multiply them by 100 and pass the integer (499) as an argument.
 
 ## Available locale
 
@@ -125,8 +125,8 @@ Many transformers were ported from the `pear/Numbers_Words` library. Some of the
 
 **Q: I found a bug. What should I do?**
 
-A: Please report an issue on GitHub. Also feel free to fix it and open a pull request. I don't know most of those languages that the library supports, so your help and contribution would be much appreciated. Thanks!
+A: Please report an issue on GitHub. Feel free to fix it and open a pull request. I don't know most of those languages that the library supports, so your help and contribution would be much appreciated. Thanks!
 
-**Q: My language is missing. Could you add it, please?**
+**Q: My language is missing. Could it be added?**
 
 A: Unfortunately, there's a high chance I don't know your language. Feel free to implement the missing transformer and open a pull request. You can take a look at the existing transformers, and follow the same pattern as other languages do.
