@@ -102,8 +102,7 @@ class PolishDictionary implements Dictionary
         'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
         'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
-        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']],
-        'UZS' => [['sum'], ['so\'m']],
+        'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
     ];
 
     public function getMinus(): string

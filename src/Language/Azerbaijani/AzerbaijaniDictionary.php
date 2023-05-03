@@ -91,7 +91,6 @@ class AzerbaijaniDictionary implements Dictionary
         'XPF' => [['CFP franc'], ['centime']],
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
-        'UZS' => [['sum'], ['so\'m']],
     ];
 
     public function getZero(): string
