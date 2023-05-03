@@ -40,7 +40,6 @@ commands:
           name: Run unit tests
           command: make phpunit-coverage
 
-
 jobs:
   build:
     parameters:
