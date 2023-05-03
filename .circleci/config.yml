@@ -17,7 +17,6 @@ commands:
       - run:
           name: Send tests result to Code Climate
           command: ~/cc-test-reporter after-build --exit-code $?
-
   install-dependencies:
     steps:
       - run:
@@ -29,24 +28,35 @@ commands:
       - run:
           name: Enable xdebug
           command: sudo -E docker-php-ext-enable xdebug
-
-jobs:
-  php-81:
-    docker:
-      - image: cimg/php:8.1
+  build:
     steps:
-      - checkout
-      - install-dependencies
-      - cc-reporter-pre
       - run:
           name: Check coding style (PSR12)
           command: make phpcs
       - run:
           name: Run unit tests
           command: make phpunit-coverage
+
+
+jobs:
+  build:
+    parameters:
+      php_version:
+        type: string
+    docker:
+      - image: cimg/php:<< parameters.php_version >>
+    resource_class: small
+    steps:
+      - checkout
+      - install-dependencies
+      - cc-reporter-pre
+      - build
       - cc-reporter-post
 
 workflows:
   ci:
     jobs:
-      - php-81
+      - build:
+          matrix:
+            parameters:
+              php_version: ["7.4", "8.0"]
