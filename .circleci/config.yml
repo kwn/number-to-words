@@ -28,10 +28,10 @@ commands:
           command: composer install
       - run:
           name: Install xdebug
-          command: sudo install-php-extensions xdebug
+          command: sudo -E install-php-extensions xdebug
       - run:
           name: Enable xdebug
-          command: sudo docker-php-ext-enable xdebug
+          command: sudo -E docker-php-ext-enable xdebug
 
 jobs:
   php-81:
