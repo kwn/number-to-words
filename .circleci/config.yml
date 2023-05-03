@@ -46,7 +46,7 @@ jobs:
           command: make phpcs
       - run:
           name: Run unit tests
-          command: make phpunit
+          command: make phpunit-coverage
       - cc-reporter-post
 
 workflows:
