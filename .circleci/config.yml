@@ -54,7 +54,7 @@ jobs:
     steps:
       - checkout
       - install-dependencies:
-          xdebug_version: << parameters.php_version >>
+          xdebug_version: << parameters.xdebug_version >>
       - cc-reporter-pre
       - build
       - cc-reporter-post
