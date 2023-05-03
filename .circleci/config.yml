@@ -11,7 +11,7 @@ commands:
           command: chmod a+x ~/cc-test-reporter
       - run:
           name: Debug
-          command: echo $GIT_COMMIT_SHA $GIT_BRANCH
+          command: printenv
           environment:
             GIT_COMMIT_SHA: $CIRCLE_SHA1
             GIT_BRANCH: $CIRCLE_BRANCH
