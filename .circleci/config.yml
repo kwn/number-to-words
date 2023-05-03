@@ -1,11 +1,25 @@
 version: 2.1
 
+commands:
+  cc-reporter-pre:
+    steps:
+      - run:
+          name: Download Code Climate test reporter
+          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ~/cc-test-reporter
+      - run:
+          name: Make Code Climate test reporter executable
+          command: chmod a+x ~/cc-test-reporter
+      - run:
+          name: Initialise Code Climate test reporter
+          command: ~/cc-test-reporter before-build
+
 jobs:
   php-81:
     docker:
       - image: cimg/php:8.1
     steps:
       - checkout
+      - cc-reporter-pre
       - run:
           name: Install dependencies
           command: composer install
