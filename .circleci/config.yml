@@ -10,8 +10,28 @@ commands:
           name: Make Code Climate test reporter executable
           command: chmod a+x ~/cc-test-reporter
       - run:
+          name: Debug
+          command: echo $GIT_COMMIT_SHA $GIT_BRANCH
+          environment:
+            GIT_COMMIT_SHA: $CIRCLE_SHA1
+            GIT_BRANCH: $CIRCLE_BRANCH
+      - run:
           name: Initialise Code Climate test reporter
           command: ~/cc-test-reporter before-build
+          environment:
+            GIT_COMMIT_SHA: $CIRCLE_SHA1
+            GIT_BRANCH: $CIRCLE_BRANCH
+  install-dependencies:
+    steps:
+      - run:
+          name: Install dependencies
+          command: composer install
+      - run:
+          name: Install xdebug
+          command: sudo install-php-extensions xdebug
+      - run:
+          name: Enable xdebug
+          command: sudo docker-php-ext-enable xdebug
 
 jobs:
   php-81:
@@ -19,10 +39,8 @@ jobs:
       - image: cimg/php:8.1
     steps:
       - checkout
+      - install-dependencies
       - cc-reporter-pre
-      - run:
-          name: Install dependencies
-          command: composer install
       - run:
           name: Check coding style (PSR12)
           command: make phpcs

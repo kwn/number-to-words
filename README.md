@@ -1,6 +1,7 @@
 # PHP Number to words converter
 
 [![Travis](https://travis-ci.com/kwn/number-to-words.svg?branch=master)](https://travis-ci.com/kwn/number-to-words)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kwn/number-to-words/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kwn/number-to-words/tree/master)
 [![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
 [![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
 [![Latest Stable Version](https://poser.pugx.org/kwn/number-to-words/v/stable)](https://packagist.org/packages/kwn/number-to-words)
