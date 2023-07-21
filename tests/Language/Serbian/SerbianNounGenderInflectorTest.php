@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SerbianNounGenderInflectorTest extends TestCase
 {
-    private static array $nouns = ['dinar', 'dinari', 'dinara'];
+    private static array $nouns = ['dinar', 'dinara', 'dinara'];
 
     /**
      * @dataProvider providerItInflectsNounsByNumbers
@@ -18,8 +18,12 @@ class SerbianNounGenderInflectorTest extends TestCase
 
         $inflected = $inflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[2]);
 
-        self::assertEquals($expectedNoun, $inflected, "Incorrect value: '$number $expectedNoun'!");
+        self::assertEquals($expectedNoun, $inflected, "Incorrect value: '$number $inflected'!");
     }
+
+    /**
+     * @dataProvider providerItInflectsThousandsByNumbers
+     */
 
     public function providerItInflectsNounsByNumbers(): array
     {

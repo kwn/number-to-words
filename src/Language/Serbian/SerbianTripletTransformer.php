@@ -2,19 +2,20 @@
 
 namespace NumberToWords\Language\Serbian;
 
-use NumberToWords\Language\English\EnglishDictionary;
-use NumberToWords\Language\TripletTransformer;
+use NumberToWords\Language\PowerAwareTripletTransformer;
 
-class SerbianTripletTransformer implements TripletTransformer
+class SerbianTripletTransformer implements PowerAwareTripletTransformer
 {
-    private SerbianDictionary $dictionary;
+    protected SerbianDictionary $dictionary;
+    protected SerbianExponentGenderInflector $exponentGenderInflector;
 
-    public function __construct(SerbianDictionary $dictionary)
+    public function __construct(SerbianDictionary $dictionary, SerbianExponentGenderInflector $exponentGenderInflector)
     {
         $this->dictionary = $dictionary;
+        $this->exponentGenderInflector = $exponentGenderInflector;
     }
 
-    public function transformToWords(int $number): string
+    public function transformToWords(int $number, int $power): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -29,42 +30,19 @@ class SerbianTripletTransformer implements TripletTransformer
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         }
 
-        if ($units > 0 && $tens !== 1) {
-            $words[] = $this->dictionary->getCorrespondingUnit($units);
-
-            if ($tens > 1) {
-                $words[] = 'i';
-            } elseif ($units === 1) {
-                if ($power === 0) {
-                    $words[] = 's';
-                } elseif ($power !== 1) {
-                    $words[] = 'e';
-                }
-            }
-        }
-
         if ($tens > 1) {
             $words[] = $this->dictionary->getCorrespondingTen($tens);
         }
 
-        return implode(' ', $words);
-    }
-
-    private function getSubHundred($tens, $units): string
-    {
-        $words = [];
-
-        if ($tens === 1) {
-            $words[] = $this->dictionary->getCorrespondingTeen($units);
-        } else {
-            if ($tens > 0) {
-                $words[] = $this->dictionary->getCorrespondingTen($tens);
-            }
-            if ($units > 0) {
+        if ($units > 0 && $tens !== 1) {
+            // Fetches the correct form (male vs female) for the unit name.
+            // This doesn't cover the cent-values, which is performed by the other, SerbianFemailTripletTransformer
+            if ($power % 2 === 0 && $tens !== 1 && in_array($units, [1, 2])) {
                 $words[] = $this->dictionary->getCorrespondingUnit($units);
+            } else {
+                $words[] = $this->dictionary->getCorrespondingUnitFemale($units);
             }
         }
-
-        return implode('-', $words);
+        return implode($this->dictionary->getSeparator(), $words);
     }
 }

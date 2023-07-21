@@ -10,9 +10,15 @@ class SerbianDictionary implements Dictionary
     public const LANGUAGE_NAME = 'Serbian';
     public const LANGUAGE_NAME_NATIVE = 'srpski';
 
-    private static array $units = ['', 'jedan', 'dva', 'tri', 'četiri', 'pet', 'šest', 'sedam', 'osam', 'devet'];
+    protected string $zero = "nula";
+    protected string $minus = "minus";
+    /** Token to separate words in triplets and chunks in final string */
+    protected string $separator = " ";
 
-    private static array $teens = [
+    protected static array $units = ['', 'jedan', 'dva', 'tri', 'četiri', 'pet', 'šest', 'sedam', 'osam', 'devet'];
+    protected static array $unitsFemale = ['', 'jedna', 'dve', 'tri', 'četiri', 'pet', 'šest', 'sedam', 'osam', 'devet'];
+
+    protected static array $teens = [
         'deset',
         'jedanaest',
         'dvanaest',
@@ -25,7 +31,7 @@ class SerbianDictionary implements Dictionary
         'devetnaest'
     ];
 
-    private static array $tens = [
+    protected static array $tens = [
         '',
         'deset',
         'dvadeset',
@@ -38,7 +44,18 @@ class SerbianDictionary implements Dictionary
         'devedeset'
     ];
 
-    private static string $hundred = 'stotina';
+    private static array $hundreds = [
+        0 => '',
+        1 => 'sto',
+        2 => 'dvesta',
+        3 => 'trista',
+        4 => 'četiristo',
+        5 => 'petsto',
+        6 => 'šeststo',
+        7 => 'sedamsto',
+        8 => 'osamsto',
+        9 => 'devetsto'
+    ];
 
     public static array $currencyNames = [
         'ALL' => [['lek'], ['qindarka']],
@@ -54,7 +71,7 @@ class SerbianDictionary implements Dictionary
         'DKK' => [['Danish krone'], ['ore']],
         'DZD' => [['dinar'], ['cent']],
         'EEK' => [['kroon'], ['senti']],
-        'EUR' => [['euro'], ['euro-cent']],
+        'EUR' => [['evro', 'evra', 'evra'], ['cent', 'centi', 'centa']],
         'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
         'HKD' => [['Hong Kong dollar'], ['cent']],
         'HRK' => [['kuna'], ['lipa']],
@@ -73,7 +90,7 @@ class SerbianDictionary implements Dictionary
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'RSD' => [['dinar'], ['para']],
+        'RSD' => [['dinar', 'dinara', 'dinara'], ['para', 'para', 'pare']],
         'ROL' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SAR' => [['Riyal'], ['Halalah']],
@@ -93,19 +110,29 @@ class SerbianDictionary implements Dictionary
         'ZAR' => [['rand'], ['cent']],
     ];
 
+    public function getSeparator(): string
+    {
+        return $this->separator;
+    }
+
     public function getZero(): string
     {
-        return 'nula';
+        return $this->zero;
     }
 
     public function getMinus(): string
     {
-        return 'minus';
+        return $this->minus;
     }
 
     public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
+    }
+
+    public function getCorrespondingUnitFemale(int $unit): string
+    {
+        return self::$unitsFemale[$unit];
     }
 
     public function getCorrespondingTen(int $ten): string
@@ -120,6 +147,6 @@ class SerbianDictionary implements Dictionary
 
     public function getCorrespondingHundred(int $hundred): string
     {
-        return self::$units[$hundred] . ' ' . self::$hundred;
+        return self::$hundreds[$hundred];
     }
 }
