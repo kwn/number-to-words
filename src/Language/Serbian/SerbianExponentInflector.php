@@ -40,31 +40,11 @@ class SerbianExponentInflector implements ExponentInflector
 
     public function inflectExponent(int $number, int $power): string
     {
-
         return $this->inflector->inflectNounByNumber(
             $number,
             self::$exponent[$power][0],
             self::$exponent[$power][1],
             self::$exponent[$power][2],
         );
-
-        $level = self::$exponent[$power];
-        $units = $number % 10;
-        $tens = ((int) ($number / 10)) % 10;
-
-        if ($tens === 1) {
-            // For *11 .. *19
-            return $level[1];
-
-        } elseif ($tens !== 1 && $units >= 2 && $units <= 4) {
-            return $level[2];
-
-        } elseif ($units === 1) {
-            // Anything that ends with 1 (but not ending with 11, which was caught earlier)
-            return $level[0];
-
-        } else {
-            return $level[1];
-        }
     }
 }
