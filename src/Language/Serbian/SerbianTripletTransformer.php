@@ -7,12 +7,10 @@ use NumberToWords\Language\PowerAwareTripletTransformer;
 class SerbianTripletTransformer implements PowerAwareTripletTransformer
 {
     protected SerbianDictionary $dictionary;
-    protected SerbianExponentGenderInflector $exponentGenderInflector;
 
-    public function __construct(SerbianDictionary $dictionary, SerbianExponentGenderInflector $exponentGenderInflector)
+    public function __construct(SerbianDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
-        $this->exponentGenderInflector = $exponentGenderInflector;
     }
 
     public function transformToWords(int $number, int $power): string

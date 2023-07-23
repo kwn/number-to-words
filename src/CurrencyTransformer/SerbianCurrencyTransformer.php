@@ -19,23 +19,15 @@ class SerbianCurrencyTransformer implements CurrencyTransformer
     {
         $dictionary = new SerbianDictionary();
         $nounGenderInflector = new SerbianNounGenderInflector();
-        $exponentInflector = new SerbianExponentGenderInflector();
         $numberToTripletsConverter = new NumberToTripletsConverter();
-        $tripletTransformer = new SerbianTripletTransformer($dictionary, $exponentInflector);
-        $femaleTripletTransformer = new SerbianFemaleTripletTransformer($dictionary, $exponentInflector);
+        $tripletTransformer = new SerbianTripletTransformer($dictionary);
+        $femaleTripletTransformer = new SerbianFemaleTripletTransformer($dictionary);
         $exponentInflector = new SerbianExponentInflector($nounGenderInflector);
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy($dictionary->getSeparator())
             ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
-            ->inflectExponentByNumbers($exponentInflector)
-            ->build();
-
-        $centTransformer = (new NumberTransformerBuilder())
-            ->withDictionary($dictionary)
-            ->withWordsSeparatedBy($dictionary->getSeparator())
-            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $femaleTripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();
 
@@ -67,6 +59,13 @@ class SerbianCurrencyTransformer implements CurrencyTransformer
         );
 
         if (null !== $fraction) {
+            $centTransformer = (new NumberTransformerBuilder())
+                ->withDictionary($dictionary)
+                ->withWordsSeparatedBy($dictionary->getSeparator())
+                ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $femaleTripletTransformer)
+                ->inflectExponentByNumbers($exponentInflector)
+                ->build();
+
             $words[] = $centTransformer->toWords($fraction);
             $words[] = $nounGenderInflector->inflectNounByNumber(
                 $fraction,

@@ -20,8 +20,7 @@ class SerbianNumberTransformer implements NumberTransformer
     {
         $dictionary = new SerbianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
-        $exponentGenderInflector = new SerbianExponentGenderInflector();
-        $tripletTransformer = new SerbianTripletTransformer($dictionary, $exponentGenderInflector);
+        $tripletTransformer = new SerbianTripletTransformer($dictionary);
         $exponentInflector = new SerbianExponentInflector(new SerbianNounGenderInflector());
 
         $numberTransformer = (new NumberTransformerBuilder())
