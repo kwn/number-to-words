@@ -48,33 +48,6 @@ class SerbianExponentInflector implements ExponentInflector
             self::$exponent[$power][2],
         );
 
-        /*
-         * 1 hiljada
-         * 2 hiljade
-         * 3 hiljade
-         * 4 hiljade
-         * 5 hiljada
-         * 10 hiljada
-         * 11 hiljada
-         * 19 hiljada
-         * 20 hiljada
-         * 21 hiljada
-         * 22 hiljade
-         * 23 hiljade
-         * 24 hiljade
-         * 25 hiljada
-         * 30 hiljada
-         * 31 hiljada
-         * 32 hiljade
-         * 33 hiljade
-         * 34 hiljade
-         * 35 hiljada
-         * 101 hiljada
-         * 102 hiljade
-         * 103 hiljade
-         * 104 hiljade
-         * 105 hiljada
-         */
         $level = self::$exponent[$power];
         $units = $number % 10;
         $tens = ((int) ($number / 10)) % 10;

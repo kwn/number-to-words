@@ -4,7 +4,6 @@ namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Language\Serbian\SerbianDictionary;
-use NumberToWords\Language\Serbian\SerbianExponentGenderInflector;
 use NumberToWords\Language\Serbian\SerbianExponentInflector;
 use NumberToWords\Language\Serbian\SerbianFemaleTripletTransformer;
 use NumberToWords\Language\Serbian\SerbianNounGenderInflector;

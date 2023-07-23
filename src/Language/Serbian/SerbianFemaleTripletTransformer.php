@@ -2,8 +2,6 @@
 
 namespace NumberToWords\Language\Serbian;
 
-use NumberToWords\Language\PowerAwareTripletTransformer;
-
 /**
  * Class used only for getting the proper translation of the cents-values to words.
  * It was needed, because in Serbian, the main unit ("dinar") and the cent-unit ("para") are of different gender.
