@@ -35,7 +35,7 @@ trait ManagesNumberTransformers
         'pl' => Transformer\PolishNumberTransformer::class,
         'pt_BR' => Transformer\PortugueseBrazilianNumberTransformer::class,
         'ro' => Transformer\RomanianNumberTransformer::class,
-        'rs' => Transformer\SerbianNumberTransformer::class,
+        'sr' => Transformer\SerbianNumberTransformer::class,
         'ru' => Transformer\RussianNumberTransformer::class,
         'sk' => Transformer\SlovakNumberTransformer::class,
         'sv' => Transformer\SwedishNumberTransformer::class,
