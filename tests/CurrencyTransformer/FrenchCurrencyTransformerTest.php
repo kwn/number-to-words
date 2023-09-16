@@ -13,6 +13,9 @@ class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
     {
         return [
             [100, 'EUR', 'un euro'],
+            [100, 'JPY', 'un yen'],
+            [101, 'JPY', 'un yen et un sen'],
+            [115, 'JPY', 'un yen et quinze sens'],
             [200, 'EUR', 'deux euros'],
             [235715, 'EUR', 'deux mille trois cent cinquante-sept euros et quinze centimes'],
             [1522501, 'EUR', 'quinze mille deux cent vingt-cinq euros et un centime'],
