@@ -12,8 +12,10 @@ class SpanishCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
+            [100, 'PAB', 'un balboa'],
             [100, 'PLN', 'un zloty'],
             [100, 'DOP', 'un peso dominicano'],
+            [200, 'PAB', 'dos balboas'],
             [200, 'PLN', 'dos zlotys'],
             [200, 'DOP', 'dos pesos dominicanos'],
             [500, 'EUR', 'cinco euros'],
