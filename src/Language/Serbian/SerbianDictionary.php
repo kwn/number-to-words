@@ -16,7 +16,18 @@ class SerbianDictionary implements Dictionary
     protected string $separator = " ";
 
     protected static array $units = ['', 'jedan', 'dva', 'tri', 'četiri', 'pet', 'šest', 'sedam', 'osam', 'devet'];
-    protected static array $unitsFemale = ['', 'jedna', 'dve', 'tri', 'četiri', 'pet', 'šest', 'sedam', 'osam', 'devet'];
+    protected static array $unitsFemale = [
+        '',
+        'jedna',
+        'dve',
+        'tri',
+        'četiri',
+        'pet',
+        'šest',
+        'sedam',
+        'osam',
+        'devet',
+    ];
 
     protected static array $teens = [
         'deset',

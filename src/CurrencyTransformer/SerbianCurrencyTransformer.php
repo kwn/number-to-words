@@ -61,7 +61,10 @@ class SerbianCurrencyTransformer implements CurrencyTransformer
             $centTransformer = (new NumberTransformerBuilder())
                 ->withDictionary($dictionary)
                 ->withWordsSeparatedBy($dictionary->getSeparator())
-                ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $femaleTripletTransformer)
+                ->transformNumbersBySplittingIntoPowerAwareTriplets(
+                    $numberToTripletsConverter,
+                    $femaleTripletTransformer
+                )
                 ->inflectExponentByNumbers($exponentInflector)
                 ->build();
 
