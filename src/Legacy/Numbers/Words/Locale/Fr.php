@@ -98,7 +98,7 @@ class Fr extends Words
         'DZD' => [['dinar'], ['centime']],
         'EUR' => [['euro'], ['centime']],
         'GBP' => [['pound', 'pounds'], ['penny', 'pence']],
-        'JPY' => [['yen', ['sen']]],
+        'JPY' => [['yen'], ['sen']],
         'LYD' => [['dinar'], ['centime']],
         'MAD' => [['dirham'], ['centime']],
         'MRO' => [['ouguiya'], ['khoums']],
