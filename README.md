@@ -102,6 +102,7 @@ Please keep in mind, the currency transformer accepts integers as the amount to 
 | Persian              | fa         | +      | -        |
 | Polish               | pl         | +      | +        |
 | Romanian             | ro         | +      | +        |
+| Serbian              | sr         | +      | +        |
 | Slovak               | sk         | +      | +        |
 | Spanish              | es         | +      | +        |
 | Russian              | ru         | +      | +        |
