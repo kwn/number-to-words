@@ -6,11 +6,11 @@ use NumberToWords\Language\Dictionary;
 
 class PolishDictionary implements Dictionary
 {
-    const LOCALE = 'pl';
-    const LANGUAGE_NAME = 'Polish';
-    const LANGUAGE_NAME_NATIVE = 'polski';
+    public const LOCALE = 'pl';
+    public const LANGUAGE_NAME = 'Polish';
+    public const LANGUAGE_NAME_NATIVE = 'polski';
 
-    private static $units = [
+    private static array $units = [
         0 => '',
         1 => 'jeden',
         2 => 'dwa',
@@ -23,7 +23,7 @@ class PolishDictionary implements Dictionary
         9 => 'dziewięć'
     ];
 
-    private static $teens = [
+    private static array $teens = [
         0 => 'dziesięć',
         1 => 'jedenaście',
         2 => 'dwanaście',
@@ -36,7 +36,7 @@ class PolishDictionary implements Dictionary
         9 => 'dziewiętnaście'
     ];
 
-    private static $tens = [
+    private static array $tens = [
         0 => '',
         1 => 'dziesięć',
         2 => 'dwadzieścia',
@@ -49,7 +49,7 @@ class PolishDictionary implements Dictionary
         9 => 'dziewięćdziesiąt'
     ];
 
-    private static $hundreds = [
+    private static array $hundreds = [
         0 => '',
         1 => 'sto',
         2 => 'dwieście',
@@ -62,7 +62,7 @@ class PolishDictionary implements Dictionary
         9 => 'dziewięćset'
     ];
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'ALL' => [['lek', 'leki', 'leków'], ['quindarka', 'quindarki', 'quindarek']],
         'AUD' => [
             ['dolar australijski', 'dolary australijskie', 'dolarów australijskich'],
@@ -98,64 +98,39 @@ class PolishDictionary implements Dictionary
         'SIT' => [['tolar', 'tolary', 'tolarów'], ['stotinia', 'stotinie', 'stotini']],
         'SKK' => [['korona słowacka', 'korony słowackie', 'koron słowackich'], ['halerz', 'halerze', 'halerzy']],
         'TRL' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
+        'TRY' => [['lira turecka', 'liry tureckie', 'lir tureckich'], ['kurusza', 'kurysze', 'kuruszy']],
         'UAH' => [['hrywna', 'hrywna', 'hrywna'], ['cent', 'centy', 'centów']],
         'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']]
     ];
 
-    /**
-     * @return string
-     */
-    public function getMinus()
+    public function getMinus(): string
     {
         return 'minus';
     }
 
-    /**
-     * @return string
-     */
-    public function getZero()
+    public function getZero(): string
     {
         return 'zero';
     }
 
-    /**
-     * @param int $unit
-     *
-     * @return string
-     */
-    public function getCorrespondingUnit($unit)
+    public function getCorrespondingUnit(int $unit): string
     {
         return self::$units[$unit];
     }
 
-    /**
-     * @param int $ten
-     *
-     * @return string
-     */
-    public function getCorrespondingTen($ten)
+    public function getCorrespondingTen(int $ten): string
     {
         return self::$tens[$ten];
     }
 
-    /**
-     * @param int $teen
-     *
-     * @return string
-     */
-    public function getCorrespondingTeen($teen)
+    public function getCorrespondingTeen(int $teen): string
     {
         return self::$teens[$teen];
     }
 
-    /**
-     * @param int $hundred
-     *
-     * @return string
-     */
-    public function getCorrespondingHundred($hundred)
+    public function getCorrespondingHundred(int $hundred): string
     {
         return self::$hundreds[$hundred];
     }

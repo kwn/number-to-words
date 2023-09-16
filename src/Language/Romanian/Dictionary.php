@@ -6,15 +6,15 @@ use NumberToWords\Grammar\Gender;
 
 class Dictionary
 {
-    const LOCALE = 'ro';
-    const LANGUAGE_NAME = 'Romanian';
-    const LANGUAGE_NAME_NATIVE = 'Română';
-    const MINUS = 'minus';
+    public const LOCALE = 'ro';
+    public const LANGUAGE_NAME = 'Romanian';
+    public const LANGUAGE_NAME_NATIVE = 'Română';
+    public const MINUS = 'minus';
 
-    public static $thresholdFew = 1;
-    public static $thresholdMany = 19;
+    public static int $thresholdFew = 1;
+    public static int $thresholdMany = 19;
 
-    public static $numbers = [
+    public static array $numbers = [
         'zero', // 0
         [ // 1
             [ // masculine
@@ -62,13 +62,13 @@ class Dictionary
         90 => 'nouăzeci', // 90
     ];
 
-    public static $infinity = 'infinit';
+    public static string $infinity = 'infinit';
 
-    public static $and = 'și';
+    public static string $and = 'și';
 
-    public static $wordSeparator = ' ';
+    public static string $wordSeparator = ' ';
 
-    public static $currencyNames = [
+    public static array $currencyNames = [
         'AUD' => [
             ['dolar australian', 'dolari australieni', Gender::GENDER_MASCULINE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],
@@ -125,17 +125,21 @@ class Dictionary
             ['liră turcească', 'lire turcești', Gender::GENDER_FEMININE],
             ['kuruș', 'kuruși', Gender::GENDER_MASCULINE],
         ],
+        'TRY' => [
+            ['liră turcească', 'lire turcești', Gender::GENDER_FEMININE],
+            ['kuruș', 'kuruși', Gender::GENDER_MASCULINE],
+        ],
         'USD' => [
             ['dolar american', 'dolari americani', Gender::GENDER_MASCULINE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],
         ],
     ];
 
-    public static $manyPart = 'de';
+    public static string $manyPart = 'de';
 
-    public static $minus = 'minus';
+    public static string $minus = 'minus';
 
-    public static $exponent = [
+    public static array $exponent = [
         0 => '',
         2 => ['sută', 'sute', Gender::GENDER_FEMININE],
         3 => ['mie', 'mii', Gender::GENDER_FEMININE],

@@ -4,14 +4,15 @@ namespace NumberToWords\NumberTransformer;
 
 class RomanianNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new RomanianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
+            [-300, 'minus trei sute'],
             [0, 'zero'],
             [1, 'unu'],
             [2, 'doi'],
@@ -66,7 +67,6 @@ class RomanianNumberTransformerTest extends NumberTransformerTest
             [7232, 'șapte mii două sute treizeci și doi'],
             [8569, 'opt mii cinci sute șaizeci și nouă'],
             [9539, 'nouă mii cinci sute treizeci și nouă'],
-            [-300, 'minus trei sute'],
         ];
     }
 }

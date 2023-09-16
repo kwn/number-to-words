@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class UkrainianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new UkrainianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'UAH', 'одна гривня'],
@@ -20,9 +20,10 @@ class UkrainianCurrencyTransformerTest extends CurrencyTransformerTest
             [34200, 'RUB', 'триста сорок два рубля'],
             [34400, 'UAH', 'триста сорок чотири гривні'],
             [34500, 'UAH', 'триста сорок п\'ять гривень'],
-            [34552, 'UAH', 'триста сорок п\'ять гривень п\'ятдесят два копійки'],
-            [34501, 'UAH', 'триста сорок п\'ять гривень один копійка'],
+            [34501, 'UAH', 'триста сорок п\'ять гривень одна копійка'],
+            [34552, 'UAH', 'триста сорок п\'ять гривень п\'ятдесят дві копійки'],
             [34599, 'UAH', 'триста сорок п\'ять гривень дев\'яносто дев\'ять копійок'],
+            [234200, 'UAH', 'дві тисячі триста сорок дві гривні'],
         ];
     }
 }

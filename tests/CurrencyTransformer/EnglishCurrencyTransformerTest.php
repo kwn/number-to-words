@@ -4,14 +4,18 @@ namespace NumberToWords\CurrencyTransformer;
 
 class EnglishCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new EnglishCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
+            [6474, 'USD', 'sixty-four dollars seventy-four cents'],
+            [6574, 'USD', 'sixty-five dollars seventy-four cents'],
+            [8174, 'USD', 'eighty-one dollars seventy-four cents'],
+            [8255, 'USD', 'eighty-two dollars fifty-five cents'],
             [72900, 'USD', 'seven hundred twenty-nine dollars'],
             [89400, 'USD', 'eight hundred ninety-four dollars'],
             [99900, 'USD', 'nine hundred ninety-nine dollars'],
@@ -27,6 +31,9 @@ class EnglishCurrencyTransformerTest extends CurrencyTransformerTest
             [645900, 'USD', 'six thousand four hundred fifty-nine dollars'],
             [723200, 'USD', 'seven thousand two hundred thirty-two dollars'],
             [123456789, 'XPF', 'one million two hundred thirty-four thousand five hundred sixty-seven CFP francs eighty-nine centimes'],
+            [-72925, 'USD', 'minus seven hundred twenty-nine dollars twenty-five cents'],
+            [-89425, 'USD', 'minus eight hundred ninety-four dollars twenty-five cents'],
+            [-99925, 'USD', 'minus nine hundred ninety-nine dollars twenty-five cents'],
         ];
     }
 }

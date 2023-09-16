@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class SpanishNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new SpanishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [-12, 'menos doce'],
@@ -23,13 +23,16 @@ class SpanishNumberTransformerTest extends NumberTransformerTest
             [7, 'siete'],
             [8, 'ocho'],
             [9, 'nueve'],
+            [10, 'diez'],
             [11, 'once'],
             [12, 'doce'],
-            [16, 'dieciseis'],
+            [16, 'dieciseis'], // should be dieciséis
             [19, 'diecinueve'],
             [20, 'veinte'],
             [21, 'veintiuno'],
-            [26, 'veintiseis'],
+            [22, 'veintidos'], // should be veintidós
+            [23, 'veintitres'], // should be veintitrés
+            [26, 'veintiseis'], // should be veintiséis
             [30, 'treinta'],
             [31, 'treinta y uno'],
             [40, 'cuarenta'],
@@ -40,8 +43,14 @@ class SpanishNumberTransformerTest extends NumberTransformerTest
             [67, 'sesenta y siete'],
             [70, 'setenta'],
             [79, 'setenta y nueve'],
+            [80, 'ochenta'],
+            [90, 'noventa'],
+            [99, 'noventa y nueve'],
             [100, 'cien'],
             [101, 'ciento uno'],
+            [111, 'ciento once'],
+            [120, 'ciento veinte'],
+            [121, 'ciento veintiuno'],
             [199, 'ciento noventa y nueve'],
             [203, 'doscientos tres'],
             [287, 'doscientos ochenta y siete'],
@@ -53,49 +62,27 @@ class SpanishNumberTransformerTest extends NumberTransformerTest
             [689, 'seiscientos ochenta y nueve'],
             [729, 'setecientos veintinueve'],
             [894, 'ochocientos noventa y cuatro'],
-            [999, 'novecientos noventa y nueve'],
-            [1000, 'mil'],
-            [1001, 'mil uno'],
-            [1097, 'mil noventa y siete'],
-            [1104, 'mil ciento cuatro'],
-            [1243, 'mil doscientos cuarenta y tres'],
-            [2385, 'dos mil trescientos ochenta y cinco'],
-            [3766, 'tres mil setecientos sesenta y seis'],
-            [4196, 'cuatro mil ciento noventa y seis'],
-            [5846, 'cinco mil ochocientos cuarenta y seis'],
-            [6459, 'seis mil cuatrocientos cincuenta y nueve'],
-            [7232, 'siete mil doscientos treinta y dos'],
-            [8569, 'ocho mil quinientos sesenta y nueve'],
-            [9539, 'nueve mil quinientos treinta y nueve'],
-            [0, 'cero'],
-            [1, 'uno'],
-            [9, 'nueve'],
-            [10, 'diez'],
-            [11, 'once'],
-            [16, 'dieciseis'], // should be dieciséis
-            [19, 'diecinueve'],
-            [20, 'veinte'],
-            [21, 'veintiuno'],
-            [22, 'veintidos'], // should be veintidós
-            [23, 'veintitres'], // should be veintitrés
-            [26, 'veintiseis'], // should be veintiséis
-            [80, 'ochenta'],
-            [90, 'noventa'],
-            [99, 'noventa y nueve'],
-            [100, 'cien'],
-            [101, 'ciento uno'],
-            [111, 'ciento once'],
-            [120, 'ciento veinte'],
-            [121, 'ciento veintiuno'],
             [900, 'novecientos'],
             [909, 'novecientos nueve'],
             [919, 'novecientos diecinueve'],
             [990, 'novecientos noventa'],
             [999, 'novecientos noventa y nueve'],
             [1000, 'mil'],
+            [1001, 'mil uno'],
+            [1097, 'mil noventa y siete'],
+            [1104, 'mil ciento cuatro'],
+            [1243, 'mil doscientos cuarenta y tres'],
             [2000, 'dos mil'],
+            [2385, 'dos mil trescientos ochenta y cinco'],
+            [3766, 'tres mil setecientos sesenta y seis'],
             [4000, 'cuatro mil'],
+            [4196, 'cuatro mil ciento noventa y seis'],
             [5000, 'cinco mil'],
+            [5846, 'cinco mil ochocientos cuarenta y seis'],
+            [6459, 'seis mil cuatrocientos cincuenta y nueve'],
+            [7232, 'siete mil doscientos treinta y dos'],
+            [8569, 'ocho mil quinientos sesenta y nueve'],
+            [9539, 'nueve mil quinientos treinta y nueve'],
             [11000, 'once mil'],
             [21000, 'veintiún mil'],
             [21021, 'veintiún mil veintiuno'],

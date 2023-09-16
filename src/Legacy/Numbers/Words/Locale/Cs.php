@@ -6,34 +6,34 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class Cs extends Words
 {
-    const LOCALE               = 'cs';
-    const LANGUAGE_NAME        = 'Czech';
+    const LOCALE = 'cs';
+    const LANGUAGE_NAME = 'Czech';
     const LANGUAGE_NAME_NATIVE = 'Czech';
 
     private $minus = 'mínus';
 
     private static $exponent = [
-        0   => [''],
-        3   => ['tisíc', 'tisíce', 'tisíc'],
-        6   => ['milión', 'milióny', 'miliónů'],
-        9   => ['miliarda', 'miliardy', 'miliard'],
-        12  => ['bilion', 'biliony', 'bilionů'],
-        15  => ['biliarda', 'biliardy', 'biliard'],
-        18  => ['trilion', 'triliony', 'trilionů'],
-        21  => ['triliarda', 'triliardy', 'triliard'],
-        24  => ['kvadrilion', 'kvadriliony', 'kvadrilionů'],
-        30  => ['kvintilion', 'kvintiliony', 'kvintilionů'],
-        36  => ['sextilion', 'sextiliony', 'sextilionů'],
-        42  => ['septilion', 'septiliony', 'septilionů'],
-        48  => ['oktilion', 'oktiliony', 'oktilionů'],
-        54  => ['nonilion', 'noniliony', 'nonilionů'],
-        60  => ['decilion', 'deciliony', 'decilionů'],
-        66  => ['undecilion', 'undeciliony', 'undecilionů'],
-        72  => ['duodecilion', 'duodeciliony', 'duodecilionů'],
-        78  => ['tredecilion', 'tredeciliony', 'tredecilionů'],
-        84  => ['kvatrodecilion', 'kvatrodeciliony', 'kvatrodecilionů'],
-        90  => ['kvindecilion', 'kvindeciliony', 'kvindecilionů'],
-        96  => ['sexdecilion', 'sexdeciliony', 'sexdecilionů'],
+        0 => [''],
+        3 => ['tisíc', 'tisíce', 'tisíc'],
+        6 => ['milión', 'milióny', 'miliónů'],
+        9 => ['miliarda', 'miliardy', 'miliard'],
+        12 => ['bilion', 'biliony', 'bilionů'],
+        15 => ['biliarda', 'biliardy', 'biliard'],
+        18 => ['trilion', 'triliony', 'trilionů'],
+        21 => ['triliarda', 'triliardy', 'triliard'],
+        24 => ['kvadrilion', 'kvadriliony', 'kvadrilionů'],
+        30 => ['kvintilion', 'kvintiliony', 'kvintilionů'],
+        36 => ['sextilion', 'sextiliony', 'sextilionů'],
+        42 => ['septilion', 'septiliony', 'septilionů'],
+        48 => ['oktilion', 'oktiliony', 'oktilionů'],
+        54 => ['nonilion', 'noniliony', 'nonilionů'],
+        60 => ['decilion', 'deciliony', 'decilionů'],
+        66 => ['undecilion', 'undeciliony', 'undecilionů'],
+        72 => ['duodecilion', 'duodeciliony', 'duodecilionů'],
+        78 => ['tredecilion', 'tredeciliony', 'tredecilionů'],
+        84 => ['kvatrodecilion', 'kvatrodeciliony', 'kvatrodecilionů'],
+        90 => ['kvindecilion', 'kvindeciliony', 'kvindecilionů'],
+        96 => ['sexdecilion', 'sexdeciliony', 'sexdecilionů'],
         102 => ['septendecilion', 'septendeciliony', 'septendecilionů'],
         108 => ['oktodecilion', 'oktodeciliony', 'oktodecilionů'],
     ];
@@ -165,7 +165,7 @@ class Cs extends Words
                 break;
 
             case 9:
-                $ret .= $this->wordSeparator . 'devádesát';
+                $ret .= $this->wordSeparator . 'devadesát';
                 break;
 
             case 1:

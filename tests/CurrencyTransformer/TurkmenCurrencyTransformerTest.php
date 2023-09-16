@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class TurkmenCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new TurkmenCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'TMT', 'bir manat'],
@@ -19,8 +19,8 @@ class TurkmenCurrencyTransformerTest extends CurrencyTransformerTest
             [34100, 'TMT', 'üç ýüz kyrk bir manat'],
             [34200, 'USD', 'üç ýüz kyrk iki dollar'],
             [34400, 'TMT', 'üç ýüz kyrk dört manat'],
-            [34552, 'TMT', 'üç ýüz kyrk bäş manat elli iki teňňe'],
             [34501, 'TMT', 'üç ýüz kyrk bäş manat bir teňňe'],
+            [34552, 'TMT', 'üç ýüz kyrk bäş manat elli iki teňňe'],
             [34599, 'USD', 'üç ýüz kyrk bäş dollar togsan dokuz sent'],
         ];
     }

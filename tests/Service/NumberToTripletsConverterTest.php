@@ -9,7 +9,7 @@ class NumberToTripletsConverterTest extends TestCase
     /**
      * @dataProvider providerItConvertsNumberToTriplets
      */
-    public function testItConvertsNumberToTriplets($number, array $expectedArray)
+    public function testItConvertsNumberToTriplets($number, array $expectedArray): void
     {
         $numberToTripletsConverter = new NumberToTripletsConverter();
 
@@ -18,7 +18,7 @@ class NumberToTripletsConverterTest extends TestCase
         self::assertEquals($expectedArray, $triplets);
     }
 
-    public function providerItConvertsNumberToTriplets()
+    public function providerItConvertsNumberToTriplets(): array
     {
         return [
             [123, [123]],

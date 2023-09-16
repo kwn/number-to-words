@@ -4,14 +4,15 @@ namespace NumberToWords\NumberTransformer;
 
 class MalayNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new MalayNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
+            [-103, 'negatif seratus tiga'],
             [0, 'kosong'],
             [1, 'satu'],
             [2, 'dua'],
@@ -185,7 +186,6 @@ class MalayNumberTransformerTest extends NumberTransformerTest
             [9000000, 'sembilan juta'],
             [1000000000, 'satu bilion'],
             [1000000001, 'satu bilion satu'],
-            [-103, 'negatif seratus tiga'],
         ];
     }
 }

@@ -9,10 +9,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 
 class GermanNumberTransformer implements NumberTransformer
 {
-    /**
-     * @inheritdoc
-     */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $dictionary = new GermanDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
@@ -22,7 +19,6 @@ class GermanNumberTransformer implements NumberTransformer
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy('')
-            ->withExponentsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();

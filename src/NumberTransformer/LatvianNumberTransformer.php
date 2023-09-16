@@ -9,10 +9,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 
 class LatvianNumberTransformer implements NumberTransformer
 {
-    /**
-     * @inheritdoc
-     */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $dictionary = new LatvianDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
@@ -22,7 +19,6 @@ class LatvianNumberTransformer implements NumberTransformer
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
             ->withWordsSeparatedBy(' ')
-            ->withExponentsSeparatedBy(' ')
             ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();

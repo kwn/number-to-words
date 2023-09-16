@@ -2,28 +2,28 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Legacy\Numbers\Words;
 
 class Fr extends Words
 {
-    const LOCALE               = 'fr';
-    const LANGUAGE_NAME        = 'French';
+    const LOCALE = 'fr';
+    const LANGUAGE_NAME = 'French';
     const LANGUAGE_NAME_NATIVE = 'Français';
 
     private static $miscNumbers = [
-        10  => 'dix',
-        11  => 'onze',
-        12  => 'douze',
-        13  => 'treize',
-        14  => 'quatorze',
-        15  => 'quinze',
-        16  => 'seize',
-        20  => 'vingt',
-        30  => 'trente',
-        40  => 'quarante',
-        50  => 'cinquante',
-        60  => 'soixante',
+        10 => 'dix',
+        11 => 'onze',
+        12 => 'douze',
+        13 => 'treize',
+        14 => 'quatorze',
+        15 => 'quinze',
+        16 => 'seize',
+        20 => 'vingt',
+        30 => 'trente',
+        40 => 'quarante',
+        50 => 'cinquante',
+        60 => 'soixante',
         100 => 'cent'
     ];
 
@@ -54,40 +54,40 @@ class Fr extends Words
     private $pluralSuffix = 's';
 
     private static $exponent = [
-        0   => '',
-        3   => 'mille',
-        6   => 'million',
-        9   => 'milliard',
-        12  => 'billion', // was 'trillion',
-        15  => 'quadrillion',
-        18  => 'quintillion',
-        21  => 'sextillion',
-        24  => 'septillion',
-        27  => 'octillion',
-        30  => 'nonillion',
-        33  => 'decillion',
-        36  => 'undecillion',
-        39  => 'duodecillion',
-        42  => 'tredecillion',
-        45  => 'quattuordecillion',
-        48  => 'quindecillion',
-        51  => 'sexdecillion',
-        54  => 'septendecillion',
-        57  => 'octodecillion',
-        60  => 'novemdecillion',
-        63  => 'vigintillion',
-        66  => 'unvigintillion',
-        69  => 'duovigintillion',
-        72  => 'trevigintillion',
-        75  => 'quattuorvigintillion',
-        78  => 'quinvigintillion',
-        81  => 'sexvigintillion',
-        84  => 'septenvigintillion',
-        87  => 'octovigintillion',
-        90  => 'novemvigintillion',
-        93  => 'trigintillion',
-        96  => 'untrigintillion',
-        99  => 'duotrigintillion',
+        0 => '',
+        3 => 'mille',
+        6 => 'million',
+        9 => 'milliard',
+        12 => 'billion', // was 'trillion',
+        15 => 'quadrillion',
+        18 => 'quintillion',
+        21 => 'sextillion',
+        24 => 'septillion',
+        27 => 'octillion',
+        30 => 'nonillion',
+        33 => 'decillion',
+        36 => 'undecillion',
+        39 => 'duodecillion',
+        42 => 'tredecillion',
+        45 => 'quattuordecillion',
+        48 => 'quindecillion',
+        51 => 'sexdecillion',
+        54 => 'septendecillion',
+        57 => 'octodecillion',
+        60 => 'novemdecillion',
+        63 => 'vigintillion',
+        66 => 'unvigintillion',
+        69 => 'duovigintillion',
+        72 => 'trevigintillion',
+        75 => 'quattuorvigintillion',
+        78 => 'quinvigintillion',
+        81 => 'sexvigintillion',
+        84 => 'septenvigintillion',
+        87 => 'octovigintillion',
+        90 => 'novemvigintillion',
+        93 => 'trigintillion',
+        96 => 'untrigintillion',
+        99 => 'duotrigintillion',
     ];
 
     private static $currencyNames = [
@@ -97,12 +97,13 @@ class Fr extends Words
         'CNY' => [['yuan'], ['fen']],
         'DZD' => [['dinar'], ['centime']],
         'EUR' => [['euro'], ['centime']],
+        'GBP' => [['pound', 'pounds'], ['penny', 'pence']],
         'JPY' => [['yen', ['sen']]],
         'LYD' => [['dinar'], ['centime']],
         'MAD' => [['dirham'], ['centime']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
-        'TND' => [['dinar'], ['centime']],
+        'TND' => [['dinar'], ['millime']],
         'USD' => [['dollar américain', 'dollars américains'], ['cent']],
         'XAF' => [['franc CFA', 'francs CFA'], ['centime']],
         'XOF' => [['franc CFA', 'francs CFA'], ['centime']],
@@ -120,7 +121,7 @@ class Fr extends Words
     }
 
     /**
-     * @param int  $num
+     * @param int $num
      * @param bool $last
      *
      * @return string
@@ -229,9 +230,9 @@ class Fr extends Words
             if ($numb !== 0) {
                 if ($numb !== 1 || $power !== 2) {
                     $ret .= $this->showDigitsGroup(
-                        $numb,
-                        $i + 1 === $sizeOfNumberGroups || $power > 2
-                    ) . $this->wordSeparator;
+                            $numb,
+                            $i + 1 === $sizeOfNumberGroups || $power > 2
+                        ) . $this->wordSeparator;
                 }
 
                 $ret .= self::$exponent[($power - 1) * 3];
@@ -249,11 +250,11 @@ class Fr extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
-     * @throws NumberToWordsException
      * @return string
+     * @throws NumberToWordsException
      */
     public function toCurrencyWords($currency, $decimal, $fraction = null)
     {
@@ -281,7 +282,12 @@ class Fr extends Words
         }
 
         if (null !== $fraction) {
-            $return .= sprintf('%1$s%2$s%1$s%3$s%1$s', $this->wordSeparator, $this->subunitSeparator, trim($this->toWords($fraction)));
+            $return .= sprintf(
+                '%1$s%2$s%1$s%3$s%1$s',
+                $this->wordSeparator,
+                $this->subunitSeparator,
+                trim($this->toWords($fraction))
+            );
 
             $level = $fraction === 1 ? 0 : 1;
 

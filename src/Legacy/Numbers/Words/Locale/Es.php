@@ -2,21 +2,21 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
-use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Legacy\Numbers\Words;
 
 class Es extends Words
 {
-    const LOCALE               = 'es';
-    const LANGUAGE_NAME        = 'Spanish';
+    const LOCALE = 'es';
+    const LANGUAGE_NAME = 'Spanish';
     const LANGUAGE_NAME_NATIVE = 'Español';
 
     private $minus = 'menos';
 
     private static $exponent = [
-        0  => ['', ''],
-        3  => ['mil', 'mil'],
-        6  => ['millón', 'millones'],
+        0 => ['', ''],
+        3 => ['mil', 'mil'],
+        6 => ['millón', 'millones'],
         12 => ['billón', 'billones'],
         18 => ['trilón', 'trillones'],
         24 => ['cuatrillón', 'cuatrillones'],
@@ -54,11 +54,13 @@ class Es extends Words
         'BYR' => [['rublo bielorruso', 'rublos bielorrusos'], ['kopek', 'kopeks']],
         'CAD' => [['dólar canadiense', 'dólares canadienses'], ['centavo']],
         'CHF' => [['swiss franc'], ['rapp']],
+        'COP' => [['peso', 'pesos'], ['centavo', 'centavos']],
         'CYP' => [['cypriot pound'], ['cent']],
         'CZK' => [['czech koruna'], ['halerz']],
         'CRC' => [['colón', 'colones'], ['centavo']],
         'DZD' => [['dinar', 'dinares'], ['céntimo']],
         'DKK' => [['danish krone'], ['ore']],
+        'DOP' => [['peso dominicano', 'pesos dominicanos'], ['centavo', 'centavos']],
         'EEK' => [['kroon'], ['senti']],
         'EUR' => [['euro'], ['centavo']],
         'GBP' => [['libra'], ['peñique']],
@@ -77,14 +79,16 @@ class Es extends Words
         'MTL' => [['lira maltesa'], ['céntimo']],
         'MXN' => [['peso'], ['centavo']],
         'NOK' => [['norwegian krone'], ['oere']],
+        'PAB' => [['balboa', 'balboas'], ['centavo', 'centavos']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'ROL' => [['romanian leu'], ['bani']],
         'RUB' => [['rublo ruso', 'rublos rusos'], ['kopek']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['tolar'], ['stotinia']],
         'SKK' => [['slovak koruna'], []],
-        'TND' => [['dinar', 'dinares'], ['céntimo']],
+        'TND' => [['dinar', 'dinares'], ['milímetrs']],
         'TRL' => [['lira'], ['kuruþ']],
+        'TRY' => [['lira'], ['kuruþ']],
         'UAH' => [['hryvna'], ['cent']],
         'USD' => [['dólar', 'dólares'], ['centavo']],
         'UYU' => [['peso uruguayo', 'pesos uruguayos'], ['centavo']],
@@ -289,8 +293,8 @@ class Es extends Words
     }
 
     /**
-     * @param int  $currency
-     * @param int  $decimal
+     * @param int $currency
+     * @param int $decimal
      * @param null $fraction
      *
      * @return string
@@ -304,6 +308,9 @@ class Es extends Words
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
+
+        //change digit "one" to the short version
+        self::$digits[1] = 'un';
 
         $currencyNames = static::$currencyNames[$currency];
 
@@ -337,6 +344,9 @@ class Es extends Words
                 $ret .= $this->wordSeparator . $currencyNames[1][0];
             }
         }
+
+        //Go back digit "one"
+        self::$digits[1] = 'uno';
 
         return $ret;
     }

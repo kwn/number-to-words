@@ -1,0 +1,75 @@
+version: 2.1
+
+commands:
+  cc-reporter-pre:
+    steps:
+      - run:
+          name: Download Code Climate test reporter
+          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ~/cc-test-reporter
+      - run:
+          name: Make Code Climate test reporter executable
+          command: chmod a+x ~/cc-test-reporter
+      - run:
+          name: Initialise Code Climate test reporter
+          command: ~/cc-test-reporter before-build
+  cc-reporter-post:
+    steps:
+      - run:
+          name: Send tests result to Code Climate
+          command: ~/cc-test-reporter after-build --exit-code $?
+  install-dependencies:
+    parameters:
+      xdebug_version:
+        type: string
+    steps:
+      - run:
+          name: Install dependencies
+          command: composer install
+      - run:
+          name: Install xdebug
+          command: sudo -E install-php-extensions xdebug-<< parameters.xdebug_version >>
+      - run:
+          name: Enable xdebug
+          command: sudo -E docker-php-ext-enable xdebug
+  build:
+    steps:
+      - run:
+          name: Check coding style (PSR12)
+          command: make phpcs
+      - run:
+          name: Run unit tests
+          command: make phpunit-coverage
+
+jobs:
+  build:
+    parameters:
+      php_version:
+        type: string
+      xdebug_version:
+        type: string
+    docker:
+      - image: cimg/php:<< parameters.php_version >>
+    resource_class: small
+    steps:
+      - checkout
+      - install-dependencies:
+          xdebug_version: << parameters.xdebug_version >>
+      - cc-reporter-pre
+      - build
+      - cc-reporter-post
+
+workflows:
+  ci:
+    jobs:
+      - build:
+          name: build-php-<< matrix.php_version >>
+          matrix:
+            parameters:
+              php_version: ["7.4"]
+              xdebug_version: ["3.1.5"]
+      - build:
+          name: build-php-<< matrix.php_version >>
+          matrix:
+            parameters:
+              php_version: ["8.0", "8.1", "8.2"]
+              xdebug_version: ["stable"]

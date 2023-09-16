@@ -6,10 +6,7 @@ use NumberToWords\Legacy\Numbers\Words;
 
 class DutchNumberTransformer implements NumberTransformer
 {
-    /**
-     * @inheritdoc
-     */
-    public function toWords($number)
+    public function toWords(int $number): string
     {
         $converter = new Words();
 

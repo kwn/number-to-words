@@ -2,13 +2,13 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale\Pt;
 
-use NumberToWords\Legacy\Numbers\Words;
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Legacy\Numbers\Words;
 
 class Br extends Words
 {
-    const LOCALE               = 'pt_BR';
-    const LANGUAGE_NAME        = 'Brazilian Portuguese';
+    const LOCALE = 'pt_BR';
+    const LANGUAGE_NAME = 'Brazilian Portuguese';
     const LANGUAGE_NAME_NATIVE = 'Português Brasileiro';
 
     private $minus = 'negativo';
@@ -55,7 +55,7 @@ class Br extends Words
             'vinte',
             'trinta',
             'quarenta',
-            'cinqüenta',
+            'cinquenta',
             'sessenta',
             'setenta',
             'oitenta',
@@ -268,8 +268,8 @@ class Br extends Words
 
     /**
      * @param string $currency
-     * @param int    $decimal
-     * @param int    $fraction
+     * @param int $decimal
+     * @param int $fraction
      *
      * @return string
      * @throws NumberToWordsException

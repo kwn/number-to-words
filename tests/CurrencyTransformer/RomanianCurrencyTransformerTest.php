@@ -4,12 +4,12 @@ namespace NumberToWords\CurrencyTransformer;
 
 class RomanianCurrencyTransformerTest extends CurrencyTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->currencyTransformer = new RomanianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords()
+    public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'ROL', 'un leu'],

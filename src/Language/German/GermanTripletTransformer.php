@@ -2,31 +2,18 @@
 
 namespace NumberToWords\Language\German;
 
-use NumberToWords\Language\Dictionary;
 use NumberToWords\Language\PowerAwareTripletTransformer;
 
 class GermanTripletTransformer implements PowerAwareTripletTransformer
 {
-    /**
-     * @var Dictionary
-     */
-    private $dictionary;
+    private GermanDictionary $dictionary;
 
-    /**
-     * @param Dictionary $dictionary
-     */
-    public function __construct(Dictionary $dictionary)
+    public function __construct(GermanDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
     }
 
-    /**
-     * @param int $number
-     * @param int $power
-     *
-     * @return string
-     */
-    public function transformToWords($number, $power)
+    public function transformToWords(int $number, int $power): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;

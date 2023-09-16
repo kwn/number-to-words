@@ -4,12 +4,12 @@ namespace NumberToWords\NumberTransformer;
 
 class LatvianNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new LatvianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'nulle'],
@@ -22,11 +22,11 @@ class LatvianNumberTransformerTest extends NumberTransformerTest
             [21, 'divdesmit viens'],
             [90, 'deviņdesmit'],
             [99, 'deviņdesmit deviņi'],
-            [100, 'simts'],
-            [101, 'simts viens'],
-            [111, 'simts vienpadsmit'],
-            [120, 'simts divdesmit'],
-            [121, 'simts divdesmit viens'],
+            [100, 'viens simts'],
+            [101, 'viens simts viens'],
+            [111, 'viens simts vienpadsmit'],
+            [120, 'viens simts divdesmit'],
+            [121, 'viens simts divdesmit viens'],
             [900, 'deviņi simti'],
             [909, 'deviņi simti deviņi'],
             [919, 'deviņi simti deviņpadsmit'],
@@ -48,12 +48,12 @@ class LatvianNumberTransformerTest extends NumberTransformerTest
             [999000999, 'deviņi simti deviņdesmit deviņi miljoni deviņi simti deviņdesmit deviņi'],
             [999999000, 'deviņi simti deviņdesmit deviņi miljoni deviņi simti deviņdesmit deviņi tūkstoši'],
             [999999999, 'deviņi simti deviņdesmit deviņi miljoni deviņi simti deviņdesmit deviņi tūkstoši deviņi simti deviņdesmit deviņi'],
-            [1174315110, 'viens miljards simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts desmit'],
-            [1174315119, 'viens miljards simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts deviņpadsmit'],
-            [15174315110, 'piecpadsmit miljardi simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts desmit'],
-            [35174315119, 'trīsdesmit pieci miljardi simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts deviņpadsmit'],
-            [935174315119, 'deviņi simti trīsdesmit pieci miljardi simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts deviņpadsmit'],
-            [2935174315119, 'divi triljoni deviņi simti trīsdesmit pieci miljardi simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši simts deviņpadsmit'],
+            [1174315110, 'viens miljards viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts desmit'],
+            [1174315119, 'viens miljards viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
+            [15174315110, 'piecpadsmit miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts desmit'],
+            [35174315119, 'trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
+            [935174315119, 'deviņi simti trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
+            [2935174315119, 'divi triljoni deviņi simti trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
         ];
     }
 }

@@ -1,20 +1,18 @@
 <?php
 
-namespace Kwn\NumberToWords\NumberTransformer;
-
-use NumberToWords\NumberTransformer\CzechNumberTransformer;
-use NumberToWords\NumberTransformer\NumberTransformerTest;
+namespace NumberToWords\NumberTransformer;
 
 class CzechNumberTransformerTest extends NumberTransformerTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->numberTransformer = new CzechNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords()
+    public function providerItConvertsNumbersToWords(): array
     {
         return [
+            [-100, 'mínus sto'],
             [0, 'nula'],
             [1, 'jedna'],
             [2, 'dva'],
@@ -105,16 +103,16 @@ class CzechNumberTransformerTest extends NumberTransformerTest
             [87, 'osmdesát sedm'],
             [88, 'osmdesát osm'],
             [89, 'osmdesát devět'],
-            [90, 'devádesát'],
-            [91, 'devádesát jedna'],
-            [92, 'devádesát dva'],
-            [93, 'devádesát tři'],
-            [94, 'devádesát čtyři'],
-            [95, 'devádesát pět'],
-            [96, 'devádesát šest'],
-            [97, 'devádesát sedm'],
-            [98, 'devádesát osm'],
-            [99, 'devádesát devět'],
+            [90, 'devadesát'],
+            [91, 'devadesát jedna'],
+            [92, 'devadesát dva'],
+            [93, 'devadesát tři'],
+            [94, 'devadesát čtyři'],
+            [95, 'devadesát pět'],
+            [96, 'devadesát šest'],
+            [97, 'devadesát sedm'],
+            [98, 'devadesát osm'],
+            [99, 'devadesát devět'],
             [100, 'sto'],
             [101, 'sto jedna'],
             [102, 'sto dva'],
@@ -153,7 +151,6 @@ class CzechNumberTransformerTest extends NumberTransformerTest
             [6000000, 'šest miliónů'],
             [7000000, 'sedm miliónů'],
             [1000000000, 'miliarda'],
-            [-100, 'mínus sto'],
         ];
     }
 }
