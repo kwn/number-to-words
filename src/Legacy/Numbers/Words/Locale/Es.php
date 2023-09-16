@@ -79,6 +79,7 @@ class Es extends Words
         'MTL' => [['lira maltesa'], ['céntimo']],
         'MXN' => [['peso'], ['centavo']],
         'NOK' => [['norwegian krone'], ['oere']],
+        'PAB' => [['balboa', 'balboas'], ['centavo', 'centavos']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'ROL' => [['romanian leu'], ['bani']],
         'RUB' => [['rublo ruso', 'rublos rusos'], ['kopek']],
