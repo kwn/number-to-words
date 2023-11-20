@@ -103,7 +103,7 @@ class PolishDictionary implements Dictionary
         'USD' => [['dolar', 'dolary', 'dolarów'], ['cent', 'centy', 'centów']],
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']],
-        'UZS' => [['sum'], ['so\'m']],
+        'UZS' => [['sum'], ['tiyin']],
     ];
 
     public function getMinus(): string

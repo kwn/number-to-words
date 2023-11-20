@@ -116,7 +116,7 @@ class SlovakDictionary implements Dictionary
         'USD' => [['dolár', 'doláre', 'dolárov'], ['cent', 'centy', 'centov']],
         'YUM' => [['dinar', 'dinary', 'dinarov'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randov'], ['cent', 'centy', 'centov']],
-        'UZS' => [['sum'], ['so\'m']],
+        'UZS' => [['sum'], ['tiyin']],
     ];
 
     public function getMinus(): string

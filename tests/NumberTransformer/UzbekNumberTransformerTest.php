@@ -6,7 +6,7 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
 {
     protected function setUp(): void
     {
-        $this->numberTransformer = new EnglishNumberTransformer();
+        $this->numberTransformer = new UzbekNumberTransformer();
     }
 
     public function providerItConvertsNumbersToWords(): array
@@ -43,7 +43,7 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
             [81, 'sakson bir'],
             [90, 'to\'qson'],
             [99, 'to\'qson to\'qqiz'],
-            [100, 'yuz'],
+            [100, 'bir yuz'],
             [101, 'bir yuz bir'],
             [102, 'bir yuz ikki'],
             [111, 'bir yuz o\'n bir'],
@@ -57,7 +57,7 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
             [300, 'uch yuz'],
             [356, 'uch yuz ellik olti'],
             [410, 'to\'rt yuz o\'n'],
-            [434, 'to\'rt yuz to\'rt'],
+            [434, 'to\'rt yuz o\'ttiz to\'rt'],
             [500, 'besh yuz'],
             [578, 'besh yuz yetmish sakkiz'],
             [660, 'olti yuz oltmish'],
@@ -75,7 +75,7 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
             [1010, 'bir ming o\'n'],
             [1015, 'bir ming o\'n besh'],
             [1097, 'bir ming to\'qson yetti'],
-            [1100, 'bir ming yuz'],
+            [1100, 'bir ming bir yuz'],
             [1104, 'bir ming bir yuz to\'rt'],
             [1111, 'bir ming bir yuz o\'n bir'],
             [1243, 'bir ming ikki yuz qirq uch'],
@@ -97,7 +97,7 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
             [21000, 'yigirma bir ming'],
             [21512, 'yigirma bir ming besh yuz o\'n ikki'],
             [90000, 'to\'qson ming'],
-            [92100, 'to\'qson ikki ming yuz'],
+            [92100, 'to\'qson ikki ming bir yuz'],
             [212112, 'ikki yuz o\'n ikki ming bir yuz o\'n ikki'],
             [720018, 'yetti yuz yigirma ming o\'n sakkiz'],
             [999000, 'to\'qqiz yuz to\'qson to\'qqiz ming'],
@@ -117,8 +117,8 @@ class UzbekNumberTransformerTest extends NumberTransformerTest
             [1800000006, 'bir milliard sakkiz yuz million olti'],
             [15174315119, 'o\'n besh milliard bir yuz yetmish to\'rt million uch yuz o\'n besh ming bir yuz o\'n to\'qqiz'],
             [35174315119, 'o\'ttiz besh milliard bir yuz yetmish to\'rt million uch yuz o\'n besh ming bir yuz o\'n to\'qqiz'],
-            [935174315119, 'to\'qqiz milliard uch yuz ellik bir million yetti yuz qirq uch ming bir yuz ellik bir dollar o\'n to\'qqiz'],
-            [2935174315119, 'yigirma to\'qqiz milliard uch yuz ellik bir million yetti yuz qirq uch ming bir yuz ellik bir dollar o\'n to\'qqiz'],
+            [935174315119, 'to\'qqiz yuz o\'ttiz besh milliard bir yuz yetmish to\'rt million uch yuz o\'n besh ming bir yuz o\'n to\'qqiz'],
+            [2935174315642, 'ikki trillion to\'qqiz yuz o\'ttiz besh milliard bir yuz yetmish to\'rt million uch yuz o\'n besh ming olti yuz qirq ikki']
         ];
     }
 }
