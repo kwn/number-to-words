@@ -116,7 +116,8 @@ class GermanDictionary implements Dictionary
         'TRY' => [['türkische Lira'], ['Kuruş']],
         'UAH' => [['Hrywna'], ['Kopeke','Kopeken']],
         'USD' => [['US Dollar'], ['cent']],
-        'ZAR' => [['Rand'], ['cent']]
+        'ZAR' => [['Rand'], ['cent']],
+        'UZS' => [['sum'], ['tiyin']],
     ];
 
     public static string $and = 'und';

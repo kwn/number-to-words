@@ -1,48 +1,47 @@
 <?php
 
-namespace NumberToWords\Language\English;
+namespace NumberToWords\Language\Uzbek;
 
 use NumberToWords\Language\Dictionary;
 
-class EnglishDictionary implements Dictionary
+class UzbekDictionary implements Dictionary
 {
-    public const LOCALE = 'en_US';
-    public const LANGUAGE_NAME = 'American English';
-    public const LANGUAGE_NAME_NATIVE = 'American English';
+    public const LOCALE = 'uz';
+    public const LANGUAGE_NAME = 'Uzbek';
+    public const LANGUAGE_NAME_NATIVE = 'O\'zbek';
 
-    private static array $units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    private static array $units = ['', 'bir', 'ikki', 'uch', 'to\'rt', 'besh', 'olti', 'yetti', 'sakkiz', 'to\'qqiz'];
 
     private static array $teens = [
-        'ten',
-        'eleven',
-        'twelve',
-        'thirteen',
-        'fourteen',
-        'fifteen',
-        'sixteen',
-        'seventeen',
-        'eighteen',
-        'nineteen'
+        'o\'n',
+        'o\'n bir',
+        'o\'n ikki',
+        'o\'n uch',
+        'o\'n to\'rt',
+        'o\'n besh',
+        'o\'n olti',
+        'o\'n yetti',
+        'o\'n sakkiz',
+        'o\'n to\'qqiz'
     ];
 
     private static array $tens = [
         '',
-        'ten',
-        'twenty',
-        'thirty',
-        'forty',
-        'fifty',
-        'sixty',
-        'seventy',
-        'eighty',
-        'ninety'
+        'o\'n',
+        'yigirma',
+        'o\'ttiz',
+        'qirq',
+        'ellik',
+        'oltmish',
+        'yetmish',
+        'sakson',
+        'to\'qson'
     ];
 
-    private static string $hundred = 'hundred';
+    private static string $hundred = 'yuz';
 
     public static array $currencyNames = [
         'ALL' => [['lek'], ['qindarka']],
-        'AED' => [['Dirham'], ['Fils']],
         'AUD' => [['Australian dollar'], ['cent']],
         'BAM' => [['convertible marka'], ['fenig']],
         'BGN' => [['lev'], ['stotinka']],
@@ -55,8 +54,7 @@ class EnglishDictionary implements Dictionary
         'DKK' => [['Danish krone'], ['ore']],
         'DZD' => [['dinar'], ['cent']],
         'EEK' => [['kroon'], ['senti']],
-        'EGP' => [['Egyptian Pound'], ['piastre']],
-        'EUR' => [['euro'], ['euro-cent']],
+        'EUR' => [['yevro'], ['sent']],
         'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
         'HKD' => [['Hong Kong dollar'], ['cent']],
         'HRK' => [['Croatian kuna'], ['lipa']],
@@ -76,7 +74,7 @@ class EnglishDictionary implements Dictionary
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'ROL' => [['Romanian leu'], ['bani']],
-        'RUB' => [['Russian Federation rouble'], ['kopiejka']],
+        'RUB' => [['rubl'], ['kopeyka']],
         'SAR' => [['Riyal'], ['Halalah']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['Tolar'], ['stotinia']],
@@ -85,19 +83,19 @@ class EnglishDictionary implements Dictionary
         'TND' => [['dinar'], ['millime']],
         'TRL' => [['lira'], ['kuruş']],
         'TRY' => [['lira'], ['kuruş']],
-        'UAH' => [['hryvna'], ['cent']],
-        'USD' => [['dollar'], ['cent']],
+        'UAH' => [['grivna'], ['sent']],
+        'USD' => [['dollar'], ['sent']],
+        'UZS' => [['sum'], ['tiyin']],
         'XAF' => [['CFA franc'], ['cent']],
         'XOF' => [['CFA franc'], ['cent']],
         'XPF' => [['CFP franc'], ['centime']],
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
-        'UZS' => [['sum'], ['tiyin']],
     ];
 
     public function getZero(): string
     {
-        return 'zero';
+        return 'nol';
     }
 
     public function getMinus(): string
