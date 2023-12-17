@@ -17,7 +17,7 @@ class HebrewNounGenderInflector
         $units = $number % 10;
         $tens = ((int) ($number / 10)) % 10;
 
-        if ($number <= 10) {
+        if ($number > 1 && $number <= 10) {
             return ($exponentBetweenTenToTeweny[$number] ?? false)
                 ?  $exponentBetweenTenToTeweny[$number] . ' ' . $plural
                 : $plural;
