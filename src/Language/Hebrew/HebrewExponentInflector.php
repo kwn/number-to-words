@@ -59,7 +59,6 @@ class HebrewExponentInflector implements ExponentInflector
      */
     public function inflectExponent($number, $power): string
     {
-        var_dump($number, $power);
         if ($power === 0) {
             return '';
         }
