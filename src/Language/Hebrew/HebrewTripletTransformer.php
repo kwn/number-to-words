@@ -19,7 +19,7 @@ class HebrewTripletTransformer implements PowerAwareTripletTransformer
      * @return string
      */
     public function transformToWords($number, $power): string
-    {    
+    {
 
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -56,56 +56,20 @@ class HebrewTripletTransformer implements PowerAwareTripletTransformer
                 if ($units > 0) {
                     $words[] = $this->dictionary->getCorrespondingUnit($units);
                 }
-                if($units === 0 && $tens === 1) {
+                if ($units === 0 && $tens === 1) {
                     $words[] = $this->dictionary->getCorrespondingTen($tens);
                 }
-            } elseif((!$power && !$tens) || (!$tens && $units && $exPower)) {
+            } elseif ((!$power && !$tens) || (!$tens && $units && $exPower)) {
                 $words[] = $this->dictionary->getCorrespondingUnit($units);
-            } elseif($tens) { 
+            } elseif ($tens) {
                 $words[] = $this->dictionary->getCorrespondingTen($tens);
             }
         }
 
-        if(count($words) === 1 && $exPower) {
+        if (count($words) === 1 && $exPower) {
             return 'ו' . $words[0];
         }
 
         return implode(' ו', $words);
     }
-
-    // public function transformToWords(int $number): string
-    // {
-    //     $units = $number % 10;
-    //     $tens = (int) ($number / 10) % 10;
-    //     $hundreds = (int) ($number / 100) % 10;
-    //     $words = [];
-
-    //     if ($hundreds > 0) {
-    //         $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
-    //     }
-
-    //     if ($tens !== 0 || $units !== 0) {
-    //         $words[] = $this->getSubHundred($tens, $units);
-    //     }
-
-    //     return implode(' ', $words);
-    // }
-
-    // private function getSubHundred($tens, $units): string
-    // {
-    //     $words = [];
-
-    //     if ($tens === 1) {
-    //         $words[] = $this->dictionary->getCorrespondingTeen($units);
-    //     } else {
-    //         if ($tens > 0) {
-    //             $words[] = $this->dictionary->getCorrespondingTen($tens);
-    //         }
-    //         if ($units > 0) {
-    //             $words[] = $this->dictionary->getCorrespondingUnit($units);
-    //         }
-    //     }
-
-    //     return implode(' ו', $words);
-    // }
 }

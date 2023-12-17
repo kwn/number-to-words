@@ -24,9 +24,9 @@ class HebrewExponentInflector implements ExponentInflector
     ];
 
     private static $exponentBetweenTenToTeweny = [
-        '', 
-        'אלף', 
-        'אלפיים', 
+        '',
+        'אלף',
+        'אלפיים',
         'שלושת',
         'ארבעת',
         'חמשת',
@@ -60,7 +60,9 @@ class HebrewExponentInflector implements ExponentInflector
     public function inflectExponent($number, $power): string
     {
         var_dump($number, $power);
-        if($power === 0) return '';
+        if ($power === 0) {
+            return '';
+        }
 
         return $this->inflector->inflectNounByNumber(
             $number,

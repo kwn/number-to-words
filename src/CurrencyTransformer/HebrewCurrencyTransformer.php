@@ -46,7 +46,7 @@ class HebrewCurrencyTransformer implements CurrencyTransformer
         $currencyNames = HebrewDictionary::$currencyNames[$currency];
 
         $return = trim($numberTransformer->toWords($decimal));
-        
+
         $level = ($decimal === 1) ? 0 : 1;
 
         if ($level > 0) {
