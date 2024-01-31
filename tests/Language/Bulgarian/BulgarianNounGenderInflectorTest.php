@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class BulgarianNounGenderInflectorTest extends TestCase
 {
-    private static array $nouns = ['лев', 'лева', 'лева'];
+    private static array $nouns = ['лев', 'лева'];
 
     /**
      * @dataProvider providerItInflectsNounsByNumbers
@@ -15,7 +15,7 @@ class BulgarianNounGenderInflectorTest extends TestCase
     {
         $inflector = new BulgarianNounGenderInflector();
 
-        $inflected = $inflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[2]);
+        $inflected = $inflector->inflectNounByNumber($number, self::$nouns[0], self::$nouns[1], self::$nouns[1]);
 
         self::assertEquals($expectedNoun, $inflected, "Incorrect value: '$number $inflected'!");
     }
