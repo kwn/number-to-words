@@ -6,7 +6,7 @@ class BulgarianCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void
     {
-        $this->currencyTransformer = new SerbianCurrencyTransformer();
+        $this->currencyTransformer = new BulgarianCurrencyTransformer();
     }
 
     public function providerItConvertsMoneyAmountToWords(): array
