@@ -28,7 +28,6 @@ class BulgarianDictionary implements Dictionary
         'осем',
         'девет',
     ];
-    protected static array $thousandUnits = ['', '', 'двe', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
 
     protected static array $teens = [
         'десет',
