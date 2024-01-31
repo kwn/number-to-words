@@ -9,7 +9,7 @@ class BulgarianNounGenderInflector
         if ($number === 1) {
             return $singular;
         }
-        
+
         return $plural;
     }
 }
