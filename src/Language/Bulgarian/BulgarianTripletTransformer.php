@@ -37,10 +37,8 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer
         }
 
         if ($units > 0 && $tens !== 1) {
-            //Skip "one" in one thousand because in Bulgarian it's not used
-            if ($power == 1 && $units == 1) {
-
-            } else {
+            // Skip "one" in one thousand because in Bulgarian it's not used
+            if ($power <> 1 && $units <> 1) {
                 if ($units > 0 && ($hundreds > 0 || $tens > 0)) {
                     $words[] = BulgarianDictionary::$and;
                 }
