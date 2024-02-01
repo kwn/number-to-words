@@ -82,7 +82,7 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Azerbaijani          | az        | +      | +        |
 | Belgian French       | fr_BE     | +      | -        |
 | Brazilian Portuguese | pt_BR     | +      | +        |
-| Bulgarian            | bg        | +      | -        |
+| Bulgarian            | bg        | +      | +        |
 | Czech                | cs        | +      | -        |
 | Danish               | dk        | +      | +        |
 | Dutch                | nl        | +      | -        |
