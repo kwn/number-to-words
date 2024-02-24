@@ -71,5 +71,5 @@ workflows:
           name: build-php-<< matrix.php_version >>
           matrix:
             parameters:
-              php_version: ["8.0", "8.1", "8.2"]
+              php_version: ["8.0", "8.1", "8.2", "8.3"]
               xdebug_version: ["stable"]

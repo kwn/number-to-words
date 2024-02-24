@@ -123,7 +123,7 @@ class GermanDictionary implements Dictionary
 
     public function getMinus(): string
     {
-        return 'Minus';
+        return 'minus';
     }
 
     public function getZero(): string
