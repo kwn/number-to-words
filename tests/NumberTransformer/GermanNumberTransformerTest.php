@@ -12,6 +12,8 @@ class GermanNumberTransformerTest extends NumberTransformerTest
     public function providerItConvertsNumbersToWords(): array
     {
         return [
+            [-287, 'minus zweihundertsiebenundachtzig'],
+            [-10, 'minus zehn'],
             [0, 'null'],
             [1, 'eins'],
             [2, 'zwei'],

@@ -27,9 +27,10 @@ class GenericNumberTransformer implements NumberTransformer
         }
 
         $words = [];
+        $minus = '';
 
         if ($number < 0) {
-            $words[] = $this->dictionary->getMinus();
+            $minus = $this->dictionary->getMinus();
             $number *= -1;
         }
 
@@ -37,7 +38,7 @@ class GenericNumberTransformer implements NumberTransformer
             $words = array_merge($words, $this->getWordsBySplittingIntoTriplets($number));
         }
 
-        return trim(implode($this->wordsSeparator, $words));
+        return trim(sprintf('%s %s', $minus, implode($this->wordsSeparator, $words)));
     }
 
     private function getWordsBySplittingIntoTriplets(int $number): array
