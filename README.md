@@ -73,6 +73,33 @@ NumberToWords::transformCurrency('en', 5099, 'USD'); // outputs "fifty dollars n
 
 Note: The Currency Transformer within this library processes integers; ensure your input amounts are in whole numbers by multiplying any float values by 100 before transformation. For instance, transform 45.67 by using 4567 as the input for accurate currency conversion.
 
+## Transformer Options
+
+To use options such as, for example, the forced inference of the fractions, you need to initialize the options and pass them to the class constructor:
+
+```php
+use NumberToWords\NumberToWords;
+use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
+
+// create a new options transformer
+$options = new CurrencyTransformerOptions();
+
+// set options
+$options->setShowDecimalIfZero(true);
+$options->showFractionIfZero(true);
+
+// create the number to words "manager" class
+$numberToWords = new NumberToWords();
+
+// build a new number transformer using the RFC 3066 language identifier
+$numberTransformer = $numberToWords->getNumberTransformer('en');
+```
+
+Then it can be used passing in numeric values for amount and ISO 4217 currency identifier to the `toWords()` method:
+```php
+$currencyTransformer->toWords(5000, 'USD', $options); // outputs "fifty dollars ninety nine and zero cents"
+```
+
 ## Available locale
 
 | Language             | Identifier | Number | Currency |
