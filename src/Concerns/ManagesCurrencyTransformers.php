@@ -23,6 +23,7 @@ trait ManagesCurrencyTransformers
         'ka' => Transformer\GeorgianCurrencyTransformer::class,
         'lt' => Transformer\LithuanianCurrencyTransformer::class,
         'lv' => Transformer\LatvianCurrencyTransformer::class,
+        'ms' => Transformer\MalaysianCurrencyTransformer::class,
         'pl' => Transformer\PolishCurrencyTransformer::class,
         'pt_BR' => Transformer\PortugueseBrazilianCurrencyTransformer::class,
         'ro' => Transformer\RomanianCurrencyTransformer::class,
