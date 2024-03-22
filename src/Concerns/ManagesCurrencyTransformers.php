@@ -19,6 +19,7 @@ trait ManagesCurrencyTransformers
         'es' => Transformer\SpanishCurrencyTransformer::class,
         'fr' => Transformer\FrenchCurrencyTransformer::class,
         'hu' => Transformer\HungarianCurrencyTransformer::class,
+        'id' => Transformer\IndonesianCurrencyTransformer::class,
         'ka' => Transformer\GeorgianCurrencyTransformer::class,
         'lt' => Transformer\LithuanianCurrencyTransformer::class,
         'lv' => Transformer\LatvianCurrencyTransformer::class,
