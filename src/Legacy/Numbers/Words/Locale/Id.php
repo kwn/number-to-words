@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Id extends Words
