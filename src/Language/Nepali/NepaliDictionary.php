@@ -93,7 +93,7 @@ class NepaliDictionary implements Dictionary
         'YUM' => [['dinar'], ['para']],
         'ZAR' => [['rand'], ['cent']],
         'UZS' => [['sum'], ['tiyin']],
-        'NPR' => [['rupees'], ['paisa']],
+        'NPR' => [['rupee'], ['paisa']],
     ];
 
     public function getZero(): string
