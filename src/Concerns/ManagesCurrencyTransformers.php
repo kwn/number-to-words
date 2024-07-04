@@ -33,6 +33,7 @@ trait ManagesCurrencyTransformers
         'ua' => Transformer\UkrainianCurrencyTransformer::class,
         'uz' => Transformer\UzbekCurrencyTransformer::class,
         'yo' => Transformer\YorubaCurrencyTransformer::class,
+        'ne' => Transformer\NepaliCurrencyTransformer::class,
     ];
 
     /**
