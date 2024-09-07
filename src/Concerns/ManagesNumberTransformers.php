@@ -44,6 +44,7 @@ trait ManagesNumberTransformers
         'ua' => Transformer\UkrainianNumberTransformer::class,
         'uz' => Transformer\UzbekNumberTransformer::class,
         'yo' => Transformer\YorubaNumberTransformer::class,
+        'sw' => Transformer\SwahiliNumberTransformer::class,
     ];
 
     /**
