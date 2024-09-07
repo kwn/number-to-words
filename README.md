@@ -112,6 +112,7 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Ukrainian            | ua        | +      | +        |
 | Uzbek                | uz        | +      | +        |
 | Yoruba               | yo        | +      | +        |
+| Kiswahili            | sw        | +      | +        |
 
 ## Contributors
 
