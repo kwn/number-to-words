@@ -41,14 +41,14 @@ class Sw extends Words
         12 => 'trilioni',
     ];
 
-    private $zero = 'sufuri';
+    private $zero = 'sifuri';
     private $and = 'na';
     private $wordSeparator = ' ';
     private $minus = 'kasoro';
  
     // Currency names 
     private static $currencyNames = [
-        'KES' => [['Shilingi', 'Shilingi'], ['senti', 'senti']],
+        'KES' => [['Shilingi ya Kenya', 'Shilingi za Kenya'], ['senti', 'senti']],
         'USD' => [['Dola ya Marekani', 'Dola za Marekani'], ['senti', 'senti']],
         'EUR' => [['Yuro', 'Yuro'], ['senti', 'senti']],
         'GBP' => [['Pauni ya Uingereza', 'Pauni za Uingereza'], ['senti', 'senti']],
@@ -219,7 +219,7 @@ class Sw extends Words
         }
 
         $currencyNames = static::$currencyNames[$currency];
-        $return = trim($this->toWords($decimal)) . $this->wordSeparator;
+        $return = trim($this->toWords($decimal));
 
         // Check if singular and plural forms are available
         $level = ($decimal === 1) ? 0 : 1;
