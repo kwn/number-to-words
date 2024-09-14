@@ -184,8 +184,8 @@ class IndonesianNumberTransformerTest extends NumberTransformerTest
             [7654321, 'tujuh juta enam ratus lima puluh empat ribu tiga ratus dua puluh satu'],
             [8000000, 'delapan juta'],
             [9000000, 'sembilan juta'],
-            [1000000000, 'satu milyar'],
-            [1000000001, 'satu milyar satu'],
+            [1000000000, 'satu miliar'],
+            [1000000001, 'satu miliar satu'],
         ];
     }
 }
