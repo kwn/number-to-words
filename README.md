@@ -106,13 +106,13 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Slovak               | sk        | +      | +        |
 | Spanish              | es        | +      | +        |
 | Russian              | ru        | +      | +        |
+| Swahili              | sw        | +      | +        |
 | Swedish              | sv        | +      | -        |
 | Turkish              | tr        | +      | +        |
 | Turkmen              | tk        | +      | +        |
 | Ukrainian            | ua        | +      | +        |
 | Uzbek                | uz        | +      | +        |
 | Yoruba               | yo        | +      | +        |
-| Swahili              | sw        | +      | +        |
 
 ## Contributors
 
