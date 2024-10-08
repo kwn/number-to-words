@@ -75,7 +75,7 @@ class EnglishDictionary implements Dictionary
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SAR' => [['Riyal'], ['Halalah']],
         'SEK' => [['Swedish krona'], ['oere']],
