@@ -5,9 +5,12 @@ namespace NumberToWords\Concerns;
 use NumberToWords\CurrencyTransformer as Transformer;
 use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\Exception\NumberToWordsException;
 
 trait ManagesCurrencyTransformers
 {
+    use ManagesLocaleAlias;
+
     private array $currencyTransformers = [
         'ar' => Transformer\ArabicCurrencyTransformer::class,
         'al' => Transformer\AlbanianCurrencyTransformer::class,
@@ -41,6 +44,7 @@ trait ManagesCurrencyTransformers
      */
     public function getCurrencyTransformer(string $language): CurrencyTransformer
     {
+        $language = $this->resolveAlias($language);
         if (!array_key_exists($language, $this->currencyTransformers)) {
             throw new InvalidArgumentException(sprintf(
                 'Currency transformer for "%s" language is not implemented.',
@@ -51,8 +55,15 @@ trait ManagesCurrencyTransformers
         return new $this->currencyTransformers[$language]();
     }
 
+    /**
+     * @throws NumberToWordsException
+     * @throws InvalidArgumentException
+     */
     public static function transformCurrency(string $language, int $number, string $currency): string
     {
-        return (new static())->getCurrencyTransformer($language)->toWords($number, $currency);
+        $static = new static();
+        $language = $static->resolveAlias($language);
+
+        return $static->getCurrencyTransformer($language)->toWords($number, $currency);
     }
 }
