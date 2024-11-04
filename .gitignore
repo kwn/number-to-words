@@ -3,3 +3,4 @@
 /build/
 /composer.lock
 *.cache
+test.php

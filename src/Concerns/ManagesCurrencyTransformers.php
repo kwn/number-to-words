@@ -31,6 +31,7 @@ trait ManagesCurrencyTransformers
         'ru' => Transformer\RussianCurrencyTransformer::class,
         'sk' => Transformer\SlovakCurrencyTransformer::class,
         'sr' => Transformer\SerbianCurrencyTransformer::class,
+        'sw' => Transformer\SwahiliCurrencyTransformer::class,
         'tk' => Transformer\TurkmenCurrencyTransformer::class,
         'tr' => Transformer\TurkishCurrencyTransformer::class,
         'ua' => Transformer\UkrainianCurrencyTransformer::class,
