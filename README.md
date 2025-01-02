@@ -75,43 +75,44 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 
 ## Available locale
 
-| Language             | Identifier | Number | Currency |
-|----------------------|-----------| ------ | -------- |
-| Albanian             | al        | +      | +        |
-| Arabic               | ar        | +      | +        |
-| Azerbaijani          | az        | +      | +        |
-| Belgian French       | fr_BE     | +      | -        |
-| Brazilian Portuguese | pt_BR     | +      | +        |
-| Bulgarian            | bg        | +      | +        |
-| Czech                | cs        | +      | -        |
-| Danish               | dk        | +      | +        |
-| Dutch                | nl        | +      | -        |
-| English              | en        | +      | +        |
-| Estonian             | et        | +      | -        |
-| Georgian             | ka        | +      | +        |
-| German               | de        | +      | +        |
-| French               | fr        | +      | +        |
-| Hungarian            | hu        | +      | +        |
-| Indonesian           | id        | +      | +        |
-| Italian              | it        | +      | -        |
-| Kurdish              | ku        | +      | -        |
-| Lithuanian           | lt        | +      | +        |
-| Latvian              | lv        | +      | +        |
-| Macedonian           | mk        | +      | -        |
-| Malay                | ms        | +      | +        |
-| Persian              | fa        | +      | -        |
-| Polish               | pl        | +      | +        |
-| Romanian             | ro        | +      | +        |
-| Serbian              | sr        | +      | +        |
-| Slovak               | sk        | +      | +        |
-| Spanish              | es        | +      | +        |
-| Russian              | ru        | +      | +        |
-| Swedish              | sv        | +      | -        |
-| Turkish              | tr        | +      | +        |
-| Turkmen              | tk        | +      | +        |
-| Ukrainian            | ua        | +      | +        |
-| Uzbek                | uz        | +      | +        |
-| Yoruba               | yo        | +      | +        |
+| Language             | Identifier | Number | Currency | Alias |
+|----------------------|------------| ------ | -------- |-------|
+| Albanian             | al         | +      | +        |       |
+| Arabic               | ar         | +      | +        |       |
+| Azerbaijani          | az         | +      | +        |       |
+| Belgian French       | fr_BE      | +      | -        |       |
+| Brazilian Portuguese | pt_BR      | +      | +        |       |
+| Bulgarian            | bg         | +      | +        |       |
+| Czech                | cs         | +      | -        |       |
+| Danish               | dk         | +      | +        |       |
+| Dutch                | nl         | +      | -        |       |
+| English              | en         | +      | +        |       |
+| Estonian             | et         | +      | -        |       |
+| Georgian             | ka         | +      | +        |       |
+| German               | de         | +      | +        |       |
+| French               | fr         | +      | +        | fr_FR |
+| Hungarian            | hu         | +      | +        |       |
+| Indonesian           | id         | +      | +        |       |
+| Italian              | it         | +      | -        |       |
+| Kurdish              | ku         | +      | -        |       |
+| Lithuanian           | lt         | +      | +        |       |
+| Latvian              | lv         | +      | +        |       |
+| Macedonian           | mk         | +      | -        |       |
+| Malay                | ms         | +      | +        |       |
+| Persian              | fa         | +      | -        |       |
+| Polish               | pl         | +      | +        |       |
+| Romanian             | ro         | +      | +        |       |
+| Serbian              | sr         | +      | +        |       |
+| Slovak               | sk         | +      | +        |       |
+| Spanish              | es         | +      | +        |       |
+| Russian              | ru         | +      | +        |       |
+| Swahili              | sw         | +      | +        |       |
+| Swedish              | sv         | +      | -        |       |
+| Turkish              | tr         | +      | +        |       |
+| Turkmen              | tk         | +      | +        |       |
+| Ukrainian            | ua         | +      | +        |       |
+| Uzbek                | uz         | +      | +        |       |
+| Yoruba               | yo         | +      | +        |       |
 
 ## Contributors
 

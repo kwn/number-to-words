@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Legacy\Numbers\Words\Locale;
 
+use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Legacy\Numbers\Words;
 
 class Id extends Words
@@ -16,16 +17,16 @@ class Id extends Words
         0 => [''],
         3 => ['ribu'],
         6 => ['juta'],
-        9 => ['milyar'],
-        12 => ['trilyun'],
-        24 => ['quadrillion'],
-        30 => ['quintillion'],
-        36 => ['sextillion'],
-        42 => ['septillion'],
-        48 => ['octillion'],
-        54 => ['nonillion'],
-        60 => ['decillion'],
-        66 => ['undecillion'],
+        9 => ['miliar'],
+        12 => ['triliun'],
+        24 => ['kuadriliun'],
+        30 => ['kuintiliun'],
+        36 => ['sekstiliun'],
+        42 => ['septiliun'],
+        48 => ['oktiliun'],
+        54 => ['noniliun'],
+        60 => ['desiliun'],
+        66 => ['undesiliun'],
     ];
 
     private static $digits = [
