@@ -15,9 +15,8 @@ class BulgarianDictionary implements Dictionary
     /** Token to separate words in triplets and chunks in final string */
     protected string $separator = " ";
 
-    protected static array $units = ['', 'един', 'два', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
+    protected static array $units = ['един', 'два', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
     protected static array $unitsFemale = [
-        '',
         'една',
         'две',
         'три',
