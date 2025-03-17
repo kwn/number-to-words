@@ -42,7 +42,11 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer, Gramm
         }
 
         if ($units > 0 && $tens !== 1) {
-            // Skip "one" in one thousand because in Bulgarian it's not used
+            /**
+             * Handles one quantity of a thousand by omitting the quantifier (one) to comply with Bulgarian grammar
+             * Example #1: 1001345 => един милион хиляда триста четиридесет и пет лева и нула стотинки
+             * Example #2: 1002345 => един милион две хиляди триста четиридесет и пет лева и нула стотинки
+             */
             if ($power == 1 && $units === 1 && $hundreds === 0 && $tens === 0) {
                 return null;
             } else {
