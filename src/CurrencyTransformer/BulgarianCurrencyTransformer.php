@@ -97,7 +97,7 @@ class BulgarianCurrencyTransformer implements CurrencyTransformer
         } else {
             $words[] = $dictionary->getZero();
             $words[] =
-                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR];
+                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL];
         }
 
         return implode(' ', $words);
