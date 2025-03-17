@@ -6,31 +6,6 @@ use NumberToWords\Language\ExponentInflector;
 
 class BulgarianExponentInflector implements ExponentInflector
 {
-    protected static array $exponent = [
-        ['', ''],
-        ['хиляда', 'хиляди'],
-        ['милион', 'милиона'],
-        ['милиард', 'милиарда'],
-        ['трилион', 'трилиона'],
-        ['квадрилион', 'квадрилиона'],
-        ['квинтилион', 'квинтилиона'],
-        ['секстилион', 'секстилиона'],
-        ['септилион', 'септилиона'],
-        ['октилион', 'октилиона'],
-        ['ноналион', 'ноналиона'],
-        ['декалион', 'декалиона'],
-        ['ундекалион', 'ундекалиона'],
-        ['дуодекалион', 'дуодекалиона'],
-        ['тредекалион', 'тредекалиона'],
-        ['кватордекалион', 'кватордекалиона'],
-        ['квинтдекалион', 'квинтдекалиона'],
-        ['сексдекалион', 'сексдекалиона'],
-        ['септдекалион', 'септдекалиона'],
-        ['октодекалион', 'октодекалиона'],
-        ['новемдекалион', 'новемдекалиона'],
-        ['вигинтилион', 'вигинтилион'],
-    ];
-
     protected BulgarianNounGenderInflector $inflector;
 
     public function __construct(BulgarianNounGenderInflector $inflector)
@@ -40,11 +15,18 @@ class BulgarianExponentInflector implements ExponentInflector
 
     public function inflectExponent(int $number, int $power): string
     {
+        if ($power === 0) {
+            return '';
+        }
+
         return $this->inflector->inflectNounByNumber(
             $number,
-            self::$exponent[$power][0],
-            self::$exponent[$power][1],
-            self::$exponent[$power][1],
+            BulgarianDictionary
+                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
+            BulgarianDictionary
+                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+            BulgarianDictionary
+                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
         );
     }
 }

@@ -2,11 +2,17 @@
 
 namespace NumberToWords\Language\Bulgarian;
 
+use NumberToWords\Language\GrammaticalGenderAwareInterface;
+use NumberToWords\Language\GrammaticalGenderAwareTrait;
 use NumberToWords\Language\PowerAwareTripletTransformer;
 
-class BulgarianTripletTransformer implements PowerAwareTripletTransformer
+class BulgarianTripletTransformer implements PowerAwareTripletTransformer, GrammaticalGenderAwareInterface
 {
+
+    use GrammaticalGenderAwareTrait;
+
     protected BulgarianDictionary $dictionary;
+    protected array $currency;
 
     public function __construct(BulgarianDictionary $dictionary)
     {
@@ -21,36 +27,39 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer
         $words = [];
 
         if ($hundreds > 0) {
-            $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
+            $words[] = $this->dictionary->getCorrespondingHundred($hundreds * 100);
         }
 
         if ($hundreds > 0 && $tens > 0 && $units == 0) {
-            $words[] = BulgarianDictionary::$and;
+            $words[] = BulgarianDictionary::GRAMMATICAL_CONJUNCTION_AND;
         }
 
         if ($tens === 1) {
-            $words[] = $this->dictionary->getCorrespondingTeen($units);
+            $words[] = $this->dictionary->getCorrespondingTeen($units + 10);
         }
 
         if ($tens > 1) {
-            $words[] = $this->dictionary->getCorrespondingTen($tens);
+            $words[] = $this->dictionary->getCorrespondingTen($tens * 10);
         }
 
         if ($units > 0 && $tens !== 1) {
             // Skip "one" in one thousand because in Bulgarian it's not used
-            if ($power == 1 && $units == 1) {
+            if ($power == 1 && $units === 1) {
                 return implode($this->dictionary->getSeparator(), $words);
             } else {
-                if ($units > 0 && ($hundreds > 0 || $tens > 0)) {
-                    $words[] = BulgarianDictionary::$and;
+                if ($hundreds > 0 || $tens > 0) {
+                    $words[] = BulgarianDictionary::GRAMMATICAL_CONJUNCTION_AND;
                 }
-                if ($units == 2 && $power == 1) {
-                    $words[] = $this->dictionary->getCorrespondingUnitFemale($units);
-                } else {
-                    $words[] = $this->dictionary->getCorrespondingUnit($units);
-                }
+
+                $words[] = $this->dictionary->getCorrespondingUnitForGrammaticalGender(
+                    $units,
+                    $power === 0
+                        ? $this->getGrammaticalGender()
+                        : BulgarianDictionary::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
+                );
             }
         }
+
         return implode($this->dictionary->getSeparator(), $words);
     }
 }

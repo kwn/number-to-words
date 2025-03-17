@@ -34,7 +34,7 @@ class GenericNumberTransformer implements NumberTransformer
             $number *= -1;
         }
 
-        if (null !== $this->tripletTransformer || null !== $this->powerAwareTripletTransformer) {
+        if ($this->tripletTransformer !== null || $this->powerAwareTripletTransformer !== null) {
             $words = array_merge($words, $this->getWordsBySplittingIntoTriplets($number));
         }
 
@@ -48,28 +48,28 @@ class GenericNumberTransformer implements NumberTransformer
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
-                if (null !== $this->tripletTransformer) {
+                if ($this->tripletTransformer !== null) {
                     $words[] = $this->tripletTransformer->transformToWords($triplet);
                 }
 
-                if (null !== $this->powerAwareTripletTransformer) {
+                if ($this->powerAwareTripletTransformer !== null) {
                     $words[] = $this->powerAwareTripletTransformer->transformToWords(
                         $triplet,
                         count($triplets) - $i - 1
                     );
                 }
 
-                if (null !== $this->exponentInflector) {
+                if ($this->exponentInflector !== null) {
                     $words[] = $this->exponentInflector->inflectExponent($triplet, count($triplets) - $i - 1);
                 }
 
-                if (null !== $this->exponentGetter) {
+                if ($this->exponentGetter !== null) {
                     $words[] = $this->exponentGetter->getExponent(count($triplets) - $i - 1);
                 }
             }
         }
 
-        if (null !== $this->exponentSeparator && count($words) > 2) {
+        if ($this->exponentSeparator !== null && count($words) > 2) {
             for ($i = 2; $i <= count($words) - 2; $i += 2) {
                 array_splice($words, $i++, 0, $this->exponentSeparator);
             }
