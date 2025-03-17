@@ -24,7 +24,7 @@ class ArabicTripletTransformer implements PowerAwareTripletTransformer
      *
      * @return string
      */
-    public function transformToWords($number, $power): string
+    public function transformToWords($number, $power): ?string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;

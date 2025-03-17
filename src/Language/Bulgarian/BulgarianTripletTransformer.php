@@ -18,7 +18,7 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer, Gramm
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power): string
+    public function transformToWords(int $number, int $power): ?string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
@@ -43,8 +43,8 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer, Gramm
 
         if ($units > 0 && $tens !== 1) {
             // Skip "one" in one thousand because in Bulgarian it's not used
-            if ($power == 1 && $units === 1) {
-                return implode($this->dictionary->getSeparator(), $words);
+            if ($power == 1 && $units === 1 && $hundreds === 0 && $tens === 0) {
+                return null;
             } else {
                 if ($hundreds > 0 || $tens > 0) {
                     $words[] = BulgarianDictionary::GRAMMATICAL_CONJUNCTION_AND;

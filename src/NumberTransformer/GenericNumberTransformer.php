@@ -53,10 +53,14 @@ class GenericNumberTransformer implements NumberTransformer
                 }
 
                 if ($this->powerAwareTripletTransformer !== null) {
-                    $words[] = $this->powerAwareTripletTransformer->transformToWords(
+                    $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
                         $triplet,
                         count($triplets) - $i - 1
                     );
+
+                    if ($tripletTransformResult !== null) {
+                        $words[] = $tripletTransformResult;
+                    }
                 }
 
                 if ($this->exponentInflector !== null) {
