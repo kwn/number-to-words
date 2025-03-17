@@ -542,6 +542,7 @@ class BulgarianDictionary implements Dictionary
         'EGP' => [
             self::CURRENCY_WHOLE => [
                 self::GRAMMATICAL_NUMBER_SINGULAR => 'египетска лира',
+                self::GRAMMATICAL_NUMBER_PLURAL => 'египетски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
                     GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
             ],
