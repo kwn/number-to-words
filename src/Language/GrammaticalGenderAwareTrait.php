@@ -6,7 +6,7 @@ trait GrammaticalGenderAwareTrait
 {
     protected string $grammaticalGender;
 
-    public function getGrammaticalGender(): string
+    public function getGrammaticalGender(): int
     {
         return $this->grammaticalGender;
     }
@@ -16,7 +16,7 @@ trait GrammaticalGenderAwareTrait
      *
      * Replace return type after PHP 7.4 support drop
      */
-    public function setGrammaticalGender(string $grammaticalGender): GrammaticalGenderAwareInterface
+    public function setGrammaticalGender(int $grammaticalGender): GrammaticalGenderAwareInterface
     {
         $this->grammaticalGender = $grammaticalGender;
 

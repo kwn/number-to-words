@@ -3,6 +3,7 @@
 namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Grammar\Form;
 use NumberToWords\Language\Bulgarian\BulgarianDictionary;
 use NumberToWords\Language\Bulgarian\BulgarianExponentInflector;
 use NumberToWords\Language\Bulgarian\BulgarianFemaleTripletTransformer;
@@ -69,9 +70,9 @@ class BulgarianCurrencyTransformer implements CurrencyTransformer
         $words[] = $numberTransformerWholePart->toWords($decimal);
         $words[] = $nounGenderInflector->inflectNounByNumber(
             $decimal,
-            $currency[BulgarianDictionary::CURRENCY_WHOLE][BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
-            $currency[BulgarianDictionary::CURRENCY_WHOLE][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
-            $currency[BulgarianDictionary::CURRENCY_WHOLE][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+            $currency[BulgarianDictionary::CURRENCY_WHOLE][Form::SINGULAR],
+            $currency[BulgarianDictionary::CURRENCY_WHOLE][Form::PLURAL],
+            $currency[BulgarianDictionary::CURRENCY_WHOLE][Form::PLURAL],
         );
 
         $words[] = BulgarianDictionary::GRAMMATICAL_CONJUNCTION_AND;
@@ -90,14 +91,14 @@ class BulgarianCurrencyTransformer implements CurrencyTransformer
             $words[] = $numberTransformerFractionPart->toWords($fraction);
             $words[] = $nounGenderInflector->inflectNounByNumber(
                 $fraction,
-                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
-                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
-                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+                $currency[BulgarianDictionary::CURRENCY_FRACTION][Form::SINGULAR],
+                $currency[BulgarianDictionary::CURRENCY_FRACTION][Form::PLURAL],
+                $currency[BulgarianDictionary::CURRENCY_FRACTION][Form::PLURAL],
             );
         } else {
             $words[] = $dictionary->getZero();
             $words[] =
-                $currency[BulgarianDictionary::CURRENCY_FRACTION][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL];
+                $currency[BulgarianDictionary::CURRENCY_FRACTION][Form::PLURAL];
         }
 
         return implode(' ', $words);

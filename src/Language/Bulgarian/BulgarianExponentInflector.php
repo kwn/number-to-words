@@ -2,6 +2,7 @@
 
 namespace NumberToWords\Language\Bulgarian;
 
+use NumberToWords\Grammar\Form;
 use NumberToWords\Language\ExponentInflector;
 
 class BulgarianExponentInflector implements ExponentInflector
@@ -25,17 +26,17 @@ class BulgarianExponentInflector implements ExponentInflector
                 ::ENUMERATIONS
                     [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
                     [$power]
-                    [BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
+                    [Form::SINGULAR],
             BulgarianDictionary
                 ::ENUMERATIONS
                     [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
                     [$power]
-                    [BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+                    [Form::PLURAL],
             BulgarianDictionary
                 ::ENUMERATIONS
                     [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
                     [$power]
-                    [BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+                    [Form::PLURAL],
         );
     }
 }

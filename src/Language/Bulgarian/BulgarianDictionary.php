@@ -2,6 +2,8 @@
 
 namespace NumberToWords\Language\Bulgarian;
 
+use NumberToWords\Grammar\Form;
+use NumberToWords\Grammar\Gender;
 use NumberToWords\Language\Dictionary;
 use NumberToWords\Language\GrammaticalGenderAwareInterface;
 
@@ -35,17 +37,17 @@ class BulgarianDictionary implements Dictionary
             1 => [
                 self::GRAMMATICAL_COUNT => 'едно',
                 self::GRAMMATICAL_QUANTITATIVE_ADJECTIVE => [
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE => 'един',
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE => 'една',
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER => 'едно',
+                    Gender::GENDER_MASCULINE => 'един',
+                    Gender::GENDER_FEMININE => 'една',
+                    Gender::GENDER_NEUTER => 'едно',
                 ],
             ],
             2 => [
                 self::GRAMMATICAL_COUNT => 'две',
                 self::GRAMMATICAL_QUANTITATIVE_ADJECTIVE => [
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE => 'два',
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE => 'две',
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER => 'две',
+                    Gender::GENDER_MASCULINE => 'два',
+                    Gender::GENDER_FEMININE => 'две',
+                    Gender::GENDER_NEUTER => 'две',
                 ],
             ],
             3 => 'три',
@@ -88,256 +90,256 @@ class BulgarianDictionary implements Dictionary
         ],
         self::ENUMERATION_BY_POWERS_OF_A_THOUSAND => [
             -21 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'вигинтилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'вигинтилионни',
+                Form::SINGULAR => 'вигинтилионна',
+                Form::PLURAL => 'вигинтилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -20 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'новемдекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'новемдекалионни',
+                Form::SINGULAR => 'новемдекалионна',
+                Form::PLURAL => 'новемдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -19 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'октодекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'октодекалионни',
+                Form::SINGULAR => 'октодекалионна',
+                Form::PLURAL => 'октодекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -18 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'септдекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'септдекалионни',
+                Form::SINGULAR => 'септдекалионна',
+                Form::PLURAL => 'септдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -17 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сексдекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сексдекалионни',
+                Form::SINGULAR => 'сексдекалионна',
+                Form::PLURAL => 'сексдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -16 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квинтдекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квинтдекалионни',
+                Form::SINGULAR => 'квинтдекалионна',
+                Form::PLURAL => 'квинтдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -15 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'кватордекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'кватордекалионни',
+                Form::SINGULAR => 'кватордекалионна',
+                Form::PLURAL => 'кватордекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -14 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'тредекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'тредекалионни',
+                Form::SINGULAR => 'тредекалионна',
+                Form::PLURAL => 'тредекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -13 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'дуодекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'дуодекалионни',
+                Form::SINGULAR => 'дуодекалионна',
+                Form::PLURAL => 'дуодекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -12 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ундекалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ундекалионни',
+                Form::SINGULAR => 'ундекалионна',
+                Form::PLURAL => 'ундекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -11 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'декалионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'декалионни',
+                Form::SINGULAR => 'декалионна',
+                Form::PLURAL => 'декалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -10 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ноналионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ноналионни',
+                Form::SINGULAR => 'ноналионна',
+                Form::PLURAL => 'ноналионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -9 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'октилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'октилионни',
+                Form::SINGULAR => 'октилионна',
+                Form::PLURAL => 'октилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -8 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'септилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'септилионни',
+                Form::SINGULAR => 'септилионна',
+                Form::PLURAL => 'септилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -7 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'секстилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'секстилионни',
+                Form::SINGULAR => 'секстилионна',
+                Form::PLURAL => 'секстилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -6 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квинтилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квинтилионни',
+                Form::SINGULAR => 'квинтилионна',
+                Form::PLURAL => 'квинтилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -5 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квадрилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квадрилионни',
+                Form::SINGULAR => 'квадрилионна',
+                Form::PLURAL => 'квадрилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -4 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'трилионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'трилионни',
+                Form::SINGULAR => 'трилионна',
+                Form::PLURAL => 'трилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -3 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'милиардна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'милиардни',
+                Form::SINGULAR => 'милиардна',
+                Form::PLURAL => 'милиардни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -2 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'милионна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'милионни',
+                Form::SINGULAR => 'милионна',
+                Form::PLURAL => 'милионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             -1 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'хилядна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'хилядни',
+                Form::SINGULAR => 'хилядна',
+                Form::PLURAL => 'хилядни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             1 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'хиляда',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'хиляди',
+                Form::SINGULAR => 'хиляда',
+                Form::PLURAL => 'хиляди',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             2 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'милион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'милиона',
+                Form::SINGULAR => 'милион',
+                Form::PLURAL => 'милиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             3 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'милиард',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'милиарда',
+                Form::SINGULAR => 'милиард',
+                Form::PLURAL => 'милиарда',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             4 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'трилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'трилиона',
+                Form::SINGULAR => 'трилион',
+                Form::PLURAL => 'трилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             5 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квадрилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квадрилиона',
+                Form::SINGULAR => 'квадрилион',
+                Form::PLURAL => 'квадрилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             6 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квинтилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квинтилиона',
+                Form::SINGULAR => 'квинтилион',
+                Form::PLURAL => 'квинтилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             7 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'секстилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'секстилиона',
+                Form::SINGULAR => 'секстилион',
+                Form::PLURAL => 'секстилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             8 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'септилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'септилиона',
+                Form::SINGULAR => 'септилион',
+                Form::PLURAL => 'септилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             9 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'октилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'октилиона',
+                Form::SINGULAR => 'октилион',
+                Form::PLURAL => 'октилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             10 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ноналион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ноналиона',
+                Form::SINGULAR => 'ноналион',
+                Form::PLURAL => 'ноналиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             11 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'декалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'декалиона',
+                Form::SINGULAR => 'декалион',
+                Form::PLURAL => 'декалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             12 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ундекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ундекалиона',
+                Form::SINGULAR => 'ундекалион',
+                Form::PLURAL => 'ундекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             13 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'дуодекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'дуодекалиона',
+                Form::SINGULAR => 'дуодекалион',
+                Form::PLURAL => 'дуодекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             14 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'тредекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'тредекалиона',
+                Form::SINGULAR => 'тредекалион',
+                Form::PLURAL => 'тредекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             15 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'кватордекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'кватордекалиона',
+                Form::SINGULAR => 'кватордекалион',
+                Form::PLURAL => 'кватордекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             16 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'квинтдекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'квинтдекалиона',
+                Form::SINGULAR => 'квинтдекалион',
+                Form::PLURAL => 'квинтдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             17 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сексдекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сексдекалиона',
+                Form::SINGULAR => 'сексдекалион',
+                Form::PLURAL => 'сексдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             18 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'септдекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'септдекалиона',
+                Form::SINGULAR => 'септдекалион',
+                Form::PLURAL => 'септдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             19 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'октодекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'октодекалиона',
+                Form::SINGULAR => 'октодекалион',
+                Form::PLURAL => 'октодекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             20 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'новемдекалион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'новемдекалиона',
+                Form::SINGULAR => 'новемдекалион',
+                Form::PLURAL => 'новемдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             21 => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'вигинтилион',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'вигинтилиона',
+                Form::SINGULAR => 'вигинтилион',
+                Form::PLURAL => 'вигинтилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
     ];
@@ -345,730 +347,730 @@ class BulgarianDictionary implements Dictionary
     public const CURRENCY = [
         'ALL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'лек',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'лека',
+                Form::SINGULAR => 'лек',
+                Form::PLURAL => 'лека',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'киндарка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'киндарки',
+                Form::SINGULAR => 'киндарка',
+                Form::PLURAL => 'киндарки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'AED' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'дирхам на ОАЕ',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'дирхама на ОАЕ',
+                Form::SINGULAR => 'дирхам на ОАЕ',
+                Form::PLURAL => 'дирхама на ОАЕ',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'филс',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'филса',
+                Form::SINGULAR => 'филс',
+                Form::PLURAL => 'филса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'AUD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'австралийски долар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'австралийски долара',
+                Form::SINGULAR => 'австралийски долар',
+                Form::PLURAL => 'австралийски долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'BAM' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'конвертируема марка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'конвертируеми марки',
+                Form::SINGULAR => 'конвертируема марка',
+                Form::PLURAL => 'конвертируеми марки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'фениг',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'фенига',
+                Form::SINGULAR => 'фениг',
+                Form::PLURAL => 'фенига',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'BGN' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'лев',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'лева',
+                Form::SINGULAR => 'лев',
+                Form::PLURAL => 'лева',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'стотинка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'стотинки',
+                Form::SINGULAR => 'стотинка',
+                Form::PLURAL => 'стотинки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'BRL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'реал',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'реала',
+                Form::SINGULAR => 'реал',
+                Form::PLURAL => 'реала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сентаво',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сентави',
+                Form::SINGULAR => 'сентаво',
+                Form::PLURAL => 'сентави',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'BYR' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'беларуска рубла',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'беларуски рубли',
+                Form::SINGULAR => 'беларуска рубла',
+                Form::PLURAL => 'беларуски рубли',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'копейка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'копейки',
+                Form::SINGULAR => 'копейка',
+                Form::PLURAL => 'копейки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'CAD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'канадски долар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'канадски долари',
+                Form::SINGULAR => 'канадски долар',
+                Form::PLURAL => 'канадски долари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'CHF' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'швейцарски франк',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'швейцарски франка',
+                Form::SINGULAR => 'швейцарски франк',
+                Form::PLURAL => 'швейцарски франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сантим',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сантима',
+                Form::SINGULAR => 'сантим',
+                Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'CYP' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'кипърска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'кипърски лири',
+                Form::SINGULAR => 'кипърска лира',
+                Form::PLURAL => 'кипърски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'CZK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'чешка крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'чешки крони',
+                Form::SINGULAR => 'чешка крона',
+                Form::PLURAL => 'чешки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'халер',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'халера',
+                Form::SINGULAR => 'халер',
+                Form::PLURAL => 'халера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'DKK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'датска крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'датски крони',
+                Form::SINGULAR => 'датска крона',
+                Form::PLURAL => 'датски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'йоре',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'йоре',
+                Form::SINGULAR => 'йоре',
+                Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'DZD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'алжирски динар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'алжирски динара',
+                Form::SINGULAR => 'алжирски динар',
+                Form::PLURAL => 'алжирски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'EEK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'естонска крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'естонски крони',
+                Form::SINGULAR => 'естонска крона',
+                Form::PLURAL => 'естонски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'EGP' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'египетска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'египетски лири',
+                Form::SINGULAR => 'египетска лира',
+                Form::PLURAL => 'египетски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'пиастър',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'пиастъра',
+                Form::SINGULAR => 'пиастър',
+                Form::PLURAL => 'пиастъра',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'EUR' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'евро',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'евро',
+                Form::SINGULAR => 'евро',
+                Form::PLURAL => 'евро',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'GBP' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'британска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'британски лири',
+                Form::SINGULAR => 'британска лира',
+                Form::PLURAL => 'британски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'пенс',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'пенса',
+                Form::SINGULAR => 'пенс',
+                Form::PLURAL => 'пенса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'HKD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'хонгконгски долар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'хонгконгски долара',
+                Form::SINGULAR => 'хонгконгски долар',
+                Form::PLURAL => 'хонгконгски долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'HRK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'хърватска куна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'хърватски куни',
+                Form::SINGULAR => 'хърватска куна',
+                Form::PLURAL => 'хърватски куни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'лип',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'липа',
+                Form::SINGULAR => 'лип',
+                Form::PLURAL => 'липа',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'HUF' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'форинт',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'форинта',
+                Form::SINGULAR => 'форинт',
+                Form::PLURAL => 'форинта',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'филер',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'филера',
+                Form::SINGULAR => 'филер',
+                Form::PLURAL => 'филера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'ILS' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'шекел',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'шекела',
+                Form::SINGULAR => 'шекел',
+                Form::PLURAL => 'шекела',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'агорот',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'агороти',
+                Form::SINGULAR => 'агорот',
+                Form::PLURAL => 'агороти',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'ISK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'исландска крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'исландски крони',
+                Form::SINGULAR => 'исландска крона',
+                Form::PLURAL => 'исландски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ейре',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ейре',
+                Form::SINGULAR => 'ейре',
+                Form::PLURAL => 'ейре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'JPY' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'йена',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'йени',
+                Form::SINGULAR => 'йена',
+                Form::PLURAL => 'йени',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сен',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сена',
+                Form::SINGULAR => 'сен',
+                Form::PLURAL => 'сена',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'LTL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'литас',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'литаса',
+                Form::SINGULAR => 'литас',
+                Form::PLURAL => 'литаса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'LVL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'лат',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'лата',
+                Form::SINGULAR => 'лат',
+                Form::PLURAL => 'лата',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сантим',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сантима',
+                Form::SINGULAR => 'сантим',
+                Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'LYD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'либийски динар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'либийски динара',
+                Form::SINGULAR => 'либийски динар',
+                Form::PLURAL => 'либийски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'MAD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'марокански дирхам',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'марокански дирхама',
+                Form::SINGULAR => 'марокански дирхам',
+                Form::PLURAL => 'марокански дирхама',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'MKD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'македонски денар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'македонски денара',
+                Form::SINGULAR => 'македонски денар',
+                Form::PLURAL => 'македонски денара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ден',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'дени',
+                Form::SINGULAR => 'ден',
+                Form::PLURAL => 'дени',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'MRO' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'угия',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'угии',
+                Form::SINGULAR => 'угия',
+                Form::PLURAL => 'угии',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'хумс',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'хумса',
+                Form::SINGULAR => 'хумс',
+                Form::PLURAL => 'хумса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'MTL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'малтийска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'малтийски лири',
+                Form::SINGULAR => 'малтийска лира',
+                Form::PLURAL => 'малтийски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сантим',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сантима',
+                Form::SINGULAR => 'сантим',
+                Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'NGN' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'найра',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'найра',
+                Form::SINGULAR => 'найра',
+                Form::PLURAL => 'найра',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'кобо',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'кобо',
+                Form::SINGULAR => 'кобо',
+                Form::PLURAL => 'кобо',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'NOK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'норвежка крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'норвежки крони',
+                Form::SINGULAR => 'норвежка крона',
+                Form::PLURAL => 'норвежки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'йоре',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'йоре',
+                Form::SINGULAR => 'йоре',
+                Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'PHP' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'филипинско песо',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'филипински песа',
+                Form::SINGULAR => 'филипинско песо',
+                Form::PLURAL => 'филипински песа',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сентаво',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сентави',
+                Form::SINGULAR => 'сентаво',
+                Form::PLURAL => 'сентави',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'PLN' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'злота',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'злоти',
+                Form::SINGULAR => 'злота',
+                Form::PLURAL => 'злоти',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'грош',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'гроша',
+                Form::SINGULAR => 'грош',
+                Form::PLURAL => 'гроша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'ROL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'лея',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'леи',
+                Form::SINGULAR => 'лея',
+                Form::PLURAL => 'леи',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'бан',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'бани',
+                Form::SINGULAR => 'бан',
+                Form::PLURAL => 'бани',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'RUB' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'рубла',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'рубли',
+                Form::SINGULAR => 'рубла',
+                Form::PLURAL => 'рубли',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'копейка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'копейки',
+                Form::SINGULAR => 'копейка',
+                Form::PLURAL => 'копейки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'SAR' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'риал',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'риала',
+                Form::SINGULAR => 'риал',
+                Form::PLURAL => 'риала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'халал',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'халала',
+                Form::SINGULAR => 'халал',
+                Form::PLURAL => 'халала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'SEK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'шведска крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'шведски крони',
+                Form::SINGULAR => 'шведска крона',
+                Form::PLURAL => 'шведски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'йоре',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'йоре',
+                Form::SINGULAR => 'йоре',
+                Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'SIT' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'толар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'толара',
+                Form::SINGULAR => 'толар',
+                Form::PLURAL => 'толара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'стотина',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'стотини',
+                Form::SINGULAR => 'стотина',
+                Form::PLURAL => 'стотини',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'SKK' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'словашка крона',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'словашки крони',
+                Form::SINGULAR => 'словашка крона',
+                Form::PLURAL => 'словашки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'халиер',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'халиера',
+                Form::SINGULAR => 'халиер',
+                Form::PLURAL => 'халиера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'TMT' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'туркменски манат',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'туркменски маната',
+                Form::SINGULAR => 'туркменски манат',
+                Form::PLURAL => 'туркменски маната',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'тенге',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'тенги',
+                Form::SINGULAR => 'тенге',
+                Form::PLURAL => 'тенги',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_NEUTER,
+                    Gender::GENDER_NEUTER,
             ],
         ],
         'TND' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'унизийски динар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'тунизийски динара',
+                Form::SINGULAR => 'унизийски динар',
+                Form::PLURAL => 'тунизийски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'милим',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'милима',
+                Form::SINGULAR => 'милим',
+                Form::PLURAL => 'милима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'TRL' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'турска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'турски лири',
+                Form::SINGULAR => 'турска лира',
+                Form::PLURAL => 'турски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'куруш',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'куруша',
+                Form::SINGULAR => 'куруш',
+                Form::PLURAL => 'куруша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'TRY' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'турска лира',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'турски лири',
+                Form::SINGULAR => 'турска лира',
+                Form::PLURAL => 'турски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'куруш',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'куруша',
+                Form::SINGULAR => 'куруш',
+                Form::PLURAL => 'куруша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'UAH' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'гривна',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'гривни',
+                Form::SINGULAR => 'гривна',
+                Form::PLURAL => 'гривни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'копийка',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'копийки',
+                Form::SINGULAR => 'копийка',
+                Form::PLURAL => 'копийки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'USD' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'долар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'долара',
+                Form::SINGULAR => 'долар',
+                Form::PLURAL => 'долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'XAF' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'CFA франк',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'CFA франка',
+                Form::SINGULAR => 'CFA франк',
+                Form::PLURAL => 'CFA франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'XOF' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'CFA франк',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'CFA франка',
+                Form::SINGULAR => 'CFA франк',
+                Form::PLURAL => 'CFA франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'XPF' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'CFP франк',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'CFP франка',
+                Form::SINGULAR => 'CFP франк',
+                Form::PLURAL => 'CFP франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сантим',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сантима',
+                Form::SINGULAR => 'сантим',
+                Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'YUM' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'югославски динар',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'югославски динари',
+                Form::SINGULAR => 'югославски динар',
+                Form::PLURAL => 'югославски динари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'пара',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'пари',
+                Form::SINGULAR => 'пара',
+                Form::PLURAL => 'пари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_FEMININE,
+                    Gender::GENDER_FEMININE,
             ],
         ],
         'ZAR' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'ранд',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'ранда',
+                Form::SINGULAR => 'ранд',
+                Form::PLURAL => 'ранда',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'цент',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'цента',
+                Form::SINGULAR => 'цент',
+                Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
         'UZS' => [
             self::CURRENCY_WHOLE => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'сом',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'сома',
+                Form::SINGULAR => 'сом',
+                Form::PLURAL => 'сома',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
-                self::GRAMMATICAL_NUMBER_SINGULAR => 'тийн',
-                self::GRAMMATICAL_NUMBER_PLURAL => 'тийна',
+                Form::SINGULAR => 'тийн',
+                Form::PLURAL => 'тийна',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER_MASCULINE,
+                    Gender::GENDER_MASCULINE,
             ],
         ],
     ];
