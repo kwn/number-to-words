@@ -8,7 +8,6 @@ use NumberToWords\Language\PowerAwareTripletTransformer;
 
 class BulgarianTripletTransformer implements PowerAwareTripletTransformer, GrammaticalGenderAwareInterface
 {
-
     use GrammaticalGenderAwareTrait;
 
     protected BulgarianDictionary $dictionary;
@@ -55,7 +54,11 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer, Gramm
                     $units,
                     $power === 0
                         ? $this->getGrammaticalGender()
-                        : BulgarianDictionary::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
+                        : BulgarianDictionary
+                            ::ENUMERATIONS
+                                [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
+                                [$power]
+                                [GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
                 );
             }
         }
