@@ -13,12 +13,6 @@ class BulgarianDictionary implements Dictionary
     public const LANGUAGE_NAME = 'Bulgarian';
     public const LANGUAGE_NAME_NATIVE = 'български';
 
-    public const GRAMMATICAL_COUNT = 'count';
-    public const GRAMMATICAL_QUANTITATIVE_ADJECTIVE = 'quantitativeAdjective';
-
-    public const GRAMMATICAL_NUMBER_SINGULAR = 'singular';
-    public const GRAMMATICAL_NUMBER_PLURAL = 'plural';
-
     public const ENUMERATION_BY_VALUE = 'enumerationByValue';
     public const ENUMERATION_BY_POWERS_OF_A_THOUSAND = 'enumerationByPowersOfAThousand';
 
@@ -35,20 +29,16 @@ class BulgarianDictionary implements Dictionary
         self::ENUMERATION_BY_VALUE => [
             0 => 'нула',
             1 => [
-                self::GRAMMATICAL_COUNT => 'едно',
-                self::GRAMMATICAL_QUANTITATIVE_ADJECTIVE => [
                     Gender::GENDER_MASCULINE => 'един',
                     Gender::GENDER_FEMININE => 'една',
                     Gender::GENDER_NEUTER => 'едно',
-                ],
+                    Gender::GENDER_ABSTRACT => 'едно',
             ],
             2 => [
-                self::GRAMMATICAL_COUNT => 'две',
-                self::GRAMMATICAL_QUANTITATIVE_ADJECTIVE => [
-                    Gender::GENDER_MASCULINE => 'два',
-                    Gender::GENDER_FEMININE => 'две',
-                    Gender::GENDER_NEUTER => 'две',
-                ],
+                Gender::GENDER_MASCULINE => 'два',
+                Gender::GENDER_FEMININE => 'две',
+                Gender::GENDER_NEUTER => 'две',
+                Gender::GENDER_ABSTRACT => 'две',
             ],
             3 => 'три',
             4 => 'четири',
@@ -1095,7 +1085,7 @@ class BulgarianDictionary implements Dictionary
         $result = static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$unit];
 
         if (is_array($result)) {
-            $result = $result[self::GRAMMATICAL_COUNT];
+            $result = $result[Gender::GENDER_ABSTRACT];
         }
 
         return $result;
@@ -1106,7 +1096,7 @@ class BulgarianDictionary implements Dictionary
         $result = static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$unit];
 
         if (is_array($result)) {
-            $result = $result[self::GRAMMATICAL_QUANTITATIVE_ADJECTIVE][$grammaticalGender];
+            $result = $result[$grammaticalGender];
         }
 
         return $result;
@@ -1114,34 +1104,16 @@ class BulgarianDictionary implements Dictionary
 
     public function getCorrespondingTeen(int $teen): string
     {
-        $result = static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$teen];
-
-        if (is_array($result)) {
-            $result = $result[self::GRAMMATICAL_COUNT];
-        }
-
-        return $result;
+        return static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$teen];
     }
 
     public function getCorrespondingTen(int $ten): string
     {
-        $result = static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$ten];
-
-        if (is_array($result)) {
-            $result = $result[self::GRAMMATICAL_COUNT];
-        }
-
-        return $result;
+        return static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$ten];
     }
 
     public function getCorrespondingHundred(int $hundred): string
     {
-        $result = static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$hundred];
-
-        if (is_array($result)) {
-            $result = $result[self::GRAMMATICAL_COUNT];
-        }
-
-        return $result;
+        return static::ENUMERATIONS[static::ENUMERATION_BY_VALUE][$hundred];
     }
 }
