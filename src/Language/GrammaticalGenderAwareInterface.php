@@ -10,5 +10,11 @@ interface GrammaticalGenderAwareInterface
     public const GRAMMATICAL_GENDER_NEUTER = 'n';
 
     public function getGrammaticalGender(): string;
-    public function setGrammaticalGender(string $grammaticalGender): static;
+
+    /**
+     * @return static
+     *
+     * Replace return type after PHP 7.4 support drop
+     */
+    public function setGrammaticalGender(string $grammaticalGender): GrammaticalGenderAwareInterface;
 }
