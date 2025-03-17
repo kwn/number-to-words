@@ -22,11 +22,20 @@ class BulgarianExponentInflector implements ExponentInflector
         return $this->inflector->inflectNounByNumber(
             $number,
             BulgarianDictionary
-                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
+                ::ENUMERATIONS
+                    [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
+                    [$power]
+                    [BulgarianDictionary::GRAMMATICAL_NUMBER_SINGULAR],
             BulgarianDictionary
-                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+                ::ENUMERATIONS
+                    [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
+                    [$power]
+                    [BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
             BulgarianDictionary
-                ::ENUMERATIONS[BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND][$power][BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
+                ::ENUMERATIONS
+                    [BulgarianDictionary::ENUMERATION_BY_POWERS_OF_A_THOUSAND]
+                    [$power]
+                    [BulgarianDictionary::GRAMMATICAL_NUMBER_PLURAL],
         );
     }
 }

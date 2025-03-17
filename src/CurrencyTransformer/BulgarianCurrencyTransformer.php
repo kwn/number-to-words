@@ -33,12 +33,16 @@ class BulgarianCurrencyTransformer implements CurrencyTransformer
         $tripletTransformerWholePart =
             (new BulgarianTripletTransformer($dictionary))
                 ->setGrammaticalGender(
-                    $currency[BulgarianDictionary::CURRENCY_WHOLE][GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
+                    $currency
+                        [BulgarianDictionary::CURRENCY_WHOLE]
+                        [GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
                 );
         $tripletTransformerFractionPart =
             (new BulgarianTripletTransformer($dictionary))
                 ->setGrammaticalGender(
-                    $currency[BulgarianDictionary::CURRENCY_FRACTION][GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
+                    $currency
+                        [BulgarianDictionary::CURRENCY_FRACTION]
+                        [GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER]
                 );
         $exponentInflector = new BulgarianExponentInflector($nounGenderInflector);
 
