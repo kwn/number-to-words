@@ -26,7 +26,7 @@ class BulgarianDictionary implements Dictionary
     public const ARITHMETIC_MINUS = 'минус';
 
     /** Token to separate words in triplets and chunks in final string */
-    public const SEPARATOR = " ";
+    public const SEPARATOR = ' ';
     public const GRAMMATICAL_CONJUNCTION_AND = 'и';
 
     public const ENUMERATIONS = [
