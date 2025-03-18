@@ -6,7 +6,6 @@ use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Grammar\Form;
 use NumberToWords\Language\Bulgarian\BulgarianDictionary;
 use NumberToWords\Language\Bulgarian\BulgarianExponentInflector;
-use NumberToWords\Language\Bulgarian\BulgarianFemaleTripletTransformer;
 use NumberToWords\Language\Bulgarian\BulgarianNounGenderInflector;
 use NumberToWords\Language\Bulgarian\BulgarianTripletTransformer;
 use NumberToWords\Language\GrammaticalGenderAwareInterface;
