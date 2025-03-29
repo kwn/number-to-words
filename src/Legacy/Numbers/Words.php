@@ -40,6 +40,11 @@ class Words
         $decimalPart = (int) ($amount / 100);
         $fractionalPart = abs($amount % 100);
 
+        if ($currency === 'TND') {
+            $decimalPart = (int) ($amount / 1000);
+            $fractionalPart = abs($amount % 1000);
+        }
+
         if ($fractionalPart === 0) {
             return trim($transformer->toCurrencyWords($currency, $decimalPart));
         }

@@ -27,6 +27,13 @@ class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
             [1000, 'GBP', 'dix pounds'],
             [70001, 'GBP', 'sept cents pounds et un penny'],
             [700010, 'GBP', 'sept mille pounds et dix pence'],
+            [1000, 'TND', 'un dinar'],
+            [1001, 'TND', 'un dinar et un millime'],
+            [1010, 'TND', 'un dinar et dix millimes'],
+            [1011, 'TND', 'un dinar et onze millimes'],
+            [1100, 'TND', 'un dinar et cent millimes'],
+            [1101, 'TND', 'un dinar et cent un millimes'],
+            [1346001, 'TND', 'mille trois cent quarante-six dinars et un millime'],
         ];
     }
 }
