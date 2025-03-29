@@ -104,7 +104,7 @@ class ArabicDictionary implements Dictionary
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
         'TMT' => [['manat'], ['tenge']],
-        'TND' => [['دينار'], ['ملم']],
+        'TND' => [['دينار'], ['مليم']],
         'TRL' => [['lira'], ['kuruş']],
         'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['هريفنا'], ['سنت']],
