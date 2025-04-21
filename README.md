@@ -101,6 +101,7 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Malay                | ms         | +      | +        |       |
 | Persian              | fa         | +      | -        |       |
 | Polish               | pl         | +      | +        |       |
+| Portuguese           | pt_PT      | +      | +        |       |
 | Romanian             | ro         | +      | +        |       |
 | Serbian              | sr         | +      | +        |       |
 | Slovak               | sk         | +      | +        |       |
