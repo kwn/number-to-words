@@ -183,26 +183,20 @@ class Pt extends Words
             }
 
             /**
-             * Actual Number
+             * Adding exponent
              */
-            $word = array_filter($this->parseChunk($chunk));
-            
+            $ret[] = $exponent;
+
             /**
-             * Special case: if chunk is 1 and we're dealing with thousands (mil),
-             * only add "mil" without "um"
+             * Actual Number - Special case for "mil"
              */
             if ($chunk == 1 && $index == 1 && self::$exponent[$index] == 'mil') {
-                $ret[] = $exponent;
-            } else {
-                $ret[] = implode($this->separator, $word);
-                
-                /**
-                 * Adding exponent (if exists)
-                 */
-                if ($exponent) {
-                    $ret[] = $exponent;
-                }
+                // Don't add "um" before "mil" - skip adding the word
+                continue;
             }
+            
+            $word = array_filter($this->parseChunk($chunk));
+            $ret[] = implode($this->separator, $word);
         }
 
         /**
@@ -227,7 +221,7 @@ class Pt extends Words
      */
     private function parseChunk($chunk)
     {
-        /**
+               /**
          * Base Case
          */
         if (!$chunk) {
@@ -239,6 +233,9 @@ class Pt extends Words
          */
         if ($chunk == 100) {
             return ['cem'];
+        }
+        if ($chunk == 1000) {
+            return ['mil'];
         }
 
         /**
