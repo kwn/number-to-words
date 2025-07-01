@@ -12,7 +12,7 @@ class PortugueseCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
-            [100, 'EUR', 'um cêntimo'],
+            [100, 'EUR', 'um euro'],
             [200, 'USD', 'dois dólares'],
             [500, 'EUR', 'cinco euros']
         ];
