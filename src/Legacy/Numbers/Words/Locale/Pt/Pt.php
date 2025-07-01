@@ -150,6 +150,13 @@ class Pt extends Words
         }
 
         /**
+         * Special case: In portuguese we say "mil" not "um mil", when the chuck is 1, return only mil
+         */
+        if ($num == '1.000') {
+            return $neg ? $this->minus . ' mil' : 'mil';
+        }
+
+        /**
          * Breaks into chunks of 3 digits.
          * Reversing array to process from right to left.
          */
