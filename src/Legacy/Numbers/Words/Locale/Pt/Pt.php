@@ -150,13 +150,6 @@ class Pt extends Words
         }
 
         /**
-         * Special case: In portuguese we say "mil" not "um mil", when the chuck is 1, return only mil
-         */
-        if ($num == '1.000') {
-            return $neg ? $this->minus . ' mil' : 'mil';
-        }
-
-        /**
          * Breaks into chunks of 3 digits.
          * Reversing array to process from right to left.
          */
@@ -190,15 +183,26 @@ class Pt extends Words
             }
 
             /**
-             * Adding exponent
-             */
-            $ret[] = $exponent;
-
-            /**
              * Actual Number
              */
             $word = array_filter($this->parseChunk($chunk));
-            $ret[] = implode($this->separator, $word);
+            
+            /**
+             * Special case: if chunk is 1 and we're dealing with thousands (mil),
+             * only add "mil" without "um"
+             */
+            if ($chunk == 1 && $index == 1 && self::$exponent[$index] == 'mil') {
+                $ret[] = $exponent;
+            } else {
+                $ret[] = implode($this->separator, $word);
+                
+                /**
+                 * Adding exponent (if exists)
+                 */
+                if ($exponent) {
+                    $ret[] = $exponent;
+                }
+            }
         }
 
         /**
