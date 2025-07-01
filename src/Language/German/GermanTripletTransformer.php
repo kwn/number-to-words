@@ -13,7 +13,7 @@ class GermanTripletTransformer implements PowerAwareTripletTransformer
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power): string
+    public function transformToWords(int $number, int $power): ?string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;

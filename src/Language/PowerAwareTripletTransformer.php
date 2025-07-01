@@ -4,5 +4,5 @@ namespace NumberToWords\Language;
 
 interface PowerAwareTripletTransformer
 {
-    public function transformToWords(int $number, int $power): string;
+    public function transformToWords(int $number, int $power): ?string;
 }
