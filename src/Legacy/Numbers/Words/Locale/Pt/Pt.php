@@ -188,10 +188,10 @@ class Pt extends Words
             $ret[] = $exponent;
 
             /**
-             * Actual Number - Special case for any exponent containing "mil"
+             * Actual Number - Special case for exponents that start with "mil"
              */
-            if ($chunk == 1 && strpos($exponent, 'mil') !== false) {
-                // Don't add "um" before exponents containing "mil" - skip adding the word
+            if ($chunk == 1 && (strpos($exponent, 'mil') === 0)) {
+                // Don't add "um" before exponents that start with "mil" - skip adding the word
                 continue;
             }
             
