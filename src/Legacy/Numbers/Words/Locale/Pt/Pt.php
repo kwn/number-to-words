@@ -188,10 +188,10 @@ class Pt extends Words
             $ret[] = $exponent;
 
             /**
-             * Actual Number - Special case for "mil"
+             * Actual Number - Special case for any exponent containing "mil"
              */
-            if ($chunk == 1 && $index == 1 && self::$exponent[$index] == 'mil') {
-                // Don't add "um" before "mil" - skip adding the word
+            if ($chunk == 1 && strpos($exponent, 'mil') !== false) {
+                // Don't add "um" before exponents containing "mil" - skip adding the word
                 continue;
             }
             
@@ -221,7 +221,7 @@ class Pt extends Words
      */
     private function parseChunk($chunk)
     {
-               /**
+        /**
          * Base Case
          */
         if (!$chunk) {
@@ -233,9 +233,6 @@ class Pt extends Words
          */
         if ($chunk == 100) {
             return ['cem'];
-        }
-        if ($chunk == 1000) {
-            return ['mil'];
         }
 
         /**
