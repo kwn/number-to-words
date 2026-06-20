@@ -21,7 +21,7 @@ class GermanCurrencyTransformer implements CurrencyTransformer
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
-            ->withWordsSeparatedBy(' ')
+            ->withWordsSeparatedBy('')
             ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
             ->inflectExponentByNumbers($exponentInflector)
             ->build();
@@ -44,6 +44,9 @@ class GermanCurrencyTransformer implements CurrencyTransformer
         $currencyNames = GermanDictionary::$currencyNames[$currency];
 
         $return = trim($numberTransformer->toWords($decimal));
+        if ($return === 'eins') {
+            $return = 'ein';
+        }
         $level = ($decimal === 1) ? 0 : 1;
 
         if ($level > 0) {

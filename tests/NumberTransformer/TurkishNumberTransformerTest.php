@@ -59,6 +59,10 @@ class TurkishNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'otuz beş milyar yüz yetmiş dört milyon üç yüz on beş bin yüz on dokuz'],
             [935174315119, 'dokuz yüz otuz beş milyar yüz yetmiş dört milyon üç yüz on beş bin yüz on dokuz'],
             [2935174315119, 'iki trilyon dokuz yüz otuz beş milyar yüz yetmiş dört milyon üç yüz on beş bin yüz on dokuz'],
+            [-1, 'eksi bir'],
+            [-13, 'eksi on üç'],
+            [-100, 'eksi yüz'],
+            [-1000, 'eksi bin'],
         ];
     }
 }

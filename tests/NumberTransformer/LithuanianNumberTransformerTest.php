@@ -55,6 +55,10 @@ class LithuanianNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'trisdešimt penki bilijonai šimtas septyniasdešimt keturi milijonai trys šimtai penkiolika tūkstančių šimtas devyniolika'],
             [935174315119, 'devyni šimtai trisdešimt penki bilijonai šimtas septyniasdešimt keturi milijonai trys šimtai penkiolika tūkstančių šimtas devyniolika'],
             [2935174315119, 'du trilijonai devyni šimtai trisdešimt penki bilijonai šimtas septyniasdešimt keturi milijonai trys šimtai penkiolika tūkstančių šimtas devyniolika'],
+            [-1, 'minus vienas'],
+            [-99, 'minus devyniasdešimt devyni'],
+            [-1000, 'minus tūkstantis'],
+            [-999999, 'minus devyni šimtai devyniasdešimt devyni tūkstančiai devyni šimtai devyniasdešimt devyni'],
         ];
     }
 }

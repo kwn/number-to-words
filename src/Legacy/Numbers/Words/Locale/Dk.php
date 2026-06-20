@@ -130,8 +130,9 @@ class Dk extends Words
                 $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'hundrede';
             }
 
-            //if (($t + $d) > 0)
-            //  $ret .= $this->wordSeparator . 'og';
+            if (($t + $d) > 0) {
+                $return .= $this->wordSeparator . 'og';
+            }
         } elseif ((isset($maxp)) && ($maxp > 3)) {
             // add 'og' in the case where there are preceding thousands but not hundreds or tens,
             // so fx. 80001 becomes 'firs tusinde og en' instead of 'firs tusinde en'

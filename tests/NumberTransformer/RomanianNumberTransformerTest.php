@@ -67,6 +67,9 @@ class RomanianNumberTransformerTest extends NumberTransformerTest
             [7232, 'șapte mii două sute treizeci și doi'],
             [8569, 'opt mii cinci sute șaizeci și nouă'],
             [9539, 'nouă mii cinci sute treizeci și nouă'],
+            [-5, 'minus cinci'],
+            [-1000, 'minus una mie'],
+            [-9539, 'minus nouă mii cinci sute treizeci și nouă'],
         ];
     }
 }

@@ -10,7 +10,7 @@ class Sv extends Words
     const LANGUAGE_NAME = 'Swedish';
     const LANGUAGE_NAME_NATIVE = 'Svenska';
 
-    private $minus = 'Minus';
+    private $minus = 'minus';
 
     private static $exponent = [
         0 => [''],
@@ -136,8 +136,11 @@ class Sv extends Words
         switch ($t) {
             case 5:
             case 6:
-            case 7:
                 $ret .= $this->wordSeparator . self::$digits[$t] . 'tio';
+                break;
+
+            case 7:
+                $ret .= $this->wordSeparator . 'sjuttio';
                 break;
 
             case 9:
@@ -214,7 +217,8 @@ class Sv extends Words
                 return null;
             }
 
-            $ret .= $this->wordSeparator . $lev[0];
+            $isSingular = ($d == 1 && ($t + $h) == 0);
+            $ret .= $this->wordSeparator . ($isSingular ? $lev[0] : $lev[1]);
         }
 
         if ($powsuffix != '') {
