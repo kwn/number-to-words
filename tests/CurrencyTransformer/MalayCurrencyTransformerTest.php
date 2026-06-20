@@ -34,6 +34,9 @@ class MalayCurrencyTransformerTest extends CurrencyTransformerTest
             [-72925, 'USD', 'negatif tujuh ratus dua puluh sembilan dolar dua puluh lima sen'],
             [-89425, 'USD', 'negatif lapan ratus sembilan puluh empat dolar dua puluh lima sen'],
             [-99925, 'USD', 'negatif sembilan ratus sembilan puluh sembilan dolar dua puluh lima sen'],
+            [30000, 'SAR', 'tiga ratus riyal Arab Saudi'],
+            [10000, 'CNY', 'seratus yuan China'],
+            [50000, 'AED', 'lima ratus dirham UAE'],
         ];
     }
 }

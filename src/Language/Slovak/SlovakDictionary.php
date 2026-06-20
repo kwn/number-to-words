@@ -117,6 +117,26 @@ class SlovakDictionary implements Dictionary
         'YUM' => [['dinar', 'dinary', 'dinarov'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randov'], ['cent', 'centy', 'centov']],
         'UZS' => [['sum'], ['tiyin']],
+        'AED' => [['dirham SAE', 'dirhamy SAE', 'dirhamov SAE'], ['fils', 'filsy', 'filsov']],
+        'CNY' => [['čínsky jüan', 'čínske jüany', 'čínskych jüanov'], ['fen', 'feny', 'fenov']],
+        'DZD' => [['alžírsky dinár', 'alžírske dináre', 'alžírskych dinárov'], ['santím', 'santímy', 'santímov']],
+        'EGP' => [['egyptská libra', 'egyptské libry', 'egyptských libier'], ['piaster', 'piastre', 'piastrov']],
+        'IDR' => [['indonézska rupia', 'indonézske rupie', 'indonézskych rupií'], ['sen', 'seny', 'senov']],
+        'LYD' => [['líbyjský dinár', 'líbyjské dináre', 'líbyjských dinárov'], ['dirham', 'dirhamy', 'dirhamov']],
+        'MAD' => [['marocký dirham', 'marocké dirhamy', 'marockých dirhamov'], ['santím', 'santímy', 'santímov']],
+        'MRO' => [['mauritánska ugija', 'mauritánske ugije', 'mauritánskych ugijí'], ['chums', 'chumsy', 'chumsov']],
+        'MYR' => [['malajzijský ringgit', 'malajzijské ringgity', 'malajzijských ringgitov'], ['sen', 'seny', 'senov']],
+        'NGN' => [['nigérijská naira', 'nigérijské nairy', 'nigérijských nair'], ['kobo', 'koby', 'kobov']],
+        'PHP' => [['filipínske peso', 'filipínske pesá', 'filipínskych pies'], ['sentavo', 'sentava', 'sentavov']],
+        'SAR' => [
+            ['saudskoarabský rijál', 'saudskoarabské rijály', 'saudskoarabských rijálov'],
+            ['halala', 'halaly', 'halalí'],
+        ],
+        'TMT' => [['turkménsky manat', 'turkménske manaty', 'turkmánskych manatov'], ['tenga', 'tengy', 'tengov']],
+        'TND' => [['tuniský dinár', 'tuniské dináre', 'tuniských dinárov'], ['millím', 'millímy', 'millímov']],
+        'XAF' => [['frank CFA', 'franky CFA', 'frankov CFA'], ['santím', 'santímy', 'santímov']],
+        'XOF' => [['frank CFA', 'franky CFA', 'frankov CFA'], ['santím', 'santímy', 'santímov']],
+        'XPF' => [['frank CFP', 'franky CFP', 'frankov CFP'], ['santím', 'santímy', 'santímov']],
     ];
 
     public function getMinus(): string

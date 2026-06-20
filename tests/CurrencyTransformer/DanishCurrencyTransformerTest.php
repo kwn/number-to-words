@@ -22,6 +22,11 @@ class DanishCurrencyTransformerTest extends CurrencyTransformerTest
             [150, 'DKK', 'en krone og halvtreds øre'],
             [275, 'EUR', 'to euro og fem og halvfjerds euro-cent'],
             [-600, 'EUR', 'minus seks euro'],
+            [500, 'GBP', 'fem pund'],
+            [100, 'JPY', 'en yen'],
+            [300, 'RUB', 'tre russiske rubel'],
+            [200, 'SAR', 'to saudiarabiske riyal'],
+            [100, 'ZAR', 'en sydafrikansk rand'],
         ];
     }
 }

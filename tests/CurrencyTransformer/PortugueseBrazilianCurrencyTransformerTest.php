@@ -20,6 +20,11 @@ class PortugueseBrazilianCurrencyTransformerTest extends CurrencyTransformerTest
             [5000, 'USD', 'cinquenta dólares'],
             [150, 'BRL', 'um real e cinquenta centavos'],
             [275, 'USD', 'dois dólares e setenta e cinco centavos'],
+            [500, 'GBP', 'cinco libras esterlinas'],
+            [300, 'RUB', 'três rublos russos'],
+            [200, 'SAR', 'dois riyals sauditas'],
+            [1000, 'NOK', 'dez coroas norueguesas'],
+            [100, 'ZAR', 'um rand sul-africano'],
         ];
     }
 }

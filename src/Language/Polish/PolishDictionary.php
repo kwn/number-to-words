@@ -104,6 +104,29 @@ class PolishDictionary implements Dictionary
         'YUM' => [['dinar', 'dinary', 'dinarów'], ['para', 'para', 'para']],
         'ZAR' => [['rand', 'randy', 'randów'], ['cent', 'centy', 'centów']],
         'UZS' => [['sum'], ['tiyin']],
+        'AED' => [['dirham ZEA', 'dirhamy ZEA', 'dirhamów ZEA'], ['fils', 'filsy', 'filsów']],
+        'CNY' => [['juan chiński', 'juany chińskie', 'juanów chińskich'], ['fen', 'feny', 'fenów']],
+        'DZD' => [['dinar algierski', 'dinary algierskie', 'dinarów algierskich'], ['santym', 'santymy', 'santymów']],
+        'EGP' => [['funt egipski', 'funty egipskie', 'funtów egipskich'], ['piaster', 'piastry', 'piastrów']],
+        'IDR' => [['rupia indonezyjska', 'rupie indonezyjskie', 'rupii indonezyjskich'], ['sen', 'seny', 'senów']],
+        'LYD' => [['dinar libijski', 'dinary libijskie', 'dinarów libijskich'], ['dirham', 'dirhamy', 'dirhamów']],
+        'MAD' => [
+            ['dirham marokański', 'dirhamy marokańskie', 'dirhamów marokańskich'],
+            ['santym', 'santymy', 'santymów'],
+        ],
+        'MRO' => [['ugija mauretańska', 'ugije mauretańskie', 'ugij mauretańskich'], ['chum', 'chumy', 'chumów']],
+        'MYR' => [['ringgit malezyjski', 'ringgity malezyjskie', 'ringgitów malezyjskich'], ['sen', 'seny', 'senów']],
+        'NGN' => [['naira nigeryjska', 'nairy nigeryjskie', 'nair nigeryjskich'], ['kobo', 'kobo', 'kobo']],
+        'PHP' => [['peso filipińskie', 'peso filipińskie', 'peso filipińskich'], ['sentavo', 'sentavo', 'sentavo']],
+        'SAR' => [['rial saudyjski', 'riale saudyjskie', 'riali saudyjskich'], ['halala', 'halala', 'halala']],
+        'TMT' => [['manat turkmeński', 'manaty turkmeńskie', 'manatów turkmeńskich'], ['tenga', 'tengi', 'tengów']],
+        'TND' => [
+            ['dinar tunezyjski', 'dinary tunezyjskie', 'dinarów tunezyjskich'],
+            ['millim', 'millimy', 'millimów'],
+        ],
+        'XAF' => [['frank CFA', 'franki CFA', 'franków CFA'], ['santym', 'santymy', 'santymów']],
+        'XOF' => [['frank CFA', 'franki CFA', 'franków CFA'], ['santym', 'santymy', 'santymów']],
+        'XPF' => [['frank CFP', 'franki CFP', 'franków CFP'], ['santym', 'santymy', 'santymów']],
     ];
 
     public function getMinus(): string

@@ -24,6 +24,9 @@ class GermanCurrencyTransformerTest extends CurrencyTransformerTest
             [-600, 'EUR', 'minus sechs Euro'],
             [500, 'USD', 'fünf US Dollar'],
             [200000, 'USD', 'zweitausend US Dollar'],
+            [300, 'SAR', 'drei Saudi-Arabischer Riyal'],
+            [100, 'CNY', 'ein Chinesischer Yuan'],
+            [500, 'NGN', 'fünf Nigerianische Naira'],
         ];
     }
 }

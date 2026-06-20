@@ -21,6 +21,11 @@ class RomanianCurrencyTransformerTest extends CurrencyTransformerTest
             [1000000, 'ROL', 'zece mii de lei'],
             [-200, 'ROL', 'minus doi lei'],
             [-145, 'ROL', 'minus un leu și patruzeci și cinci de bani'],
+            [500, 'GBP', 'cinci lire sterline'],
+            [100, 'JPY', 'un yen'],
+            [300, 'NOK', 'trei coroane norvegiene'],
+            [200, 'SAR', 'doi riali saudiți'],
+            [100, 'ZAR', 'un rand sud-african'],
         ];
     }
 }

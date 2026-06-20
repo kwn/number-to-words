@@ -27,7 +27,10 @@ class HungarianCurrencyTransformerTest extends CurrencyTransformerTest
             [99900, 'EUR', 'kilencszázkilencvenkilenc euró'],
             [100054, 'EUR', 'egyezer euró ötvennégy cent'],
             [101000, 'USD', 'egyezertíz dollár'],
-            [111111, 'USD', 'egyezeregyszáztizenegy dollár tizenegy cent']
+            [111111, 'USD', 'egyezeregyszáztizenegy dollár tizenegy cent'],
+            [300, 'SAR', 'három szaúd-arábiai rijál'],
+            [100, 'CNY', 'egy kínai jüan'],
+            [500, 'NGN', 'öt nigériai naira']
         ];
     }
 }

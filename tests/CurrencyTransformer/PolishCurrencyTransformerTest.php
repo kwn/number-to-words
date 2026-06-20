@@ -28,6 +28,9 @@ class PolishCurrencyTransformerTest extends CurrencyTransformerTest
             [61500, 'NOK', 'sześćset piętnaście koron norweskich'],
             [154552, 'USD', 'jeden tysiąc pięćset czterdzieści pięć dolarów pięćdziesiąt dwa centy'],
             [304501, 'EUR', 'trzy tysiące czterdzieści pięć euro jeden eurocent'],
+            [300, 'SAR', 'trzy riale saudyjskie'],
+            [100, 'CNY', 'jeden juan chiński'],
+            [500, 'NGN', 'pięć nair nigeryjskich'],
         ];
     }
 }

@@ -133,6 +133,166 @@ class Dictionary
             ['dolar american', 'dolari americani', Gender::GENDER_MASCULINE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],
         ],
+        'ALL' => [
+            ['lek albanez', 'leki albanezi', Gender::GENDER_MASCULINE],
+            ['qindarka', 'qindarki', Gender::GENDER_FEMININE],
+        ],
+        'AED' => [
+            ['dirham emiratez', 'dirhami emiratezi', Gender::GENDER_MASCULINE],
+            ['fils', 'fils', Gender::GENDER_MASCULINE],
+        ],
+        'BAM' => [
+            ['marcă convertibilă', 'mărci convertibile', Gender::GENDER_FEMININE],
+            ['fenig', 'fenigi', Gender::GENDER_MASCULINE],
+        ],
+        'BGN' => [
+            ['lev bulgăresc', 'leva bulgărești', Gender::GENDER_MASCULINE],
+            ['stotinka', 'stotinki', Gender::GENDER_FEMININE],
+        ],
+        'BRL' => [
+            ['real brazilian', 'reali brazilieni', Gender::GENDER_MASCULINE],
+            ['centavo', 'centavos', Gender::GENDER_MASCULINE],
+        ],
+        'BYR' => [
+            ['rublă belarusă', 'ruble belaruse', Gender::GENDER_FEMININE],
+            ['copeică', 'copeici', Gender::GENDER_FEMININE],
+        ],
+        'CNY' => [
+            ['yuan chinezesc', 'yuani chinezești', Gender::GENDER_MASCULINE],
+            ['fen', 'feni', Gender::GENDER_MASCULINE],
+        ],
+        'CYP' => [
+            ['liră cipriotă', 'lire cipriote', Gender::GENDER_FEMININE],
+            ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
+        'DKK' => [
+            ['coroană daneză', 'coroane daneze', Gender::GENDER_FEMININE],
+            ['øre', 'øre', Gender::GENDER_MASCULINE],
+        ],
+        'DZD' => [
+            ['dinar algerian', 'dinari algerieni', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'EEK' => [
+            ['coroană estoniană', 'coroane estoniene', Gender::GENDER_FEMININE],
+            ['sent', 'senți', Gender::GENDER_MASCULINE],
+        ],
+        'EGP' => [
+            ['liră egipteană', 'lire egiptene', Gender::GENDER_FEMININE],
+            ['piastru', 'piaștri', Gender::GENDER_MASCULINE],
+        ],
+        'HKD' => [
+            ['dolar Hong Kong', 'dolari Hong Kong', Gender::GENDER_MASCULINE],
+            ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
+        'HRK' => [
+            ['kuna croată', 'kune croate', Gender::GENDER_FEMININE],
+            ['lipa', 'lipe', Gender::GENDER_FEMININE],
+        ],
+        'IDR' => [
+            ['rupie indoneziană', 'rupii indoneziene', Gender::GENDER_FEMININE],
+            ['sen', 'seni', Gender::GENDER_MASCULINE],
+        ],
+        'ILS' => [
+            ['șekel israelian', 'șekeli israelieni', Gender::GENDER_MASCULINE],
+            ['agorot', 'agorot', Gender::GENDER_MASCULINE],
+        ],
+        'ISK' => [
+            ['coroană islandeză', 'coroane islandeze', Gender::GENDER_FEMININE],
+            ['eyrir', 'eyrir', Gender::GENDER_MASCULINE],
+        ],
+        'LTL' => [
+            ['litas lituanian', 'litași lituanieni', Gender::GENDER_MASCULINE],
+            ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
+        'LVL' => [
+            ['lats leton', 'lați letoni', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'LYD' => [
+            ['dinar libian', 'dinari libieni', Gender::GENDER_MASCULINE],
+            ['dirham', 'dirhami', Gender::GENDER_MASCULINE],
+        ],
+        'MAD' => [
+            ['dirham marocan', 'dirhami marocani', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'MKD' => [
+            ['denar macedonean', 'denari macedoneni', Gender::GENDER_MASCULINE],
+            ['deni', 'deni', Gender::GENDER_MASCULINE],
+        ],
+        'MRO' => [
+            ['ouguiya mauritaniană', 'ouguiya mauritaniene', Gender::GENDER_FEMININE],
+            ['khoums', 'khoums', Gender::GENDER_MASCULINE],
+        ],
+        'MTL' => [
+            ['liră malteză', 'lire malteze', Gender::GENDER_FEMININE],
+            ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
+        'MYR' => [
+            ['ringgit malaiez', 'ringgit malaiezieni', Gender::GENDER_MASCULINE],
+            ['sen', 'seni', Gender::GENDER_MASCULINE],
+        ],
+        'NGN' => [
+            ['naira nigeriană', 'naire nigeriene', Gender::GENDER_FEMININE],
+            ['kobo', 'kobo', Gender::GENDER_MASCULINE],
+        ],
+        'NOK' => [
+            ['coroană norvegiană', 'coroane norvegiene', Gender::GENDER_FEMININE],
+            ['øre', 'øre', Gender::GENDER_MASCULINE],
+        ],
+        'PHP' => [
+            ['peso filipinez', 'peso filipinezi', Gender::GENDER_MASCULINE],
+            ['sentavo', 'sentavos', Gender::GENDER_MASCULINE],
+        ],
+        'SAR' => [
+            ['rial saudit', 'riali saudiți', Gender::GENDER_MASCULINE],
+            ['halala', 'halala', Gender::GENDER_MASCULINE],
+        ],
+        'SEK' => [
+            ['coroană suedeză', 'coroane suedeze', Gender::GENDER_FEMININE],
+            ['öre', 'öre', Gender::GENDER_MASCULINE],
+        ],
+        'SIT' => [
+            ['tolar sloven', 'tolari sloveni', Gender::GENDER_MASCULINE],
+            ['stotin', 'stotini', Gender::GENDER_MASCULINE],
+        ],
+        'TMT' => [
+            ['manat turkmen', 'manați turkmeni', Gender::GENDER_MASCULINE],
+            ['tenge', 'tenge', Gender::GENDER_MASCULINE],
+        ],
+        'TND' => [
+            ['dinar tunisian', 'dinari tunisieni', Gender::GENDER_MASCULINE],
+            ['millim', 'millimi', Gender::GENDER_MASCULINE],
+        ],
+        'UAH' => [
+            ['hryvnă ucraineană', 'hryvne ucrainene', Gender::GENDER_FEMININE],
+            ['copeică', 'copeici', Gender::GENDER_FEMININE],
+        ],
+        'UZS' => [
+            ['som uzbec', 'somi uzbeci', Gender::GENDER_MASCULINE],
+            ['tiyin', 'tiyini', Gender::GENDER_MASCULINE],
+        ],
+        'XAF' => [
+            ['franc CFA', 'franci CFA', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'XOF' => [
+            ['franc CFA', 'franci CFA', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'XPF' => [
+            ['franc CFP', 'franci CFP', Gender::GENDER_MASCULINE],
+            ['santim', 'santimi', Gender::GENDER_MASCULINE],
+        ],
+        'YUM' => [
+            ['dinar iugoslav', 'dinari iugoslavi', Gender::GENDER_MASCULINE],
+            ['para', 'paras', Gender::GENDER_MASCULINE],
+        ],
+        'ZAR' => [
+            ['rand sud-african', 'ranzi sud-africani', Gender::GENDER_MASCULINE],
+            ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
     ];
 
     public static string $manyPart = 'de';

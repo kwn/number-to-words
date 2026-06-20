@@ -27,6 +27,11 @@ class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
             [1000, 'GBP', 'dix pounds'],
             [70001, 'GBP', 'sept cents pounds et un penny'],
             [700010, 'GBP', 'sept mille pounds et dix pence'],
+            [500, 'GBP', 'cinq pounds'],
+            [10000, 'JPY', 'cent yens'],
+            [30050, 'RUB', 'trois cents roubles russes et cinquante kopeks'],
+            [20001, 'SAR', 'deux cents riyals saoudiens et un halala'],
+            [10099, 'ZAR', 'cent rands sud-africains et quatre-vingt-dix-neuf cents'],
         ];
     }
 }

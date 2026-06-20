@@ -32,6 +32,9 @@ class SwahiliCurrencyTransformerTest extends CurrencyTransformerTest
             [-72925, 'UGX', 'Shilingi za Uganda kasoro mia saba na ishirini na tisa na senti ishirini na tano'],
             [-89425, 'USD', 'Dola za Marekani kasoro mia nane na tisini na nne na senti ishirini na tano'],
             [-99925, 'USD', 'Dola za Marekani kasoro mia tisa na tisini na tisa na senti ishirini na tano'],
+            [30000, 'RUB', 'Ruble za Urusi mia tatu'],
+            [10050, 'PLN', 'Zloty za Poland mia na grosz hamsini'],
+            [50025, 'MYR', 'Ringgit za Malaysia mia tano na sen ishirini na tano'],
         ];
     }
 }

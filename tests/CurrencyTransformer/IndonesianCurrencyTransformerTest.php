@@ -34,6 +34,9 @@ class IndonesianCurrencyTransformerTest extends CurrencyTransformerTest
             [-72925, 'USD', 'minus tujuh ratus dua puluh sembilan dolar dua puluh lima sen'],
             [-89425, 'USD', 'minus delapan ratus sembilan puluh empat dolar dua puluh lima sen'],
             [-99925, 'USD', 'minus sembilan ratus sembilan puluh sembilan dolar dua puluh lima sen'],
+            [30000, 'SAR', 'tiga ratus riyal Arab Saudi'],
+            [10000, 'CNY', 'seratus yuan Tiongkok'],
+            [50000, 'MYR', 'lima ratus ringgit Malaysia'],
         ];
     }
 }

@@ -30,6 +30,9 @@ class TurkishCurrencyTransformerTest extends CurrencyTransformerTest
             [93829100, 'RUB', 'dokuz yüz otuz sekiz bin iki yüz doksan bir Rus rublesi'],
             [54123100, 'CHF', 'beş yüz kırk bir bin iki yüz otuz bir İsviçre frangı'],
             [43889300, 'CHF', 'dört yüz otuz sekiz bin sekiz yüz doksan üç İsviçre frangı'],
+            [30000, 'SAR', 'üç yüz Suudi Arabistan riyali'],
+            [10000, 'AED', 'yüz Birleşik Arap Emirlikleri dirhemi'],
+            [50000, 'NGN', 'beş yüz Nijerya nairası'],
         ];
     }
 }

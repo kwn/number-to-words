@@ -22,6 +22,9 @@ class SlovakCurrencyTransformerTest extends CurrencyTransformerTest
             [250, 'USD', 'dva doláre päťdesiat centov'],
             [10000, 'EUR', 'sto euro'],
             [-500, 'USD', 'mínus päť dolárov'],
+            [300, 'SAR', 'tri saudskoarabské rijály'],
+            [100, 'CNY', 'jeden čínsky jüan'],
+            [500, 'NGN', 'päť nigérijských nair'],
         ];
     }
 }
