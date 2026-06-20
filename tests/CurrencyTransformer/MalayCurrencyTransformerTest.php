@@ -2,11 +2,11 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class MalaysianCurrencyTransformerTest extends CurrencyTransformerTest
+class MalayCurrencyTransformerTest extends CurrencyTransformerTest
 {
     protected function setUp(): void
     {
-        $this->currencyTransformer = new MalaysianCurrencyTransformer();
+        $this->currencyTransformer = new MalayCurrencyTransformer();
     }
 
     public function providerItConvertsMoneyAmountToWords(): array
