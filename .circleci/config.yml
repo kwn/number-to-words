@@ -8,7 +8,7 @@ commands:
           command: curl https://qlty.sh | sh
       - run:
           name: Upload coverage to Qlty
-          command: ~/.local/bin/qlty coverage publish build/logs/clover.xml
+          command: ~/.qlty/bin/qlty coverage publish build/logs/clover.xml
   build:
     steps:
       - run:
