@@ -9,22 +9,14 @@ commands:
       - run:
           name: Upload coverage to Qlty
           command: ~/.local/bin/qlty coverage publish build/logs/clover.xml
-  install-dependencies:
-    parameters:
-      xdebug_version:
-        type: string
+  build:
     steps:
       - run:
           name: Install dependencies
           command: composer install
       - run:
           name: Install xdebug
-          command: sudo -E install-php-extensions xdebug-<< parameters.xdebug_version >>
-      - run:
-          name: Enable xdebug
-          command: sudo -E docker-php-ext-enable xdebug
-  build:
-    steps:
+          command: sudo pecl install xdebug && sudo docker-php-ext-enable xdebug
       - run:
           name: Check coding style (PSR12)
           command: make phpcs
@@ -37,15 +29,11 @@ jobs:
     parameters:
       php_version:
         type: string
-      xdebug_version:
-        type: string
     docker:
       - image: cimg/php:<< parameters.php_version >>
     resource_class: small
     steps:
       - checkout
-      - install-dependencies:
-          xdebug_version: << parameters.xdebug_version >>
       - build
       - when:
           condition:
@@ -61,4 +49,3 @@ workflows:
           matrix:
             parameters:
               php_version: ["8.2", "8.3", "8.4", "8.5"]
-              xdebug_version: ["stable"]
