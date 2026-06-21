@@ -16,7 +16,7 @@ commands:
           command: composer install
       - run:
           name: Install xdebug
-          command: sudo pecl install xdebug && sudo docker-php-ext-enable xdebug
+          command: sudo pecl install xdebug
       - run:
           name: Check coding style (PSR12)
           command: make phpcs
