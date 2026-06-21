@@ -35,6 +35,8 @@ jobs:
     steps:
       - checkout
       - build
+      - store_artifacts:
+          path: build/logs/coverage
       - when:
           condition:
             equal: ["8.5", << parameters.php_version >>]
