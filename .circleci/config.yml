@@ -1,22 +1,14 @@
 version: 2.1
 
 commands:
-  cc-reporter-pre:
+  qlty-coverage-publish:
     steps:
       - run:
-          name: Download Code Climate test reporter
-          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ~/cc-test-reporter
+          name: Install Qlty CLI
+          command: curl https://qlty.sh | sh
       - run:
-          name: Make Code Climate test reporter executable
-          command: chmod a+x ~/cc-test-reporter
-      - run:
-          name: Initialise Code Climate test reporter
-          command: ~/cc-test-reporter before-build
-  cc-reporter-post:
-    steps:
-      - run:
-          name: Send tests result to Code Climate
-          command: ~/cc-test-reporter after-build --exit-code $?
+          name: Upload coverage to Qlty
+          command: ~/.local/bin/qlty coverage publish build/logs/clover.xml
   install-dependencies:
     parameters:
       xdebug_version:
@@ -54,9 +46,12 @@ jobs:
       - checkout
       - install-dependencies:
           xdebug_version: << parameters.xdebug_version >>
-      - cc-reporter-pre
       - build
-      - cc-reporter-post
+      - when:
+          condition:
+            equal: ["8.5", << parameters.php_version >>]
+          steps:
+            - qlty-coverage-publish
 
 workflows:
   ci:
@@ -65,11 +60,5 @@ workflows:
           name: build-php-<< matrix.php_version >>
           matrix:
             parameters:
-              php_version: ["7.4"]
-              xdebug_version: ["3.1.5"]
-      - build:
-          name: build-php-<< matrix.php_version >>
-          matrix:
-            parameters:
-              php_version: ["8.0", "8.1", "8.2", "8.3"]
+              php_version: ["8.2", "8.3", "8.4", "8.5"]
               xdebug_version: ["stable"]
