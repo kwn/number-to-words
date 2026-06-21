@@ -119,7 +119,7 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 Some transformers were ported from the `pear/Numbers_Words` library. Others were created by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
 
 ## Version 3.x - BC and major changes
-- Dropped support for PHP <8.0.
+- Dropped support for PHP <8.2.
 
 ## Version 2.x - BC and major changes
 
