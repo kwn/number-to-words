@@ -74,7 +74,7 @@ class UzbekDictionary implements Dictionary
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['rubl'], ['kopeyka']],
         'SAR' => [['Riyal'], ['Halalah']],
         'SEK' => [['Swedish krona'], ['oere']],

@@ -118,7 +118,7 @@ class LithuanianDictionary implements Dictionary
         'NOK' => [['Norvegijos krona', 'Norvegijos kronų', 'Norvegijos kronos'], ['eras', 'erų', 'erai']],
         'PHP' => [['Filipinų pesas', 'Filipinų pesų', 'Filipinų pesai'], ['sentavo', 'sentavų', 'sentavai']],
         'PLN' => [['Lenkijos zlotas', 'Lenkijos zlotų', 'Lenkijos zlotai'], ['grašas', 'grašų', 'grašai']],
-        'ROL' => [['Rumunijos lėja', 'Rumunijos lėjų', 'Rumunijos lėjos'], ['banas', 'banų', 'banai']],
+        'RON' => [['Rumunijos lėja', 'Rumunijos lėjų', 'Rumunijos lėjos'], ['banas', 'banų', 'banai']],
         'RUB' => [['Rusijos rublis', 'Rusijos rublių', 'Rusijos rubliai'], ['kapeika', 'kapeikų', 'kapeikos']],
         'SAR' => [
             ['Saudo Arabijos rialas', 'Saudo Arabijos rialų', 'Saudo Arabijos rialai'],

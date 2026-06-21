@@ -74,7 +74,7 @@ class AlbanianDictionary implements Dictionary
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['Tolar'], ['stotinia']],

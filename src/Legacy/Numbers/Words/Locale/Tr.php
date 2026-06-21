@@ -107,7 +107,7 @@ class Tr extends Words
         'NOK' => [['Norveç kronu'], ['oere']],
         'PHP' => [['Filipin pezosu'], ['sentavo']],
         'PLN' => [['Polonya zlotisi'], ['grosz']],
-        'ROL' => [['Roman leyi'], ['bani']],
+        'RON' => [['Roman leyi'], ['bani']],
         'RUB' => [['Rus rublesi'], ['kopiejka']],
         'SAR' => [['Suudi Arabistan riyali'], ['halala']],
         'SEK' => [['İsveç kronu'], ['oere']],

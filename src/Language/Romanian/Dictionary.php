@@ -105,7 +105,7 @@ class Dictionary
             ['zlot', 'zloți', Gender::GENDER_MASCULINE],
             ['gros', 'grosi', Gender::GENDER_MASCULINE],
         ],
-        'ROL' => [
+        'RON' => [
             ['leu', 'lei', Gender::GENDER_MASCULINE],
             ['ban', 'bani', Gender::GENDER_MASCULINE],
         ],

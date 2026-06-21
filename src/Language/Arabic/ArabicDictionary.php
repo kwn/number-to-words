@@ -98,7 +98,7 @@ class ArabicDictionary implements Dictionary
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['زلوتي', 'زلوتي'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SAR' => [['ريال'], ['هللة']],
         'SEK' => [['Swedish krona'], ['oere']],

@@ -147,7 +147,7 @@ class Br extends Words
         'NOK' => [['coroa norueguesa', 'coroas norueguesas'], ['øre', 'øre']],
         'PHP' => [['peso filipino', 'pesos filipinos'], ['sentavo', 'sentavos']],
         'PLN' => [['zloty polonês', 'zlotys poloneses'], ['grosz', 'groszs']],
-        'ROL' => [['leu romeno', 'lei romenos'], ['ban', 'bans']],
+        'RON' => [['leu romeno', 'lei romenos'], ['ban', 'bans']],
         'RUB' => [['rublo russo', 'rublos russos'], ['kopek', 'kopeks']],
         'SAR' => [['riyal saudita', 'riyals sauditas'], ['halala', 'halalas']],
         'SEK' => [['coroa sueca', 'coroas suecas'], ['öre', 'öre']],

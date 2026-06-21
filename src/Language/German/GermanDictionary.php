@@ -135,7 +135,7 @@ class GermanDictionary implements Dictionary
         'MYR' => [['Malaysischer Ringgit'], ['Sen']],
         'NGN' => [['Nigerianische Naira'], ['Kobo']],
         'PHP' => [['Philippinischer Peso'], ['Sentavo']],
-        'ROL' => [['Rumänischer Leu'], ['Ban']],
+        'RON' => [['Rumänischer Leu'], ['Ban']],
         'SAR' => [['Saudi-Arabischer Riyal'], ['Halala']],
         'SIT' => [['Slowenischer Tolar'], ['Stotin']],
         'SKK' => [['Slowakische Krone'], ['Haler']],

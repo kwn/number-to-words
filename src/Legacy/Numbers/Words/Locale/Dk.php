@@ -85,7 +85,7 @@ class Dk extends Words
         'NOK' => [['norsk krone', 'norske kroner'], ['øre']],
         'PHP' => [['filippinsk peso', 'filippinske peso'], ['sentavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['rumænsk leu', 'rumænske leu'], ['ban']],
+        'RON' => [['rumænsk leu', 'rumænske leu'], ['ban']],
         'RUB' => [['russisk rubel', 'russiske rubel'], ['kopek']],
         'SAR' => [['saudiarabisk riyal', 'saudiarabiske riyal'], ['halala']],
         'SEK' => [['svensk krone', 'svenske kroner'], ['öre']],

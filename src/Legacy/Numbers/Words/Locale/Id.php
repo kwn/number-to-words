@@ -83,7 +83,7 @@ class Id extends Words
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['senavo']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SAR' => [['riyal Arab Saudi'], ['halala']],
         'SEK' => [['Swedish krona'], ['oere']],

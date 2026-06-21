@@ -95,7 +95,7 @@ class Hu extends Words
         'NOK' => [['norvég korona'], ['őre']],
         'PHP' => [['fülöp-szigeteki peso'], ['szentavo']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['lej'], ['bani']],
+        'RON' => [['lej'], ['bani']],
         'RUB' => [['orosz rubel'], ['kopejka']],
         'SAR' => [['szaúd-arábiai rijál'], ['halala']],
         'SEK' => [['svéd korona'], ['őre']],

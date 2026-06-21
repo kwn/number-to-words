@@ -103,7 +103,7 @@ class SerbianDictionary implements Dictionary
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
         'RSD' => [['dinar', 'dinara', 'dinara'], ['para', 'para', 'pare']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SAR' => [['Riyal'], ['Halalah']],
         'SEK' => [['Swedish krona'], ['oere']],

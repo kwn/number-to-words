@@ -92,7 +92,7 @@ class Nl extends Words
         'MTL' => [['Maltese lira'], ['centym']],
         'NOK' => [['Norwegian krone'], ['oere']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['Romanian leu'], ['bani']],
+        'RON' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['Tolar'], ['stotinia']],

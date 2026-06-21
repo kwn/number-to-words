@@ -811,7 +811,7 @@ class BulgarianDictionary implements Dictionary
                     Gender::GENDER_MASCULINE,
             ],
         ],
-        'ROL' => [
+        'RON' => [
             self::CURRENCY_WHOLE => [
                 Form::SINGULAR => 'лея',
                 Form::PLURAL => 'леи',

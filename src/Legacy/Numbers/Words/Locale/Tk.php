@@ -192,7 +192,7 @@ class Tk extends Words
             'Polşa zlotasy',
             'groş'
         ],
-        'ROL' => [
+        'RON' => [
             'Rumyniýa leýasy',
             'ban'
         ],

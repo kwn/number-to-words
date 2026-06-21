@@ -92,7 +92,7 @@ class PolishDictionary implements Dictionary
         'MTL' => [['lira maltańska', 'liry maltańskie', 'lir maltańskich'], ['centym', 'centymy', 'centymów']],
         'NOK' => [['korona norweska', 'korony norweskie', 'koron norweskich'], ['oere', 'oere', 'oere']],
         'PLN' => [['złoty', 'złote', 'złotych'], ['grosz', 'grosze', 'groszy']],
-        'ROL' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
+        'RON' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
         'RUB' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
         'SEK' => [['korona szwedzka', 'korony szwedzkie', 'koron szweckich'], ['oere', 'oere', 'oere']],
         'SIT' => [['tolar', 'tolary', 'tolarów'], ['stotinia', 'stotinie', 'stotini']],

@@ -96,7 +96,7 @@ class Sw extends Words
         'NOK' => [['Korona ya Norwe', 'Korona za Norwe'], ['øre', 'øre']],
         'PHP' => [['Peso ya Ufilipino', 'Peso za Ufilipino'], ['sentavo', 'sentavo']],
         'PLN' => [['Zloty ya Poland', 'Zloty za Poland'], ['grosz', 'grosz']],
-        'ROL' => [['Leu ya Romania', 'Leu za Romania'], ['ban', 'ban']],
+        'RON' => [['Leu ya Romania', 'Leu za Romania'], ['ban', 'ban']],
         'RUB' => [['Ruble ya Urusi', 'Ruble za Urusi'], ['kopek', 'kopek']],
         'SEK' => [['Korona ya Uswidi', 'Korona za Uswidi'], ['öre', 'öre']],
         'SIT' => [['Tolar ya Slovenia', 'Tolar za Slovenia'], ['stotin', 'stotin']],

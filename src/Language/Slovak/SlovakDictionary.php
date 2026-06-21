@@ -106,7 +106,7 @@ class SlovakDictionary implements Dictionary
         'MXN' => [['mexické peso', 'mexické pesá', 'mexických pies'], ['centavo', 'centavos', 'centavov']],
         'NOK' => [['korona norweska', 'korony norweskie', 'koron norweskich'], ['oere', 'oere', 'oere']],
         'PLN' => [['złoty', 'złote', 'złotych'], ['grosz', 'grosze', 'groszy']],
-        'ROL' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
+        'RON' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],
         'RUB' => [['rubel', 'ruble', 'rubli'], ['kopiejka', 'kopiejki', 'kopiejek']],
         'SEK' => [['korona szwedzka', 'korony szwedzkie', 'koron szweckich'], ['oere', 'oere', 'oere']],
         'SIT' => [['tolar', 'tolary', 'tolarov'], ['stotinia', 'stotinie', 'stotini']],

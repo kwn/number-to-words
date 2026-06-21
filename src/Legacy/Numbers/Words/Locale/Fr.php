@@ -129,7 +129,7 @@ class Fr extends Words
         'NOK' => [['couronne norvégienne', 'couronnes norvégiennes'], ['øre', 'øre']],
         'PHP' => [['peso philippin', 'pesos philippins'], ['sentavo', 'sentavos']],
         'PLN' => [['zloty polonais', 'zlotys polonais'], ['grosz', 'groszs']],
-        'ROL' => [['leu roumain', 'lei roumains'], ['ban', 'bans']],
+        'RON' => [['leu roumain', 'lei roumains'], ['ban', 'bans']],
         'RUB' => [['rouble russe', 'roubles russes'], ['kopek', 'kopeks']],
         'SAR' => [['riyal saoudien', 'riyals saoudiens'], ['halala', 'halalas']],
         'SEK' => [['couronne suédoise', 'couronnes suédoises'], ['öre', 'öre']],

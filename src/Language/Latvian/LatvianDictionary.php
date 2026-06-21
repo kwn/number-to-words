@@ -92,7 +92,7 @@ class LatvianDictionary implements Dictionary
         'NOK' => [['Norvēģijas krona', 'Norvēģijas kronas', 'Norvēģijas kronas'], ['ēre', 'ēres', 'ēres']],
         'PHP' => [['Filipīnu peso', 'Filipīnu peso', 'Filipīnu peso'], ['sentavo', 'sentavo', 'sentavo']],
         'PLN' => [['Polijas zlots', 'Polijas zloti', 'Polijas zloti'], ['grošs', 'groši', 'groši']],
-        'ROL' => [['Rumānijas leja', 'Rumānijas lejas', 'Rumānijas lejas'], ['bans', 'bani', 'bani']],
+        'RON' => [['Rumānijas leja', 'Rumānijas lejas', 'Rumānijas lejas'], ['bans', 'bani', 'bani']],
         'RUB' => [['Krievijas rublis', 'Krievijas rubļi', 'Krievijas rubļi'], ['kapeikas', 'kapeikas', 'kapeikas']],
         'SAR' => [
             ['Saūda Arābijas riyāls', 'Saūda Arābijas riyāli', 'Saūda Arābijas riyāli'],
