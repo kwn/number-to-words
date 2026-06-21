@@ -108,6 +108,7 @@ class Yo extends Words
         'LYD' => [['dinar'], ['cent']],
         'MAD' => [['dirham'], ['cent']],
         'MKD' => [['Macedonian dinar'], ['deni']],
+        'MXN' => [['peso Mexico', 'peso Mexico'], ['sentavo']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
         'NGN' => [['Naira'], ['kobo']],

@@ -88,6 +88,7 @@ class Nl extends Words
         'LTL' => [['litas'], ['cent']],
         'LVL' => [['lat'], ['sentim']],
         'MKD' => [['Macedonian dinar'], ['deni']],
+        'MXN' => [['Mexicaanse peso', 'Mexicaanse peso\'s'], ['centavo']],
         'MTL' => [['Maltese lira'], ['centym']],
         'NOK' => [['Norwegian krone'], ['oere']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],

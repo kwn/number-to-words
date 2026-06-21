@@ -99,6 +99,7 @@ class Tr extends Words
         'LYD' => [['Libya dinarı'], ['dirhem']],
         'MAD' => [['Fas dirhemi'], ['santim']],
         'MKD' => [['Makedonya dinarı'], ['deni']],
+        'MXN' => [['Meksika pesosu'], ['sentavo']],
         'MRO' => [['Moritanya ugiyası'], ['kum']],
         'MTL' => [['Malta lirası'], ['centym']],
         'MYR' => [['Malezya ringgiti'], ['sen']],

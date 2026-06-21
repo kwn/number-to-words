@@ -115,6 +115,8 @@ class PolishDictionary implements Dictionary
             ['santym', 'santymy', 'santymów'],
         ],
         'MRO' => [['ugija mauretańska', 'ugije mauretańskie', 'ugij mauretańskich'], ['chum', 'chumy', 'chumów']],
+        'MTL' => [['lira maltańska', 'liry maltańskie', 'lir maltańskich'], ['centym', 'centymy', 'centymów']],
+        'MXN' => [['peso meksykańskie', 'peso meksykańskie', 'peso meksykańskich'], ['centavo', 'centavo', 'centavo']],
         'MYR' => [['ringgit malezyjski', 'ringgity malezyjskie', 'ringgitów malezyjskich'], ['sen', 'seny', 'senów']],
         'NGN' => [['naira nigeryjska', 'nairy nigeryjskie', 'nair nigeryjskich'], ['kobo', 'kobo', 'kobo']],
         'PHP' => [['peso filipińskie', 'peso filipińskie', 'peso filipińskich'], ['sentavo', 'sentavo', 'sentavo']],

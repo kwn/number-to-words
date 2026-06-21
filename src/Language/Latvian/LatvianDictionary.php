@@ -86,6 +86,7 @@ class LatvianDictionary implements Dictionary
         'MKD' => [['Maķedonijas denārs', 'Maķedonijas denāri', 'Maķedonijas denāri'], ['denis', 'deni', 'deni']],
         'MRO' => [['Mauritānijas ugija', 'Mauritānijas ugijas', 'Mauritānijas ugijas'], ['kūms', 'kūmi', 'kūmi']],
         'MTL' => [['Maltas lira', 'Maltas liras', 'Maltas liras'], ['cents', 'centi', 'centi']],
+        'MXN' => [['Meksikas peso', 'Meksikas peso', 'Meksikas peso'], ['sentavo', 'sentavo', 'sentavo']],
         'MYR' => [['Malaizijas ringits', 'Malaizijas ringiti', 'Malaizijas ringiti'], ['sens', 'seni', 'seni']],
         'NGN' => [['Nigērijas naira', 'Nigērijas nairas', 'Nigērijas nairas'], ['kobo', 'kobo', 'kobo']],
         'NOK' => [['Norvēģijas krona', 'Norvēģijas kronas', 'Norvēģijas kronas'], ['ēre', 'ēres', 'ēres']],

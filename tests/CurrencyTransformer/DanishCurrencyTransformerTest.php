@@ -27,6 +27,8 @@ class DanishCurrencyTransformerTest extends CurrencyTransformerTestCase
             [300, 'RUB', 'tre russiske rubel'],
             [200, 'SAR', 'to saudiarabiske riyal'],
             [100, 'ZAR', 'en sydafrikansk rand'],
+            [50000, 'MXN', 'fem hundrede mexicanske pesos'],
+            [50099, 'MXN', 'fem hundrede mexicanske pesos og ni og halvfems centavo'],
         ];
     }
 }

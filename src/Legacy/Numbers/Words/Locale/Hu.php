@@ -87,6 +87,7 @@ class Hu extends Words
         'LYD' => [['líbiai dínár'], ['dirham']],
         'MAD' => [['marokkói dirham'], ['szantim']],
         'MKD' => [['macedón dénár'], ['deni']],
+        'MXN' => [['mexikói peso'], ['centavo']],
         'MRO' => [['mauritániai ugija'], ['kum']],
         'MTL' => [['máltai líra'], ['cent']],
         'MYR' => [['malajziai ringgit'], ['szén']],

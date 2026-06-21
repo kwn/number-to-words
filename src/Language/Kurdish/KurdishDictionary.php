@@ -69,6 +69,7 @@ class KurdishDictionary implements Dictionary
         'MKD' => [['دیناری مەقدۆنی'], ['دەنی']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['لیرەی ماڵتی'], ['سەنت']],
+        'MXN' => [['peso Meksîkî', 'peso Meksîkî'], ['sentavo']],
         'NGN' => [['Naira'], ['kobo']],
         'NOK' => [['کرۆنی نەرویجی'], ['ۆر']],
         'PHP' => [['پیسۆ'], ['سێنتاڤۆ']],

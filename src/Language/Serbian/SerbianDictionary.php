@@ -97,6 +97,7 @@ class SerbianDictionary implements Dictionary
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
+        'MXN' => [['meksički pezos', 'meksička pezosa', 'meksičkih pezosa'], ['centavo', 'centava', 'centava']],
         'NGN' => [['Naira'], ['kobo']],
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],

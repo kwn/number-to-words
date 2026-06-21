@@ -103,6 +103,7 @@ class SlovakDictionary implements Dictionary
         'LVL' => [['łat', 'łaty', 'łatov'], ['sentim', 'sentimy', 'sentimov']],
         'MKD' => [['denar', 'denary', 'denarov'], ['deni', 'deni', 'deni']],
         'MTL' => [['lira maltańska', 'liry maltańskie', 'lir maltańskich'], ['centym', 'centymy', 'centymov']],
+        'MXN' => [['mexické peso', 'mexické pesá', 'mexických pies'], ['centavo', 'centavos', 'centavov']],
         'NOK' => [['korona norweska', 'korony norweskie', 'koron norweskich'], ['oere', 'oere', 'oere']],
         'PLN' => [['złoty', 'złote', 'złotych'], ['grosz', 'grosze', 'groszy']],
         'ROL' => [['lej', 'leje', 'lei'], ['bani', 'bani', 'bani']],

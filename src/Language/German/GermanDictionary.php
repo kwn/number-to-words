@@ -131,6 +131,7 @@ class GermanDictionary implements Dictionary
         'MAD' => [['Marokkanischer Dirham'], ['Santim']],
         'MRO' => [['Mauretanischer Ouguiya'], ['Khoums']],
         'MTL' => [['Maltesische Lira'], ['Cent']],
+        'MXN' => [['Mexikanischer Peso'], ['Centavo']],
         'MYR' => [['Malaysischer Ringgit'], ['Sen']],
         'NGN' => [['Nigerianische Naira'], ['Kobo']],
         'PHP' => [['Philippinischer Peso'], ['Sentavo']],

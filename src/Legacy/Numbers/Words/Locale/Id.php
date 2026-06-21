@@ -75,6 +75,7 @@ class Id extends Words
         'LYD' => [['dinar'], ['sen']],
         'MAD' => [['dirham'], ['sen']],
         'MKD' => [['dinar Macedonia'], ['deni']],
+        'MXN' => [['peso Meksiko'], ['sentavo']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['senym']],
         'MYR' => [['ringgit Malaysia'], ['sen']],

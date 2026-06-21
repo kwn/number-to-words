@@ -160,6 +160,10 @@ class Tk extends Words
             'Makedoniýa denary',
             'deni'
         ],
+        'MXN' => [
+            'Meksika pesoumy',
+            'sentavo'
+        ],
         'MRO' => [
             'Mawritaniýa ugiýasy',
             'kum'

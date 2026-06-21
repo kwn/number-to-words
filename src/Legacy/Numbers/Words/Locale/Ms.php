@@ -74,6 +74,7 @@ class Ms extends Words
         'LYD' => [['dinar'], ['sen']],
         'MAD' => [['dirham'], ['sen']],
         'MKD' => [['dinar Macedonia'], ['deni']],
+        'MXN' => [['peso Mexico'], ['sentavo']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['senym']],
         'MYR' => [['ringgit'], ['sen']],

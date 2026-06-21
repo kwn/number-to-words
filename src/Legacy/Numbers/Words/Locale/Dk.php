@@ -77,6 +77,7 @@ class Dk extends Words
         'LYD' => [['libysk dinar', 'libyske dinar'], ['dirham']],
         'MAD' => [['marokkansk dirham', 'marokkanske dirham'], ['santim']],
         'MKD' => [['makedonsk denar', 'makedonske denar'], ['deni']],
+        'MXN' => [['mexicansk peso', 'mexicanske pesos'], ['centavo']],
         'MRO' => [['mauritansk ouguiya', 'mauritanske ouguiya'], ['khoums']],
         'MTL' => [['maltesisk lira', 'maltesiske lira'], ['sent']],
         'MYR' => [['malaysisk ringgit', 'malaysiske ringgit'], ['sen']],

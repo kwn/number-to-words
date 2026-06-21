@@ -112,6 +112,7 @@ class LithuanianDictionary implements Dictionary
         'MKD' => [['Makedonijos denaras', 'Makedonijos denarų', 'Makedonijos denarai'], ['denis', 'denių', 'deniai']],
         'MRO' => [['Mauritanijos ugija', 'Mauritanijos ugijų', 'Mauritanijos ugijos'], ['chumas', 'chumų', 'chumai']],
         'MTL' => [['Maltos lira', 'Maltos lirų', 'Maltos liros'], ['centas', 'centų', 'centai']],
+        'MXN' => [['Meksikos pesas', 'Meksikos pesų', 'Meksikos pesai'], ['sentavas', 'sentavų', 'sentavai']],
         'MYR' => [['Malaizijos ringitas', 'Malaizijos ringitų', 'Malaizijos ringitai'], ['senas', 'senų', 'senai']],
         'NGN' => [['Nigerijos naira', 'Nigerijos nairų', 'Nigerijos nairos'], ['kobo', 'kobų', 'kobai']],
         'NOK' => [['Norvegijos krona', 'Norvegijos kronų', 'Norvegijos kronos'], ['eras', 'erų', 'erai']],

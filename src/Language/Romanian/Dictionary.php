@@ -229,6 +229,10 @@ class Dictionary
             ['liră malteză', 'lire malteze', Gender::GENDER_FEMININE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],
         ],
+        'MXN' => [
+            ['peso mexican', 'peso mexicani', Gender::GENDER_MASCULINE],
+            ['centavo', 'centavos', Gender::GENDER_MASCULINE],
+        ],
         'MYR' => [
             ['ringgit malaiez', 'ringgit malaiezieni', Gender::GENDER_MASCULINE],
             ['sen', 'seni', Gender::GENDER_MASCULINE],

@@ -70,6 +70,7 @@ class AzerbaijaniDictionary implements Dictionary
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
+        'MXN' => [['Meksika pesosu', 'Meksika pesosu'], ['sentavo']],
         'NGN' => [['Naira'], ['kobo']],
         'NOK' => [['Norwegian krone'], ['oere']],
         'PHP' => [['peso'], ['centavo']],

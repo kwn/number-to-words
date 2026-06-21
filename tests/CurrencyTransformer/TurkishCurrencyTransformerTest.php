@@ -33,6 +33,8 @@ class TurkishCurrencyTransformerTest extends CurrencyTransformerTestCase
             [30000, 'SAR', 'üç yüz Suudi Arabistan riyali'],
             [10000, 'AED', 'yüz Birleşik Arap Emirlikleri dirhemi'],
             [50000, 'NGN', 'beş yüz Nijerya nairası'],
+            [10000, 'MXN', 'yüz Meksika pesosu'],
+            [10050, 'MXN', 'yüz Meksika pesosu elli sentavo'],
         ];
     }
 }

@@ -72,6 +72,7 @@ class EnglishDictionary implements Dictionary
         'MKD' => [['Macedonian dinar'], ['deni']],
         'MRO' => [['ouguiya'], ['khoums']],
         'MTL' => [['Maltese lira'], ['centym']],
+        'MXN' => [['Mexican peso', 'Mexican pesos'], ['centavo', 'centavos']],
         'MYR' => [['ringgit'], ['sen']],
         'NGN' => [['Naira'], ['kobo']],
         'NOK' => [['Norwegian krone'], ['oere']],
