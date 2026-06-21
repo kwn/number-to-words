@@ -81,7 +81,7 @@ class Es extends Words
         'NOK' => [['norwegian krone'], ['oere']],
         'PAB' => [['balboa', 'balboas'], ['centavo', 'centavos']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['romanian leu'], ['bani']],
+        'RON' => [['romanian leu'], ['bani']],
         'RUB' => [['rublo ruso', 'rublos rusos'], ['kopek']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['tolar'], ['stotinia']],

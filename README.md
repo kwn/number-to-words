@@ -121,6 +121,7 @@ Some transformers were ported from the `pear/Numbers_Words` library. Others were
 
 ## Version 3.x - BC and major changes
 - Dropped support for PHP <8.2.
+- Changed Romanian currency code from ROL to RON
 
 ## Version 2.x - BC and major changes
 

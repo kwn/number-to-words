@@ -105,7 +105,7 @@ class Dictionary
             ['zlot', 'zloți', Gender::GENDER_MASCULINE],
             ['gros', 'grosi', Gender::GENDER_MASCULINE],
         ],
-        'ROL' => [
+        'RON' => [
             ['leu', 'lei', Gender::GENDER_MASCULINE],
             ['ban', 'bani', Gender::GENDER_MASCULINE],
         ],
@@ -228,6 +228,10 @@ class Dictionary
         'MTL' => [
             ['liră malteză', 'lire malteze', Gender::GENDER_FEMININE],
             ['cent', 'cenți', Gender::GENDER_MASCULINE],
+        ],
+        'MXN' => [
+            ['peso mexican', 'peso mexicani', Gender::GENDER_MASCULINE],
+            ['centavo', 'centavos', Gender::GENDER_MASCULINE],
         ],
         'MYR' => [
             ['ringgit malaiez', 'ringgit malaiezieni', Gender::GENDER_MASCULINE],

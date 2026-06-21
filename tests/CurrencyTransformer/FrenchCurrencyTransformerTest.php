@@ -32,6 +32,8 @@ class FrenchCurrencyTransformerTest extends CurrencyTransformerTestCase
             [30050, 'RUB', 'trois cents roubles russes et cinquante kopeks'],
             [20001, 'SAR', 'deux cents riyals saoudiens et un halala'],
             [10099, 'ZAR', 'cent rands sud-africains et quatre-vingt-dix-neuf cents'],
+            [50000, 'MXN', 'cinq cents pesos mexicains'],
+            [50099, 'MXN', 'cinq cents pesos mexicains et quatre-vingt-dix-neuf centavos'],
         ];
     }
 }

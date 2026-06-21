@@ -160,6 +160,10 @@ class Tk extends Words
             'Makedoniýa denary',
             'deni'
         ],
+        'MXN' => [
+            'Meksika pesoumy',
+            'sentavo'
+        ],
         'MRO' => [
             'Mawritaniýa ugiýasy',
             'kum'
@@ -188,7 +192,7 @@ class Tk extends Words
             'Polşa zlotasy',
             'groş'
         ],
-        'ROL' => [
+        'RON' => [
             'Rumyniýa leýasy',
             'ban'
         ],

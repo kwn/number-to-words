@@ -31,6 +31,8 @@ class PolishCurrencyTransformerTest extends CurrencyTransformerTestCase
             [300, 'SAR', 'trzy riale saudyjskie'],
             [100, 'CNY', 'jeden juan chiński'],
             [500, 'NGN', 'pięć nair nigeryjskich'],
+            [10000, 'MXN', 'sto peso meksykańskich'],
+            [10075, 'MXN', 'sto peso meksykańskich siedemdziesiąt pięć centavo'],
         ];
     }
 }

@@ -34,6 +34,8 @@ class SpanishCurrencyTransformerTest extends CurrencyTransformerTestCase
             [2100000101, 'DOP', 'veintiún millones un pesos dominicanos con un centavo'],
             [100009633, 'USD', 'un millón noventa y seis dólares con treinta y tres centavos'],
             [2100000101, 'USD', 'veintiún millones un dólares con un centavo'],
+            [75000, 'MXN', 'setecientos cincuenta pesos'],
+            [75025, 'MXN', 'setecientos cincuenta pesos con veinticinco centavos'],
         ];
     }
 }

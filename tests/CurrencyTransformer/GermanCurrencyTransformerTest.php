@@ -27,6 +27,8 @@ class GermanCurrencyTransformerTest extends CurrencyTransformerTestCase
             [300, 'SAR', 'drei Saudi-Arabischer Riyal'],
             [100, 'CNY', 'ein Chinesischer Yuan'],
             [500, 'NGN', 'fünf Nigerianische Naira'],
+            [3000000, 'MXN', 'dreißigtausend Mexikanischer Peso'],
+            [3000025, 'MXN', 'dreißigtausend Mexikanischer Peso und fünfundzwanzig Centavo'],
         ];
     }
 }
