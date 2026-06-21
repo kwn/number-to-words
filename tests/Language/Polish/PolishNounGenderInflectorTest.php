@@ -2,15 +2,14 @@
 
 namespace NumberToWords\Language\Polish;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class PolishNounGenderInflectorTest extends TestCase
 {
     private static array $nouns = ['kubek', 'kubki', 'kubków'];
 
-    /**
-     * @dataProvider providerItInflectsNounsByNumbers
-     */
+    #[DataProvider('providerItInflectsNounsByNumbers')]
     public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
         $polishInflector = new PolishNounGenderInflector();
@@ -20,7 +19,7 @@ class PolishNounGenderInflectorTest extends TestCase
         self::assertEquals($expectedNoun, $inflected);
     }
 
-    public function providerItInflectsNounsByNumbers(): array
+    public static function providerItInflectsNounsByNumbers(): array
     {
         return [
             [1, 'kubek'],

@@ -250,6 +250,12 @@ class Ro extends Words
         $words = [];
         $currencyNouns = Dictionary::$currencyNames[$currency];
 
+        $isNegative = $decimal < 0;
+        if ($isNegative) {
+            $decimal = abs($decimal);
+            $words[] = Dictionary::$minus;
+        }
+
         $words[] = $this->toWords($decimal, $currencyNouns[0]);
 
         if ($fraction !== null) {

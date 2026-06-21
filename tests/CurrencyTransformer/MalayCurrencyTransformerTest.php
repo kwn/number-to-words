@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class MalaysianCurrencyTransformerTest extends CurrencyTransformerTest
+class MalayCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
-        $this->currencyTransformer = new MalaysianCurrencyTransformer();
+        $this->currencyTransformer = new MalayCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [6474, 'USD', 'enam puluh empat dolar tujuh puluh empat sen'],
@@ -34,6 +34,9 @@ class MalaysianCurrencyTransformerTest extends CurrencyTransformerTest
             [-72925, 'USD', 'negatif tujuh ratus dua puluh sembilan dolar dua puluh lima sen'],
             [-89425, 'USD', 'negatif lapan ratus sembilan puluh empat dolar dua puluh lima sen'],
             [-99925, 'USD', 'negatif sembilan ratus sembilan puluh sembilan dolar dua puluh lima sen'],
+            [30000, 'SAR', 'tiga ratus riyal Arab Saudi'],
+            [10000, 'CNY', 'seratus yuan China'],
+            [50000, 'AED', 'lima ratus dirham UAE'],
         ];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class PersianNumberTransformerTest extends NumberTransformerTest
+class PersianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new PersianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'منفی سه'],

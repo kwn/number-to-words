@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class TurkmenCurrencyTransformerTest extends CurrencyTransformerTest
+class TurkmenCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new TurkmenCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'TMT', 'bir manat'],
@@ -22,6 +22,11 @@ class TurkmenCurrencyTransformerTest extends CurrencyTransformerTest
             [34501, 'TMT', 'üç ýüz kyrk bäş manat bir teňňe'],
             [34552, 'TMT', 'üç ýüz kyrk bäş manat elli iki teňňe'],
             [34599, 'USD', 'üç ýüz kyrk bäş dollar togsan dokuz sent'],
+            [500, 'EUR', 'bäş ýewro'],
+            [100, 'GBP', 'bir britan funty'],
+            [300, 'RUB', 'üç Russiýa rubly'],
+            [200, 'JPY', 'iki Ýaponiýa ýenasy'],
+            [100, 'SAR', 'bir Saud Arabiýasy riýaly'],
         ];
     }
 }

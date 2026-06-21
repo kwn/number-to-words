@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class GermanNumberTransformerTest extends NumberTransformerTest
+class GermanNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new GermanNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-287, 'minus zweihundertsiebenundachtzig'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class RussianCurrencyTransformerTest extends CurrencyTransformerTest
+class RussianCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new RussianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'UAH', 'одна гривна'],
@@ -258,6 +258,10 @@ class RussianCurrencyTransformerTest extends CurrencyTransformerTest
             [34552, 'SGD', 'триста сорок пять сингапурских долларов пятьдесят два цента'],
             [34501, 'SGD', 'триста сорок пять сингапурских долларов один цент'],
             [34599, 'SGD', 'триста сорок пять сингапурских долларов девяносто девять центов'],
+
+            [300, 'SAR', 'три саудовских рияла'],
+            [100, 'AED', 'один дирхам ОАЭ'],
+            [500, 'NGN', 'пять нигерийских найр'],
 
             [100, 'UZS', 'один сум'],
             [200, 'UZS', 'два сума'],

@@ -2,15 +2,14 @@
 
 namespace NumberToWords\Language\Azerbaijani;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class AzerbaijaniNounGenderInflectorTest extends TestCase
 {
     private static array $nouns = ['fincan', 'fincanlar', 'fincanlar'];
 
-    /**
-     * @dataProvider providerItInflectsNounsByNumbers
-     */
+    #[DataProvider('providerItInflectsNounsByNumbers')]
     public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
         $azerbaijaniInflector = new AzerbaijaniNounGenderInflector();
@@ -20,7 +19,7 @@ class AzerbaijaniNounGenderInflectorTest extends TestCase
         self::assertEquals($expectedNoun, $inflected);
     }
 
-    public function providerItInflectsNounsByNumbers(): array
+    public static function providerItInflectsNounsByNumbers(): array
     {
         return [
             [1, 'fincan'],

@@ -2,15 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-abstract class CurrencyTransformerTest extends TestCase
+abstract class CurrencyTransformerTestCase extends TestCase
 {
     protected CurrencyTransformer $currencyTransformer;
 
-    /**
-     * @dataProvider providerItConvertsMoneyAmountToWords
-     */
+    #[DataProvider('providerItConvertsMoneyAmountToWords')]
     public function testItConvertsMoneyAmountToWords(float $amount, string $currency, string $expectedString): void
     {
         if (null === $this->currencyTransformer) {
@@ -20,5 +19,5 @@ abstract class CurrencyTransformerTest extends TestCase
         self::assertEquals($expectedString, $this->currencyTransformer->toWords($amount, $currency));
     }
 
-    abstract public function providerItConvertsMoneyAmountToWords(): array;
+    abstract public static function providerItConvertsMoneyAmountToWords(): array;
 }

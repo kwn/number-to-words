@@ -2,15 +2,14 @@
 
 namespace NumberToWords\Language\Bulgarian;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class BulgarianNounGenderInflectorTest extends TestCase
 {
     private static array $nouns = ['лев', 'лева'];
 
-    /**
-     * @dataProvider providerItInflectsNounsByNumbers
-     */
+    #[DataProvider('providerItInflectsNounsByNumbers')]
     public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
         $inflector = new BulgarianNounGenderInflector();
@@ -20,11 +19,9 @@ class BulgarianNounGenderInflectorTest extends TestCase
         self::assertEquals($expectedNoun, $inflected, "Incorrect value: '$number $inflected'!");
     }
 
-    /**
-     * @dataProvider providerItInflectsThousandsByNumbers
-     */
+    #[DataProvider('providerItInflectsThousandsByNumbers')]
 
-    public function providerItInflectsNounsByNumbers(): array
+    public static function providerItInflectsNounsByNumbers(): array
     {
         return [
             [1, 'лев'],

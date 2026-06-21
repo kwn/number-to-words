@@ -141,6 +141,11 @@ class Yo extends Words
     {
         $word = "";
         $num = preg_replace('/[\W]/', '', $num);
+
+        if ((int) $num === 0) {
+            return $this->zero;
+        }
+
         $formatted = number_format((int) $num, 2);
 
         $leftNumber = explode(".", $formatted);

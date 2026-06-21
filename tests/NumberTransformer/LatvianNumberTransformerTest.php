@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class LatvianNumberTransformerTest extends NumberTransformerTest
+class LatvianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new LatvianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'nulle'],
@@ -54,6 +54,10 @@ class LatvianNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
             [935174315119, 'deviņi simti trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
             [2935174315119, 'divi triljoni deviņi simti trīsdesmit pieci miljardi viens simts septiņdesmit četri miljoni trīs simti piecpadsmit tūkstoši viens simts deviņpadsmit'],
+            [-1, 'mīnus viens'],
+            [-99, 'mīnus deviņdesmit deviņi'],
+            [-1000, 'mīnus viens tūkstotis'],
+            [-999999, 'mīnus deviņi simti deviņdesmit deviņi tūkstoši deviņi simti deviņdesmit deviņi'],
         ];
     }
 }

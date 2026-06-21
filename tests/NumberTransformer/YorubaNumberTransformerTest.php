@@ -2,17 +2,29 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class YorubaNumberTransformerTest extends NumberTransformerTest
+class YorubaNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new YorubaNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
+            [0, 'odo'],
             [1, 'ọkan'],
+            [2, 'meji'],
+            [3, 'mẹta'],
+            [4, 'mẹrin'],
+            [5, 'marun'],
+            [6, 'mẹfa'],
+            [7, 'meje'],
+            [8, 'mẹjọ'],
+            [9, 'mẹsan'],
+            [10, 'mẹwa'],
+            [11, 'mọkanla'],
+            [12, 'mejila'],
             [14, 'mẹrinla'],
             [20, 'ogun'],
             [22, 'ogun ati meji'],

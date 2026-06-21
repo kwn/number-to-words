@@ -44,6 +44,7 @@ class Ms extends Words
     private $wordSeparator = ' ';
 
     public static $currencyNames = [
+        'AED' => [['dirham UAE'], ['fils']],
         'ALL' => [['lek'], ['qindarka']],
         'AUD' => [['dolar Australia'], ['sen']],
         'BAM' => [['convertible marka'], ['fenig']],
@@ -52,11 +53,13 @@ class Ms extends Words
         'BYR' => [['Belarus rouble'], ['kopiejka']],
         'CAD' => [['dolar Kanada'], ['sen']],
         'CHF' => [['Swiss franc'], ['rapp']],
+        'CNY' => [['yuan China'], ['fen']],
         'CYP' => [['Cypriot pound'], ['sen']],
         'CZK' => [['Czech koruna'], ['halerz']],
         'DKK' => [['Danish krone'], ['ore']],
         'DZD' => [['dinar'], ['sen']],
         'EEK' => [['kroon'], ['senti']],
+        'EGP' => [['paun Mesir'], ['piastre']],
         'EUR' => [['euro'], ['sen euro']],
         'GBP' => [['pound', 'pounds'], ['pence', 'pence']],
         'HKD' => [['dolar Hong Kong'], ['sen']],
@@ -80,6 +83,7 @@ class Ms extends Words
         'PLN' => [['zloty'], ['grosz']],
         'ROL' => [['Romanian leu'], ['bani']],
         'RUB' => [['Russian Federation rouble'], ['kopiejka']],
+        'SAR' => [['riyal Arab Saudi'], ['halala']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['Tolar'], ['stotinia']],
         'SKK' => [['Slovak koruna'], []],
@@ -89,6 +93,7 @@ class Ms extends Words
         'TRY' => [['lira'], ['kuruş']],
         'UAH' => [['hryvna'], ['sen']],
         'USD' => [['dolar'], ['sen']],
+        'UZS' => [['sum Uzbekistan'], ['tiyin']],
         'XAF' => [['franc CFA'], ['sen']],
         'XOF' => [['franc CFA'], ['sen']],
         'XPF' => [['franc CFP'], ['sen']],

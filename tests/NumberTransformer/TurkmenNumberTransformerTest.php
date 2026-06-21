@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class TurkmenNumberTransformerTest extends NumberTransformerTest
+class TurkmenNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new TurkmenNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-1174315110, 'minus bir milliard bir ýüz ýetmiş dört million üç ýüz on bäş müň bir ýüz on'],

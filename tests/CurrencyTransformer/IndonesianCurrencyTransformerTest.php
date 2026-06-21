@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class IndonesianCurrencyTransformerTest extends CurrencyTransformerTest
+class IndonesianCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new IndonesianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [6474, 'USD', 'enam puluh empat dolar tujuh puluh empat sen'],
@@ -34,6 +34,9 @@ class IndonesianCurrencyTransformerTest extends CurrencyTransformerTest
             [-72925, 'USD', 'minus tujuh ratus dua puluh sembilan dolar dua puluh lima sen'],
             [-89425, 'USD', 'minus delapan ratus sembilan puluh empat dolar dua puluh lima sen'],
             [-99925, 'USD', 'minus sembilan ratus sembilan puluh sembilan dolar dua puluh lima sen'],
+            [30000, 'SAR', 'tiga ratus riyal Arab Saudi'],
+            [10000, 'CNY', 'seratus yuan Tiongkok'],
+            [50000, 'MYR', 'lima ratus ringgit Malaysia'],
         ];
     }
 }

@@ -40,13 +40,225 @@ class Tk extends Words
     ];
 
     protected static $currencyNames = [
-        'USD' => [
-            'dollar',
+        'ALL' => [
+            'albaniya lekasy',
+            'qindarka'
+        ],
+        'AED' => [
+            'BAE dirhamy',
+            'fils'
+        ],
+        'AUD' => [
+            'Awstraliýa dollary',
             'sent'
+        ],
+        'BAM' => [
+            'Bosniýa markasy',
+            'fenig'
+        ],
+        'BGN' => [
+            'Bolgariýa lewasy',
+            'stotinka'
+        ],
+        'BRL' => [
+            'Brazil realy',
+            'sentawo'
+        ],
+        'BYR' => [
+            'Belarus rubly',
+            'kopeýka'
+        ],
+        'CAD' => [
+            'Kanada dollary',
+            'sent'
+        ],
+        'CHF' => [
+            'Şweýsariýa franky',
+            'rapp'
+        ],
+        'CNY' => [
+            'Hytaý ýuany',
+            'fen'
+        ],
+        'CYP' => [
+            'Kipr funty',
+            'sent'
+        ],
+        'CZK' => [
+            'Çehiýa kronasy',
+            'haler'
+        ],
+        'DKK' => [
+            'Daniýa kronasy',
+            'öre'
+        ],
+        'DZD' => [
+            'Jazaýyr dinary',
+            'santim'
+        ],
+        'EEK' => [
+            'Estoniýa kronasy',
+            'sent'
+        ],
+        'EGP' => [
+            'Müsür funty',
+            'piastr'
+        ],
+        'EUR' => [
+            'ýewro',
+            'sent'
+        ],
+        'GBP' => [
+            'britan funty',
+            'pens'
+        ],
+        'HKD' => [
+            'Gonkong dollary',
+            'sent'
+        ],
+        'HRK' => [
+            'Horwatiýa kunasy',
+            'lipa'
+        ],
+        'HUF' => [
+            'Wengriýa forinti',
+            'filler'
+        ],
+        'IDR' => [
+            'Indoneziýa rupiýasy',
+            'sen'
+        ],
+        'ILS' => [
+            'Ysraýyl şekeli',
+            'agora'
+        ],
+        'ISK' => [
+            'Islandiýa kronasy',
+            'eyrir'
+        ],
+        'JPY' => [
+            'Ýaponiýa ýenasy',
+            'sen'
+        ],
+        'LTL' => [
+            'Litwa litasy',
+            'sent'
+        ],
+        'LVL' => [
+            'Latwiýa laty',
+            'santim'
+        ],
+        'LYD' => [
+            'Liwiýa dinary',
+            'dirham'
+        ],
+        'MAD' => [
+            'Marokko dirhamy',
+            'santim'
+        ],
+        'MKD' => [
+            'Makedoniýa denary',
+            'deni'
+        ],
+        'MRO' => [
+            'Mawritaniýa ugiýasy',
+            'kum'
+        ],
+        'MTL' => [
+            'Malta lirasy',
+            'sent'
+        ],
+        'MYR' => [
+            'Malaýziýa ringiti',
+            'sen'
+        ],
+        'NGN' => [
+            'Nigeriýa naýrasy',
+            'kobo'
+        ],
+        'NOK' => [
+            'Norweçiýa kronasy',
+            'öre'
+        ],
+        'PHP' => [
+            'Filippinler pesosy',
+            'sentawo'
+        ],
+        'PLN' => [
+            'Polşa zlotasy',
+            'groş'
+        ],
+        'ROL' => [
+            'Rumyniýa leýasy',
+            'ban'
+        ],
+        'RUB' => [
+            'Russiýa rubly',
+            'kopeýka'
+        ],
+        'SAR' => [
+            'Saud Arabiýasy riýaly',
+            'halala'
+        ],
+        'SEK' => [
+            'Şwesiýa kronasy',
+            'öre'
+        ],
+        'SIT' => [
+            'Sloweniýa tolary',
+            'stotin'
+        ],
+        'SKK' => [
+            'Slowakiýa kronasy',
+            'haler'
         ],
         'TMT' => [
             'manat',
             'teňňe'
+        ],
+        'TND' => [
+            'Tunis dinary',
+            'millim'
+        ],
+        'TRL' => [
+            'Türkiýe lirasy',
+            'kuruş'
+        ],
+        'TRY' => [
+            'Türkiýe lirasy',
+            'kuruş'
+        ],
+        'UAH' => [
+            'Ukraina griwnasy',
+            'kopeýka'
+        ],
+        'USD' => [
+            'dollar',
+            'sent'
+        ],
+        'UZS' => [
+            'Özbegistan somumy',
+            'tiýin'
+        ],
+        'XAF' => [
+            'CFA franky',
+            'santim'
+        ],
+        'XOF' => [
+            'CFA franky',
+            'santim'
+        ],
+        'XPF' => [
+            'CFP franky',
+            'santim'
+        ],
+        'YUM' => [
+            'Ýugoslawiýa dinary',
+            'para'
+        ],
+        'ZAR' => [
+            'Günorta Afrika rendi',
+            'sent'
         ],
     ];
 

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class YorubaCurrencyTransformerTest extends CurrencyTransformerTest
+class YorubaCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new YorubaCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [51722624, 'NGN',  'ẹgbẹrun ẹdẹgbẹta ati mẹtala, igba ati ogun ati mẹfa Naira pẹlu kobo ogun ati mẹrin'],

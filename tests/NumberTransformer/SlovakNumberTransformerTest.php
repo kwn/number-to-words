@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class SlovakNumberTransformerTest extends NumberTransformerTest
+class SlovakNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new SlovakNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-5, 'mínus päť'],
@@ -37,6 +37,29 @@ class SlovakNumberTransformerTest extends NumberTransformerTest
             [30, 'tridsať'],
             [31, 'tridsať jeden'],
             [40, 'štyridsať'],
+            [50, 'päťdesiat'],
+            [55, 'päťdesiat päť'],
+            [60, 'šesťdesiat'],
+            [70, 'sedemdesiat'],
+            [79, 'sedemdesiat deväť'],
+            [80, 'osemdesiat'],
+            [90, 'deväťdesiat'],
+            [99, 'deväťdesiat deväť'],
+            [100, 'sto'],
+            [111, 'sto jedenásť'],
+            [200, 'dvesto'],
+            [500, 'päťsto'],
+            [999, 'deväťsto deväťdesiat deväť'],
+            [1000, 'jeden tisíc'],
+            [2000, 'dva tisíce'],
+            [5000, 'päť tisíc'],
+            [11000, 'jedenásť tisíc'],
+            [21000, 'dvadsaťjeden tisíc'],
+            [100000, 'sto tisíc'],
+            [999999, 'deväťsto deväťdesiat deväť tisíc deväťsto deväťdesiat deväť'],
+            [1000000, 'jeden milión'],
+            [2000000, 'dva milióny'],
+            [5000000, 'päť miliónov'],
         ];
     }
 }

@@ -2,15 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-abstract class NumberTransformerTest extends TestCase
+abstract class NumberTransformerTestCase extends TestCase
 {
     protected NumberTransformer $numberTransformer;
 
-    /**
-     * @dataProvider providerItConvertsNumbersToWords
-     */
+    #[DataProvider('providerItConvertsNumbersToWords')]
     public function testItConvertsNumbersToWords($number, string $expectedString): void
     {
         if (null === $this->numberTransformer) {
@@ -20,5 +19,5 @@ abstract class NumberTransformerTest extends TestCase
         self::assertEquals($expectedString, $this->numberTransformer->toWords($number));
     }
 
-    abstract public function providerItConvertsNumbersToWords();
+    abstract public static function providerItConvertsNumbersToWords();
 }

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class HungarianNumberTransformerTest extends NumberTransformerTest
+class HungarianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new HungarianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-2000, 'mínusz kettőezer'],

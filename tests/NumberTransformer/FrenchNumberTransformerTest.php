@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class FrenchNumberTransformerTest extends NumberTransformerTest
+class FrenchNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new FrenchNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-999, 'moins neuf cent quatre-vingt-dix-neuf'],

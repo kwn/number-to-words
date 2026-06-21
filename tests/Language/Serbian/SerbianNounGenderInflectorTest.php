@@ -3,15 +3,14 @@
 namespace NumberToWords\Language\Serbian;
 
 use NumberToWords\Language\Polish\PolishNounGenderInflector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SerbianNounGenderInflectorTest extends TestCase
 {
     private static array $nouns = ['dinar', 'dinara', 'dinara'];
 
-    /**
-     * @dataProvider providerItInflectsNounsByNumbers
-     */
+    #[DataProvider('providerItInflectsNounsByNumbers')]
     public function testItInflectsNounsByNumbers($number, $expectedNoun): void
     {
         $inflector = new SerbianNounGenderInflector();
@@ -21,11 +20,9 @@ class SerbianNounGenderInflectorTest extends TestCase
         self::assertEquals($expectedNoun, $inflected, "Incorrect value: '$number $inflected'!");
     }
 
-    /**
-     * @dataProvider providerItInflectsThousandsByNumbers
-     */
+    #[DataProvider('providerItInflectsThousandsByNumbers')]
 
-    public function providerItInflectsNounsByNumbers(): array
+    public static function providerItInflectsNounsByNumbers(): array
     {
         return [
             [1, 'dinar'],

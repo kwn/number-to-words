@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class AzerbaijaniNumberTransformerTest extends NumberTransformerTest
+class AzerbaijaniNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new AzerbaijaniNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'mənfi üç'],

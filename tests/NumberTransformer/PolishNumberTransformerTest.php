@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class PolishNumberTransformerTest extends NumberTransformerTest
+class PolishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new PolishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-5, 'minus pięć'],

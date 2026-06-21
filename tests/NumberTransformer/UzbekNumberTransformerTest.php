@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class UzbekNumberTransformerTest extends NumberTransformerTest
+class UzbekNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new UzbekNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'minus uch'],

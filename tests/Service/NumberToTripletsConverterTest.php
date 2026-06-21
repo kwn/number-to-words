@@ -2,13 +2,12 @@
 
 namespace NumberToWords\Service;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class NumberToTripletsConverterTest extends TestCase
 {
-    /**
-     * @dataProvider providerItConvertsNumberToTriplets
-     */
+    #[DataProvider('providerItConvertsNumberToTriplets')]
     public function testItConvertsNumberToTriplets($number, array $expectedArray): void
     {
         $numberToTripletsConverter = new NumberToTripletsConverter();
@@ -18,7 +17,7 @@ class NumberToTripletsConverterTest extends TestCase
         self::assertEquals($expectedArray, $triplets);
     }
 
-    public function providerItConvertsNumberToTriplets(): array
+    public static function providerItConvertsNumberToTriplets(): array
     {
         return [
             [123, [123]],

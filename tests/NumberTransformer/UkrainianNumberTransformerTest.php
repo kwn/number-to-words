@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class UkrainianNumberTransformerTest extends NumberTransformerTest
+class UkrainianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new UkrainianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'нуль'],
@@ -54,6 +54,10 @@ class UkrainianNumberTransformerTest extends NumberTransformerTest
             [35174315119, 'тридцять п\'ять мільярдів сто сімдесят чотири мільйони триста п\'ятнадцять тисяч сто дев\'ятнадцять'],
             [935174315119, 'дев\'ятсот тридцять п\'ять мільярдів сто сімдесят чотири мільйони триста п\'ятнадцять тисяч сто дев\'ятнадцять'],
             [2935174315119, 'два трильйони дев\'ятсот тридцять п\'ять мільярдів сто сімдесят чотири мільйони триста п\'ятнадцять тисяч сто дев\'ятнадцять'],
+            [-1, 'мінус один'],
+            [-99, 'мінус дев\'яносто дев\'ять'],
+            [-1000, 'мінус одна тисяча'],
+            [-999999, 'мінус дев\'ятсот дев\'яносто дев\'ять тисяч дев\'ятсот дев\'яносто дев\'ять'],
         ];
     }
 }

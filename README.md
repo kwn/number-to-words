@@ -1,8 +1,8 @@
 # PHP Number to words converter
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/kwn/number-to-words/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kwn/number-to-words/tree/master)
-[![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
-[![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
+[![Maintainability](https://qlty.sh/gh/kwn/projects/number-to-words/maintainability.svg)](https://qlty.sh/gh/kwn/projects/number-to-words)
+[![Code Coverage](https://qlty.sh/gh/kwn/projects/number-to-words/coverage.svg)](https://qlty.sh/gh/kwn/projects/number-to-words)
 [![Latest Stable Version](https://poser.pugx.org/kwn/number-to-words/v/stable)](https://packagist.org/packages/kwn/number-to-words)
 
 Welcome to `number-to-words`, a PHP utility that seamlessly transforms numeric values into their corresponding words. Effortlessly convert numbers, such as 123, into expressive and readable formats like "one hundred and twenty-three" with just a few lines of code.
@@ -118,6 +118,9 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 ## Contributors
 
 Some transformers were ported from the `pear/Numbers_Words` library. Others were created by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
+
+## Version 3.x - BC and major changes
+- Dropped support for PHP <8.2.
 
 ## Version 2.x - BC and major changes
 

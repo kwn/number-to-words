@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class BulgarianNumberTransformerTest extends NumberTransformerTest
+class BulgarianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new BulgarianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'нула'],
@@ -65,7 +65,11 @@ class BulgarianNumberTransformerTest extends NumberTransformerTest
             [6459, 'шест хиляди четиристотин петдесет и девет'],
             [7232, 'седем хиляди двеста тридесет и две'],
             [8569, 'осем хиляди петстотин шестдесет и девет'],
-            [9539, 'девет хиляди петстотин тридесет и девет']
+            [9539, 'девет хиляди петстотин тридесет и девет'],
+            [-5, 'минус пет'],
+            [-99, 'минус деветдесет и девет'],
+            [-1000, 'минус хиляда'],
+            [-5846, 'минус пет хиляди осемстотин четиридесет и шест'],
         ];
     }
 }

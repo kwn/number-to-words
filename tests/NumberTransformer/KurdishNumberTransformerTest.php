@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class KurdishNumberTransformerTest extends NumberTransformerTest
+class KurdishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new KurdishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'سالب سێ'],

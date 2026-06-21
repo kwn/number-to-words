@@ -7,18 +7,12 @@ use NumberToWords\Language\Serbian\SerbianExponentGenderInflector;
 use NumberToWords\Language\Serbian\SerbianNounGenderInflector;
 use NumberToWords\Language\Serbian\SerbianUnitGenderInflector;
 use NumberToWords\Language\Serbian\SerbianTripletTransformer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SerbianNumberTransformerTest extends TestCase
 {
-    /**
-     * @param $number
-     * @param $expectedTranslation
-     * @dataProvider providerTestToWords
-     *
-     * @return void
-     * @throws \NumberToWords\Exception\NumberToWordsException
-     */
+    #[DataProvider('providerTestToWords')]
     public function testToWords($number, $expectedTranslation)
     {
         $transformer = new SerbianNumberTransformer();
@@ -27,7 +21,7 @@ class SerbianNumberTransformerTest extends TestCase
         $this->assertEquals($expectedTranslation, $translation, "Wrongly translated $translation -> $expectedTranslation.");
     }
 
-    public function providerTestToWords()
+    public static function providerTestToWords()
     {
         return [
             [1, 'jedan'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
+class GeorgianCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new GeorgianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [1, 'GEL', 'ერთი თეთრი'],
@@ -24,6 +24,9 @@ class GeorgianCurrencyTransformerTest extends CurrencyTransformerTest
             [121084, 'GBP', 'ათას ორას ათი ფუნტ სტერლინგი და ოთხმოცდაოთხი პენსი'],
             [9632, 'ALL', 'ოთხმოცდათექვსმეტი ლეკი და ოცდათორმეტი კინდარკა'],
             [54611, 'NOK', 'ხუთას ორმოცდაექვსი ნორვეგიული კრონი და თერთმეტი ერე'],
+            [300, 'SAR', 'სამი საუდის არაბეთის რიალი'],
+            [100, 'NGN', 'ერთი ნიგერიული ნაირა'],
+            [500, 'MYR', 'ხუთი მალაიზიური რინგიტი'],
         ];
     }
 }
