@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class HungarianCurrencyTransformerTest extends CurrencyTransformerTest
+class HungarianCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new HungarianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [0, 'HUF', 'nulla forint'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class GermanCurrencyTransformerTest extends CurrencyTransformerTest
+class GermanCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new GermanCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'EUR', 'ein Euro'],

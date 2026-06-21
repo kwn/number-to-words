@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class LithuanianCurrencyTransformerTest extends CurrencyTransformerTest
+class LithuanianCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new LithuanianCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [0, 'EUR', 'nulis eurų ir nulis euro centų'],

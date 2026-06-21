@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class SwahiliCurrencyTransformerTest extends CurrencyTransformerTest
+class SwahiliCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new SwahiliCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [6474, 'USD', 'Dola za Marekani sitini na nne na senti sabini na nne'],

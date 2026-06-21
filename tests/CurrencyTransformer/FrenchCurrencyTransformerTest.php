@@ -2,14 +2,14 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-class FrenchCurrencyTransformerTest extends CurrencyTransformerTest
+class FrenchCurrencyTransformerTest extends CurrencyTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->currencyTransformer = new FrenchCurrencyTransformer();
     }
 
-    public function providerItConvertsMoneyAmountToWords(): array
+    public static function providerItConvertsMoneyAmountToWords(): array
     {
         return [
             [100, 'EUR', 'un euro'],

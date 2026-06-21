@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class SwedishNumberTransformerTest extends NumberTransformerTest
+class SwedishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new SwedishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-1000, 'minus en tusen'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class DanishNumberTransformerTest extends NumberTransformerTest
+class DanishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new DanishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-1000, 'minus et tusind'],

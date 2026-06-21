@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class TurkishNumberTransformerTest extends NumberTransformerTest
+class TurkishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new TurkishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'sıfır'],

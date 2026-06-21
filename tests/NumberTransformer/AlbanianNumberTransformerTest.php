@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class AlbanianNumberTransformerTest extends NumberTransformerTest
+class AlbanianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new AlbanianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'minus tre'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class SwahiliNumberTransformerTest extends NumberTransformerTest
+class SwahiliNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new SwahiliNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-3, 'kasoro tatu'],

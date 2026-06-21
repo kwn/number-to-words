@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class RussianNumberTransformerTest extends NumberTransformerTest
+class RussianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new RussianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-21, 'минус двадцать один'],

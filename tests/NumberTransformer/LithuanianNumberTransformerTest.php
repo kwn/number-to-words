@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class LithuanianNumberTransformerTest extends NumberTransformerTest
+class LithuanianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new LithuanianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'nulis'],

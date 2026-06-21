@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class RomanianNumberTransformerTest extends NumberTransformerTest
+class RomanianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new RomanianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-300, 'minus trei sute'],

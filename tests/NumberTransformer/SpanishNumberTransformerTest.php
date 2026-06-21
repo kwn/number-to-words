@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class SpanishNumberTransformerTest extends NumberTransformerTest
+class SpanishNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new SpanishNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-12, 'menos doce'],

@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class GeorgianNumberTransformerTest extends NumberTransformerTest
+class GeorgianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new GeorgianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0,'ნული'],

@@ -3,15 +3,13 @@
 namespace NumberToWords;
 
 use NumberToWords\Exception\InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class LocaleAliasTest extends TestCase
 {
 
-    /**
-     * @dataProvider providerItUsesSameTransformersWithLocaleAlias
-     * @throws InvalidArgumentException
-     */
+    #[DataProvider('providerItUsesSameTransformersWithLocaleAlias')]
     public function testItUsesSameTransformersWithLocaleAlias($locale, $alias): void
     {
         $original = new NumberToWords();
@@ -26,7 +24,7 @@ class LocaleAliasTest extends TestCase
         $this->assertInstanceOf(get_class($originalCurrencyTransformer), $aliasedCurrencyTransformer);
     }
 
-    public function providerItUsesSameTransformersWithLocaleAlias(): array
+    public static function providerItUsesSameTransformersWithLocaleAlias(): array
     {
         return [
             ['fr', 'fr_FR'],

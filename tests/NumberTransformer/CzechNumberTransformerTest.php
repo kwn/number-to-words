@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class CzechNumberTransformerTest extends NumberTransformerTest
+class CzechNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new CzechNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-100, 'mínus sto'],

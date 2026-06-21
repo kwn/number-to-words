@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class SlovakNumberTransformerTest extends NumberTransformerTest
+class SlovakNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new SlovakNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [-5, 'mínus päť'],

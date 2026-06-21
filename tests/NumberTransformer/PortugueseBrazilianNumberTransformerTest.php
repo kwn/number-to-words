@@ -2,14 +2,14 @@
 
 namespace NumberToWords\NumberTransformer;
 
-class PortugueseBrazilianNumberTransformerTest extends NumberTransformerTest
+class PortugueseBrazilianNumberTransformerTest extends NumberTransformerTestCase
 {
     protected function setUp(): void
     {
         $this->numberTransformer = new PortugueseBrazilianNumberTransformer();
     }
 
-    public function providerItConvertsNumbersToWords(): array
+    public static function providerItConvertsNumbersToWords(): array
     {
         return [
             [0, 'zero'],
