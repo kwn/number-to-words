@@ -120,7 +120,7 @@ class Dk extends Words
             $number *= -1;
         }
 
-        if (strlen($number) > 3) {
+        if (strlen($number) > 3 && ($number < 1100 || $number >= 2000)) {
             $maxp = strlen($number) - 1;
             $curp = $maxp;
             for ($p = $maxp; $p > 0; --$p) { // power
@@ -147,12 +147,17 @@ class Dk extends Words
             return $this->wordSeparator . self::$digits[0];
         }
 
-        $h = $t = $d = 0;
+        $ts = $h = $t = $d = 0;
 
         switch (strlen($number)) {
+            case 4:
+                $ts = (int) substr($number, -4, 2);
+                goto lbl_2;
+
             case 3:
                 $h = (int) substr($number, -3, 1);
 
+            lbl_2:
             case 2:
                 $t = (int) substr($number, -2, 1);
 
@@ -165,15 +170,13 @@ class Dk extends Words
                 break;
         }
 
-        if ($h) {
+        if ($ts) {
+            $return .= $this->toWords($ts) . $this->wordSeparator . 'hundrede';
+        } elseif ($h) {
             if ($h == 1) {
                 $return .= $this->wordSeparator . 'et' . $this->wordSeparator . 'hundrede';
             } else {
                 $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'hundrede';
-            }
-
-            if (($t + $d) > 0) {
-                $return .= $this->wordSeparator . 'og';
             }
         } elseif ((isset($maxp)) && ($maxp > 3)) {
             // add 'og' in the case where there are preceding thousands but not hundreds or tens,
