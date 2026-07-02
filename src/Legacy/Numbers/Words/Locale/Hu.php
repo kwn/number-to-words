@@ -169,7 +169,11 @@ class Hu extends Words
         $h = (int) ($number / 100) % 10;
 
         if ($h) {
-            $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator . 'száz';
+            if ($h > 1) {
+                $return .= $this->wordSeparator . self::$digits[$h] . $this->wordSeparator;
+            }
+
+            $return .= 'száz';
         }
 
         // ten, twenty etc.
@@ -229,7 +233,7 @@ class Hu extends Words
                 break;
         }
 
-        if ($d > 0) {
+        if ($d > 0 && !($power === 3 && $h === 0 && $t === 0 && $d === 1)) {
             $return .= $this->wordSeparator . self::$digits[$d];
         }
 
