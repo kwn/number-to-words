@@ -72,6 +72,10 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
             }
         }
 
+        if ($amount < 0 && $decimal === 0) {
+            $return = $dictionary->getMinus() . ' ' . $return;
+        }
+
         return $return;
     }
 }
