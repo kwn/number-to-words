@@ -193,7 +193,7 @@ class Lt extends Words
 
         // add digits only in <0>,<1,9> and <21,inf>
         if ($t != 1 && $d > 0) {
-            if ($d > 1 || !$power || $t) {
+            if ($d > 1 || !$power || $t || $h) {
                 $return .= $this->wordSeparator . self::$digits[$d];
             }
         }
@@ -209,7 +209,7 @@ class Lt extends Words
 
             //echo " $t $d  <br>";
 
-            if ($t == 1 || ($t > 0 && $d == 0)) {
+            if ($t == 1 || $d == 0) {
                 $return .= $this->wordSeparator . $lev[2];
             } elseif ($d > 1) {
                 $return .= $this->wordSeparator . $lev[1];
